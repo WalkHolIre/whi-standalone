@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 2, 6, 23;
+    --background-end-rgb: 2, 6, 23;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer components {
+  .btn-whi-primary {
+    @apply bg-whi hover:bg-whi-hover text-white px-4 py-2 rounded-md transition-colors font-medium flex items-center gap-2;
+  }
+  
+  .btn-whi-secondary {
+    @apply bg-slate-200 hover:bg-slate-300 text-slate-800 px-4 py-2 rounded-md transition-colors font-medium flex items-center gap-2;
+  }
+}
