@@ -10,12 +10,7 @@ import {
     Calendar, Building2, Navigation, Settings, AlertCircle,
     Truck, DollarSign, Globe, Mail, Zap
 } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
-
-function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
-}
+import { cn } from '@/lib/utils';
 
 const navigationSections = [
     {
@@ -79,9 +74,9 @@ export default function Sidebar() {
             {/* Branding */}
             <div className="p-6 border-b border-white/10 flex flex-col items-center">
                 <img
-                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698fbccb93e8c68795aa3946/85a432a04_WHI_logo_636x342.png"
+                    src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/697223b02ac641a3e250b02f/ea3a4c6ae_WHI_logo_636x342.png"
                     alt="WHI Logo"
-                    className="max-w-[140px] mb-3"
+                    className="max-w-[140px] mb-3 brightness-0 invert"
                 />
                 <h1 className="text-sm font-bold tracking-wider text-center text-white italic">
                     WHI GROUND CONTROL

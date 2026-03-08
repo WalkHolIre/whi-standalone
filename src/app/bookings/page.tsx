@@ -6,13 +6,15 @@ import { useQuery } from '@tanstack/react-query';
 import {
     Plus, Search, Calendar, Users,
     Mail, Euro, CheckCircle2, Clock,
-    AlertCircle, Download, Send, Filter
+    AlertCircle, Download, Send, Filter,
+    Map as MapIcon
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { cn } from '@/lib/utils';
 
 export default function BookingsPage() {
     const [searchQuery, setSearchQuery] = useState('');
@@ -170,7 +172,7 @@ export default function BookingsPage() {
 
                                         <div className="flex flex-wrap items-center gap-y-2 gap-x-4 mt-3">
                                             <div className="flex items-center gap-1.5 text-slate-600 text-sm">
-                                                <Map className="w-3.5 h-3.5 text-whi" />
+                                                <MapIcon className="w-3.5 h-3.5 text-whi" />
                                                 <span className="font-medium">{booking.tour_name}</span>
                                             </div>
                                             <div className="flex items-center gap-1.5 text-slate-600 text-sm">
