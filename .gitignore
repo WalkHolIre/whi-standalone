@@ -1,33 +1,25 @@
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
+# Build artifacts
+_build_manifest.json
+_blog_manifest.json
 
-# testing
-/coverage
+# Node / Tailwind build tools (compiled CSS IS committed)
+node_modules/
+package.json
+package-lock.json
+tailwind.config.js
+src/
 
-# next.js
-/.next/
-/out/
+# Python
+__pycache__/
+*.pyc
 
-# production
-/build
-
-# misc
+# OS files
 .DS_Store
-*.pem
+Thumbs.db
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Backup files
+*.backup
 
-# local env files
-.env*.local
-
-# vercel
-.vercel
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+# Fix scripts (not needed in production)
+fix-pages.py
+.git-old

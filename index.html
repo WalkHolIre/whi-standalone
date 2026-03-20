@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Walking Holidays Ireland | Self-Guided | Kerry & Wicklow</title>
+    <meta name="description" content="Self-guided walking holidays through Ireland's most stunning landscapes. Handpicked B&Bs, daily luggage transfers, and personal support. Walk Ireland your way."/>
+    <link rel="canonical" href="https://walkingholidayireland.com/"/>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/"/>
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/"/>
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/"/>
+    <link rel="icon" type="image/png" href="images/logo/favicon.png"/>
+    <!-- Open Graph -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Walking Holidays Ireland | Self-Guided Walking Tours"/>
+    <meta property="og:description" content="Self-guided walking holidays through Ireland's most stunning landscapes. Handpicked B&Bs, daily luggage transfers, and personal support."/>
+    <meta property="og:url" content="https://walkingholidayireland.com/"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Walking Holidays Ireland | Self-Guided Walking Tours"/>
+    <meta name="twitter:description" content="Self-guided walking holidays through Ireland's most stunning landscapes. Handpicked B&Bs, daily luggage transfers, and personal support."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+
+    <!-- Tailwind & Fonts -->
+    <link rel="stylesheet" href="css/styles.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+
+    <!-- Base Styles -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1a1a1a;
+            background-color: #f8f7f5;
+            line-height: 1.6;
+        }
+
+        a {
+            transition: color 0.3s ease;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        nav.transparent {
+            background-color: transparent;
+        }
+
+        /* Material Icons */
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 100, 'GRAD' 0, 'opsz' 24;
+            color: inherit;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Card Hover */
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: #F17E00;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 16px;
+        }
+
+        .btn-primary:hover {
+            background-color: #d86b00;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: #210747;
+            padding: 14px 32px;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+            border: 2px solid #210747;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background-color: #210747;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('images/hero/homepage-hero.jpg') center/cover no-repeat;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(33, 7, 71, 0.65) 0%, rgba(33, 7, 71, 0.45) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 40px;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Timeline Section */
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #F17E00 0%, #210747 100%);
+            z-index: 0;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                display: none;
+            }
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding-top: 40px;
+        }
+
+        .timeline-step::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            background: white;
+            border: 4px solid #F17E00;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        .timeline-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: #F17E00;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 28px;
+            z-index: 3;
+        }
+
+        .timeline-step h3 {
+            font-size: 18px;
+            margin-top: 60px;
+            margin-bottom: 12px;
+            color: #210747;
+        }
+
+        .timeline-step p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* Card Grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .editorial-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .editorial-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .editorial-card-content {
+            padding: 32px;
+        }
+
+        .editorial-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+            color: #210747;
+        }
+
+        .editorial-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .editorial-card a {
+            color: #F17E00;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .editorial-card a:hover {
+            color: #d86b00;
+        }
+
+        /* Difficulty Scale */
+        .difficulty-item {
+            padding: 24px;
+            background: white;
+            border-radius: 0.75rem;
+            margin-bottom: 16px;
+            border-left: 6px solid #210747;
+        }
+
+        .difficulty-item.easy {
+            border-left-color: #4CAF50;
+        }
+
+        .difficulty-item.moderate {
+            border-left-color: #FFC107;
+        }
+
+        .difficulty-item.intermediate {
+            border-left-color: #FF9800;
+        }
+
+        .difficulty-item.challenging {
+            border-left-color: #f44336;
+        }
+
+        .difficulty-item h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #210747;
+        }
+
+        .difficulty-item p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .emoji {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        /* Testimonial Grid */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 32px;
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 32px;
+        }
+
+        .testimonial-avatar.avatar-1 { background: #F17E00; }
+        .testimonial-avatar.avatar-2 { background: #210747; }
+        .testimonial-avatar.avatar-3 { background: #3F0F87; }
+        .testimonial-avatar.avatar-4 { background: #B58DB6; }
+
+        .stars {
+            color: #FFC107;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 16px;
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        .testimonial-card .name {
+            font-weight: 600;
+            color: #210747;
+            font-style: normal;
+        }
+
+        .testimonial-card .country {
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Founders Section */
+        .founders-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .founders-section {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+
+        .founders-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .founders-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .founders-text h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: #210747;
+        }
+
+        .founders-text p {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 24px;
+            line-height: 1.8;
+        }
+
+        /* FAQ */
+        details {
+            background: white;
+            padding: 24px;
+            margin-bottom: 16px;
+            border-radius: 0.75rem;
+            border: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        details[open] {
+            background: #f8f7f5;
+            border-color: #F17E00;
+        }
+
+        summary {
+            font-size: 18px;
+            font-weight: 600;
+            color: #210747;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            user-select: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 28px;
+            color: #F17E00;
+            margin-left: 16px;
+        }
+
+        details[open] summary::after {
+            content: '−';
+        }
+
+        details > p {
+            margin-top: 16px;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Newsletter CTA */
+        .newsletter-section {
+            background: linear-gradient(135deg, #210747 0%, #3F0F87 100%);
+            color: white;
+            padding: 80px 40px;
+            text-align: center;
+            border-radius: 1rem;
+        }
+
+        .newsletter-section h2 {
+            font-size: 36px;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            max-width: 500px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 200px;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-form button {
+            background-color: #F17E00;
+            color: white;
+            padding: 14px 32px;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #d86b00;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            color: #fff;
+            padding: 60px 40px 40px;
+            margin-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .footer-section a:hover {
+            color: #F17E00;
+        }
+
+        .footer-logo img {
+            height: 40px;
+            margin-bottom: 16px;
+        }
+
+        .footer-contact {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        .language-switcher {
+            display: flex;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .language-switcher button {
+            background: transparent;
+            border: 1px solid #666;
+            color: #ccc;
+            padding: 6px 12px;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .language-switcher button.active,
+        .language-switcher button:hover {
+            border-color: #F17E00;
+            color: #F17E00;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: white;
+            z-index: 40;
+            padding-top: 100px;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a,
+        .mobile-menu button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 16px 24px;
+            border: none;
+            background: transparent;
+            font-size: 16px;
+            color: #210747;
+            cursor: pointer;
+        }
+
+        .mobile-menu a:hover,
+        .mobile-menu button:hover {
+            background: #f8f7f5;
+        }
+
+        .hamburger {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #210747;
+            margin: 6px 0;
+            transition: 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav .desktop-nav {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 80px 40px;
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 24px;
+            }
+        }
+
+        .section-max-width {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+<meta name="description" content="Self-guided walking holidays across Ireland — Kerry Way, Dingle Way, Wicklow Way & more. Luggage transfers, handpicked B&Bs, GPS app included. Start planning today.">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="transparent desktop-nav">
+        <div class="section-max-width flex items-center justify-between h-20 px-8">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <img id="nav-logo" src="images/logo/whi_white.png" alt="Walking Holiday Ireland" class="h-8">
+            </div>
+
+            <!-- Nav Links -->
+            <div class="flex items-center gap-8">
+                <!-- Walking Holidays Dropdown -->
+                <div class="relative group">
+                    <button class="text-white group-hover:text-primary transition">
+                        Walking Holidays
+                        <span class="material-symbols-outlined text-sm ml-2" style="display: inline; font-size: 18px;">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white text-brand-purple rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+                        <a href="destination-dingle.html" class="block px-4 py-3 hover:bg-background-light">Dingle</a>
+                        <a href="destination-kerry.html" class="block px-4 py-3 hover:bg-background-light">Kerry</a>
+                        <a href="destination-wicklow.html" class="block px-4 py-3 hover:bg-background-light">Wicklow</a>
+                        <a href="destination-burren.html" class="block px-4 py-3 hover:bg-background-light">Burren</a>
+                        <a href="destination-causeway.html" class="block px-4 py-3 hover:bg-background-light">Causeway</a>
+                        <a href="destination-cooley.html" class="block px-4 py-3 hover:bg-background-light">Cooley</a>
+                        <a href="destination-barrow.html" class="block px-4 py-3 hover:bg-background-light">Barrow</a>
+                        <a href="tailor-made.html" class="block px-4 py-3 hover:bg-background-light border-t">Tailor-Made</a>
+                    </div>
+                </div>
+
+                <!-- How It Works Dropdown -->
+                <div class="relative group">
+                    <button class="text-white group-hover:text-primary transition">
+                        How It Works
+                        <span class="material-symbols-outlined text-sm ml-2" style="display: inline; font-size: 18px;">expand_more</span>
+                    </button>
+                    <div class="absolute left-0 mt-0 w-48 bg-white text-brand-purple rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
+                        <a href="#how-it-works" class="block px-4 py-3 hover:bg-background-light">Overview</a>
+                        <a href="tour-grading.html" class="block px-4 py-3 hover:bg-background-light">Tour Grading</a>
+                    </div>
+                </div>
+
+                <!-- About Us -->
+                <a href="about.html" class="text-white hover:text-primary transition">About Us</a>
+
+                <!-- Blog -->
+                <a href="blog.html" class="text-white hover:text-primary transition">Blog</a>
+
+                <!-- Get in Touch Button -->
+                <a href="contact.html" class="btn-primary">Get in Touch</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="hamburger fixed top-6 right-6 z-50" id="hamburger-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="destination-dingle.html">Dingle</a>
+        <a href="destination-kerry.html">Kerry</a>
+        <a href="destination-wicklow.html">Wicklow</a>
+        <a href="destination-burren.html">Burren</a>
+        <a href="destination-causeway.html">Causeway</a>
+        <a href="destination-cooley.html">Cooley</a>
+        <a href="destination-barrow.html">Barrow</a>
+        <a href="tailor-made.html">Tailor-Made</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="tour-grading.html">Tour Grading</a>
+        <a href="about.html">About Us</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html" class="btn-primary mx-6 inline-block mt-4">Get in Touch</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Walk Ireland. Your Way.</h1>
+            <p>Self-guided walking holidays through Ireland's most stunning landscapes. Everything arranged. You just walk.</p>
+            <a href="tours.html" class="btn-primary">Find Your Perfect Walk</a>
+
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator mt-16 text-white">
+                <span class="material-symbols-outlined" style="font-size: 32px; display: block;">expand_more</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">How It Works</h2>
+
+            <div class="timeline">
+                <div class="timeline-step">
+                    <div class="timeline-number">1</div>
+                    <h3>Choose Your Route</h3>
+                    <p>Pick from 16 tours across 7 destinations</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-number">2</div>
+                    <h3>We Plan Everything</h3>
+                    <p>Accommodation, luggage transfers, route notes, GPS</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-number">3</div>
+                    <h3>You Walk & Enjoy</h3>
+                    <p>At your own pace, on your own schedule</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-number">4</div>
+                    <h3>Bags Waiting at Your Door</h3>
+                    <p>Arrive at your B&B, bags already there</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Walking Regions Section -->
+    <section style="background-color: #f8f7f5;">
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Explore Walking Regions</h2>
+
+            <div class="card-grid">
+                <!-- Wild Atlantic Way -->
+                <div class="editorial-card card-hover">
+                    <img src="images/regions/wild-atlantic-way.jpg" alt="Wild Atlantic Way" loading="lazy">
+                    <div class="editorial-card-content">
+                        <h3>Wild Atlantic Way</h3>
+                        <p>Dramatic cliffs, endless ocean views, and the world's most beautiful coastal walks</p>
+                        <a href="wild-atlantic-way.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                    </div>
+                </div>
+
+                <!-- Ireland's Ancient East -->
+                <div class="editorial-card card-hover">
+                    <img src="images/regions/ancient-east.jpg" alt="Ireland's Ancient East" loading="lazy">
+                    <div class="editorial-card-content">
+                        <h3>Ireland's Ancient East</h3>
+                        <p>Rolling green valleys, medieval monasteries, and gentle riverside trails</p>
+                        <a href="ancient-east.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                    </div>
+                </div>
+
+                <!-- Hidden Heartlands -->
+                <div class="editorial-card card-hover">
+                    <img src="images/regions/hidden-heartlands.jpg" alt="Hidden Heartlands" loading="lazy">
+                    <div class="editorial-card-content">
+                        <h3>Hidden Heartlands</h3>
+                        <p>Ireland's secret countryside — peaceful canal ways and undiscovered paths</p>
+                        <a href="destination-barrow.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                    </div>
+                </div>
+
+                <!-- Northern Ireland -->
+                <div class="editorial-card card-hover">
+                    <img src="images/regions/northern-ireland.jpg" alt="Northern Ireland" loading="lazy">
+                    <div class="editorial-card-content">
+                        <h3>Northern Ireland</h3>
+                        <p>Giant's Causeway, the Glens of Antrim, and Game of Thrones country</p>
+                        <a href="northern-ireland.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Am I Fit Enough Section -->
+    <section>
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Am I Fit Enough?</h2>
+
+            <div style="max-width: 700px; margin: 0 auto; margin-bottom: 40px;">
+                <div class="difficulty-item easy">
+                    <h4><span class="emoji">🟢</span>Easy</h4>
+                    <p>Gentle paths, mostly flat. If you can walk 10-15km comfortably, you'll love these.</p>
+                </div>
+
+                <div class="difficulty-item moderate">
+                    <h4><span class="emoji">🟡</span>Moderate</h4>
+                    <p>Rolling hills, some climbs. Our most popular level — 15-20km/day.</p>
+                </div>
+
+                <div class="difficulty-item intermediate">
+                    <h4><span class="emoji">🟠</span>Intermediate</h4>
+                    <p>Mountain terrain, longer days. For experienced walkers.</p>
+                </div>
+
+                <div class="difficulty-item challenging">
+                    <h4><span class="emoji">🔴</span>Challenging</h4>
+                    <p>Serious hill walking. For the adventurous.</p>
+                </div>
+            </div>
+
+            <div style="background: #210747; color: white; padding: 32px; border-radius: 1rem; text-align: center; margin-bottom: 32px;">
+                <p style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">90% of our walkers are over 50.</p>
+                <p style="font-size: 18px;">You've got this.</p>
+            </div>
+
+            <div style="text-align: center;">
+                <a href="tour-grading.html" class="btn-secondary">Learn More About Tour Grading</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section style="background-color: #f8f7f5;">
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">What Our Walkers Say</h2>
+
+            <div class="testimonial-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar avatar-1">J</div>
+                    <div class="stars">★★★★★</div>
+                    <p>"The most wonderful week of my life. Everything was perfectly organised, and the landscapes were breathtaking."</p>
+                    <div class="name">Janet</div>
+                    <div class="country">United Kingdom</div>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar avatar-2">M</div>
+                    <div class="stars">★★★★★</div>
+                    <p>"Cliff and Louise really do walk every route themselves. You can tell they genuinely care about your experience."</p>
+                    <div class="name">Michael</div>
+                    <div class="country">Australia</div>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar avatar-3">S</div>
+                    <div class="stars">★★★★★</div>
+                    <p>"The luggage transfer service meant we could travel light and enjoy the walks without worrying about our bags."</p>
+                    <div class="name">Sarah</div>
+                    <div class="country">Canada</div>
+                </div>
+
+                <!-- Testimonial 4 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-avatar avatar-4">P</div>
+                    <div class="stars">★★★★★</div>
+                    <p>"Best holiday we've ever had. The B&Bs were lovely, the routes were stunning, and we made great friends."</p>
+                    <div class="name">Paul & Margaret</div>
+                    <div class="country">Germany</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Cliff & Louise Section -->
+    <section>
+        <div class="section-max-width">
+            <div class="founders-section">
+                <div class="founders-image">
+                    <img src="images/about/founders.jpg" alt="Cliff & Louise" loading="lazy">
+                </div>
+                <div class="founders-text">
+                    <h2>Meet Cliff & Louise</h2>
+                    <p>We're Cliff and Louise. We started Walking Holiday Ireland because we believe the best way to experience Ireland is on foot. We personally walk every route each year to make sure your experience is perfect. When you book with us, you're not booking with a corporation — you're planning your trip with people who genuinely love these trails.</p>
+                    <a href="about.html" class="btn-primary">Learn Our Story</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section style="background-color: #f8f7f5;">
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Your Questions, Answered</h2>
+
+            <div style="max-width: 700px; margin: 0 auto;">
+                <details>
+                    <summary>What if I get lost?</summary>
+                    <p>We provide detailed route notes and GPS files loaded onto your phone. Our routes are well-marked, and we've tested every one multiple times. If you do take a wrong turn, you can quickly get back on track using GPS or call us for support.</p>
+                </details>
+
+                <details>
+                    <summary>How does luggage transfer work?</summary>
+                    <p>Our baggage transfer service is simple. You leave your main luggage at your accommodation in the morning, and we collect it and deliver it to your next B&B. You walk with just a small daypack. It's one of the features our walkers love most.</p>
+                </details>
+
+                <details>
+                    <summary>Can I walk solo?</summary>
+                    <p>Absolutely! Many of our walkers travel solo. You'll walk at your own pace and meet other walkers and locals at the B&Bs each evening. It's a wonderful way to have an adventure and make new friends.</p>
+                </details>
+
+                <details>
+                    <summary>What's the weather like?</summary>
+                    <p>Ireland's weather is changeable — you might see sunshine, showers, and rainbows all in one day! We recommend layers and waterproof gear. Our blog has detailed packing advice for each season.</p>
+                </details>
+
+                <details>
+                    <summary>What accommodation do you use?</summary>
+                    <p>We partner with small, family-run B&Bs across Ireland. Each one is personally selected and visited by us. You'll find comfortable, warm, welcoming places with hearty Irish breakfasts.</p>
+                </details>
+
+                <details>
+                    <summary>How far in advance should I book?</summary>
+                    <p>We recommend booking 8-12 weeks in advance during peak season (May-September). Off-season tours can often be booked with less notice. The earlier you book, the better your B&B selection.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter CTA Section -->
+    <section style="background: transparent; padding: 0;">
+        <div class="section-max-width">
+            <div class="newsletter-section">
+                <h2>Stay Updated on Walking Ireland</h2>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="section-max-width">
+            <div class="footer-grid">
+                <!-- Logo & Description -->
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <img src="images/logo/whi_white.png" alt="Walking Holiday Ireland" loading="lazy">
+                    </div>
+                    <p style="font-size: 14px; color: #ccc; margin-bottom: 20px;">Self-guided walking holidays through Ireland's most stunning landscapes.</p>
+                </div>
+
+                <!-- Walking Holidays -->
+                <div class="footer-section">
+                    <h3>Walking Holidays</h3>
+                    <ul>
+                        <li><a href="destination-dingle.html">Dingle</a></li>
+                        <li><a href="destination-kerry.html">Kerry</a></li>
+                        <li><a href="destination-wicklow.html">Wicklow</a></li>
+                        <li><a href="destination-burren.html">Burren</a></li>
+                        <li><a href="destination-causeway.html">Causeway</a></li>
+                        <li><a href="destination-cooley.html">Cooley</a></li>
+                        <li><a href="destination-barrow.html">Barrow</a></li>
+                        <li><a href="tailor-made.html">Tailor-Made</a></li>
+                    </ul>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="tour-grading.html">Tour Grading</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+
+                <!-- Get in Touch -->
+                <div class="footer-section">
+                    <h3>Get in Touch</h3>
+                    <div class="footer-contact">
+                        <p>info@walkingholidayireland.com</p>
+                        <p>+353 86 123 4567</p>
+                        <p>Dundalk<br>Co. Louth<br>Ireland</p>
+                        <div class="language-switcher">
+                            <button class="active">EN</button>
+                            <button>DE</button>
+                            <button>NL</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/whi-config.js"></script>
+    <script src="js/whi-data.js"></script>
+
+    <!-- Navigation Scroll Listener -->
+    <script>
+        const nav = document.querySelector('nav');
+        const navLogo = document.getElementById('nav-logo');
+        let isTransparent = true;
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                if (isTransparent) {
+                    nav.classList.remove('transparent');
+                    nav.classList.add('scrolled');
+                    navLogo.src = 'images/logo/whi_fc.png';
+                    isTransparent = false;
+                }
+            } else {
+                if (!isTransparent) {
+                    nav.classList.add('transparent');
+                    nav.classList.remove('scrolled');
+                    navLogo.src = 'images/logo/whi_white.png';
+                    isTransparent = true;
+                }
+            }
+        });
+    </script>
+
+    <!-- Mobile Menu Toggle -->
+    <script>
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        hamburgerMenu.addEventListener('click', function() {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+    </script>
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Walking Holiday Ireland",
+        "url": "https://www.walkingholidayireland.com",
+        "logo": "https://www.walkingholidayireland.com/images/logo/whi_fc.png",
+        "description": "Self-guided walking holidays through Ireland's most stunning landscapes. Everything arranged. You just walk.",
+        "founder": [
+            {
+                "@type": "Person",
+                "name": "Cliff"
+            },
+            {
+                "@type": "Person",
+                "name": "Louise"
+            }
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "Customer Service",
+            "email": "info@walkingholidayireland.com",
+            "telephone": "+353-86-123-4567"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Dundalk",
+            "addressRegion": "Co. Louth",
+            "addressCountry": "IE"
+        }
+    }
+    </script>
+</body>
+</html>
