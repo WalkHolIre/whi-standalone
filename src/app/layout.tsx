@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Sidebar from "@/components/Sidebar";
 import Providers from "./providers";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
     title: "WHI Ground Control",
@@ -18,9 +16,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
+            <body className="font-sans">
                 <Providers>
-                    <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+                    <div className="flex min-h-screen bg-slate-50">
                         <Sidebar />
                         <main className="flex-1 lg:pl-0">
                             <div className="p-4 md:p-8">
@@ -28,6 +26,7 @@ export default function RootLayout({
                             </div>
                         </main>
                     </div>
+                    <Toaster position="top-right" richColors />
                 </Providers>
             </body>
         </html>
