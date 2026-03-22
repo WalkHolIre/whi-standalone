@@ -25,31 +25,23 @@
 
     if (!toursGrid) return;
 
-    function getDifficultyColor(difficulty) {
-        switch(difficulty) {
-            case 'Easy': return '#10b981';
-            case 'Moderate': return '#f59e0b';
-            case 'Intermediate': return '#f97316';
-            case 'Challenging': return '#ef4444';
-            default: return '#64748b';
-        }
-    }
-
-    /* Return 1–3 boot icons based on difficulty */
+    /* Return boot icons: filled = dark purple, outline = mauve */
     function getDifficultyBoots(difficulty) {
-        var count = 1;
+        var filled = 1;
         switch(difficulty) {
-            case 'Easy': count = 1; break;
-            case 'Moderate': count = 2; break;
-            case 'Intermediate': count = 2; break;
-            case 'Challenging': count = 3; break;
-            default: count = 1;
+            case 'Easy': filled = 1; break;
+            case 'Moderate': filled = 2; break;
+            case 'Intermediate': filled = 2; break;
+            case 'Challenging': filled = 3; break;
+            default: filled = 1;
         }
-        var bootSvg = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.34 2 9 3.34 9 5v6.26l-1.45 1.45C6.58 13.68 6 14.88 6 16.17V18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1.83c0-1.29-.58-2.49-1.55-3.46L15 11.26V5c0-1.66-1.34-3-3-3z" fill="' + getDifficultyColor(difficulty) + '" opacity="0.85"/></svg>';
-        var bootOutlineSvg = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C10.34 2 9 3.34 9 5v6.26l-1.45 1.45C6.58 13.68 6 14.88 6 16.17V18c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-1.83c0-1.29-.58-2.49-1.55-3.46L15 11.26V5c0-1.66-1.34-3-3-3z" stroke="' + getDifficultyColor(difficulty) + '" stroke-width="1.5" opacity="0.4"/></svg>';
         var html = '';
         for (var i = 0; i < 3; i++) {
-            html += (i < count) ? bootSvg : bootOutlineSvg;
+            if (i < filled) {
+                html += '<img src="images/icons/boot-filled.svg" alt="" width="28" height="28" style="display:inline-block;">';
+            } else {
+                html += '<img src="images/icons/boot-outline.svg" alt="" width="28" height="28" style="display:inline-block;">';
+            }
         }
         return html;
     }
@@ -101,10 +93,10 @@
                 tour.region +
             '</div>';
 
-            /* Price badge */
-            var priceHtml = '<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-md px-3 py-2 text-center">' +
-                '<span class="block text-[11px] text-slate-500 font-medium leading-none mb-0.5">From</span>' +
-                '<span class="block text-lg font-extrabold text-primary leading-tight">&euro;' + formatPrice(tour.price) + '</span>' +
+            /* Price badge — LARGE */
+            var priceHtml = '<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center">' +
+                '<span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>' +
+                '<span class="block text-xl font-extrabold text-primary leading-tight">&euro;' + formatPrice(tour.price) + '</span>' +
             '</div>';
 
             /* Review stars + count */
@@ -117,8 +109,8 @@
                 '</div>';
             }
 
-            /* Difficulty boots */
-            var bootsHtml = '<div class="flex items-center gap-0.5" title="' + tour.difficulty + '">' + getDifficultyBoots(tour.difficulty) + '</div>';
+            /* Difficulty boot icons (your uploaded SVGs) */
+            var bootsHtml = '<div class="flex items-center" title="' + tour.difficulty + '">' + getDifficultyBoots(tour.difficulty) + '</div>';
 
             /* Stats bar: days, km/day, ascent/day, descent/day */
             var statsItems = [];
@@ -171,10 +163,10 @@
                 '<div class="flex flex-col justify-between flex-grow p-5">' +
                     '<div>' +
                         '<h3 class="text-lg font-bold mb-2 leading-snug text-slate-800 group-hover:text-primary transition-colors">' + tour.name + '</h3>' +
-                        '<p class="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-4">' + tour.short_desc + '</p>' +
+                        '<p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-4">' + tour.short_desc + '</p>' +
                     '</div>' +
                     /* Reviews + Difficulty row */
-                    '<div class="flex items-center justify-between mb-3">' +
+                    '<div class="flex items-center justify-between mb-1">' +
                         reviewHtml +
                         bootsHtml +
                     '</div>' +
