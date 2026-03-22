@@ -53,10 +53,10 @@
             line-height: 1.2;
         }
 
-        /* Top Utility Bar */
+        /* Top Utility Bar — transparent on hero, white when scrolled */
         .utility-bar {
-            background-color: #B58DB6;
-            color: #210747;
+            background-color: transparent;
+            color: #ffffff;
             font-size: 13px;
             padding: 8px 40px;
             position: fixed;
@@ -64,6 +64,12 @@
             left: 0;
             right: 0;
             z-index: 51;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .utility-bar.scrolled {
+            background-color: #ffffff;
+            color: #210747;
         }
 
         .utility-bar-inner {
@@ -75,13 +81,16 @@
         }
 
         .utility-bar a {
-            color: #210747;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s;
         }
+        .utility-bar.scrolled a {
+            color: #210747;
+        }
 
         .utility-bar a:hover {
-            color: #3F0F87;
+            opacity: 0.7;
         }
 
         .utility-left {
@@ -94,6 +103,14 @@
             font-size: 16px;
             vertical-align: middle;
             margin-right: 4px;
+        }
+
+        .utility-left svg {
+            fill: #ffffff;
+            transition: fill 0.3s;
+        }
+        .utility-bar.scrolled .utility-left svg {
+            fill: #210747;
         }
 
         .utility-centre {
@@ -109,17 +126,27 @@
             width: 28px;
             height: 28px;
             border-radius: 50%;
-            background: rgba(33,7,71,0.12);
+            background: rgba(255,255,255,0.2);
             transition: background 0.3s;
+        }
+        .utility-bar.scrolled .utility-centre a {
+            background: rgba(33,7,71,0.12);
         }
 
         .utility-centre a:hover {
+            background: rgba(255,255,255,0.35);
+        }
+        .utility-bar.scrolled .utility-centre a:hover {
             background: rgba(33,7,71,0.25);
         }
 
         .utility-centre svg {
             width: 14px;
             height: 14px;
+            fill: #ffffff;
+            transition: fill 0.3s;
+        }
+        .utility-bar.scrolled .utility-centre svg {
             fill: #210747;
         }
 
@@ -131,8 +158,8 @@
 
         .utility-right button {
             background: transparent;
-            border: 1px solid rgba(33,7,71,0.3);
-            color: rgba(33,7,71,0.7);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: rgba(255,255,255,0.8);
             padding: 2px 10px;
             border-radius: 3px;
             cursor: pointer;
@@ -143,9 +170,21 @@
 
         .utility-right button.active,
         .utility-right button:hover {
+            border-color: #ffffff;
+            color: #ffffff;
+            background: rgba(255,255,255,0.2);
+        }
+
+        .utility-bar.scrolled .utility-right button {
+            border-color: rgba(33,7,71,0.3);
+            color: rgba(33,7,71,0.7);
+            background: transparent;
+        }
+        .utility-bar.scrolled .utility-right button.active,
+        .utility-bar.scrolled .utility-right button:hover {
             border-color: #210747;
             color: #210747;
-            background: rgba(255,255,255,0.3);
+            background: rgba(33,7,71,0.08);
         }
 
         @media (max-width: 768px) {
@@ -154,7 +193,7 @@
             }
         }
 
-        /* Navigation */
+        /* Navigation — transparent on hero, white when scrolled */
         nav {
             position: fixed;
             top: 44px;
@@ -177,6 +216,18 @@
 
         nav.transparent {
             background-color: transparent;
+        }
+
+        /* Nav link colours — white on hero, dark grey when scrolled */
+        nav .nav-link {
+            color: #ffffff;
+            transition: color 0.3s ease;
+        }
+        nav.scrolled .nav-link {
+            color: #374151;
+        }
+        nav .nav-link:hover {
+            color: #F17E00;
         }
 
         /* Material Icons */
@@ -836,7 +887,7 @@
             <div class="utility-left">
                 <a href="mailto:info@walkingholidayireland.com"><span class="material-symbols-outlined">mail</span> info@walkingholidayireland.com</a>
                 <a href="tel:+353861234567"><span class="material-symbols-outlined">phone</span> +353 86 123 4567</a>
-                <a href="https://wa.me/353861234567" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+                <a href="https://wa.me/353861234567" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:currentColor;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
             </div>
             <div class="utility-centre">
                 <a href="https://www.facebook.com/walkingholidayireland" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
@@ -855,17 +906,17 @@
 
     <!-- Navigation -->
     <nav class="transparent desktop-nav">
-        <div class="section-max-width flex items-center justify-between h-24 px-8">
+        <div class="section-max-width flex items-center justify-between px-8" style="padding-top:15px;padding-bottom:15px;">
             <!-- Logo -->
-            <div class="flex items-center py-2">
-                <img id="nav-logo" src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="h-14 w-auto">
+            <div class="flex items-center">
+                <img id="nav-logo" src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;">
             </div>
 
             <!-- Nav Links -->
             <div class="flex items-center gap-8">
                 <!-- Walking Holidays Dropdown -->
                 <div class="relative group">
-                    <button class="text-white group-hover:text-primary transition">
+                    <button class="nav-link font-semibold group-hover:text-primary transition">
                         Walking Holidays
                         <span class="material-symbols-outlined text-sm ml-2" style="display: inline; font-size: 18px;">expand_more</span>
                     </button>
@@ -883,7 +934,7 @@
 
                 <!-- How It Works Dropdown -->
                 <div class="relative group">
-                    <button class="text-white group-hover:text-primary transition">
+                    <button class="nav-link font-semibold group-hover:text-primary transition">
                         How It Works
                         <span class="material-symbols-outlined text-sm ml-2" style="display: inline; font-size: 18px;">expand_more</span>
                     </button>
@@ -895,10 +946,10 @@
                 </div>
 
                 <!-- About Us -->
-                <a href="about.html" class="text-white hover:text-primary transition">About Us</a>
+                <a href="about.html" class="nav-link font-semibold hover:text-primary transition">About Us</a>
 
                 <!-- Blog -->
-                <a href="blog.html" class="text-white hover:text-primary transition">Blog</a>
+                <a href="blog.html" class="nav-link font-semibold hover:text-primary transition">Blog</a>
 
                 <!-- Get in Touch Button -->
                 <a href="contact.html" class="btn-primary">Get in Touch</a>
@@ -1398,6 +1449,7 @@
     <!-- Navigation Scroll Listener -->
     <script>
         const nav = document.querySelector('nav');
+        const utilityBar = document.querySelector('.utility-bar');
         let isTransparent = true;
 
         window.addEventListener('scroll', function() {
@@ -1405,12 +1457,14 @@
                 if (isTransparent) {
                     nav.classList.remove('transparent');
                     nav.classList.add('scrolled');
+                    utilityBar.classList.add('scrolled');
                     isTransparent = false;
                 }
             } else {
                 if (!isTransparent) {
                     nav.classList.add('transparent');
                     nav.classList.remove('scrolled');
+                    utilityBar.classList.remove('scrolled');
                     isTransparent = true;
                 }
             }
