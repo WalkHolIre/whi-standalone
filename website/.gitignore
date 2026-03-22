@@ -1,0 +1,25 @@
+# Build artifacts
+_build_manifest.json
+_blog_manifest.json
+
+# Node / Tailwind build tools (compiled CSS IS committed)
+node_modules/
+package.json
+package-lock.json
+tailwind.config.js
+src/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.backup
+
+# Fix scripts (not needed in production)
+fix-pages.py
+.git-old
