@@ -495,7 +495,7 @@
     // Render dynamic tour cards if container exists
     const tourCardsContainer = document.getElementById('whi-tour-cards');
     if (tourCardsContainer) {
-      const destSlug = tourCardsContainer.getAttribute('data-destination-slug');
+      const destSlug = tourCardsContainer.getAttribute('data-walking-area-slug');
       const limit = parseInt(tourCardsContainer.getAttribute('data-limit')) || null;
       await DOMUpdater.renderTourCards('whi-tour-cards', {
         destinationSlug: destSlug || null,
