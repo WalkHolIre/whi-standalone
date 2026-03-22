@@ -146,7 +146,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 0;
         }
 
         .hero::before {
@@ -156,30 +156,35 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(33, 7, 71, 0.65) 0%, rgba(33, 7, 71, 0.45) 100%);
+            background: linear-gradient(135deg, rgba(33, 7, 71, 0.85) 0%, rgba(63, 15, 135, 0.35) 100%);
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1000px;
             padding: 40px;
             color: white;
         }
 
         .hero h1 {
-            font-size: 64px;
-            font-weight: 700;
+            font-size: 80px;
+            font-weight: 900;
             margin-bottom: 24px;
-            letter-spacing: -1px;
+            letter-spacing: -2px;
+            line-height: 0.95;
+            text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 24px;
-            margin-bottom: 40px;
+            font-size: 26px;
+            margin-bottom: 48px;
             font-weight: 300;
-            line-height: 1.4;
+            line-height: 1.5;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Timeline Section */
@@ -545,7 +550,7 @@
 
         /* Footer */
         footer {
-            background-color: #1a1a1a;
+            background-color: #210747;
             color: #fff;
             padding: 60px 40px 40px;
             margin-top: 80px;
@@ -688,11 +693,17 @@
             }
 
             .hero h1 {
-                font-size: 42px;
+                font-size: 48px;
+                letter-spacing: -1px;
             }
 
             .hero p {
                 font-size: 18px;
+            }
+
+            #home-review-track > div {
+                flex: 0 0 85% !important;
+                min-width: 280px !important;
             }
         }
 
@@ -720,7 +731,7 @@
         <div class="section-max-width flex items-center justify-between h-20 px-8">
             <!-- Logo -->
             <div class="flex items-center">
-                <img id="nav-logo" src="images/logo/whi_white.png" alt="Walking Holiday Ireland" class="h-8">
+                <img id="nav-logo" src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width: 150px; height: auto;">
             </div>
 
             <!-- Nav Links -->
@@ -732,13 +743,13 @@
                         <span class="material-symbols-outlined text-sm ml-2" style="display: inline; font-size: 18px;">expand_more</span>
                     </button>
                     <div class="absolute left-0 mt-0 w-48 bg-white text-brand-purple rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
-                        <a href="destination-dingle.html" class="block px-4 py-3 hover:bg-background-light">Dingle</a>
-                        <a href="destination-kerry.html" class="block px-4 py-3 hover:bg-background-light">Kerry</a>
-                        <a href="destination-wicklow.html" class="block px-4 py-3 hover:bg-background-light">Wicklow</a>
-                        <a href="destination-burren.html" class="block px-4 py-3 hover:bg-background-light">Burren</a>
-                        <a href="destination-causeway.html" class="block px-4 py-3 hover:bg-background-light">Causeway</a>
-                        <a href="destination-cooley.html" class="block px-4 py-3 hover:bg-background-light">Cooley</a>
-                        <a href="destination-barrow.html" class="block px-4 py-3 hover:bg-background-light">Barrow</a>
+                        <a href="destination-dingle-way.html" class="block px-4 py-3 hover:bg-background-light">Dingle</a>
+                        <a href="destination-kerry-way.html" class="block px-4 py-3 hover:bg-background-light">Kerry</a>
+                        <a href="destination-wicklow-way.html" class="block px-4 py-3 hover:bg-background-light">Wicklow</a>
+                        <a href="destination-burren-way.html" class="block px-4 py-3 hover:bg-background-light">Burren</a>
+                        <a href="destination-causeway-coast.html" class="block px-4 py-3 hover:bg-background-light">Causeway</a>
+                        <a href="destination-cooley-mournes.html" class="block px-4 py-3 hover:bg-background-light">Cooley</a>
+                        <a href="destination-barrow-way.html" class="block px-4 py-3 hover:bg-background-light">Barrow</a>
                         <a href="tailor-made.html" class="block px-4 py-3 hover:bg-background-light border-t">Tailor-Made</a>
                     </div>
                 </div>
@@ -752,6 +763,7 @@
                     <div class="absolute left-0 mt-0 w-48 bg-white text-brand-purple rounded shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition duration-300 z-50">
                         <a href="#how-it-works" class="block px-4 py-3 hover:bg-background-light">Overview</a>
                         <a href="tour-grading.html" class="block px-4 py-3 hover:bg-background-light">Tour Grading</a>
+                        <a href="tour-grading.html#fitness" class="block px-4 py-3 hover:bg-background-light">Am I Fit Enough?</a>
                     </div>
                 </div>
 
@@ -776,13 +788,13 @@
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
-        <a href="destination-dingle.html">Dingle</a>
-        <a href="destination-kerry.html">Kerry</a>
-        <a href="destination-wicklow.html">Wicklow</a>
-        <a href="destination-burren.html">Burren</a>
-        <a href="destination-causeway.html">Causeway</a>
-        <a href="destination-cooley.html">Cooley</a>
-        <a href="destination-barrow.html">Barrow</a>
+        <a href="destination-dingle-way.html">Dingle</a>
+        <a href="destination-kerry-way.html">Kerry</a>
+        <a href="destination-wicklow-way.html">Wicklow</a>
+        <a href="destination-burren-way.html">Burren</a>
+        <a href="destination-causeway-coast.html">Causeway</a>
+        <a href="destination-cooley-mournes.html">Cooley</a>
+        <a href="destination-barrow-way.html">Barrow</a>
         <a href="tailor-made.html">Tailor-Made</a>
         <a href="#how-it-works">How It Works</a>
         <a href="tour-grading.html">Tour Grading</a>
@@ -804,6 +816,52 @@
             </div>
         </div>
     </section>
+
+    <!-- Tour Filter Search Bar (overlaps hero) -->
+    <div style="position: relative; z-index: 10; margin-top: -60px; margin-bottom: 40px;">
+        <div class="section-max-width" style="padding: 0 40px;">
+            <div style="background: white; border-radius: 1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 24px 32px;">
+                <form action="tours.html" method="get" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+                    <div style="flex: 2; min-width: 200px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Destination</label>
+                        <select id="home-region" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+                            <option value="">All Destinations</option>
+                            <option value="wild-atlantic-way">Wild Atlantic Way</option>
+                            <option value="ancient-east">Ireland's Ancient East</option>
+                            <option value="hidden-heartlands">Hidden Heartlands</option>
+                            <option value="northern-ireland">Northern Ireland</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1.5; min-width: 160px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Difficulty</label>
+                        <select id="home-difficulty" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+                            <option value="">Any Level</option>
+                            <option value="easy">Easy</option>
+                            <option value="moderate">Moderate</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="challenging">Challenging</option>
+                        </select>
+                    </div>
+                    <div style="flex: 1; min-width: 120px;">
+                        <label style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Duration</label>
+                        <select id="home-duration" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+                            <option value="">Any</option>
+                            <option value="5">5 Days</option>
+                            <option value="6">6 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="8-10">8-10 Days</option>
+                        </select>
+                    </div>
+                    <div style="flex: 0 0 auto; padding-top: 22px;">
+                        <a href="tours.html" id="home-search-btn" class="btn-primary" style="padding: 12px 32px; display: inline-flex; align-items: center; gap: 8px;">
+                            <span class="material-symbols-outlined" style="font-size: 20px;">search</span>
+                            Find Tours
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <!-- How It Works Section -->
     <section id="how-it-works">
@@ -867,7 +925,7 @@
                     <div class="editorial-card-content">
                         <h3>Hidden Heartlands</h3>
                         <p>Ireland's secret countryside — peaceful canal ways and undiscovered paths</p>
-                        <a href="destination-barrow.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
+                        <a href="destination-barrow-way.html">Explore Region <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span></a>
                     </div>
                 </div>
 
@@ -884,85 +942,100 @@
         </div>
     </section>
 
-    <!-- Am I Fit Enough Section -->
+    <!-- Fitness Quiz CTA Section -->
     <section>
         <div class="section-max-width">
-            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Am I Fit Enough?</h2>
-
-            <div style="max-width: 700px; margin: 0 auto; margin-bottom: 40px;">
-                <div class="difficulty-item easy">
-                    <h4><span class="emoji">🟢</span>Easy</h4>
-                    <p>Gentle paths, mostly flat. If you can walk 10-15km comfortably, you'll love these.</p>
-                </div>
-
-                <div class="difficulty-item moderate">
-                    <h4><span class="emoji">🟡</span>Moderate</h4>
-                    <p>Rolling hills, some climbs. Our most popular level — 15-20km/day.</p>
-                </div>
-
-                <div class="difficulty-item intermediate">
-                    <h4><span class="emoji">🟠</span>Intermediate</h4>
-                    <p>Mountain terrain, longer days. For experienced walkers.</p>
-                </div>
-
-                <div class="difficulty-item challenging">
-                    <h4><span class="emoji">🔴</span>Challenging</h4>
-                    <p>Serious hill walking. For the adventurous.</p>
-                </div>
-            </div>
-
-            <div style="background: #210747; color: white; padding: 32px; border-radius: 1rem; text-align: center; margin-bottom: 32px;">
-                <p style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">90% of our walkers are over 50.</p>
-                <p style="font-size: 18px;">You've got this.</p>
-            </div>
-
-            <div style="text-align: center;">
-                <a href="tour-grading.html" class="btn-secondary">Learn More About Tour Grading</a>
+            <div style="background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); color: white; padding: 64px 40px; border-radius: 1.5rem; text-align: center; max-width: 900px; margin: 0 auto;">
+                <span class="material-symbols-outlined" style="font-size: 56px; color: #F17E00; display: block; margin-bottom: 24px;">hiking</span>
+                <h2 style="font-size: 36px; margin-bottom: 16px; color: white;">Not Sure Which Tour Suits You?</h2>
+                <p style="font-size: 20px; margin-bottom: 32px; font-weight: 300; line-height: 1.6; max-width: 600px; margin-left: auto; margin-right: auto;">Do our fitness quiz to see which tour best suits you! Answer a few quick questions and we'll match you with the perfect walk.</p>
+                <a href="tour-grading.html" class="btn-primary" style="font-size: 18px; padding: 16px 40px;">Take the Fitness Quiz</a>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section style="background-color: #f8f7f5;">
-        <div class="section-max-width">
-            <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">What Our Walkers Say</h2>
+    <!-- Reviews Section — Full Width Carousel -->
+    <section style="background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); padding: 80px 0;">
+        <div class="section-max-width" style="padding: 0 40px;">
+            <div style="text-align: center; margin-bottom: 48px;">
+                <h2 style="font-size: 40px; color: white; margin-bottom: 16px;">What Our Walkers Say</h2>
+                <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 8px;">
+                    <span style="color: #FFC107; font-size: 28px;">★★★★★</span>
+                    <span style="color: white; font-size: 28px; font-weight: 700;">4.9</span>
+                    <span style="color: rgba(255,255,255,0.7); font-size: 18px;">out of 5</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.7); font-size: 16px;">Based on 63 verified reviews</p>
+            </div>
 
-            <div class="testimonial-grid">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar avatar-1">J</div>
-                    <div class="stars">★★★★★</div>
-                    <p>"The most wonderful week of my life. Everything was perfectly organised, and the landscapes were breathtaking."</p>
-                    <div class="name">Janet</div>
-                    <div class="country">United Kingdom</div>
+            <!-- Carousel Container -->
+            <div id="home-review-carousel" style="position: relative; overflow: hidden;">
+                <div id="home-review-track" style="display: flex; gap: 24px; transition: transform 0.5s ease;">
+                    <!-- Review Card 1 -->
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                        <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
+                        <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"The most wonderful week of my life. Everything was perfectly organised, and the landscapes were breathtaking. Cliff and Louise thought of everything."</p>
+                        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="color: white; font-weight: 600;">Janet</div>
+                                <div style="color: rgba(255,255,255,0.5); font-size: 14px;">United Kingdom</div>
+                            </div>
+                            <a href="tours/dingle-way.html" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Dingle Way →</a>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 2 -->
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                        <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
+                        <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"Cliff and Louise really do walk every route themselves. You can tell they genuinely care about your experience. The Kerry Way was spectacular."</p>
+                        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="color: white; font-weight: 600;">Michael</div>
+                                <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Australia</div>
+                            </div>
+                            <a href="tours/kerry-way.html" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Kerry Way →</a>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 3 -->
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                        <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
+                        <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"The luggage transfer service meant we could travel light and enjoy the walks without worrying about our bags. The Wicklow Way was pure magic."</p>
+                        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="color: white; font-weight: 600;">Sarah</div>
+                                <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Canada</div>
+                            </div>
+                            <a href="tours/wicklow-way.html" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Wicklow Way →</a>
+                        </div>
+                    </div>
+
+                    <!-- Review Card 4 -->
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                        <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
+                        <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"Best holiday we've ever had. The B&Bs were lovely, the routes were stunning, and we made great friends along the Burren Way."</p>
+                        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
+                            <div>
+                                <div style="color: white; font-weight: 600;">Paul & Margaret</div>
+                                <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Germany</div>
+                            </div>
+                            <a href="tours/burren-way.html" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Burren Way →</a>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar avatar-2">M</div>
-                    <div class="stars">★★★★★</div>
-                    <p>"Cliff and Louise really do walk every route themselves. You can tell they genuinely care about your experience."</p>
-                    <div class="name">Michael</div>
-                    <div class="country">Australia</div>
+                <!-- Carousel Controls -->
+                <div style="display: flex; justify-content: center; gap: 16px; margin-top: 32px;">
+                    <button id="review-prev" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" aria-label="Previous review">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <button id="review-next" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" aria-label="Next review">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
                 </div>
+            </div>
 
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar avatar-3">S</div>
-                    <div class="stars">★★★★★</div>
-                    <p>"The luggage transfer service meant we could travel light and enjoy the walks without worrying about our bags."</p>
-                    <div class="name">Sarah</div>
-                    <div class="country">Canada</div>
-                </div>
-
-                <!-- Testimonial 4 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-avatar avatar-4">P</div>
-                    <div class="stars">★★★★★</div>
-                    <p>"Best holiday we've ever had. The B&Bs were lovely, the routes were stunning, and we made great friends."</p>
-                    <div class="name">Paul & Margaret</div>
-                    <div class="country">Germany</div>
-                </div>
+            <div style="text-align: center; margin-top: 32px;">
+                <a href="reviews.html" style="color: #F17E00; font-weight: 600; font-size: 16px; text-decoration: none;">Read all 63 reviews →</a>
             </div>
         </div>
     </section>
@@ -979,6 +1052,83 @@
                     <p>We're Cliff and Louise. We started Walking Holiday Ireland because we believe the best way to experience Ireland is on foot. We personally walk every route each year to make sure your experience is perfect. When you book with us, you're not booking with a corporation — you're planning your trip with people who genuinely love these trails.</p>
                     <a href="about.html" class="btn-primary">Learn Our Story</a>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hiking Destinations Section -->
+    <section>
+        <div class="section-max-width">
+            <h2 style="font-size: 40px; text-align: center; margin-bottom: 16px; color: #210747;">Hiking Destinations</h2>
+            <p style="text-align: center; color: #666; font-size: 18px; margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto;">Choose from 7 stunning routes across Ireland's most iconic landscapes</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <a href="destination-dingle-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/dingle-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Dingle Way</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
+                    </div>
+                </a>
+
+                <a href="destination-kerry-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/kerry-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Kerry Way</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
+                    </div>
+                </a>
+
+                <a href="destination-wicklow-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/wicklow-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Wicklow Way</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Ireland's Ancient East</p>
+                    </div>
+                </a>
+
+                <a href="destination-burren-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/burren-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Burren Way</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
+                    </div>
+                </a>
+
+                <a href="destination-causeway-coast.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/causeway-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Causeway Coast</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Northern Ireland</p>
+                    </div>
+                </a>
+
+                <a href="destination-cooley-mournes.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/cooley-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Cooley & Mournes</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Northern Ireland</p>
+                    </div>
+                </a>
+
+                <a href="destination-barrow-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
+                    <div style="position: absolute; inset: 0; background: url('images/hero/barrow-hero.jpg') center/cover;"></div>
+                    <div style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: absolute; bottom: 20px; left: 20px; right: 20px; color: white;">
+                        <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Barrow Way</h3>
+                        <p style="font-size: 14px; opacity: 0.8;">Hidden Heartlands</p>
+                    </div>
+                </a>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="destinations.html" class="btn-secondary">View All Destinations</a>
             </div>
         </div>
     </section>
@@ -1051,13 +1201,13 @@
                 <div class="footer-section">
                     <h3>Walking Holidays</h3>
                     <ul>
-                        <li><a href="destination-dingle.html">Dingle</a></li>
-                        <li><a href="destination-kerry.html">Kerry</a></li>
-                        <li><a href="destination-wicklow.html">Wicklow</a></li>
-                        <li><a href="destination-burren.html">Burren</a></li>
-                        <li><a href="destination-causeway.html">Causeway</a></li>
-                        <li><a href="destination-cooley.html">Cooley</a></li>
-                        <li><a href="destination-barrow.html">Barrow</a></li>
+                        <li><a href="destination-dingle-way.html">Dingle</a></li>
+                        <li><a href="destination-kerry-way.html">Kerry</a></li>
+                        <li><a href="destination-wicklow-way.html">Wicklow</a></li>
+                        <li><a href="destination-burren-way.html">Burren</a></li>
+                        <li><a href="destination-causeway-coast.html">Causeway</a></li>
+                        <li><a href="destination-cooley-mournes.html">Cooley</a></li>
+                        <li><a href="destination-barrow-way.html">Barrow</a></li>
                         <li><a href="tailor-made.html">Tailor-Made</a></li>
                     </ul>
                 </div>
@@ -1105,7 +1255,6 @@
     <!-- Navigation Scroll Listener -->
     <script>
         const nav = document.querySelector('nav');
-        const navLogo = document.getElementById('nav-logo');
         let isTransparent = true;
 
         window.addEventListener('scroll', function() {
@@ -1113,14 +1262,12 @@
                 if (isTransparent) {
                     nav.classList.remove('transparent');
                     nav.classList.add('scrolled');
-                    navLogo.src = 'images/logo/whi_fc.png';
                     isTransparent = false;
                 }
             } else {
                 if (!isTransparent) {
                     nav.classList.add('transparent');
                     nav.classList.remove('scrolled');
-                    navLogo.src = 'images/logo/whi_white.png';
                     isTransparent = true;
                 }
             }
@@ -1141,6 +1288,51 @@
             link.addEventListener('click', function() {
                 mobileMenu.classList.remove('active');
             });
+        });
+    </script>
+
+    <!-- Review Carousel Script -->
+    <script>
+        (function() {
+            var track = document.getElementById('home-review-track');
+            var prevBtn = document.getElementById('review-prev');
+            var nextBtn = document.getElementById('review-next');
+            if (!track || !prevBtn || !nextBtn) return;
+            var pos = 0;
+            var cards = track.children;
+            var cardWidth = cards[0].offsetWidth + 24;
+            var maxPos = Math.max(0, (cards.length * cardWidth) - track.parentElement.offsetWidth);
+
+            nextBtn.addEventListener('click', function() {
+                pos = Math.min(pos + cardWidth, maxPos);
+                track.style.transform = 'translateX(-' + pos + 'px)';
+            });
+            prevBtn.addEventListener('click', function() {
+                pos = Math.max(pos - cardWidth, 0);
+                track.style.transform = 'translateX(-' + pos + 'px)';
+            });
+
+            // Auto-advance every 5s
+            var autoTimer = setInterval(function() {
+                pos = pos >= maxPos ? 0 : pos + cardWidth;
+                track.style.transform = 'translateX(-' + pos + 'px)';
+            }, 5000);
+            track.parentElement.addEventListener('mouseenter', function() { clearInterval(autoTimer); });
+        })();
+    </script>
+
+    <!-- Home Search Bar Redirect -->
+    <script>
+        document.getElementById('home-search-btn').addEventListener('click', function(e) {
+            e.preventDefault();
+            var region = document.getElementById('home-region').value;
+            var difficulty = document.getElementById('home-difficulty').value;
+            var duration = document.getElementById('home-duration').value;
+            var params = [];
+            if (region) params.push('region=' + region);
+            if (difficulty) params.push('difficulty=' + difficulty);
+            if (duration) params.push('duration=' + duration);
+            window.location.href = 'tours.html' + (params.length ? '?' + params.join('&') : '');
         });
     </script>
 
