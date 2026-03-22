@@ -123,7 +123,7 @@
             if (kmPerDay) {
                 statsItems.push(
                     '<div class="flex flex-col items-center gap-1">' +
-                        '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>' +
+                        '<img src="images/icons/distance.svg" alt="" width="22" height="22" style="display:inline-block;">' +
                         '<span class="text-sm font-bold text-slate-700">' + kmPerDay + ' km</span>' +
                         '<span class="text-[10px] text-slate-400">/Day</span>' +
                     '</div>'
