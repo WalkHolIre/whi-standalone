@@ -528,7 +528,7 @@ def render_destination_review_section(reviews_list, destination, tours_by_id, pr
     return carousel_html
 
 
-def render_tour_cards(tours, prefix='walking-tours/'):
+def render_tour_cards(tours, prefix='tours/'):
     """Render tour card HTML for destination pages.
 
     Args:
@@ -1382,7 +1382,7 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
             </section>'''
 
 
-def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=None):
+def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
     """Render v3 tour cards for destination pages — matches JS card design in whi-tours.js exactly."""
     if not tours:
         return ""
@@ -1901,7 +1901,7 @@ def render_tours_listing_schema(tours):
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
+            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
@@ -1966,6 +1966,41 @@ def render_difficulty_filter_options(tours):
     return html
 
 
+REGION_DESCRIPTIONS = {
+    'wild-atlantic-way': (
+        "Ireland\u2019s west coast is raw, dramatic, and endlessly varied.",
+        "Walk the Kerry Way through towering mountain passes and quiet sheep farms. "
+        "Stride the Dingle Peninsula along clifftops with nothing ahead but the Atlantic. "
+        "Explore the Beara Peninsula \u2014 less-visited, more wild, and unforgettable.",
+        "Further north, the Burren offers something completely different: a pale limestone "
+        "plateau scattered with ancient dolmens and rare wildflowers. Connemara brings bogland, "
+        "glittering loughs, and the Twelve Bens rising sharply from the valley floor. Donegal "
+        "closes the chapter with sea stacks, empty beaches, and the highest sea cliffs in Ireland.",
+        "This is Ireland at its most elemental.",
+    ),
+    'irelands-ancient-east': (
+        "History runs deep here \u2014 and so do the trails.",
+        "The Barrow Way follows one of Ireland\u2019s oldest rivers through lush farmland, "
+        "medieval villages, and canal-side towpaths. It\u2019s gentle, green, and deeply restorative.",
+        "The Wicklow Way climbs into the Wicklow Mountains \u2014 Ireland\u2019s largest upland area \u2014 "
+        "and passes through wild moorland, ancient monastic ruins at Glendalough, and sweeping "
+        "valley views. It\u2019s the country\u2019s oldest long-distance trail, and it earns that reputation.",
+        "To the north, the Cooley and Mourne Mountains bring legends to life. Walk ridge trails "
+        "above Carlingford Lough where Celtic mythology and granite peaks meet in equal measure.",
+    ),
+    'northern-ireland': (
+        "Northern Ireland surprises almost everyone who walks it.",
+        "The Antrim Glens roll down to the sea in broad green folds, each one quieter and more "
+        "beautiful than the last. At the coast, the Giant\u2019s Causeway stops you in your tracks \u2014 "
+        "40,000 hexagonal basalt columns stepping into the sea like something from a geological fever dream.",
+        "The Causeway Coast Way strings it all together: clifftop paths, rope bridges, and sweeping "
+        "ocean views across to Scotland on a clear day.",
+        "Inland, the Sperrin Mountains offer wide open moorland, ancient standing stones, and almost "
+        "total solitude. This is Northern Ireland for walkers who want to get properly off the beaten track.",
+    ),
+}
+
+
 def render_destinations_by_region(destinations, tours, regions_by_id):
     """Render destination cards grouped by region for the listing page."""
     # Group destinations by region
@@ -2005,11 +2040,24 @@ def render_destinations_by_region(destinations, tours, regions_by_id):
         region_name = escape(region.get('name', ''))
         region_slug = escape(region.get('slug', ''))
 
+        # Region description paragraphs
+        desc_paras = REGION_DESCRIPTIONS.get(region_slug, ())
+        desc_html = ''
+        if desc_paras:
+            desc_html = '<div class="mb-10 max-w-3xl">'
+            for i, para in enumerate(desc_paras):
+                if i == 0:
+                    desc_html += f'<p class="text-lg font-semibold text-brand-purple mb-3">{escape(para)}</p>'
+                else:
+                    desc_html += f'<p class="text-slate-600 leading-relaxed mb-3">{escape(para)}</p>'
+            desc_html += '</div>'
+
         html += f"""    <section class="region-section mb-16" data-region="{region_slug}">
-        <div class="flex items-center gap-3 mb-8">
+        <div class="flex items-center gap-3 mb-4">
             <div class="w-1.5 h-8 bg-primary rounded-full"></div>
             <h2 class="text-2xl md:text-3xl font-black text-brand-purple">{region_name}</h2>
         </div>
+        {desc_html}
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 """
         for dest in sorted(region_dests, key=lambda d: d.get('sort_order', 999)):
@@ -2152,7 +2200,7 @@ def render_tour_page_schema(tour, reviews_list):
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
+        "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
@@ -2173,7 +2221,7 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html"
+            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html"
         },
         "brand": {
             "@type": "Brand",
@@ -2558,7 +2606,7 @@ def main():
         for key, value in tours_listing_replacements.items():
             tours_listing_html = tours_listing_html.replace(key, str(value))
 
-        output_path = WEBSITE_DIR / 'walking-tours.html'
+        output_path = WEBSITE_DIR / 'tours.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
                 f.write(tours_listing_html)
@@ -2823,12 +2871,12 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/', '1.0', 'weekly'))
 
         # Listing pages — high priority
-        sitemap_urls.append(('https://walkingholidayireland.com/walking-tours.html', '0.9', 'weekly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/tours.html', '0.9', 'weekly'))
         sitemap_urls.append(('https://walkingholidayireland.com/destinations.html', '0.9', 'weekly'))
 
         # Individual tour pages
         for slug in generated['tours']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/walking-tours/{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/tours/{slug}.html', '0.8', 'monthly'))
 
         # Individual destination / walking area pages (canonical is walking-area-)
         for slug in generated['destinations']:
