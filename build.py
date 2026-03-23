@@ -918,6 +918,514 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
     return html
 
 
+def render_dest_quick_stats(destination, tours):
+    """Render the quick stats bar below the hero."""
+    items = []
+    tour_count = len(tours) if tours else 0
+    if tour_count:
+        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">hiking</span><span class="text-sm font-bold text-slate-700">{tour_count} Walking Tour{"s" if tour_count != 1 else ""}</span></div>')
+
+    # Price range
+    prices = []
+    for t in (tours or []):
+        try:
+            p = float(t.get('price_per_person_eur', 0))
+            if p > 0:
+                prices.append(p)
+        except (ValueError, TypeError):
+            pass
+    if prices:
+        min_p = int(min(prices))
+        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">euro</span><span class="text-sm font-bold text-slate-700">From &euro;{min_p} pp</span></div>')
+
+    # Duration range
+    durations = [t.get('duration_days', 0) for t in (tours or []) if t.get('duration_days')]
+    if durations:
+        min_d, max_d = min(durations), max(durations)
+        dur_text = f"{min_d}&ndash;{max_d} Days" if min_d != max_d else f"{min_d} Days"
+        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">calendar_month</span><span class="text-sm font-bold text-slate-700">{dur_text}</span></div>')
+
+    # Difficulty levels
+    difficulties = list(set(t.get('difficulty_level', '') for t in (tours or []) if t.get('difficulty_level')))
+    if difficulties:
+        diff_text = ' &middot; '.join(sorted(difficulties, key=lambda d: ['Easy', 'Moderate', 'Intermediate', 'Challenging'].index(d) if d in ['Easy', 'Moderate', 'Intermediate', 'Challenging'] else 99))
+        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">speed</span><span class="text-sm font-bold text-slate-700">{diff_text}</span></div>')
+
+    # Best months
+    best = destination.get('best_months')
+    if best and isinstance(best, list) and len(best) > 0:
+        months_text = ', '.join(best[:3])
+        if len(best) > 3:
+            months_text += f' +{len(best) - 3}'
+        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">wb_sunny</span><span class="text-sm font-bold text-slate-700">Best: {months_text}</span></div>')
+
+    return '\n                        '.join(items)
+
+
+def render_walking_info_panel(destination, tours):
+    """Render the sticky walking info panel in the overview sidebar."""
+    items = []
+
+    # Difficulty
+    diff = destination.get('difficulty_overview', '')
+    difficulties = list(set(t.get('difficulty_level', '') for t in (tours or []) if t.get('difficulty_level')))
+    if difficulties:
+        diff_badges = ''
+        for d in sorted(difficulties, key=lambda x: ['Easy', 'Moderate', 'Intermediate', 'Challenging'].index(x) if x in ['Easy', 'Moderate', 'Intermediate', 'Challenging'] else 99):
+            badge_class = 'badge-easy' if d == 'Easy' else ('badge-moderate' if d in ('Moderate', 'Intermediate') else 'badge-challenging')
+            diff_badges += f'<span class="inline-block px-3 py-1 rounded-full text-xs font-bold {badge_class}">{escape(d)}</span> '
+        items.append(f'''<div class="flex items-start gap-3">
+                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">speed</span></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Difficulty</p><div class="flex flex-wrap gap-1">{diff_badges}</div></div>
+                                    </div>''')
+
+    # Duration
+    durations = [t.get('duration_days', 0) for t in (tours or []) if t.get('duration_days')]
+    if durations:
+        min_d, max_d = min(durations), max(durations)
+        dur_text = f"{min_d}&ndash;{max_d} days" if min_d != max_d else f"{min_d} days"
+        items.append(f'''<div class="flex items-start gap-3">
+                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">calendar_month</span></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Duration</p><p class="text-sm font-bold text-slate-700">{dur_text}</p></div>
+                                    </div>''')
+
+    # Best months
+    best = destination.get('best_months')
+    if best and isinstance(best, list) and len(best) > 0:
+        items.append(f'''<div class="flex items-start gap-3">
+                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">wb_sunny</span></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Best Months</p><p class="text-sm font-bold text-slate-700">{', '.join(best)}</p></div>
+                                    </div>''')
+
+    # Accommodation
+    acc = destination.get('accommodation_style', '')
+    if acc:
+        acc_short = strip_html_tags(acc)[:80]
+        if len(strip_html_tags(acc)) > 80:
+            acc_short += '...'
+        items.append(f'''<div class="flex items-start gap-3">
+                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">hotel</span></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Accommodation</p><p class="text-sm font-bold text-slate-700">{escape(acc_short)}</p></div>
+                                    </div>''')
+
+    # Who is it for
+    who = destination.get('who_is_it_for', '')
+    if who:
+        who_short = strip_html_tags(who)[:80]
+        if len(strip_html_tags(who)) > 80:
+            who_short += '...'
+        items.append(f'''<div class="flex items-start gap-3">
+                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">group</span></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Ideal For</p><p class="text-sm font-bold text-slate-700">{escape(who_short)}</p></div>
+                                    </div>''')
+
+    return '\n                                '.join(items)
+
+
+def render_dest_landscape_section(destination):
+    """Render the landscape section (conditional)."""
+    text = destination.get('landscape_description', '')
+    if not text or not text.strip():
+        return ''
+    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">The Landscape</h2>
+                            <p class="text-slate-500 mt-1">What to expect along the way</p>
+                        </div>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
+                        {get_safe_text(destination, "landscape_description")}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_poi_section(destination):
+    """Render the Points of Interest section (conditional)."""
+    poi_html = render_poi_grid(destination.get('points_of_interest'))
+    if not poi_html:
+        return ''
+
+    name = escape(destination.get('name', ''))
+    return f'''<section class="w-full py-16 md:py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-12">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Points of Interest</h2>
+                            <p class="text-slate-500 mt-1">Key highlights you&#39;ll discover in {name}</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {poi_html}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_activities_section(destination):
+    """Render the Top Activities section (conditional)."""
+    activities = destination.get('top_activities')
+    if not activities:
+        return ''
+
+    try:
+        acts = json.loads(activities) if isinstance(activities, str) else activities
+    except (json.JSONDecodeError, TypeError):
+        return ''
+
+    if not isinstance(acts, list) or len(acts) == 0:
+        return ''
+
+    # Activity icons mapping
+    icon_map = {
+        'walking': 'hiking', 'hiking': 'hiking', 'trekking': 'hiking',
+        'cycling': 'directions_bike', 'biking': 'directions_bike',
+        'kayaking': 'kayaking', 'swimming': 'pool', 'surfing': 'surfing',
+        'fishing': 'phishing', 'photography': 'photo_camera',
+        'birdwatching': 'visibility', 'wildlife': 'pets',
+        'history': 'museum', 'heritage': 'museum', 'castle': 'castle',
+        'food': 'restaurant', 'dining': 'restaurant', 'pub': 'local_bar',
+        'music': 'music_note', 'festival': 'celebration',
+        'beach': 'beach_access', 'garden': 'park', 'golf': 'golf_course',
+    }
+
+    cards = ''
+    for i, act in enumerate(acts):
+        title = escape(act.get('name', act.get('title', '')))
+        desc = escape(act.get('description', ''))
+        # Try to match an icon
+        icon = 'landscape'
+        title_lower = title.lower()
+        for keyword, icon_name in icon_map.items():
+            if keyword in title_lower:
+                icon = icon_name
+                break
+
+        cards += f'''<div class="activity-card bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background:linear-gradient(135deg, #F17E00, #ff9a2e);">
+                                    <span class="material-symbols-outlined text-white">{icon}</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-lg text-slate-900 mb-1">{title}</h3>
+                                    <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                                </div>
+                            </div>
+                        </div>\n'''
+
+    name = escape(destination.get('name', ''))
+    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-12">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Things to Do in {name}</h2>
+                            <p class="text-slate-500 mt-1">Top activities and experiences in the area</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {cards}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_cultural_section(destination):
+    """Render the Cultural Highlights section (conditional)."""
+    text = destination.get('cultural_highlights', '')
+    if not text or not text.strip():
+        return ''
+    name = escape(destination.get('name', ''))
+    return f'''<section class="w-full py-16 md:py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Culture &amp; Heritage</h2>
+                            <p class="text-slate-500 mt-1">The stories and traditions of {name}</p>
+                        </div>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
+                        {get_safe_text(destination, "cultural_highlights")}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_best_time_section(destination):
+    """Render the Best Time to Visit section (conditional)."""
+    best_months = destination.get('best_months')
+    best_text = destination.get('best_time_to_visit', '')
+    if (not best_months or not isinstance(best_months, list)) and not best_text:
+        return ''
+
+    months_html = render_best_months(best_months)
+    text_html = get_safe_text(destination, 'best_time_to_visit') if best_text else ''
+
+    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Best Time to Visit</h2>
+                            <p class="text-slate-500 mt-1">Plan your trip for the ideal conditions</p>
+                        </div>
+                    </div>
+                    {months_html}
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6 mt-8">
+                        {text_html}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_accommodation_section(destination):
+    """Render the Accommodation section (conditional)."""
+    text = destination.get('accommodation_style', '')
+    if not text or not text.strip():
+        return ''
+    return f'''<section class="w-full py-16 md:py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
+                            <p class="text-slate-500 mt-1">Handpicked accommodation along the route</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 md:p-10">
+                        <div class="flex items-start gap-4 mb-6">
+                            <span class="material-symbols-outlined text-primary text-3xl">hotel</span>
+                            <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {get_safe_text(destination, "accommodation_style")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_practical_section(destination):
+    """Render the Practical Info / Getting Here section (conditional)."""
+    text = destination.get('practical_info', '')
+    if not text or not text.strip():
+        return ''
+    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-8">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Getting Here &amp; Practical Info</h2>
+                            <p class="text-slate-500 mt-1">Everything you need to know before you go</p>
+                        </div>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
+                        {get_safe_text(destination, "practical_info")}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_travel_tips_section(destination):
+    """Render the Travel Tips section (conditional)."""
+    tips = destination.get('travel_tips')
+    if not tips:
+        return ''
+    try:
+        tips_list = json.loads(tips) if isinstance(tips, str) else tips
+    except (json.JSONDecodeError, TypeError):
+        return ''
+    if not isinstance(tips_list, list) or len(tips_list) == 0:
+        return ''
+
+    cards = ''
+    tip_icons = ['lightbulb', 'backpack', 'checkroom', 'map', 'payments', 'local_taxi', 'restaurant', 'wb_sunny', 'health_and_safety', 'sim_card']
+    for i, tip in enumerate(tips_list):
+        title = escape(tip.get('title', tip.get('name', f'Tip {i+1}')))
+        desc = escape(tip.get('description', tip.get('content', '')))
+        icon = tip_icons[i % len(tip_icons)]
+        cards += f'''<div class="flex items-start gap-4 bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+                            <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0">{icon}</span>
+                            <div>
+                                <h3 class="font-bold text-slate-900 mb-1">{title}</h3>
+                                <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                            </div>
+                        </div>\n'''
+
+    return f'''<section class="w-full py-16 md:py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-12">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Travel Tips</h2>
+                            <p class="text-slate-500 mt-1">Insider advice for your trip</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {cards}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_cuisine_section(destination):
+    """Render the Local Cuisine section (conditional)."""
+    cuisine = destination.get('local_cuisine')
+    if not cuisine:
+        return ''
+    try:
+        items = json.loads(cuisine) if isinstance(cuisine, str) else cuisine
+    except (json.JSONDecodeError, TypeError):
+        return ''
+    if not isinstance(items, list) or len(items) == 0:
+        return ''
+
+    cards = ''
+    for item in items:
+        title = escape(item.get('name', item.get('title', '')))
+        desc = escape(item.get('description', ''))
+        cards += f'''<div class="cuisine-card bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+                            <div class="flex items-start gap-3 mb-2">
+                                <span class="material-symbols-outlined text-primary text-2xl">restaurant</span>
+                                <h3 class="font-bold text-lg text-slate-900">{title}</h3>
+                            </div>
+                            <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                        </div>\n'''
+
+    name = escape(destination.get('name', ''))
+    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-4 mb-12">
+                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                        <div>
+                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Local Food &amp; Drink</h2>
+                            <p class="text-slate-500 mt-1">Taste the flavours of {name}</p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {cards}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_reviews_section(reviews, destination, tours_by_id):
+    """Render the reviews section wrapped in its own section element."""
+    reviews_html = render_destination_review_section(reviews, destination, tours_by_id, prefix='')
+    if not reviews_html or reviews_html.strip() == '':
+        return ''
+    return f'''<section class="w-full py-16 md:py-24 px-6">
+                <div class="max-w-7xl mx-auto">
+                    {reviews_html}
+                </div>
+            </section>'''
+
+
+def render_dest_tour_cards_v3(tours, prefix='tours/'):
+    """Render v3 tour cards for destination pages with gradient, title in image, purple price, boots, stats."""
+    if not tours:
+        return ""
+
+    # Region mappings
+    region_label_map = {
+        'Dingle Peninsula': 'Wild Atlantic Way',
+        'County Kerry': 'Wild Atlantic Way',
+        'Wicklow Mountains': "Ireland's Ancient East",
+        'South East Ireland': "Ireland's Ancient East",
+        'The Burren': 'Wild Atlantic Way',
+        'Causeway Coast': 'Causeway Coastal Route',
+        'Cooley Peninsula': "Ireland's Ancient East",
+        'Connemara': 'Wild Atlantic Way',
+        'Beara Peninsula': 'Wild Atlantic Way',
+        'Glens of Antrim': 'Causeway Coastal Route',
+        'Mourne Mountains': 'Mourne Heritage Trail',
+        'The Sperrins': 'Sperrins Heritage Trail',
+    }
+
+    def get_boot_count(diff):
+        return {'Easy': 1, 'Moderate': 2, 'Intermediate': 2, 'Challenging': 3}.get(diff, 1)
+
+    def make_boots(diff):
+        filled = get_boot_count(diff)
+        boots = ''
+        for i in range(3):
+            src = 'images/icons/boot-filled.svg' if i < filled else 'images/icons/boot-outline.svg'
+            boots += f'<img src="{src}" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;">'
+        return boots
+
+    html = ""
+    for tour in tours:
+        slug = tour.get('slug', '')
+        name = escape(tour.get('name', ''))
+        difficulty = tour.get('difficulty_level', '')
+        days = tour.get('duration_days', 0) or 0
+        price = tour.get('price_per_person_eur', 0)
+        short_desc = escape(tour.get('subtitle') or tour.get('short_description', '') or '')
+        region_name = tour.get('region_name', '')
+
+        try:
+            price_val = float(price) if price else 0
+            price_display = f"{price_val:.0f}" if price_val == int(price_val) else f"{price_val:.2f}"
+        except (ValueError, TypeError):
+            price_display = str(price)
+
+        # Compute per-day stats
+        total_km, total_ascent = compute_tour_distances(tour)
+        db_km = tour.get('total_distance_km')
+        db_ascent = tour.get('elevation_gain_m')
+        actual_km = float(db_km) if db_km else (total_km if total_km else 0)
+        actual_ascent = int(db_ascent) if db_ascent else (total_ascent if total_ascent else 0)
+        walk_days = days - 1 if days > 1 else 1
+        km_per_day = round(actual_km / walk_days) if actual_km else None
+        ascent_per_day = round(actual_ascent / walk_days) if actual_ascent else None
+
+        # Region label
+        region_label = region_label_map.get(region_name, region_name)
+        region_link = ''
+        if region_label:
+            region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
+
+        # Boot icons
+        boots = f'<div class="flex items-center" title="Diff.: {escape(difficulty)}" style="gap:0;">{make_boots(difficulty)}</div>'
+
+        # Stats bar
+        stats = []
+        stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
+        if km_per_day:
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><img src="images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;"><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+        if ascent_per_day:
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+
+        stats_bar = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' + ''.join(stats) + '</div>'
+
+        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
+                <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
+                    <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center">
+                        <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
+                        <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
+                        <span class="text-[10px] text-slate-400">*Price Promise</span>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-between flex-grow p-4 pb-2">
+                    <div>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-2">{short_desc}</p>
+                        {region_link}
+                    </div>
+                    <div class="flex items-center justify-end mt-3 mb-1">{boots}</div>
+                </div>
+                {stats_bar}
+            </a>\n'''
+
+    return html
+
+
 def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     """Render a destination page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'destination.html'
@@ -929,40 +1437,72 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     with open(template_path, 'r') as f:
         template = f.read()
 
-    # Prepare data
-    poi_html = render_poi_grid(destination.get('points_of_interest'))
-    best_months_html = render_best_months(destination.get('best_months'))
-    # Use 'tours/' prefix for destination pages (at root level)
-    tour_cards_html = render_tour_cards(tours, prefix='tours/')
-    reviews_html = render_destination_review_section(reviews, destination, tours_by_id, prefix='')
+    dest_name = escape(destination.get('name', ''))
+    dest_slug = escape(destination.get('slug', ''))
+
+    # Use v3 tour cards
+    tour_cards_html = render_dest_tour_cards_v3(tours, prefix='tours/')
+
+    # Reviews
+    reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
     review_schema_html = render_destination_page_schema(destination, tours, reviews)
 
-    # FAQ data
+    # FAQs
     dest_faq_html, dest_faq_list = render_destination_faq_section(destination.get('id'), faqs, destination.get('name', ''))
     dest_faq_schema = render_faq_schema(dest_faq_list, max_items=8)
+
+    # Quick stats bar
+    quick_stats_html = render_dest_quick_stats(destination, tours)
+
+    # Walking info panel
+    walking_info_html = render_walking_info_panel(destination, tours)
+
+    # Conditional sections
+    landscape_section = render_dest_landscape_section(destination)
+    poi_section = render_dest_poi_section(destination)
+    activities_section = render_dest_activities_section(destination)
+    cultural_section = render_dest_cultural_section(destination)
+    best_time_section = render_dest_best_time_section(destination)
+    accommodation_section = render_dest_accommodation_section(destination)
+    practical_section = render_dest_practical_section(destination)
+    travel_tips_section = render_dest_travel_tips_section(destination)
+    cuisine_section = render_dest_cuisine_section(destination)
+
+    # Region name
+    region_name = ''
+    rid = destination.get('region_id')
+    # Try to get region from tours
+    for t in (tours or []):
+        rn = t.get('region_name', '')
+        if rn:
+            region_name = rn
+            break
 
     # Build placeholders
     replacements = {
         '{meta_title}': escape(destination.get('meta_title') or destination.get('name', '')),
         '{meta_description}': escape(destination.get('seo_description') or destination.get('short_description', '')),
-        '{destination_name}': escape(destination.get('name', '')),
+        '{destination_name}': dest_name,
         '{short_description}': escape(destination.get('short_description', '')),
         '{hero_image}': escape(destination.get('hero_image') or f'images/destinations/{destination.get("slug", "")}/hero.jpg'),
+        '{region_name}': escape(region_name) if region_name else dest_name,
         '{overview}': get_safe_text(destination, 'overview'),
-        '{description}': get_safe_text(destination, 'description'),
-        '{landscape_description}': get_safe_text(destination, 'landscape_description'),
-        '{points_of_interest_html}': poi_html,
-        '{difficulty_overview}': get_safe_text(destination, 'difficulty_overview'),
-        '{best_months_html}': best_months_html,
-        '{best_time_to_visit}': get_safe_text(destination, 'best_time_to_visit'),
-        '{cultural_highlights}': get_safe_text(destination, 'cultural_highlights'),
-        '{practical_info}': get_safe_text(destination, 'practical_info'),
-        '{who_is_it_for}': get_safe_text(destination, 'who_is_it_for'),
-        '{accommodation_style}': get_safe_text(destination, 'accommodation_style'),
+        '{destination_slug}': dest_slug,
+        '{destination_schema}': render_destination_page_schema(destination, tours, reviews),
+        '{quick_stats_html}': quick_stats_html,
+        '{walking_info_panel_html}': walking_info_html,
+        '{landscape_section}': landscape_section,
+        '{poi_section}': poi_section,
+        '{activities_section}': activities_section,
+        '{cultural_section}': cultural_section,
+        '{best_time_section}': best_time_section,
         '{tour_cards_html}': tour_cards_html,
-        '{reviews_html}': reviews_html,
+        '{accommodation_section}': accommodation_section,
+        '{practical_section}': practical_section,
+        '{travel_tips_section}': travel_tips_section,
+        '{cuisine_section}': cuisine_section,
+        '{reviews_section}': reviews_section_html,
         '{review_schema}': review_schema_html,
-        '{destination_slug}': escape(destination.get('slug', '')),
         '{faq_section_html}': dest_faq_html,
         '{faq_schema}': dest_faq_schema,
     }
@@ -1530,14 +2070,18 @@ def main():
         html = render_destination_page(destination, dest_tours, dest_reviews, faqs, tours_by_id)
 
         if html:
+            # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
+            walking_area_path = WEBSITE_DIR / f'walking-area-{slug}.html'
 
             if DRY_RUN:
                 log(f"Would generate: {output_path}", 'debug')
             else:
                 with open(output_path, 'w') as f:
                     f.write(html)
-                log(f"Generated: {output_path}")
+                with open(walking_area_path, 'w') as f:
+                    f.write(html)
+                log(f"Generated: {output_path} + walking-area-{slug}.html")
 
             generated['destinations'].append(slug)
         else:
@@ -1766,9 +2310,9 @@ def main():
         for slug in generated['tours']:
             sitemap_urls.append((f'https://walkingholidayireland.com/tours/{slug}.html', '0.8', 'monthly'))
 
-        # Individual destination pages
+        # Individual destination / walking area pages (canonical is walking-area-)
         for slug in generated['destinations']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/destination-{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/walking-area-{slug}.html', '0.8', 'monthly'))
 
         # Reviews and FAQ
         sitemap_urls.append(('https://walkingholidayireland.com/reviews.html', '0.7', 'monthly'))
