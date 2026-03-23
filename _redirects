@@ -1,65 +1,65 @@
-# Complete WP → Cloudflare Pages redirect map
-# Generated for walkingholidayireland.com migration
+# Cloudflare Pages — WP → Cloudflare redirect map
+# Do NOT add /foo/ → /foo.html rules — Cloudflare pretty URLs handle this
 
-# ── Tour pages (Walking-Tour → tours) ──
-/Walking-Tour/  /tours.html  301
-/Walking-Tour  /tours.html  301
-/Walking-Tour/5-day-hiking-tour-wicklow/  /tours/wicklow-way-5-days.html  301
-/Walking-Tour/5-day-hiking-tour-wicklow  /tours/wicklow-way-5-days.html  301
-/Walking-Tour/antrim-glens-and-causeway-coast-8-days/  /tours/causeway-coast.html  301
-/Walking-Tour/antrim-glens-and-causeway-coast-8-days  /tours/causeway-coast.html  301
-/Walking-Tour/barrow-way-5-days/  /tours/barrow-way-5-days-easy.html  301
-/Walking-Tour/barrow-way-5-days  /tours/barrow-way-5-days-easy.html  301
-/Walking-Tour/barrow-way-8-day-hiking-tour/  /tours/barrow-way.html  301
-/Walking-Tour/barrow-way-8-day-hiking-tour  /tours/barrow-way.html  301
-/Walking-Tour/causeway-coast-5-days/  /tours/causeway-coast-5-days.html  301
-/Walking-Tour/causeway-coast-5-days  /tours/causeway-coast-5-days.html  301
-/Walking-Tour/cooley-and-mournes-hiking-tour/  /tours/cooley-mournes.html  301
-/Walking-Tour/cooley-and-mournes-hiking-tour  /tours/cooley-mournes.html  301
-/Walking-Tour/cooley-peninsula-5-days/  /tours/cooley-peninsula-5-days.html  301
-/Walking-Tour/cooley-peninsula-5-days  /tours/cooley-peninsula-5-days.html  301
-/Walking-Tour/kerry-way-8-days/  /tours/kerry-way.html  301
-/Walking-Tour/kerry-way-8-days  /tours/kerry-way.html  301
-/Walking-Tour/the-burren-5-days/  /tours/burren-5-days.html  301
-/Walking-Tour/the-burren-5-days  /tours/burren-5-days.html  301
-/Walking-Tour/the-burren-6-days/  /tours/burren-6-days.html  301
-/Walking-Tour/the-burren-6-days  /tours/burren-6-days.html  301
-/Walking-Tour/the-burren-7-days/  /tours/burren-7-days.html  301
-/Walking-Tour/the-burren-7-days  /tours/burren-7-days.html  301
-/Walking-Tour/the-burren-way-8-days/  /tours/burren-way.html  301
-/Walking-Tour/the-burren-way-8-days  /tours/burren-way.html  301
-/Walking-Tour/the-dingle-way-8-days/  /tours/dingle-way.html  301
-/Walking-Tour/the-dingle-way-8-days  /tours/dingle-way.html  301
-/Walking-Tour/the-full-wicklow-way-7-days/  /tours/wicklow-way-7-days.html  301
-/Walking-Tour/the-full-wicklow-way-7-days  /tours/wicklow-way-7-days.html  301
-/Walking-Tour/wicklow-way-10-days/  /tours/wicklow-way-10-days.html  301
-/Walking-Tour/wicklow-way-10-days  /tours/wicklow-way-10-days.html  301
-/Walking-Tour/wicklow-way-8-days/  /tours/wicklow-way.html  301
-/Walking-Tour/wicklow-way-8-days  /tours/wicklow-way.html  301
+# ── Tour pages (Walking-Tour → walking-tours) ──
+/Walking-Tour/  /walking-tours.html  301
+/Walking-Tour  /walking-tours.html  301
+/Walking-Tour/5-day-hiking-tour-wicklow/  /walking-tours/wicklow-way-5-days.html  301
+/Walking-Tour/5-day-hiking-tour-wicklow  /walking-tours/wicklow-way-5-days.html  301
+/Walking-Tour/antrim-glens-and-causeway-coast-8-days/  /walking-tours/causeway-coast.html  301
+/Walking-Tour/antrim-glens-and-causeway-coast-8-days  /walking-tours/causeway-coast.html  301
+/Walking-Tour/barrow-way-5-days/  /walking-tours/barrow-way-5-days-easy.html  301
+/Walking-Tour/barrow-way-5-days  /walking-tours/barrow-way-5-days-easy.html  301
+/Walking-Tour/barrow-way-8-day-hiking-tour/  /walking-tours/barrow-way.html  301
+/Walking-Tour/barrow-way-8-day-hiking-tour  /walking-tours/barrow-way.html  301
+/Walking-Tour/causeway-coast-5-days/  /walking-tours/causeway-coast-5-days.html  301
+/Walking-Tour/causeway-coast-5-days  /walking-tours/causeway-coast-5-days.html  301
+/Walking-Tour/cooley-and-mournes-hiking-tour/  /walking-tours/cooley-mournes.html  301
+/Walking-Tour/cooley-and-mournes-hiking-tour  /walking-tours/cooley-mournes.html  301
+/Walking-Tour/cooley-peninsula-5-days/  /walking-tours/cooley-peninsula-5-days.html  301
+/Walking-Tour/cooley-peninsula-5-days  /walking-tours/cooley-peninsula-5-days.html  301
+/Walking-Tour/kerry-way-8-days/  /walking-tours/kerry-way.html  301
+/Walking-Tour/kerry-way-8-days  /walking-tours/kerry-way.html  301
+/Walking-Tour/the-burren-5-days/  /walking-tours/burren-5-days.html  301
+/Walking-Tour/the-burren-5-days  /walking-tours/burren-5-days.html  301
+/Walking-Tour/the-burren-6-days/  /walking-tours/burren-6-days.html  301
+/Walking-Tour/the-burren-6-days  /walking-tours/burren-6-days.html  301
+/Walking-Tour/the-burren-7-days/  /walking-tours/burren-7-days.html  301
+/Walking-Tour/the-burren-7-days  /walking-tours/burren-7-days.html  301
+/Walking-Tour/the-burren-way-8-days/  /walking-tours/burren-way.html  301
+/Walking-Tour/the-burren-way-8-days  /walking-tours/burren-way.html  301
+/Walking-Tour/the-dingle-way-8-days/  /walking-tours/dingle-way.html  301
+/Walking-Tour/the-dingle-way-8-days  /walking-tours/dingle-way.html  301
+/Walking-Tour/the-full-wicklow-way-7-days/  /walking-tours/wicklow-way-7-days.html  301
+/Walking-Tour/the-full-wicklow-way-7-days  /walking-tours/wicklow-way-7-days.html  301
+/Walking-Tour/wicklow-way-10-days/  /walking-tours/wicklow-way-10-days.html  301
+/Walking-Tour/wicklow-way-10-days  /walking-tours/wicklow-way-10-days.html  301
+/Walking-Tour/wicklow-way-8-days/  /walking-tours/wicklow-way.html  301
+/Walking-Tour/wicklow-way-8-days  /walking-tours/wicklow-way.html  301
 
 # ── Self-guided tour pages ──
-/self-guided-walking-holidays-ireland/  /tours.html  301
+/self-guided-walking-holidays-ireland/  /walking-tours.html  301
 /self-guided-walking-holidays-ireland  /self-guided-walking-holidays-ireland.html  301
-/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours/  /tours/causeway-coast.html  301
-/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours  /tours/causeway-coast.html  301
-/self-guided-walking-holidays-ireland/antrim-glens-causeway-coast-walking-tours/  /tours/causeway-coast.html  301
-/self-guided-walking-holidays-ireland/antrim-glens-causeway-coast-walking-tours  /tours/causeway-coast.html  301
-/self-guided-hiking-tours/barrow-way/  /tours/barrow-way.html  301
-/self-guided-hiking-tours/barrow-way  /tours/barrow-way.html  301
-/self-guided-walking-holidays-ireland/barrow-way/  /tours/barrow-way.html  301
-/self-guided-walking-holidays-ireland/barrow-way  /tours/barrow-way.html  301
-/self-guided-hiking-tours/cooley-and-mourne-mountains/  /tours/cooley-mournes.html  301
-/self-guided-hiking-tours/cooley-and-mourne-mountains  /tours/cooley-mournes.html  301
-/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains/  /tours/cooley-mournes.html  301
-/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains  /tours/cooley-mournes.html  301
-/self-guided-hiking-tours/the-dingle-way/  /tours/dingle-way.html  301
-/self-guided-hiking-tours/the-dingle-way  /tours/dingle-way.html  301
-/self-guided-walking-holidays-ireland/the-dingle-way/  /tours/dingle-way.html  301
-/self-guided-walking-holidays-ireland/the-dingle-way  /tours/dingle-way.html  301
-/self-guided-hiking-tours/the-wicklow-way/  /tours/wicklow-way.html  301
-/self-guided-hiking-tours/the-wicklow-way  /tours/wicklow-way.html  301
-/self-guided-walking-holidays-ireland/the-wicklow-way/  /tours/wicklow-way.html  301
-/self-guided-walking-holidays-ireland/the-wicklow-way  /tours/wicklow-way.html  301
+/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours/  /walking-tours/causeway-coast.html  301
+/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours  /walking-tours/causeway-coast.html  301
+/self-guided-walking-holidays-ireland/antrim-glens-causeway-coast-walking-tours/  /walking-tours/causeway-coast.html  301
+/self-guided-walking-holidays-ireland/antrim-glens-causeway-coast-walking-tours  /walking-tours/causeway-coast.html  301
+/self-guided-hiking-tours/barrow-way/  /walking-tours/barrow-way.html  301
+/self-guided-hiking-tours/barrow-way  /walking-tours/barrow-way.html  301
+/self-guided-walking-holidays-ireland/barrow-way/  /walking-tours/barrow-way.html  301
+/self-guided-walking-holidays-ireland/barrow-way  /walking-tours/barrow-way.html  301
+/self-guided-hiking-tours/cooley-and-mourne-mountains/  /walking-tours/cooley-mournes.html  301
+/self-guided-hiking-tours/cooley-and-mourne-mountains  /walking-tours/cooley-mournes.html  301
+/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains/  /walking-tours/cooley-mournes.html  301
+/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains  /walking-tours/cooley-mournes.html  301
+/self-guided-hiking-tours/the-dingle-way/  /walking-tours/dingle-way.html  301
+/self-guided-hiking-tours/the-dingle-way  /walking-tours/dingle-way.html  301
+/self-guided-walking-holidays-ireland/the-dingle-way/  /walking-tours/dingle-way.html  301
+/self-guided-walking-holidays-ireland/the-dingle-way  /walking-tours/dingle-way.html  301
+/self-guided-hiking-tours/the-wicklow-way/  /walking-tours/wicklow-way.html  301
+/self-guided-hiking-tours/the-wicklow-way  /walking-tours/wicklow-way.html  301
+/self-guided-walking-holidays-ireland/the-wicklow-way/  /walking-tours/wicklow-way.html  301
+/self-guided-walking-holidays-ireland/the-wicklow-way  /walking-tours/wicklow-way.html  301
 
 # ── Blog posts (root slug → /blog/) ──
 /15-places-to-visit-in-northern-ireland/  /blog/15-places-to-visit-in-northern-ireland.html  301
@@ -171,19 +171,17 @@
 /discover-hiking-trails-ireland/  /blog/best-hiking-trails-ireland-2026.html  301
 /discovering-st-declan-s-way/  /blog.html  301
 
-# ── Special page redirects (WP slug differs from static site) ──
+# ── Special page redirects ──
 /hiking-tours-ireland-over-50s/  /walking-holidays-ireland-over-50s.html  301
 
 # ── Pages ──
 /home/about-walking-holiday-ireland/  /about.html  301
 /contact-us/  /contact.html  301
 /our-privacy-policy/  /privacy-policy.html  301
-/the-wicklow-way-map/  /tours/wicklow-way.html  301
-/guided-hiking-tours/  /tours.html  301
+/the-wicklow-way-map/  /walking-tours/wicklow-way.html  301
+/guided-hiking-tours/  /walking-tours.html  301
 
-# ── Categories → blog listing ──
-/blog/  /blog.html  301
-/destinations/  /destinations.html  301
+# ── Categories → blog ──
 /essential-hiking-gear/  /blog.html  301
 /hiking-safety-tips/  /blog.html  301
 /hiking-tips-how-to/  /blog.html  301
@@ -213,8 +211,8 @@
 # ── Tour types & activities ──
 /Tour-Type/self-guided/  /self-guided-walking-holidays-ireland.html  301
 /Tour-Type/solo/  /solo-walking-holidays-ireland.html  301
-/Activity/hiking-in-ireland/  /tours.html  301
-/Activity/walking/  /tours.html  301
+/Activity/hiking-in-ireland/  /walking-tours.html  301
+/Activity/walking/  /walking-tours.html  301
 
 # ── Destination → Walking Area renames ──
 /destination-antrim-glens  /walking-area-antrim-glens  301
@@ -248,16 +246,12 @@
 /destination-wicklow-way  /walking-area-wicklow-way  301
 /destination-wicklow-way.html  /walking-area-wicklow-way.html  301
 
-# ── Trailing slash fixes ──
-/about/  /about.html  301
-/blog/  /blog.html  301
-/contact/  /contact.html  301
-/destinations/  /destinations.html  301
-/faq/  /faq.html  301
-/reviews/  /reviews.html  301
-/tours/  /tours.html  301
+# ── Old /tours/ → new /walking-tours/ ──
+/tours.html  /walking-tours.html  301
+/tours  /walking-tours.html  301
 
-# ── Wildcard catch-alls (max 100 dynamic rules on Cloudflare) ──
+# ── Wildcard catch-alls ──
+/tours/*  /walking-tours/:splat  301
 /Tag/*  /blog.html  301
 /tag/*  /blog.html  301
 /wp-admin/*  /  301
@@ -268,13 +262,10 @@
 /xmlrpc.php  /  301
 /feed/*  /  301
 /comments/feed/*  /  301
-/?p=*  /  301
-/?page_id=*  /  301
 /author/*  /about.html  301
-/Walking-Tour/*  /tours.html  301
-/self-guided-hiking-tours/*  /tours.html  301
-/self-guided-walking-holidays-ireland/*  /tours.html  301
+/Walking-Tour/*  /walking-tours.html  301
+/self-guided-hiking-tours/*  /walking-tours.html  301
+/self-guided-walking-holidays-ireland/*  /walking-tours.html  301
 /Hiking-location/*  /destinations.html  301
-/Tour-Type/*  /tours.html  301
-/Activity/*  /tours.html  301
-
+/Tour-Type/*  /walking-tours.html  301
+/Activity/*  /walking-tours.html  301

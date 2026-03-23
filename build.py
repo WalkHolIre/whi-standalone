@@ -528,7 +528,7 @@ def render_destination_review_section(reviews_list, destination, tours_by_id, pr
     return carousel_html
 
 
-def render_tour_cards(tours, prefix='tours/'):
+def render_tour_cards(tours, prefix='walking-tours/'):
     """Render tour card HTML for destination pages.
 
     Args:
@@ -1382,7 +1382,7 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
             </section>'''
 
 
-def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
+def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=None):
     """Render v3 tour cards for destination pages — matches JS card design in whi-tours.js exactly."""
     if not tours:
         return ""
@@ -1901,7 +1901,7 @@ def render_tours_listing_schema(tours):
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
@@ -2152,7 +2152,7 @@ def render_tour_page_schema(tour, reviews_list):
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
+        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
@@ -2173,7 +2173,7 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html"
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html"
         },
         "brand": {
             "@type": "Brand",
@@ -2558,7 +2558,7 @@ def main():
         for key, value in tours_listing_replacements.items():
             tours_listing_html = tours_listing_html.replace(key, str(value))
 
-        output_path = WEBSITE_DIR / 'tours.html'
+        output_path = WEBSITE_DIR / 'walking-tours.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
                 f.write(tours_listing_html)
@@ -2823,12 +2823,12 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/', '1.0', 'weekly'))
 
         # Listing pages — high priority
-        sitemap_urls.append(('https://walkingholidayireland.com/tours.html', '0.9', 'weekly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/walking-tours.html', '0.9', 'weekly'))
         sitemap_urls.append(('https://walkingholidayireland.com/destinations.html', '0.9', 'weekly'))
 
         # Individual tour pages
         for slug in generated['tours']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/tours/{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/walking-tours/{slug}.html', '0.8', 'monthly'))
 
         # Individual destination / walking area pages (canonical is walking-area-)
         for slug in generated['destinations']:
