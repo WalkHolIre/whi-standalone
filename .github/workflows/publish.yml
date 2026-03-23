@@ -1,0 +1,43 @@
+name: Publish B2C Site
+
+on:
+  workflow_dispatch:
+    inputs:
+      trigger_source:
+        description: 'What triggered this build'
+        required: false
+        default: 'manual'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run build.py
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+        run: python3 build.py
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "WHI Build Bot"
+          git config user.email "build@walkingholidayireland.com"
+          git add -A
+          # Only commit if there are changes
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Rebuild B2C site from Ground Control
+
+          Triggered by: ${{ github.event.inputs.trigger_source }}
+          Run: ${{ github.run_id }}"
+            git push
+          fi
