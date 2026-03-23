@@ -51,6 +51,22 @@
         'The Sperrins': 'Sperrins Heritage Trail'
     };
 
+    /* Region → walking area short name */
+    var regionAreaMap = {
+        'Dingle Peninsula': 'The Dingle Way',
+        'County Kerry': 'The Kerry Way',
+        'Wicklow Mountains': 'The Wicklow Way',
+        'South East Ireland': 'The Barrow Way',
+        'The Burren': 'The Burren Way',
+        'Causeway Coast': 'The Causeway Coast',
+        'Cooley Peninsula': 'Cooley & Mournes',
+        'Connemara': 'Connemara',
+        'Beara Peninsula': 'The Beara Way',
+        'Glens of Antrim': 'The Glens of Antrim',
+        'Mourne Mountains': 'The Mourne Mountains',
+        'The Sperrins': 'The Sperrins'
+    };
+
     function getBootCount(difficulty) {
         if (difficulty === 'Moderate' || difficulty === 'Intermediate') return 2;
         if (difficulty === 'Challenging') return 3;
@@ -73,8 +89,9 @@
         var kmPerDay = tour.total_km ? Math.round(tour.total_km / walkDays) : null;
         var ascentPerDay = tour.total_ascent ? Math.round(tour.total_ascent / walkDays) : null;
 
-        /* Region link */
+        /* Region / walking area info */
         var regionLabel = regionLabelMap[tour.region] || tour.region;
+        var areaName = regionAreaMap[tour.region] || tour.region;
         var regionPage = regionPageMap[tour.region] || '';
         var regionOnclick = regionPage ? ' onclick="event.stopPropagation();event.preventDefault();window.location.href=\'' + regionPage + '\';"' : '';
         var regionCursor = regionPage ? 'cursor:pointer;' : '';
@@ -89,13 +106,19 @@
             '</div>';
         }
 
-        /* Difficulty boots */
+        /* Difficulty boots — tight spacing + info icon */
         var filled = getBootCount(tour.difficulty);
-        var bootsHtml = '<div style="display:flex;gap:4px;" title="Difficulty: ' + tour.difficulty + '">';
+        var bootsHtml = '<div style="display:flex;align-items:center;gap:2px;">';
+        bootsHtml += '<div style="display:flex;gap:1px;" title="Difficulty: ' + tour.difficulty + '">';
         for (var b = 0; b < 3; b++) {
             var opacity = b < filled ? '1' : '0.35';
-            bootsHtml += '<img src="images/icons/boot-filled.svg" alt="" style="width:34px;height:34px;object-fit:contain;opacity:' + opacity + ';">';
+            bootsHtml += '<img src="images/icons/boot-filled.svg" alt="" style="width:30px;height:30px;object-fit:contain;opacity:' + opacity + ';">';
         }
+        bootsHtml += '</div>';
+        /* Info icon — opens difficulty modal */
+        bootsHtml += '<button onclick="event.stopPropagation();event.preventDefault();document.getElementById(\'difficultyModal\').style.display=\'flex\';" style="background:none;border:none;cursor:pointer;padding:2px;margin-left:4px;display:flex;align-items:center;" title="What does this mean?">' +
+            '<svg style="width:18px;height:18px;color:#9ca3af;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>' +
+        '</button>';
         bootsHtml += '</div>';
 
         /* Stats bar items */
@@ -118,7 +141,7 @@
             statItems.push(
                 '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 8px;border-left:1px solid #e5e7eb;">' +
                     iconAscent +
-                    '<div style="text-align:center;"><span style="font-weight:800;font-size:16px;color:#210747;display:block;">&uarr; ' + ascentPerDay + 'm</span><span style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;display:block;">/Day</span></div>' +
+                    '<div style="text-align:center;"><span style="font-weight:800;font-size:16px;color:#210747;display:block;">' + ascentPerDay + 'm</span><span style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;display:block;">/Day</span></div>' +
                 '</div>'
             );
         }
@@ -152,6 +175,13 @@
                         '<span style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;line-height:1;margin-bottom:2px;">From</span>' +
                         priceHtml +
                     '</div>' +
+                    /* Location marker above title */
+                    '<div style="position:absolute;bottom:56px;left:24px;right:24px;">' +
+                        '<div style="display:flex;align-items:center;gap:5px;' + regionCursor + '"' + regionOnclick + '>' +
+                            '<svg style="width:14px;height:14px;color:#fff;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                            '<span style="color:rgba(255,255,255,0.9);font-size:13px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,0.4);">' + areaName + ' / ' + regionLabel + '</span>' +
+                        '</div>' +
+                    '</div>' +
                     /* Tour title at bottom of image */
                     '<div style="position:absolute;bottom:20px;left:24px;right:24px;">' +
                         '<h3 style="color:#fff;font-size:24px;font-weight:800;line-height:1.2;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">' + tour.name + '</h3>' +
@@ -159,11 +189,6 @@
                 '</div>' +
                 /* Card body */
                 '<div style="flex-grow:1;padding:24px;display:flex;flex-direction:column;">' +
-                    /* Region */
-                    '<div style="display:flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:#210747;margin-bottom:12px;' + regionCursor + '"' + regionOnclick + '>' +
-                        '<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
-                        '<span>' + regionLabel + '</span>' +
-                    '</div>' +
                     /* Description */
                     '<p style="color:#4b5563;font-size:16px;line-height:1.6;margin:0 0 24px 0;">' + (tour.short_desc || '') + '</p>' +
                     /* Rating + Difficulty row */
@@ -180,4 +205,40 @@
             '</div>' +
         '</div>';
     }).join('');
+
+    /* Difficulty modal — injected once */
+    if (!document.getElementById('difficultyModal')) {
+        var modal = document.createElement('div');
+        modal.id = 'difficultyModal';
+        modal.style.cssText = 'display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:rgba(0,0,0,0.5);align-items:center;justify-content:center;padding:20px;';
+        modal.onclick = function(e) { if (e.target === modal) modal.style.display = 'none'; };
+        modal.innerHTML =
+            '<div style="background:#fff;border-radius:16px;max-width:480px;width:100%;padding:32px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.2);">' +
+                '<button onclick="document.getElementById(\'difficultyModal\').style.display=\'none\';" style="position:absolute;top:12px;right:12px;background:none;border:none;cursor:pointer;padding:4px;"><svg style="width:24px;height:24px;color:#6b7280;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg></button>' +
+                '<h3 style="margin:0 0 20px;font-size:22px;font-weight:800;color:#210747;">Tour Difficulty Grades</h3>' +
+                '<div style="margin-bottom:16px;display:flex;align-items:center;gap:8px;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:0.35;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:0.35;">' +
+                    '<span style="font-weight:700;color:#210747;margin-left:4px;">Easy</span>' +
+                '</div>' +
+                '<p style="color:#4b5563;font-size:14px;line-height:1.6;margin:0 0 16px;">Gentle terrain with well-maintained paths. Suitable for beginners and families.</p>' +
+                '<div style="margin-bottom:16px;display:flex;align-items:center;gap:8px;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:0.35;">' +
+                    '<span style="font-weight:700;color:#210747;margin-left:4px;">Moderate</span>' +
+                '</div>' +
+                '<p style="color:#4b5563;font-size:14px;line-height:1.6;margin:0 0 16px;">Mixed terrain with some hills and uneven paths. A reasonable level of fitness is helpful.</p>' +
+                '<div style="margin-bottom:16px;display:flex;align-items:center;gap:8px;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<img src="images/icons/boot-filled.svg" style="width:24px;height:24px;opacity:1;">' +
+                    '<span style="font-weight:700;color:#210747;margin-left:4px;">Challenging</span>' +
+                '</div>' +
+                '<p style="color:#4b5563;font-size:14px;line-height:1.6;margin:0 0 24px;">Steep ascents, rugged terrain and longer distances. Good fitness required.</p>' +
+                '<a href="tour-grading.html" target="_blank" rel="noopener" style="display:inline-block;background:#F17E00;color:#fff;font-weight:700;font-size:14px;padding:10px 24px;border-radius:8px;text-decoration:none;">Learn more about tour grading</a>' +
+            '</div>';
+        document.body.appendChild(modal);
+    }
 })();
