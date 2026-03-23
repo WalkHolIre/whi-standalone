@@ -177,11 +177,11 @@
                         </div>
                         <div>
                             <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 sticky top-36">
-                                <h3 class="font-bold text-lg mb-5 text-brand-purple flex items-center gap-2">
+                                <h3 class="font-bold text-lg mb-6 text-brand-purple flex items-center gap-2">
                                     <span class="material-symbols-outlined text-primary">info</span>
-                                    Walking Info
+                                    Walking Area Quick Facts
                                 </h3>
-                                <div class="space-y-4">
+                                <div class="space-y-5">
                                     {walking_info_panel_html}
                                 </div>
                                 <div class="mt-5 pt-4 border-t border-slate-100">
@@ -195,19 +195,7 @@
                 </div>
             </section>
 
-            <!-- ═══════════ 3. LANDSCAPE + CULTURE (2-col) ═══════════ -->
-            {landscape_culture_section}
-
-            <!-- ═══════════ 4. POINTS OF INTEREST ═══════════ -->
-            {poi_section}
-
-            <!-- ═══════════ 5. TOP ACTIVITIES ═══════════ -->
-            {activities_section}
-
-            <!-- ═══════════ 6. BEST TIME TO VISIT ═══════════ -->
-            {best_time_section}
-
-            <!-- ═══════════ 7. WALKING TOURS ═══════════ -->
+            <!-- ═══════════ 3. WALKING TOURS (JS-rendered) ═══════════ -->
             <section id="tours" class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
                     <div class="flex items-start gap-4 mb-4">
@@ -217,9 +205,7 @@
                             <p class="text-slate-500 mt-1">Self-guided walking holidays with accommodation and luggage transfers included</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                        {tour_cards_html}
-                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10" id="destToursGrid"></div>
                     <div class="text-center mt-10">
                         <a href="tailor-made.html" class="inline-flex items-center gap-2 font-bold hover:text-primary transition-colors" style="color:#3F0F87;">
                             <span class="material-symbols-outlined">edit_note</span>
@@ -228,6 +214,18 @@
                     </div>
                 </div>
             </section>
+
+            <!-- ═══════════ 4. LANDSCAPE + CULTURE (2-col) ═══════════ -->
+            {landscape_culture_section}
+
+            <!-- ═══════════ 5. POINTS OF INTEREST ═══════════ -->
+            {poi_section}
+
+            <!-- ═══════════ 6. TOP ACTIVITIES ═══════════ -->
+            {activities_section}
+
+            <!-- ═══════════ 7. BEST TIME TO VISIT + IDEAL FOR ═══════════ -->
+            {best_time_section}
 
             <!-- ═══════════ 8. ACCOMMODATION + PRACTICAL INFO (2-col) ═══════════ -->
             {accommodation_practical_section}
@@ -339,6 +337,11 @@
         reveals.forEach(function(el){ observer.observe(el); });
     })();
     </script>
+    <!-- Tour data for JS rendering -->
+    <script type="application/json" id="destToursData">
+    {dest_tours_json}
+    </script>
+    <script src="js/whi-dest-tours.js"></script>
     <script src="js/whi-reviews.js"></script>
     <script src="js/whi-config.js"></script>
     <script src="js/whi-data.js"></script>

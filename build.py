@@ -77,8 +77,18 @@ def fetch_supabase(table, filters=None):
 
 
 def get_safe_text(obj, key, default=''):
-    """Safely get text from object, defaulting to empty string."""
-    return obj.get(key) or default
+    """Safely get text from object, converting paragraph breaks to HTML <p> tags."""
+    text = obj.get(key) or default
+    if not text:
+        return default
+    # If text already contains <p> tags, return as-is
+    if '<p>' in str(text) or '<p ' in str(text):
+        return text
+    # Convert double newlines to paragraph breaks
+    paragraphs = [p.strip() for p in str(text).split('\n\n') if p.strip()]
+    if len(paragraphs) <= 1:
+        return f'<p>{text}</p>' if text.strip() else default
+    return '\n'.join(f'<p>{p}</p>' for p in paragraphs)
 
 
 def strip_html_tags(text):
@@ -558,7 +568,7 @@ def render_tour_cards(tours, prefix='tours/'):
 
 
 def render_poi_grid(points_of_interest):
-    """Render points of interest grid HTML."""
+    """Render points of interest grid HTML with optional images."""
     if not points_of_interest:
         return ""
 
@@ -574,8 +584,23 @@ def render_poi_grid(points_of_interest):
     for poi in pois:
         title = escape(poi.get('name', ''))
         description = escape(poi.get('description', ''))
+        image_url = poi.get('image_url', '') or poi.get('image', '')
 
-        html += f"""            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg transition-all">
+        if image_url:
+            # Card with image
+            html += f"""            <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all overflow-hidden poi-card">
+                <div class="aspect-[16/10] overflow-hidden">
+                    <img src="{escape(image_url)}" alt="{title}" class="w-full h-full object-cover" loading="lazy"/>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg mb-2">{title}</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">{description}</p>
+                </div>
+            </div>
+"""
+        else:
+            # Card without image — icon style
+            html += f"""            <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg transition-all poi-card">
                 <div class="flex items-start gap-3 mb-3">
                     <span class="material-symbols-outlined text-primary text-2xl">location_on</span>
                     <h3 class="font-bold text-lg">{title}</h3>
@@ -1008,17 +1033,6 @@ def render_walking_info_panel(destination, tours):
                                         <div><p class="text-xs text-slate-500 font-medium mb-1">Accommodation</p><p class="text-sm font-bold text-slate-700">{escape(acc_short)}</p></div>
                                     </div>''')
 
-    # Who is it for
-    who = destination.get('who_is_it_for', '')
-    if who:
-        who_short = strip_html_tags(who)[:80]
-        if len(strip_html_tags(who)) > 80:
-            who_short += '...'
-        items.append(f'''<div class="flex items-start gap-3">
-                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">group</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Ideal For</p><p class="text-sm font-bold text-slate-700">{escape(who_short)}</p></div>
-                                    </div>''')
-
     return '\n                                '.join(items)
 
 
@@ -1157,16 +1171,49 @@ def render_dest_cultural_section(destination):
 
 
 def render_dest_best_time_section(destination):
-    """Render the Best Time to Visit section (conditional)."""
+    """Render Best Time to Visit + Ideal For as 2-column section."""
     best_months = destination.get('best_months')
     best_text = destination.get('best_time_to_visit', '')
-    if (not best_months or not isinstance(best_months, list)) and not best_text:
+    who_text = destination.get('who_is_it_for', '')
+
+    if (not best_months or not isinstance(best_months, list)) and not best_text and not who_text:
         return ''
 
-    months_html = render_best_months(best_months)
-    text_html = get_safe_text(destination, 'best_time_to_visit') if best_text else ''
+    months_html = render_best_months(best_months) if best_months and isinstance(best_months, list) else ''
+    best_text_html = get_safe_text(destination, 'best_time_to_visit') if best_text else ''
+    who_text_html = get_safe_text(destination, 'who_is_it_for') if who_text else ''
 
-    return f'''<section class="w-full py-16 md:py-20 px-6">
+    # If both exist → 2-column layout
+    if (best_text or best_months) and who_text:
+        return f'''<section class="w-full py-16 md:py-20 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Best Time to Visit</h2>
+                            </div>
+                            {months_html}
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4 mt-6">
+                                {best_text_html}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Who Is It For?</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {who_text_html}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>'''
+
+    # Only best time
+    if best_text or best_months:
+        return f'''<section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
                     <div class="flex items-start gap-3 mb-8">
                         <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
@@ -1174,7 +1221,20 @@ def render_dest_best_time_section(destination):
                     </div>
                     {months_html}
                     <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4 mt-8">
-                        {text_html}
+                        {best_text_html}
+                    </div>
+                </div>
+            </section>'''
+
+    # Only who is it for
+    return f'''<section class="w-full py-16 md:py-20 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-3 mb-8">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Who Is It For?</h2>
+                    </div>
+                    <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                        {who_text_html}
                     </div>
                 </div>
             </section>'''
@@ -1529,31 +1589,31 @@ def render_dest_landscape_culture_section(destination):
 
 
 def render_dest_accommodation_practical_section(destination):
-    """Render Accommodation + Practical Info as a 2-column section."""
+    """Render Accommodation + Practical Info as 2-column prose (same style as landscape/culture)."""
     accommodation = destination.get('accommodation_style', '').strip()
     practical = destination.get('practical_info', '').strip()
 
     if not accommodation and not practical:
         return ''
 
-    # Both exist → 2-column layout
+    # Both exist → 2-column layout matching landscape/culture style
     if accommodation and practical:
-        return f'''<section class="w-full py-16 md:py-20 px-6">
+        return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-                            <div class="flex items-center gap-3 mb-5">
-                                <span class="material-symbols-outlined text-primary text-2xl">hotel</span>
-                                <h2 class="text-2xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
                             </div>
                             <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
                                 {get_safe_text(destination, "accommodation_style")}
                             </div>
                         </div>
-                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-                            <div class="flex items-center gap-3 mb-5">
-                                <span class="material-symbols-outlined text-primary text-2xl">directions_car</span>
-                                <h2 class="text-2xl font-black text-brand-purple">Getting Here</h2>
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Getting Here</h2>
                             </div>
                             <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
                                 {get_safe_text(destination, "practical_info")}
@@ -1563,22 +1623,20 @@ def render_dest_accommodation_practical_section(destination):
                 </div>
             </section>'''
 
-    # Only one exists → single card
+    # Only one exists → single column
     if accommodation:
-        title, icon, field = "Where You&#39;ll Stay", "hotel", "accommodation_style"
+        title, field = "Where You&#39;ll Stay", "accommodation_style"
     else:
-        title, icon, field = "Getting Here", "directions_car", "practical_info"
+        title, field = "Getting Here", "practical_info"
 
-    return f'''<section class="w-full py-16 md:py-20 px-6">
-                <div class="max-w-4xl mx-auto">
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
-                        <div class="flex items-center gap-3 mb-5">
-                            <span class="material-symbols-outlined text-primary text-2xl">{icon}</span>
-                            <h2 class="text-2xl font-black text-brand-purple">{title}</h2>
-                        </div>
-                        <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
-                            {get_safe_text(destination, field)}
-                        </div>
+    return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="flex items-start gap-3 mb-6">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">{title}</h2>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
+                        {get_safe_text(destination, field)}
                     </div>
                 </div>
             </section>'''
@@ -1607,8 +1665,8 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
                 card_reviews_by_tour[tour_id] = []
             card_reviews_by_tour[tour_id].append(review)
 
-    # Use v3 tour cards — matches JS whi-tours.js design exactly
-    tour_cards_html = render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=card_reviews_by_tour)
+    # Generate JSON data for JS tour card rendering (same design as main tours page)
+    dest_tours_json = render_tours_listing_json(tours, reviews_by_tour=card_reviews_by_tour)
 
     # Reviews
     reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
@@ -1656,7 +1714,7 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
         '{poi_section}': poi_section,
         '{activities_section}': activities_section,
         '{best_time_section}': best_time_section,
-        '{tour_cards_html}': tour_cards_html,
+        '{dest_tours_json}': dest_tours_json,
         '{accommodation_practical_section}': accommodation_practical_section,
         '{travel_tips_section}': travel_tips_section,
         '{cuisine_section}': cuisine_section,
@@ -1745,6 +1803,7 @@ def render_tours_listing_json(tours, reviews_by_tour=None):
             'featured': bool(tour.get('featured')),
             'total_km': float(db_km) if db_km else (total_km if total_km else None),
             'total_ascent': int(db_ascent) if db_ascent else (total_ascent if total_ascent else None),
+            'total_descent': int(tour.get('total_descent_m')) if tour.get('total_descent_m') else None,
         }
         if avg_rating:
             item['avg_rating'] = avg_rating
