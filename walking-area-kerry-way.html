@@ -11,8 +11,9 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
-        /* Utility bar is ~46px; header sits below it on desktop */
-        @media(min-width:768px){ header{ top:52px; } }
+        /* Mobile: header at top (utility bar hidden). Desktop: below utility bar (~44px) */
+        header.site-header { top:0; }
+        @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .badge-easy { background-color: #dcfce7; color: #166534; }
@@ -105,7 +106,7 @@
     </div>
 </div>
 
-<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
             <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
@@ -469,11 +470,11 @@ July and August are busiest; Skellig Michael boat trips are heavily booked and a
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-                        <a href="tours/kerry-way.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card">
+                        <a href="tours/kerry-way.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="County Kerry" data-difficulty="Challenging" data-days="8">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/kerry-way/card.jpg" srcset="images/routes/kerry-way/card-400w.jpg 400w, images/routes/kerry-way/card-800w.jpg 800w, images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
-                    <h3 class="absolute bottom-3 left-3 right-16 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 2px 6px rgba(0,0,0,0.6);">The Kerry Way Hiking Tour — 8 Days</h3>
+                    <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">The Kerry Way Hiking Tour — 8 Days</h3>
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;899</span>
@@ -483,10 +484,10 @@ July and August are busiest; Skellig Michael boat trips are heavily booked and a
                 <div class="flex flex-col justify-between flex-grow p-4 pb-2">
                     <div>
                         <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-2">Ireland&#x27;s longest and most famous walking trail</p>
-                        <span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Wild Atlantic Way</span>
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold hover:underline" style="color:#3F0F87;" onclick="event.stopPropagation();event.preventDefault();window.location.href='walking-area-kerry-way.html';"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Wild Atlantic Way</span>
                     </div>
                     <div class="flex items-center justify-between mt-3 mb-1">
-                        <div></div>
+                        <div class="flex items-center gap-2"><div class="flex items-center gap-0.5"><svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg><svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg><svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg><svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg><svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg></div><span class="text-sm font-bold text-slate-700">5.0</span><span class="text-xs text-slate-400">(1)</span></div>
                         <div class="flex items-center" title="Diff.: Challenging" style="gap:0;"><img src="images/icons/boot-filled.svg" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;"><img src="images/icons/boot-filled.svg" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;"><img src="images/icons/boot-filled.svg" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;"></div>
                     </div>
                 </div>

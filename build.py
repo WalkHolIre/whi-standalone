@@ -1322,12 +1322,14 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
             </section>'''
 
 
-def render_dest_tour_cards_v3(tours, prefix='tours/'):
-    """Render v3 tour cards for destination pages with gradient, title in image, purple price, boots, stats."""
+def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
+    """Render v3 tour cards for destination pages — matches JS card design in whi-tours.js exactly."""
     if not tours:
         return ""
+    if reviews_by_tour is None:
+        reviews_by_tour = {}
 
-    # Region mappings
+    # Region mappings — must match JS regionLabelMap and regionPageMap
     region_label_map = {
         'Dingle Peninsula': 'Wild Atlantic Way',
         'County Kerry': 'Wild Atlantic Way',
@@ -1342,6 +1344,20 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
         'Mourne Mountains': 'Mourne Heritage Trail',
         'The Sperrins': 'Sperrins Heritage Trail',
     }
+    region_page_map = {
+        'Dingle Peninsula': 'walking-area-dingle-way.html',
+        'County Kerry': 'walking-area-kerry-way.html',
+        'Wicklow Mountains': 'walking-area-wicklow-way.html',
+        'South East Ireland': 'walking-area-barrow-way.html',
+        'The Burren': 'walking-area-burren-way.html',
+        'Causeway Coast': 'walking-area-causeway-coast.html',
+        'Cooley Peninsula': 'walking-area-cooley-mournes.html',
+        'Connemara': 'walking-area-connemara.html',
+        'Beara Peninsula': 'walking-area-beara-way.html',
+        'Glens of Antrim': 'walking-area-antrim-glens.html',
+        'Mourne Mountains': 'walking-area-mourne-mountains.html',
+        'The Sperrins': 'walking-area-the-sperrins.html',
+    }
 
     def get_boot_count(diff):
         return {'Easy': 1, 'Moderate': 2, 'Intermediate': 2, 'Challenging': 3}.get(diff, 1)
@@ -1353,6 +1369,20 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
             src = 'images/icons/boot-filled.svg' if i < filled else 'images/icons/boot-outline.svg'
             boots += f'<img src="{src}" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;">'
         return boots
+
+    def render_stars_html(avg):
+        """Render review stars SVGs — matches JS renderStars()."""
+        full = int(avg)
+        half = (avg - full) >= 0.3
+        html = ''
+        for _ in range(full):
+            html += '<svg width="16" height="16" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>'
+        if half:
+            html += '<svg width="16" height="16" viewBox="0 0 20 20"><defs><linearGradient id="halfStar"><stop offset="50%" stop-color="#f59e0b"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" fill="url(#halfStar)"/></svg>'
+        remaining = 5 - full - (1 if half else 0)
+        for _ in range(remaining):
+            html += '<svg width="16" height="16" viewBox="0 0 20 20" fill="#d1d5db"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>'
+        return html
 
     html = ""
     for tour in tours:
@@ -1379,31 +1409,51 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
         walk_days = days - 1 if days > 1 else 1
         km_per_day = round(actual_km / walk_days) if actual_km else None
         ascent_per_day = round(actual_ascent / walk_days) if actual_ascent else None
+        # Descent per day (matches JS)
+        db_descent = tour.get('total_descent_m')
+        actual_descent = int(db_descent) if db_descent else 0
+        descent_per_day = round(actual_descent / walk_days) if actual_descent else None
 
-        # Region label
+        # Region label + clickable link (matches JS regionPageMap)
         region_label = region_label_map.get(region_name, region_name)
+        region_page = region_page_map.get(region_name, '')
         region_link = ''
         if region_label:
-            region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
+            if region_page:
+                region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold hover:underline" style="color:#3F0F87;" onclick="event.stopPropagation();event.preventDefault();window.location.href=\'{region_page}\';"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
+            else:
+                region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
 
         # Boot icons
         boots = f'<div class="flex items-center" title="Diff.: {escape(difficulty)}" style="gap:0;">{make_boots(difficulty)}</div>'
 
-        # Stats bar
+        # Review stars + count (matches JS conditional rendering)
+        review_html = ''
+        tour_reviews = reviews_by_tour.get(tour.get('id'), [])
+        if tour_reviews:
+            ratings = [r.get('rating', 0) for r in tour_reviews if r.get('rating')]
+            if ratings:
+                avg_rating = round(sum(ratings) / len(ratings), 1)
+                review_count = len(ratings)
+                review_html = f'<div class="flex items-center gap-2"><div class="flex items-center gap-0.5">{render_stars_html(avg_rating)}</div><span class="text-sm font-bold text-slate-700">{avg_rating}</span><span class="text-xs text-slate-400">({review_count})</span></div>'
+
+        # Stats bar (matches JS: days, km/day, ascent/day, descent/day)
         stats = []
         stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
         if km_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><img src="images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;"><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+        if descent_per_day:
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 7l5 10 5-10"/><path d="M4 4h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&darr;{descent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
 
         stats_bar = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' + ''.join(stats) + '</div>'
 
-        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card">
+        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="{escape(region_name)}" data-difficulty="{escape(difficulty)}" data-days="{days}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
-                    <h3 class="absolute bottom-3 left-3 right-16 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 2px 6px rgba(0,0,0,0.6);">{name}</h3>
+                    <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
@@ -1416,7 +1466,7 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
                         {region_link}
                     </div>
                     <div class="flex items-center justify-between mt-3 mb-1">
-                        <div></div>
+                        {review_html}
                         {boots}
                     </div>
                 </div>
@@ -1548,8 +1598,17 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     dest_name = escape(destination.get('name', ''))
     dest_slug = escape(destination.get('slug', ''))
 
-    # Use v3 tour cards
-    tour_cards_html = render_dest_tour_cards_v3(tours, prefix='tours/')
+    # Build reviews lookup per tour for card star ratings
+    card_reviews_by_tour = {}
+    for review in reviews:
+        tour_id = review.get('tour_id')
+        if tour_id:
+            if tour_id not in card_reviews_by_tour:
+                card_reviews_by_tour[tour_id] = []
+            card_reviews_by_tour[tour_id].append(review)
+
+    # Use v3 tour cards — matches JS whi-tours.js design exactly
+    tour_cards_html = render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=card_reviews_by_tour)
 
     # Reviews
     reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
@@ -1648,8 +1707,10 @@ def compute_tour_distances(tour):
     return round(total_km, 1), total_ascent
 
 
-def render_tours_listing_json(tours):
+def render_tours_listing_json(tours, reviews_by_tour=None):
     """Build JSON data array for tours listing page client-side rendering."""
+    if reviews_by_tour is None:
+        reviews_by_tour = {}
     items = []
     for tour in tours:
         total_km, total_ascent = compute_tour_distances(tour)
@@ -1663,7 +1724,17 @@ def render_tours_listing_json(tours):
         except (ValueError, TypeError):
             price_val = 0
 
-        items.append({
+        # Review stats for this tour
+        tour_reviews = reviews_by_tour.get(tour.get('id'), [])
+        avg_rating = None
+        review_count = 0
+        if tour_reviews:
+            ratings = [r.get('rating', 0) for r in tour_reviews if r.get('rating')]
+            if ratings:
+                avg_rating = round(sum(ratings) / len(ratings), 1)
+                review_count = len(ratings)
+
+        item = {
             'slug': tour.get('slug', ''),
             'name': tour.get('name', ''),
             'difficulty': tour.get('difficulty_level', ''),
@@ -1674,7 +1745,11 @@ def render_tours_listing_json(tours):
             'featured': bool(tour.get('featured')),
             'total_km': float(db_km) if db_km else (total_km if total_km else None),
             'total_ascent': int(db_ascent) if db_ascent else (total_ascent if total_ascent else None),
-        })
+        }
+        if avg_rating:
+            item['avg_rating'] = avg_rating
+            item['review_count'] = review_count
+        items.append(item)
 
     return json.dumps(items, indent=2)
 
@@ -2307,7 +2382,7 @@ def main():
         with open(tours_listing_template_path, 'r') as f:
             tours_listing_template = f.read()
 
-        tours_json = render_tours_listing_json(tours)
+        tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour)
         tours_schema = render_tours_listing_schema(tours)
         region_options = render_region_filter_options(tours)
         difficulty_options = render_difficulty_filter_options(tours)
