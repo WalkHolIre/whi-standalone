@@ -2,49 +2,29 @@
   {
     "id": "ad4e8012-6009-4c7f-929f-245c126de340",
     "name": "Wild Atlantic Way",
-    "description": null,
-    "created_at": "2026-03-16T13:27:28.932519+00:00",
-    "updated_at": "2026-03-16T13:27:28.932519+00:00",
     "code": "WA",
     "slug": "wild-atlantic-way",
-    "hero_image": null,
-    "sort_order": 1,
-    "country": "IE"
+    "sort_order": 1
   },
   {
     "id": "05a6c962-12d6-4e91-a76e-805a20976a6e",
     "name": "Ireland's Ancient East",
-    "description": null,
-    "created_at": "2026-03-16T13:27:28.932519+00:00",
-    "updated_at": "2026-03-16T13:27:28.932519+00:00",
     "code": "AE",
     "slug": "irelands-ancient-east",
-    "hero_image": null,
-    "sort_order": 2,
-    "country": "IE"
+    "sort_order": 2
   },
   {
     "id": "9a3b739d-e22f-43fe-94e4-718893f29e54",
     "name": "Hidden Heartlands",
-    "description": null,
-    "created_at": "2026-03-16T13:27:28.932519+00:00",
-    "updated_at": "2026-03-16T13:27:28.932519+00:00",
     "code": "HH",
     "slug": "hidden-heartlands",
-    "hero_image": null,
-    "sort_order": 3,
-    "country": "IE"
+    "sort_order": 3
   },
   {
     "id": "d47978d7-11f4-4f9a-aff4-7ebc4601a6e2",
     "name": "Northern Ireland",
-    "description": null,
-    "created_at": "2026-03-16T13:27:28.932519+00:00",
-    "updated_at": "2026-03-16T13:27:28.932519+00:00",
     "code": "NI",
     "slug": "northern-ireland",
-    "hero_image": null,
-    "sort_order": 4,
-    "country": "NI"
+    "sort_order": 4
   }
 ]

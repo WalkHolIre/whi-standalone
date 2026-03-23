@@ -32,28 +32,6 @@
         @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        /* Rich text prose styling for CMS content */
-        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .prose p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .prose ul { list-style-type: disc; }
-        .prose ol { list-style-type: decimal; }
-        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .prose strong { color: #1e293b; font-weight: 700; }
-        .prose em { font-style: italic; }
-        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .prose a:hover { color: #d97200; }
-        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
-        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        .prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; font-size: 1rem; }
-        .prose th { background: #f8fafc; font-weight: 600; color: #1e293b; }
-        .prose td { color: #475569; }
-        .prose u { text-decoration: underline; text-underline-offset: 2px; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/walking-tours/causeway-coast-5-days.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-tours/causeway-coast-5-days.html"/>
@@ -109,7 +87,7 @@
         },
         "offers": {
                 "@type": "Offer",
-                "price": "645",
+                "price": "599",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
@@ -119,13 +97,26 @@
                 "@type": "Brand",
                 "name": "Walking Holiday Ireland"
         },
+        "distance": {
+                "@type": "QuantitativeValue",
+                "value": 50.0,
+                "unitCode": "KMT",
+                "unitText": "km"
+        },
         "additionalProperty": [
                 {
                         "@type": "PropertyValue",
                         "name": "Difficulty",
                         "value": "Moderate"
                 }
-        ]
+        ],
+        "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.4",
+                "bestRating": "5",
+                "worstRating": "1",
+                "reviewCount": "5"
+        }
 }
     </script>
 
@@ -225,7 +216,7 @@
             <div class="flex flex-col sm:flex-row items-center gap-6 mt-4">
                 <div class="flex flex-col items-start w-full sm:w-auto">
                     <span class="text-sm text-slate-300 font-medium uppercase tracking-wider">Starting From</span>
-                    <span class="text-3xl font-bold">€645 <span class="text-lg font-normal text-slate-300">per person</span></span>
+                    <span class="text-3xl font-bold">€599 <span class="text-lg font-normal text-slate-300">per person</span></span>
                 </div>
                 <a href="../checkout.html" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
                     Book Now
@@ -317,9 +308,7 @@
         <h2 class="text-3xl font-bold">Who Is This For?</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>**For people with limited time but big ambitions.** If you have a long weekend or a short week, this tour delivers maximum impact. Imagine arriving Friday evening and leaving Wednesday evening with a transformative experience under your belt. The Causeway Coast is achievable and unforgettable in 5 days.</p>
-<p>**For walkers stepping up their game.** You don't need to be super-fit, but you should be comfortable walking 14–18 km per day, managing tidal sections, and tackling terrain that changes constantly. If you're looking for something more challenging than local day walks but still accessible, this is it.</p>
-<p>**For people chasing iconic experiences.** The Causeway Coast has a bucket-list quality. This tour puts you in the middle of it — no shortcuts, no compromises. You walk the actual trails, cross the actual rope bridge, and stand on the actual geological wonder. It's the real thing.</p>
+        <p>Five days walking one of the world's most dramatic coastlines. From basalt cliffs and sea stacks to the UNESCO World Heritage Giant's Causeway, medieval castles and the world's oldest licensed whiskey distillery.</p>
     </div>
 </section>
 
@@ -366,10 +355,12 @@
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 14km
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    *14 km | 4 hours*
-Your first day sets the tone. Walk out of Ballycastle across moorland and rising coastal paths. The views build throughout the day — each section more dramatic than the last. Your destination is Ballintoy, a picturesque whitewashed village that appears almost painted onto the cliff face. The day culminates at the legendary Carrick-a-rede Rope Bridge: 80 feet up, suspended above a gorge, with the Atlantic churning below. Cross at your own pace, soak in the adrenaline rush, and understand why this bridge has captivated walkers for centuries. Historically, fishermen built it to access salmon-rich waters; now it&#x27;s an icon.
+                    Your first day sets the tone. Walk out of Ballycastle across moorland and rising coastal paths. The views build throughout the day — each section more dramatic than the last. Your destination is Ballintoy, a picturesque whitewashed village that appears almost painted onto the cliff face. The day culminates at the legendary Carrick-a-rede Rope Bridge: 80 feet up, suspended above a gorge, with the Atlantic churning below. Cross at your own pace, soak in the adrenaline rush, and understand why this bridge has captivated walkers for centuries. Historically, fishermen built it to access salmon-rich waters; now it&#x27;s an icon.
                 </p>
             </div>
         </details>
@@ -388,12 +379,12 @@ Your first day sets the tone. Walk out of Ballycastle across moorland and rising
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 18km
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    *18 km | 5 hours | Contains tidal sections*
-This is the walk that earned its reputation as &quot;the best coastal walk in Ireland.&quot; You&#x27;ll leave Ballintoy and walk into legend. The landscape unfolds in stages: White Park Bay appears — a crescent of untouched white sand beneath towering cliffs. Continue along dramatic cliff paths, passing Portbraddan (the smallest church in Ireland) and the moody, atmospheric ruins of Dunseverick Castle, perched on a sea stack. Tidal sections require timing, but they&#x27;re part of the adventure — you walk where the landscape dictates, reading the coastline like a local.
-
-Then you arrive at the Giant&#x27;s Causeway: 40,000 perfectly hexagonal basalt columns, each one formed 60 million years ago during volcanic eruptions. UNESCO recognises it as a World Heritage Site; geologists marvel at it; tourists flock to it. But when you walk among the columns themselves, disconnected from the crowds at the visitor centre, something changes. You understand why this place matters. Finish in Bushmills, home to the world&#x27;s oldest licensed whiskey distillery (tours optional if you&#x27;re interested in learning how they make it).
+                    This is the walk that earned its reputation as &#x27;the best coastal walk in Ireland.&#x27; You&#x27;ll leave Ballintoy and walk into legend. The landscape unfolds in stages: White Park Bay appears — a crescent of untouched white sand beneath towering cliffs. Continue along dramatic cliff paths, passing Portbraddan (the smallest church in Ireland) and the moody, atmospheric ruins of Dunseverick Castle, perched on a sea stack. Tidal sections require timing, but they&#x27;re part of the adventure — you walk where the landscape dictates, reading the coastline like a local. Then you arrive at the Giant&#x27;s Causeway: 40,000 perfectly hexagonal basalt columns, each one formed 60 million years ago during volcanic eruptions. UNESCO recognises it as a World Heritage Site; geologists marvel at it; tourists flock to it. But when you walk among the columns themselves, disconnected from the crowds at the visitor centre, something changes. You understand why this place matters. Finish in Bushmills, home to the world&#x27;s oldest licensed whiskey distillery (tours optional if you&#x27;re interested in learning how they make it).
                 </p>
             </div>
         </details>
@@ -412,10 +403,12 @@ Then you arrive at the Giant&#x27;s Causeway: 40,000 perfectly hexagonal basalt 
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 18km
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    *18 km | 5 hours*
-Your final day pulls together everything. Walk past Dunluce Castle — those impossible ruins clinging to a sea cliff — and continue via Ramore Head, with expansive views across to Portrush and beyond. Finish in Portstewart, a vibrant seaside town with excellent restaurants and a genuine seaside atmosphere. This final walk is a celebration: you&#x27;ve tackled the Causeway Coast, you&#x27;ve earned this finish line, and the town welcomes you with the buzz of completing something genuinely meaningful.
+                    Your final day pulls together everything. Walk past Dunluce Castle — those impossible ruins clinging to a sea cliff — and continue via Ramore Head, with expansive views across to Portrush and beyond. Finish in Portstewart, a vibrant seaside town with excellent restaurants and a genuine seaside atmosphere. This final walk is a celebration: you&#x27;ve tackled the Causeway Coast, you&#x27;ve earned this finish line, and the town welcomes you with the buzz of completing something genuinely meaningful.
                 </p>
             </div>
         </details>
@@ -451,9 +444,13 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         <h2 class="text-3xl font-bold">Accommodation</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>You'll stay in welcoming bed-and-breakfasts throughout the tour — the kind of places where the owners are local treasures and the breakfasts are genuinely life-changing. These aren't corporate accommodations; they're homes run by people who know and love this coastline. Your host might point you toward hidden paths, tell you stories about the cliffs, or recommend a restaurant that locals actually eat at (which is rarer than you'd think).</p>
-<p>En-suite rooms mean hot showers after long days in variable weather. This is genuinely important after 18 km of coastal walking — there's nothing quite like a proper hot shower when you're tired and salt-tangled. Most B&Bs also have a comfortable lounge where you can reflect on the day or meet other walkers.</p>
-<p>The Irish breakfast is legendary for a reason. Imagine: full cooked breakfast with local sausages, bacon, eggs, black pudding, mushrooms, tomatoes, and unlimited tea or coffee. This breakfast doesn't just fuel your next walk — it's an experience in itself, a proper Irish welcome at the start of each day. You'll understand why hikers joke that it's the breakfast that keeps you going through 18 km coastal walks.</p>
+        <p>- **4 nights' accommodation** in hand-picked B&Bs (en-suite rooms)
+- **Full Irish breakfast** daily
+- **Professional walking guides** for all guided days
+- **Detailed maps** (waterproof map case included)
+- **Daily luggage transfers** — carry only your day pack
+- **24/7 emergency support** throughout the tour
+- **Pre-departure information pack** with route details, packing advice, and local recommendations</p>
     </div>
 </section>
 
@@ -497,7 +494,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     <div class="p-8 border-b border-slate-100">
         <p class="text-slate-500 text-sm font-medium mb-1">From</p>
         <div class="flex items-baseline gap-2">
-            <span class="text-4xl font-black">€645</span>
+            <span class="text-4xl font-black">€599</span>
             <span class="text-slate-500 font-medium">per person</span>
         </div>
         <p class="text-slate-400 text-sm mt-1">Based on 2 sharing</p>
@@ -634,7 +631,108 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
 
 <!-- Reviews Section -->
 <section class="w-full max-w-7xl px-4 md:px-8 lg:px-12 py-16 mx-auto">
-    
+    <div id="tour-reviews" class="review-carousel" data-auto-advance="8000">
+        <div class="flex items-center gap-3 mb-2">
+            <div class="w-1.5 h-8 bg-primary rounded-full"></div>
+            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">What Our Walkers Say</h2>
+        </div>
+        <div class="flex items-center gap-3 mb-8">
+            <div class="flex"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
+            <span class="text-lg font-bold text-slate-700">4.4</span>
+            <span class="text-slate-500">·</span>
+            <span class="text-slate-500">5 reviews</span>
+        </div>
+        <div class="relative">
+            <div class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4">
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">H</div>
+                    <div>
+                        <h4 class="font-bold text-lg">H. de Weerd</h4>
+                        <p class="text-sm text-slate-500">Netherlands · August 2018</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">Super nice - you come to places where less than 10 people walk by in a day, and </h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Super nice - you come to places where less than 10 people walk by in a day, and the population is very friendly and helpful.</p>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">S</div>
+                    <div>
+                        <h4 class="font-bold text-lg">S. Ganahl</h4>
+                        <p class="text-sm text-slate-500">Not specified · August 2024</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">Hiking the Causeway Coast in August 2024 was an unforgettable experience!</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Hiking the Causeway Coast in August 2024 was an unforgettable experience! The breathtaking scenery, from dramatic cliffs to stunning beaches, made every step worthwhile. The route was well-organised, ...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">Hiking the Causeway Coast in August 2024 was an unforgettable experience! The breathtaking scenery, from dramatic cliffs to stunning beaches, made every step worthwhile. The route was well-organised, and the B&amp;B hosts were incredibly welcoming and kind. Everything was perfectly arranged, making it a stress-free and enjoyable adventure. Highly recommend!</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">C</div>
+                    <div>
+                        <h4 class="font-bold text-lg">C. Roozen</h4>
+                        <p class="text-sm text-slate-500">Netherlands · August 2018</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">A great way to fully unwind</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">A great way to fully unwind. Beautiful nature, nice people. Everything perfectly arranged.</p>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="4">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">C</div>
+                    <div>
+                        <h4 class="font-bold text-lg">C. Dahmen</h4>
+                        <p class="text-sm text-slate-500">Netherlands · April 2018</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
+                <h5 class="font-bold mb-2">Beautiful walking routes through the beautiful nature of Northern Ireland</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very hospitable and beautiful country.</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="3">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">M</div>
+                    <div>
+                        <h4 class="font-bold text-lg">M. Molen</h4>
+                        <p class="text-sm text-slate-500">Netherlands · April 2019</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
+                <h5 class="font-bold mb-2">The trip was very nice</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">The trip was very nice. Positive points are that you can make beautiful walks in this area. Too bad that the difference per day was so great. Where one day you walk along breathtaking cliffs, the othe...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">The trip was very nice. Positive points are that you can make beautiful walks in this area. Too bad that the difference per day was so great. Where one day you walk along breathtaking cliffs, the other day you walk for a large part along/over the road. The difference in distance is also large - 20 km max, 13 km minimum.</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+            </div>
+            <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-6">
+<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-primary transition-colors" data-page="0"></button>
+<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-page="1"></button>
+        </div>
+        <div class="text-center mt-2">
+            <a href="../reviews.html" class="inline-flex items-center gap-1 text-primary font-semibold hover:underline mt-4">Read all 5 reviews <span class="material-symbols-outlined text-lg">arrow_forward</span></a>
+        </div>
+    </div>
+
 </section>
 
 <!-- FAQ Section -->
@@ -806,7 +904,17 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     </div>
     <p class="text-slate-600 mb-8 ml-6">Similar difficulty and nearby destinations</p>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        
+                    <a href="causeway-coast.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+                <div class="aspect-[4/3] overflow-hidden bg-slate-100">
+                    <img src="images/routes/causeway-coast/card.jpg" srcset="images/routes/causeway-coast/card-400w.jpg 400w, images/routes/causeway-coast/card-800w.jpg 800w, images/routes/causeway-coast/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Giant&#x27;s Causeway Walking Holiday — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.parentElement.style.background='linear-gradient(135deg, #f17e00 0%, #210747 100%)'"/>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg mb-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</h3>
+                    <p class="text-sm text-slate-500 mb-3">Moderate · 8 Days</p>
+                    <span class="text-primary font-bold">From &euro;959 pp &rarr;</span>
+                </div>
+            </a>
+
     </div>
 </section>
 

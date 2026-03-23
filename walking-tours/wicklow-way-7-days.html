@@ -32,28 +32,6 @@
         @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        /* Rich text prose styling for CMS content */
-        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .prose p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .prose ul { list-style-type: disc; }
-        .prose ol { list-style-type: decimal; }
-        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .prose strong { color: #1e293b; font-weight: 700; }
-        .prose em { font-style: italic; }
-        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .prose a:hover { color: #d97200; }
-        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
-        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
-        .prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; font-size: 1rem; }
-        .prose th { background: #f8fafc; font-weight: 600; color: #1e293b; }
-        .prose td { color: #475569; }
-        .prose u { text-decoration: underline; text-underline-offset: 2px; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/walking-tours/wicklow-way-7-days.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-tours/wicklow-way-7-days.html"/>
@@ -109,7 +87,7 @@
         },
         "offers": {
                 "@type": "Offer",
-                "price": "885",
+                "price": "929",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
@@ -118,6 +96,12 @@
         "brand": {
                 "@type": "Brand",
                 "name": "Walking Holiday Ireland"
+        },
+        "distance": {
+                "@type": "QuantitativeValue",
+                "value": 130.0,
+                "unitCode": "KMT",
+                "unitText": "km"
         },
         "additionalProperty": [
                 {
@@ -225,7 +209,7 @@
             <div class="flex flex-col sm:flex-row items-center gap-6 mt-4">
                 <div class="flex flex-col items-start w-full sm:w-auto">
                     <span class="text-sm text-slate-300 font-medium uppercase tracking-wider">Starting From</span>
-                    <span class="text-3xl font-bold">€885 <span class="text-lg font-normal text-slate-300">per person</span></span>
+                    <span class="text-3xl font-bold">€929 <span class="text-lg font-normal text-slate-300">per person</span></span>
                 </div>
                 <a href="../checkout.html" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
                     Book Now
@@ -317,9 +301,7 @@
         <h2 class="text-3xl font-bold">Who Is This For?</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>This is the tour for walkers who don't do "light" versions. You want the complete experience, the full distance, the real Wicklow Way. You're fit enough for daily walks of 22 to 31 kilometres, with days that regularly involve 800+ metres of climbing. This isn't casual countryside rambling—it's proper hill walking with serious distances and significant elevation. If you've completed other multi-day treks or regularly do long day hikes, you're ready.</p>
-<p>You're the type who loves a challenge but doesn't need it to be extreme. You appreciate comfort at the end of the day—a hot shower, a warm bed, a full Irish breakfast—but you're absolutely happy to earn it through hours on the trail. You value the support of experienced guides, the security of knowing your luggage will be waiting, and the camaraderie of a small group (just 1-8 walkers) who are all committed to the same goal.</p>
-<p>Most importantly, you want the *whole story*. You're not interested in highlights or shortcuts. You want to walk the complete Wicklow Way—all 130 kilometres, every valley, every ridge—and arrive in Dublin with the knowledge that you've done something genuinely significant. You want the satisfaction of saying, "I walked the entire Wicklow Way," and meaning it completely.</p>
+        <p>The complete Wicklow Way — Ireland's original 130km waymarked trail. Walk 7 unforgettable days from the Carlow border through ancient valleys to Dublin's doorstep. Over seven days, you'll accumulate over 3,500 metres of elevation gain, navigate ancient military roads, and stand at the edge of Ireland's longest glacial valley.</p>
     </div>
 </section>
 
@@ -359,13 +341,19 @@
                         <span class="text-xl leading-none">2</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold">Clonegal to Tallon&#x27;s Pub — 25 km | 540m Ascent | 6–8 Hours</h3>
+                        <h3 class="text-lg font-bold">Clonegal to Tallon&#x27;s Pub</h3>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 25km
+                    </span>
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">terrain</span> 540m ascent
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
                     Your Wicklow Way truly begins. Leave Clonegal behind and climb into moorland. The trail shows its character immediately—open ridges, ancient pathways, the sense of entering somewhere special. You&#x27;ll walk the Carlow border country, pass through mixed woodland, and arrive at Tallon&#x27;s Pub as the light softens. A proper first day: long enough to establish your pace, not so brutal that doubt creeps in. Your legs will feel it, but pleasantly.
@@ -380,13 +368,19 @@
                         <span class="text-xl leading-none">3</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold">Tallon&#x27;s Pub to Iron Bridge — 26 km | 580m Ascent | 7–9 Hours</h3>
+                        <h3 class="text-lg font-bold">Tallon&#x27;s Pub to Iron Bridge</h3>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 26km
+                    </span>
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">terrain</span> 580m ascent
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
                     Now the Wicklow Mountains proper begin their reveal. This stage takes you deeper into the uplands, past historic viewpoints and into increasingly dramatic terrain. The Shillelagh Hills open before you. You&#x27;ll cross streams fed by mountain springs and navigate paths that locals have walked for centuries. Iron Bridge emerges as your reward—a small settlement with surprising warmth and character. Your accommodation awaits; so does a sense that you&#x27;re truly committed now.
@@ -401,13 +395,19 @@
                         <span class="text-xl leading-none">4</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold">Iron Bridge to Glendalough — 31 km | 800m Ascent | 7–10 Hours</h3>
+                        <h3 class="text-lg font-bold">Iron Bridge to Glendalough</h3>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 31km
+                    </span>
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">terrain</span> 800m ascent
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
                     This is your big day, and it&#x27;s glorious. This stage takes you through some of the Wicklow Way&#x27;s most iconic landscapes. You&#x27;ll climb to dramatic ridges, traverse the edge of deep valleys, and finally descend into Glendalough—Ireland&#x27;s most sacred mountain valley. The ancient monastic city rises before you: a round tower, stone churches, the weight of 1,500 years of history. Walking this final descent into Glendalough is one of the great moments of the Wicklow Way. Your legs will ache beautifully. Rest well; you&#x27;ve earned it.
@@ -422,13 +422,19 @@
                         <span class="text-xl leading-none">5</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold">Glendalough to Enniskerry — 26–29 km | 950–1,250m Ascent | 7–10 Hours</h3>
+                        <h3 class="text-lg font-bold">Glendalough to Enniskerry</h3>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 26km
+                    </span>
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">terrain</span> 950m ascent
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
                     The most elevated day, both literally and emotionally. You&#x27;re leaving Glendalough&#x27;s spiritual calm and climbing into raw mountain wilderness. This is where you&#x27;ll encounter Glenmalure Valley—Ireland&#x27;s longest and deepest glacial valley. The cliffs are sudden and dramatic. The silence is profound. You&#x27;ll traverse the Spinc Ridge, a narrow, thrilling section that feels like walking the spine of the earth. The ascent is significant—nearly a vertical kilometre—but the views and sense of achievement make it unforgettable. Enniskerry, a charming village on Dublin&#x27;s edge, marks your arrival back toward civilization.
@@ -443,13 +449,19 @@
                         <span class="text-xl leading-none">6</span>
                     </div>
                     <div>
-                        <h3 class="text-lg font-bold">Enniskerry to Marlay Park — 22 km | 520m Ascent | 6–8 Hours</h3>
+                        <h3 class="text-lg font-bold">Enniskerry to Marlay Park</h3>
                     </div>
                 </div>
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">straighten</span> 22km
+                    </span>
+                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
+                        <span class="material-symbols-outlined text-[18px]">terrain</span> 520m ascent
+                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
                     The final day of walking feels different—knowing the trail ends, you&#x27;ll absorb everything more intensely. This stage descends from mountain terrain into the foothills, and gradually, Dublin&#x27;s presence increases. You&#x27;ll pass through forests, walk along streams, and finally enter Marlay Park. This is your finish line: a beautiful green space on Dublin&#x27;s southern edge, where urban and wild meet. Walk through those gates knowing you&#x27;ve done something remarkable.
@@ -488,8 +500,13 @@
         <h2 class="text-3xl font-bold">Accommodation</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>Every night, you'll stay in carefully selected 3-star minimum en-suite accommodation. These aren't corporate hotels—they're country houses, village hotels, and family-run inns where you're welcomed as a guest, not a booking reference. Each place has been chosen because the owners understand walkers: hearty breakfasts, hot water that works properly, beds that feel genuinely comfortable after a long day.</p>
-<p>Your room is yours alone—you'll have privacy and the luxury of a hot shower. We handle all luggage transfers, so your pack contains only what you need for the day. Breakfast is full Irish every morning: eggs, bacon, sausage, black pudding, tomatoes, toast, and unlimited tea or coffee. It's the fuel that powers your next stage. Dinners and lunches are yours to discover—part of the adventure is exploring village restaurants and local pubs. Your guides have recommendations, but the choice is yours.</p>
+        <p>- **Accommodation**: Seven nights in 3-star minimum en-suite rooms
+- **Breakfast**: Full Irish breakfast daily
+- **Logistics**: Complete luggage transfer service between each night's accommodation
+- **Navigation**: Detailed route notes and waterproof walking maps for each stage
+- **Safety**: 24/7 emergency contact number and guide support
+- **Pre-Departure**: Comprehensive information pack with packing advice, trail details, and accommodation information
+- **Group Size**: Maximum 8 walkers, ensuring personal attention and a genuine group experience</p>
     </div>
 </section>
 
@@ -533,7 +550,7 @@
     <div class="p-8 border-b border-slate-100">
         <p class="text-slate-500 text-sm font-medium mb-1">From</p>
         <div class="flex items-baseline gap-2">
-            <span class="text-4xl font-black">€885</span>
+            <span class="text-4xl font-black">€929</span>
             <span class="text-slate-500 font-medium">per person</span>
         </div>
         <p class="text-slate-400 text-sm mt-1">Based on 2 sharing</p>
@@ -849,7 +866,7 @@
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-1">Wicklow Way Walking Holiday — 5 Days</h3>
                     <p class="text-sm text-slate-500 mb-3">Moderate · 5 Days</p>
-                    <span class="text-primary font-bold">From &euro;655 pp &rarr;</span>
+                    <span class="text-primary font-bold">From &euro;699 pp &rarr;</span>
                 </div>
             </a>
             <a href="wicklow-way.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
@@ -859,7 +876,7 @@
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-1">Wicklow Way Walking Holiday — 8 Days</h3>
                     <p class="text-sm text-slate-500 mb-3">Moderate · 8 Days</p>
-                    <span class="text-primary font-bold">From &euro;985 pp &rarr;</span>
+                    <span class="text-primary font-bold">From &euro;1029 pp &rarr;</span>
                 </div>
             </a>
             <a href="wicklow-way-10-days.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
@@ -869,7 +886,7 @@
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-1">Wicklow Way 10 Days</h3>
                     <p class="text-sm text-slate-500 mb-3">Moderate · 10 Days</p>
-                    <span class="text-primary font-bold">From &euro;1195 pp &rarr;</span>
+                    <span class="text-primary font-bold">From &euro;1249 pp &rarr;</span>
                 </div>
             </a>
 
