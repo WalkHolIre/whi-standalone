@@ -2789,73 +2789,80 @@ def main():
     # ── Build Blog Listing Page ───────────────────────────────
     log("\nGenerating blog listing page...")
     if posts and generated_blog_slugs:
-        # Featured post (first/newest)
-        fp = posts[0]
-        fp_img = fp.get('featured_image', '') or ''
-        fp_cat = fp.get('category', '') or 'Blog'
-        fp_excerpt = fp.get('excerpt', '') or ''
-        fp_date = fp.get('published_date') or (fp.get('published_at', '')[:10] if fp.get('published_at') else '')
-        try:
-            from datetime import datetime as _dt
-            fp_date_display = _dt.strptime(fp_date[:10], '%Y-%m-%d').strftime('%B %d, %Y')
-        except (ValueError, TypeError):
-            fp_date_display = fp_date
-        fp_read = fp.get('read_time_minutes') or max(1, len((fp.get('content', '') or '').split()) // 200)
+        from datetime import datetime as _dt
+        import re as _re
 
-        featured_html = f'''<section class="group">
-    <a href="blog/{escape(fp.get('slug',''))}.html" class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all">
-        <div class="relative h-[300px] lg:h-full overflow-hidden bg-gradient-to-br from-primary/30 to-brand-purple/30">
-                <img src="{escape(fp_img)}" alt="{escape(fp.get('title',''))}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-            <div class="absolute top-4 left-4">
-                <span class="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wide">Featured</span>
-            </div>
-        </div>
-        <div class="flex flex-col justify-center py-8 pr-8 pl-8 lg:pl-0">
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest mb-3">{escape(fp_cat)}</span>
-            <h2 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-primary transition-colors">{escape(fp.get('title',''))}</h2>
-            <p class="text-slate-600 leading-relaxed mb-6">{escape(fp_excerpt[:200])}</p>
-            <div class="flex items-center gap-4 text-sm text-slate-400">
-                <span>{fp_date_display}</span><span>&bull;</span><span>{fp_read} min read</span>
-            </div>
-        </div>
-    </a>
-</section>'''
+        # Category slug helper
+        def cat_slug(cat):
+            return (cat or 'blog').lower().replace(' ', '-').replace("'", '')
 
-        # Grid cards for remaining posts
+        # Build all blog cards in Stitch design style
         grid_cards = ''
-        for post in posts[1:]:
+        for post in posts:
             ps = post.get('slug', '')
             if ps not in generated_blog_slugs:
                 continue
             p_img = post.get('featured_image', '') or ''
-            p_cat = post.get('category', '') or 'Blog'
+            p_cat = post.get('category', '') or 'Walking Routes'
             p_title = post.get('title', '')
             p_excerpt = post.get('excerpt', '') or ''
-            if len(p_excerpt) > 120:
-                p_excerpt = p_excerpt[:117] + '...'
+            if len(p_excerpt) > 160:
+                p_excerpt = p_excerpt[:157] + '...'
             p_date = post.get('published_date') or (post.get('published_at', '')[:10] if post.get('published_at') else '')
             try:
                 p_date_display = _dt.strptime(p_date[:10], '%Y-%m-%d').strftime('%B %d, %Y')
             except (ValueError, TypeError):
                 p_date_display = p_date
-            p_read = post.get('read_time_minutes') or max(1, len((post.get('content', '') or '').split()) // 200)
 
             grid_cards += f'''
-        <a href="blog/{escape(ps)}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-            <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                <img src="{escape(p_img)}" alt="{escape(p_title)}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">{escape(p_cat)}</span>
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
+            <a href="blog/{escape(ps)}.html" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
-            </div>
-            <div class="p-6 flex-grow flex flex-col">
-                <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{escape(p_title)}</h3>
-                <p class="text-slate-500 text-sm leading-relaxed flex-grow">{escape(p_excerpt)}</p>
-                <div class="flex items-center gap-3 text-xs text-slate-400 mt-4 pt-4 border-t border-slate-100">
-                    <span>{p_date_display}</span><span>&bull;</span><span>{p_read} min read</span>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">{escape(p_cat)}</span>
+                    <span class="text-xs text-slate-500">{p_date_display}</span>
                 </div>
-            </div>
-        </a>'''
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{escape(p_title)}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">{escape(p_excerpt)}</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>'''
+
+        # Build recommended tours (pick up to 4 popular tours)
+        recommended_html = ''
+        featured_tours = sorted(tours, key=lambda t: t.get('sort_order', 999))[:4]
+        for tour in featured_tours:
+            t_slug = tour.get('slug', '')
+            t_name = escape(tour.get('name', ''))
+            t_days = tour.get('duration_days', 0) or 0
+            t_price = tour.get('price_per_person_eur', 0)
+            t_subtitle = escape(tour.get('subtitle', '') or tour.get('short_description', '') or '')
+            if len(t_subtitle) > 40:
+                t_subtitle = t_subtitle[:37] + '...'
+            try:
+                t_price_display = f"&euro;{float(t_price):.0f}" if t_price else ''
+            except (ValueError, TypeError):
+                t_price_display = ''
+
+            recommended_html += f'''
+            <a href="tours/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">{t_name}</h4>
+                    <p class="text-xs text-slate-500 mb-3">{t_subtitle}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">{t_price_display}</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>'''
 
         # Read existing blog.html and replace content between markers
         blog_listing_path = WEBSITE_DIR / 'blog.html'
@@ -2863,21 +2870,19 @@ def main():
             with open(blog_listing_path, 'r') as f:
                 blog_listing = f.read()
 
-            new_blog_content = f'''<!-- Content Area -->
-
-{featured_html}
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            # Inject blog cards into grid
+            new_grid_content = f'''<!-- Content Area -->
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 {grid_cards}
-    </div>
-
-'''
-
-            # Replace everything between <!-- Content Area --> and <!-- Footer -->
-            import re as _re
-            pattern = r'<!-- Content Area -->.*?<!-- Footer -->'
-            replacement = new_blog_content + '<!-- Footer -->'
+    </div>'''
+            pattern = r'<!-- Content Area -->.*?</div>\s*\n\s*\n\s*<!-- Pagination -->'
+            replacement = new_grid_content + '\n\n    <!-- Pagination -->'
             blog_listing_new = _re.sub(pattern, replacement, blog_listing, flags=_re.DOTALL)
+
+            # Inject recommended tours
+            rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)\s*<!-- Populated by build\.py -->\s*(</div>)'
+            rec_replacement = r'\g<1>' + recommended_html + '\n        ' + r'\g<2>'
+            blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new, flags=_re.DOTALL)
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
