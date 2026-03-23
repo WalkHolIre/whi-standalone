@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Blog Archive - Walking Holiday Ireland</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f07c00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23190f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-primary/10 px-6 py-4 lg:px-20 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-3 text-primary">
+<span class="material-symbols-outlined text-3xl">landscape</span>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Walking Holiday Ireland</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Tours</a>
+<a class="text-primary text-sm font-bold border-b-2 border-primary" href="#">Blog</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">About</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors" href="#">Contact</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center rounded-lg bg-primary/5 dark:bg-primary/10 border border-primary/10">
+<span class="material-symbols-outlined pl-3 text-primary/60">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm py-2 px-3 placeholder:text-primary/40" placeholder="Search stories..." type="text"/>
+</div>
+<button class="bg-primary text-white text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-primary/90 transition-all">
+                    Book Now
+                </button>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative h-[320px] md:h-[400px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="Panoramic view of the rolling green Irish countryside at sunset" style="background-image: linear-gradient(rgba(35, 25, 15, 0.6), rgba(35, 25, 15, 0.6)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCfb4YCFrl0qm5fJ9YBbk8pvVUZeOTkG1CIQE8xdnhB_UPGVki1O2-RZ75YCoMXwAM9Lt3fvEn7vc_PZwG6f-R9xEKnb5tVnFYRnz9iqcPJZbEv9YSKL1vl-GXwFtLgtXEmvFe3K1mNHsb-CmH4mNlVL3nlTm5aWZTDQwxLWiyWr69rAdOm64Z7Ca84NYn9_3lmZtI564CW_CXO-o_EtFffZEgpTCrn8Ym503FeqiowTtbClkpk6xarM_hwvoIH6CSGVOfuT1nkLcw3')"></div>
+<div class="relative z-10 text-center px-4">
+<span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Adventure Awaits</span>
+<h1 class="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Stories from the Trail</h1>
+<p class="text-white/90 text-base md:text-xl max-w-2xl mx-auto font-light">
+                        Discover the magic of Ireland, one step at a time. Expert guides, local secrets, and the best trails.
+                    </p>
+</div>
+</section>
+<div class="max-w-7xl mx-auto px-6 py-12">
+<div class="flex flex-wrap gap-3 mb-12 border-b border-primary/10 pb-6">
+<button class="px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold">All Posts</button>
+<button class="px-6 py-2 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:bg-primary/20 transition-colors">Travel Tips</button>
+<button class="px-6 py-2 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:bg-primary/20 transition-colors">Local Culture</button>
+<button class="px-6 py-2 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:bg-primary/20 transition-colors">Trail Stories</button>
+<button class="px-6 py-2 rounded-full bg-primary/10 text-slate-800 dark:text-slate-200 text-sm font-semibold hover:bg-primary/20 transition-colors">Hiking Gear</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Coastal Walking Tips" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Dramatic coastal cliffs of Moher with ocean waves" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjfaP24D-fbO9Ettds4Wv_s-iNp8Z4yf-pPnvldy1Lz80ldKEvQa-armaheJYpONqpzYBSsEvZ02zFncO6vjaDzCbP7GWOVt7XfKNIfmgQ57C1g4ZU0KF4gAN-BC1A3r4B7m2ewLmbNRW0ArPqH1Xh9qcfllLbnY-o4Y33cjlkZgKsjQYmei0x18bJXPZ_cd8jO35CWQr4WYEUrXJB6ClhvN8OUpODAKdq6oHW2nUU9IZfGAUj4yzLJV-IyeSHZ-F7tfHs4Kjyrdlj"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Travel Tips</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">May 12, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Top 10 Tips for Coastal Walking in Ireland</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            From waterproof socks to understanding the Atlantic tides, here is everything you need to know before hitting the wild western shores.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Folklore of Kerry" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Cozy Irish pub with warm lighting and wooden interior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF1d_E57Jh1qdBA3sadZyacshbdtnhyHp69Nhdb8BFGd_tdfiFi5nke_iqzLkQCkmrCp_-NBUjC5i5mbTqSDBmvzVZ-TLry8bdZWqAzS6CMVEDkoSLRYvbVnKJtKODtx2GK6HZmcPfucr4gyarXx80NRmm3OoXC2S2JJGvNn-yc4R4w1YVTDaFpA9z27BW-NgEZuy3KyQu4Wi1lyGURg1Y3nN5XnkbUYFqv8nFagsa1BV8fAN1bL1jSYEwSvVm5oPhFD9rJRPKX_ur"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Local Culture</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">May 08, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">The Rich Folklore of the Kingdom of Kerry</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            Exploring the ancient myths, fairy forts, and legends that haunt the mist-covered mountains of the Ring of Kerry.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Wicklow Way" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Hiker walking through a lush green valley in Wicklow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7QtokdTX8Y1FkLkz0aURsnPJxU3f8Vo-Z0BGbNXPMim5PdFSs3BrNq8Qyd7G7L3AQixBmSA8KNBfXNoX5DAaR0kTJ1XO76jhdb3fWz5aYoPMDmM-P2ujT_TO8wy7bJtU9Zle-LtjGZMP7d_cc2OGuOuPK7hpdZMcwTGtjHfpR181ME-rUEbRW5lW7_cEBzl_OVL5TMlYZPyFz8VUurg4HewSCpRYbxO2iR7NMaHLYoVwQd1W6wBzMiSN4eQijD1LP28tJcRYpHLdt"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Trail Stories</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">May 01, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Hidden Gems of The Wicklow Way</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            Discover the secret viewpoints and quiet forest paths that the guidebooks often overlook in Ireland's oldest trail.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Farming Life" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Sheep grazing on a green hill overlooking the ocean" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANWS4MflJfjB5nZAjHyRcv12z5pMiOQ97MIk1V4rytqURAmIB7vNVVDi8hzK6h8YBUw2m-TGoNb8jC_MrXjxP5JWJuraatmLfoWHINwrBRL3oh1hHMsbZGj4NMTQMbn9AScwC7YP0frTyHGDSiaYKkzVcIDcF7iEiWZcCggzqJPe2TbCdevH6s3UMFr1BsQNqLi_TiwdZ7p0NfwGkjXa8UG-xXh3bwBRwQGqGchvh2znjWtFQvsJV8Ef3rP5nC-Gj6bfNcgJX4T1K6"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Local Culture</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">April 24, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">A Day in the Life of a Connemara Sheep Farmer</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            We sit down with local farmer Padraig to talk about traditions, the landscape, and why the sheep always have the best views.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Gear Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Close up of high quality hiking boots on rocky terrain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4zp8-yX2SSPWPqu1Y_jYaIDkf525xBE1KdHDRnTddxnLuu9SQnjQw27T5T7m5jy7XI3fVt-eKly-WLhXXcwYGVThguYKV3_KdT4ANFkkhmYLQt0o9ViZXp40LNKcnRTo3PcDWDPKHXHSFAFTXJlAFic66IOeCruKiAzYHB2OZnmDSDkdLhse1Db7FaXZaG7h_uslg1zysXxvyv5bz4OQlRen24_LqODKq_LM40kynE7cBZLRT7LsAxI7sLMYAm6ncBF8b7tHyNYux"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Travel Tips</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">April 15, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Choosing the Right Boots for Irish Terrain</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            From boggy marshes to limestone pavements, your footwear makes or breaks the holiday. Our definitive guide to hiking boots.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+<article class="flex flex-col group cursor-pointer">
+<div class="overflow-hidden rounded-xl aspect-[16/10] mb-5">
+<img alt="Neolithic Ireland" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="Ancient stone circle in a misty green field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDioZzy-b9U7t9kcXZPD_PmFvMpxdaG_aQ_sJoXlYv70KsldiNdHbyMFuFzibiGdvYASon0Pl8hxsJbXVqpW48SFFJRvVobkUwlgDXJIHuN4aqHgShv7RfyaB_bI9tw6nUNsDEalDs_6c7vFL9OcrrEW6RZNVP06wkQvV58E62MxpC-_FiMl9JLdcfNPYRcgR2s_nZCxk0AdEmntUerGT0h7vEEVIeDmfDSS6yn29cxypIWqgP8JNGbjUN3aAbAbA6pdbAJD7a3d_rC"/>
+</div>
+<div class="flex items-center gap-3 mb-3">
+<span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Trail Stories</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">April 02, 2024</span>
+</div>
+<h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Walking Through Time: Neolithic Ireland</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4 line-clamp-3">
+                            Discovering the megalithic tombs and standing stones that line the trails of Sligo and Meath.
+                        </p>
+<a class="mt-auto flex items-center gap-2 text-primary font-bold text-sm" href="#">
+                            Read Article <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</article>
+</div>
+<div class="mt-16 flex items-center justify-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-primary/20 text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg bg-primary text-white font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-primary/20 text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-primary/20 text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-lg border border-primary/20 text-slate-700 dark:text-slate-300 hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<section class="bg-primary/5 dark:bg-primary/5 py-20 px-6">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row items-end justify-between mb-10 gap-4">
+<div class="max-w-xl">
+<h2 class="text-3xl font-black mb-4">Recommended Tours</h2>
+<p class="text-slate-600 dark:text-slate-400">Ready to write your own trail story? Check out our most popular walking holidays across the island.</p>
+</div>
+<a class="text-primary font-bold flex items-center gap-2 group" href="#">
+                            View All Tours <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-background-light dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/10">
+<div class="h-40 overflow-hidden relative">
+<img alt="Connemara Way" class="w-full h-full object-cover" data-alt="Green valley trail in Ireland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdAg3TeTgq9dPMp9pXVHKL217al3xQXP3a_gUS-NBsqwBNxy99czXQsQ3y9fMy2WnuXJ2a1Ir2uFDmlVQKpSmR9J_YdEen8AzjjcTaCfvtpO1Pi9tVWs9ob2KJsTJltNAjj1waRjuDOQjE8WCNk0aZiUQey3LEdXmv1QDLQHqpnWf23jTpO85cZS80pxTgwBnZmjrbQ3w2_QXPgtGsA--YdI2MkT-jQLcVuiYFMGmAyma6kfaqgVmCd95CzlM--1e6fu-1X4m2jkLj"/>
+<span class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-primary text-[10px] font-bold px-2 py-1 rounded">7 Days</span>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">The Connemara Way</h4>
+<p class="text-xs text-slate-500 mb-3">Mountains &amp; Coastal Paths</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-primary">€895</span>
+<button class="text-xs font-bold underline underline-offset-4">Details</button>
+</div>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/10">
+<div class="h-40 overflow-hidden relative">
+<img alt="Wicklow Mountains" class="w-full h-full object-cover" data-alt="Rolling hills in Wicklow" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADfaXmvO4GSq42Mvuz5QzB6UoI8ElycQGwS65H9ISGHJYUqY1GNf6HmqSousSnF2b3nES7TdC51Ol5xCRpzydK42bWADkVAm-0e1zwzr-sgSAqruNwFc2WoErI6w9o-tGzDLtHpfiZ-iDubqsZnJUgs4B5cjlactifK8Ip9mM4Nwpa86H-CvSGx2oh0ltqFt1ugK7AtUHOHrSGz44Bz_iimRJrS5KRyQboI0VZvgWn4nJ7JRSUCJ8cQOMA000LIIheeM9m_jaQpAlC"/>
+<span class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">Wicklow Highlights</h4>
+<p class="text-xs text-slate-500 mb-3">The Garden of Ireland</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-primary">€650</span>
+<button class="text-xs font-bold underline underline-offset-4">Details</button>
+</div>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/10">
+<div class="h-40 overflow-hidden relative">
+<img alt="Wild Atlantic Way" class="w-full h-full object-cover" data-alt="Atlantic coastline of Ireland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO9B_TvyH_NwaDkXlTuf8-Fvbox_Y9eekJERz_TxSEe2fIFOJsJREKeB9uBmsQMF997Y45oAOZZ6Gl6S2i0fUED_Ad39lerKJ2egnH8-Yjf4eS9-_JwOAxjVEOyWFTcmWHxkBKULsIjsboqFr2ysvc6SpUFTIxquY5ZVKLS7w_9Ftv1vz-WUkM69sDM-32hkv1wUZaWRSZWWFip2SzL83l7KYTgQe4HfZ4FX_sDoNnq2inQixbedrdcONlbgFu8eEWfcJNfQylcFX1"/>
+<span class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">Wild Atlantic Way</h4>
+<p class="text-xs text-slate-500 mb-3">Burren &amp; Cliffs of Moher</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-primary">€1,020</span>
+<button class="text-xs font-bold underline underline-offset-4">Details</button>
+</div>
+</div>
+</div>
+<div class="bg-background-light dark:bg-background-dark rounded-xl overflow-hidden shadow-sm border border-primary/10">
+<div class="h-40 overflow-hidden relative">
+<img alt="Kerry Way" class="w-full h-full object-cover" data-alt="Mountain pass in Kerry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLroaXpTG9E6PkeZhHHx3YzLAw8LA5M_OYH0OnkKttL3B3KayVQF3S56jW_79syRXVQ-2gOmKjTFl9T-tTxwncrcel50UPTjyfT95XYKN96A-AID2xusYHGep7-2YCikI-VDJF0oPSJYuBmo7uWJ-r9M30y8tN012vNl9-_k3Lx8qZnm29WJqGk2DejtAUbuPlHwSadpXzkBRhvpXklNeI8_GLAG2-wV_2SZLxTAtAqx4kUDYAuvsawkmO6TfLOcscFm5G6N-9BjPM"/>
+<span class="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-primary text-[10px] font-bold px-2 py-1 rounded">6 Days</span>
+</div>
+<div class="p-4">
+<h4 class="font-bold text-base mb-1">The Dingle Way</h4>
+<p class="text-xs text-slate-500 mb-3">Ancient Sites &amp; Sea Air</p>
+<div class="flex justify-between items-center">
+<span class="font-bold text-primary">€780</span>
+<button class="text-xs font-bold underline underline-offset-4">Details</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-20 px-6">
+<div class="max-w-4xl mx-auto bg-primary rounded-2xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-8 text-white relative overflow-hidden">
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute -left-20 -bottom-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+<div class="relative z-10 text-center md:text-left">
+<h2 class="text-3xl font-black mb-4 tracking-tight">Never miss a new story</h2>
+<p class="text-white/80 font-medium">Join 5,000+ hiking enthusiasts. Get the latest trail guides and cultural insights delivered once a month.</p>
+</div>
+<div class="relative z-10 flex flex-col sm:flex-row w-full md:w-auto gap-3 shrink-0">
+<input class="px-5 py-3 rounded-lg text-slate-900 focus:ring-2 focus:ring-white border-none w-full sm:w-64" placeholder="Your email" type="email"/>
+<button class="bg-background-dark text-white font-bold px-8 py-3 rounded-lg hover:bg-slate-800 transition-colors shrink-0">Subscribe</button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-background-dark text-white py-16 px-6 border-t border-white/5">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+<div>
+<div class="flex items-center gap-3 text-primary mb-6">
+<span class="material-symbols-outlined text-3xl">landscape</span>
+<h2 class="text-white text-lg font-bold">Walking Holiday Ireland</h2>
+</div>
+<p class="text-slate-400 text-sm leading-relaxed mb-6">
+                        Curating the finest self-guided and guided walking tours across the Emerald Isle since 2010.
+                    </p>
+<div class="flex gap-4">
+<a class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"></path></svg>
+</a>
+<a class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-colors" href="#">
+<svg class="w-4 h-4" fill="currentColor" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-6">Top Destinations</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">Wicklow Way</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">The Dingle Way</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Kerry Way</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Causeway Coast</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-6">Company</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Meet the Guides</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Contact Us</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-lg mb-6">Contact</h4>
+<ul class="space-y-4 text-slate-400 text-sm">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">location_on</span>
+                            Killarney, County Kerry, Ireland
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">mail</span>
+                            info@walkingholidayireland.com
+                        </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">call</span>
+                            +353 (0) 64 123 4567
+                        </li>
+</ul>
+</div>
+</div>
+<div class="max-w-7xl mx-auto mt-16 pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-slate-500 text-xs">
+<p>© 2024 Walking Holiday Ireland. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="hover:text-white transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-white transition-colors" href="#">Terms of Service</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

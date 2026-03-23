@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ad4e8012-6009-4c7f-929f-245c126de340",
+    "name": "Wild Atlantic Way",
+    "code": "WA",
+    "slug": "wild-atlantic-way",
+    "sort_order": 1
+  },
+  {
+    "id": "05a6c962-12d6-4e91-a76e-805a20976a6e",
+    "name": "Ireland's Ancient East",
+    "code": "AE",
+    "slug": "irelands-ancient-east",
+    "sort_order": 2
+  },
+  {
+    "id": "9a3b739d-e22f-43fe-94e4-718893f29e54",
+    "name": "Hidden Heartlands",
+    "code": "HH",
+    "slug": "hidden-heartlands",
+    "sort_order": 3
+  },
+  {
+    "id": "d47978d7-11f4-4f9a-aff4-7ebc4601a6e2",
+    "name": "Northern Ireland",
+    "code": "NI",
+    "slug": "northern-ireland",
+    "sort_order": 4
+  }
+]

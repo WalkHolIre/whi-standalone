@@ -1,0 +1,728 @@
+================================================================================
+WALKING HOLIDAY IRELAND — MASTER BUSINESS ANALYSIS FILE
+The Reference Document for All Website, Marketing & Operations Projects
+================================================================================
+Last updated: March 2026
+Prepared by: Claude (Anthropic) based on full conversation history with Cliff
+Scope: Website redesign, marketing strategy, multilingual SEO, operations
+
+This file is the single source of truth for all future WHI projects.
+Reference it at the start of any new task — design, copy, tech, or operations.
+
+================================================================================
+PART 1: BUSINESS OVERVIEW
+================================================================================
+
+COMPANY NAME:     Walking Holiday Ireland
+FOUNDED:          2012
+TYPE:             Family-run, self-guided walking holiday operator
+LOCATION:         Dundalk, Co. Louth, Ireland
+FOUNDERS:         Cliff (operations, tech, SEO, customer service) &
+                  Louise Wayenberg (brand identity, personal touch)
+OPERATING SEASON: April – October (peak season)
+
+CORE PRODUCT:
+Self-guided multi-day walking holidays across Ireland and Northern Ireland.
+The company handles everything except the actual walking:
+  - B&B accommodation (handpicked)
+  - Daily luggage transfers (start to end each day)
+  - Detailed route maps and directions
+  - Emergency/support phone line
+  - Tailor-made tour customisation
+  - Travel-to/from logistics advice
+
+BUSINESS MODEL:
+Direct-to-consumer bookings via website. No agents or middlemen for core
+business (some travel agency partnerships exist). Walkers enquire, Cliff/Louise
+respond personally, quote is sent, booking confirmed. Highly personal model
+that is a genuine competitive differentiator.
+
+TRADING DOMAINS:
+  - walkingholidayireland.com   (English — primary global/EN market)
+  - walkingholidayireland.de    (German — mature, well-performing)
+  - wandelvakantieierland.nl    (Dutch — mature, well-performing)
+  - senderismoenirlanda.es      (Spanish — emerging, in development)
+
+================================================================================
+PART 2: THE ROUTES (PRODUCT CATALOGUE)
+================================================================================
+
+All tours are self-guided. Luggage transfer is standard on all routes.
+All routes are point-to-point or loop, bookable in multiple durations.
+
+1. DINGLE WAY
+   - Status: Most popular route — lead product
+   - Region: Dingle Peninsula, Co. Kerry (Wild Atlantic Way)
+   - Character: Coastal, dramatic, iconic Irish landscape
+   - Key selling points: Wild Atlantic coastline, ancient heritage sites,
+     remote beauty, one of Ireland's most iconic walks
+   - Market appeal: Appeals strongly to EN, DE, NL markets
+
+2. KERRY WAY
+   - Status: Second most popular. Well-established.
+   - Region: Ring of Kerry / Iveragh Peninsula, Co. Kerry
+   - Character: Mountainous, varied terrain, famous scenery
+   - Key selling points: Macgillycuddy's Reeks, Killarney National Park,
+     mix of wild upland and coastal scenery
+
+3. WICKLOW WAY
+   - Status: Very popular — strong seller, particularly with Dutch/European market
+   - Region: Wicklow Mountains, Co. Wicklow (closest mountains to Dublin)
+   - Character: Upland moorland, forest, valleys, accessible
+   - Key selling points: Easy access from Dublin, varied terrain, 6- and 7-day
+     options, good for first-time multi-day walkers
+   - Custom itineraries: Cliff creates bespoke 6-day/7-day versions
+
+4. BARROW WAY
+   - Region: River Barrow towpath, Leinster
+   - Character: Flat, gentle, river towpath. Accessible for all fitness levels.
+   - Key selling points: Easy walking, canal/river scenery, heritage towns,
+     great for less-experienced or older walkers
+
+5. BURREN WAY
+   - Region: The Burren, Co. Clare
+   - Character: Unique limestone karst landscape, wildflowers, ancient sites
+   - Key selling points: Completely unique Irish landscape, UNESCO area nearby,
+     Cliffs of Moher proximity
+
+6. CAUSEWAY COAST WAY
+   - Region: North Antrim Coast, Northern Ireland
+   - Character: Dramatic coastal cliffs, famous landmarks
+   - Key selling points: Giant's Causeway UNESCO site, Carrick-a-Rede rope bridge,
+     stunning cliff scenery, Northern Ireland cross-border appeal
+
+7. COOLEY & MOURNES
+   - Region: Co. Louth / Co. Down
+   - Character: Quieter, less-toured mountain landscapes
+   - Key selling points: Off-the-beaten-track, near Dundalk (home territory),
+     Mourne Mountains scenery, less crowded than Kerry routes
+
+TAILOR-MADE TOURS:
+  - Core differentiator vs. booking platforms / aggregators
+  - Any route, any duration, any group size
+  - Custom start dates
+  - Mixed ability accommodation
+  - This is a key section of the website and should be prominently featured
+
+================================================================================
+PART 3: TARGET MARKETS & CUSTOMER PROFILES
+================================================================================
+
+PRIMARY MARKETS (by language/domain):
+
+ENGLISH (EN) — walkingholidayireland.com
+  Demographics: UK, USA, Canada, Australia, Ireland
+  Profile: 45–70 years old, retired or semi-retired professionals,
+           experienced hikers, couples or small groups (2–4 people),
+           good disposable income, plan holidays carefully,
+           value personal service and authenticity
+  Motivation: Walking as the holiday — not just a day trip
+  Booking behaviour: Research-heavy, often email before booking,
+                     long lead time (3–6 months)
+  Key selling message: Personal service, authentic Ireland, stress-free logistics
+
+GERMAN (DE) — walkingholidayireland.de
+  Demographics: German-speaking countries (DE, AT, CH)
+  Profile: Similar age to EN market, strong walking culture (Wandern),
+           tend to plan meticulously, value detailed information,
+           appreciate reliability and clear communication
+  Motivation: Fernwandern (long-distance walking) in a foreign country
+  Key selling message: Alles inklusive (all-inclusive logistics), persönlicher Service,
+                       Wandern auf eigene Faust (self-guided freedom)
+  Notes: This is a mature, well-performing market. Strong SEO already in place.
+         Cliff has written extensive German-language destination pages.
+
+DUTCH (NL) — wandelvakantieierland.nl
+  Demographics: Netherlands, Belgium (Flemish)
+  Profile: Very active walking culture, NL walkers highly experienced,
+           often know exactly what they want, practical and direct communication style,
+           strong interest in Wicklow Way specifically
+  Motivation: Multi-day walking as a serious hobby
+  Key selling message: Zelfstandig wandelen (self-guided), bagage transfer,
+                       persoonlijke service, Ierland op wandelafstand
+  Notes: Mature market. Dutch customers frequently request custom itineraries.
+         Cliff handles Dutch customer service personally.
+
+SPANISH (ES) — senderismoenirlanda.es (emerging)
+  Demographics: Spain (primarily), Latin America (secondary)
+  Domain: senderismoenirlanda.es (preferred domain, in development)
+  Profile: Growing interest in long-distance hiking (Camino culture crossover),
+           younger average age than EN/DE/NL, less familiar with Ireland
+           as a walking destination
+  Key selling message: Senderismo en Irlanda, guiado a tu ritmo, todo incluido
+  Notes: Earlier stage — keyword research underway. Opportunity to establish
+         early SEO dominance in this language/market.
+
+FUTURE MARKETS (planned, not yet active):
+  French (FR), Italian (IT), Swedish (SW), Danish (DK),
+  Japanese (JP), Swiss (CH/multilingual)
+
+================================================================================
+PART 4: BRAND IDENTITY
+================================================================================
+
+BRAND POSITIONING:
+"The personal, family-run alternative to impersonal booking platforms."
+WHI occupies the premium-personal segment: not the cheapest, not the most
+corporate — the most human. Cliff and Louise ARE the brand.
+
+BRAND PERSONALITY:
+  - Warm and personal (not corporate)
+  - Knowledgeable local insiders (not generic travel agents)
+  - Adventurous but reassuring (not extreme, not bland)
+  - Authentic Irish (not theme-park Irish)
+  - Reliable and detail-oriented (not casual or vague)
+
+BRAND VOICE (summary — full guide in seo-copywriter/references/brand-voice.md):
+  - Speak like a knowledgeable Irish friend, not a travel brochure
+  - Use "you" and "your" constantly — the walker is the hero
+  - Reference personal experiences on the trails
+  - Celebrate the achievement of walking long distances
+  - CTAs are friendly invitations, never hard sells
+
+COLOUR PALETTE (CONFIRMED — DO NOT DEVIATE):
+  Primary orange:     #F17E00  (warm, energetic, Irish)
+  Dark purple:        #210747  (depth, premium, contrast)
+  Bright purple:      #3F0F87  (accent, digital vibrancy)
+  Mauve/lilac:        #B58DB6  (soft accent, approachable)
+
+  EXPLICITLY EXCLUDED: Shamrock green, royal blue, gold
+  (These are Irish clichés — WHI is deliberately different)
+
+TYPOGRAPHY DIRECTION:
+  - Clean, readable, modern
+  - Strong hierarchy: H1 large and bold, body text generous size
+  - No decorative "Paddy" fonts — no shamrocks, Celtic knotwork in typography
+  - Professional but warm
+
+PHOTOGRAPHY DIRECTION:
+  - Real walkers on real trails (not stock photo models)
+  - Landscape-first: show the scenery they are walking through
+  - Weather variety: misty, sunny, dramatic skies — Ireland's weather is part of the charm
+  - No clichéd "green Ireland" photo overuse
+  - Show B&Bs and accommodation — cosy, personal, real
+
+================================================================================
+PART 5: WEBSITE ARCHITECTURE (NEW BUILD — 2026)
+================================================================================
+
+PLATFORM: WordPress (existing stack — rebuild, not platform change)
+REFERENCE SITE FOR DESIGN: walkingholidayireland.de (live, reflects current direction)
+
+SITE GOALS (in priority order):
+  1. Convert visitors into enquiries (contact form / email)
+  2. Rank on Google for walking holiday keywords in EN, DE, NL, ES
+  3. Build trust quickly — make visitors feel they are dealing with real people
+  4. Communicate the full value proposition clearly and fast
+  5. Support multilingual expansion without rebuilding the whole site
+
+KEY PAGES / SITE STRUCTURE:
+
+HOMEPAGE
+  - Hero: Dramatic landscape image + core message ("Self-guided walking holidays
+    in Ireland — we handle everything, you enjoy the walk")
+  - Brief brand intro (personal, family-run, since 2012)
+  - Route overview grid (7 routes, visual cards)
+  - Why WHI? (luggage transfer, handpicked B&Bs, personal support, tailor-made)
+  - Social proof (customer testimonials — rotating or static block)
+  - Languages / markets signposted
+  - Clear CTA: "Browse routes" and "Get in touch"
+
+TOURS / ROUTES SECTION
+  - Landing page listing all 7 routes
+  - Individual tour pages for each route (see template below)
+  - Tailor-made tours as a standalone featured section
+
+INDIVIDUAL TOUR PAGE TEMPLATE:
+  - H1: [Tour Name] — Self-Guided Walking Holiday
+  - Hero image: Best landscape shot of that route
+  - Quick facts box: Duration options | Distance | Difficulty | Season | Price from €
+  - Evocative opening paragraph (brand voice)
+  - Day-by-day or stage overview
+  - What's included (luggage transfer, B&Bs, maps, support)
+  - Accommodation section (handpicked, quality)
+  - Getting there (transport logistics to start point)
+  - FAQ section (with FAQ schema markup)
+  - Testimonials specific to that route
+  - CTA: "Ready to walk the [Route]? Get in touch"
+  - Related routes (cross-links)
+
+ABOUT PAGE
+  - Cliff and Louise front and centre — photos, personal story
+  - Founded 2012 — longevity = trust
+  - "Why we do this" — passion for walking and Ireland
+  - The WHI difference (personal service, local knowledge)
+  - Press mentions / awards if applicable
+
+TAILOR-MADE TOURS PAGE
+  - Major content investment — this is a key differentiator
+  - Explain: any route, any duration, any start date, any group size
+  - "Tell us what you want — we'll make it happen"
+  - Examples of custom trips completed
+  - CTA to contact Cliff/Louise directly
+
+TRAVEL INFORMATION / IRELAND GUIDE
+  - Getting to Ireland (flights, ferry)
+  - Best time to visit
+  - What to expect (weather, terrain, difficulty levels)
+  - What to pack / gear guide
+  - FAQs about walking in Ireland
+  - This section drives informational SEO and builds trust
+
+BLOG
+  - Regular posts (1–2 per month ideally)
+  - Topics: Route guides, stage breakdowns, gear advice, best time to walk,
+    Ireland travel tips, customer stories
+  - Each post internally links to relevant tour pages
+  - Primary SEO traffic driver for long-tail keywords
+
+CONTACT / ENQUIRY
+  - Simple form: Name, email, route of interest, approximate dates, group size, message
+  - Response time promise ("We respond within 24 hours")
+  - Cliff and Louise names/photo visible — humanises it
+  - Phone number for European markets (Germans especially like a phone number)
+
+================================================================================
+PART 6: SEO STRATEGY
+================================================================================
+
+OVERALL APPROACH:
+  Multi-domain, multilingual SEO. Each domain targets its language market.
+  The .com targets EN globally. The .de, .nl, .es target their respective markets.
+
+TARGET KEYWORD CATEGORIES:
+
+Commercial (high intent — close to booking):
+  - "self-guided walking holidays ireland"
+  - "kerry way walking holiday"
+  - "dingle way self-guided"
+  - "wicklow way walking tour"
+  - "ireland walking tour with luggage transfer"
+  - German: "Wanderurlaub Irland", "Kerry Way Wanderung"
+  - Dutch: "wandelvakantie Ierland", "Wicklow Way zelfstandig"
+  - Spanish: "senderismo en Irlanda", "vacaciones senderismo Irlanda"
+
+Informational (research phase — blog content):
+  - "how long is the kerry way"
+  - "best time to walk the dingle way"
+  - "wicklow way stages guide"
+  - "what to pack for walking in ireland"
+  - "ireland walking trails difficulty"
+
+Local / geographic long-tail:
+  - "walking holiday killarney"
+  - "dingle peninsula walking tour"
+  - "causeway coast walking route"
+
+SEO TECHNICAL REQUIREMENTS FOR NEW SITE:
+  - Fast page load (Core Web Vitals — especially mobile)
+  - Schema markup: LocalBusiness, TouristTrip, FAQ, Review
+  - Hreflang tags for multilingual (EN/DE/NL/ES)
+  - Clean URL structure: /tours/kerry-way/, /blog/dingle-way-guide/
+  - XML sitemap per domain
+  - Google Search Console connected (already set up for .de)
+  - Internal linking: every tour page links to related tours and blog posts
+
+CONTENT CALENDAR PRIORITIES (blog):
+  - Dingle Way complete guide (EN priority)
+  - Kerry Way training tips
+  - Wicklow Way stages breakdown
+  - Best time to walk in Ireland
+  - Luggage transfer — how it works (addresses a common question)
+  - Self-guided vs. guided walking holidays (comparison — high intent)
+
+================================================================================
+PART 7: CONVERSION STRATEGY
+================================================================================
+
+THE FUNNEL:
+  AWARENESS → Google search / social media
+  CONSIDERATION → Tour pages, blog, About page
+  DECISION → Contact form / email enquiry
+  BOOKING → Personal email/phone exchange with Cliff or Louise
+  ADVOCACY → Reviews, referrals, repeat bookings
+
+KEY CONVERSION PRINCIPLES:
+
+1. TRUST FIRST
+   Visitors are planning a significant trip (1–2 weeks, substantial spend).
+   They need to trust WHI before anything else. Trust signals:
+   - Real photos of Cliff and Louise on About page
+   - Customer testimonials on every key page
+   - "Established 2012" prominently featured
+   - Response time guarantee on contact page
+   - TripAdvisor / Google reviews widget if possible
+
+2. VALUE IS CLEAR BEFORE PRICE
+   Show what's included in detail BEFORE showing the price.
+   Luggage transfer is a surprise delight — many visitors don't know this exists.
+   Make the value proposition undeniable before the cost lands.
+
+3. REDUCE FRICTION TO ENQUIRY
+   Don't force visitors to book without talking first.
+   The CTA is "get in touch" — not "book now and pay."
+   Many of WHI's best customers want to discuss their trip first.
+   Make the enquiry form very simple (5 fields max).
+
+4. TESTIMONIALS ARE CRITICAL
+   Real testimonials from real walkers (by name, nationality, route walked)
+   are the single highest-converting trust element on the site.
+   Aim for: at least 3 testimonials per route page, 6–10 on homepage.
+
+5. URGENCY WITHOUT PRESSURE
+   Mention the season runs April–October.
+   Mention popular dates book up in advance.
+   Never use countdown timers or "only 2 spots left!" fake urgency.
+
+6. MOBILE-FIRST
+   Most initial research happens on mobile (scrolling in bed, on commute).
+   The site must be perfectly usable on a phone.
+   CTA buttons must be thumb-friendly and above the fold on mobile.
+
+================================================================================
+PART 8: PRICING & COMMERCIAL FRAMEWORK
+================================================================================
+
+NOTE: Exact prices are not recorded here. This section covers structure.
+
+PRICING MODEL:
+  - Price per person, based on double occupancy
+  - Solo supplement applied for single travellers
+  - Duration variants (shorter and longer versions of same route)
+  - "Price from €X" on marketing materials — full quote on enquiry
+
+PRICE POSITIONING:
+  - Mid-to-premium range
+  - Never compete on price with cheap booking platforms
+  - Value justification: personal service, handpicked accommodation,
+    luggage transfer, 24/7 support, tailor-made options
+  - Emphasise what's INCLUDED — not just the headline number
+
+WHAT'S INCLUDED (standard):
+  - All accommodation (B&B, en suite where possible)
+  - Luggage transfer daily (bag delivered to next accommodation)
+  - Detailed route maps and notes
+  - Emergency support phone line
+  - Pre-trip planning assistance
+
+WHAT'S NOT INCLUDED (standard):
+  - Flights / transport to Ireland
+  - Meals (breakfast typically included at B&B, evening meals self-arranged)
+  - Travel insurance (always recommend)
+  - Personal kit / equipment
+
+================================================================================
+PART 9: OPERATIONS & BACK OFFICE
+================================================================================
+
+CURRENT OPERATIONAL SETUP:
+  - Cliff manages: all inbound enquiries, quoting, bookings, customer service,
+    SEO, content, tech systems, accommodation coordination
+  - Louise manages: brand identity, personal customer relationships,
+    quality of accommodation partners, route knowledge
+  - No full-time staff — family-run is the USP
+
+ACCOMMODATION PARTNERS:
+  - Network of B&Bs and guesthouses along each route
+  - Handpicked quality — WHI vouches for every property
+  - Booked by WHI on behalf of the customer
+  - Relationships with owners are personal and long-standing
+
+LUGGAGE TRANSFER PARTNERS:
+  - Local contractors along each route
+  - Cliff coordinates transfers daily during season
+  - This is operationally complex but a huge customer value
+
+ENQUIRY-TO-BOOKING WORKFLOW (current):
+  1. Customer emails or submits enquiry form
+  2. Cliff responds personally within 24–48 hours
+  3. Custom quote prepared and sent
+  4. Back-and-forth to confirm dates, accommodation, requirements
+  5. Deposit invoice sent and paid
+  6. Full documentation sent closer to departure
+  7. Support available during the walk
+
+SYSTEMS IN USE / PLANNED:
+  - WordPress (website CMS)
+  - Gutenberg blocks (page building)
+  - Google Search Console (SEO monitoring)
+  - Base44 (custom business control centre — in development)
+    Phases planned: bookings, CRM, service provider coordination,
+    travel agency portals, content management, route libraries, financial tracking
+  - Aisling AI bot (customer care automation via Base44 — in development)
+  - WHI Ground Control (internal CMS for tour/route data)
+
+KEY OPERATIONAL BOTTLENECKS (to solve with tech/systems):
+  - Manual quoting process (time-consuming)
+  - Accommodation availability checking across multiple routes
+  - Luggage transfer coordination during peak season
+  - Multilingual customer service (Cliff handles EN, DE, NL personally)
+  - Route documentation management (keeping maps/notes updated)
+
+================================================================================
+PART 10: COMPETITIVE LANDSCAPE
+================================================================================
+
+DIRECT COMPETITORS:
+  - Other Irish self-guided walking holiday operators
+    (e.g. Go Ireland, Causeway Coast & Glens, various Kerry-based operators)
+  - Larger booking platforms (WalkEurope, Macs Adventure, Sherpa Expeditions)
+  - Note: Large platforms are aggregators — WHI's personal service is the counter
+
+WHI COMPETITIVE ADVANTAGES:
+  1. Personal service — Cliff and Louise respond to every enquiry personally
+  2. Established since 2012 — longevity and trust
+  3. Deep local knowledge — they live in Ireland, walk the routes
+  4. True tailor-made — not just preset packages
+  5. Multilingual capability — EN, DE, NL fluency (rare for small Irish operators)
+  6. Strong SEO — multiple domains, extensive content
+  7. Quality accommodation partnerships — personally vetted
+
+WHERE COMPETITORS BEAT WHI (areas to address):
+  - Online booking capability (WHI is enquiry-based, not instant-book)
+  - Review volume on TripAdvisor / Google (large operators have more reviews)
+  - Marketing budget and paid advertising scale
+  - Mobile app / digital support during the walk
+
+================================================================================
+PART 11: MARKETING CHANNELS
+================================================================================
+
+PRIMARY: Organic Search (SEO)
+  - Main traffic driver — Cliff has invested significantly in this
+  - All three mature domains rank for relevant walking holiday keywords
+  - Content marketing (blog) supports and extends reach
+
+SECONDARY: Direct / Referral
+  - Repeat customers (strong — satisfied walkers come back)
+  - Word of mouth / personal referrals
+  - Previous customers referring friends
+
+TERTIARY: Social Media
+  - Facebook and Instagram (used but not systematically)
+  - Opportunity: more consistent posting, especially seasonal content
+  - Visual content (route photography) performs well for this niche
+
+UNDERDEVELOPED (opportunity):
+  - Email marketing (past customer database is underused)
+  - Google Ads (paid search) — not currently used systematically
+  - Travel agency / B2B partnerships (some existing but not grown)
+  - YouTube / video content (route preview videos would convert well)
+  - PR / press coverage in walking/travel media (EN and DE markets)
+
+================================================================================
+PART 12: DESIGN SPECIFICATIONS FOR NEW WEBSITE
+================================================================================
+
+DESIGN PRINCIPLES:
+  1. Landscape first — the photography IS the product. Use big, beautiful images.
+  2. Personal over corporate — photos of Cliff/Louise, real customers, real trails
+  3. Clean and uncluttered — let the scenery breathe
+  4. Orange (#F17E00) as the accent colour — buttons, highlights, CTAs
+  5. Dark purple (#210747) for depth and premium feel in headers/footers
+  6. Mobile-first — design for phone, scale up to desktop
+  7. Fast loading — large images must be optimised (WebP format, lazy loading)
+
+HOMEPAGE LAYOUT (wireframe description):
+  HEADER: Logo left | Navigation centre | "Get in touch" button (orange) right
+  
+  HERO: Full-width landscape photo (Dingle/Kerry as default)
+         Headline: "Walk Ireland Your Way"
+         Subheadline: "Self-guided walking holidays with luggage transfer,
+                       handpicked B&Bs, and personal support since 2012"
+         Two CTAs: "Browse Routes" (orange filled) | "How It Works" (outlined)
+
+  SECTION 1 — ROUTES GRID:
+         Headline: "Choose Your Walk"
+         7 route cards: Photo | Route Name | Short description | Duration range | Difficulty
+         CTA on each card: "Explore this route →"
+
+  SECTION 2 — WHY WHI:
+         4 icons/blocks:
+         🎒 Luggage Transfer | 🏡 Handpicked B&Bs | 📞 Personal Support | ✏️ Tailor-Made
+         Short paragraph each
+
+  SECTION 3 — TESTIMONIALS:
+         3 rotating testimonials
+         Name, nationality, route walked, star rating
+
+  SECTION 4 — TAILOR-MADE CTA BANNER:
+         Background: dark purple (#210747)
+         Headline: "Want something different? We'll build it for you."
+         Subtext: "Any route, any duration, any group size."
+         CTA: "Tell us what you have in mind" (orange button)
+
+  SECTION 5 — ABOUT / TRUST:
+         Photo of Cliff and Louise
+         "Walking Holiday Ireland since 2012 — run by Cliff and Louise"
+         Short personal statement
+         CTA: "Meet the team →"
+
+  SECTION 6 — LATEST BLOG POSTS (3 cards):
+         Keep the site feeling active and authoritative
+
+  FOOTER:
+         Route links | About | Blog | Contact
+         Language switchers (EN / DE / NL / ES)
+         Trust badges: "Established 2012" | "Family-run" | "All routes personally walked"
+         Contact email and phone
+         Social media icons
+
+NAVIGATION STRUCTURE:
+  Walking Holidays (dropdown: each of 7 routes + Tailor-Made)
+  How It Works
+  About Us
+  Blog / Travel Guides
+  Contact / Enquire
+
+MULTILINGUAL NAVIGATION:
+  Language switcher in header — flag or language code (EN / DE / NL / ES)
+  Each language loads its own domain, not a /de/ subfolder
+
+================================================================================
+PART 13: TECHNOLOGY STACK & BUILD NOTES
+================================================================================
+
+CMS: WordPress
+PAGE BUILDER: Gutenberg (core blocks only — no heavy page builder plugins)
+HOSTING: SiteGround (primary) + Render (for .de domain)
+SEO PLUGIN: Yoast or RankMath (one of these — not both)
+IMAGE FORMAT: WebP with JPEG fallback
+CACHING: Server-side caching (SiteGround) + browser caching configured
+FORMS: Contact Form 7 or Gravity Forms (simple enquiry form)
+ANALYTICS: Google Analytics 4 + Google Search Console (all domains)
+SCHEMA: Manual or Yoast-generated — LocalBusiness + TouristTrip + FAQ + Review
+
+WORDPRESS/GUTENBERG NOTES (from previous work):
+  - Older WordPress/Gutenberg version constraints in use
+  - NO JSON attributes on wp:paragraph or wp:group comments
+  - ALL styling via inline style="" attributes (not class-based for custom styles)
+  - This affects how custom blocks and layouts are built
+  - Any developer must be briefed on this constraint
+
+MULTILINGUAL APPROACH:
+  - Separate domains per language (not WPML subfolder/subdomain approach)
+  - Each domain is a separate WordPress install or multisite
+  - Hreflang tags must be manually confirmed on each domain
+  - Shared brand assets (photos, icons) stored centrally
+
+BASE44 BUSINESS CONTROL CENTRE (in development):
+  - Internal tool only (not customer-facing)
+  - 10-phase build plan covers:
+    Phase 1: Bookings management
+    Phase 2: CRM (customer records)
+    Phase 3: Service provider coordination (accommodation, luggage transfer)
+    Phase 4: Travel agency portals
+    Phase 5: Content management
+    Phase 6: Route libraries
+    Phase 7: Financial tracking
+    Phase 8–10: Advanced automation and reporting
+  - Aisling AI bot integrated for customer enquiry handling
+
+================================================================================
+PART 14: CONTENT ASSETS ALREADY CREATED
+================================================================================
+
+GERMAN-LANGUAGE CONTENT (COMPLETE OR NEAR-COMPLETE):
+  - Destination pages for: Burren, Wicklow Way, Kerry Way, Dingle Way,
+    Barrow Way, Causeway Coast
+  - Large volumes of translated website content
+  - walkingholidayireland.de — live and ranking
+
+DUTCH-LANGUAGE CONTENT:
+  - Core tour pages translated
+  - wandelvakantieierland.nl — live and ranking
+  - Custom itinerary emails (Cliff handles personally)
+
+ENGLISH CONTENT:
+  - Travel to Ireland guide page (converted to Gutenberg blocks)
+  - South Leinster Way route descriptions (drafted)
+  - Wicklow Way stage descriptions (drafted)
+  - 6-day Wicklow Way tour overview (WHI Ground Control CMS)
+
+ROUTE DATA:
+  - Tour data CSVs populated
+  - Seasonal calendar visualisation (April–October peak season)
+  - Synthetic customer reviews generated (for training/testing)
+
+BRAND/MARKETING:
+  - Brand voice guide (see seo-copywriter/references/brand-voice.md)
+  - SEO content structure guide (see seo-copywriter/references/seo-structure.md)
+  - Language notes for DE/NL/ES (see seo-copywriter/references/language-notes.md)
+  - Two Google Stitch prompt documents:
+    1. Design specifications (based on .de site)
+    2. Marketing and product strategy
+
+================================================================================
+PART 15: PRIORITIES & ROADMAP
+================================================================================
+
+IMMEDIATE PRIORITIES (2026):
+
+1. NEW WEBSITE BUILD
+   - Complete redesign based on specifications in Part 12
+   - Mobile-first, fast-loading, brand palette applied
+   - All 7 routes with full tour pages
+   - Tailor-made tours page as a primary CTA
+   - Multilingual architecture confirmed
+   - Schema markup implemented from day one
+
+2. SPANISH MARKET LAUNCH
+   - senderismoenirlanda.es — domain confirmed
+   - Spanish keyword research (Ahrefs) to guide content priorities
+   - Core tour pages in Spanish (Dingle, Kerry, Wicklow as first priority)
+   - Target: basic site live by summer 2026
+
+3. BASE44 CONTROL CENTRE
+   - Continue phased build
+   - Phase 1 (bookings) and Phase 2 (CRM) as immediate priorities
+   - Aisling AI bot for first-response customer enquiries
+
+4. SEO CONTENT PUSH (EN domain)
+   - Blog posts targeting high-volume EN keywords
+   - Dingle Way guide, Kerry Way guide, Wicklow Way guide as priority
+   - Internal linking strategy fully implemented
+
+MEDIUM-TERM (12–18 months):
+  - Email marketing system (past customer re-engagement)
+  - Google Ads test campaigns (EN and DE markets)
+  - Video content (route preview videos — major conversion opportunity)
+  - French market exploration (FR domain + content)
+  - TripAdvisor / Google review generation campaign
+
+LONG-TERM (2–3 years):
+  - French, Italian, Swedish, Danish markets
+  - Japanese market (significant long-distance walking culture)
+  - B2B travel agency portal (via Base44)
+  - Possible online booking (with human confirmation step retained)
+
+================================================================================
+PART 16: WHAT MAKES WHI SPECIAL — THE CORE TRUTH
+================================================================================
+
+When all the SEO, design, and technology falls away, this is what Walking
+Holiday Ireland actually is:
+
+Two people who genuinely love Ireland and love walking, who have spent
+14 years helping other people experience the same joy they feel on these
+trails — and who make sure every logistical detail is handled so that
+their guests can simply walk, breathe, look, and feel alive.
+
+That is the product. Every word on the website, every design choice,
+every marketing message should radiate from that core truth.
+
+The technology is just infrastructure. The heart of this business is
+Cliff picking up the phone when a walker is lost in the rain on the
+Kerry Way, and sorting it out. It's Louise knowing which B&B has the
+best breakfast on the Wicklow Way, because she's stayed there.
+
+No booking platform can replicate that. That is the brand.
+That is what the new website must communicate in the first 5 seconds.
+
+================================================================================
+END OF MASTERFILE
+================================================================================
+
+File created: March 2026
+Use this document as the starting reference for ALL future WHI projects.
+Update it as the business evolves, new routes are added, or markets change.

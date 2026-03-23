@@ -1,0 +1,391 @@
+<!--
+==========================================================
+SEO CONTENT METADATA
+==========================================================
+Title:              Cooley & Mournes Hiking Tour — 8-Day Self-Guided Adventure
+SEO Title:          Cooley & Mournes Hiking Tour | 8-Day Walking Holiday
+SEO Description:    Explore the Cooley Peninsula and Mourne Mountains on this 8-day self-guided hiking tour. B&B accommodation, luggage transfers and stunning trails from €879.
+Short Description:  An 8-day self-guided hiking tour through the Cooley Peninsula and Mourne Mountains — ancient trails, dramatic peaks, medieval Carlingford, and the best of Ireland's Ancient East with B&B accommodation and luggage transfers included.
+Main Keyword:       mourne mountains walking holiday
+Secondary Keywords: cooley peninsula hiking, self-guided hiking tour ireland, mourne way walking, carlingford walking holiday
+==========================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooley & Mournes Hiking Tour | 8-Day Walking Holiday</title>
+    <meta name="description" content="Explore the Cooley Peninsula and Mourne Mountains on this 8-day self-guided hiking tour. B&B accommodation, luggage transfers and stunning trails from €879.">
+    <style>
+        :root {
+            --green-dark: #2d5016;
+            --green-mid: #4a7c2e;
+            --green-light: #e8f0e0;
+            --gold: #c8962e;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+            color: var(--white);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .hero .subtitle {
+            font-size: 1.15em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Quick Facts */
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            padding: 32px 24px;
+            background: var(--green-light);
+            border-bottom: 3px solid var(--green-mid);
+        }
+        .fact {
+            text-align: center;
+        }
+        .fact-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+        .fact-value {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        /* Sections */
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section:last-child { border-bottom: none; }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--green-dark);
+            margin-bottom: 16px;
+        }
+        h3 {
+            font-size: 1.15em;
+            color: var(--green-mid);
+            margin: 20px 0 8px 0;
+        }
+
+        p { margin-bottom: 14px; }
+
+        /* Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .highlight-card {
+            background: var(--green-light);
+            padding: 20px;
+            border-left: 4px solid var(--gold);
+            border-radius: 4px;
+        }
+        .highlight-card strong {
+            display: block;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+
+        /* Itinerary */
+        .day {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            border-left: 3px solid var(--green-light);
+        }
+        .day-header {
+            font-weight: 700;
+            color: var(--green-dark);
+            font-size: 1.05em;
+            margin-bottom: 4px;
+        }
+        .day-stats {
+            font-size: 0.88em;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        /* Lists */
+        .two-col-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 32px;
+            margin-top: 12px;
+        }
+        .list-item {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+        .list-item.included::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--green-mid);
+            font-weight: 700;
+        }
+        .list-item.excluded::before {
+            content: "\2717";
+            position: absolute;
+            left: 0;
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: var(--green-light);
+            padding: 40px 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .cta-section h2 { margin-bottom: 12px; }
+        .cta-button {
+            display: inline-block;
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 14px 36px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.05em;
+            margin-top: 16px;
+            font-family: inherit;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6em; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .two-col-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container">
+        <h1>Cooley &amp; Mourne Mountains Hiking Tour</h1>
+        <p class="subtitle">8 days of ancient trails, dramatic peaks, and Ireland's hidden northeast</p>
+    </div>
+</header>
+
+<!-- QUICK FACTS -->
+<div class="quick-facts">
+    <div class="fact">
+        <div class="fact-label">Duration</div>
+        <div class="fact-value">8 Days / 7 Nights</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Tour Style</div>
+        <div class="fact-value">Self-Guided</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Difficulty</div>
+        <div class="fact-value">Moderate–Challenging</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Daily Distance</div>
+        <div class="fact-value">10–22 km</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Price From</div>
+        <div class="fact-value">&euro;879 pp</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Group Size</div>
+        <div class="fact-value">1–12</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- OVERVIEW -->
+    <section>
+        <h2>Overview</h2>
+        <p>This Mourne Mountains walking holiday takes you through two of Ireland's most rewarding and least-crowded hiking regions — the Cooley Peninsula in County Louth and the majestic Mourne Mountains in County Down. Over eight days, you'll follow ancient paths through forested ridges, cross heather-clad summits, explore the medieval harbour village of Carlingford, and walk the legendary Mourne Way through an Area of Outstanding Natural Beauty.</p>
+
+        <p>What makes this self-guided hiking tour so special? You're crossing the border between the Republic of Ireland and Northern Ireland on foot, experiencing two distinct landscapes that flow seamlessly into each other. One day you're winding through the mythical Cooley Peninsula — home of the Táin Bó Cúailnge, Ireland's greatest epic legend — and the next you're striding along granite peaks that inspired C.S. Lewis's Narnia.</p>
+
+        <p>We take care of all the logistics so you can focus on the walking. Your luggage is transferred each day to your next B&amp;B, you carry only a daypack, and our detailed route notes guide you every step of the way. It's the kind of hiking holiday where you arrive at your accommodation each evening to a warm welcome, a hot shower, and the prospect of a well-earned meal in a local pub.</p>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section>
+        <h2>Tour Highlights</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <strong>Medieval Carlingford</strong>
+                Explore Ireland's best-preserved medieval village — cobbled streets, a Norman castle, fresh oysters, and traditional pubs right on the shores of Carlingford Lough.
+            </div>
+            <div class="highlight-card">
+                <strong>The Mourne Way &amp; Mourne Wall</strong>
+                Walk through an Area of Outstanding Natural Beauty following the Mourne Way past granite peaks, the famous Mourne Wall, and through ancient forests including Tollymore — a Game of Thrones filming location.
+            </div>
+            <div class="highlight-card">
+                <strong>Cross-Border Trail</strong>
+                A unique hiking experience that crosses from the Republic of Ireland into Northern Ireland on foot — two countries, two landscapes, one incredible trail.
+            </div>
+            <div class="highlight-card">
+                <strong>Myths, Legends &amp; History</strong>
+                Walk in the footsteps of the warrior Cúchulainn along the Táin Way, follow old smugglers' paths over the Brandy Pad, and discover Viking heritage at every turn.
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IS THIS TOUR FOR -->
+    <section>
+        <h2>Who Is This Tour For?</h2>
+        <p>This tour is ideal for experienced hillwalkers and adventurous hikers who enjoy moderate to challenging terrain with some longer days. You should be comfortable walking 15–20 km per day over hilly, sometimes rocky ground with notable ascent — particularly on the Cooley Peninsula day which involves 971 metres of climbing.</p>
+
+        <p>It's perfect for walkers who love getting off the beaten track. Unlike Ireland's more famous trails, the Cooley and Mournes feel wonderfully uncrowded. You'll meet more sheep than fellow hikers on many stretches, and the sense of wild solitude is a real draw.</p>
+
+        <p>This self-guided hiking tour suits solo walkers, couples, and small groups who want the freedom to walk at their own pace while having all the logistics handled. A free day in Carlingford also means you can adjust the intensity — choose an easier coastal stroll or tackle the challenging Slieve Foye summit (589m).</p>
+    </section>
+
+    <!-- DAILY ITINERARY -->
+    <section>
+        <h2>Daily Itinerary</h2>
+
+        <div class="day">
+            <div class="day-header">Day 1 — Arrival in Dundalk, County Louth</div>
+            <p>Arrive in Dundalk, your base for the first night. This historic town is perfectly positioned between Dublin (80 km south) and Belfast (100 km north), making it easy to reach by bus, train, or car. Settle into your B&amp;B, explore the town, and enjoy a relaxed dinner — your adventure begins tomorrow.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 2 — Ravensdale Forest to Lumpers Pub</div>
+            <div class="day-stats">15 km &middot; 504 m ascent &middot; approx. 4.5 hours &middot; Moderate</div>
+            <p>Your first walking day takes you through the beautiful Ravensdale Forest and up into the Cooley Mountains. The trail climbs steadily through mixed woodland before opening out onto heather moorland with sweeping views over Dundalk Bay and the Cooley Peninsula. The reward at the end? A well-earned pint at Lumpers Pub in Ballymakellett — a proper Irish welcome to the trail.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 3 — Lumpers to Carlingford via the Cooley Ridge</div>
+            <div class="day-stats">19.6 km &middot; 971 m ascent &middot; approx. 7 hours &middot; Challenging</div>
+            <p>The big day. This is the most demanding and most spectacular stage of the tour, following the Táin Way along the spine of the Cooley Peninsula. You'll cross Maeve's Gap between Slieve Foye and Barnavave, with views that stretch from the Irish Sea to the Mourne Mountains across Carlingford Lough. The descent into medieval Carlingford is unforgettable — the village appears below you like something from another century. Celebrate with fresh Carlingford oysters and a traditional music session.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 4 — Free Day in Carlingford</div>
+            <div class="day-stats">Optional: 8–18 km &middot; Variable difficulty</div>
+            <p>A well-earned rest day in one of Ireland's most charming villages. Wander the medieval streets, visit King John's Castle, browse the craft shops, or sample more of those famous oysters. If your legs are willing, choose from several optional walks: the gentle Carlingford Lough Greenway (6.2 km along an old railway line), a loop up Barnavave for panoramic views, or the challenging summit of Slieve Foye itself.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 5 — Mourne Way Part 1: Carlingford to Rostrevor</div>
+            <div class="day-stats">15 km &middot; 310 m ascent &middot; approx. 5 hours &middot; Moderate</div>
+            <p>Today you cross the border into Northern Ireland and begin the Mourne Way. The trail leads you through Kilbroney Forest and into the foothills of the Mournes. The walking is gentler than yesterday — mixed woodland, riverside paths, and wonderful views over Carlingford Lough. Rostrevor is a pretty Victorian village nestled between the mountains and the lough, perfect for an evening stroll before dinner.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 6 — Mourne Way Part 2: Rostrevor to Newcastle</div>
+            <div class="day-stats">16.1 km &middot; 151 m ascent &middot; approx. 4.5–5.5 hours &middot; Moderate</div>
+            <p>A beautiful day following the Mourne Way through rolling countryside and ancient woodland. The highlight is Tollymore Forest Park — one of Northern Ireland's finest forests and a filming location for Game of Thrones. The trail winds through towering conifers, crosses elegant stone bridges, and follows the Shimna River before emerging in Newcastle, a seaside town sitting in the shadow of Slieve Donard, Northern Ireland's highest peak (853m).</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 7 — Mourne Mountains: Brandy Pad, Hare's Gap &amp; Silent Valley</div>
+            <div class="day-stats">10–22 km &middot; Variable ascent &middot; Variable difficulty</div>
+            <p>Your final walking day offers flexible options in the heart of the Mourne Mountains. The classic route follows the Brandy Pad — an old smugglers' track that winds through dramatic mountain scenery past Hare's Gap, with the famous Mourne Wall as your constant companion. For a gentler finish, explore the beautiful Silent Valley reservoir walk. More ambitious hikers can extend to take in Slieve Donard or follow a longer section of the Mourne Wall.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Day 8 — Departure from Newcastle</div>
+            <p>After a final Irish breakfast, it's time to say goodbye. We can arrange a transfer to Dublin Airport (approximately 2.5–3 hours) or Belfast (1.5 hours). Alternatively, take the bus to Belfast or Dublin at your own pace.</p>
+        </div>
+    </section>
+
+    <!-- ACCOMMODATION -->
+    <section>
+        <h2>Accommodation</h2>
+        <p>Throughout this walking holiday, you'll stay in carefully selected, family-run B&amp;Bs — the kind of places where you're greeted by name and the kettle is always on. Each property has been handpicked by us for its comfort, character, and warm hospitality.</p>
+
+        <p>All rooms are en-suite with private bathrooms, and a full Irish breakfast is included every morning — the proper kind, with locally sourced sausages, eggs, black pudding, soda bread, and strong tea to fuel your day on the trail. Many of our B&amp;B hosts are walkers themselves and love sharing tips about the area.</p>
+
+        <p>We use locally owned accommodation because it gives you the most authentic experience of Irish hospitality, and it means your holiday directly supports the communities you're walking through.</p>
+    </section>
+
+    <!-- BEST TIME OF YEAR -->
+    <section>
+        <h2>Best Time to Walk</h2>
+        <p>This tour runs from <strong>May through September</strong>, with each month offering something different.</p>
+
+        <p><strong>May and June</strong> bring the longest daylight hours — you can be on the trail until 9pm or later, and the hillsides are alive with wildflowers and birdsong. The rhododendrons in Kilbroney Forest are spectacular in late May. These months tend to be drier, though Irish weather is always part of the adventure.</p>
+
+        <p><strong>July and August</strong> are the warmest months, perfect if you prefer milder temperatures on the summits. The Mournes look their finest in summer light, and the heather turns the hillsides purple from late July. These are the busiest months, but you'll still find the trails wonderfully quiet compared to more popular routes.</p>
+
+        <p><strong>September</strong> is a hidden gem — the summer crowds have gone, the light has a gorgeous golden quality, and the autumn colours begin to appear in Tollymore and Kilbroney forests. It's often one of the driest months too.</p>
+    </section>
+
+    <!-- INCLUDED / NOT INCLUDED -->
+    <section>
+        <h2>What's Included</h2>
+        <div class="two-col-list">
+            <div class="list-item included">7 nights B&amp;B accommodation (en-suite rooms)</div>
+            <div class="list-item included">Full Irish breakfast daily</div>
+            <div class="list-item included">Luggage transfers between accommodations</div>
+            <div class="list-item included">Detailed walking maps and route notes</div>
+            <div class="list-item included">Waterproof map case</div>
+            <div class="list-item included">24/7 local emergency contact number</div>
+            <div class="list-item included">Pre-departure information pack</div>
+            <div class="list-item included">Dublin Airport transfer on Day 8</div>
+        </div>
+
+        <h2 style="margin-top: 32px;">What's Not Included</h2>
+        <div class="two-col-list">
+            <div class="list-item excluded">Flights to and from Ireland</div>
+            <div class="list-item excluded">Travel and baggage insurance</div>
+            <div class="list-item excluded">Lunches and evening meals</div>
+            <div class="list-item excluded">Personal hiking gear and equipment</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2>Ready to Walk the Cooley &amp; Mournes?</h2>
+        <p>We'd love to help you plan this adventure. Whether you have questions about the route, want to add extra nights, or are ready to book — drop us a message. We're always happy to chat.</p>
+        <a href="/contact/" class="cta-button">Get in Touch</a>
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+<!--
+==========================================================
+SEO-INHALTE — METADATEN
+==========================================================
+Titel:              Cooley & Mourne Mountains Wandertour — 8 Tage auf eigene Faust
+SEO-Titel:          Cooley & Mournes Wandertour | 8-Tage Wanderurlaub
+SEO-Beschreibung:   Cooley-Halbinsel und Mourne Mountains: 8-tägige Wandertour mit B&B-Unterkunft, Gepäcktransfer und faszinierenden Trails ab €879.
+Kurzbeschreibung:   Eine 8-tägige selbstgeführte Wandertour durch die Cooley-Halbinsel und die Mourne Mountains — uralte Pfade, dramatische Gipfel, das mittelalterliche Carlingford und das Beste von Irlands historischem Osten, inklusive B&B-Unterkunft und Gepäcktransfer.
+Haupt-Keyword:      wanderurlaub irland
+Sekundäres Keyword: mourne mountains wandern, wandern nordirland, irland fernwanderung, selbstgeführte wanderreise irland
+==========================================================
+-->
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooley & Mournes Wandertour | 8-Tage Wanderurlaub</title>
+    <meta name="description" content="Cooley-Halbinsel und Mourne Mountains: 8-tägige Wandertour mit B&B-Unterkunft, Gepäcktransfer und faszinierenden Trails ab €879.">
+    <style>
+        :root {
+            --green-dark: #2d5016;
+            --green-mid: #4a7c2e;
+            --green-light: #e8f0e0;
+            --gold: #c8962e;
+            --text: #333;
+            --text-light: #666;
+            --white: #fff;
+            --border: #ddd;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: var(--text);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-mid) 100%);
+            color: var(--white);
+            padding: 60px 24px;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.2em;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        .hero .subtitle {
+            font-size: 1.15em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        .quick-facts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 16px;
+            padding: 32px 24px;
+            background: var(--green-light);
+            border-bottom: 3px solid var(--green-mid);
+        }
+        .fact { text-align: center; }
+        .fact-label {
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+        .fact-value {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: var(--green-dark);
+        }
+
+        section {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        section:last-child { border-bottom: none; }
+
+        h2 {
+            font-size: 1.6em;
+            color: var(--green-dark);
+            margin-bottom: 16px;
+        }
+        h3 {
+            font-size: 1.15em;
+            color: var(--green-mid);
+            margin: 20px 0 8px 0;
+        }
+
+        p { margin-bottom: 14px; }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 16px;
+        }
+        .highlight-card {
+            background: var(--green-light);
+            padding: 20px;
+            border-left: 4px solid var(--gold);
+            border-radius: 4px;
+        }
+        .highlight-card strong {
+            display: block;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+
+        .day {
+            margin-bottom: 24px;
+            padding-left: 20px;
+            border-left: 3px solid var(--green-light);
+        }
+        .day-header {
+            font-weight: 700;
+            color: var(--green-dark);
+            font-size: 1.05em;
+            margin-bottom: 4px;
+        }
+        .day-stats {
+            font-size: 0.88em;
+            color: var(--text-light);
+            margin-bottom: 6px;
+        }
+
+        .two-col-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 32px;
+            margin-top: 12px;
+        }
+        .list-item {
+            padding: 6px 0 6px 24px;
+            position: relative;
+        }
+        .list-item.included::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            color: var(--green-mid);
+            font-weight: 700;
+        }
+        .list-item.excluded::before {
+            content: "\2717";
+            position: absolute;
+            left: 0;
+            color: #c0392b;
+            font-weight: 700;
+        }
+
+        .cta-section {
+            background: var(--green-light);
+            padding: 40px 24px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 40px 0;
+        }
+        .cta-section h2 { margin-bottom: 12px; }
+        .cta-button {
+            display: inline-block;
+            background: var(--green-dark);
+            color: var(--white);
+            padding: 14px 36px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1.05em;
+            margin-top: 16px;
+            font-family: inherit;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 1.6em; }
+            .highlights-grid { grid-template-columns: 1fr; }
+            .two-col-list { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero">
+    <div class="container">
+        <h1>Cooley &amp; Mourne Mountains Wandertour</h1>
+        <p class="subtitle">8 Tage auf uralten Pfaden, dramatischen Gipfeln und durch Irlands verborgenen Nordosten</p>
+    </div>
+</header>
+
+<!-- KURZÜBERSICHT -->
+<div class="quick-facts">
+    <div class="fact">
+        <div class="fact-label">Dauer</div>
+        <div class="fact-value">8 Tage / 7 Nächte</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Tourart</div>
+        <div class="fact-value">Selbstgeführt</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Schwierigkeit</div>
+        <div class="fact-value">Mittel–Anspruchsvoll</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Tagesetappe</div>
+        <div class="fact-value">10–22 km</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Preis ab</div>
+        <div class="fact-value">&euro;879 p.P.</div>
+    </div>
+    <div class="fact">
+        <div class="fact-label">Gruppengröße</div>
+        <div class="fact-value">1–12</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- ÜBERBLICK -->
+    <section>
+        <h2>Überblick</h2>
+        <p>Dieser Wanderurlaub in Irland führt Sie durch zwei der lohnendsten und am wenigsten überlaufenen Wanderregionen der Grünen Insel — die Cooley-Halbinsel in der Grafschaft Louth und die majestätischen Mourne Mountains in der Grafschaft Down, Nordirland. In acht Tagen folgen Sie uralten Pfaden durch bewaldete Bergrücken, überqueren heidebedeckte Gipfel, erkunden das mittelalterliche Hafenstädtchen Carlingford und wandern auf dem legendären Mourne Way durch ein Gebiet von außergewöhnlicher Naturschönheit (Area of Outstanding Natural Beauty).</p>
+
+        <p>Was diese selbstgeführte Wanderreise so besonders macht? Sie überqueren die Grenze zwischen der Republik Irland und Nordirland zu Fuß und erleben zwei unterschiedliche Landschaften, die nahtlos ineinander übergehen. An einem Tag wandern Sie durch die sagenumwobene Cooley-Halbinsel — Heimat der Táin Bó Cúailnge, Irlands größtem Heldenepos — und am nächsten Tag schreiten Sie über Granitgipfel, die C.S. Lewis zu seinen Narnia-Geschichten inspirierten.</p>
+
+        <p>Wir kümmern uns um die gesamte Logistik, damit Sie sich ganz auf das Wandern konzentrieren können. Ihr Gepäck wird täglich zu Ihrer nächsten Unterkunft transportiert, Sie tragen nur einen Tagesrucksack, und unsere detaillierten Routenbeschreibungen begleiten Sie auf Schritt und Tritt. Es ist die Art von Wanderurlaub, bei der Sie abends in Ihrer Unterkunft herzlich empfangen werden — eine warme Dusche erwartet Sie und anschließend ein wohlverdientes Abendessen im örtlichen Pub.</p>
+    </section>
+
+    <!-- HIGHLIGHTS -->
+    <section>
+        <h2>Highlights der Tour</h2>
+        <div class="highlights-grid">
+            <div class="highlight-card">
+                <strong>Mittelalterliches Carlingford</strong>
+                Entdecken Sie Irlands besterhaltenes mittelalterliches Dorf — kopfsteingepflasterte Gassen, eine normannische Burg, fangfrische Austern und traditionelle Pubs direkt am Ufer des Carlingford Lough.
+            </div>
+            <div class="highlight-card">
+                <strong>Mourne Way &amp; Mourne Wall</strong>
+                Wandern Sie durch ein Gebiet von außergewöhnlicher Naturschönheit entlang des Mourne Way, vorbei an Granitgipfeln, der berühmten Mourne Wall und durch uralte Wälder — darunter Tollymore, ein Game-of-Thrones-Drehort.
+            </div>
+            <div class="highlight-card">
+                <strong>Grenzüberschreitende Wanderung</strong>
+                Ein einzigartiges Wandererlebnis, das Sie zu Fuß von der Republik Irland nach Nordirland führt — zwei Länder, zwei Landschaften, ein unvergesslicher Trail.
+            </div>
+            <div class="highlight-card">
+                <strong>Mythen, Legenden &amp; Geschichte</strong>
+                Wandern Sie auf den Spuren des Kriegers Cúchulainn entlang des Táin Way, folgen Sie alten Schmugglerpfaden über den Brandy Pad und entdecken Sie das Wikinger-Erbe dieser faszinierenden Region.
+            </div>
+        </div>
+    </section>
+
+    <!-- FÜR WEN IST DIESE TOUR -->
+    <section>
+        <h2>Für wen ist diese Tour geeignet?</h2>
+        <p>Diese Tour richtet sich an erfahrene Wanderer und abenteuerlustige Naturliebhaber, die mittleres bis anspruchsvolles Gelände mit einigen längeren Tagesetappen schätzen. Sie sollten 15–20 km pro Tag auf hügeligem, teilweise felsigem Untergrund mit deutlichem Höhenunterschied bewältigen können — insbesondere die Etappe über die Cooley-Halbinsel mit 971 Höhenmetern Aufstieg.</p>
+
+        <p>Die Tour ist perfekt für Wanderer, die abseits der ausgetretenen Pfade unterwegs sein möchten. Anders als auf Irlands bekannteren Fernwanderwegen sind die Cooley Mountains und Mournes herrlich ruhig. Auf vielen Abschnitten begegnen Sie mehr Schafen als anderen Wanderern, und das Gefühl wilder Einsamkeit ist ein besonderer Reiz dieser Route.</p>
+
+        <p>Diese selbstgeführte Wanderreise eignet sich hervorragend für Alleinreisende, Paare und kleine Gruppen, die in ihrem eigenen Tempo wandern möchten und dabei die gesamte Logistik in erfahrenen Händen wissen. Ein freier Tag in Carlingford bietet zudem die Möglichkeit, die Intensität anzupassen — wählen Sie einen gemütlichen Küstenspaziergang oder erklimmen Sie den anspruchsvollen Gipfel des Slieve Foye (589 m).</p>
+    </section>
+
+    <!-- TAGESPLANUNG -->
+    <section>
+        <h2>Tagesplanung</h2>
+
+        <div class="day">
+            <div class="day-header">Tag 1 — Ankunft in Dundalk, Grafschaft Louth</div>
+            <p>Ankunft in Dundalk, Ihrem Ausgangspunkt für die erste Nacht. Die historische Stadt liegt ideal zwischen Dublin (80 km südlich) und Belfast (100 km nördlich) und ist bequem mit Bus, Bahn oder Auto erreichbar. Beziehen Sie Ihr B&amp;B, erkunden Sie die Stadt und genießen Sie ein entspanntes Abendessen — morgen beginnt Ihr Abenteuer.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 2 — Ravensdale Forest nach Lumpers Pub</div>
+            <div class="day-stats">15 km · 504 m Aufstieg · ca. 4,5 Stunden · Mittel</div>
+            <p>Ihr erster Wandertag führt Sie durch den wunderschönen Ravensdale Forest und hinauf in die Cooley Mountains. Der Weg steigt stetig durch Mischwald an, bevor er sich auf Heidemoorland öffnet — mit weiten Ausblicken über die Dundalk Bay und die Cooley-Halbinsel. Die Belohnung am Ende? Ein wohlverdientes Pint im Lumpers Pub in Ballymakellett — ein herzlicher irischer Willkommensgruß auf dem Trail.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 3 — Lumpers nach Carlingford über den Cooley-Kamm</div>
+            <div class="day-stats">19,6 km · 971 m Aufstieg · ca. 7 Stunden · Anspruchsvoll</div>
+            <p>Der große Tag. Dies ist die anspruchsvollste und zugleich spektakulärste Etappe der Tour. Sie folgen dem Táin Way entlang des Kamms der Cooley-Halbinsel und überqueren Maeve's Gap zwischen Slieve Foye und Barnavave. Die Ausblicke reichen von der Irischen See bis zu den Mourne Mountains jenseits des Carlingford Lough. Der Abstieg ins mittelalterliche Carlingford ist unvergesslich — das Dorf erscheint unter Ihnen wie aus einer anderen Zeit. Feiern Sie den Tag mit fangfrischen Carlingford-Austern und einer traditionellen Musiksession im Pub.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 4 — Freier Tag in Carlingford</div>
+            <div class="day-stats">Optional: 8–18 km · Unterschiedliche Schwierigkeit</div>
+            <p>Ein wohlverdienter Ruhetag in einem der charmantesten Dörfer Irlands. Schlendern Sie durch die mittelalterlichen Gassen, besichtigen Sie King John's Castle, stöbern Sie in den Kunsthandwerksläden oder probieren Sie weitere der berühmten Austern. Wenn Ihre Beine es wollen, stehen mehrere optionale Wanderungen zur Auswahl: der gemütliche Carlingford Lough Greenway (6,2 km entlang einer alten Bahnstrecke), eine Rundwanderung auf den Barnavave mit Panoramablick oder die anspruchsvolle Besteigung des Slieve Foye.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 5 — Mourne Way Teil 1: Carlingford nach Rostrevor</div>
+            <div class="day-stats">15 km · 310 m Aufstieg · ca. 5 Stunden · Mittel</div>
+            <p>Heute überqueren Sie die Grenze nach Nordirland und beginnen den Mourne Way. Der Weg führt Sie durch den Kilbroney Forest und in die Ausläufer der Mournes. Die Wanderung ist sanfter als am Vortag — Mischwald, Uferwege und wunderbare Ausblicke über den Carlingford Lough. Rostrevor ist ein hübsches viktorianisches Dorf zwischen Bergen und Lough, ideal für einen Abendspaziergang vor dem Dinner.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 6 — Mourne Way Teil 2: Rostrevor nach Newcastle</div>
+            <div class="day-stats">16,1 km · 151 m Aufstieg · ca. 4,5–5,5 Stunden · Mittel</div>
+            <p>Ein herrlicher Wandertag auf dem Mourne Way durch sanfte Hügellandschaft und uralten Wald. Das Highlight ist der Tollymore Forest Park — einer der schönsten Wälder Nordirlands und Drehort für Game of Thrones. Der Weg schlängelt sich durch hohe Nadelbäume, überquert elegante Steinbrücken und folgt dem Shimna River, bevor er in Newcastle endet — einem Küstenort im Schatten des Slieve Donard, Nordirlands höchstem Berg (853 m).</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 7 — Mourne Mountains: Brandy Pad, Hare's Gap &amp; Silent Valley</div>
+            <div class="day-stats">10–22 km · Variabler Aufstieg · Unterschiedliche Schwierigkeit</div>
+            <p>Ihr letzter Wandertag bietet flexible Optionen im Herzen der Mourne Mountains. Die klassische Route folgt dem Brandy Pad — einem alten Schmugglerpfad durch dramatische Berglandschaft vorbei am Hare's Gap, mit der berühmten Mourne Wall als ständiger Begleiterin. Für ein gemütlicheres Finale erkunden Sie den wunderschönen Silent Valley Stausee. Ambitionierte Wanderer können ihre Tour verlängern und den Slieve Donard besteigen oder einem längeren Abschnitt der Mourne Wall folgen.</p>
+        </div>
+
+        <div class="day">
+            <div class="day-header">Tag 8 — Abreise von Newcastle</div>
+            <p>Nach einem letzten irischen Frühstück heißt es Abschied nehmen. Wir organisieren gerne einen Transfer zum Flughafen Dublin (ca. 2,5–3 Stunden) oder nach Belfast (1,5 Stunden). Alternativ können Sie den Bus nach Belfast oder Dublin in Ihrem eigenen Tempo nehmen.</p>
+        </div>
+    </section>
+
+    <!-- UNTERKUNFT -->
+    <section>
+        <h2>Unterkunft</h2>
+        <p>Während Ihres gesamten Wanderurlaubs übernachten Sie in sorgfältig ausgewählten, familiengeführten B&amp;Bs — der Art von Unterkünften, in denen Sie mit Namen begrüßt werden und der Wasserkocher immer bereitsteht. Jede Unterkunft wurde von uns persönlich für ihren Komfort, ihren Charakter und ihre herzliche Gastfreundschaft ausgewählt.</p>
+
+        <p>Alle Zimmer verfügen über ein eigenes Bad (en-suite), und ein vollständiges irisches Frühstück ist jeden Morgen inklusive — das Richtige, mit Würstchen aus der Region, Eiern, Black Pudding, Sodabrot und starkem Tee, um Sie für den Tag auf dem Trail zu stärken. Viele unserer B&amp;B-Gastgeber sind selbst begeisterte Wanderer und teilen gerne ihre Tipps über die Gegend.</p>
+
+        <p>Wir setzen auf lokale Unterkünfte, weil sie Ihnen das authentischste Erlebnis irischer Gastfreundschaft bieten — und weil Ihr Wanderurlaub so direkt die Gemeinden unterstützt, durch die Sie wandern.</p>
+    </section>
+
+    <!-- BESTE REISEZEIT -->
+    <section>
+        <h2>Beste Reisezeit</h2>
+        <p>Diese Tour findet von <strong>Mai bis September</strong> statt, wobei jeder Monat seinen eigenen Reiz hat.</p>
+
+        <p><strong>Mai und Juni</strong> bringen die längsten Tage — Sie können bis 21 Uhr oder später auf dem Trail unterwegs sein, und die Hänge sind voller Wildblumen und Vogelgesang. Die Rhododendren im Kilbroney Forest sind Ende Mai besonders spektakulär. Diese Monate sind tendenziell trockener, auch wenn das irische Wetter immer Teil des Abenteuers bleibt.</p>
+
+        <p><strong>Juli und August</strong> sind die wärmsten Monate, ideal wenn Sie mildere Temperaturen auf den Gipfeln bevorzugen. Die Mournes zeigen sich im Sommerlicht von ihrer schönsten Seite, und ab Ende Juli färbt die Heide die Hügel in leuchtendem Violett. Dies sind die Hauptreisemonate, aber die Wege sind im Vergleich zu populäreren Routen dennoch herrlich ruhig.</p>
+
+        <p><strong>September</strong> ist ein Geheimtipp — die Sommergäste sind abgereist, das Licht hat eine wunderbare goldene Qualität, und die ersten Herbstfarben zeigen sich in den Wäldern von Tollymore und Kilbroney. Zudem ist der September oft einer der trockensten Monate.</p>
+    </section>
+
+    <!-- IM PREIS ENTHALTEN / NICHT ENTHALTEN -->
+    <section>
+        <h2>Im Preis enthalten</h2>
+        <div class="two-col-list">
+            <div class="list-item included">7 Übernachtungen im B&amp;B (Zimmer mit eigenem Bad)</div>
+            <div class="list-item included">Vollständiges irisches Frühstück täglich</div>
+            <div class="list-item included">Täglicher Gepäcktransfer zwischen den Unterkünften</div>
+            <div class="list-item included">Detaillierte Wanderkarten und Routenbeschreibungen</div>
+            <div class="list-item included">Wasserdichte Kartenhülle</div>
+            <div class="list-item included">24/7 lokale Notfallnummer</div>
+            <div class="list-item included">Informationspaket vor der Abreise</div>
+            <div class="list-item included">Transfer zum Flughafen Dublin am Tag 8</div>
+        </div>
+
+        <h2 style="margin-top: 32px;">Nicht im Preis enthalten</h2>
+        <div class="two-col-list">
+            <div class="list-item excluded">Flüge nach und von Irland</div>
+            <div class="list-item excluded">Reise- und Gepäckversicherung</div>
+            <div class="list-item excluded">Mittagessen und Abendessen</div>
+            <div class="list-item excluded">Persönliche Wanderausrüstung</div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta-section">
+        <h2>Bereit für die Cooley &amp; Mournes Wandertour?</h2>
+        <p>Wir helfen Ihnen gerne bei der Planung dieses Abenteuers. Ob Sie Fragen zur Route haben, zusätzliche Nächte hinzufügen möchten oder bereit sind zu buchen — schreiben Sie uns eine Nachricht. Wir freuen uns auf Ihre Anfrage.</p>
+        <a href="/kontakt/" class="cta-button">Kontakt aufnehmen</a>
+    </div>
+
+</div>
+
+</body>
+</html>

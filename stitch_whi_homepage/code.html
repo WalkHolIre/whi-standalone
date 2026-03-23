@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Walking Holiday Ireland | Self-Guided Irish Walking Tours</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f07c00",
+                        "brand-orange": "#F17E00",
+                        "brand-purple": "#210747",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23190f",
+                        "accent-mauve": "#B58DB6",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-4xl">landscape</span>
+</div>
+<h2 class="text-xl font-extrabold tracking-tight">Walking Holiday <span class="text-primary">Ireland</span></h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Destinations</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">How it Works</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">About Us</a>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                Find Your Walk
+            </button>
+</nav>
+<button class="md:hidden text-slate-900 dark:text-slate-100">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center z-0" style='background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCPa6oXn89X1fuEwP4vJGnC2VcAvaKqQ9LGm-jxwr8bp6hJKq5fIJ_jp3i6bSLOINblpfIO-WNEeXkcsIjoHC_hcIo1flrQ2zXX6Vn-qeOTwMVXq-GJtDtDdKmYxzVk48KRtTAlgiXBIxpYHcD_2CHy5UjAi7O_dPmkiazdELp3zgil0k9YtcSHYKnKZHYVpKxztYXy4iwZuuvAIEMjJShe_9DSkUmGG2Q1krIKsBWvD3QeLFFt_Zr_EcZi8L9gUOvrHU7BE8sriLqE");'>
+</div>
+<div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+<span class="inline-block px-4 py-1.5 mb-6 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full text-white text-xs font-bold tracking-widest uppercase">Experience the Wild Atlantic Way</span>
+<h1 class="text-white text-5xl md:text-7xl font-black leading-tight mb-6 drop-shadow-2xl">
+                Walking Holiday Ireland<br/><span class="text-primary">Your Way!</span></h1>
+<p class="text-white/90 text-lg md:text-2xl font-light leading-relaxed mb-10 max-w-2xl mx-auto">
+                Self-guided walking holidays through Ireland's most stunning landscapes. Everything arranged. You just walk.
+            </p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-xl text-lg font-bold shadow-xl shadow-primary/30 hover:scale-105 transition-transform">
+                    Explore All Walks
+                </button>
+<button class="w-full sm:w-auto bg-white/10 backdrop-blur-md border border-white/30 text-white px-10 py-4 rounded-xl text-lg font-bold hover:bg-white/20 transition-all">
+                    Watch the Film
+                </button>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
+<span class="material-symbols-outlined text-4xl">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Search / Filter Bar -->
+<section class="relative z-20 -mt-12 px-6">
+<div class="max-w-5xl mx-auto bg-white dark:bg-background-dark p-4 md:p-8 rounded-2xl shadow-2xl border border-slate-100 dark:border-slate-800 flex flex-col md:flex-row items-end gap-6">
+<div class="flex-1 w-full">
+<label class="block text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Where do you want to walk?</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">location_on</span>
+<select class="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 font-medium appearance-none">
+<option>The Kerry Way</option>
+<option>Dingle Way</option>
+<option>Wicklow Way</option>
+<option>Connemara &amp; West Mayo</option>
+<option>The Causeway Coast</option>
+</select>
+</div>
+</div>
+<div class="flex-1 w-full">
+<label class="block text-slate-500 dark:text-slate-400 text-xs font-bold uppercase tracking-wider mb-2 ml-1">Duration</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">calendar_today</span>
+<select class="w-full pl-12 pr-4 py-4 bg-slate-50 dark:bg-slate-900 border-none rounded-xl focus:ring-2 focus:ring-primary text-slate-900 dark:text-slate-100 font-medium appearance-none">
+<option>Short Break (3-4 days)</option>
+<option>Full Week (7-8 days)</option>
+<option>Epic Journey (10+ days)</option>
+</select>
+</div>
+</div>
+<button class="w-full md:w-auto px-12 py-4 bg-primary text-white rounded-xl font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">search</span>
+                Search Walks
+            </button>
+</div>
+</section>
+<!-- Trust Section -->
+<section class="py-20 px-6">
+<div class="max-w-7xl mx-auto border-y border-slate-200 dark:border-slate-800 py-12">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2">
+<div class="flex gap-0.5 text-primary">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+<span class="text-2xl font-black text-slate-900 dark:text-slate-100">4.9/5</span>
+</div>
+<p class="text-slate-500 font-medium text-center md:text-left">Based on 1,200+ Tripadvisor and Google reviews.</p>
+</div>
+<div class="flex flex-col items-center border-x-0 md:border-x border-slate-200 dark:border-slate-800 px-8 gap-2">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-4xl text-primary">verified</span>
+<span class="text-3xl font-black">13+ Years</span>
+</div>
+<p class="text-slate-500 font-medium">Of local Irish expertise.</p>
+</div>
+<div class="flex flex-col items-center md:items-end gap-2">
+<div class="flex items-center gap-3">
+<span class="text-3xl font-black">1,000+</span>
+<span class="material-symbols-outlined text-4xl text-primary">groups</span>
+</div>
+<p class="text-slate-500 font-medium">Happy walkers since 2011.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Am I Fit Enough? -->
+<section class="py-24 px-6 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black text-brand-purple dark:text-white mb-6">Am I Fit Enough?</h2>
+<p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium">We offer routes for every level of experience and fitness.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+<!-- Easy -->
+<div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center transition-all hover:shadow-xl group">
+<div class="size-16 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">circle</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-emerald-600 uppercase tracking-widest text-sm">Easy</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Gentle paths, mostly flat. If you can walk 10-15km at a comfortable pace, you'll love these.</p>
+</div>
+<!-- Moderate -->
+<div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center transition-all hover:shadow-xl group">
+<div class="size-16 rounded-full bg-yellow-100 flex items-center justify-center text-yellow-600 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">circle</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-yellow-600 uppercase tracking-widest text-sm">Moderate</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Rolling hills, some climbs. Our most popular level — 15-20km/day.</p>
+</div>
+<!-- Challenging -->
+<div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center transition-all hover:shadow-xl group">
+<div class="size-16 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">circle</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-orange-600 uppercase tracking-widest text-sm">Challenging</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Mountain terrain, longer days. For experienced walkers who want a workout.</p>
+</div>
+<!-- Challenging+ -->
+<div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 flex flex-col items-center text-center transition-all hover:shadow-xl group">
+<div class="size-16 rounded-full bg-red-100 flex items-center justify-center text-red-600 mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">circle</span>
+</div>
+<h3 class="text-xl font-bold mb-3 text-red-600 uppercase tracking-widest text-sm">Challenging+</h3>
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">Serious hill walking. Rare — for the adventurous.</p>
+</div>
+</div>
+<div class="flex flex-col items-center">
+<button class="bg-brand-purple text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:scale-105 transition-transform mb-8">
+                    Take our 60-second fitness quiz
+                </button>
+<div class="flex items-center gap-3 text-slate-500 font-medium">
+<span class="material-symbols-outlined text-brand-orange">sentiment_very_satisfied</span>
+<p>90% of our walkers are over 50. <span class="text-brand-purple dark:text-white font-bold">You've got this.</span></p>
+</div>
+</div>
+</div>
+</section>
+<!-- Emotional Hook -->
+<section class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="w-full lg:w-1/2 space-y-8">
+<div class="inline-flex items-center gap-2 text-accent-mauve font-bold tracking-widest uppercase text-sm">
+<div class="h-[1px] w-8 bg-accent-mauve"></div>
+                        Our Story
+                    </div>
+<h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-slate-100 leading-tight">
+                        A Window to the <br/>
+<span class="text-accent-mauve">Irish Countryside</span>
+</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                        Walking isn't just about moving from A to B. In Ireland, it's about the mist rolling over the Twelve Bens at dawn, the smell of turf fires in a remote Connemara village, and the unexpected hospitality found in a roadside pub.
+                    </p>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                        We don't just provide maps; we provide the narrative of your journey. Every route is personally scouted, every B&amp;B is family-run, and every luggage transfer is seamless.
+                    </p>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all group" href="#">
+                            Read our full philosophy
+                            <span class="material-symbols-outlined transition-all">arrow_forward</span>
+</a>
+</div>
+</div>
+<div class="w-full lg:w-1/2 grid grid-cols-2 gap-4">
+<div class="space-y-4 pt-12">
+<div class="rounded-2xl overflow-hidden shadow-2xl h-64">
+<img alt="Traditional white thatched cottage in rural Ireland" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCptgI-KyAM-eOdISCUSvRWg3QhBmkrPsPIcH7tYUw7zSD7SLPcuxQ_tpZ8F1O63BmKodVKRZOajj3D6DVJSd75ee1bxpBf0yl7I5EYKgN5keBGMGMBSxuBo81QzcFb9GXiBj4Xcj8xmKA1ujMcL7q5fcM0TlfqkeihFhwoftnSPq2ruDoKf5xSesdacm1A_6xqIF8rfz-2U9IYtAQEUgi-_8tKXYJiO3tPopO3-WrSbjhDnm2oWD7hxPYyd8D2DnLddBbf2a9PbqrA"/>
+</div>
+<div class="rounded-2xl overflow-hidden shadow-2xl h-80">
+<img alt="A lone walker on a green mountain ridge overlooking a lake" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsONq5faRzBSs_9dRh7dH6dfu-_dSMqlgDJhS__F1FPJUEaXQyWYusfB8lFZpNuYPyq9I8t5H3A6ZQTWcJMilZuGjaq5bo8SvKkgJ35uXgMcWstXRpwEJNXlN5wnVrLh8Pll7crVf1KQfZOgrvLMBMgTmH0ncmQfQqe3_fEGajxTOVBphBw9fPdPVBtP4BDaFYVc40iVdlqHwRfSc2xIkeeJ68uGXBnrwedVBuLlPz40kp044L9IaXOXC6ukTkYspz7JSjPhLWDNo2"/>
+</div>
+</div>
+<div class="space-y-4">
+<div class="rounded-2xl overflow-hidden shadow-2xl h-80">
+<img alt="Breathtaking views of the rugged Dingle Peninsula coastline" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIOQ5F2qA8OvRlmdenpzIHPk_VfLs65ZwrOGqbSKrgEjwyP5wumEdLmUIdx3hz9XaFeQBvzOAhVKOrp6Hsh1zfWqGVJuG2HMiGOjU8zcRBnbSnPJ9Wlz5_Ee-eQ3ajs4g4mxmoFGHi5-vO5UTw9qGIzMtYTlFgH_qKjnPNhFa7V7KFndtRTHQGt81dSyRDNmmxDib9oT_P9gC984EdIcnd--oJAvPFE4z-T9-ODvlY9OJBQr3D1rR4KzEz9jVb74mxSkZc5imYKqou"/>
+</div>
+<div class="rounded-2xl overflow-hidden shadow-2xl h-64 bg-accent-mauve flex items-center justify-center text-white p-8">
+<p class="text-xl italic font-serif text-center">"Ireland is a place where you can find yourself by getting lost in the landscape."</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- How It Works Timeline Section -->
+<section class="py-24 px-6 bg-white dark:bg-background-dark overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20">
+<h2 class="text-4xl md:text-5xl font-black text-brand-purple dark:text-white mb-6">Everything Arranged. You Just Walk.</h2>
+<p class="text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto leading-relaxed">We handle the logistics, you experience the magic of the Emerald Isle.</p>
+</div>
+<div class="relative">
+<div class="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-100 dark:bg-slate-800 z-0"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 relative z-10">
+<div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 group">
+<div class="size-24 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-2xl shadow-brand-orange/20 relative z-10 transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-4xl">explore</span>
+<div class="absolute -top-1 -right-1 size-8 bg-brand-purple rounded-full flex items-center justify-center text-sm font-bold border-2 border-white">1</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-brand-purple dark:text-white">Choose Your Route</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">Pick from 15+ stunning destinations across Ireland, from rugged coasts to misty mountains.</p>
+</div>
+</div>
+<div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 group">
+<div class="size-24 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-2xl shadow-brand-orange/20 relative z-10 transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-4xl">assignment</span>
+<div class="absolute -top-1 -right-1 size-8 bg-brand-purple rounded-full flex items-center justify-center text-sm font-bold border-2 border-white">2</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-brand-purple dark:text-white">We Plan Everything</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">Handpicked accommodation, luggage transfers, detailed route notes, and GPS navigation files.</p>
+</div>
+</div>
+<div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 group">
+<div class="size-24 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-2xl shadow-brand-orange/20 relative z-10 transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-4xl">hiking</span>
+<div class="absolute -top-1 -right-1 size-8 bg-brand-purple rounded-full flex items-center justify-center text-sm font-bold border-2 border-white">3</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-brand-purple dark:text-white">You Walk &amp; Enjoy</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">Walk entirely at your own pace, on your own schedule. Stop for photos or a pint whenever you wish.</p>
+</div>
+</div>
+<div class="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6 group">
+<div class="size-24 rounded-full bg-brand-orange text-white flex items-center justify-center shadow-2xl shadow-brand-orange/20 relative z-10 transition-transform group-hover:scale-110 duration-300">
+<span class="material-symbols-outlined text-4xl">luggage</span>
+<div class="absolute -top-1 -right-1 size-8 bg-brand-purple rounded-full flex items-center justify-center text-sm font-bold border-2 border-white">4</div>
+</div>
+<div class="space-y-3">
+<h3 class="text-2xl font-bold text-brand-purple dark:text-white">Bags Waiting at Your Door</h3>
+<p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed font-medium">Arrive at your next cozy B&amp;B to find your bags already waiting in your room. Pure simplicity.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50 overflow-hidden">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black text-brand-purple dark:text-white mb-6">What Our Walkers Say</h2>
+<div class="flex justify-center gap-1 text-brand-orange mb-4">
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+<span class="material-symbols-outlined">star</span>
+</div>
+</div>
+<div class="flex gap-8 overflow-x-auto pb-12 hide-scrollbar snap-x">
+<!-- Testimonial 1 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-white dark:bg-background-dark p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 snap-center">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Customer" class="size-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWMOutWpvHy2AW69AIjm7jiGjhDDzl9ieNqiKf56is8RdMjoO03sKI68us_85O8er7iWieiXtE0a7lqH8BU6eqCrGHQwaC7ALeqwH4cyRHkAD8uP8_xs_LphGeesBSjTFNEL3bPKThVjJgri66qNcugLAGIeDpp_LpPMegdA8mvzrstPhaqV72sILq9cFzOtsHU6mQO_R6AXNS-hIWlbmMPtE4JIDCttGPvYrJpYern3rgkeF2oVbEtoOm8ri2ONVxbbZs04IXcMVu"/>
+<div>
+<h4 class="font-bold text-lg">Hans &amp; Petra</h4>
+<p class="text-sm text-slate-500">Munich, Germany</p>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-lg italic mb-6 leading-relaxed">
+                        "The Kerry Way was magical. Every B&amp;B felt like home, and our luggage was always there before we arrived. Truly the stress-free way to see Ireland!"
+                    </p>
+<div class="pt-6 border-t border-slate-100 dark:border-slate-800 text-sm font-bold text-brand-purple dark:text-accent-mauve">
+                        The Kerry Way, 2024
+                    </div>
+</div>
+<!-- Testimonial 2 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-white dark:bg-background-dark p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 snap-center">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Customer" class="size-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVZjvyVrT3S0KTYKravOrH_Zzypo-uvi8BqWBerz5aoarqsAbq5xYBhPD311JLzkNgUdCLL5dhFutQrHJcVNrjQij_7sqC7Fg8oRVFKVLArArXWonI0ByfsH-w-RDqYwBllj6sTYMJtcm_UtjNJmyVTUrokxyj3BdlP8OkGZUFNIg6MMNprrv0k94UNVeoZOES4Ok7ViPmcyvpSasbaeAsQSUsh8kB_LMi6wQh7QY5s9VallHTxpcUXCPVKPOPjFYMjgjnx-xwHUox"/>
+<div>
+<h4 class="font-bold text-lg">David Miller</h4>
+<p class="text-sm text-slate-500">Chicago, USA</p>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-lg italic mb-6 leading-relaxed">
+                        "I was worried about walking solo, but the route notes were incredibly detailed. I never felt lost and met so many friendly locals along the Dingle Way."
+                    </p>
+<div class="pt-6 border-t border-slate-100 dark:border-slate-800 text-sm font-bold text-brand-purple dark:text-accent-mauve">
+                        Dingle Way, 2023
+                    </div>
+</div>
+<!-- Testimonial 3 -->
+<div class="min-w-[320px] md:min-w-[450px] bg-white dark:bg-background-dark p-8 rounded-3xl shadow-xl border border-slate-100 dark:border-slate-800 snap-center">
+<div class="flex items-center gap-4 mb-6">
+<img alt="Customer" class="size-16 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3jingJIIcu8GTT_ImrGvHe5zHB_Od5o39m2MYLPOe5W-u2CX-Q6qjTKXHd_2dy2S0M4Coodpxk14MkAmFNPkEeUgWzsqpXcfAhE9JouqTqpQ-wqneZj1LxjAqLSa-I_Iz8sWveqmrTGaUw4wjuMlOjKAE3RiJFiXyt8paI_3QEOzYqshXth-k3w4d7sjihBMtsQfogAyTSHjJ7e1ButcXsW6dhMi_T23QM7eejB5fNdqDwA0-hqFpiUWVTHF0V-nciOr-rd_92bDq"/>
+<div>
+<h4 class="font-bold text-lg">Sarah Jenkins</h4>
+<p class="text-sm text-slate-500">London, UK</p>
+</div>
+</div>
+<p class="text-slate-600 dark:text-slate-400 text-lg italic mb-6 leading-relaxed">
+                        "The Wicklow Way exceeded all expectations. Cliff and Louise's team were so responsive when I had questions. Can't wait for our next trip!"
+                    </p>
+<div class="pt-6 border-t border-slate-100 dark:border-slate-800 text-sm font-bold text-brand-purple dark:text-accent-mauve">
+                        Wicklow Way, 2024
+                    </div>
+</div>
+</div>
+<div class="text-center mt-12">
+<a class="inline-flex items-center gap-2 text-brand-orange font-bold hover:underline transition-all group" href="#">
+                    Read 200+ reviews on TripAdvisor
+                    <span class="material-symbols-outlined">open_in_new</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Meet Founders Section -->
+<section class="py-24 px-6 bg-white dark:bg-background-dark">
+<div class="max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-1/2 relative">
+<div class="absolute -inset-4 bg-accent-mauve/20 rounded-3xl -z-10 transform rotate-2"></div>
+<img alt="Cliff and Louise on an Irish trail" class="w-full rounded-3xl shadow-2xl grayscale-[20%] hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn5fEi9vGSfMB7PXY6Q-vijUjy9z4QFsag1nw3adXyIJo8KSNvzzENNGB4fQh3z9jMcorYJBeMWqxZjXIH-WDNtza1v7SW-TuBG_dzZBNbskEn-BrepvnfawqIzQz_X41MltbAhtcVWfQjBgbLKO0z8Q1NQqNhpvHfn2pJXIQZ0ZXMjwZ_2Bl4qJr-lRXKFxtpGeOeNg67L0bBiLsZ9kSFpIwgXebdEK807awsb12AGMrMTdu_eqpCaqfCE6o8qbDcl4SGIILG1-fz"/>
+</div>
+<div class="w-full md:w-1/2 space-y-8 text-center md:text-left">
+<h2 class="text-4xl md:text-5xl font-black text-brand-purple dark:text-white">Meet Cliff &amp; Louise</h2>
+<p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                        "We're Cliff and Louise. We started Walking Holiday Ireland because we believe the best way to experience Ireland is on foot. We personally walk every route each year to make sure your experience is perfect."
+                    </p>
+<p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed font-light">
+                        "When you book with us, you're not booking with a corporation — you're planning your trip with people who genuinely love these trails."
+                    </p>
+<div class="pt-4">
+<a class="inline-flex items-center gap-2 bg-brand-orange text-white px-8 py-3 rounded-xl font-bold hover:scale-105 transition-transform" href="#">
+                            Our Story
+                        </a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="py-24 px-6 bg-slate-50 dark:bg-slate-900/50">
+<div class="max-w-4xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-black text-brand-purple dark:text-white mb-6">Your Questions, Answered</h2>
+<p class="text-lg text-slate-600 dark:text-slate-400">Everything you need to know before you lace up your boots.</p>
+</div>
+<div class="space-y-4">
+<!-- FAQ Item -->
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all" open="">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">What if I get lost?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Don't worry! We provide detailed waterproof route notes, physical maps, and digital GPS files for your phone. Plus, our local support team is available 24/7 if you ever need help.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">How does luggage transfer work?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Each morning, you leave your bags at the reception of your B&amp;B by 9:30 AM. While you walk with just a daypack, our drivers move your luggage to your next accommodation. It's usually waiting for you when you arrive!
+                    </div>
+</details>
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">Can I walk solo?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Absolutely! Many of our walkers travel solo. The trails are well-marked and Ireland is a very safe destination for solo travelers. Some B&amp;Bs may have a small single supplement.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">What's the weather like?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Irish weather is famous for its "four seasons in one day." We recommend layering and good waterproof gear. Our walking season runs from March to October when days are longer and weather is generally milder.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">What accommodation do you use?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        We use handpicked, family-run B&amp;Bs and guesthouses known for their hospitality and quality. All rooms are en-suite, and a hearty Irish breakfast is included every morning.
+                    </div>
+</details>
+<details class="group bg-white dark:bg-background-dark rounded-2xl border border-slate-100 dark:border-slate-800 transition-all">
+<summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+<span class="text-lg font-bold text-brand-purple dark:text-white">How far in advance should I book?</span>
+<span class="material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
+</summary>
+<div class="px-6 pb-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                        We recommend booking at least 3-6 months in advance, especially for popular routes like the Dingle Way during the summer months, as accommodation can fill up quickly.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Brief Professional Service Grid -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-extrabold mb-4">Our Professional Service</h2>
+<p class="text-slate-500 max-w-2xl mx-auto text-lg">Reliable local expertise since 2011.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div class="text-center p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-shadow">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">hotel</span>
+</div>
+<h3 class="font-bold text-xl mb-3">Handpicked B&amp;Bs</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Stay in charming, family-run guesthouses known for their warm Irish welcome.</p>
+</div>
+<div class="text-center p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-shadow">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">luggage</span>
+</div>
+<h3 class="font-bold text-xl mb-3">Luggage Transfers</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Walk light. We move your bags from one door to the next every single day.</p>
+</div>
+<div class="text-center p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-shadow">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">map</span>
+</div>
+<h3 class="font-bold text-xl mb-3">Detailed Route Notes</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Our GPS maps and printed guides ensure you never miss a hidden gem or a turn.</p>
+</div>
+<div class="text-center p-8 rounded-2xl bg-white dark:bg-background-dark border border-slate-100 dark:border-slate-800 hover:shadow-xl transition-shadow">
+<div class="size-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-6">
+<span class="material-symbols-outlined text-3xl">support_agent</span>
+</div>
+<h3 class="font-bold text-xl mb-3">24/7 Support</h3>
+<p class="text-slate-500 text-sm leading-relaxed">Rest easy knowing our local team is just a phone call away if you need anything.</p>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 px-6">
+<div class="max-w-7xl mx-auto relative rounded-3xl overflow-hidden bg-background-dark py-20 px-8 text-center">
+<div class="absolute inset-0 opacity-30 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRc7RATeOCymffIUft4OVv0T6kXn4QHF0ExmrZA_rjwmSwfrjS7WBY3XW6mwVt74Ovb9h4E_X2blqtIvB9GXSuExiOBRpSy6qnDBeDUAfw_pKDAZcaHdLzdgPEce1uV8rtHzaMzpn_acRR7d_QmPfzIrxNOct5HkKrLdkSI68y4BsQ2CjP58AOu_20gRx7hngpDj4_hdbfRbH24KjxSODmvmldPYbAyviVI-Ej_x9Bxv8ZcgK8b1QpxsNhQbhNkydAyuYaQB856VR5");'></div>
+<div class="relative z-10">
+<h2 class="text-white text-4xl md:text-5xl font-black mb-8">Ready to start your Irish adventure?</h2>
+<p class="text-white/70 text-lg mb-12 max-w-xl mx-auto">Download our free 2024 brochure or speak with a local expert today.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="bg-primary text-white px-10 py-4 rounded-xl font-bold hover:scale-105 transition-transform">Download Brochure</button>
+<button class="bg-white text-background-dark px-10 py-4 rounded-xl font-bold hover:bg-slate-100 transition-colors">Contact Our Team</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 pt-16 pb-8 px-6">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary text-3xl">landscape</span>
+<h2 class="text-lg font-extrabold">Walking Holiday Ireland</h2>
+</div>
+<p class="text-slate-500 text-sm leading-relaxed mb-6">
+                Crafting authentic, self-guided walking experiences through the heart of the Emerald Isle.
+            </p>
+<div class="flex gap-4">
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">social_leaderboard</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">camera</span></a>
+<a class="text-slate-400 hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Destinations</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">How It Works</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">About Us</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Reviews</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Contact Details</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs">mail</span>
+                    info@walkingholidayireland.com
+                </li>
+<li class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xs">call</span>
+                    +353 (0) 123 4567
+                </li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-xs pt-1">location_on</span>
+                    Main Street, Dingle,<br/>Co. Kerry, Ireland
+                </li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold mb-6">Stay Inspired</h4>
+<p class="text-sm text-slate-500 mb-4">Sign up for monthly Irish walking tips and exclusive tour offers.</p>
+<div class="flex gap-2">
+<input class="flex-1 bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-800 rounded-lg text-sm focus:ring-primary focus:border-primary px-4" placeholder="Your email" type="email"/>
+<button class="bg-primary text-white p-2 rounded-lg hover:bg-primary/90">
+<span class="material-symbols-outlined">send</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Trust Badges & Language -->
+<div class="max-w-7xl mx-auto pt-8 border-t border-slate-100 dark:border-slate-800">
+<div class="flex flex-col md:flex-row items-center justify-between gap-8">
+<div class="flex items-center gap-6 opacity-50 grayscale hover:grayscale-0 transition-all">
+<img alt="Tripadvisor" class="h-6" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAGhMSntVfy3FGLpfobsHvqbxLTmNvOMhE5M_Oam-yL-RYQH8rsAXRO-O-TMyjFFSl5ZPRQ_toIIYEZDUXcGVgGs_bfKEqHpvsHc69ws27LzKEXNLVuujxkW98tAkot2Bm5rl3YOIlX70tnLfHEg9SsgNiTFWnDkhcC9YK-TvlDSJc6Qs8fx2_lyEO1-mIbfV_-_LxhUejbGvzWuY8D7Ygemtofrvl7ZH7F8MR3TonVxNRB7deHR8ylwfaj7szzWbWFVmPNLqJG6Od"/>
+<img alt="Google" class="h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC2Lny3bRCBkk470PqvOqrHqHfRnbO9YjvCNBawQ-RJmtY3U1joYkPCAEKQ15Tk1KfxxLjfMySu23zd6B7F24AhJDGUGB7ztkrpL83RnYqfVXGwZSY538s7ktbRwG9Ivyy6Katl-jW5TYVttMe_TN7G2gNXFaWmJYMEvbMlKoI4_QH0t_6asnVcNepSfAcaPsbisJIwULVNfuRQtiLYNeYkKHg3UdfoGvtg99I8y1Rj0de4DR9pZDjoFTxHZa-6UbDRXjMMM8xE56h"/>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Failte Ireland Approved</span>
+</div>
+<div class="flex flex-wrap items-center justify-center gap-4">
+<span class="text-xs font-bold text-slate-400 uppercase tracking-widest mr-2">Language:</span>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary transition-all text-xs font-medium">
+<span class="w-5 h-3.5 bg-blue-800 rounded-sm overflow-hidden relative"><span class="absolute top-0 left-0 w-full h-1/2 bg-red-600"></span></span> EN
+                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary transition-all text-xs font-medium">
+<span class="w-5 h-3.5 bg-black rounded-sm overflow-hidden relative"><span class="absolute top-1/3 left-0 w-full h-1/3 bg-red-600"></span><span class="absolute top-2/3 left-0 w-full h-1/3 bg-yellow-400"></span></span> DE
+                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary transition-all text-xs font-medium">
+<span class="w-5 h-3.5 bg-red-600 rounded-sm overflow-hidden relative"><span class="absolute top-0 left-0 w-full h-full flex"><span class="w-1/3 bg-red-600"></span><span class="w-1/3 bg-white"></span><span class="w-1/3 bg-blue-800"></span></span></span> FR
+                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:border-primary transition-all text-xs font-medium">
+<span class="w-5 h-3.5 bg-white rounded-sm overflow-hidden relative"><span class="absolute top-0 left-0 w-full h-full flex"><span class="w-1/3 bg-red-600"></span><span class="w-1/3 bg-white"></span><span class="w-1/3 bg-blue-800"></span></span></span> NL
+                </button>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-xs text-slate-400 mb-2">Irish-owned. Walking Ireland since 2012.</p>
+<p class="text-xs text-slate-400">© 2024 Walking Holiday Ireland. All rights reserved. Registered in Ireland #123456.</p>
+</div>
+</div>
+</footer>
+</body></html>

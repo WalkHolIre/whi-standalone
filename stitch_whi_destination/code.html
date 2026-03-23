@@ -1,0 +1,591 @@
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The Kerry Way | Walking Holiday Ireland</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f07c00",
+                        "secondary": "#210747",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23190f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .map-texture {
+            background-image: radial-gradient(#210747 0.5px, transparent 0.5px);
+            background-size: 24px 24px;
+            opacity: 0.1;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display selection:bg-primary/30">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Top Navigation -->
+<header class="sticky top-0 z-50 w-full bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-primary/10 px-4 md:px-20 py-4">
+<div class="max-w-7xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="size-8 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"></path>
+</svg>
+</div>
+<h2 class="text-secondary dark:text-slate-100 text-xl font-extrabold tracking-tight">Walking Holiday Ireland</h2>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Destinations</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Guided Tours</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">Self-Guided</a>
+<a class="text-sm font-semibold hover:text-primary transition-colors" href="#">About</a>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg shadow-primary/20">
+                        Plan This Walk
+                    </button>
+</nav>
+<button class="md:hidden text-secondary dark:text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative w-full h-[85vh] flex items-end overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="Lush green mountains of County Kerry Ireland" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfChgO-5PwfbYWsDj1hSQMTeM8vA64kZMzP6TuMA8kZzajfr7l1v5UPkLTQd-ZWiNvfmAaxOEkIn0K9IiEmoTyrmg6h9pbk-fHnuHiJjm6UT8uqUyJrq11b4h9GTHp_WvKOc1283u2ClvkPubPN-wSe--FTLBqMbh2c_ciGZZ0H4suSl_tL7GxkEyMqaDkjys8XrT6sh4hrtiQqx6bOpRVqM5TypPVLWJD-tFLkw63FdPXg3zL5WBt6E4ht9w6utcwa_7vDp0goH4c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/80 via-secondary/20 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-7xl mx-auto px-6 pb-20 w-full">
+<div class="max-w-3xl">
+<h1 class="text-white text-5xl md:text-8xl font-black leading-[1.1] mb-6 tracking-tighter">
+                        The Kerry Way
+                    </h1>
+<p class="text-white/90 text-lg md:text-2xl font-light leading-relaxed mb-10 max-w-2xl">
+                        Ireland's most iconic long-distance walk through the emerald heart of County Kerry.
+                    </p>
+<div class="flex flex-wrap gap-4 mb-10">
+<div class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl flex flex-col">
+<span class="text-white/60 text-xs uppercase tracking-widest font-bold">Duration</span>
+<span class="text-white text-xl font-bold">8 Days</span>
+</div>
+<div class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl flex flex-col">
+<span class="text-white/60 text-xs uppercase tracking-widest font-bold">Difficulty</span>
+<span class="text-white text-xl font-bold">Moderate</span>
+</div>
+<div class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl flex flex-col">
+<span class="text-white/60 text-xs uppercase tracking-widest font-bold">Distance</span>
+<span class="text-white text-xl font-bold">197km</span>
+</div>
+<div class="bg-white/10 backdrop-blur-md border border-white/20 px-6 py-4 rounded-xl flex flex-col">
+<span class="text-white/60 text-xs uppercase tracking-widest font-bold">Price</span>
+<span class="text-white text-xl font-bold">€845 pp</span>
+</div>
+</div>
+<button class="bg-primary hover:bg-white hover:text-primary text-white px-10 py-5 rounded-full text-lg font-black transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        Plan This Walk <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- 1. Introduction -->
+<section class="py-24 px-6 max-w-7xl mx-auto text-center">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white mb-8">Introduction</h2>
+<p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light leading-relaxed max-w-4xl mx-auto italic">
+                Step into a landscape where the Atlantic mists cling to emerald peaks and ancient legends breathe in the mountain air. The Kerry Way is more than a trail; it is a pilgrimage through Ireland’s rugged soul. You will wander through sun-dappled oak forests, cross high glacial passes, and descend into vibrant coastal villages where the warmth of a turf fire and a friendly greeting always await. It is an atmospheric journey where every turn of the path reveals a new masterpiece of nature.
+            </p>
+</section>
+<!-- 2. Tour Cards -->
+<section class="py-24 bg-white dark:bg-background-dark/30">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white text-center mb-16">Our Curated Kerry Way Tours</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Easy Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-3 border-b-2 border-green-500 pb-2">
+<span class="size-3 bg-green-500 rounded-full"></span>
+<h3 class="text-xl font-black text-secondary dark:text-white uppercase tracking-wider">Easy Walking</h3>
+</div>
+<div class="space-y-4">
+<!-- Easy Card (Inspired by IMAGE_10 layout) -->
+<div class="bg-background-light dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all group">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoED7gVp3WSAW54xXKIWxGyPu_3gVemuBwQndROY15OSwcRczQy8NW6KzLYDjaUIJRBhnq17kZWYMm5C2hBHjE1f5waYtZb9fKkDpjMWKcKiWlXIYHro387E8lvBUiUh3jP15PxlkmDgTAhAKriqjap5KztVOe1XaHjrLsVmFR9uPzzYql7wKdr6deP-tAAKlPf89x0VNfNTU4ettwUzcqNcdx2kkpBfHBEKut9eVyzfW9VSCKAqEcRzgyNOLmEtoF1tWjGfUAHg7a"/>
+<div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-lg text-secondary font-black text-sm">Ab €639</div>
+</div>
+<div class="p-6">
+<h4 class="text-lg font-bold mb-2">Gentle Coastal Escapes</h4>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-green-100 text-green-700 text-[10px] font-black rounded uppercase">5, 6, or 7 Days</span>
+</div>
+<p class="text-sm text-slate-500 mb-6">Level paths along Kenmare Bay with ample time for leisurely village lunches.</p>
+<button class="w-full py-3 bg-white border-2 border-primary text-primary font-bold rounded-xl group-hover:bg-primary group-hover:text-white transition-colors">View Itinerary</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Moderate Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-3 border-b-2 border-orange-500 pb-2">
+<span class="size-3 bg-orange-500 rounded-full"></span>
+<h3 class="text-xl font-black text-secondary dark:text-white uppercase tracking-wider">Moderate Walking</h3>
+</div>
+<div class="space-y-4">
+<div class="bg-background-light dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all group">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfChgO-5PwfbYWsDj1hSQMTeM8vA64kZMzP6TuMA8kZzajfr7l1v5UPkLTQd-ZWiNvfmAaxOEkIn0K9IiEmoTyrmg6h9pbk-fHnuHiJjm6UT8uqUyJrq11b4h9GTHp_WvKOc1283u2ClvkPubPN-wSe--FTLBqMbh2c_ciGZZ0H4suSl_tL7GxkEyMqaDkjys8XrT6sh4hrtiQqx6bOpRVqM5TypPVLWJD-tFLkw63FdPXg3zL5WBt6E4ht9w6utcwa_7vDp0goH4c"/>
+<div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-lg text-secondary font-black text-sm">Ab €645</div>
+</div>
+<div class="p-6">
+<h4 class="text-lg font-bold mb-2">The Complete Kerry Loop</h4>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-orange-100 text-orange-700 text-[10px] font-black rounded uppercase">5, 6, 7, or 8 Days</span>
+</div>
+<p class="text-sm text-slate-500 mb-6">The definitive experience circumnavigating the entire Iveragh Peninsula's beauty.</p>
+<button class="w-full py-3 bg-white border-2 border-primary text-primary font-bold rounded-xl group-hover:bg-primary group-hover:text-white transition-colors">View Itinerary</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Challenging Category -->
+<div class="space-y-6">
+<div class="flex items-center gap-3 border-b-2 border-red-600 pb-2">
+<span class="size-3 bg-red-600 rounded-full"></span>
+<h3 class="text-xl font-black text-secondary dark:text-white uppercase tracking-wider">Challenging Walking</h3>
+</div>
+<div class="space-y-4">
+<div class="bg-background-light dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-100 dark:border-slate-700 shadow-sm hover:shadow-xl transition-all group">
+<div class="relative h-48">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQBEXJG0cbosfDQwY5YQ3KAcbvXEZ9iwhFzElHbEu9Jdq-whRB2VtVbTtARYFcqNYi2uhBED5PxlalrgaOaqZo9rkWjxLJI9wxWxY5oVJC9trMKpFqRz34dKMfRdBHhbdl1bmVitljY776oDOXENVEoxK6WjLiFpS0GT60mdXGRKtzecK3kdxwpv8mhp6CHNLeH4PkhE6SH10rcJ28WX5AYfzgt9wk1Hk_rq8hpn43vlPthq466-C9jBpsguw9_lUmw8j10Ynm1iJA"/>
+<div class="absolute top-4 right-4 bg-white px-3 py-1 rounded-lg text-secondary font-black text-sm">Ab €675</div>
+</div>
+<div class="p-6">
+<h4 class="text-lg font-bold mb-2">The Reeks Summit Traverse</h4>
+<div class="flex gap-2 mb-4">
+<span class="px-2 py-1 bg-red-100 text-red-700 text-[10px] font-black rounded uppercase">6, 7, or 8 Days</span>
+</div>
+<p class="text-sm text-slate-500 mb-6">High-altitude variants for fit hikers seeking Ireland's most dramatic mountain peaks.</p>
+<button class="w-full py-3 bg-white border-2 border-primary text-primary font-bold rounded-xl group-hover:bg-primary group-hover:text-white transition-colors">View Itinerary</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Dynamic Route Maps -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white text-center mb-16">Dynamic Route Maps</h2>
+<div class="relative w-full aspect-[21/9] bg-slate-100 dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-xl">
+<div class="absolute inset-0 map-texture"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<svg class="w-4/5 h-4/5 text-primary/40" fill="none" viewbox="0 0 1000 400">
+<path d="M100 200 C 150 150, 250 250, 350 200 S 550 100, 650 200 S 850 300, 900 200" stroke="currentColor" stroke-dasharray="8 12" stroke-width="4"></path>
+<circle cx="100" cy="200" fill="currentColor" r="8"></circle>
+<circle cx="350" cy="200" fill="currentColor" r="8"></circle>
+<circle cx="650" cy="200" fill="currentColor" r="8"></circle>
+<circle cx="900" cy="200" fill="currentColor" r="8"></circle>
+</svg>
+</div>
+<div class="absolute top-8 left-8 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md p-6 rounded-2xl shadow-lg">
+<h4 class="text-sm font-black uppercase tracking-widest text-secondary dark:text-white mb-4">Interactive Legend</h4>
+<div class="flex flex-col gap-3">
+<label class="flex items-center gap-3 text-sm font-bold text-green-600">
+<input checked="" class="rounded border-green-500 text-green-500" type="checkbox"/> Easy Coastal
+                        </label>
+<label class="flex items-center gap-3 text-sm font-bold text-orange-500">
+<input checked="" class="rounded border-orange-500 text-orange-500" type="checkbox"/> Standard Loop
+                        </label>
+<label class="flex items-center gap-3 text-sm font-bold text-red-600">
+<input checked="" class="rounded border-red-600 text-red-600" type="checkbox"/> Mountain High
+                        </label>
+</div>
+</div>
+<button class="absolute bottom-8 right-8 bg-secondary text-white px-8 py-4 rounded-full font-black flex items-center gap-2 shadow-xl hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">map</span> Explore Full Interactive Map
+                </button>
+</div>
+</section>
+<!-- 4. Full Description -->
+<section class="py-24 bg-white dark:bg-background-dark/20">
+<div class="max-w-4xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white text-center mb-16">A Journey Through the Ages</h2>
+<div class="prose prose-lg dark:prose-invert max-w-none space-y-12 text-slate-600 dark:text-slate-300">
+<div class="space-y-4">
+<h3 class="text-2xl font-black text-secondary dark:text-white">The Ring of Kerry on Foot</h3>
+<p>Unlike the famous driving route that sticks to the main roads, the Kerry Way takes you deep into the inaccessible heart of the Iveragh Peninsula. It follows the "Butter Roads" used for centuries by farmers driving cattle to market and monks seeking solitude in the mountains. Every mile on foot reveals a side of Ireland that remains hidden from the windows of a tour bus, offering a meditative pace that matches the slow rhythm of the landscape.</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-black text-secondary dark:text-white">Coastal Splendor and Atlantic Winds</h3>
+<p>As you round the western edges of the peninsula, the full force and beauty of the Wild Atlantic Way come into view. From the high cliffs of Fogher to the gentle golden sands of Derrynane, the coastline is a constant, shifting companion. You'll witness the Skellig Islands rising like jagged teeth from the ocean—ancient monastic outposts that remind every walker of the extreme dedication required to live in this beautiful, unforgiving environment.</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-black text-secondary dark:text-white">A Journey Through History</h3>
+<p>The trail is a living museum. You will pass Neolithic standing stones, Early Christian beehive huts, and the ruins of grand 19th-century estates like Muckross House. History here is not behind glass; it is under your boots. The silence of the abandoned villages in the Black Valley tells the poignant story of the Great Famine, while the vibrant music in the Killarney pubs celebrates the enduring resilience of the Irish spirit.</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-2xl font-black text-secondary dark:text-white">The Majesty of the Reeks</h3>
+<p>The middle sections of the Kerry Way provide the most dramatic topographical shifts. Crossing the mountain passes under the shadows of the MacGillycuddy's Reeks, you feel the true scale of the glacial forces that carved these valleys. The air is thinner, the views are wider, and the sense of accomplishment as you crest each pass is unparalleled. It is here, amongst the highest peaks in Ireland, that the Kerry Way truly earns its reputation as a world-class trekking destination.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Points of Interest / Highlights -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white text-center mb-16">Trail Highlights</h2>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">waterfall_chart</span>
+<h4 class="text-xl font-bold mb-2">Torc Waterfall</h4>
+<p class="text-slate-500">A magnificent 20m high cascade at the base of Torc Mountain within the National Park.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">castle</span>
+<h4 class="text-xl font-bold mb-2">Ross Castle</h4>
+<p class="text-slate-500">A 15th-century tower house on the shores of Lough Leane, steeped in O'Donoghue legends.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">visibility</span>
+<h4 class="text-xl font-bold mb-2">The Skellig View</h4>
+<p class="text-slate-500">Breathtaking vantage points overlooking the UNESCO-listed Skellig Michael islands.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">terrain</span>
+<h4 class="text-xl font-bold mb-2">Black Valley</h4>
+<p class="text-slate-500">One of the most remote and atmospheric glaciated valleys in all of Ireland.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">beach_access</span>
+<h4 class="text-xl font-bold mb-2">Derrynane Beach</h4>
+<p class="text-slate-500">Turquoise waters and white sands that feel more Caribbean than North Atlantic.</p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl border border-primary/10 shadow-sm flex flex-col items-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">forest</span>
+<h4 class="text-xl font-bold mb-2">Old Kenmare Road</h4>
+<p class="text-slate-500">A historic track through ancient sessile oak woods, home to Ireland's only wild red deer.</p>
+</div>
+</div>
+</section>
+<!-- 6. Top Activities -->
+<section class="py-24 bg-secondary text-white">
+<div class="max-w-7xl mx-auto px-6">
+<h2 class="text-4xl md:text-5xl font-black text-center mb-16">Top Local Activities</h2>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="space-y-4">
+<div class="size-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">pets</span>
+</div>
+<h4 class="text-xl font-bold">Sheep Dog Trials</h4>
+<p class="text-white/70">Watch border collies work in harmony with their shepherds on the mountain slopes.</p>
+</div>
+<div class="space-y-4">
+<div class="size-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">library_music</span>
+</div>
+<h4 class="text-xl font-bold">Trad Music Sessions</h4>
+<p class="text-white/70">Immerse yourself in nightly fiddle and bodhrán sessions in Killarney's best pubs.</p>
+</div>
+<div class="space-y-4">
+<div class="size-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">directions_boat</span>
+</div>
+<h4 class="text-xl font-bold">Lakes of Killarney Boat Tour</h4>
+<p class="text-white/70">A relaxing cruise to Innisfallen Island to see the ancient monastery ruins.</p>
+</div>
+<div class="space-y-4">
+<div class="size-16 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">restaurant</span>
+</div>
+<h4 class="text-xl font-bold">Kenmare Food Trail</h4>
+<p class="text-white/70">Sample gourmet local cheeses and Atlantic seafood in the 'Foodie Capital' of Kerry.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Travel Tips -->
+<section class="py-24 px-6 max-w-5xl mx-auto">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white text-center mb-16">Walker's Travel Tips</h2>
+<div class="space-y-8">
+<div class="flex gap-6 items-start bg-white dark:bg-slate-800 p-8 rounded-2xl border-l-8 border-primary shadow-sm">
+<span class="text-4xl font-black text-primary/20">01</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Layer Like a Pro</h4>
+<p class="text-slate-500">The Atlantic weather changes in minutes. Bring a high-quality waterproof jacket and use a layering system to manage your temperature throughout the day.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start bg-white dark:bg-slate-800 p-8 rounded-2xl border-l-8 border-primary shadow-sm">
+<span class="text-4xl font-black text-primary/20">02</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Break In Your Boots</h4>
+<p class="text-slate-500">Don't arrive with brand new boots. Ensure you've walked at least 50km in your footwear before tackling the Kerry Way's mixed terrain to avoid blisters.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start bg-white dark:bg-slate-800 p-8 rounded-2xl border-l-8 border-primary shadow-sm">
+<span class="text-4xl font-black text-primary/20">03</span>
+<div>
+<h4 class="text-xl font-bold mb-2">Start Early, Linger Late</h4>
+<p class="text-slate-500">The most magical light is in the early morning. Start your walks by 9 AM to ensure you have plenty of time for photos and a well-earned pint at the finish.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Landscape and Scenery -->
+<section class="py-24 bg-background-light dark:bg-background-dark/30">
+<div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center gap-12">
+<div class="flex-1 space-y-6">
+<h2 class="text-4xl font-black text-secondary dark:text-white">Landscape &amp; Scenery</h2>
+<p class="text-xl text-slate-600 dark:text-slate-300 leading-relaxed">
+                        The Kerry Way showcases a masterclass in geodiversity. You’ll traverse the purple-hued sandstone of the MacGillycuddy's Reeks, Ireland’s highest mountain range, and look down into deep, glaciated valleys carved during the last Ice Age. The scenery shifts dramatically from the silent, mirror-like lakes of Killarney to the thunderous Atlantic coastline where jagged cliffs meet the ocean. It is a world of vibrant greens, shifting greys, and the brilliant blue of coastal bays—a visual symphony of the Irish wilderness.
+                    </p>
+</div>
+<div class="flex-1">
+<img class="rounded-3xl shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCh_7lBXUEigCsFYLfG9jDSqZGR4Tbnlv_bewHoCWYuxS89bMtXgMunbqn4gYFk0xQP9vzGEwxql5v_XfsnAS9SbT9YDO4HKLjdt97mrjqtYF9SuCe4GZ8g1nAEF0f_7A1PhTLNsHEuKdq-XPBjHl7ITPykk8uVx9W-s7zv7SwZgamQD9nOrejdLcIsQL-SIkmelM3VWOxGtkrzKyj515i19hniEffZH9-VBKlR4mkHgujGCEUuK3pnKqTIoRVKGQbeTf0KHgHzf4yH"/>
+</div>
+</div>
+</section>
+<!-- 9. Walking Difficulty -->
+<section class="py-24 px-6 max-w-7xl mx-auto text-center">
+<h2 class="text-4xl md:text-5xl font-black text-secondary dark:text-white mb-8">Walking Difficulty</h2>
+<p class="text-xl md:text-2xl text-slate-600 dark:text-slate-300 font-light leading-relaxed max-w-4xl mx-auto">
+                While the Kerry Way is classified as moderate, it demands a baseline of fitness and a steady foot. Expect a mix of old boreens (narrow lanes), grassy hillside tracks, and rocky mountain passes. The elevation gain can be significant on certain days, with steep ascents followed by long, rewarding descents. Underfoot conditions can be boggy after rain, requiring waterproof footwear. It is a walk that challenges the heart rate on the climbs but offers enough gentle valley sections to recover.
+            </p>
+</section>
+<!-- 10. Who Is This For? -->
+<section class="py-24 bg-white dark:bg-slate-900">
+<div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+<h2 class="text-4xl font-black text-secondary dark:text-white">Who Is This For?</h2>
+<p class="text-xl text-slate-600 dark:text-slate-300 italic">
+                    This route is perfect for active travelers who crave a deep connection with nature and culture. If you enjoy a "slow travel" approach where the journey matters as much as the destination, you’ll find it here. It appeals to hikers who appreciate a mix of wilderness solitude and the cheerful buzz of a local village pub. Whether you are a solo seeker of peace or a group of friends celebrating a milestone, the Kerry Way offers a timeless sense of adventure for all.
+                </p>
+<div class="flex justify-center gap-4 pt-4">
+<span class="bg-primary/10 text-primary px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Hikers 50+</span>
+<span class="bg-primary/10 text-primary px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Culture Seekers</span>
+<span class="bg-primary/10 text-primary px-6 py-2 rounded-full text-sm font-bold uppercase tracking-widest">Nature Lovers</span>
+</div>
+</div>
+</section>
+<!-- 11. Best Time to Visit -->
+<section class="py-24 px-6 bg-slate-50 dark:bg-background-dark/30">
+<div class="max-w-4xl mx-auto text-center">
+<h2 class="text-4xl font-black text-secondary dark:text-white mb-6">Best Time to Visit</h2>
+<p class="text-lg text-slate-500 mb-12 max-w-2xl mx-auto">
+                    The Kerry climate is influenced by the Gulf Stream, keeping it mild but moist. Late spring (May) and early autumn (September) often provide the clearest skies and most comfortable walking temperatures.
+                </p>
+<div class="grid grid-cols-6 lg:grid-cols-12 gap-2 mb-10">
+<div class="aspect-square bg-slate-200 dark:bg-slate-800 flex items-center justify-center rounded text-xs font-bold text-slate-400">JAN</div>
+<div class="aspect-square bg-slate-200 dark:bg-slate-800 flex items-center justify-center rounded text-xs font-bold text-slate-400">FEB</div>
+<div class="aspect-square bg-slate-200 dark:bg-slate-800 flex items-center justify-center rounded text-xs font-bold text-slate-400">MAR</div>
+<div class="aspect-square bg-yellow-400/30 border-2 border-yellow-400 flex items-center justify-center rounded text-xs font-bold text-yellow-700 dark:text-yellow-200">APR</div>
+<div class="aspect-square bg-green-500/30 border-2 border-green-500 flex items-center justify-center rounded text-xs font-bold text-green-700 dark:text-green-200">MAY</div>
+<div class="aspect-square bg-green-500/30 border-2 border-green-500 flex items-center justify-center rounded text-xs font-bold text-green-700 dark:text-green-200">JUN</div>
+<div class="aspect-square bg-green-500/30 border-2 border-green-500 flex items-center justify-center rounded text-xs font-bold text-green-700 dark:text-green-200">JUL</div>
+<div class="aspect-square bg-green-500/30 border-2 border-green-500 flex items-center justify-center rounded text-xs font-bold text-green-700 dark:text-green-200">AUG</div>
+<div class="aspect-square bg-green-500/30 border-2 border-green-500 flex items-center justify-center rounded text-xs font-bold text-green-700 dark:text-green-200">SEP</div>
+<div class="aspect-square bg-yellow-400/30 border-2 border-yellow-400 flex items-center justify-center rounded text-xs font-bold text-yellow-700 dark:text-yellow-200">OCT</div>
+<div class="aspect-square bg-slate-200 dark:bg-slate-800 flex items-center justify-center rounded text-xs font-bold text-slate-400">NOV</div>
+<div class="aspect-square bg-slate-200 dark:bg-slate-800 flex items-center justify-center rounded text-xs font-bold text-slate-400">DEC</div>
+</div>
+<div class="flex flex-wrap justify-center gap-6">
+<div class="flex items-center gap-2">
+<div class="size-3 bg-green-500 rounded-full"></div>
+<span class="text-sm font-medium">Ideal Conditions</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 bg-yellow-400 rounded-full"></div>
+<span class="text-sm font-medium">Good / Variable</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-3 bg-slate-300 rounded-full"></div>
+<span class="text-sm font-medium">Off-Season</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 12. Culture and Cuisine Highlights -->
+<section class="py-24 bg-secondary text-white relative overflow-hidden">
+<div class="absolute right-0 bottom-0 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[300px]">restaurant_menu</span>
+</div>
+<div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
+<h2 class="text-4xl font-black mb-8">Culture &amp; Cuisine Highlights</h2>
+<p class="text-xl text-white/80 leading-relaxed mb-10">
+                    The trail is only half the story. Evenings in Kerry belong to the lively hum of the local pub, where the 'craic' is as fresh as the morning's catch. Feast on wild Atlantic mussels, traditional Irish stew, and warm soda bread. Experience a 'seisún'—an informal gathering of local musicians playing jigs and reels—that will have you tapping your feet long after you've finished your pint of Guinness.
+                </p>
+<div class="flex justify-center gap-6">
+<div class="text-center">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mx-auto mb-2">
+<span class="material-symbols-outlined">set_meal</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest">Atlantic Seafood</span>
+</div>
+<div class="text-center">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mx-auto mb-2">
+<span class="material-symbols-outlined">nightlife</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest">Live Music</span>
+</div>
+<div class="text-center">
+<div class="size-16 rounded-full bg-primary/20 flex items-center justify-center text-primary mx-auto mb-2">
+<span class="material-symbols-outlined">groups</span>
+</div>
+<span class="text-xs font-bold uppercase tracking-widest">Local Craic</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 13. Accommodation Types -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-black text-secondary dark:text-white mb-4">A Rest Well Deserved</h2>
+<p class="text-xl text-slate-500 italic">"Hand-picked by us. We stay in every one."</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-2xl mb-4 h-80">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Traditional cozy Irish guest house exterior" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoED7gVp3WSAW54xXKIWxGyPu_3gVemuBwQndROY15OSwcRczQy8NW6KzLYDjaUIJRBhnq17kZWYMm5C2hBHjE1f5waYtZb9fKkDpjMWKcKiWlXIYHro387E8lvBUiUh3jP15PxlkmDgTAhAKriqjap5KztVOe1XaHjrLsVmFR9uPzzYql7wKdr6deP-tAAKlPf89x0VNfNTU4ettwUzcqNcdx2kkpBfHBEKut9eVyzfW9VSCKAqEcRzgyNOLmEtoF1tWjGfUAHg7a"/>
+</div>
+<h4 class="text-xl font-bold text-secondary dark:text-white">Boutique B&amp;Bs</h4>
+<p class="text-slate-500">Traditional hospitality with legendary breakfasts.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-2xl mb-4 h-80">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Warm and comfortable cottage bedroom with quilts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMsqs6k5tlfkelbWZSKCuBCbDaVKJqs8GF_A45QsjzxK8H_POLxhCsZeFvVGSuXX_EIhr4alt03Wo6YomRsv_v3ENi7S4Vfs2EjPnOYVEqeS2cOXxhGK4xmEUwAKHLHbucNt7xZcJo2SG_eSgGstsqAUK4xpsFwQYzJcQSMBeN3SbpGyHH8lqT8n0ztGiy1wbxuT0FlmXi19FPtWsAUe7sk_jbtr6OSlXAjLY1FZEFDaslaaeOOimDXELKdLxdYBPxUWEfOcIyfM1P"/>
+</div>
+<h4 class="text-xl font-bold text-secondary dark:text-white">Coastal Guesthouses</h4>
+<p class="text-slate-500">Wake up to the sounds of the Atlantic tides.</p>
+</div>
+<div class="group cursor-pointer">
+<div class="overflow-hidden rounded-2xl mb-4 h-80">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Charming dining room with Irish breakfast layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6RDnxQKLxnvJ7mhg2HcCze47QJgiUC3OiimqJh2lPHMwewA6KmZGsBbiFtyjilnFlwaHnxUB_1_8Kdh02-aQ0d4TPqdoAYVFUuetQzWF4CCz3gi-E5V05gbY7j_PSck_zsmsUWoozWgQMHaUz6simbZPar2E9jtgEBPfbkz9s-I087-sbHF2U1MBLphEgT-rbVZokFUFJAsraaBClv1HfrZwOV2LdvHIKOEE2pdvnz4ShxZEFajxj0kdIbDVdq9b9LQve-e_gUj0D"/>
+</div>
+<h4 class="text-xl font-bold text-secondary dark:text-white">Historic Lodges</h4>
+<p class="text-slate-500">Restored manor houses with a touch of luxury.</p>
+</div>
+</div>
+</section>
+<!-- 14. How to Get Here -->
+<section class="py-24 px-6 bg-slate-50 dark:bg-slate-900">
+<div class="max-w-4xl mx-auto">
+<h2 class="text-4xl font-black text-secondary dark:text-white text-center mb-16">How to Get Here</h2>
+<div class="grid md:grid-cols-2 gap-12">
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">flight</span>
+<h4 class="text-xl font-bold">Air Travel</h4>
+</div>
+<p class="text-slate-500 leading-relaxed">
+<strong>Kerry Airport (KIR):</strong> Just 20 mins from Killarney with flights from Dublin and London. <br/><br/>
+<strong>Shannon (SNN) &amp; Cork (ORK):</strong> Approx 2 hours away. <br/><br/>
+<strong>Dublin (DUB):</strong> The main international gateway, about 4 hours by road or rail.
+                        </p>
+</div>
+<div class="bg-white dark:bg-slate-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-slate-700">
+<div class="flex items-center gap-4 mb-6">
+<span class="material-symbols-outlined text-primary text-4xl">train</span>
+<h4 class="text-xl font-bold">Rail &amp; Bus</h4>
+</div>
+<p class="text-slate-500 leading-relaxed">
+<strong>Train:</strong> Regular services run from Dublin Heuston to Killarney via Mallow. <br/><br/>
+<strong>Bus:</strong> Bus Éireann and private coaches offer frequent links from major cities to the Killarney Bus Station, located centrally.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Booking CTA -->
+<section class="py-24 px-6 max-w-7xl mx-auto">
+<div class="bg-white dark:bg-slate-800 rounded-[2.5rem] shadow-2xl overflow-hidden grid lg:grid-cols-5 border border-slate-100 dark:border-slate-700">
+<div class="lg:col-span-2 bg-primary p-12 text-white flex flex-col justify-center">
+<h3 class="text-4xl font-black mb-6">Ready to walk the Kerry Way?</h3>
+<p class="text-white/80 text-lg mb-10">Tell us your preferred dates and group size, and we'll craft your perfect self-guided itinerary.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-full bg-white/20 flex items-center justify-center">
+<span class="material-symbols-outlined">call</span>
+</div>
+<div>
+<span class="block text-xs uppercase font-bold text-white/60">Call Cliff &amp; Louise</span>
+<span class="text-xl font-bold">+353 87 123 4567</span>
+</div>
+</div>
+<button class="bg-[#25D366] hover:bg-[#20ba59] text-white px-8 py-4 rounded-full font-black flex items-center gap-3 w-fit shadow-lg transition-transform hover:scale-105">
+<svg class="size-6 fill-current" viewbox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.406.836 2.972 1.277 4.576 1.278 5.233 0 9.491-4.258 9.493-9.492.001-2.537-.987-4.922-2.783-6.72s-4.183-2.784-6.72-2.784c-5.233 0-9.491 4.258-9.493 9.492-.001 1.708.461 3.375 1.337 4.815l-.993 3.628 3.71-.973zm11.236-7.31c-.301-.15-1.78-.879-2.056-.979-.275-.1-.475-.15-.675.15-.2.3-.775.979-.95 1.178-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.487-.89-.794-1.49-1.774-1.665-2.074-.175-.3-.019-.462.13-.611.135-.135.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.491-.51-.675-.519l-.575-.01c-.2 0-.525.075-.8.375s-1.05 1.025-1.05 2.5 1.075 2.9 1.225 3.1c.15.2 2.115 3.23 5.125 4.527.716.308 1.274.492 1.708.63.719.228 1.373.196 1.89.119.577-.086 1.78-.727 2.03-1.43.25-.702.25-1.303.175-1.428-.075-.125-.275-.2-.575-.35z"></path></svg>
+                            Message on WhatsApp
+                        </button>
+</div>
+</div>
+<form class="lg:col-span-3 p-12 bg-slate-50 dark:bg-slate-900 space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Full Name</label>
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-primary focus:border-primary" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Email Address</label>
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-primary focus:border-primary" type="email"/>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Proposed Start Date</label>
+<input class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-primary focus:border-primary" type="date"/>
+</div>
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Number of Walkers</label>
+<select class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-primary focus:border-primary">
+<option>1 Walker</option>
+<option selected="">2 Walkers</option>
+<option>3-4 Walkers</option>
+<option>5+ Walkers</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-bold text-slate-400 uppercase tracking-widest mb-2">Additional Notes</label>
+<textarea class="w-full bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg p-4 focus:ring-primary focus:border-primary" placeholder="Any special requirements or extra nights?" rows="4"></textarea>
+</div>
+<button class="w-full bg-primary py-5 rounded-xl text-white font-black text-xl shadow-xl shadow-primary/20 hover:scale-[1.02] transition-transform" type="submit">
+                        Send Booking Enquiry
+                    </button>
+<p class="text-center text-sm text-slate-400">Response time: Usually within 4 hours</p>
+</form>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-secondary text-white/60 py-12 px-6 border-t border-white/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-4 text-white">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewbox="0 0 48 48">
+<path d="M24 0.757355L47.2426 24L24 47.2426L0.757355 24L24 0.757355ZM21 35.7574V12.2426L9.24264 24L21 35.7574Z"></path>
+</svg>
+</div>
+<span class="font-bold">Walking Holiday Ireland</span>
+</div>
+<div class="flex gap-8 text-sm font-medium">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</div>
+<p class="text-xs">© 2024 Walking Holiday Ireland. All rights reserved.</p>
+</div>
+</footer>
+</div>
+</body></html>

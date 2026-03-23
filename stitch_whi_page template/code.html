@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Walking Holiday Ireland - Authentic Irish Footsteps</title>
+<!-- Tailwind CSS v3 CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#F17E00',
+              purple: '#210747',
+              bgGray: '#F9FAFB'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          fontSize: {
+            'body-base': '18px',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="typography">
+    body {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      line-height: 1.6;
+      color: #374151;
+      background-color: #FFFFFF;
+    }
+    h1, h2, h3, h4 {
+      color: #210747;
+      font-weight: 800;
+    }
+  </style>
+<style data-purpose="layout">
+    .container-custom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .hero-gradient {
+      background: linear-gradient(to bottom, rgba(33, 7, 71, 0.4), rgba(33, 7, 71, 0.1));
+    }
+  </style>
+</head>
+<body>
+<!-- BEGIN: Navigation -->
+<nav class="bg-white py-4 sticky top-0 z-50 shadow-sm">
+<div class="container-custom flex justify-between items-center">
+<div class="flex items-center space-x-2">
+<!-- Logo Placeholder -->
+<div class="w-8 h-8 bg-brand-orange rotate-45 flex items-center justify-center">
+<div class="w-4 h-4 bg-white rotate-45"></div>
+</div>
+<span class="font-extrabold text-xl tracking-tight text-brand-purple">Walking Holiday Ireland</span>
+</div>
+<div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-gray-700">
+<a class="hover:text-brand-orange transition-colors" href="#">Tours</a>
+<a class="hover:text-brand-orange transition-colors" href="#">How It Works</a>
+<a class="text-brand-orange transition-colors" href="#">About</a>
+<a class="hover:text-brand-orange transition-colors" href="#">Contact</a>
+<a class="bg-brand-orange text-white px-6 py-2.5 rounded-md hover:bg-orange-600 transition-colors" href="#">Book Now</a>
+</div>
+</div>
+</nav>
+<!-- END: Navigation -->
+<!-- BEGIN: Hero Section -->
+<header class="relative h-[500px] flex items-end overflow-hidden">
+<!-- Atmospheric Imagery Placeholder -->
+<img alt="Irish Landscape" class="absolute inset-0 w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDI4wcy-NTYRfhXZE0L7qTk63G9NsML1BirYbiB3gy2O1ycSqNW6MwWuim-kBqHsbcJkOJUEryn74B2VE8Tdn6cu0rS1_OQO0o-_ckViesKxHryxrip73zmMZeks_v3ThP323crAZ-LHmRHbRjBoun-3K18cwQ2lQnJPp2BUyvSXWcwhb50JTiYeGX_WZU8pUA6N0sx4VmZGYmpuxiniRZyrxSCYioEXgcriA-jpAPKuRv2ZkWynkxZjQNgxSylBYlVs9Vb_ylvd6aR"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="container-custom relative z-10 pb-20">
+<div class="inline-block bg-brand-orange text-white text-xs font-bold px-3 py-1 rounded uppercase mb-4 tracking-widest">
+        Our Heritage
+      </div>
+<h1 class="text-5xl md:text-6xl text-white max-w-2xl leading-tight">
+        Authentic Irish <br/> Footsteps
+      </h1>
+</div>
+</header>
+<!-- END: Hero Section -->
+<!-- BEGIN: Main Content Area -->
+<main class="py-20">
+<section class="container-custom">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<!-- Text Column -->
+<div data-purpose="content-text">
+<h2 class="text-4xl mb-8">The Story of <span class="text-brand-orange">Cliff &amp; Louise</span></h2>
+<div class="space-y-6 text-gray-600">
+<p>
+              Founded by Cliff and Louise, Walking Holiday Ireland was born from a shared passion for the rugged, untamed beauty of the Irish landscape. What started as a personal quest to map the hidden trails of the Emerald Isle has blossomed into a premier walking tour experience.
+            </p>
+<p>
+              With over <span class="italic font-bold">13 years of curated experience</span>, we pride ourselves on providing intimate, expert-led tours that go beyond the beaten path. We believe that Ireland is best seen at 3 miles per hour—where the stories of the land, the folklore, and the warmth of the people can truly be felt.
+            </p>
+</div>
+<blockquote class="mt-10 pl-6 border-l-4 border-brand-orange italic text-2xl font-medium text-brand-purple">
+            "Our mission is simple: to share the Ireland we love with people who value authenticity and connection to nature."
+          </blockquote>
+</div>
+<!-- Visual Column -->
+<div class="grid grid-cols-2 gap-4" data-purpose="content-imagery">
+<div class="space-y-4">
+<img alt="Cliff and Louise" class="rounded-xl shadow-lg w-full object-cover aspect-[4/5]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWr2AuRoFcCmnK0u-0dfWhwbl0I7moSbST9H4EPrWZoE-m3EBT_nkFbJHb_vl0GMYrZ5m5Dwx6LrEp5lN97yRysYuLCpWY-mA4bkIg72z-wp05VzIdW1IaMrvzkapjGJ0ia4nxOi7V4VKlXwOqLZ513UOL_YkQnokljx9beqxUEtpAJJb5qIpjYTwkgrDje1v3fw6wkdhOqpUPnBcCvkCEupvE93oBsdeiPdZbh7lSEUpewsXW4Tik4Y6t08tVehkoHzjdrm4v4lsG"/>
+<div class="bg-[#F3EAD8] p-8 rounded-xl text-center">
+<span class="block text-4xl font-extrabold text-brand-orange">13+</span>
+<span class="text-xs uppercase font-bold tracking-widest text-gray-500">Years Experience</span>
+</div>
+</div>
+<div class="space-y-4 pt-12">
+<div class="bg-brand-purple text-white p-8 rounded-xl">
+<span class="block text-4xl font-extrabold text-brand-orange">500+</span>
+<span class="text-xs uppercase font-bold tracking-widest opacity-70">Tours Completed</span>
+</div>
+<img alt="Coastal Trail" class="rounded-xl shadow-lg w-full object-cover aspect-[4/5]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9zX1QJfB3h3UP_YLtn6NsPbDGwWmcSHJLJ8r65EDRSoNrr-1Kxp37jABkTNVM3_p3MP5qN0HJ9EMZ7dxxWS23U0G4Iz2s4fivXqoamTrYUu7Y99mYmK6zT68JA-KWuFd63bYZKgXftiUsj7ucMQyQmc1D3U3Chr-ejPMc-QEKvqsBlLCIoYrVZuoC-aHTWAe1ad506o09GGoKkoHm7gziZ4lx71RuuidOrKvQqE_RojsE9r2vViBvKm7pYsu_v6KQyGuwKREo8POo"/>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- END: Main Content Area -->
+<!-- BEGIN: Recommended Tours -->
+<section class="bg-brand-bgGray py-20">
+<div class="container-custom">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="text-3xl mb-2">Recommended Tours</h2>
+<p class="text-gray-500 max-w-md">Hand-picked experiences that capture the soul of the Irish countryside.</p>
+</div>
+<a class="text-brand-orange font-bold flex items-center hover:underline" href="#">
+          View All Tours <span class="ml-2">→</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Tour Card 1 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-gray-100">
+<div class="relative h-64 overflow-hidden">
+<img alt="The Burren Way" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJdr6MBBI-TjCDxuCdNbScccY6JaAixjHW2T4WuPxLd5sWe9bF_n_n0y75MRqXYeBg1pJ378YQ24kxFr4MWfFdZuLZrHgDd8d3B7IhkGg_frKc53tpPF0EZQfDBAvKfgY6YUBlE6hL-jUqcwrmw5RdRbUcrB11X8fBz20wXbnAC_N0efQl7Y5tkzMcsx9M9DpkprWCb1J69hW6sO1EQO6UgmSqZFDkcmB2GETQD4aa7eR9ZKRKn0mOoEgwQQ8HSF6XisJesRpHibsB"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-purple">7 Days</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl mb-3">The Burren Way</h3>
+<p class="text-sm text-gray-500 mb-6 line-clamp-2">Walk through ancient limestone landscapes and discover megalithic tombs and rare wildflowers.</p>
+<div class="flex justify-between items-center border-t pt-4">
+<span class="text-brand-orange font-bold">From €845</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Self-Guided</span>
+</div>
+</div>
+</div>
+<!-- Tour Card 2 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-gray-100">
+<div class="relative h-64 overflow-hidden">
+<img alt="The Dingle Way" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_EjvApaDaM7E1MAQKigRExj2gdhMqrwxnq_DsxfoN2b4phBGsSNz3fJrld9n81KnsKenM0nUV_MRKdWeuCdK5rmDUeivG6GAfwJ2Ca49jpGf-t1l0kCVfEMeLonwxQClU6P2wi85RN_AyhlhlFn1U_rFoR4qIaAgzVL-F74Z9IrIjFhVTQXvOgT3O4c59ygWdFfZwwdxc_jtDkxmEdzUSNLxlA73PT32itz6PMBAD6QfjKqTT7-Se4j_O9FvwFA3AxzZwL9QdtF-D"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-purple">8 Days</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl mb-3">The Dingle Way</h3>
+<p class="text-sm text-gray-500 mb-6 line-clamp-2">Traverse dramatic coastal cliffs, sandy beaches, and the foothills of Mount Brandon.</p>
+<div class="flex justify-between items-center border-t pt-4">
+<span class="text-brand-orange font-bold">From €910</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Guided Available</span>
+</div>
+</div>
+</div>
+<!-- Tour Card 3 -->
+<div class="bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-gray-100">
+<div class="relative h-64 overflow-hidden">
+<img alt="The Wicklow Way" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTGV-h7Ax4MheELBUN4ECdkUFdLbnAT83fromvzHYIPQQcKDCKg0VRzgGf-IgQFkcSIIRkIPMaL1NyKx1QqwGloibNfBI83qHBTj4spUbdDqwjJ_-EuAq9kfrn_EPB873RFrnXf988b9mqffWUt82uEvhfR-ExQtFGRCkdFEhw7Jj0U2C55jKe8s3AsadKWJ5oKrF3Pn2FF1L5Kxa1jvi23HijurVq-sCzAn0n0P6vjnV--zei92DYaO3vTbQYSph4MKMnyc7ynA_G"/>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-brand-purple">6 Days</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl mb-3">The Wicklow Way</h3>
+<p class="text-sm text-gray-500 mb-6 line-clamp-2">Explore the "Garden of Ireland" featuring mountain lakes and the monastic city of Glendalough.</p>
+<div class="flex justify-between items-center border-t pt-4">
+<span class="text-brand-orange font-bold">From €725</span>
+<span class="text-[10px] uppercase font-bold tracking-widest text-gray-400">Self-Guided</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- END: Recommended Tours -->
+<!-- BEGIN: CTA Section -->
+<section class="container-custom my-20">
+<div class="relative rounded-3xl overflow-hidden bg-brand-orange py-20 px-10 text-center text-white">
+<!-- Background Overlay for texture -->
+<img alt="CTA Background" class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-30" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx0Zoj2xbpm_fePk2zr5p1e0lGMlnnO-lCejWNhBLyen-45QEYWIA_gW-SS6GMUnWJPEJd1smP-czYpbVFiT5nguaIGmRLinc3akwpU_xI6uFEMK2enVADBs-slKJaACpYFpbBu-utB2EgAtpCf_29l3KZeX4L2ImtA-uZIDhg1NueAUONGByZ6iZZXLD2ux2CZkzY-a2-EYf2BjrlKNyF5OiWGhKzewZ2o047-P5hewbP4tZkmZtgH3URRMGetGUIyGXIp9PDEXXb"/>
+<div class="relative z-10">
+<h2 class="text-white text-4xl md:text-5xl mb-6">Ready to Start Your Adventure?</h2>
+<p class="max-w-2xl mx-auto text-lg mb-10 opacity-90">
+          Download our free brochure or speak with a local expert to customize your perfect walking holiday.
+        </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<a class="bg-white text-brand-orange font-bold px-8 py-4 rounded-lg hover:bg-gray-100 transition-colors shadow-lg" href="#">
+            Download Brochure
+          </a>
+<a class="border-2 border-white text-white font-bold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors" href="#">
+            Contact Us
+          </a>
+</div>
+</div>
+</div>
+</section>
+<!-- END: CTA Section -->
+<!-- BEGIN: Footer -->
+<footer class="bg-brand-purple text-white pt-20 pb-10">
+<div class="container-custom">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+<!-- Brand Info -->
+<div class="space-y-6">
+<div class="flex items-center space-x-2">
+<div class="w-6 h-6 bg-brand-orange rotate-45 flex items-center justify-center">
+<div class="w-3 h-3 bg-brand-purple rotate-45"></div>
+</div>
+<span class="font-extrabold text-lg tracking-tight">Walking Holiday Ireland</span>
+</div>
+<p class="text-gray-400 text-sm">
+            Local experts in self-guided walking tours across the Emerald Isle. Authentic experiences, hand-picked stays.
+          </p>
+</div>
+<!-- Quick Links -->
+<div>
+<h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">Quick Links</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li><a class="hover:text-brand-orange" href="#">All Walking Tours</a></li>
+<li><a class="hover:text-brand-orange" href="#">How It Works</a></li>
+<li><a class="hover:text-brand-orange" href="#">FAQ</a></li>
+<li><a class="hover:text-brand-orange" href="#">Guest Reviews</a></li>
+</ul>
+</div>
+<!-- Contact Info -->
+<div>
+<h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">Contact</h4>
+<ul class="space-y-4 text-sm text-gray-400">
+<li class="flex items-center space-x-3">
+<span class="text-brand-orange">✉</span>
+<span>info@walkingholidayireland.com</span>
+</li>
+<li class="flex items-center space-x-3">
+<span class="text-brand-orange">📞</span>
+<span>+353 1 234 5678</span>
+</li>
+<li class="flex items-center space-x-3">
+<span class="text-brand-orange">📍</span>
+<span>Wicklow Town, Co. Wicklow</span>
+</li>
+</ul>
+</div>
+<!-- Follow Us -->
+<div>
+<h4 class="text-white text-sm font-bold uppercase tracking-widest mb-6">Follow Us</h4>
+<div class="flex space-x-4">
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors" href="#">🌐</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors" href="#">👥</a>
+<a class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-brand-orange transition-colors" href="#">📷</a>
+</div>
+</div>
+</div>
+<!-- Copyright -->
+<div class="border-t border-white/10 pt-8 text-center text-[10px] text-gray-500 uppercase tracking-widest">
+        © 2024 Walking Holiday Ireland. All rights reserved. Registered in Ireland No. 123456.
+      </div>
+</div>
+</footer>
+<!-- END: Footer -->
+</body></html>

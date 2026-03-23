@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walking Holiday Ireland - Booking Flow</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Fonts and Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- React & React Router DOM Scripts -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/history@5/umd/history.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-router@6.3.0/umd/react-router.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-router-dom@6.3.0/umd/react-router-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f07c00",
+                        "background-light": "#f8f7f5",
+                        "background-dark": "#23190f",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+</head>
+<body class="bg-background-light font-display text-slate-900 min-h-screen">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect } = React;
+        const { createRoot } = ReactDOM;
+        const { MemoryRouter, Routes, Route, Link, useNavigate } = ReactRouterDOM;
+
+        // --- Common Components ---
+
+        const Header = () => (
+            <header className="sticky top-0 z-50 w-full border-b border-primary/10 bg-background-light/80 backdrop-blur-md px-6 md:px-20 py-4">
+                <div className="mx-auto flex max-w-7xl items-center justify-between">
+                    <div className="flex items-center gap-3">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-md bg-primary text-white">
+                            <span className="material-symbols-outlined">terrain</span>
+                        </div>
+                        <h2 className="text-xl font-bold tracking-tight text-slate-900">Walking Holiday Ireland</h2>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <span className="hidden md:block text-sm font-medium text-slate-600">Need help? 01-234-5678</span>
+                        <button className="flex h-10 w-10 items-center justify-center rounded-md bg-primary/10 text-primary transition-colors hover:bg-primary/20 md:w-auto md:px-4 md:font-bold md:text-sm">
+                            <span className="material-symbols-outlined md:mr-2">account_circle</span>
+                            <span className="hidden md:inline">Sign In</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+        );
+
+        const Footer = () => (
+            <footer className="mt-auto border-t border-primary/10 py-10 px-6 text-center text-sm text-slate-500 bg-white">
+                <p>© 2024 Walking Holiday Ireland. All rights reserved.</p>
+                <p className="mt-2">Registered in Ireland. License No. WHI-77421</p>
+            </footer>
+        );
+
+        const ProgressBar = ({ step, title, percent }) => (
+            <div className="flex flex-col gap-3 mb-10 max-w-2xl">
+                <div className="flex gap-6 justify-between items-end">
+                    <div>
+                        <span className="text-primary font-bold uppercase tracking-wider text-xs">Booking Process</span>
+                        <p className="text-slate-900 text-2xl font-bold leading-normal">Step {step} of 3: {title}</p>
+                    </div>
+                    <p className="text-slate-600 text-sm font-medium leading-normal">{percent}% Complete</p>
+                </div>
+                <div className="rounded-full bg-slate-200 h-3 overflow-hidden">
+                    <div className="h-full rounded-full bg-primary transition-all duration-500" style={{ width: `${percent}%` }}></div>
+                </div>
+            </div>
+        );
+
+        // --- Screens ---
+
+        const Step1 = () => {
+            const navigate = useNavigate();
+            const [walkers, setWalkers] = useState(2);
+
+            return (
+                <div className="layout-container flex h-full grow flex-col">
+                    <Header />
+                    <main className="max-w-6xl mx-auto w-full px-6 py-10">
+                        <ProgressBar step={1} title="Tour Selection" percent={33} />
+                        
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                            <div className="lg:col-span-2 space-y-8">
+                                <section className="bg-white p-8 rounded-md shadow-sm border border-slate-100">
+                                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary">map</span>
+                                        Tour & Date Details
+                                    </h3>
+                                    <div className="space-y-6">
+                                        <div className="flex flex-col gap-2">
+                                            <label className="text-slate-700 font-semibold text-lg">Select Your Tour</label>
+                                            <div className="relative">
+                                                <select className="form-select w-full h-16 pl-5 pr-12 rounded-md border-2 border-slate-100 bg-slate-50 text-lg appearance-none focus:border-primary focus:ring-0 transition-colors">
+                                                    <option value="wicklow">The Wicklow Way Explorer</option>
+                                                    <option value="kerry">Ring of Kerry Coastal Walk</option>
+                                                </select>
+                                                <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+                                            </div>
+                                            <p className="text-sm text-slate-500">Discover the heart of the Garden of Ireland on this 7-day trek.</p>
+                                        </div>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="flex flex-col gap-2">
+                                                <label className="text-slate-700 font-semibold text-lg">Preferred Start Date</label>
+                                                <div className="relative">
+                                                    <input className="form-input w-full h-16 pl-5 pr-4 rounded-md border-2 border-slate-100 bg-slate-50 text-lg focus:border-primary focus:ring-0 transition-colors" type="date" defaultValue="2024-06-15" />
+                                                    <span className="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">calendar_today</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-2">
+                                                <label className="text-slate-700 font-semibold text-lg">Number of Walkers</label>
+                                                <div className="flex h-16 items-center border-2 border-slate-100 bg-slate-50 rounded-md overflow-hidden">
+                                                    <button onClick={() => setWalkers(Math.max(1, walkers - 1))} className="w-16 h-full flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                                        <span className="material-symbols-outlined">remove</span>
+                                                    </button>
+                                                    <input className="flex-1 text-center bg-transparent border-none text-xl font-bold focus:ring-0" min="1" type="number" value={walkers} readOnly />
+                                                    <button onClick={() => setWalkers(walkers + 1)} className="w-16 h-full flex items-center justify-center hover:bg-primary/10 transition-colors">
+                                                        <span className="material-symbols-outlined">add</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+
+                                <section className="bg-white p-8 rounded-md shadow-sm border border-slate-100">
+                                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary">hotel</span>
+                                        Accommodation Preference
+                                    </h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <label className="relative flex items-center p-4 border-2 border-primary rounded-md cursor-pointer bg-primary/5">
+                                            <input defaultChecked className="hidden" name="room" type="radio" />
+                                            <span className="material-symbols-outlined text-primary mr-3">bed</span>
+                                            <div>
+                                                <p className="font-bold">Double Room</p>
+                                                <p className="text-sm text-slate-600">Shared for couples</p>
+                                            </div>
+                                            <span className="material-symbols-outlined ml-auto text-primary">check_circle</span>
+                                        </label>
+                                        <label className="relative flex items-center p-4 border-2 border-slate-100 rounded-md cursor-pointer hover:border-primary/50 transition-colors">
+                                            <input className="hidden" name="room" type="radio" />
+                                            <span className="material-symbols-outlined text-slate-400 mr-3">person</span>
+                                            <div>
+                                                <p className="font-bold">Single Rooms</p>
+                                                <p className="text-sm text-slate-600">Individual privacy</p>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </section>
+
+                                <div className="flex justify-end pt-4">
+                                    <button onClick={() => navigate('/step2')} className="bg-primary text-white px-10 py-5 rounded-md font-bold text-xl flex items-center gap-2 hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+                                        Continue to Enhancements
+                                        <span className="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <aside className="lg:col-span-1">
+                                <div className="bg-white rounded-md shadow-lg border border-slate-100 sticky top-24 overflow-hidden">
+                                    <div className="h-40 relative">
+                                        <img className="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMdJUHlATKmnRL_MbxpJqrVcGI3mqiVv_LZLlY12L1oA8-AeC_mYsyb5PhtAn_vjGx5WmEfSm6OtCjO3dUHKWT5di0QUprovxAgVdiZM4ML4ywrkmhtnpNyW4Z-lN09MT-RExqKD0APsnWQVp5kXmRrwXF-fGoMSjWVs9O2ye03vNN0Er5tErSNABGujIoIXe07FEnk74rMGrum87oxVUjbUfLvGlzIsnaxzlBQFfOAG0Zm9xwDlT2x7KHCf61cGyCni9mL6muLCoW" alt="Wicklow" />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                                        <div className="absolute bottom-4 left-4">
+                                            <h4 className="text-white font-bold text-lg">The Wicklow Way</h4>
+                                        </div>
+                                    </div>
+                                    <div className="p-6 space-y-6">
+                                        <h3 className="text-lg font-bold border-b border-slate-100 pb-3">Booking Summary</h3>
+                                        <ul className="space-y-4">
+                                            <li className="flex justify-between items-start">
+                                                <div className="flex gap-3">
+                                                    <span className="material-symbols-outlined text-slate-400">group</span>
+                                                    <div>
+                                                        <p className="text-xs text-slate-500 uppercase font-bold">Party Size</p>
+                                                        <p className="font-medium">{walkers} Adults</p>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                        <div className="bg-slate-50 p-4 rounded-md space-y-2">
+                                            <div className="pt-2 mt-2 border-t border-slate-200 flex justify-between items-end">
+                                                <span className="font-bold">Total Estimate</span>
+                                                <span className="text-2xl font-black text-primary">€1,815.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </aside>
+                        </div>
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const Step2 = () => {
+            const navigate = useNavigate();
+            const [lunches, setLunches] = useState(5);
+
+            return (
+                <div className="layout-container flex h-full grow flex-col">
+                    <Header />
+                    <main className="max-w-6xl mx-auto w-full px-6 py-10">
+                         <ProgressBar step={2} title="Enhancements" percent={66} />
+                        
+                        <div className="flex flex-col lg:flex-row gap-10">
+                            <div className="flex-1 space-y-8">
+                                <div className="grid gap-4">
+                                    <h3 className="text-lg font-bold text-slate-900">Available Add-ons</h3>
+                                    
+                                    <div className="group flex items-center justify-between gap-4 rounded-md border border-primary/10 bg-white p-5 shadow-sm transition-all hover:border-primary/30">
+                                        <div className="flex items-center gap-5">
+                                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                                                <span className="material-symbols-outlined">local_taxi</span>
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-bold text-slate-900">Airport Transfers</p>
+                                                <p className="text-sm text-slate-500">Private shuttle from Dublin Airport to trailhead.</p>
+                                                <p className="mt-1 text-sm font-bold text-primary">€45.00 per person</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center">
+                                            <input defaultChecked className="h-6 w-6 rounded border-primary/20 text-primary focus:ring-primary/50" type="checkbox" />
+                                        </div>
+                                    </div>
+
+                                    <div className="group flex items-center justify-between gap-4 rounded-md border border-primary/10 bg-white p-5 shadow-sm transition-all hover:border-primary/30">
+                                        <div className="flex items-center gap-5">
+                                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-md bg-primary/10 text-primary">
+                                                <span className="material-symbols-outlined">lunch_dining</span>
+                                            </div>
+                                            <div>
+                                                <p className="text-base font-bold text-slate-900">Artisanal Lunch Packs</p>
+                                                <p className="text-sm text-slate-500">Local cheese, organic fruits, and fresh sandwiches daily.</p>
+                                                <p className="mt-1 text-sm font-bold text-primary">€15.00 / day</p>
+                                            </div>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <button onClick={() => setLunches(Math.max(0, lunches - 1))} className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                                                <span className="material-symbols-outlined text-sm">remove</span>
+                                            </button>
+                                            <span className="w-6 text-center font-bold">{lunches}</span>
+                                            <button onClick={() => setLunches(lunches + 1)} className="flex h-8 w-8 items-center justify-center rounded-md bg-primary/10 text-primary hover:bg-primary/20">
+                                                <span className="material-symbols-outlined text-sm">add</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <aside className="w-full lg:w-96">
+                                <div className="sticky top-24 space-y-6 rounded-md border border-primary/10 bg-white p-6 shadow-lg">
+                                    <div className="border-b border-primary/10 pb-4">
+                                        <h2 className="text-xl font-bold text-slate-900">Booking Summary</h2>
+                                        <p className="text-sm text-slate-500">Kerry Way Coastal Walk</p>
+                                    </div>
+                                    <div className="space-y-4">
+                                        <div className="flex justify-between text-sm">
+                                            <span className="text-slate-600">Base Tour (7 Days)</span>
+                                            <span className="font-semibold">€890.00</span>
+                                        </div>
+                                        <div className="space-y-2 pt-2">
+                                            <p className="text-xs font-bold uppercase tracking-wider text-primary">Selected Extras</p>
+                                            <div className="flex justify-between text-sm">
+                                                <span className="text-slate-600">Airport Transfer x 2</span>
+                                                <span className="font-semibold">€90.00</span>
+                                            </div>
+                                            <div className="flex justify-between text-sm">
+                                                <span className="text-slate-600">Lunch Packs ({lunches} Days)</span>
+                                                <span className="font-semibold">€{lunches * 15}.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="border-t border-primary/10 pt-4">
+                                        <div className="flex items-center justify-between text-lg font-bold">
+                                            <span>Total Price</span>
+                                            <span className="text-primary">€{980 + (lunches * 15)}.00</span>
+                                        </div>
+                                    </div>
+                                    <button onClick={() => navigate('/step3')} className="w-full rounded-md bg-primary py-4 text-center font-bold text-white shadow-lg transition-all hover:bg-primary/90">
+                                        Continue to Payment
+                                    </button>
+                                </div>
+                            </aside>
+                        </div>
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const Step3 = () => {
+            return (
+                <div className="layout-container flex h-full grow flex-col">
+                    <Header />
+                    <main className="max-w-6xl mx-auto w-full px-6 py-10">
+                        <ProgressBar step={3} title="Payment" percent={100} />
+                        
+                        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                            <div className="lg:col-span-2 space-y-8">
+                                <section className="bg-white p-6 rounded-md border border-primary/10 shadow-sm">
+                                    <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary">account_balance_wallet</span>
+                                        Choose Payment Amount
+                                    </h3>
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <label className="relative flex flex-col p-4 border-2 border-primary rounded-md cursor-pointer bg-primary/5">
+                                            <input defaultChecked className="absolute top-4 right-4 text-primary focus:ring-primary" name="payment_type" type="radio" />
+                                            <span className="font-bold text-lg text-slate-900">Pay Deposit Only</span>
+                                            <span className="text-slate-500 text-sm mt-1">Secure your spot with 20%</span>
+                                            <span className="text-2xl font-black text-primary mt-3">€240.00</span>
+                                        </label>
+                                        <label className="relative flex flex-col p-4 border-2 border-slate-200 rounded-md cursor-pointer hover:border-primary/50 transition-colors">
+                                            <input className="absolute top-4 right-4 text-primary focus:ring-primary" name="payment_type" type="radio" />
+                                            <span className="font-bold text-lg text-slate-900">Pay In Full</span>
+                                            <span className="text-slate-500 text-sm mt-1">Pay everything now and relax</span>
+                                            <span className="text-2xl font-black text-slate-900 mt-3">€1,200.00</span>
+                                        </label>
+                                    </div>
+                                </section>
+
+                                <section className="bg-white p-6 rounded-md border border-primary/10 shadow-sm">
+                                    <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                        <span className="material-symbols-outlined text-primary">credit_card</span>
+                                        Payment Method
+                                    </h3>
+                                    <div className="space-y-4">
+                                        <div className="border border-slate-200 rounded-md overflow-hidden">
+                                            <label className="flex items-center gap-4 p-4 bg-slate-50 cursor-pointer">
+                                                <input defaultChecked className="text-primary focus:ring-primary" name="method" type="radio" />
+                                                <span className="font-semibold flex-1">Credit / Debit Card</span>
+                                                <span className="material-symbols-outlined text-slate-400">credit_card</span>
+                                            </label>
+                                            <div className="p-6 space-y-4">
+                                                <div className="grid grid-cols-1 gap-4">
+                                                    <div>
+                                                        <label className="block text-sm font-medium mb-1">Card Number</label>
+                                                        <input className="w-full rounded-md border-slate-300 focus:border-primary focus:ring-primary" placeholder="0000 0000 0000 0000" type="text" />
+                                                    </div>
+                                                    <div className="grid grid-cols-2 gap-4">
+                                                        <div>
+                                                            <label className="block text-sm font-medium mb-1">Expiry Date</label>
+                                                            <input className="w-full rounded-md border-slate-300 focus:border-primary focus:ring-primary" placeholder="MM / YY" type="text" />
+                                                        </div>
+                                                        <div>
+                                                            <label className="block text-sm font-medium mb-1">CVC</label>
+                                                            <input className="w-full rounded-md border-slate-300 focus:border-primary focus:ring-primary" placeholder="123" type="text" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+
+                            <div className="lg:col-span-1">
+                                <div className="bg-white rounded-md border border-primary/10 shadow-lg sticky top-24 overflow-hidden">
+                                    <div className="p-6 border-b border-primary/10 bg-primary/5">
+                                        <h3 className="font-bold text-lg">Booking Summary</h3>
+                                    </div>
+                                    <div className="p-6 space-y-6">
+                                        <div className="space-y-2">
+                                            <div className="flex justify-between font-black text-xl pt-4 border-t border-primary/10">
+                                                <span>Total Amount</span>
+                                                <span>€1,200.00</span>
+                                            </div>
+                                        </div>
+                                        <div className="pt-4">
+                                            <button onClick={() => alert('Payment processed! (Mock)')} className="w-full bg-primary text-white font-bold py-4 rounded-md shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center justify-center gap-2">
+                                                <span className="material-symbols-outlined">lock</span>
+                                                Confirm & Pay €240.00
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                    <Footer />
+                </div>
+            );
+        };
+
+        const App = () => {
+            return (
+                <MemoryRouter>
+                    <Routes>
+                        <Route path="/" element={<Step1 />} />
+                        <Route path="/step2" element={<Step2 />} />
+                        <Route path="/step3" element={<Step3 />} />
+                    </Routes>
+                </MemoryRouter>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>

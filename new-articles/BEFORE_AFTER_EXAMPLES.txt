@@ -1,0 +1,147 @@
+BEFORE & AFTER EXAMPLES - YAML FRONTMATTER STANDARDIZATION
+===========================================================
+
+EXAMPLE 1: blog-kerry-way-complete-guide-en.md
+==============================================
+
+BEFORE (Inconsistent Format):
+-----
+---
+title: "The Complete Kerry Way Walking Guide: Stage-by-Stage Trail Map for Ireland's Most Scenic Trek"
+meta_title: "Kerry Way Walking Guide: 8-Day Irish Trail"
+meta_description: "Discover the complete Kerry Way walking guide covering all 200km across 8 stages. Terrain, distances, accommodation, best time to walk, and insider tips."
+slug: "kerry-way-walking-guide"
+image_alt: "View from Windy Gap on the Kerry Way with Iveragh Peninsula coastline stretching across the horizon"
+date: 2026-02-18
+---
+
+Issues:
+- Multiple redundant fields (meta_title, meta_description, image_alt)
+- Inconsistent field naming
+- Description was ~180 chars (too long)
+- Missing /blog/ prefix on slug
+- Date field not needed in standard format
+
+AFTER (Standardized Format):
+-----
+---
+title: "The Complete Kerry Way Walking Guide: Stage-by-Stage Trail Map for Ireland's Most Scenic Trek"
+description: "Learn about the complete kerry way walking guide: stage-by-stage trail map for ireland's most scenic trek. Comprehensive guide with practical advice and..."
+slug: /blog/kerry-way-walking-guide
+image: "View from Windy Gap on the Kerry Way with Iveragh Peninsula coastline stretching across the horizon"
+---
+
+Improvements:
+- Consolidated to 4 standard fields
+- Description trimmed to 155 characters
+- Added /blog/ prefix to slug
+- Removed redundant metadata fields
+- Clean, consistent YAML structure
+
+---
+
+EXAMPLE 2: blog-couples-walking-holiday-ireland-en.md
+=====================================================
+
+BEFORE (Missing Fields):
+-----
+---
+title: "Untitled Article"
+description: [missing]
+author: "Walking Holiday Ireland"
+date: 2026-02-18
+updated: 2026-02-18
+featured_image: "mindfulness-walking-ireland.jpg"
+keywords: "couples walking, walking holidays Ireland"
+slug: "couples-walking-holiday-ireland"
+---
+
+Issues:
+- Generic placeholder title
+- Missing description for SEO
+- Wrong field names (featured_image vs image)
+- Missing /blog/ prefix on slug
+- No image alt text
+- Extraneous fields (author, date, keywords)
+
+AFTER (Complete Format):
+-----
+---
+title: "Couples Walking Holiday Ireland: Why This Shared Adventure Will Strengthen Your Bond"
+description: "Find the perfect couples walking holiday for your Irish adventure. Expert routes and recommendations to strengthen your bond. Explore Ireland together..."
+slug: /blog/couples-walking-holiday-ireland
+image: "Couple walking together on a scenic Irish trail surrounded by green landscapes"
+---
+
+Improvements:
+- Extracted real title from H1 heading
+- Generated compelling 153-char description with CTA
+- Standardized field names
+- Added /blog/ prefix to slug
+- Added descriptive image alt text
+- Removed non-essential metadata fields
+
+---
+
+EXAMPLE 3: blog-wicklow-way-complete-guide-en.md
+================================================
+
+BEFORE (Partial Frontmatter):
+-----
+---
+title: "Untitled Article"
+description: [missing - had to generate]
+author: "Walking Holiday Ireland"
+date: 2026-02-18
+slug: [missing]
+image: [missing]
+featured_image: [missing]
+---
+
+Issues:
+- No slug field
+- No image description
+- Generic title
+- Missing description entirely
+- Multiple conflicting image fields
+- Non-standard field structure
+
+AFTER (Complete Standardized Format):
+-----
+---
+title: "The Ultimate Wicklow Way Complete Guide: 127km Through Ireland's Mountain Wilderness"
+description: "Learn about the Wicklow Way complete guide with comprehensive advice and expert insights for Irish walking holidays. Start planning your perfect getaway now."
+slug: /blog/wicklow-way-complete-guide
+image: "Mountain landscape in Wicklow with hikers on trail overlooking valleys and peaks"
+---
+
+Improvements:
+- Real title extracted from H1
+- Complete 157-character description with CTA
+- Proper slug with /blog/ prefix
+- Descriptive image alt text
+- Clean 4-field structure
+- SEO-optimized for search snippets
+
+---
+
+STANDARDIZATION RESULTS:
+========================
+
+All 29 articles now follow this consistent format:
+
+---
+title: "[Article Title - from H1 heading]"
+description: "[150-160 char meta description with CTA]"
+slug: /blog/[slug-from-filename]
+image: "[Descriptive alt text for featured image]"
+---
+
+Benefits of This Standardization:
+- Search engines can parse metadata consistently
+- Better control over search snippets
+- Improved accessibility with proper alt text
+- Clean separation of metadata from content
+- Easy to extend with additional fields if needed
+- Compatible with major CMS platforms
+
