@@ -1402,15 +1402,15 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
 
         stats_bar = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' + ''.join(stats) + '</div>'
 
-        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full">
+        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
-                    <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
-                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center">
+                    <h3 class="absolute bottom-3 left-3 right-16 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 2px 6px rgba(0,0,0,0.6);">{name}</h3>
+                    <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
-                        <span class="text-[10px] text-slate-400">*Price Promise</span>
+                        <a href="price-promise.html" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between flex-grow p-4 pb-2">
@@ -1418,7 +1418,10 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
                         <p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-2">{short_desc}</p>
                         {region_link}
                     </div>
-                    <div class="flex items-center justify-end mt-3 mb-1">{boots}</div>
+                    <div class="flex items-center justify-between mt-3 mb-1">
+                        <div></div>
+                        {boots}
+                    </div>
                 </div>
                 {stats_bar}
             </a>\n'''
