@@ -2001,8 +2001,11 @@ REGION_DESCRIPTIONS = {
 }
 
 
-def render_destinations_by_region(destinations, tours, regions_by_id):
+def render_destinations_by_region(destinations, tours, regions_by_id, reviews_by_dest=None):
     """Render destination cards grouped by region for the listing page."""
+    if reviews_by_dest is None:
+        reviews_by_dest = {}
+
     # Group destinations by region
     dests_by_region = {}
     for dest in destinations:
@@ -2026,6 +2029,20 @@ def render_destinations_by_region(destinations, tours, regions_by_id):
             if price_val > 0:
                 if did not in min_price_per_dest or price_val < min_price_per_dest[did]:
                     min_price_per_dest[did] = price_val
+
+    def render_dest_stars_html(avg):
+        """Render review stars SVGs for destination cards."""
+        full = int(avg)
+        half = (avg - full) >= 0.3
+        stars = ''
+        for _ in range(full):
+            stars += '<svg width="14" height="14" viewBox="0 0 20 20" fill="#f59e0b"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>'
+        if half:
+            stars += '<svg width="14" height="14" viewBox="0 0 20 20"><defs><linearGradient id="halfStarDest"><stop offset="50%" stop-color="#f59e0b"/><stop offset="50%" stop-color="#d1d5db"/></linearGradient></defs><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z" fill="url(#halfStarDest)"/></svg>'
+        remaining = 5 - full - (1 if half else 0)
+        for _ in range(remaining):
+            stars += '<svg width="14" height="14" viewBox="0 0 20 20" fill="#d1d5db"><path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78L10 1z"/></svg>'
+        return stars
 
     # Sort regions by sort_order
     sorted_regions = sorted(regions_by_id.values(), key=lambda r: r.get('sort_order', 999))
@@ -2073,17 +2090,33 @@ def render_destinations_by_region(destinations, tours, regions_by_id):
             tour_text = f"{tour_count} tour{'s' if tour_count != 1 else ''}" if tour_count else 'Coming soon'
             price_text = f"From &euro;{min_price:.0f}" if min_price else ''
 
-            html += f"""            <a href="destination-{dest_slug}.html" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all" data-region="{region_slug}">
+            # Review stars for this destination
+            dest_reviews = reviews_by_dest.get(dest_id, [])
+            review_html = ''
+            if dest_reviews:
+                ratings = [r.get('rating', 0) for r in dest_reviews if r.get('rating')]
+                if ratings:
+                    avg_rating = round(sum(ratings) / len(ratings), 1)
+                    review_count = len(ratings)
+                    review_html = f'<div class="flex items-center gap-1.5"><div class="flex items-center gap-0.5">{render_dest_stars_html(avg_rating)}</div><span class="text-sm font-bold text-slate-700">{avg_rating}</span><span class="text-xs text-slate-400">({review_count})</span></div>'
+
+            html += f"""            <a href="destination-{dest_slug}.html" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/destinations/{dest_slug}/card.jpg" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" onerror="this.style.display='none'"/>
+                    <img src="images/destinations/{dest_slug}/card.jpg" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:50%;background:linear-gradient(to top,rgba(33,7,71,0.7) 0%,rgba(33,7,71,0) 100%);"></div>
+                    <h3 class="absolute bottom-3 left-4 right-4 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{dest_name}</h3>
                 </div>
-                <div class="p-6">
-                    <h3 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{dest_name}</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-2">{short_desc}</p>
-                    <div class="flex items-center justify-between pt-4 border-t border-slate-100">
-                        <span class="text-sm font-medium text-slate-500">{tour_text}</span>
-                        <span class="text-primary font-bold">{price_text} &rarr;</span>
+                <div class="flex flex-col justify-between flex-grow p-5 pb-2">
+                    <div>
+                        <p class="text-slate-500 text-sm leading-relaxed line-clamp-2 mb-3">{short_desc}</p>
                     </div>
+                    <div class="flex items-center justify-between mt-2 mb-2">
+                        {review_html}
+                    </div>
+                </div>
+                <div class="flex items-center justify-between px-5 py-3 border-t border-slate-100">
+                    <span class="text-base font-bold text-slate-700">{tour_text}</span>
+                    <span class="text-primary font-extrabold text-lg">{price_text} &rarr;</span>
                 </div>
             </a>
 """
@@ -2628,7 +2661,7 @@ def main():
         dests_json = render_destinations_listing_json(active_destinations, tours)
         dests_schema = render_destinations_listing_schema(active_destinations, tours)
         region_tabs = render_region_tabs(regions_by_id, active_destinations)
-        dests_by_region_html = render_destinations_by_region(active_destinations, tours, regions_by_id)
+        dests_by_region_html = render_destinations_by_region(active_destinations, tours, regions_by_id, reviews_by_dest)
 
         # Compute min price across all tours
         all_prices = []

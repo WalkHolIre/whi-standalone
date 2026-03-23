@@ -72,11 +72,13 @@
         var mapped = regionMap[regionParam] || regionParam;
         activateTab(mapped);
 
-        // Scroll to the region tabs
+        // Scroll to the region tabs, accounting for fixed nav bars
         var tabsEl = document.getElementById('region-tabs');
         if (tabsEl) {
             setTimeout(function() {
-                tabsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                var navOffset = 140; // utility bar (44px) + header (~80px) + padding
+                var tabsTop = tabsEl.getBoundingClientRect().top + window.pageYOffset - navOffset;
+                window.scrollTo({ top: tabsTop, behavior: 'smooth' });
             }, 300);
         }
     }
