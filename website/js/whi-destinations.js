@@ -76,7 +76,7 @@
         var tabsEl = document.getElementById('region-tabs');
         if (tabsEl) {
             setTimeout(function() {
-                var navOffset = 140; // utility bar (44px) + header (~80px) + padding
+                var navOffset = 155; // utility bar (44px) + header (~80px) + padding
                 var tabsTop = tabsEl.getBoundingClientRect().top + window.pageYOffset - navOffset;
                 window.scrollTo({ top: tabsTop, behavior: 'smooth' });
             }, 300);
