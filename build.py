@@ -988,7 +988,7 @@ def render_dest_quick_stats(destination, tours):
 
 
 def render_walking_info_panel(destination, tours):
-    """Render the sticky walking info panel in the overview sidebar."""
+    """Render the sticky walking info panel in the overview sidebar (purple/mauve theme)."""
     items = []
 
     # Difficulty
@@ -1000,8 +1000,8 @@ def render_walking_info_panel(destination, tours):
             badge_class = 'badge-easy' if d == 'Easy' else ('badge-moderate' if d in ('Moderate', 'Intermediate') else 'badge-challenging')
             diff_badges += f'<span class="inline-block px-3 py-1 rounded-full text-xs font-bold {badge_class}">{escape(d)}</span> '
         items.append(f'''<div class="flex items-start gap-3">
-                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">speed</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Difficulty</p><div class="flex flex-wrap gap-1">{diff_badges}</div></div>
+                                        <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">speed</span></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Difficulty</p><div class="flex flex-wrap gap-1">{diff_badges}</div></div>
                                     </div>''')
 
     # Duration
@@ -1010,16 +1010,16 @@ def render_walking_info_panel(destination, tours):
         min_d, max_d = min(durations), max(durations)
         dur_text = f"{min_d}&ndash;{max_d} days" if min_d != max_d else f"{min_d} days"
         items.append(f'''<div class="flex items-start gap-3">
-                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">calendar_month</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Duration</p><p class="text-sm font-bold text-slate-700">{dur_text}</p></div>
+                                        <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">calendar_month</span></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Duration</p><p class="text-sm font-bold" style="color:#210747;">{dur_text}</p></div>
                                     </div>''')
 
     # Best months
     best = destination.get('best_months')
     if best and isinstance(best, list) and len(best) > 0:
         items.append(f'''<div class="flex items-start gap-3">
-                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">wb_sunny</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Best Months</p><p class="text-sm font-bold text-slate-700">{', '.join(best)}</p></div>
+                                        <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">wb_sunny</span></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Best Months</p><p class="text-sm font-bold" style="color:#210747;">{', '.join(best)}</p></div>
                                     </div>''')
 
     # Accommodation
@@ -1029,8 +1029,8 @@ def render_walking_info_panel(destination, tours):
         if len(strip_html_tags(acc)) > 80:
             acc_short += '...'
         items.append(f'''<div class="flex items-start gap-3">
-                                        <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">hotel</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Accommodation</p><p class="text-sm font-bold text-slate-700">{escape(acc_short)}</p></div>
+                                        <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">hotel</span></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Accommodation</p><p class="text-sm font-bold" style="color:#210747;">{escape(acc_short)}</p></div>
                                     </div>''')
 
     return '\n                                '.join(items)
@@ -1679,6 +1679,45 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     # Walking info panel
     walking_info_html = render_walking_info_panel(destination, tours)
 
+    # Tour count
+    tour_count = len(tours) if tours else 0
+    tour_count_html = ''
+    if tour_count > 0:
+        tour_count_html = f'''<div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
+                                    <div class="flex items-center gap-3">
+                                        <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">hiking</span></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Walking Tours</p><p class="text-sm font-bold" style="color:#210747;">{tour_count} tour{"s" if tour_count != 1 else ""} available</p></div>
+                                    </div>
+                                </div>'''
+
+    # Included services from global settings
+    included_services_html = ''
+    try:
+        gs_path = WEBSITE_DIR / '_data' / 'global_settings.json'
+        if gs_path.exists():
+            with open(gs_path) as f:
+                global_settings = json.load(f)
+        else:
+            global_settings = []
+        included_items = []
+        for gs in global_settings:
+            if gs.get('setting_key') == 'included_services':
+                included_items = gs.get('setting_json', [])
+                break
+        if included_items:
+            li_html = ''
+            for svc in included_items:
+                svc_text = escape(str(svc))
+                li_html += f'<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>{svc_text}</span></li>\n'
+            included_services_html = f'''<div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
+                                    <p class="text-xs font-semibold mb-3" style="color:#B58DB6;">Included in Every Tour</p>
+                                    <ul class="space-y-2">
+                                        {li_html}
+                                    </ul>
+                                </div>'''
+    except Exception:
+        pass
+
     # Combined 2-column sections
     landscape_culture_section = render_dest_landscape_culture_section(destination)
     accommodation_practical_section = render_dest_accommodation_practical_section(destination)
@@ -1728,6 +1767,8 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
         '{destination_slug}': dest_slug,
         '{destination_schema}': render_destination_page_schema(destination, tours, reviews),
         '{walking_info_panel_html}': walking_info_html,
+        '{tour_count_html}': tour_count_html,
+        '{included_services_html}': included_services_html,
         '{landscape_culture_section}': landscape_culture_section,
         '{poi_section}': poi_section,
         '{activities_section}': activities_section,

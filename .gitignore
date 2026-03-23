@@ -23,22 +23,3 @@ Thumbs.db
 # Fix scripts (not needed in production)
 fix-pages.py
 .git-old
-
-# Non-website files in workspace
-Destinations/
-New walking tour descriptions/
-WALKING HOLIDAY IRELAND.docx
-WHI-Masterfile-Business-Analysis.txt
-WHI-Website-Audit-Report.docx
-code.html
-map-image-prompt.md
-new-articles/
-stitch_whi_blog_archive/
-stitch_whi_blog_article/
-stitch_whi_category/
-stitch_whi_destination/
-stitch_whi_homepage/
-stitch_whi_page template/
-stitch_whi_tour/
-website/
-test_articles/
