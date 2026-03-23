@@ -1698,6 +1698,23 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
             region_name = rn
             break
 
+    # Tourism brand region mapping
+    tourism_brand_map = {
+        'Dingle Peninsula': 'Wild Atlantic Way',
+        'County Kerry': 'Wild Atlantic Way',
+        'Wicklow Mountains': "Ireland's Ancient East",
+        'South East Ireland': "Ireland's Ancient East",
+        'The Burren': 'Wild Atlantic Way',
+        'Causeway Coast': 'Causeway Coastal Route',
+        'Cooley Peninsula': "Ireland's Ancient East",
+        'Connemara': 'Wild Atlantic Way',
+        'Beara Peninsula': 'Wild Atlantic Way',
+        'Glens of Antrim': 'Causeway Coastal Route',
+        'Mourne Mountains': 'Mourne Heritage Trail',
+        'The Sperrins': 'Sperrins Heritage Trail',
+    }
+    tourism_brand = tourism_brand_map.get(region_name, '')
+
     # Build placeholders
     replacements = {
         '{meta_title}': escape(destination.get('meta_title') or destination.get('name', '')),
@@ -1706,6 +1723,7 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
         '{short_description}': escape(destination.get('short_description', '')),
         '{hero_image}': escape(destination.get('hero_image') or f'images/destinations/{destination.get("slug", "")}/hero.jpg'),
         '{region_name}': escape(region_name) if region_name else dest_name,
+        '{tourism_brand}': escape(tourism_brand),
         '{overview}': get_safe_text(destination, 'overview'),
         '{destination_slug}': dest_slug,
         '{destination_schema}': render_destination_page_schema(destination, tours, reviews),
@@ -1805,6 +1823,18 @@ def render_tours_listing_json(tours, reviews_by_tour=None):
             'total_ascent': int(db_ascent) if db_ascent else (total_ascent if total_ascent else None),
             'total_descent': int(tour.get('total_descent_m')) if tour.get('total_descent_m') else None,
         }
+
+        # Promotion / sale price support
+        sale_price = tour.get('sale_price_eur')
+        if sale_price:
+            try:
+                sale_val = float(sale_price)
+                if sale_val > 0 and sale_val < price_val:
+                    item['sale_price'] = sale_val
+                    item['discount_pct'] = round((1 - sale_val / price_val) * 100)
+            except (ValueError, TypeError):
+                pass
+
         if avg_rating:
             item['avg_rating'] = avg_rating
             item['review_count'] = review_count
@@ -2207,6 +2237,12 @@ def main():
             faqs = json.load(f)
         with open(data_dir / 'regions.json') as f:
             regions = json.load(f)
+        posts_path = data_dir / 'posts.json'
+        if posts_path.exists():
+            with open(posts_path) as f:
+                posts = json.load(f)
+        else:
+            posts = []
     else:
         log("Fetching tours from Supabase...")
         tours = fetch_supabase('tours', '&status=eq.published&order=sort_order')
@@ -2223,11 +2259,29 @@ def main():
         log("Fetching regions from Supabase...")
         regions = fetch_supabase('regions', '&order=sort_order')
 
+        log("Fetching blog posts from Supabase...")
+        posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
+        posts_upper = fetch_supabase('posts', '&status=eq.Published&language=eq.en&order=published_date.desc')
+        # Combine and deduplicate
+        seen_ids = set()
+        posts = []
+        for p in (posts_lower or []) + (posts_upper or []):
+            if p.get('id') not in seen_ids:
+                seen_ids.add(p.get('id'))
+                posts.append(p)
+
+        # Cache posts locally
+        data_dir = WEBSITE_DIR / '_data'
+        data_dir.mkdir(exist_ok=True)
+        with open(data_dir / 'posts.json', 'w') as f:
+            json.dump(posts, f, indent=2)
+        log(f"Cached {len(posts)} blog posts to _data/posts.json")
+
     if not tours and not destinations:
         log("No data fetched. Check Supabase connection and RLS policies.", 'error')
         return
 
-    log(f"Fetched {len(tours)} tours, {len(destinations)} destinations, {len(reviews)} reviews, {len(faqs)} FAQs, {len(regions)} regions")
+    log(f"Fetched {len(tours)} tours, {len(destinations)} destinations, {len(reviews)} reviews, {len(faqs)} FAQs, {len(regions)} regions, {len(posts)} blog posts")
 
     # Build lookups
     destinations_by_id = {d['id']: d for d in destinations}
@@ -2519,6 +2573,197 @@ def main():
     else:
         log("Destinations listing template not found, skipping", 'warn')
 
+    # ── Build Blog Pages ──────────────────────────────────────
+    log("\nGenerating blog pages...")
+    blog_template_path = WEBSITE_DIR / '_templates' / 'blog-article.html'
+    blog_dir = WEBSITE_DIR / 'blog'
+    blog_dir.mkdir(exist_ok=True)
+    generated_blog_slugs = []
+
+    if blog_template_path.exists() and posts:
+        with open(blog_template_path, 'r') as f:
+            blog_template = f.read()
+
+        for post in posts:
+            slug = post.get('slug', '')
+            if not slug:
+                continue
+
+            content = post.get('content', '')
+            # Strip WordPress block comments
+            import re as _re
+            content = _re.sub(r'<!-- /?wp:\w+[^>]* -->', '', content)
+
+            title = post.get('title', '')
+            excerpt = post.get('excerpt', '') or ''
+            category = post.get('category', '') or 'Blog'
+            meta_title = post.get('meta_title', '') or title
+            meta_desc = post.get('meta_description', '') or excerpt[:160]
+            published_date = post.get('published_date') or post.get('published_at', '')[:10] if post.get('published_at') else ''
+            author = post.get('author') or post.get('author_name') or 'Walking Holiday Ireland'
+            read_time = post.get('read_time_minutes') or max(1, len(content.split()) // 200)
+
+            # Format date for display
+            date_display = published_date
+            try:
+                from datetime import datetime as _dt
+                dt = _dt.strptime(published_date[:10], '%Y-%m-%d')
+                date_display = dt.strftime('%B %d, %Y')
+            except (ValueError, TypeError):
+                pass
+
+            # Build related articles (up to 3 other posts)
+            related = [p for p in posts if p.get('slug') != slug][:3]
+            related_html = ''
+            for rp in related:
+                rp_slug = rp.get('slug', '')
+                rp_title = rp.get('title', '')
+                rp_cat = rp.get('category', '') or 'Blog'
+                rp_img = rp.get('featured_image', '') or ''
+                rp_excerpt = rp.get('excerpt', '') or ''
+                if len(rp_excerpt) > 120:
+                    rp_excerpt = rp_excerpt[:117] + '...'
+                related_html += f'''<a href="{rp_slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
+                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="{escape(rp_img)}" alt="{escape(rp_title)}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">{escape(rp_cat)}</span></div>
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{escape(rp_title)}</h3>
+                        <p class="text-slate-500 text-sm">{escape(rp_excerpt)}</p>
+                    </div>
+                </a>\n'''
+
+            replacements = {
+                '{meta_title}': escape(meta_title),
+                '{meta_description}': escape(meta_desc),
+                '{slug}': escape(slug),
+                '{category}': escape(category),
+                '{read_time}': str(read_time),
+                '{article_title}': escape(title),
+                '{article_body}': content,
+                '{date_display}': date_display,
+                '{date_published}': published_date,
+                '{related_articles_html}': related_html,
+            }
+
+            html = blog_template
+            for key, value in replacements.items():
+                html = html.replace(key, str(value))
+
+            output_path = blog_dir / f'{slug}.html'
+            if not DRY_RUN:
+                with open(output_path, 'w') as f:
+                    f.write(html)
+            generated_blog_slugs.append(slug)
+
+        log(f"Generated {len(generated_blog_slugs)} blog article pages")
+    else:
+        if not posts:
+            log("No blog posts found, skipping blog generation", 'warn')
+        if not blog_template_path.exists():
+            log("Blog article template not found, skipping", 'warn')
+
+    # ── Build Blog Listing Page ───────────────────────────────
+    log("\nGenerating blog listing page...")
+    if posts and generated_blog_slugs:
+        # Featured post (first/newest)
+        fp = posts[0]
+        fp_img = fp.get('featured_image', '') or ''
+        fp_cat = fp.get('category', '') or 'Blog'
+        fp_excerpt = fp.get('excerpt', '') or ''
+        fp_date = fp.get('published_date') or (fp.get('published_at', '')[:10] if fp.get('published_at') else '')
+        try:
+            from datetime import datetime as _dt
+            fp_date_display = _dt.strptime(fp_date[:10], '%Y-%m-%d').strftime('%B %d, %Y')
+        except (ValueError, TypeError):
+            fp_date_display = fp_date
+        fp_read = fp.get('read_time_minutes') or max(1, len((fp.get('content', '') or '').split()) // 200)
+
+        featured_html = f'''<section class="group">
+    <a href="blog/{escape(fp.get('slug',''))}.html" class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all">
+        <div class="relative h-[300px] lg:h-full overflow-hidden bg-gradient-to-br from-primary/30 to-brand-purple/30">
+                <img src="{escape(fp_img)}" alt="{escape(fp.get('title',''))}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+            <div class="absolute top-4 left-4">
+                <span class="bg-primary text-white px-4 py-1.5 rounded-full text-sm font-bold uppercase tracking-wide">Featured</span>
+            </div>
+        </div>
+        <div class="flex flex-col justify-center py-8 pr-8 pl-8 lg:pl-0">
+            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest mb-3">{escape(fp_cat)}</span>
+            <h2 class="text-2xl lg:text-3xl font-bold mb-4 group-hover:text-primary transition-colors">{escape(fp.get('title',''))}</h2>
+            <p class="text-slate-600 leading-relaxed mb-6">{escape(fp_excerpt[:200])}</p>
+            <div class="flex items-center gap-4 text-sm text-slate-400">
+                <span>{fp_date_display}</span><span>&bull;</span><span>{fp_read} min read</span>
+            </div>
+        </div>
+    </a>
+</section>'''
+
+        # Grid cards for remaining posts
+        grid_cards = ''
+        for post in posts[1:]:
+            ps = post.get('slug', '')
+            if ps not in generated_blog_slugs:
+                continue
+            p_img = post.get('featured_image', '') or ''
+            p_cat = post.get('category', '') or 'Blog'
+            p_title = post.get('title', '')
+            p_excerpt = post.get('excerpt', '') or ''
+            if len(p_excerpt) > 120:
+                p_excerpt = p_excerpt[:117] + '...'
+            p_date = post.get('published_date') or (post.get('published_at', '')[:10] if post.get('published_at') else '')
+            try:
+                p_date_display = _dt.strptime(p_date[:10], '%Y-%m-%d').strftime('%B %d, %Y')
+            except (ValueError, TypeError):
+                p_date_display = p_date
+            p_read = post.get('read_time_minutes') or max(1, len((post.get('content', '') or '').split()) // 200)
+
+            grid_cards += f'''
+        <a href="blog/{escape(ps)}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
+            <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                <img src="{escape(p_img)}" alt="{escape(p_title)}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
+                <div class="absolute top-4 left-4">
+                    <span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">{escape(p_cat)}</span>
+                </div>
+            </div>
+            <div class="p-6 flex-grow flex flex-col">
+                <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{escape(p_title)}</h3>
+                <p class="text-slate-500 text-sm leading-relaxed flex-grow">{escape(p_excerpt)}</p>
+                <div class="flex items-center gap-3 text-xs text-slate-400 mt-4 pt-4 border-t border-slate-100">
+                    <span>{p_date_display}</span><span>&bull;</span><span>{p_read} min read</span>
+                </div>
+            </div>
+        </a>'''
+
+        # Read existing blog.html and replace content between markers
+        blog_listing_path = WEBSITE_DIR / 'blog.html'
+        if blog_listing_path.exists():
+            with open(blog_listing_path, 'r') as f:
+                blog_listing = f.read()
+
+            new_blog_content = f'''<!-- Content Area -->
+
+{featured_html}
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+{grid_cards}
+    </div>
+
+'''
+
+            # Replace everything between <!-- Content Area --> and <!-- Footer -->
+            import re as _re
+            pattern = r'<!-- Content Area -->.*?<!-- Footer -->'
+            replacement = new_blog_content + '<!-- Footer -->'
+            blog_listing_new = _re.sub(pattern, replacement, blog_listing, flags=_re.DOTALL)
+
+            if not DRY_RUN:
+                with open(blog_listing_path, 'w') as f:
+                    f.write(blog_listing_new)
+                log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
+        else:
+            log("blog.html not found, skipping listing page", 'warn')
+
     # Summary
     log("\n" + "=" * 60)
     log(f"Build complete: {len(generated['tours'])} tours, {len(generated['destinations'])} destinations")
@@ -2557,12 +2802,9 @@ def main():
             if (WEBSITE_DIR / page).exists():
                 sitemap_urls.append((f'https://walkingholidayireland.com/{page}', '0.5', 'monthly'))
 
-        # Blog articles
-        blog_dir = WEBSITE_DIR / 'blog'
-        if blog_dir.exists():
-            for blog_file in sorted(blog_dir.glob('*.html')):
-                if blog_file.name != 'index.html':
-                    sitemap_urls.append((f'https://walkingholidayireland.com/blog/{blog_file.name}', '0.6', 'monthly'))
+        # Blog articles (only generated/published posts)
+        for blog_slug in generated_blog_slugs:
+            sitemap_urls.append((f'https://walkingholidayireland.com/blog/{blog_slug}.html', '0.6', 'monthly'))
 
         sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
         sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'

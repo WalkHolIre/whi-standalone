@@ -1,6 +1,7 @@
 /**
  * WHI Destination Tour Cards — Client-side rendering
  * Renders tour cards on walking area pages matching the redesigned card style
+ * Uses inline styles to avoid dependency on Tailwind CDN
  */
 (function() {
     'use strict';
@@ -62,6 +63,11 @@
         return p === Math.floor(p) ? p.toFixed(0) : p.toFixed(2);
     }
 
+    /* SVG icons for stats bar */
+    var iconDays = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
+    var iconDistance = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
+    var iconAscent = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
+
     grid.innerHTML = tours.map(function(tour) {
         var walkDays = tour.walking_days || (tour.days - 1) || 1;
         var kmPerDay = tour.total_km ? Math.round(tour.total_km / walkDays) : null;
@@ -71,88 +77,107 @@
         var regionLabel = regionLabelMap[tour.region] || tour.region;
         var regionPage = regionPageMap[tour.region] || '';
         var regionOnclick = regionPage ? ' onclick="event.stopPropagation();event.preventDefault();window.location.href=\'' + regionPage + '\';"' : '';
-        var regionCursor = regionPage ? ' cursor-pointer hover:underline' : '';
+        var regionCursor = regionPage ? 'cursor:pointer;' : '';
 
-        /* Review HTML */
+        /* Review HTML — single large star + rating */
         var reviewHtml = '';
         if (tour.avg_rating && tour.review_count > 0) {
-            reviewHtml = '<div class="flex items-center gap-1.5">' +
-                '<svg class="w-6 h-6 fill-current" style="color:#F17E00;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>' +
-                '<span class="font-extrabold text-lg leading-none" style="color:#210747;">' + tour.avg_rating + '</span>' +
-                '<span class="text-gray-400 text-sm font-medium">(' + tour.review_count + ' Reviews)</span>' +
+            reviewHtml = '<div style="display:flex;align-items:center;gap:6px;">' +
+                '<svg style="width:24px;height:24px;color:#F17E00;" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>' +
+                '<span style="font-weight:800;font-size:18px;line-height:1;color:#210747;">' + tour.avg_rating + '</span>' +
+                '<span style="color:#9ca3af;font-size:14px;font-weight:500;">(' + tour.review_count + ')</span>' +
             '</div>';
         }
 
-        /* Difficulty boots — filled at full opacity, unfilled at 40% */
+        /* Difficulty boots */
         var filled = getBootCount(tour.difficulty);
-        var bootsHtml = '<div class="flex gap-1" title="Difficulty: ' + tour.difficulty + '">';
+        var bootsHtml = '<div style="display:flex;gap:4px;" title="Difficulty: ' + tour.difficulty + '">';
         for (var b = 0; b < 3; b++) {
-            var op = b < filled ? 'opacity-100' : 'opacity-40';
-            bootsHtml += '<img src="images/icons/boot-filled.svg" alt="" class="w-[34px] h-[34px] object-contain ' + op + '">';
+            var opacity = b < filled ? '1' : '0.35';
+            bootsHtml += '<img src="images/icons/boot-filled.svg" alt="" style="width:34px;height:34px;object-fit:contain;opacity:' + opacity + ';">';
         }
         bootsHtml += '</div>';
 
         /* Stats bar items */
-        var statsHtml = '';
-        // Days
-        statsHtml += '<div class="flex flex-col items-center justify-center">' +
-            '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
-            '<span class="font-extrabold text-base" style="color:#210747;">' + tour.days + ' Days</span>' +
-        '</div>';
-        var statsCols = 1;
-        // km/Day
+        var statItems = [];
+        statItems.push(
+            '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 8px;">' +
+                iconDays +
+                '<span style="font-weight:800;font-size:16px;color:#210747;">' + tour.days + ' Days</span>' +
+            '</div>'
+        );
         if (kmPerDay) {
-            statsCols++;
-            statsHtml += '<div class="flex flex-col items-center justify-center">' +
-                '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
-                '<div class="text-center"><span class="font-extrabold text-base block" style="color:#210747;">' + kmPerDay + ' km</span><span class="text-gray-400 text-[10px] font-bold uppercase tracking-tight -mt-1 block">/Day</span></div>' +
-            '</div>';
+            statItems.push(
+                '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 8px;border-left:1px solid #e5e7eb;">' +
+                    iconDistance +
+                    '<div style="text-align:center;"><span style="font-weight:800;font-size:16px;color:#210747;display:block;">' + kmPerDay + ' km</span><span style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;display:block;">/Day</span></div>' +
+                '</div>'
+            );
         }
-        // Ascent/Day
         if (ascentPerDay) {
-            statsCols++;
-            statsHtml += '<div class="flex flex-col items-center justify-center">' +
-                '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
-                '<div class="text-center"><span class="font-extrabold text-base block" style="color:#210747;">&uarr; ' + ascentPerDay + 'm</span><span class="text-gray-400 text-[10px] font-bold uppercase tracking-tight -mt-1 block">/Day</span></div>' +
+            statItems.push(
+                '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;padding:0 8px;border-left:1px solid #e5e7eb;">' +
+                    iconAscent +
+                    '<div style="text-align:center;"><span style="font-weight:800;font-size:16px;color:#210747;display:block;">&uarr; ' + ascentPerDay + 'm</span><span style="color:#9ca3af;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.02em;display:block;">/Day</span></div>' +
+                '</div>'
+            );
+        }
+
+        /* Promotional ribbon */
+        var ribbonHtml = '';
+        if (tour.discount_pct && tour.sale_price) {
+            ribbonHtml = '<div class="ribbon-wrapper">' +
+                '<div style="position:absolute;top:0;left:100px;width:10px;height:10px;background:#9c5100;clip-path:polygon(0 100%, 100% 100%, 0 0);"></div>' +
+                '<div style="position:absolute;top:100px;left:0;width:10px;height:10px;background:#9c5100;clip-path:polygon(100% 0, 100% 100%, 0 0);"></div>' +
+                '<span class="ribbon">SAVE ' + tour.discount_pct + '%</span>' +
             '</div>';
         }
 
-        return '<div class="w-full max-w-[420px] mx-auto">' +
-            '<a href="tours/' + tour.slug + '.html" class="tour-card flex flex-col h-full bg-white rounded-2xl overflow-hidden no-underline group">' +
-                /* Image area */
-                '<div class="relative aspect-[4/3] overflow-hidden">' +
-                    '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" onerror="this.style.display=\'none\'"/>' +
-                    '<div class="absolute inset-0 image-overlay"></div>' +
+        /* Price badge */
+        var priceHtml = tour.sale_price
+            ? '<span style="font-size:14px;text-decoration:line-through;color:#9ca3af;">&euro;' + formatPrice(tour.price) + '</span> ' +
+              '<span style="font-size:24px;font-weight:900;color:#F17E00;">&euro;' + formatPrice(tour.sale_price) + '</span>'
+            : '<span style="font-size:24px;font-weight:900;color:#210747;">&euro;' + formatPrice(tour.price) + '</span>';
+
+        return '<div style="width:100%;max-width:420px;margin:0 auto;">' +
+            '<div style="position:relative;">' +
+            ribbonHtml +
+            '<a href="tours/' + tour.slug + '.html" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;">' +
+                /* Image area with gradient overlay and title */
+                '<div style="position:relative;aspect-ratio:4/3;overflow:hidden;">' +
+                    '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;" loading="lazy" onerror="this.style.display=\'none\'"/>' +
+                    '<div class="image-overlay" style="position:absolute;top:0;left:0;right:0;bottom:0;"></div>' +
                     /* Price badge */
-                    '<div class="absolute top-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md text-center">' +
-                        '<span class="block text-[11px] font-bold uppercase tracking-widest text-gray-500 leading-tight mb-0.5">From</span>' +
-                        '<span class="text-2xl font-black" style="color:#210747;">&euro;' + formatPrice(tour.price) + '</span>' +
+                    '<div style="position:absolute;top:16px;right:16px;background:#fff;padding:8px 16px;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.12);text-align:center;">' +
+                        '<span style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;line-height:1;margin-bottom:2px;">From</span>' +
+                        priceHtml +
                     '</div>' +
-                    /* Tour title */
-                    '<div class="absolute bottom-5 left-6 right-6">' +
-                        '<h3 class="text-white text-2xl font-extrabold leading-tight">' + tour.name + '</h3>' +
+                    /* Tour title at bottom of image */
+                    '<div style="position:absolute;bottom:20px;left:24px;right:24px;">' +
+                        '<h3 style="color:#fff;font-size:24px;font-weight:800;line-height:1.2;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">' + tour.name + '</h3>' +
                     '</div>' +
                 '</div>' +
                 /* Card body */
-                '<div class="flex-grow p-6 flex flex-col">' +
+                '<div style="flex-grow:1;padding:24px;display:flex;flex-direction:column;">' +
                     /* Region */
-                    '<div class="flex items-center gap-1.5 font-semibold text-sm mb-3' + regionCursor + '" style="color:#210747;"' + regionOnclick + '>' +
-                        '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                    '<div style="display:flex;align-items:center;gap:6px;font-weight:600;font-size:14px;color:#210747;margin-bottom:12px;' + regionCursor + '"' + regionOnclick + '>' +
+                        '<svg style="width:16px;height:16px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
                         '<span>' + regionLabel + '</span>' +
                     '</div>' +
                     /* Description */
-                    '<p class="text-gray-600 text-base leading-relaxed mb-6">' + (tour.short_desc || '') + '</p>' +
+                    '<p style="color:#4b5563;font-size:16px;line-height:1.6;margin:0 0 24px 0;">' + (tour.short_desc || '') + '</p>' +
                     /* Rating + Difficulty row */
-                    '<div class="mt-auto flex items-center justify-between border-t border-gray-100 pt-6">' +
+                    '<div style="margin-top:auto;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #f3f4f6;padding-top:24px;">' +
                         reviewHtml +
                         bootsHtml +
                     '</div>' +
                 '</div>' +
                 /* Stats bar */
-                '<div class="bg-gray-50 grid grid-cols-' + statsCols + ' border-t border-gray-100 divide-x divide-gray-200 py-5">' +
-                    statsHtml +
+                '<div style="background:#f9fafb;display:flex;border-top:1px solid #f3f4f6;padding:20px 0;">' +
+                    statItems.join('') +
                 '</div>' +
             '</a>' +
+            '</div>' +
         '</div>';
     }).join('');
 })();
