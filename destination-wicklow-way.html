@@ -11,32 +11,26 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
-        @media(min-width:768px){header{top:48px;}}
+        /* Utility bar is ~46px; header sits below it on desktop */
+        @media(min-width:768px){ header{ top:52px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .badge-easy { background-color: #dcfce7; color: #166534; }
         .badge-moderate { background-color: #fef3c7; color: #92400e; }
         .badge-challenging { background-color: #fee2e2; color: #991b1b; }
-        /* Month calendar */
         .month-pill { display:inline-flex;align-items:center;justify-content:center;width:56px;padding:8px 0;border-radius:12px;font-size:13px;font-weight:600;transition:all 0.2s; }
         .month-pill.best { background:linear-gradient(135deg,#F17E00,#ff9a2e);color:#fff;box-shadow:0 2px 8px rgba(241,126,0,0.3); }
         .month-pill.ok { background:#f1f5f9;color:#64748b; }
-        /* POI card hover */
         .poi-card { transition: transform 0.2s, box-shadow 0.2s; }
         .poi-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        /* Activity card */
         .activity-card { transition: transform 0.2s, box-shadow 0.2s; }
         .activity-card:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        /* Info panel icons */
-        .info-icon { width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
-        /* Scroll reveal */
-        .reveal { opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease; }
-        .reveal.visible { opacity:1;transform:translateY(0); }
-        /* Cuisine card */
+        .info-icon { width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
         .cuisine-card { transition: transform 0.2s; }
         .cuisine-card:hover { transform: translateY(-2px); }
-        /* Tour card max width for single cards */
         .tour-card { max-width: 420px; }
+        .reveal { opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease; }
+        .reveal.visible { opacity:1;transform:translateY(0); }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/walking-area-wicklow-way.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-area-wicklow-way.html"/>
@@ -52,7 +46,6 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Wicklow Way Walking Holiday — Mountains &amp; Trails"/>
     <meta name="twitter:description" content="Walk the Wicklow Way — 127km through granite mountains, glacial valleys and Glendalough. Self-guided walking holidays with luggage transfers and handpicked B&amp;Bs."/>
-    <!-- Breadcrumb Schema -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -88,7 +81,7 @@
 
     <link rel="preload" as="image" href="images/destinations/wicklow-way/hero.jpg"/>
 </head>
-<body class="bg-background-light">
+<body class="bg-white">
     <div class="flex flex-col min-h-screen">
         <!-- Top Utility Bar -->
 <div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
@@ -112,8 +105,8 @@
     </div>
 </div>
 
-<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color: #ffffff;">
-            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:15px;padding-bottom:15px;">
+<header class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
                 <a href="index.html" class="flex items-center gap-3">
                     <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
                 </a>
@@ -150,7 +143,6 @@
                     <span class="material-symbols-outlined text-3xl">menu</span>
                 </button>
             </div>
-            <!-- Mobile Menu -->
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
                 <a href="destinations.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
                 <a href="how-it-works.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
@@ -162,7 +154,7 @@
 
         <main class="flex-grow flex flex-col items-center w-full pt-20">
 
-            <!-- ═══════════════════ 1. HERO ═══════════════════ -->
+            <!-- ═══════════ 1. HERO ═══════════ -->
             <section class="w-full relative h-[70vh] md:h-[85vh] flex items-end">
                 <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/destinations/wicklow-way/hero.jpg');">
                     <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(33,7,71,0.1) 0%, rgba(33,7,71,0.0) 40%, rgba(33,7,71,0.7) 80%, rgba(33,7,71,0.95) 100%);"></div>
@@ -180,30 +172,17 @@
                                 <span class="material-symbols-outlined text-xl">hiking</span> View Walking Tours
                             </a>
                             <a href="contact.html" class="inline-flex items-center gap-2 bg-white/15 hover:bg-white/25 backdrop-blur-sm text-white px-7 py-3.5 rounded-xl font-bold text-base transition-colors border border-white/30">
-                                <span class="material-symbols-outlined text-xl">mail</span> Enquire Now
+                                <span class="material-symbols-outlined text-xl">chat</span> Get a Free Quote
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ═══════════════════ 2. QUICK STATS BAR ═══════════════════ -->
-            <section class="w-full bg-white border-b border-slate-200 shadow-sm">
-                <div class="max-w-7xl mx-auto px-6 py-5">
-                    <div class="flex flex-wrap items-center justify-center gap-6 md:gap-12">
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">hiking</span><span class="text-sm font-bold text-slate-700">4 Walking Tours</span></div>
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">euro</span><span class="text-sm font-bold text-slate-700">From &euro;699 pp</span></div>
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">calendar_month</span><span class="text-sm font-bold text-slate-700">5&ndash;10 Days</span></div>
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">speed</span><span class="text-sm font-bold text-slate-700">Moderate &middot; Challenging</span></div>
-                        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">wb_sunny</span><span class="text-sm font-bold text-slate-700">Best: April, May, June +2</span></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- ═══════════════════ 3. OVERVIEW ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 2. OVERVIEW + WALKING INFO SIDEBAR ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
                         <div class="lg:col-span-2">
                             <div class="flex items-start gap-4 mb-8">
                                 <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
@@ -217,13 +196,12 @@
                             </div>
                         </div>
                         <div>
-                            <!-- Walking Info Panel -->
-                            <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 sticky top-32">
-                                <h3 class="font-bold text-lg mb-6 text-brand-purple flex items-center gap-2">
+                            <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-6 sticky top-36">
+                                <h3 class="font-bold text-lg mb-5 text-brand-purple flex items-center gap-2">
                                     <span class="material-symbols-outlined text-primary">info</span>
                                     Walking Info
                                 </h3>
-                                <div class="space-y-5">
+                                <div class="space-y-4">
                                     <div class="flex items-start gap-3">
                                         <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">speed</span></div>
                                         <div><p class="text-xs text-slate-500 font-medium mb-1">Difficulty</p><div class="flex flex-wrap gap-1"><span class="inline-block px-3 py-1 rounded-full text-xs font-bold badge-moderate">Moderate</span> <span class="inline-block px-3 py-1 rounded-full text-xs font-bold badge-challenging">Challenging</span> </div></div>
@@ -245,7 +223,7 @@
                                         <div><p class="text-xs text-slate-500 font-medium mb-1">Ideal For</p><p class="text-sm font-bold text-slate-700">Walkers who want a multi-day trail through genuine mountain scenery with the con...</p></div>
                                     </div>
                                 </div>
-                                <div class="mt-6 pt-5 border-t border-slate-100">
+                                <div class="mt-5 pt-4 border-t border-slate-100">
                                     <a href="#tours" class="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-[#d97200] text-white py-3 rounded-xl font-bold text-sm transition-colors">
                                         <span class="material-symbols-outlined text-lg">hiking</span> View Tours
                                     </a>
@@ -256,29 +234,39 @@
                 </div>
             </section>
 
-            <!-- ═══════════════════ 4. LANDSCAPE ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+            <!-- ═══════════ 3. LANDSCAPE + CULTURE (2-col) ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">The Landscape</h2>
-                            <p class="text-slate-500 mt-1">What to expect along the way</p>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">The Landscape</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                Granite mountains rise from deep glacial valleys carved over 10,000 years of ice retreat. Upper ridges above 600m open to blanket bog and exposed rock with views extending to Wales. Lower slopes are oak, beech and birch woodland that turns golden in autumn. Ribbon lakes fill the valley floors: dark, peat-stained water reflecting mountain walls. Sika deer cross the moorland at dawn, peregrine falcons hunt the cliff faces, and red squirrels are returning to the native woodlands.
+                            </div>
                         </div>
-                    </div>
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
-                        Granite mountains rise from deep glacial valleys carved over 10,000 years of ice retreat. Upper ridges above 600m open to blanket bog and exposed rock with views extending to Wales. Lower slopes are oak, beech and birch woodland that turns golden in autumn. Ribbon lakes fill the valley floors: dark, peat-stained water reflecting mountain walls. Sika deer cross the moorland at dawn, peregrine falcons hunt the cliff faces, and red squirrels are returning to the native woodlands.
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Culture &amp; Heritage</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                Glendalough's 6th-century monastic settlement is one of Ireland's most important early Christian sites: a round tower, seven churches and two glacial lakes in a setting that explains why monks chose this valley. The 1798 Rebellion left its mark across these mountains, particularly in Glenmalure. For food, try Wicklow lamb from the mountain farms, artisan cheese from the Wicklow Way area, and visit Avoca Handweavers, Ireland's oldest working mill. Powerscourt Distillery near Enniskerry produces excellent Irish whiskey.
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ═══════════════════ 5. POINTS OF INTEREST ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 4. POINTS OF INTEREST ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-12">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                    <div class="flex items-start gap-3 mb-10">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Points of Interest</h2>
+                            <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Points of Interest</h2>
                             <p class="text-slate-500 mt-1">Key highlights you&#39;ll discover in The Wicklow Way</p>
                         </div>
                     </div>
@@ -344,13 +332,13 @@
                 </div>
             </section>
 
-            <!-- ═══════════════════ 6. TOP ACTIVITIES ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+            <!-- ═══════════ 5. TOP ACTIVITIES ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-12">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                    <div class="flex items-start gap-3 mb-10">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Things to Do in The Wicklow Way</h2>
+                            <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Things to Do in The Wicklow Way</h2>
                             <p class="text-slate-500 mt-1">Top activities and experiences in the area</p>
                         </div>
                     </div>
@@ -448,31 +436,12 @@
                 </div>
             </section>
 
-            <!-- ═══════════════════ 7. CULTURAL HIGHLIGHTS ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 6. BEST TIME TO VISIT ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Culture &amp; Heritage</h2>
-                            <p class="text-slate-500 mt-1">The stories and traditions of The Wicklow Way</p>
-                        </div>
-                    </div>
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
-                        Glendalough's 6th-century monastic settlement is one of Ireland's most important early Christian sites: a round tower, seven churches and two glacial lakes in a setting that explains why monks chose this valley. The 1798 Rebellion left its mark across these mountains, particularly in Glenmalure. For food, try Wicklow lamb from the mountain farms, artisan cheese from the Wicklow Way area, and visit Avoca Handweavers, Ireland's oldest working mill. Powerscourt Distillery near Enniskerry produces excellent Irish whiskey.
-                    </div>
-                </div>
-            </section>
-
-            <!-- ═══════════════════ 8. BEST TIME TO VISIT ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6 bg-slate-50">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Best Time to Visit</h2>
-                            <p class="text-slate-500 mt-1">Plan your trip for the ideal conditions</p>
-                        </div>
+                    <div class="flex items-start gap-3 mb-8">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Best Time to Visit</h2>
                     </div>
                         <div class="grid grid-cols-1 gap-6">
         <p class="text-lg text-slate-600 leading-relaxed">
@@ -495,20 +464,20 @@
         <p class="text-sm text-slate-500"><span class="text-primary font-bold">★</span> = Best months &nbsp; <span class="text-slate-500 font-bold">✓</span> = Available</p>
     </div>
 
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6 mt-8">
+                    <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4 mt-8">
                         The walking season runs April to October. May and June are our top picks: long evenings, wildflowers on the moorland and lighter trail traffic. September offers golden light, quieter trails and easier booking. July and August are warmest but Glendalough gets crowded; book accommodation well ahead.
                     </div>
                 </div>
             </section>
 
-            <!-- ═══════════════════ 9. WALKING TOURS ═══════════════════ -->
-            <section id="tours" class="w-full py-16 md:py-24 px-6 bg-slate-50">
+            <!-- ═══════════ 7. WALKING TOURS ═══════════ -->
+            <section id="tours" class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
                     <div class="flex items-start gap-4 mb-4">
                         <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
                         <div>
                             <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Walking Tours in The Wicklow Way</h2>
-                            <p class="text-slate-500 mt-1">Self-guided walking holidays with all accommodation and luggage transfers included</p>
+                            <p class="text-slate-500 mt-1">Self-guided walking holidays with accommodation and luggage transfers included</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
@@ -607,7 +576,7 @@
 
                     </div>
                     <div class="text-center mt-10">
-                        <a href="tailor-made.html" class="inline-flex items-center gap-2 text-bright-purple font-bold hover:text-primary transition-colors">
+                        <a href="tailor-made.html" class="inline-flex items-center gap-2 font-bold hover:text-primary transition-colors" style="color:#3F0F87;">
                             <span class="material-symbols-outlined">edit_note</span>
                             Want something different? Let us create a tailor-made tour for you
                         </a>
@@ -615,51 +584,40 @@
                 </div>
             </section>
 
-            <!-- ═══════════════════ 10. ACCOMMODATION ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 8. ACCOMMODATION + PRACTICAL INFO (2-col) ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
-                            <p class="text-slate-500 mt-1">Handpicked accommodation along the route</p>
-                        </div>
-                    </div>
-                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 md:p-10">
-                        <div class="flex items-start gap-4 mb-6">
-                            <span class="material-symbols-outlined text-primary text-3xl">hotel</span>
-                            <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                            <div class="flex items-center gap-3 mb-5">
+                                <span class="material-symbols-outlined text-primary text-2xl">hotel</span>
+                                <h2 class="text-2xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
                                 We book quality guesthouses and B&Bs in Tinahely, Glenmalure, Laragh, Roundwood and Enniskerry: family-run properties where hosts understand walkers' needs. Breakfast is always included. For multi-day itineraries, we arrange luggage transfers between every stop so you walk with just a daypack.
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                            <div class="flex items-center gap-3 mb-5">
+                                <span class="material-symbols-outlined text-primary text-2xl">directions_car</span>
+                                <h2 class="text-2xl font-black text-brand-purple">Getting Here</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                Dublin Airport (DUB) is the arrival point. Bus Éireann operates services to Kildavin and Clonegal for the southern trailhead. The trail finishes at Marlay Park, accessible by Dublin Bus. We provide full transfer and logistics guidance with every booking.
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- ═══════════════════ 11. PRACTICAL INFO / GETTING HERE ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6 bg-slate-50">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Getting Here &amp; Practical Info</h2>
-                            <p class="text-slate-500 mt-1">Everything you need to know before you go</p>
-                        </div>
-                    </div>
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6">
-                        Dublin Airport (DUB) is the arrival point. Bus Éireann operates services to Kildavin and Clonegal for the southern trailhead. The trail finishes at Marlay Park, accessible by Dublin Bus. We provide full transfer and logistics guidance with every booking.
-                    </div>
-                </div>
-            </section>
-
-            <!-- ═══════════════════ 12. TRAVEL TIPS ═══════════════════ -->
+            <!-- ═══════════ 9. TRAVEL TIPS ═══════════ -->
             
 
-            <!-- ═══════════════════ 13. LOCAL CUISINE ═══════════════════ -->
+            <!-- ═══════════ 10. LOCAL CUISINE ═══════════ -->
             
 
-            <!-- ═══════════════════ 14. REVIEWS ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 11. REVIEWS ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
                     <div id="dest-reviews" class="review-carousel" data-auto-advance="8000">
         <div class="flex items-center gap-3 mb-2">
@@ -1047,8 +1005,8 @@
     </script>
 
 
-            <!-- ═══════════════════ 15. FAQs ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 12. FAQs ═══════════ -->
+            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-3xl mx-auto">
                         <section class="faq-section">
         <div class="flex items-center gap-3 mb-8">
@@ -1210,11 +1168,11 @@
     </script>
 
 
-            <!-- ═══════════════════ 16. CTA FOOTER ═══════════════════ -->
-            <section class="w-full py-16 md:py-24 px-6">
+            <!-- ═══════════ 13. CTA FOOTER ═══════════ -->
+            <section class="w-full py-12 md:py-16 px-6">
                 <div class="max-w-7xl mx-auto bg-cover bg-center rounded-3xl overflow-hidden relative" style="background-image: url('images/destinations/wicklow-way/hero.jpg');">
                     <div class="absolute inset-0" style="background:linear-gradient(135deg, rgba(33,7,71,0.95) 0%, rgba(63,15,135,0.85) 50%, rgba(33,7,71,0.75) 100%);"></div>
-                    <div class="relative z-10 py-16 md:py-24 px-8 md:px-16 text-center">
+                    <div class="relative z-10 py-14 md:py-20 px-8 md:px-16 text-center">
                         <h2 class="text-3xl md:text-5xl font-black text-white mb-4">Ready to Walk The Wicklow Way?</h2>
                         <p class="text-lg text-white/85 mb-8 max-w-2xl mx-auto">Let us plan your perfect self-guided walking holiday. Every tour includes accommodation, luggage transfers, maps, and 24/7 local support.</p>
                         <div class="flex flex-wrap gap-4 justify-center">
@@ -1270,18 +1228,10 @@
                             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
                         </ul>
                         <div class="flex gap-3 mt-6">
-                            <div class="flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5">
-                                <span class="text-xs font-bold text-primary">EN</span>
-                            </div>
-                            <a href="https://walkingholidayireland.de" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
-                                <span class="text-xs font-bold text-slate-400">DE</span>
-                            </a>
-                            <a href="https://wandelvakantieierland.nl" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
-                                <span class="text-xs font-bold text-slate-400">NL</span>
-                            </a>
-                            <a href="https://senderismoenirlanda.es" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
-                                <span class="text-xs font-bold text-slate-400">ES</span>
-                            </a>
+                            <div class="flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5"><span class="text-xs font-bold text-primary">EN</span></div>
+                            <a href="https://walkingholidayireland.de" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors"><span class="text-xs font-bold text-slate-400">DE</span></a>
+                            <a href="https://wandelvakantieierland.nl" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors"><span class="text-xs font-bold text-slate-400">NL</span></a>
+                            <a href="https://senderismoenirlanda.es" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors"><span class="text-xs font-bold text-slate-400">ES</span></a>
                         </div>
                     </div>
                 </div>
@@ -1293,25 +1243,19 @@
         </footer>
     </div>
 
-    <!-- Scroll reveal animation -->
     <script>
     (function(){
         var reveals = document.querySelectorAll('.reveal');
         if (!reveals.length) return;
         var observer = new IntersectionObserver(function(entries){
             entries.forEach(function(entry){
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                    observer.unobserve(entry.target);
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
             });
         }, { threshold: 0.1 });
         reveals.forEach(function(el){ observer.observe(el); });
     })();
     </script>
-    <!-- Reviews Carousel -->
     <script src="js/whi-reviews.js"></script>
-    <!-- WHI Ground Control Integration -->
     <script src="js/whi-config.js"></script>
     <script src="js/whi-data.js"></script>
 </body>

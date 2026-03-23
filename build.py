@@ -1050,12 +1050,12 @@ def render_dest_poi_section(destination):
         return ''
 
     name = escape(destination.get('name', ''))
-    return f'''<section class="w-full py-16 md:py-24 px-6">
+    return f'''<section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-12">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                    <div class="flex items-start gap-3 mb-10">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Points of Interest</h2>
+                            <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Points of Interest</h2>
                             <p class="text-slate-500 mt-1">Key highlights you&#39;ll discover in {name}</p>
                         </div>
                     </div>
@@ -1118,12 +1118,12 @@ def render_dest_activities_section(destination):
                         </div>\n'''
 
     name = escape(destination.get('name', ''))
-    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+    return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-12">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
+                    <div class="flex items-start gap-3 mb-10">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                         <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Things to Do in {name}</h2>
+                            <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Things to Do in {name}</h2>
                             <p class="text-slate-500 mt-1">Top activities and experiences in the area</p>
                         </div>
                     </div>
@@ -1166,17 +1166,14 @@ def render_dest_best_time_section(destination):
     months_html = render_best_months(best_months)
     text_html = get_safe_text(destination, 'best_time_to_visit') if best_text else ''
 
-    return f'''<section class="w-full py-16 md:py-24 px-6 bg-slate-50">
+    return f'''<section class="w-full py-16 md:py-20 px-6">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-8">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Best Time to Visit</h2>
-                            <p class="text-slate-500 mt-1">Plan your trip for the ideal conditions</p>
-                        </div>
+                    <div class="flex items-start gap-3 mb-8">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Best Time to Visit</h2>
                     </div>
                     {months_html}
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-6 mt-8">
+                    <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4 mt-8">
                         {text_html}
                     </div>
                 </div>
@@ -1318,7 +1315,7 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
     reviews_html = render_destination_review_section(reviews, destination, tours_by_id, prefix='')
     if not reviews_html or reviews_html.strip() == '':
         return ''
-    return f'''<section class="w-full py-16 md:py-24 px-6">
+    return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
                     {reviews_html}
                 </div>
@@ -1429,6 +1426,114 @@ def render_dest_tour_cards_v3(tours, prefix='tours/'):
     return html
 
 
+def render_dest_landscape_culture_section(destination):
+    """Render Landscape + Cultural Highlights as a 2-column section, or single-col if only one exists."""
+    landscape = destination.get('landscape_description', '').strip()
+    cultural = destination.get('cultural_highlights', '').strip()
+    name = escape(destination.get('name', ''))
+
+    if not landscape and not cultural:
+        return ''
+
+    # Both exist → 2-column layout
+    if landscape and cultural:
+        return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">The Landscape</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {get_safe_text(destination, "landscape_description")}
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Culture &amp; Heritage</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {get_safe_text(destination, "cultural_highlights")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>'''
+
+    # Only one exists → single column
+    title = 'The Landscape' if landscape else 'Culture &amp; Heritage'
+    field = 'landscape_description' if landscape else 'cultural_highlights'
+    return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto max-w-4xl">
+                    <div class="flex items-start gap-3 mb-6">
+                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">{title}</h2>
+                    </div>
+                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
+                        {get_safe_text(destination, field)}
+                    </div>
+                </div>
+            </section>'''
+
+
+def render_dest_accommodation_practical_section(destination):
+    """Render Accommodation + Practical Info as a 2-column section."""
+    accommodation = destination.get('accommodation_style', '').strip()
+    practical = destination.get('practical_info', '').strip()
+
+    if not accommodation and not practical:
+        return ''
+
+    # Both exist → 2-column layout
+    if accommodation and practical:
+        return f'''<section class="w-full py-16 md:py-20 px-6">
+                <div class="max-w-7xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                            <div class="flex items-center gap-3 mb-5">
+                                <span class="material-symbols-outlined text-primary text-2xl">hotel</span>
+                                <h2 class="text-2xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {get_safe_text(destination, "accommodation_style")}
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                            <div class="flex items-center gap-3 mb-5">
+                                <span class="material-symbols-outlined text-primary text-2xl">directions_car</span>
+                                <h2 class="text-2xl font-black text-brand-purple">Getting Here</h2>
+                            </div>
+                            <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                                {get_safe_text(destination, "practical_info")}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>'''
+
+    # Only one exists → single card
+    if accommodation:
+        title, icon, field = "Where You&#39;ll Stay", "hotel", "accommodation_style"
+    else:
+        title, icon, field = "Getting Here", "directions_car", "practical_info"
+
+    return f'''<section class="w-full py-16 md:py-20 px-6">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-8">
+                        <div class="flex items-center gap-3 mb-5">
+                            <span class="material-symbols-outlined text-primary text-2xl">{icon}</span>
+                            <h2 class="text-2xl font-black text-brand-purple">{title}</h2>
+                        </div>
+                        <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
+                            {get_safe_text(destination, field)}
+                        </div>
+                    </div>
+                </div>
+            </section>'''
+
+
 def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     """Render a destination page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'destination.html'
@@ -1454,27 +1559,22 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
     dest_faq_html, dest_faq_list = render_destination_faq_section(destination.get('id'), faqs, destination.get('name', ''))
     dest_faq_schema = render_faq_schema(dest_faq_list, max_items=8)
 
-    # Quick stats bar
-    quick_stats_html = render_dest_quick_stats(destination, tours)
-
     # Walking info panel
     walking_info_html = render_walking_info_panel(destination, tours)
 
-    # Conditional sections
-    landscape_section = render_dest_landscape_section(destination)
+    # Combined 2-column sections
+    landscape_culture_section = render_dest_landscape_culture_section(destination)
+    accommodation_practical_section = render_dest_accommodation_practical_section(destination)
+
+    # Conditional sections (still standalone)
     poi_section = render_dest_poi_section(destination)
     activities_section = render_dest_activities_section(destination)
-    cultural_section = render_dest_cultural_section(destination)
     best_time_section = render_dest_best_time_section(destination)
-    accommodation_section = render_dest_accommodation_section(destination)
-    practical_section = render_dest_practical_section(destination)
     travel_tips_section = render_dest_travel_tips_section(destination)
     cuisine_section = render_dest_cuisine_section(destination)
 
     # Region name
     region_name = ''
-    rid = destination.get('region_id')
-    # Try to get region from tours
     for t in (tours or []):
         rn = t.get('region_name', '')
         if rn:
@@ -1492,16 +1592,13 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
         '{overview}': get_safe_text(destination, 'overview'),
         '{destination_slug}': dest_slug,
         '{destination_schema}': render_destination_page_schema(destination, tours, reviews),
-        '{quick_stats_html}': quick_stats_html,
         '{walking_info_panel_html}': walking_info_html,
-        '{landscape_section}': landscape_section,
+        '{landscape_culture_section}': landscape_culture_section,
         '{poi_section}': poi_section,
         '{activities_section}': activities_section,
-        '{cultural_section}': cultural_section,
         '{best_time_section}': best_time_section,
         '{tour_cards_html}': tour_cards_html,
-        '{accommodation_section}': accommodation_section,
-        '{practical_section}': practical_section,
+        '{accommodation_practical_section}': accommodation_practical_section,
         '{travel_tips_section}': travel_tips_section,
         '{cuisine_section}': cuisine_section,
         '{reviews_section}': reviews_section_html,
