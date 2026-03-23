@@ -29,7 +29,9 @@
         .info-icon { width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0; }
         .cuisine-card { transition: transform 0.2s; }
         .cuisine-card:hover { transform: translateY(-2px); }
-        .tour-card { display:flex; flex-direction:column; transition: opacity 0.3s ease, transform 0.3s ease; }
+        .tour-card { transition: transform 0.3s ease, box-shadow 0.3s ease; box-shadow: 0 10px 30px -10px rgba(33,7,71,0.15); }
+        .tour-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -12px rgba(33,7,71,0.25); }
+        .image-overlay { background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, rgba(33,7,71,0) 60%); }
         .reveal { opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease; }
         .reveal.visible { opacity:1;transform:translateY(0); }
     </style>

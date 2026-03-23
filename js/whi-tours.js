@@ -57,25 +57,11 @@
         'The Sperrins': 'Sperrins Heritage Trail'
     };
 
-    /* Return boot icons: filled = dark purple, outline = mauve */
-    function getDifficultyBoots(difficulty) {
-        var filled = 1;
-        switch(difficulty) {
-            case 'Easy': filled = 1; break;
-            case 'Moderate': filled = 2; break;
-            case 'Intermediate': filled = 2; break;
-            case 'Challenging': filled = 3; break;
-            default: filled = 1;
-        }
-        var html = '';
-        for (var i = 0; i < 3; i++) {
-            if (i < filled) {
-                html += '<img src="images/icons/boot-filled.svg" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;">';
-            } else {
-                html += '<img src="images/icons/boot-outline.svg" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;">';
-            }
-        }
-        return html;
+    /* Return boot count for difficulty */
+    function getBootCount(difficulty) {
+        if (difficulty === 'Moderate' || difficulty === 'Intermediate') return 2;
+        if (difficulty === 'Challenging') return 3;
+        return 1;
     }
 
     function matchesDuration(days, filterValue) {
@@ -114,112 +100,86 @@
     function renderTours(tours) {
         toursGrid.innerHTML = tours.map(function(tour) {
             /* Calculate per-day averages */
-            var walkDays = tour.walking_days || (tour.days - 1);
+            var walkDays = tour.walking_days || (tour.days - 1) || 1;
             var kmPerDay = tour.total_km ? Math.round(tour.total_km / walkDays) : null;
             var ascentPerDay = tour.total_ascent ? Math.round(tour.total_ascent / walkDays) : null;
-            var descentPerDay = tour.total_descent ? Math.round(tour.total_descent / walkDays) : null;
 
-            /* Price badge — dark purple, larger */
-            var priceHtml = '<div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center">' +
-                '<span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>' +
-                '<span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;' + formatPrice(tour.price) + '</span>' +
-                '<a href="price-promise.html" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>' +
-            '</div>';
+            /* Region link */
+            var regionLabel = regionLabelMap[tour.region] || tour.region;
+            var regionPage = regionPageMap[tour.region] || '';
+            var regionOnclick = regionPage ? ' onclick="event.stopPropagation();event.preventDefault();window.location.href=\'' + regionPage + '\';"' : '';
+            var regionCursor = regionPage ? ' cursor-pointer hover:underline' : '';
 
-            /* Purple gradient overlay + title at bottom of image */
-            var gradientHtml = '<div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>';
-
-            var titleOverImage = '<h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">' + tour.name + '</h3>';
-
-            /* Review stars + count */
+            /* Review HTML — single star + rating */
             var reviewHtml = '';
             if (tour.avg_rating && tour.review_count > 0) {
-                reviewHtml = '<div class="flex items-center gap-2">' +
-                    '<div class="flex items-center gap-0.5">' + renderStars(tour.avg_rating) + '</div>' +
-                    '<span class="text-sm font-bold text-slate-700">' + tour.avg_rating + '</span>' +
-                    '<span class="text-xs text-slate-400">(' + tour.review_count + ')</span>' +
+                reviewHtml = '<div class="flex items-center gap-1.5">' +
+                    '<svg class="w-6 h-6 fill-current" style="color:#F17E00;" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>' +
+                    '<span class="font-extrabold text-lg leading-none" style="color:#210747;">' + tour.avg_rating + '</span>' +
+                    '<span class="text-gray-400 text-sm font-medium">(' + tour.review_count + ' Reviews)</span>' +
                 '</div>';
             }
 
-            /* Difficulty boot icons — bigger, tighter spacing, hover text */
-            var bootsHtml = '<div class="flex items-center" title="Diff.: ' + tour.difficulty + '" style="gap:0;">' + getDifficultyBoots(tour.difficulty) + '</div>';
+            /* Difficulty boots — filled at full opacity, unfilled at 40% */
+            var filled = getBootCount(tour.difficulty);
+            var bootsHtml = '<div class="flex gap-1" title="Difficulty: ' + tour.difficulty + '">';
+            for (var b = 0; b < 3; b++) {
+                var op = b < filled ? 'opacity-100' : 'opacity-40';
+                bootsHtml += '<img src="images/icons/boot-filled.svg" alt="" class="w-[34px] h-[34px] object-contain ' + op + '">';
+            }
+            bootsHtml += '</div>';
 
-            /* Walking region label */
-            var regionLabel = regionLabelMap[tour.region] || tour.region;
-            var regionPage = regionPageMap[tour.region] || '';
-            var regionLinkHtml = regionPage ?
-                '<span class="inline-flex items-center gap-1 text-xs font-semibold hover:underline" style="color:#3F0F87;" onclick="event.stopPropagation();event.preventDefault();window.location.href=\'' + regionPage + '\';">' +
-                    '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>' +
-                    regionLabel +
-                '</span>' :
-                '<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;">' +
-                    '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>' +
-                    regionLabel +
-                '</span>';
-
-            /* Stats bar: days, km/day, ascent/day, descent/day — proper spacing */
-            var statsItems = [];
-            statsItems.push(
-                '<div class="flex flex-col items-center" style="min-width:60px;">' +
-                    '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>' +
-                    '<span class="text-xs font-bold text-slate-700 mt-1">' + tour.days + ' Days</span>' +
-                '</div>'
-            );
+            /* Stats bar */
+            var statsHtml = '';
+            statsHtml += '<div class="flex flex-col items-center justify-center">' +
+                '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                '<span class="font-extrabold text-base" style="color:#210747;">' + tour.days + ' Days</span>' +
+            '</div>';
+            var statsCols = 1;
             if (kmPerDay) {
-                statsItems.push(
-                    '<div class="flex flex-col items-center" style="min-width:60px;">' +
-                        '<img src="images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;">' +
-                        '<span class="text-xs font-bold text-slate-700 mt-1">' + kmPerDay + ' km</span>' +
-                        '<span class="text-[9px] text-slate-400">/Day</span>' +
-                    '</div>'
-                );
+                statsCols++;
+                statsHtml += '<div class="flex flex-col items-center justify-center">' +
+                    '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                    '<div class="text-center"><span class="font-extrabold text-base block" style="color:#210747;">' + kmPerDay + ' km</span><span class="text-gray-400 text-[10px] font-bold uppercase tracking-tight -mt-1 block">/Day</span></div>' +
+                '</div>';
             }
             if (ascentPerDay) {
-                statsItems.push(
-                    '<div class="flex flex-col items-center" style="min-width:60px;">' +
-                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg>' +
-                        '<span class="text-xs font-bold text-slate-700 mt-1">&uarr;' + ascentPerDay + 'm</span>' +
-                        '<span class="text-[9px] text-slate-400">/Day</span>' +
-                    '</div>'
-                );
-            }
-            if (descentPerDay) {
-                statsItems.push(
-                    '<div class="flex flex-col items-center" style="min-width:60px;">' +
-                        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 7l5 10 5-10"/><path d="M4 4h16"/></svg>' +
-                        '<span class="text-xs font-bold text-slate-700 mt-1">&darr;' + descentPerDay + 'm</span>' +
-                        '<span class="text-[9px] text-slate-400">/Day</span>' +
-                    '</div>'
-                );
+                statsCols++;
+                statsHtml += '<div class="flex flex-col items-center justify-center">' +
+                    '<svg class="h-6 w-6 mb-1" style="color:#F17E00;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                    '<div class="text-center"><span class="font-extrabold text-base block" style="color:#210747;">&uarr; ' + ascentPerDay + 'm</span><span class="text-gray-400 text-[10px] font-bold uppercase tracking-tight -mt-1 block">/Day</span></div>' +
+                '</div>';
             }
 
-            var statsBarHtml = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' +
-                statsItems.join('') +
+            return '<div class="w-full max-w-[420px] mx-auto">' +
+                '<a href="tours/' + tour.slug + '.html" class="tour-card flex flex-col h-full bg-white rounded-2xl overflow-hidden no-underline group" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
+                    '<div class="relative aspect-[4/3] overflow-hidden">' +
+                        '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" loading="lazy" onerror="this.style.display=\'none\'"/>' +
+                        '<div class="absolute inset-0 image-overlay"></div>' +
+                        '<div class="absolute top-4 right-4 bg-white px-4 py-2 rounded-lg shadow-md text-center">' +
+                            '<span class="block text-[11px] font-bold uppercase tracking-widest text-gray-500 leading-tight mb-0.5">From</span>' +
+                            '<span class="text-2xl font-black" style="color:#210747;">&euro;' + formatPrice(tour.price) + '</span>' +
+                        '</div>' +
+                        '<div class="absolute bottom-5 left-6 right-6">' +
+                            '<h3 class="text-white text-2xl font-extrabold leading-tight">' + tour.name + '</h3>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="flex-grow p-6 flex flex-col">' +
+                        '<div class="flex items-center gap-1.5 font-semibold text-sm mb-3' + regionCursor + '" style="color:#210747;"' + regionOnclick + '>' +
+                            '<svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
+                            '<span>' + regionLabel + '</span>' +
+                        '</div>' +
+                        '<p class="text-gray-600 text-base leading-relaxed mb-6">' + (tour.short_desc || '') + '</p>' +
+                        '<div class="mt-auto flex items-center justify-between border-t border-gray-100 pt-6">' +
+                            reviewHtml +
+                            bootsHtml +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="bg-gray-50 grid grid-cols-' + statsCols + ' border-t border-gray-100 divide-x divide-gray-200 py-5">' +
+                        statsHtml +
+                    '</div>' +
+                '</a>' +
             '</div>';
-
-            return '<a href="tours/' + tour.slug + '.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
-                /* Image area with gradient, title, price badge */
-                '<div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">' +
-                    '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>' +
-                    gradientHtml +
-                    titleOverImage +
-                    priceHtml +
-                '</div>' +
-                /* Card body */
-                '<div class="flex flex-col justify-between flex-grow p-4 pb-2">' +
-                    '<div>' +
-                        '<p class="text-slate-500 text-sm leading-relaxed line-clamp-3 mb-2">' + tour.short_desc + '</p>' +
-                        regionLinkHtml +
-                    '</div>' +
-                    /* Reviews + Difficulty row */
-                    '<div class="flex items-center justify-between mt-3 mb-1">' +
-                        reviewHtml +
-                        bootsHtml +
-                    '</div>' +
-                '</div>' +
-                /* Stats bar at bottom */
-                statsBarHtml +
-            '</a>';
         }).join('');
     }
 
