@@ -32,6 +32,28 @@
         @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        /* Rich text prose styling for CMS content */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #d97200; }
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; font-size: 1rem; }
+        .prose th { background: #f8fafc; font-weight: 600; color: #1e293b; }
+        .prose td { color: #475569; }
+        .prose u { text-decoration: underline; text-underline-offset: 2px; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/tours/burren-7-days.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/tours/burren-7-days.html"/>
@@ -87,7 +109,7 @@
         },
         "offers": {
                 "@type": "Offer",
-                "price": "795",
+                "price": "855",
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
@@ -96,12 +118,6 @@
         "brand": {
                 "@type": "Brand",
                 "name": "Walking Holiday Ireland"
-        },
-        "distance": {
-                "@type": "QuantitativeValue",
-                "value": 72.5,
-                "unitCode": "KMT",
-                "unitText": "km"
         },
         "additionalProperty": [
                 {
@@ -209,7 +225,7 @@
             <div class="flex flex-col sm:flex-row items-center gap-6 mt-4">
                 <div class="flex flex-col items-start w-full sm:w-auto">
                     <span class="text-sm text-slate-300 font-medium uppercase tracking-wider">Starting From</span>
-                    <span class="text-3xl font-bold">€795 <span class="text-lg font-normal text-slate-300">per person</span></span>
+                    <span class="text-3xl font-bold">€855 <span class="text-lg font-normal text-slate-300">per person</span></span>
                 </div>
                 <a href="../checkout.html" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
                     Book Now
@@ -301,7 +317,12 @@
         <h2 class="text-3xl font-bold">Who Is This For?</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>A seven-day journey through one of Europe's most distinctive landscapes. The Burren is a UNESCO Global Geopark of rare beauty: a vast limestone plateau carved by ice ages, painted with Arctic-Alpine wildflowers. Over seven days, you'll walk 114km through this otherworldly terrain.</p>
+        <p>**Active Hikers Seeking Authentic Experiences**
+If you love real hiking—not tourist loops—this tour is your match. You're walking 16-21km per day, with significant ascents, but at a sustainable pace with excellent support. You want landscapes that challenge you as much as they inspire you. You're not after a photo moment; you're after a week that changes how you see the world.</p>
+<p>**Curious Travellers Who Want Story & Substance**
+You're the kind of person who reads plaques at archaeological sites, asks locals about regional history, and finds ancient stone circles more compelling than shopping centres. The Burren rewards this curiosity ten-fold. Every walk tells a story: the geological forces that shaped the landscape, the prehistoric peoples who left their monuments, the rural traditions still alive in villages like Doolin and Fanore.</p>
+<p>**Well-Travelled People Ready for Something Different**
+You've hiked European classics—the Alps, the Pyrenees—and you're seeking something with more personality, more edge, more genuinely Irish. The Burren isn't manicured. It's raw, honest, and deeply connected to the land and culture. Its uniqueness is its power. This tour is for people who'd rather spend a week somewhere truly distinctive than a month somewhere merely pleasant.</p>
     </div>
 </section>
 
@@ -348,15 +369,11 @@
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">straighten</span> 18km
-                    </span>
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">terrain</span> 530m ascent
-                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    Your iconic day. Start from Liscannor and walk the dramatic cliff-edge path toward O&#x27;Brien&#x27;s Castle and Hag&#x27;s Head. You&#x27;ll be high above the Atlantic, with constant sea views and the chance to spot puffins and other seabirds. The path is well-maintained but exposed—the wind here is real, and the drops are genuine. You&#x27;ll pass O&#x27;Brien&#x27;s Castle (13th century, built to control the coast) and arrive in bohemian Doolin by early evening. This walk is pure coastal magic: raw, energetic, and genuinely exhilarating.
+                    *Distance: 18km | Ascent: 530m | Duration: ~6 hours*
+
+Your iconic day. Start from Liscannor and walk the dramatic cliff-edge path toward O&#x27;Brien&#x27;s Castle and Hag&#x27;s Head. You&#x27;ll be high above the Atlantic, with constant sea views and the chance to spot puffins and other seabirds. The path is well-maintained but exposed—the wind here is real, and the drops are genuine. You&#x27;ll pass O&#x27;Brien&#x27;s Castle (13th century, built to control the coast) and arrive in bohemian Doolin by early evening. This walk is pure coastal magic: raw, energetic, and genuinely exhilarating.
                 </p>
             </div>
         </details>
@@ -396,15 +413,11 @@
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">straighten</span> 15km
-                    </span>
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">terrain</span> 254m ascent
-                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    A gentler day that showcases the Burren&#x27;s inland character. Walk through Doolin Cave territory, past Ballinalacken Castle (a 16th-century tower house), and around Slieve Elva (a distinctive flat-topped mountain). Pass through Caher Valley, with its small farms and dry stone walls, before arriving at Fanore, where a golden sandy beach and the Black Head lighthouse provide a striking contrast to yesterday&#x27;s cliffs. This walk introduces the Burren&#x27;s quieter, more intimate side.
+                    *Distance: 15km | Ascent: 254m | Duration: ~4 hours*
+
+A gentler day that showcases the Burren&#x27;s inland character. Walk through Doolin Cave territory, past Ballinalacken Castle (a 16th-century tower house), and around Slieve Elva (a distinctive flat-topped mountain). Pass through Caher Valley, with its small farms and dry stone walls, before arriving at Fanore, where a golden sandy beach and the Black Head lighthouse provide a striking contrast to yesterday&#x27;s cliffs. This walk introduces the Burren&#x27;s quieter, more intimate side.
                 </p>
             </div>
         </details>
@@ -423,15 +436,11 @@
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">straighten</span> 21.5km
-                    </span>
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">terrain</span> 285m ascent
-                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    Your longest day, but also one of the most rewarding. Start with views across Galway Bay. Walk past Black Head lighthouse, through Gleninagh Valley (where you&#x27;ll see the Burren&#x27;s unique karst topography up close), and past Newtown Castle. The limestone landscape becomes increasingly prominent—bare rock, seasonal turloughs, and the distinctive flora that makes the Burren extraordinary. Ballyvaughan, your destination, is a gateway to the eastern Burren and offers excellent accommodation and village atmosphere.
+                    *Distance: 21.5km | Ascent: 285m | Duration: ~6 hours*
+
+Your longest day, but also one of the most rewarding. Start with views across Galway Bay. Walk past Black Head lighthouse, through Gleninagh Valley (where you&#x27;ll see the Burren&#x27;s unique karst topography up close), and past Newtown Castle. The limestone landscape becomes increasingly prominent—bare rock, seasonal turloughs, and the distinctive flora that makes the Burren extraordinary. Ballyvaughan, your destination, is a gateway to the eastern Burren and offers excellent accommodation and village atmosphere.
                 </p>
             </div>
         </details>
@@ -450,15 +459,11 @@
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
                 <div class="flex flex-wrap gap-3 mb-4">
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">straighten</span> 18km
-                    </span>
-                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">terrain</span> 275m ascent
-                    </span>
                 </div>
                 <p class="text-slate-600 leading-relaxed">
-                    The day you&#x27;ve been waiting for. Walk through woodland and open limestone terrain toward the Poulnabrone Dolmen—the most iconic prehistoric monument in Ireland. This 6,000-year-old Neolithic tomb stops most walkers in their tracks. The afternoon brings you through seasonal turlough areas (fascinating even when dry—you&#x27;ll see the distinctive geology) and past ancient stone forts. You might encounter sheepdog demonstrations at local farms—a living connection to rural Burren traditions. Carran is a tiny village, but it&#x27;s your rest point before departure.
+                    *Distance: 18km | Ascent: 275m | Duration: 5–6 hours*
+
+The day you&#x27;ve been waiting for. Walk through woodland and open limestone terrain toward the Poulnabrone Dolmen—the most iconic prehistoric monument in Ireland. This 6,000-year-old Neolithic tomb stops most walkers in their tracks. The afternoon brings you through seasonal turlough areas (fascinating even when dry—you&#x27;ll see the distinctive geology) and past ancient stone forts. You might encounter sheepdog demonstrations at local farms—a living connection to rural Burren traditions. Carran is a tiny village, but it&#x27;s your rest point before departure.
                 </p>
             </div>
         </details>
@@ -494,15 +499,9 @@
         <h2 class="text-3xl font-bold">Accommodation</h2>
     </div>
     <div class="prose prose-lg max-w-none text-slate-700 space-y-6">
-        <p>✓ 6 nights accommodation (3-star B&B, en-suite rooms)
-✓ Full Irish breakfast each morning
-✓ Luggage transfers to each new accommodation
-✓ Detailed walking maps (1:50,000 scale)
-✓ Waterproof map case
-✓ 24/7 emergency contact support
-✓ Pre-departure information pack
-✓ Expert route guidance and navigation
-✓ Walking poles rental (optional, €15)</p>
+        <p>You'll stay in 3-star B&Bs throughout the tour, each one offering en-suite rooms and genuine Irish hospitality. These aren't corporate hotel chains—they're family-run guesthouses where owners take pride in feeding you a proper Irish breakfast and pointing you toward local secrets. Expect comfortable beds, hot showers, and the kind of welcome that makes you feel looked after.</p>
+<p>Each morning begins with a full Irish breakfast: eggs, bacon, sausages, tomatoes, mushrooms, toast, and strong tea or coffee. This isn't tourist theatre—it's fuel designed to power you through 18km of limestone. After a day's walk, you return to find your room clean, your pack unpacked, and a warm welcome. Evening meals aren't included (this gives you freedom to try Doolin's famous pubs or find local spots), but the staff can recommend excellent restaurants within walking distance.</p>
+<p>Luggage transfers are included, meaning you'll never carry more than a day pack. Your main bag follows you to each new accommodation. It's a small luxury that transforms multi-day hiking from ordeal to pleasure. Rooms have good heating, reliable Wi-Fi, and that intangible Irish warmth that makes you feel like you're being looked after by friends rather than served by strangers.</p>
     </div>
 </section>
 
@@ -546,7 +545,7 @@
     <div class="p-8 border-b border-slate-100">
         <p class="text-slate-500 text-sm font-medium mb-1">From</p>
         <div class="flex items-baseline gap-2">
-            <span class="text-4xl font-black">€795</span>
+            <span class="text-4xl font-black">€855</span>
             <span class="text-slate-500 font-medium">per person</span>
         </div>
         <p class="text-slate-400 text-sm mt-1">Based on 2 sharing</p>
@@ -862,7 +861,7 @@
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-1">Burren Walking Holiday — 5 Days</h3>
                     <p class="text-sm text-slate-500 mb-3">Moderate · 5 Days</p>
-                    <span class="text-primary font-bold">From &euro;599 pp &rarr;</span>
+                    <span class="text-primary font-bold">From &euro;610 pp &rarr;</span>
                 </div>
             </a>
             <a href="burren-6-days.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
@@ -872,17 +871,7 @@
                 <div class="p-5">
                     <h3 class="font-bold text-lg mb-1">Burren Walking Holiday — 6 Days</h3>
                     <p class="text-sm text-slate-500 mb-3">Moderate · 6 Days</p>
-                    <span class="text-primary font-bold">From &euro;695 pp &rarr;</span>
-                </div>
-            </a>
-            <a href="burren-way.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
-                <div class="aspect-[4/3] overflow-hidden bg-slate-100">
-                    <img src="images/routes/burren-way/card.jpg" srcset="images/routes/burren-way/card-400w.jpg 400w, images/routes/burren-way/card-800w.jpg 800w, images/routes/burren-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Burren Way Walking Holiday — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.parentElement.style.background='linear-gradient(135deg, #f17e00 0%, #210747 100%)'"/>
-                </div>
-                <div class="p-5">
-                    <h3 class="font-bold text-lg mb-1">Burren Way Walking Holiday — 8 Days</h3>
-                    <p class="text-sm text-slate-500 mb-3">Moderate · 8 Days</p>
-                    <span class="text-primary font-bold">From &euro;890 pp &rarr;</span>
+                    <span class="text-primary font-bold">From &euro;685 pp &rarr;</span>
                 </div>
             </a>
 

@@ -53,6 +53,28 @@
         .ribbon { position:absolute; display:block; width:225px; padding:12px 0; background-color:#F17E00; box-shadow:0 5px 10px rgba(0,0,0,0.1); color:#fff; text-transform:uppercase; text-align:center; left:-53px; top:40px; transform:rotate(-45deg); font-weight:900; letter-spacing:0.05em; font-size:18px; line-height:1; }
         .reveal { opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease; }
         .reveal.visible { opacity:1;transform:translateY(0); }
+        /* Rich text prose styling for CMS content */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #d97200; }
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .prose th, .prose td { border: 1px solid #e2e8f0; padding: 0.75rem 1rem; text-align: left; font-size: 1rem; }
+        .prose th { background: #f8fafc; font-weight: 600; color: #1e293b; }
+        .prose td { color: #475569; }
+        .prose u { text-decoration: underline; text-underline-offset: 2px; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/walking-area-causeway-coast.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-area-causeway-coast.html"/>
@@ -90,14 +112,7 @@
                 "@type": "Country",
                 "name": "Northern Ireland"
         },
-        "touristType": "Walker",
-        "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.6",
-                "bestRating": "5",
-                "worstRating": "1",
-                "reviewCount": "11"
-        }
+        "touristType": "Walker"
 }
     </script>
 
@@ -228,7 +243,7 @@
                                     </div>
                                 <div class="flex items-start gap-3">
                                         <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">calendar_month</span></div>
-                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Duration</p><p class="text-sm font-bold text-slate-700">5&ndash;8 days</p></div>
+                                        <div><p class="text-xs text-slate-500 font-medium mb-1">Duration</p><p class="text-sm font-bold text-slate-700">8 days</p></div>
                                     </div>
                                 <div class="flex items-start gap-3">
                                         <div class="info-icon bg-primary/10"><span class="material-symbols-outlined text-primary">wb_sunny</span></div>
@@ -542,202 +557,7 @@
             
 
             <!-- ═══════════ 11. REVIEWS ═══════════ -->
-            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
-                <div class="max-w-7xl mx-auto">
-                    <div id="dest-reviews" class="review-carousel" data-auto-advance="8000">
-        <div class="flex items-center gap-3 mb-2">
-            <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">What Our Walkers Say</h2>
-        </div>
-        <div class="flex items-center gap-3 mb-8">
-            <div class="flex"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
-            <span class="text-lg font-bold text-slate-700">4.6</span>
-            <span class="text-slate-500">·</span>
-            <span class="text-slate-500">11 reviews</span>
-        </div>
-        <div class="relative">
-            <div class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4">
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">H</div>
-                    <div>
-                        <h4 class="font-bold text-lg">Hannah Jacobsen</h4>
-                        <p class="text-sm text-slate-500">Norway · June 2018</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">My family and I had the pleasure of hiking this beautiful trail in June 2018</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">My family and I had the pleasure of hiking this beautiful trail in June 2018. The route description was very clear and very well organised. Thanks for a wonderful experience - highly recommended. Will...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">My family and I had the pleasure of hiking this beautiful trail in June 2018. The route description was very clear and very well organised. Thanks for a wonderful experience - highly recommended. Will definitely come back next year!</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">H</div>
-                    <div>
-                        <h4 class="font-bold text-lg">H. de Weerd</h4>
-                        <p class="text-sm text-slate-500">Netherlands · August 2018</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">Beautiful nature</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Beautiful nature. Super nice - you come to places where less than 10 people walk by in a day, and the population is very friendly and helpful.</p>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">R</div>
-                    <div>
-                        <h4 class="font-bold text-lg">Rob B.</h4>
-                        <p class="text-sm text-slate-500">Amsterdam, Netherlands · 2019</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">We are already a few days at home and look back on a wonderful time in Northern </h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">We are already a few days at home and look back on a wonderful time in Northern Ireland. The 500+ stunning photos have been downloaded (perhaps one of the reasons for our slow walking pace!). All B&am...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">We are already a few days at home and look back on a wonderful time in Northern Ireland. The 500+ stunning photos have been downloaded (perhaps one of the reasons for our slow walking pace!). All B&amp;Bs were excellent - good beds, nice breakfast, quiet location and very friendly and helpful hosts. It was very special to really meet no one on the Moyle Way. We had 2 wonderful meals in the Anzac restaurant in Ballycastle after two wonderful days walking. The combination of your descriptions and the maps worked perfectly. Only praise for the B&amp;Bs in Cushendall and Portstewart - they were super cosy. The last walk to Portstewart was also brilliant. It was dry but very windy. Again, it was a great experience for us; the friendliness and helpfulness of everyone, including yourself, made a great impression on us.</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">H</div>
-                    <div>
-                        <h4 class="font-bold text-lg">H. de Weerd</h4>
-                        <p class="text-sm text-slate-500">Netherlands · August 2018</p><p class="text-sm text-primary font-semibold mt-1">Causeway Coast Walking Holiday — 5 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">Super nice - you come to places where less than 10 people walk by in a day, and </h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Super nice - you come to places where less than 10 people walk by in a day, and the population is very friendly and helpful.</p>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">J</div>
-                    <div>
-                        <h4 class="font-bold text-lg">Joke vd W.</h4>
-                        <p class="text-sm text-slate-500">Netherlands · August 2023</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">Fortunately, we didn&#x27;t need your help number during our walking adventure in Nor</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Fortunately, we didn&#x27;t need your help number during our walking adventure in Northern Ireland last week, but it felt safe to have your number at hand. We had a marvellous holiday and were very lu...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">Fortunately, we didn&#x27;t need your help number during our walking adventure in Northern Ireland last week, but it felt safe to have your number at hand. We had a marvellous holiday and were very lucky with the weather. The trip was very well organised. The hiking routes were clear, with the elevation profile with coloured track types, and especially the QR codes, so we never got lost. The driver who collected us at the airport and brought us to the starting point of the first two hikes was an entertaining guide, and we were very well cared for in all of the B&amp;Bs. The last one especially was very impressive. All in all: maybe my best holiday ever (and I&#x27;m 61!). So a big thank you!</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">S</div>
-                    <div>
-                        <h4 class="font-bold text-lg">S. Ganahl</h4>
-                        <p class="text-sm text-slate-500">Not specified · August 2024</p><p class="text-sm text-primary font-semibold mt-1">Causeway Coast Walking Holiday — 5 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">Hiking the Causeway Coast in August 2024 was an unforgettable experience!</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Hiking the Causeway Coast in August 2024 was an unforgettable experience! The breathtaking scenery, from dramatic cliffs to stunning beaches, made every step worthwhile. The route was well-organised, ...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">Hiking the Causeway Coast in August 2024 was an unforgettable experience! The breathtaking scenery, from dramatic cliffs to stunning beaches, made every step worthwhile. The route was well-organised, and the B&amp;B hosts were incredibly welcoming and kind. Everything was perfectly arranged, making it a stress-free and enjoyable adventure. Highly recommend!</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">M</div>
-                    <div>
-                        <h4 class="font-bold text-lg">M. Rutten</h4>
-                        <p class="text-sm text-slate-500">Netherlands · April 2018</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">Very relaxing</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Very relaxing. Beautiful nature and beautiful surroundings.</p>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="5">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">C</div>
-                    <div>
-                        <h4 class="font-bold text-lg">C. Roozen</h4>
-                        <p class="text-sm text-slate-500">Netherlands · August 2018</p><p class="text-sm text-primary font-semibold mt-1">Causeway Coast Walking Holiday — 5 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
-                <h5 class="font-bold mb-2">A great way to fully unwind</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">A great way to fully unwind. Beautiful nature, nice people. Everything perfectly arranged.</p>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="93a2e8cc-0a70-47f3-b577-c87507de2f28" data-dest="f2ccbc44-6bd5-405b-bb7a-8960d5cb71ca" data-rating="4">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">C</div>
-                    <div>
-                        <h4 class="font-bold text-lg">C. Dahmen</h4>
-                        <p class="text-sm text-slate-500">Netherlands · April 2018</p><p class="text-sm text-primary font-semibold mt-1">Giant&#x27;s Causeway Walking Holiday — 8 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
-                <h5 class="font-bold mb-2">Beautiful walking routes through the beautiful nature of Northern Ireland</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very hospitable and beautiful country.</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="4">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">C</div>
-                    <div>
-                        <h4 class="font-bold text-lg">C. Dahmen</h4>
-                        <p class="text-sm text-slate-500">Netherlands · April 2018</p><p class="text-sm text-primary font-semibold mt-1">Causeway Coast Walking Holiday — 5 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
-                <h5 class="font-bold mb-2">Beautiful walking routes through the beautiful nature of Northern Ireland</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">Beautiful walking routes through the beautiful nature of Northern Ireland. Arriving every day in, except for 1, neat and clean B&amp;Bs and being welcomed by all very friendly and helpful people. Very hospitable and beautiful country.</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="baef7bd5-2dc5-40d7-be81-df8e6eeb1681" data-dest="a4433970-9588-46eb-a6cc-46df3088b382" data-rating="3">
-                <div class="flex items-center gap-4 mb-4">
-                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">M</div>
-                    <div>
-                        <h4 class="font-bold text-lg">M. Molen</h4>
-                        <p class="text-sm text-slate-500">Netherlands · April 2019</p><p class="text-sm text-primary font-semibold mt-1">Causeway Coast Walking Holiday — 5 Days</p>
-                    </div>
-                </div>
-                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span><span class="material-symbols-outlined text-lg text-slate-300">star</span></div>
-                <h5 class="font-bold mb-2">The trip was very nice</h5>
-                <p class="review-truncated text-slate-600 leading-relaxed">The trip was very nice. Positive points are that you can make beautiful walks in this area. Too bad that the difference per day was so great. Where one day you walk along breathtaking cliffs, the othe...</p>
-                <div class="review-full hidden mt-2">
-                    <p class="text-slate-600 leading-relaxed">The trip was very nice. Positive points are that you can make beautiful walks in this area. Too bad that the difference per day was so great. Where one day you walk along breathtaking cliffs, the other day you walk for a large part along/over the road. The difference in distance is also large - 20 km max, 13 km minimum.</p>
-                </div>
-                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
-            </div>
-            </div>
-            <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
-                <span class="material-symbols-outlined">chevron_left</span>
-            </button>
-            <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
-                <span class="material-symbols-outlined">chevron_right</span>
-            </button>
-        </div>
-        <div class="flex items-center justify-center gap-2 mt-6">
-<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-primary transition-colors" data-page="0"></button>
-<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-page="1"></button>
-<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-page="2"></button>
-<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-slate-300 transition-colors" data-page="3"></button>
-        </div>
-        <div class="text-center mt-2">
-            <a href="reviews.html" class="inline-flex items-center gap-1 text-primary font-semibold hover:underline mt-4">Read all 11 reviews <span class="material-symbols-outlined text-lg">arrow_forward</span></a>
-        </div>
-    </div>
-
-                </div>
-            </section>
+            
 
                 <script type="application/ld+json">
 {
@@ -750,14 +570,7 @@
                 "@type": "Country",
                 "name": "Northern Ireland"
         },
-        "touristType": "Walker",
-        "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "4.6",
-                "bestRating": "5",
-                "worstRating": "1",
-                "reviewCount": "11"
-        }
+        "touristType": "Walker"
 }
     </script>
 
@@ -1016,34 +829,17 @@
     <script type="application/json" id="destToursData">
     [
   {
-    "slug": "causeway-coast-5-days",
-    "name": "Causeway Coast Walking Holiday \u2014 5 Days",
-    "difficulty": "Moderate",
-    "days": 5,
-    "price": 599.0,
-    "region": "Causeway Coast",
-    "short_desc": "UNESCO World Heritage coastal trail",
-    "featured": false,
-    "total_km": 50.0,
-    "total_ascent": null,
-    "total_descent": null,
-    "avg_rating": 4.4,
-    "review_count": 5
-  },
-  {
     "slug": "causeway-coast",
     "name": "Giant's Causeway Walking Holiday \u2014 8 Days",
     "difficulty": "Moderate",
     "days": 8,
-    "price": 959.0,
+    "price": 975.0,
     "region": "Causeway Coast",
     "short_desc": "The complete Causeway Coast experience",
     "featured": true,
-    "total_km": 84.0,
-    "total_ascent": 522,
-    "total_descent": null,
-    "avg_rating": 4.8,
-    "review_count": 6
+    "total_km": null,
+    "total_ascent": null,
+    "total_descent": null
   }
 ]
     </script>
