@@ -2729,7 +2729,7 @@ def main():
                     </div>
                 </a>\n'''
 
-        # Build recommended tours cards (3 tours for full-width section)
+        # Build recommended tours cards (3 tours — same card style as blog listing page)
         recommended_tours_html = ''
         rec_tours = sorted(tours, key=lambda t: t.get('sort_order', 999))[:3]
         for rt in rec_tours:
@@ -2737,25 +2737,28 @@ def main():
             rt_name = escape(rt.get('name', ''))
             rt_days = rt.get('duration_days', 0) or 0
             rt_price = rt.get('price_per_person_eur', 0)
-            rt_desc = escape((rt.get('subtitle', '') or rt.get('short_description', '') or '')[:80])
+            rt_subtitle = escape(rt.get('subtitle', '') or rt.get('short_description', '') or '')
+            if len(rt_subtitle) > 40:
+                rt_subtitle = rt_subtitle[:37] + '...'
             try:
                 rt_price_display = f"&euro;{float(rt_price):.0f}" if rt_price else ''
             except (ValueError, TypeError):
                 rt_price_display = ''
-            recommended_tours_html += f'''<a href="../tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
-                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
-                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">{rt_days} Days</span>
+            recommended_tours_html += f'''
+            <a href="../tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{rt_days} Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">{rt_name}</h4>
+                    <p class="text-xs text-slate-500 mb-3">{rt_subtitle}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">{rt_price_display}</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
                     </div>
-                    <div class="p-6">
-                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{rt_name}</h4>
-                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">{rt_desc}</p>
-                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
-                            <span class="font-bold text-primary">{rt_price_display}<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
-                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> {rt_days} Days</span>
-                        </div>
-                    </div>
-                </a>\n'''
+                </div>
+            </a>'''
 
         # Build sidebar categories (unique categories with post counts)
         from collections import Counter
