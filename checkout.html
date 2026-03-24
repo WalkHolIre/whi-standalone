@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Your Walking Holiday | Walking Holiday Ireland</title>
+    <title>Wanderurlaub buchen | Wanderurlaub Irland</title>
 
     <!-- Tailwind CSS with Plugins -->
     <link href="https://cdn.tailwindcss.com?plugins=forms,container-queries" rel="stylesheet">
@@ -318,7 +318,7 @@
             }
         }
     </style>
-<meta name="description" content="Book your self-guided walking holiday in Ireland. Select your tour, dates & extras. Secure with a 25% deposit. Luggage transfers & GPS app included.">
+<meta name="description" content="Buchen Sie Ihren selbstgeführten Wanderurlaub in Irland. Wählen Sie Ihre Tour, Termine & Extras. Sichern Sie sich mit 25% Anzahlung. Gepäcktransfer & GPS-App inklusive.">
 </head>
 <body style="background-color: #f8f7f5;">
     <!-- Header/Navigation -->
@@ -336,7 +336,7 @@
                 <div class="hidden md:flex gap-8">
                     <div class="relative group">
                         <button class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">
-                            Tours <span class="material-symbols-outlined text-sm">expand_more</span>
+                            Touren <span class="material-symbols-outlined text-sm">expand_more</span>
                         </button>
                         <div class="absolute left-0 mt-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden group-hover:block">
                             <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-gray-700">Wild Atlantic Way</a>
@@ -344,14 +344,14 @@
                             <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-gray-700">Northern Ireland</a>
                         </div>
                     </div>
-                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">About</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Über uns</a>
                     <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Blog</a>
-                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Contact</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Kontakt</a>
                 </div>
 
                 <!-- CTA -->
                 <div>
-                    <a href="checkout.html" class="primary-btn px-6 py-2 rounded-lg font-medium text-sm">Book Now</a>
+                    <a href="checkout.html" class="primary-btn px-6 py-2 rounded-lg font-medium text-sm">Jetzt buchen</a>
                 </div>
             </div>
         </div>
@@ -360,8 +360,8 @@
     <!-- Hero Section -->
     <div class="hero-band text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-bold mb-2">Book Your Walking Holiday</h1>
-            <p class="text-lg opacity-90">Secure your dates with a 25% deposit. Balance due 42 days before departure.</p>
+            <h1 class="text-4xl font-bold mb-2">Buchen Sie Ihren Wanderurlaub</h1>
+            <p class="text-lg opacity-90">Sichern Sie Ihre Termine mit einer 25% Anzahlung. Restbetrag fällig 42 Tage vor Abreise.</p>
         </div>
     </div>
 
@@ -376,12 +376,12 @@
                     <div class="form-section">
                         <h3>
                             <span class="step-number">1</span>
-                            Select Your Tour
+                            Wählen Sie Ihre Tour
                         </h3>
                         <div class="form-group">
-                            <label for="tourSelect">Which tour interests you?</label>
+                            <label for="tourSelect">Welche Tour interessiert Sie?</label>
                             <select id="tourSelect" required>
-                                <option value="">-- Select a tour --</option>
+                                <option value="">-- Tour auswählen --</option>
                                 <optgroup label="Wild Atlantic Way">
                                     <option value="dingle-way">The Dingle Way - 8 Days (€899)</option>
                                     <option value="kerry-way">The Kerry Way - 8 Days (€899)</option>
@@ -407,9 +407,9 @@
                             </select>
                         </div>
                         <div id="tourInfo" class="tour-info" style="display: none;">
-                            <p><strong>Duration:</strong> <span id="tourDays">-</span> days</p>
-                            <p><strong>Price per person:</strong> €<span id="tourPrice">0</span></p>
-                            <p><strong>Difficulty:</strong> <span id="tourDifficulty">-</span></p>
+                            <p><strong>Dauer:</strong> <span id="tourDays">-</span> Tage</p>
+                            <p><strong>Preis pro Person:</strong> €<span id="tourPrice">0</span></p>
+                            <p><strong>Schwierigkeit:</strong> <span id="tourDifficulty">-</span></p>
                         </div>
                     </div>
 
@@ -417,23 +417,23 @@
                     <div class="form-section">
                         <h3>
                             <span class="step-number">2</span>
-                            Choose Your Dates
+                            Wählen Sie Ihre Termine
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="form-group">
-                                <label for="startDate">Start date</label>
+                                <label for="startDate">Startdatum</label>
                                 <input type="date" id="startDate" required>
                             </div>
                             <div class="form-group">
-                                <label for="numWalkers">Number of walkers (1-8)</label>
+                                <label for="numWalkers">Anzahl der Wanderer (1-8)</label>
                                 <input type="number" id="numWalkers" min="1" max="8" value="1" required>
                             </div>
                         </div>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" id="singleSupplement">
                             <div class="checkbox-label">
-                                <span class="label-main">Single supplement</span>
-                                <span class="label-sub" id="singleSupplementText">€X per room per night for solo occupancy</span>
+                                <span class="label-main">Einzelzimmerzuschlag</span>
+                                <span class="label-sub" id="singleSupplementText">€X pro Zimmer pro Nacht für Einzelbelegung</span>
                             </div>
                         </div>
                     </div>
@@ -442,34 +442,34 @@
                     <div class="form-section">
                         <h3>
                             <span class="step-number">3</span>
-                            Optional Extras
+                            Optionale Extras
                         </h3>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" id="airportTransfer" data-price="POA">
                             <div class="checkbox-label">
-                                <span class="label-main">Airport transfer</span>
-                                <span class="label-sub">€POA</span>
+                                <span class="label-main">Flughafentransfer</span>
+                                <span class="label-sub">€auf Anfrage</span>
                             </div>
                         </div>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" id="dailyLunch" data-price="15">
                             <div class="checkbox-label">
-                                <span class="label-main">Daily lunch packs</span>
-                                <span class="label-sub">€15 per person per day</span>
+                                <span class="label-main">Tägliches Lunchpaket</span>
+                                <span class="label-sub">€15 pro Person pro Tag</span>
                             </div>
                         </div>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" id="extraRestDay" data-price="POA">
                             <div class="checkbox-label">
-                                <span class="label-main">Extra rest day</span>
-                                <span class="label-sub">€POA</span>
+                                <span class="label-main">Zusätzlicher Ruhetag</span>
+                                <span class="label-sub">€auf Anfrage</span>
                             </div>
                         </div>
                         <div class="checkbox-wrapper">
                             <input type="checkbox" id="polehire" data-price="20">
                             <div class="checkbox-label">
-                                <span class="label-main">Walking pole hire</span>
-                                <span class="label-sub">€20 per pair</span>
+                                <span class="label-main">Wanderstöcke mieten</span>
+                                <span class="label-sub">€20 pro Paar</span>
                             </div>
                         </div>
                     </div>
@@ -478,45 +478,45 @@
                     <div class="form-section">
                         <h3>
                             <span class="step-number">4</span>
-                            Your Details
+                            Ihre Daten
                         </h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="form-group">
-                                <label for="firstName">First name</label>
+                                <label for="firstName">Vorname</label>
                                 <input type="text" id="firstName" required>
                             </div>
                             <div class="form-group">
-                                <label for="lastName">Last name</label>
+                                <label for="lastName">Nachname</label>
                                 <input type="text" id="lastName" required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div class="form-group">
-                                <label for="email">Email</label>
+                                <label for="email">E-Mail</label>
                                 <input type="email" id="email" required>
                             </div>
                             <div class="form-group">
-                                <label for="phone">Phone</label>
+                                <label for="phone">Telefon</label>
                                 <input type="tel" id="phone" required>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="country">Country</label>
+                            <label for="country">Land</label>
                             <select id="country" required>
-                                <option value="">-- Select a country --</option>
-                                <option value="Ireland">Ireland</option>
-                                <option value="UK">United Kingdom</option>
-                                <option value="Germany">Germany</option>
-                                <option value="Netherlands">Netherlands</option>
-                                <option value="France">France</option>
-                                <option value="USA">United States</option>
-                                <option value="Canada">Canada</option>
-                                <option value="Australia">Australia</option>
+                                <option value="">-- Land auswählen --</option>
+                                <option value="Ireland">Irland</option>
+                                <option value="UK">Vereinigtes Königreich</option>
+                                <option value="Germany">Deutschland</option>
+                                <option value="Netherlands">Niederlande</option>
+                                <option value="France">Frankreich</option>
+                                <option value="USA">Vereinigte Staaten</option>
+                                <option value="Canada">Kanada</option>
+                                <option value="Australia">Australien</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="specialRequirements">Special requirements</label>
-                            <textarea id="specialRequirements" placeholder="Dietary needs, accessibility, etc."></textarea>
+                            <label for="specialRequirements">Besondere Anforderungen</label>
+                            <textarea id="specialRequirements" placeholder="Ernährungswünsche, Barrierefreiheit, etc."></textarea>
                         </div>
                     </div>
 
@@ -524,32 +524,32 @@
                     <div class="form-section">
                         <h3>
                             <span class="step-number">5</span>
-                            Payment
+                            Zahlung
                         </h3>
 
                         <!-- Order Summary -->
                         <div class="bg-gray-50 p-4 rounded-lg mb-6">
-                            <h4 class="font-semibold text-gray-900 mb-3">Order Summary</h4>
+                            <h4 class="font-semibold text-gray-900 mb-3">Bestellübersicht</h4>
                             <div class="space-y-2 text-sm">
                                 <div class="flex justify-between">
                                     <span class="text-gray-600">Tour:</span>
                                     <span class="font-medium text-gray-900" id="orderTour">-</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Dates:</span>
+                                    <span class="text-gray-600">Termine:</span>
                                     <span class="font-medium text-gray-900" id="orderDates">-</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Walkers:</span>
+                                    <span class="text-gray-600">Wanderer:</span>
                                     <span class="font-medium text-gray-900" id="orderWalkers">1</span>
                                 </div>
                                 <div class="flex justify-between">
-                                    <span class="text-gray-600">Price per person:</span>
+                                    <span class="text-gray-600">Preis pro Person:</span>
                                     <span class="font-medium text-gray-900">€<span id="orderPrice">0</span></span>
                                 </div>
                                 <div class="border-t border-gray-300 my-2 pt-2">
                                     <div class="flex justify-between">
-                                        <span class="text-gray-600">Subtotal:</span>
+                                        <span class="text-gray-600">Zwischensumme:</span>
                                         <span class="font-medium text-gray-900">€<span id="orderSubtotal">0</span></span>
                                     </div>
                                 </div>
@@ -561,13 +561,13 @@
                                 </div>
                                 <div class="border-t border-gray-300 my-2 pt-2">
                                     <div class="flex justify-between font-semibold text-lg">
-                                        <span>Total:</span>
+                                        <span>Gesamt:</span>
                                         <span class="text-orange-600">€<span id="orderTotal">0</span></span>
                                     </div>
                                 </div>
                                 <div class="bg-orange-50 border border-orange-200 rounded p-2 mt-2">
                                     <div class="flex justify-between text-orange-900 font-semibold">
-                                        <span>Deposit (25%):</span>
+                                        <span>Anzahlung (25%):</span>
                                         <span>€<span id="orderDeposit">0</span></span>
                                     </div>
                                 </div>
@@ -576,34 +576,34 @@
 
                         <!-- Payment Info -->
                         <div class="payment-info">
-                            <p id="paymentText">You'll be charged €0 (25% deposit). Balance of €0 due 42 days before departure.</p>
+                            <p id="paymentText">Ihnen werden €0 berechnet (25% Anzahlung). Restbetrag von €0 fällig 42 Tage vor Abreise.</p>
                         </div>
 
                         <!-- Card Element Placeholder -->
                         <div class="card-element-placeholder">
-                            <p>Payment processing will be enabled shortly. Please contact us to complete your booking.</p>
+                            <p>Die Zahlungsabwicklung wird in Kürze aktiviert. Bitte kontaktieren Sie uns, um Ihre Buchung abzuschließen.</p>
                         </div>
                         <div id="card-element" style="display: none;"></div>
 
                         <!-- Success Message -->
                         <div id="successMessage" class="success-message">
-                            <p><strong>Thank you!</strong> We've received your booking request. Our team will contact you within 24 hours to confirm and arrange payment.</p>
+                            <p><strong>Vielen Dank!</strong> Wir haben Ihre Buchungsanfrage erhalten. Unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden, um die Buchung zu bestätigen und die Zahlung zu arrangieren.</p>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" class="primary-btn w-full py-3 rounded-lg font-semibold text-lg mb-4">
-                            Pay Deposit
+                            Anzahlung bezahlen
                         </button>
 
                         <!-- Trust Badges -->
                         <div class="trust-badges">
                             <div class="trust-badge">
                                 <span class="material-symbols-outlined text-sm">lock</span>
-                                Secure payment
+                                Sichere Zahlung
                             </div>
                             <div class="trust-badge">
                                 <span class="material-symbols-outlined text-sm">verified_user</span>
-                                SSL encrypted
+                                SSL-verschlüsselt
                             </div>
                         </div>
                     </div>
@@ -613,7 +613,7 @@
             <!-- Right Column: Order Summary Sidebar -->
             <div class="lg:col-span-1">
                 <div class="sidebar">
-                    <h3>Your Booking</h3>
+                    <h3>Ihre Buchung</h3>
 
                     <div class="sidebar-item">
                         <span class="text-gray-600">Tour</span>
@@ -621,22 +621,22 @@
                     </div>
 
                     <div class="sidebar-item">
-                        <span class="text-gray-600">Dates</span>
+                        <span class="text-gray-600">Termine</span>
                         <span class="font-medium text-gray-900" id="sidebarDates">-</span>
                     </div>
 
                     <div class="sidebar-item">
-                        <span class="text-gray-600">Walkers</span>
+                        <span class="text-gray-600">Wanderer</span>
                         <span class="font-medium text-gray-900" id="sidebarWalkers">1</span>
                     </div>
 
                     <div class="sidebar-item">
-                        <span class="text-gray-600">Price/person</span>
+                        <span class="text-gray-600">Preis/Person</span>
                         <span class="font-medium text-gray-900">€<span id="sidebarPrice">0</span></span>
                     </div>
 
                     <div class="sidebar-item">
-                        <span class="text-gray-600">Subtotal</span>
+                        <span class="text-gray-600">Zwischensumme</span>
                         <span class="font-medium text-gray-900">€<span id="sidebarSubtotal">0</span></span>
                     </div>
 
@@ -648,18 +648,18 @@
                     </div>
 
                     <div class="sidebar-item total">
-                        <span>Total</span>
+                        <span>Gesamt</span>
                         <span id="sidebarTotal">€0</span>
                     </div>
 
                     <div class="sidebar-item deposit">
-                        <span>Deposit (25%)</span>
+                        <span>Anzahlung (25%)</span>
                         <span id="sidebarDeposit">€0</span>
                     </div>
 
                     <div class="sidebar-contact">
-                        <p>Questions? Call</p>
-                        <div class="phone">+353 86 123 4567</div>
+                        <p>Fragen? Rufen Sie an</p>
+                        <div class="phone">+353 42 937 5983</div>
                     </div>
                 </div>
             </div>
@@ -672,39 +672,39 @@
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <!-- About -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">About</h4>
+                    <h4 class="text-white font-semibold mb-4">Über uns</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition">Our Story</a></li>
+                        <li><a href="#" class="hover:text-white transition">Über uns</a></li>
+                        <li><a href="#" class="hover:text-white transition">Unsere Geschichte</a></li>
                         <li><a href="#" class="hover:text-white transition">Team</a></li>
                     </ul>
                 </div>
 
                 <!-- Discover -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Discover</h4>
+                    <h4 class="text-white font-semibold mb-4">Entdecken</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">All Tours</a></li>
-                        <li><a href="#" class="hover:text-white transition">Guides</a></li>
+                        <li><a href="#" class="hover:text-white transition">Alle Touren</a></li>
+                        <li><a href="#" class="hover:text-white transition">Reiseführer</a></li>
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
                     </ul>
                 </div>
 
                 <!-- Support -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Support</h4>
+                    <h4 class="text-white font-semibold mb-4">Hilfe</h4>
                     <ul class="space-y-2 text-sm">
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Kontakt</a></li>
                         <li><a href="#" class="hover:text-white transition">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white transition">Terms</a></li>
+                        <li><a href="#" class="hover:text-white transition">AGB</a></li>
                     </ul>
                 </div>
 
                 <!-- Contact -->
                 <div>
-                    <h4 class="text-white font-semibold mb-4">Contact</h4>
-                    <p class="text-sm mb-2">+353 86 123 4567</p>
-                    <p class="text-sm mb-4">hello@walkingirishholidays.ie</p>
+                    <h4 class="text-white font-semibold mb-4">Kontakt</h4>
+                    <p class="text-sm mb-2">+353 42 937 5983</p>
+                    <p class="text-sm mb-4">info@walkingholidayireland.com</p>
                     <div class="flex gap-4">
                         <a href="#" class="hover:text-white transition">Facebook</a>
                         <a href="#" class="hover:text-white transition">Instagram</a>
@@ -713,7 +713,7 @@
             </div>
 
             <div class="border-t border-gray-700 pt-8">
-                <p class="text-sm text-center">© 2024 Walking Holiday Ireland. All rights reserved.</p>
+                <p class="text-sm text-center">© 2026 Wanderurlaub Irland. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
@@ -840,14 +840,14 @@
             }
 
             // Dates
-            const startDateStr = startDate.value ? new Date(startDate.value).toLocaleDateString('en-IE', {
+            const startDateStr = startDate.value ? new Date(startDate.value).toLocaleDateString('de-DE', {
                 weekday: 'short',
                 year: 'numeric',
                 month: 'short',
                 day: 'numeric'
             }) : '-';
             const endDate = startDate.value ? new Date(new Date(startDate.value).getTime() + currentTour.days * 24 * 60 * 60 * 1000) : null;
-            const endDateStr = endDate ? endDate.toLocaleDateString('en-IE', {
+            const endDateStr = endDate ? endDate.toLocaleDateString('de-DE', {
                 weekday: 'short',
                 year: 'numeric',
                 month: 'short',
@@ -866,23 +866,23 @@
             currentExtras = [];
 
             if (airportTransfer.checked) {
-                currentExtras.push('Airport transfer (POA)');
+                currentExtras.push('Flughafentransfer (auf Anfrage)');
             }
 
             if (dailyLunch.checked) {
                 const lunchCost = 15 * walkerCount * currentTour.days;
                 extrasTotal += lunchCost;
-                currentExtras.push(`Daily lunch packs (€${lunchCost})`);
+                currentExtras.push(`Tägliches Lunchpaket (€${lunchCost})`);
             }
 
             if (extraRestDay.checked) {
-                currentExtras.push('Extra rest day (POA)');
+                currentExtras.push('Zusätzlicher Ruhetag (auf Anfrage)');
             }
 
             if (polehire.checked) {
                 const poleCost = 20;
                 extrasTotal += poleCost;
-                currentExtras.push(`Walking pole hire (€${poleCost})`);
+                currentExtras.push(`Wanderstöcke (€${poleCost})`);
             }
 
             const total = basePrice + extrasTotal;
@@ -897,7 +897,7 @@
             orderTotal.textContent = total.toLocaleString();
             orderDeposit.textContent = deposit.toLocaleString();
 
-            paymentText.textContent = `You'll be charged €${deposit.toLocaleString()} (25% deposit). Balance of €${balance.toLocaleString()} due 42 days before departure.`;
+            paymentText.textContent = `Ihnen werden €${deposit.toLocaleString()} berechnet (25% Anzahlung). Restbetrag von €${balance.toLocaleString()} fällig 42 Tage vor Abreise.`;
 
             // Update extras display
             if (currentExtras.length > 0) {
@@ -934,7 +934,7 @@
             orderTotal.textContent = '0';
             orderDeposit.textContent = '0';
             extrasDisplay.style.display = 'none';
-            paymentText.textContent = "You'll be charged €0 (25% deposit). Balance of €0 due 42 days before departure.";
+            paymentText.textContent = "Ihnen werden €0 berechnet (25% Anzahlung). Restbetrag von €0 fällig 42 Tage vor Abreise.";
 
             sidebarTour.textContent = '-';
             sidebarDates.textContent = '-';
@@ -951,7 +951,7 @@
             e.preventDefault();
 
             if (!currentTour) {
-                alert('Please select a tour');
+                alert('Bitte wählen Sie eine Tour');
                 return;
             }
 
@@ -979,28 +979,28 @@
             successMessage.classList.add('show');
 
             // Fallback: Create mailto link with booking details
-            const mailtoSubject = `Walking Holiday Booking: ${currentTour.name}`;
+            const mailtoSubject = `Wanderurlaub Buchung: ${currentTour.name}`;
             const mailtoBody = `
-Booking Details:
+Buchungsdetails:
 Tour: ${formData.tour}
-Start Date: ${formData.startDate}
-Number of Walkers: ${formData.walkers}
-Single Supplement: ${formData.singleSupplement ? 'Yes' : 'No'}
-Extras: ${currentExtras.length > 0 ? currentExtras.join(', ') : 'None'}
+Startdatum: ${formData.startDate}
+Anzahl Wanderer: ${formData.walkers}
+Einzelzimmerzuschlag: ${formData.singleSupplement ? 'Ja' : 'Nein'}
+Extras: ${currentExtras.length > 0 ? currentExtras.join(', ') : 'Keine'}
 
-Guest Details:
+Gästedaten:
 Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
-Country: ${formData.country}
-Special Requirements: ${formData.specialRequirements || 'None'}
+E-Mail: ${formData.email}
+Telefon: ${formData.phone}
+Land: ${formData.country}
+Besondere Anforderungen: ${formData.specialRequirements || 'Keine'}
 
-Total: €${formData.total}
-Deposit (25%): €${formData.deposit}
+Gesamt: €${formData.total}
+Anzahlung (25%): €${formData.deposit}
             `;
 
             console.log('Booking data:', formData);
-            console.log('mailto:', `mailto:hello@walkingirishholidays.ie?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`);
+            console.log('mailto:', `mailto:info@walkingholidayireland.com?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`);
 
             // Scroll to success message
             setTimeout(() => {

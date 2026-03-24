@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buchung bestätigt | Wanderurlaub Irland</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+
+        @keyframes checkmark-bounce {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .checkmark-icon {
+            animation: checkmark-bounce 0.6s ease-out;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 1,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 48
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <a href="index.html" class="inline-block">
+                <div class="text-2xl font-bold" style="color: #F17E00;">
+                    Walking Holiday Ireland
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl w-full bg-white rounded-lg shadow-lg p-8 sm:p-12">
+            <!-- Checkmark Icon -->
+            <div class="flex justify-center mb-8">
+                <div class="checkmark-icon">
+                    <span class="material-symbols-outlined text-6xl" style="color: #22c55e;">
+                        check_circle
+                    </span>
+                </div>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-4xl sm:text-5xl font-bold text-center mb-6" style="color: #210747;">
+                Buchung bestätigt!
+            </h1>
+
+            <!-- Booking Reference -->
+            <div class="text-center mb-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <p class="text-gray-700 text-lg mb-2">Ihre Buchungsreferenz:</p>
+                <p class="text-2xl font-bold" style="color: #F17E00;" id="booking-ref">
+                    WHI-XXXXXX
+                </p>
+            </div>
+
+            <!-- Confirmation Message -->
+            <div class="mb-10 text-center">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Vielen Dank für Ihre Buchung bei <strong>Walking Holiday Ireland</strong>! Wir haben Ihre Zahlung erhalten und Ihre Wandertour ist nun bestätigt.
+                </p>
+            </div>
+
+            <!-- What Happens Next Section -->
+            <div class="mb-10">
+                <h2 class="text-2xl font-bold mb-6" style="color: #210747;">
+                    Was passiert als Nächstes?
+                </h2>
+                <div class="space-y-6">
+                    <!-- Step 1 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-full" style="background-color: #F17E00;">
+                                <span class="text-white font-bold">1</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #210747;">
+                                Bestätigung per E-Mail
+                            </h3>
+                            <p class="text-gray-600 mt-1">
+                                Sie erhalten in Kürze eine Bestätigungs-E-Mail mit allen Details Ihrer Buchung.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-full" style="background-color: #3F0F87;">
+                                <span class="text-white font-bold">2</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #210747;">
+                                Vorab-Informationspaket
+                            </h3>
+                            <p class="text-gray-600 mt-1">
+                                Etwa 4 Wochen vor Ihrer Reise senden wir Ihnen ein umfassendes Informationspaket mit Karten, Routenbeschreibungen und Tipps.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="flex gap-4">
+                        <div class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-full" style="background-color: #B58DB6;">
+                                <span class="text-white font-bold">3</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold" style="color: #210747;">
+                                Ihr Abenteuer beginnt!
+                            </h3>
+                            <p class="text-gray-600 mt-1">
+                                Packen Sie Ihre Wanderschuhe ein und freuen Sie sich auf Irlands atemberaubende Landschaften!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Section -->
+            <div class="mb-10 p-6 rounded-lg border-2" style="border-color: #B58DB6; background-color: #f9f5fc;">
+                <h3 class="text-xl font-bold mb-4" style="color: #210747;">
+                    Fragen? Kontaktieren Sie uns:
+                </h3>
+                <div class="space-y-3 text-gray-700">
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-2xl" style="color: #F17E00;">
+                            mail
+                        </span>
+                        <a href="mailto:info@walkingholidayireland.com" class="hover:underline" style="color: #F17E00;">
+                            info@walkingholidayireland.com
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-2xl" style="color: #F17E00;">
+                            call
+                        </span>
+                        <a href="tel:+353429375983" class="hover:underline" style="color: #F17E00;">
+                            +353 42 937 5983
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined text-2xl" style="color: #F17E00;">
+                            chat
+                        </span>
+                        <a href="https://wa.me/353429375983" target="_blank" class="hover:underline" style="color: #F17E00;">
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="flex justify-center">
+                <a href="index.html" class="px-8 py-3 rounded-lg font-semibold text-white transition-all duration-200 hover:opacity-90" style="background-color: #F17E00;">
+                    Zurück zur Startseite
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 border-t border-gray-200 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <p class="text-center text-gray-600">
+                © 2026 Wanderurlaub Irland. Alle Rechte vorbehalten.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Extract and display booking reference from URL
+        document.addEventListener('DOMContentLoaded', function() {
+            const ref = new URLSearchParams(window.location.search).get('ref');
+            const refElement = document.getElementById('booking-ref');
+
+            if (ref) {
+                refElement.textContent = ref;
+            } else {
+                refElement.textContent = 'Referenz wird geladen...';
+            }
+        });
+    </script>
+</body>
+</html>
