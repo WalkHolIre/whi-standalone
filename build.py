@@ -2932,20 +2932,22 @@ def build_static_pages(lang, translations):
         # Update lang attribute
         html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
-        # Fix relative paths (since we're one level deeper)
-        html = html.replace('href="css/', 'href="../css/')
-        html = html.replace('href="js/', 'href="../js/')
-        html = html.replace('src="images/', 'src="../images/')
-        html = html.replace('src="js/', 'src="../js/')
-        html = html.replace('href="images/', 'href="../images/')
-        # Fix page links to point to translated versions where they exist
+        # Fix relative paths to absolute paths
+        # Files live in /de/ on origin but are served at root on .de domain
+        # Using absolute /path ensures they work in both contexts
+        html = html.replace('href="css/', 'href="/css/')
+        html = html.replace('href="js/', 'href="/js/')
+        html = html.replace('src="images/', 'src="/images/')
+        html = html.replace('src="js/', 'src="/js/')
+        html = html.replace('href="images/', 'href="/images/')
+        # Fix page links — keep them at root level (Worker handles routing)
         for ps in STATIC_PAGES:
             if ps in page_translations:
-                html = html.replace(f'href="{ps}.html"', f'href="../{lang}/{ps}.html"')
+                html = html.replace(f'href="{ps}.html"', f'href="/{ps}.html"')
         # Fix tour/destination links
-        html = html.replace('href="tours/', f'href="../{lang}/tours/')
-        html = html.replace('href="tours.html"', f'href="../{lang}/tours.html"')
-        html = html.replace('href="destinations.html"', f'href="../{lang}/destinations.html"')
+        html = html.replace('href="tours/', 'href="/tours/')
+        html = html.replace('href="tours.html"', 'href="/tours.html"')
+        html = html.replace('href="destinations.html"', 'href="/destinations.html"')
 
         # Add hreflang tags
         en_url = f'https://walkingholidayireland.com/{page_slug}.html'
@@ -3029,8 +3031,10 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             html = translate_html_ui(html, lang)
 
             if lang != 'en':
-                html = html.replace('href="../', 'href="../../')
-                html = html.replace('src="../', 'src="../../')
+                # Convert relative paths to absolute so they work both
+                # at /de/tours/ on .com and at /tours/ on .de domain
+                html = html.replace('href="../', 'href="/')
+                html = html.replace('src="../', 'src="/')
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
                 en_url = f'https://walkingholidayireland.com/tours/{slug}.html'
