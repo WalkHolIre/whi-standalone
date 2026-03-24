@@ -40,6 +40,186 @@ generated = {
     'errors': []
 }
 
+# UI translations for multiple languages
+UI_STRINGS = {
+    'en': {
+        'book_now': 'Book Now',
+        'starting_from': 'Starting From',
+        'per_person': 'per person',
+        'days': 'Days',
+        'nights': 'Nights',
+        'highlights': 'Highlights',
+        'tour_itinerary': 'Tour Itinerary',
+        'whats_included': "What's Included",
+        'not_included': 'Not Included',
+        'best_time_to_visit': 'Best Time to Visit',
+        'who_is_it_for': 'Who Is This For?',
+        'accommodation': 'Accommodation',
+        'similar_walks': "Similar Walks You'll Love",
+        'similar_walks_sub': 'Similar difficulty and nearby destinations',
+        'walking_tours': 'Walking Tours',
+        'walking_holidays': 'Walking Holidays',
+        'how_it_works': 'How It Works',
+        'about_us': 'About Us',
+        'blog': 'Blog',
+        'get_in_touch': 'Get in Touch',
+        'home': 'Home',
+        'overview': 'Overview',
+        'get_free_quote': 'Get a Free Quote',
+        'proceed_booking': 'Proceed to Booking',
+        'ask_question': 'Ask a Question',
+        'or_call': 'or call',
+        'preferred_start_date': 'Preferred Start Date',
+        'book_advance': 'Book at least 28 days in advance',
+        'num_walkers': 'Number of Walkers',
+        'person_1': '1 Person',
+        'people_2': '2 People',
+        'people_3': '3 People',
+        'people_4': '4+ People',
+        'based_on_sharing': 'Based on 2 sharing',
+        'no_deposit': 'No deposit required to enquire',
+        'free_changes': 'Free changes up to 30 days before',
+        'personal_response': 'Personal response within 24 hours',
+        'price_match': 'Price Match Promise',
+        'price_match_desc': "Found this holiday cheaper? Send us the URL and we'll match the itinerary, services, and price.",
+        'your_hosts': 'Your Personal Hosts',
+        'host_desc': "Have a question about this tour? We've walked it dozens of times and love helping you plan your trip.",
+        'chat_whatsapp': 'Chat on WhatsApp',
+        'what_walkers_say': 'What Our Walkers Say',
+        'read_all_reviews': 'Read all reviews',
+        'faq_title': 'Frequently Asked Questions',
+        'view_all_faqs': 'View all FAQs',
+        'about_destination': 'About',
+        'guide_to_walking': 'Your guide to walking in this stunning region',
+        'quick_facts': 'Walking Area Quick Facts',
+        'walking_tours_in': 'Walking Tours in',
+        'self_guided_desc': 'Self-guided walking holidays with accommodation and luggage transfers included',
+        'tailor_made_cta': 'Want something different? Let us create a tailor-made tour for you',
+        'the_landscape': 'The Landscape',
+        'landscape_sub': 'What to expect along the way',
+        'points_of_interest': 'Points of Interest',
+        'poi_sub': "Key highlights you'll discover in",
+        'things_to_do': 'Things to Do in',
+        'things_to_do_sub': 'Top activities and experiences in the area',
+        'culture_heritage': 'Culture & Heritage',
+        'culture_sub': 'The stories and traditions of',
+        'where_youll_stay': "Where You'll Stay",
+        'stay_sub': 'Handpicked accommodation along the route',
+        'getting_here': 'Getting Here & Practical Info',
+        'getting_here_sub': 'Everything you need to know before you go',
+        'travel_tips': 'Travel Tips',
+        'travel_tips_sub': 'Insider advice for your trip',
+        'local_cuisine': 'Local Cuisine',
+        'ready_to_walk': 'Ready to Walk',
+        'ready_to_walk_desc': 'Let us plan your perfect self-guided walking holiday. Every tour includes accommodation, luggage transfers, maps, and 24/7 local support.',
+        'call_us': 'Call Us',
+        'footer_tagline': "Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff & Louise.",
+        'quick_links': 'Quick Links',
+        'all_rights': 'Walking Holiday Ireland. All rights reserved.',
+        'secure_payments': 'Secure payments powered by Stripe',
+        'tailor_made': 'Tailor-Made Tours',
+        'contact': 'Contact',
+        'difficulty': 'Difficulty',
+        'duration': 'Duration',
+        'best_months': 'Best Months',
+        'from_price': 'From',
+        'walking_tour_s': 'Walking Tour(s)',
+        'day': 'Day',
+        'price_promise': 'Price Promise',
+        'best_price_guarantee': 'Best price guarantee — see our price promise',
+        'tour_grading': 'Tour Grading & Difficulty',
+        'walking': 'Walking',
+    },
+    'de': {
+        'book_now': 'Jetzt Buchen',
+        'starting_from': 'Ab',
+        'per_person': 'pro Person',
+        'days': 'Tage',
+        'nights': 'Nächte',
+        'highlights': 'Highlights',
+        'tour_itinerary': 'Reiseverlauf',
+        'whats_included': 'Inklusivleistungen',
+        'not_included': 'Nicht Enthalten',
+        'best_time_to_visit': 'Beste Reisezeit',
+        'who_is_it_for': 'Für wen ist diese Tour?',
+        'accommodation': 'Unterkunft',
+        'similar_walks': 'Ähnliche Wanderungen',
+        'similar_walks_sub': 'Ähnlicher Schwierigkeitsgrad und nahegelegene Ziele',
+        'walking_tours': 'Wandertouren',
+        'walking_holidays': 'Wanderurlaub',
+        'how_it_works': 'So funktioniert es',
+        'about_us': 'Über Uns',
+        'blog': 'Blog',
+        'get_in_touch': 'Kontakt',
+        'home': 'Startseite',
+        'overview': 'Überblick',
+        'get_free_quote': 'Kostenloses Angebot',
+        'proceed_booking': 'Zur Buchung',
+        'ask_question': 'Frage Stellen',
+        'or_call': 'oder anrufen',
+        'preferred_start_date': 'Gewünschtes Startdatum',
+        'book_advance': 'Buchung mindestens 28 Tage im Voraus',
+        'num_walkers': 'Anzahl der Wanderer',
+        'person_1': '1 Person',
+        'people_2': '2 Personen',
+        'people_3': '3 Personen',
+        'people_4': '4+ Personen',
+        'based_on_sharing': 'Basierend auf 2 Personen',
+        'no_deposit': 'Keine Anzahlung für Anfragen erforderlich',
+        'free_changes': 'Kostenlose Änderungen bis 30 Tage vorher',
+        'personal_response': 'Persönliche Antwort innerhalb von 24 Stunden',
+        'price_match': 'Preisgarantie',
+        'price_match_desc': 'Diesen Urlaub günstiger gefunden? Senden Sie uns die URL und wir passen Reiseroute, Leistungen und Preis an.',
+        'your_hosts': 'Ihre persönlichen Gastgeber',
+        'host_desc': 'Haben Sie eine Frage zu dieser Tour? Wir sind sie schon dutzende Male gewandert und helfen Ihnen gerne bei der Planung.',
+        'chat_whatsapp': 'Chat auf WhatsApp',
+        'what_walkers_say': 'Was unsere Wanderer sagen',
+        'read_all_reviews': 'Alle Bewertungen lesen',
+        'faq_title': 'Häufig Gestellte Fragen',
+        'view_all_faqs': 'Alle FAQs ansehen',
+        'about_destination': 'Über',
+        'guide_to_walking': 'Ihr Wanderführer durch diese atemberaubende Region',
+        'quick_facts': 'Kurzübersicht Wandergebiet',
+        'walking_tours_in': 'Wandertouren in',
+        'self_guided_desc': 'Individuelle Wanderurlaube mit Unterkunft und Gepäcktransfer inklusive',
+        'tailor_made_cta': 'Wünschen Sie etwas anderes? Wir erstellen Ihnen eine maßgeschneiderte Tour',
+        'the_landscape': 'Die Landschaft',
+        'landscape_sub': 'Was Sie unterwegs erwartet',
+        'points_of_interest': 'Sehenswürdigkeiten',
+        'poi_sub': 'Wichtige Highlights, die Sie entdecken in',
+        'things_to_do': 'Aktivitäten in',
+        'things_to_do_sub': 'Top-Aktivitäten und Erlebnisse in der Umgebung',
+        'culture_heritage': 'Kultur & Geschichte',
+        'culture_sub': 'Die Geschichten und Traditionen von',
+        'where_youll_stay': 'Ihre Unterkünfte',
+        'stay_sub': 'Handverlesene Unterkünfte entlang der Route',
+        'getting_here': 'Anreise & Praktische Infos',
+        'getting_here_sub': 'Alles was Sie vor der Reise wissen müssen',
+        'travel_tips': 'Reisetipps',
+        'travel_tips_sub': 'Insider-Tipps für Ihre Reise',
+        'local_cuisine': 'Lokale Küche',
+        'ready_to_walk': 'Bereit zum Wandern',
+        'ready_to_walk_desc': 'Lassen Sie uns Ihren perfekten individuellen Wanderurlaub planen. Jede Tour beinhaltet Unterkunft, Gepäcktransfer, Karten und 24/7 lokale Unterstützung.',
+        'call_us': 'Rufen Sie uns an',
+        'footer_tagline': 'Individuelle Wanderurlaube durch Irlands schönste Landschaften seit 2012. Familiengeführt von Cliff & Louise.',
+        'quick_links': 'Quicklinks',
+        'all_rights': 'Walking Holiday Ireland. Alle Rechte vorbehalten.',
+        'secure_payments': 'Sichere Zahlungen mit Stripe',
+        'tailor_made': 'Maßgeschneiderte Touren',
+        'contact': 'Kontakt',
+        'difficulty': 'Schwierigkeitsgrad',
+        'duration': 'Dauer',
+        'best_months': 'Beste Monate',
+        'from_price': 'Ab',
+        'walking_tour_s': 'Wandertour(en)',
+        'day': 'Tag',
+        'price_promise': 'Preisgarantie',
+        'best_price_guarantee': 'Bestpreisgarantie — siehe unsere Preisgarantie',
+        'tour_grading': 'Tourbewertung & Schwierigkeitsgrad',
+        'walking': 'Wandern',
+    }
+}
+
 
 def log(msg, level='info'):
     """Simple logging with level prefix."""
@@ -96,6 +276,135 @@ def strip_html_tags(text):
     if not text:
         return ''
     return re.sub(r'<[^>]+>', '', str(text))
+
+
+def t(key, lang='en'):
+    """Get translated UI string."""
+    return UI_STRINGS.get(lang, UI_STRINGS['en']).get(key, UI_STRINGS['en'].get(key, key))
+
+
+def fetch_translations(lang):
+    """Fetch tour and destination translations for a language."""
+    log(f"Fetching tour_translations for language={lang}...")
+    tour_trans = fetch_supabase('tour_translations', f'&language_code=eq.{lang}')
+    log(f"Got {len(tour_trans or [])} tour translations for {lang}")
+    log(f"Fetching destination_translations for language={lang}...")
+    dest_trans = fetch_supabase('destination_translations', f'&language_code=eq.{lang}')
+    log(f"Got {len(dest_trans or [])} destination translations for {lang}")
+    tour_dict = {tt['tour_id']: tt for tt in (tour_trans or [])}
+    dest_dict = {dt['destination_id']: dt for dt in (dest_trans or [])}
+    if tour_dict:
+        log(f"Sample tour translation IDs: {list(tour_dict.keys())[:3]}", 'debug')
+    return {
+        'tours': tour_dict,
+        'destinations': dest_dict,
+    }
+
+
+def apply_tour_translation(tour, translation):
+    """Merge translation data over English tour data. Only overrides non-empty fields."""
+    if not translation:
+        return tour
+    merged = dict(tour)
+    translatable_fields = ['name', 'subtitle', 'overview', 'description', 'short_description',
+                          'highlights', 'whats_included', 'whats_not_included',
+                          'meta_title', 'meta_description']
+    for field in translatable_fields:
+        val = translation.get(field)
+        if val and val.strip():
+            merged[field] = val
+            if field == 'meta_description':
+                merged['seo_description'] = val
+    return merged
+
+
+def apply_dest_translation(destination, translation):
+    """Merge translation data over English destination data."""
+    if not translation:
+        return destination
+    merged = dict(destination)
+    translatable_fields = ['name', 'short_description', 'overview', 'description',
+                          'landscape_description', 'cultural_highlights', 'difficulty_overview',
+                          'accommodation_style', 'practical_info', 'who_is_it_for',
+                          'best_time_to_visit', 'meta_title', 'meta_description']
+    for field in translatable_fields:
+        val = translation.get(field)
+        if val and val.strip():
+            merged[field] = val
+            if field == 'meta_description':
+                merged['seo_description'] = val
+    return merged
+
+
+def translate_html_ui(html, lang):
+    """Post-process HTML to replace English UI strings with translated versions."""
+    if lang == 'en':
+        return html
+    replacements = {
+        '>Home<': f'>{t("home", lang)}<',
+        '>Walking Tours<': f'>{t("walking_tours", lang)}<',
+        '>Walking Holidays<': f'>{t("walking_holidays", lang)}<',
+        '>How It Works<': f'>{t("how_it_works", lang)}<',
+        '>Tour Grading &amp; Difficulty<': f'>{t("tour_grading", lang)}<',
+        '>Tour Grading & Difficulty<': f'>{t("tour_grading", lang)}<',
+        '>About Us<': f'>{t("about_us", lang)}<',
+        '>Blog<': f'>{t("blog", lang)}<',
+        '>Get in Touch<': f'>{t("get_in_touch", lang)}<',
+        '>Overview<': f'>{t("overview", lang)}<',
+        '>Starting From<': f'>{t("starting_from", lang)}<',
+        '>Book Now<': f'>{t("book_now", lang)}<',
+        '>per person<': f'>{t("per_person", lang)}<',
+        '>Highlights<': f'>{t("highlights", lang)}<',
+        '>Tour Itinerary<': f'>{t("tour_itinerary", lang)}<',
+        ">What's Included<": f'>{t("whats_included", lang)}<',
+        '>Not Included<': f'>{t("not_included", lang)}<',
+        '>Best Time to Visit<': f'>{t("best_time_to_visit", lang)}<',
+        '>Who Is This For?<': f'>{t("who_is_it_for", lang)}<',
+        '>Accommodation<': f'>{t("accommodation", lang)}<',
+        ">Similar Walks You'll Love<": f'>{t("similar_walks", lang)}<',
+        '>Similar difficulty and nearby destinations<': f'>{t("similar_walks_sub", lang)}<',
+        '>Proceed to Booking<': f'>{t("proceed_booking", lang)}<',
+        '>Ask a Question<': f'>{t("ask_question", lang)}<',
+        '>or call<': f'>{t("or_call", lang)}<',
+        '>Preferred Start Date<': f'>{t("preferred_start_date", lang)}<',
+        '>Book at least 28 days in advance<': f'>{t("book_advance", lang)}<',
+        '>Number of Walkers<': f'>{t("num_walkers", lang)}<',
+        '>1 Person<': f'>{t("person_1", lang)}<',
+        '>2 People<': f'>{t("people_2", lang)}<',
+        '>3 People<': f'>{t("people_3", lang)}<',
+        '>4+ People<': f'>{t("people_4", lang)}<',
+        '>Based on 2 sharing<': f'>{t("based_on_sharing", lang)}<',
+        '>No deposit required to enquire<': f'>{t("no_deposit", lang)}<',
+        '>Free changes up to 30 days before<': f'>{t("free_changes", lang)}<',
+        '>Personal response within 24 hours<': f'>{t("personal_response", lang)}<',
+        '>Price Match Promise<': f'>{t("price_match", lang)}<',
+        '>Your Personal Hosts<': f'>{t("your_hosts", lang)}<',
+        '>Chat on WhatsApp<': f'>{t("chat_whatsapp", lang)}<',
+        '>Get a Free Quote<': f'>{t("get_free_quote", lang)}<',
+        '>Walking Area Quick Facts<': f'>{t("quick_facts", lang)}<',
+        '>The Landscape<': f'>{t("the_landscape", lang)}<',
+        '>What to expect along the way<': f'>{t("landscape_sub", lang)}<',
+        '>Points of Interest<': f'>{t("points_of_interest", lang)}<',
+        '>Culture & Heritage<': f'>{t("culture_heritage", lang)}<',
+        ">Where You'll Stay<": f'>{t("where_youll_stay", lang)}<',
+        '>Handpicked accommodation along the route<': f'>{t("stay_sub", lang)}<',
+        '>Getting Here & Practical Info<': f'>{t("getting_here", lang)}<',
+        '>Everything you need to know before you go<': f'>{t("getting_here_sub", lang)}<',
+        '>Travel Tips<': f'>{t("travel_tips", lang)}<',
+        '>Insider advice for your trip<': f'>{t("travel_tips_sub", lang)}<',
+        '>Local Cuisine<': f'>{t("local_cuisine", lang)}<',
+        '>Call Us<': f'>{t("call_us", lang)}<',
+        '>Quick Links<': f'>{t("quick_links", lang)}<',
+        '>Tailor-Made Tours<': f'>{t("tailor_made", lang)}<',
+        '>Contact<': f'>{t("contact", lang)}<',
+        '>Secure payments powered by Stripe<': f'>{t("secure_payments", lang)}<',
+        '>Difficulty<': f'>{t("difficulty", lang)}<',
+        '>Duration<': f'>{t("duration", lang)}<',
+        '>Best Months<': f'>{t("best_months", lang)}<',
+    }
+    for en_text, translated_text in replacements.items():
+        html = html.replace(en_text, translated_text)
+    return html
 
 
 def render_highlights(highlights_text):
@@ -2339,6 +2648,147 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
+def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts,
+                        translations, tours_by_id, destinations_by_id, regions_by_id,
+                        reviews_by_tour, reviews_by_dest):
+    """Build all pages for a specific language."""
+    lang_label = 'German' if lang == 'de' else 'Dutch' if lang == 'nl' else lang.upper()
+    log(f"\n{'=' * 60}")
+    log(f"Building {lang_label} ({lang}) site...")
+    log(f"{'=' * 60}")
+
+    if lang == 'en':
+        base_dir = WEBSITE_DIR
+    else:
+        base_dir = WEBSITE_DIR / lang
+        base_dir.mkdir(parents=True, exist_ok=True)
+
+    tour_translations = translations.get('tours', {})
+    dest_translations = translations.get('destinations', {})
+
+    translated_count = len(tour_translations)
+    log(f"Found {translated_count} tour translations for {lang}")
+    if tour_translations:
+        log(f"Translation tour_ids: {list(tour_translations.keys())}")
+
+    # Build tour pages
+    log(f"\nGenerating {lang} tour pages...")
+    log(f"Total tours to check: {len(tours)}")
+    lang_tour_count = 0
+    skipped_no_translation = 0
+    for tour in tours:
+        slug = tour.get('slug')
+        if not slug:
+            continue
+
+        tour_id = tour.get('id')
+
+        if lang != 'en' and tour_id not in tour_translations:
+            skipped_no_translation += 1
+            continue
+
+        log(f"Building {lang} page for tour: {slug} (id: {tour_id})")
+
+        translated_tour = apply_tour_translation(tour, tour_translations.get(tour_id))
+
+        tour_reviews = reviews_by_tour.get(tour_id, [])
+        dest_id = tour.get('destination_id')
+        destination = destinations_by_id.get(dest_id, {})
+
+        translated_dest = apply_dest_translation(destination, dest_translations.get(dest_id))
+
+        related = [t_item for t_item in tours
+                   if t_item.get('destination_id') == dest_id and t_item.get('id') != tour_id
+                   and (lang == 'en' or t_item.get('id') in tour_translations)]
+        translated_related = [apply_tour_translation(rt, tour_translations.get(rt.get('id'))) for rt in related]
+
+        html = render_tour_page(translated_tour, translated_dest, translated_related, tour_reviews, faqs, tours_by_id)
+
+        if html:
+            html = translate_html_ui(html, lang)
+
+            if lang != 'en':
+                html = html.replace('href="../', 'href="../../')
+                html = html.replace('src="../', 'src="../../')
+                html = html.replace('<html lang="en"', f'<html lang="{lang}"')
+
+                en_url = f'https://walkingholidayireland.com/tours/{slug}.html'
+                de_url = f'https://walkingholidayireland.de/tours/{slug}.html'
+                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
+    <link rel="alternate" hreflang="de" href="{de_url}" />'''
+                html = html.replace('</head>', f'{hreflang_tags}\n</head>')
+
+            output_path = base_dir / 'tours' / f'{slug}.html'
+
+            if DRY_RUN:
+                log(f"Would generate: {output_path}", 'debug')
+            else:
+                output_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(output_path, 'w') as f:
+                    f.write(html)
+                log(f"Generated: {output_path}")
+
+            lang_tour_count += 1
+        else:
+            log(f"Failed to render {lang} tour: {slug}", 'error')
+
+    log(f"Generated {lang_tour_count} {lang} tour pages (skipped {skipped_no_translation} without translation)")
+
+    # Build destination pages
+    log(f"\nGenerating {lang} destination pages...")
+    lang_dest_count = 0
+    for destination in destinations:
+        slug = destination.get('slug')
+        if not slug:
+            continue
+
+        dest_id = destination.get('id')
+
+        if lang != 'en':
+            dest_tours_translated = [t_item for t_item in tours
+                                    if t_item.get('destination_id') == dest_id
+                                    and t_item.get('id') in tour_translations]
+            if not dest_tours_translated:
+                continue
+
+        translated_dest = apply_dest_translation(destination, dest_translations.get(dest_id))
+        dest_tours = [t_item for t_item in tours if t_item.get('destination_id') == dest_id]
+        translated_dest_tours = [apply_tour_translation(dt, tour_translations.get(dt.get('id'))) for dt in dest_tours]
+
+        dest_reviews = []
+        for dt in dest_tours:
+            dest_reviews.extend(reviews_by_tour.get(dt.get('id'), []))
+
+        html = render_destination_page(translated_dest, translated_dest_tours, dest_reviews, faqs, tours_by_id)
+
+        if html:
+            html = translate_html_ui(html, lang)
+
+            if lang != 'en':
+                html = html.replace('<html lang="en"', f'<html lang="{lang}"')
+
+                en_url = f'https://walkingholidayireland.com/walking-area-{slug}.html'
+                de_url = f'https://walkingholidayireland.de/walking-area-{slug}.html'
+                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
+    <link rel="alternate" hreflang="de" href="{de_url}" />'''
+                html = html.replace('</head>', f'{hreflang_tags}\n</head>')
+
+            output_path = base_dir / f'walking-area-{slug}.html'
+            dest_path = base_dir / f'destination-{slug}.html'
+
+            if not DRY_RUN:
+                with open(output_path, 'w') as f:
+                    f.write(html)
+                with open(dest_path, 'w') as f:
+                    f.write(html)
+                log(f"Generated: {output_path}")
+
+            lang_dest_count += 1
+
+    log(f"Generated {lang_dest_count} {lang} destination pages")
+    return lang_tour_count, lang_dest_count
+
+
 def main():
     """Main build process."""
     log("=" * 60)
@@ -3003,6 +3453,31 @@ def main():
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
             log("blog.html not found, skipping listing page", 'warn')
+
+    # ── Build Language Sites ─────────────────────────────────
+    LANGUAGES_TO_BUILD = ['de']  # Add 'nl', 'es', 'fr' later
+
+    for lang in LANGUAGES_TO_BUILD:
+        log(f"\nFetching {lang} translations from Supabase...")
+        translations = fetch_translations(lang)
+
+        lang_tours, lang_dests = build_language_site(
+            lang=lang,
+            tours=tours,
+            destinations=destinations,
+            reviews=reviews,
+            faqs=faqs,
+            regions=regions,
+            posts=posts,
+            translations=translations,
+            tours_by_id=tours_by_id,
+            destinations_by_id=destinations_by_id,
+            regions_by_id=regions_by_id,
+            reviews_by_tour=reviews_by_tour,
+            reviews_by_dest=reviews_by_dest,
+        )
+
+        log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages")
 
     # Summary
     log("\n" + "=" * 60)
