@@ -55,13 +55,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/tours/barrow-way-5-days.html</loc>
+    <loc>https://walkingholidayireland.com/tours/barrow-way-5-days-easy.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/tours/barrow-way.html</loc>
+    <loc>https://walkingholidayireland.com/tours/Full-Barrow-Way-Walking.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -80,12 +80,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/tours/burren-7-days.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/tours/burren-way.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -157,12 +151,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/walking-area-antrim-glens.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/walking-area-beara-way.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -182,24 +170,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/walking-area-cooley-peninsula.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/walking-area-dublin-wicklow.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/walking-area-mourne-mountains.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/walking-area-the-sperrins.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -253,6 +223,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/seasonal-considerations-multi-day-hiking-ireland.html</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/mountains-o-mourne-don-mclean.html</loc>
+    <lastmod>2026-03-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/blackrock-village-county-louth.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -266,12 +248,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/leave-no-trace.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/mountains-o-mourne-don-mclean.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -722,12 +698,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/seasonal-guide-when-see-ireland-s-blooms-migrations.html</loc>
-    <lastmod>2026-03-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/seasonal-considerations-multi-day-hiking-ireland.html</loc>
     <lastmod>2026-03-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
