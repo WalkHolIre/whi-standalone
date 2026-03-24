@@ -2764,7 +2764,7 @@ def build_static_pages(lang, translations):
         # Apply section-by-section text replacement
         replacements_applied = 0
         for section_key, translated_text in sections.items():
-            if not translated_text or not translated_text.strip():
+            if not translated_text:
                 continue
 
             # The sections dict maps English text → German text
