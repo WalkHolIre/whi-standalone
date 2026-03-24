@@ -217,6 +217,59 @@ UI_STRINGS = {
         'best_price_guarantee': 'Bestpreisgarantie — siehe unsere Preisgarantie',
         'tour_grading': 'Tourbewertung & Schwierigkeitsgrad',
         'walking': 'Wandern',
+        # Search/filter
+        'destination': 'Ziel',
+        'all_walking_areas': 'Alle Wandergebiete',
+        'any_level': 'Alle Stufen',
+        'easy': 'Leicht',
+        'moderate': 'Mittelschwer',
+        'intermediate': 'Fortgeschritten',
+        'challenging': 'Anspruchsvoll',
+        'any': 'Alle',
+        'find_tours': 'Touren Finden',
+        '5_days': '5 Tage',
+        '6_days': '6 Tage',
+        '7_days': '7 Tage',
+        '8_10_days': '8-10 Tage',
+        # Homepage CTAs
+        'take_fitness_quiz': 'Fitness-Quiz machen',
+        'learn_our_story': 'Unsere Geschichte',
+        'read_all_reviews': 'Alle 63 Bewertungen lesen →',
+        'what_walkers_say': 'Was unsere Wanderer sagen',
+        'based_on_reviews': 'Basierend auf 63 verifizierten Bewertungen',
+        'explore_region': 'Region erkunden',
+        'view_all_areas': 'Alle Wandergebiete ansehen',
+        'meet_cliff_louise': 'Treffen Sie Cliff & Louise',
+        'stay_updated': 'Bleiben Sie auf dem Laufenden',
+        'subscribe': 'Abonnieren',
+        'your_questions': 'Ihre Fragen, beantwortet',
+        # FAQ items on homepage
+        'faq_lost': 'Was passiert, wenn ich mich verlaufe?',
+        'faq_luggage': 'Wie funktioniert der Gepäcktransfer?',
+        'faq_solo': 'Kann ich alleine wandern?',
+        'faq_weather': 'Wie ist das Wetter?',
+        'faq_accommodation': 'Welche Unterkünfte nutzen Sie?',
+        'faq_booking': 'Wie weit im Voraus sollte ich buchen?',
+        # Footer
+        'privacy_policy': 'Datenschutzrichtlinie',
+        'terms_conditions': 'Allgemeine Geschäftsbedingungen',
+        # Navigation dropdown items
+        'dingle_peninsula': 'Dingle-Halbinsel',
+        'county_kerry': 'County Kerry',
+        'dublin_wicklow': 'Dublin & Wicklow',
+        'burren_clare': 'Burren & Clare',
+        'causeway_coast': 'Causeway Coast',
+        'cooley_mournes': 'Cooley & Mournes',
+        'barrow_valley': 'Barrow Valley',
+        # Regions
+        'wild_atlantic_way': 'Wild Atlantic Way',
+        'irelands_ancient_east': 'Irlands alter Osten',
+        'northern_ireland': 'Nordirland',
+        # Countries
+        'united_kingdom': 'Vereinigtes Königreich',
+        'australia': 'Australien',
+        'canada': 'Kanada',
+        'germany': 'Deutschland',
     }
 }
 
@@ -461,6 +514,75 @@ def translate_html_ui(html, lang):
         '>Difficulty<': f'>{t("difficulty", lang)}<',
         '>Duration<': f'>{t("duration", lang)}<',
         '>Best Months<': f'>{t("best_months", lang)}<',
+
+        # Search/filter section
+        '>Destination<': f'>{t("destination", lang)}<',
+        '>All Walking Areas<': f'>{t("all_walking_areas", lang)}<',
+        '>Any Level<': f'>{t("any_level", lang)}<',
+        '>Easy<': f'>{t("easy", lang)}<',
+        '>Moderate<': f'>{t("moderate", lang)}<',
+        '>Intermediate<': f'>{t("intermediate", lang)}<',
+        '>Challenging<': f'>{t("challenging", lang)}<',
+        '>Any<': f'>{t("any", lang)}<',
+        '>5 Days<': f'>{t("5_days", lang)}<',
+        '>6 Days<': f'>{t("6_days", lang)}<',
+        '>7 Days<': f'>{t("7_days", lang)}<',
+        '>8-10 Days<': f'>{t("8_10_days", lang)}<',
+        '>Find Tours<': f'>{t("find_tours", lang)}<',
+
+        # Homepage CTAs & sections
+        '>Take the Fitness Quiz<': f'>{t("take_fitness_quiz", lang)}<',
+        '>Learn Our Story<': f'>{t("learn_our_story", lang)}<',
+        '>Read all 63 reviews →<': f'>{t("read_all_reviews", lang)}<',
+        '>What Our Walkers Say<': f'>{t("what_walkers_say", lang)}<',
+        '>Based on 63 verified reviews<': f'>{t("based_on_reviews", lang)}<',
+        '>Explore Region <': f'>{t("explore_region", lang)} <',
+        '>View All Walking Areas<': f'>{t("view_all_areas", lang)}<',
+        '>Meet Cliff & Louise<': f'>{t("meet_cliff_louise", lang)}<',
+        '>Meet Cliff &amp; Louise<': f'>{t("meet_cliff_louise", lang)}<',
+        '>Stay Updated on Walking Ireland<': f'>{t("stay_updated", lang)}<',
+        '>Subscribe<': f'>{t("subscribe", lang)}<',
+        '>Your Questions, Answered<': f'>{t("your_questions", lang)}<',
+
+        # Homepage FAQ items
+        '>What if I get lost?<': f'>{t("faq_lost", lang)}<',
+        '>How does luggage transfer work?<': f'>{t("faq_luggage", lang)}<',
+        '>Can I walk solo?<': f'>{t("faq_solo", lang)}<',
+        ">What's the weather like?<": f'>{t("faq_weather", lang)}<',
+        '>What accommodation do you use?<': f'>{t("faq_accommodation", lang)}<',
+        '>How far in advance should I book?<': f'>{t("faq_booking", lang)}<',
+
+        # Footer
+        '>Privacy Policy<': f'>{t("privacy_policy", lang)}<',
+        '>Terms & Conditions<': f'>{t("terms_conditions", lang)}<',
+        '>Terms &amp; Conditions<': f'>{t("terms_conditions", lang)}<',
+
+        # Navigation dropdown items
+        '>Dingle Peninsula<': f'>{t("dingle_peninsula", lang)}<',
+        '>County Kerry<': f'>{t("county_kerry", lang)}<',
+        '>Dublin &amp; Wicklow<': f'>{t("dublin_wicklow", lang)}<',
+        '>Dublin & Wicklow<': f'>{t("dublin_wicklow", lang)}<',
+        '>The Burren &amp; Clare<': f'>{t("burren_clare", lang)}<',
+        '>The Burren & Clare<': f'>{t("burren_clare", lang)}<',
+        '>Causeway Coast<': f'>{t("causeway_coast", lang)}<',
+        '>Cooley &amp; Mournes<': f'>{t("cooley_mournes", lang)}<',
+        '>Cooley & Mournes<': f'>{t("cooley_mournes", lang)}<',
+        '>The Barrow Valley<': f'>{t("barrow_valley", lang)}<',
+
+        # Region names (on cards etc.)
+        '>Wild Atlantic Way<': f'>{t("wild_atlantic_way", lang)}<',
+        ">Ireland's Ancient East<": f'>{t("irelands_ancient_east", lang)}<',
+        '>Ireland&#x27;s Ancient East<': f'>{t("irelands_ancient_east", lang)}<',
+        '>Northern Ireland<': f'>{t("northern_ireland", lang)}<',
+
+        # Countries (reviewer attributions)
+        '>United Kingdom<': f'>{t("united_kingdom", lang)}<',
+        '>Australia<': f'>{t("australia", lang)}<',
+        '>Canada<': f'>{t("canada", lang)}<',
+        '>Germany<': f'>{t("germany", lang)}<',
+
+        # Footer tagline
+        ">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff & Louise.<": f'>{t("footer_tagline", lang)}<',
     }
     for en_text, translated_text in replacements.items():
         html = html.replace(en_text, translated_text)
