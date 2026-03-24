@@ -868,7 +868,39 @@ def render_destination_faq_section(dest_id, faqs, dest_name):
     return html, curated_faqs
 
 
-def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_id):
+def generate_booking_data_script(tour, extras, settings, lang='en'):
+    """Generate the <script> block with booking modal data for a tour page."""
+    tour_data = {
+        'id': tour.get('id'),
+        'name': tour.get('name'),
+        'slug': tour.get('slug'),
+        'duration_days': tour.get('duration_days'),
+        'price_per_person_eur': float(tour.get('price_per_person_eur', 0)),
+        'difficulty_level': tour.get('difficulty_level'),
+        'hero_image': tour.get('hero_image', ''),
+        'min_walkers': tour.get('min_walkers', 1),
+        'max_walkers': tour.get('max_walkers', 10),
+        'max_extra_days': tour.get('max_extra_days', 0),
+        'extra_day_price_eur': float(tour.get('extra_day_price_eur', 0) or 0),
+        'single_occupancy_surcharge': float(tour.get('single_occupancy_surcharge', 0) or 0),
+        'single_traveller_surcharge': float(tour.get('single_traveller_surcharge', 0) or 0),
+    }
+
+    settings_data = {
+        'deposit_percent': settings.get('deposit_percent', 25),
+        'currency': settings.get('currency', 'EUR'),
+        'stripe_publishable_key': settings.get('stripe_publishable_key', ''),
+    }
+
+    return f"""<script>
+window.__WHI_TOUR = {json.dumps(tour_data)};
+window.__WHI_EXTRAS = {json.dumps(extras)};
+window.__WHI_SETTINGS = {json.dumps(settings_data)};
+window.__WHI_LANG = "{lang}";
+</script>"""
+
+
+def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_id, tour_extras=None, booking_settings=None):
     """Render a tour page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'tour.html'
 
@@ -933,6 +965,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{tour_slug}': escape(tour.get('slug', '')),
         '{faq_section_html}': tour_faq_html,
         '{faq_schema}': tour_faq_schema,
+        '{booking_data_script}': generate_booking_data_script(tour, tour_extras or [], booking_settings or {}, 'en'),
     }
 
     # Apply replacements
@@ -2381,6 +2414,12 @@ def main():
         log("Fetching regions from Supabase...")
         regions = fetch_supabase('regions', '&order=sort_order')
 
+        log("Fetching tour extras from Supabase...")
+        tour_extras = fetch_supabase('tour_extras', '&is_active=eq.true&order=sort_order')
+
+        log("Fetching global settings from Supabase...")
+        global_settings = fetch_supabase('global_settings', '&setting_key=in.(payment_config,company_config)')
+
         log("Fetching blog posts from Supabase...")
         posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
         posts_upper = fetch_supabase('posts', '&status=eq.Published&language=eq.en&order=published_date.desc')
@@ -2409,6 +2448,35 @@ def main():
     destinations_by_id = {d['id']: d for d in destinations}
     tours_by_id = {t['id']: t for t in tours}
     regions_by_id = {r['id']: r for r in regions}
+
+    # Build booking settings from global_settings
+    booking_settings = {'deposit_percent': 25, 'currency': 'EUR', 'stripe_publishable_key': ''}
+    if not LOCAL_MODE:
+        for setting in global_settings:
+            setting_json = setting.get('setting_json', {})
+            if setting.get('setting_key') == 'payment_config':
+                booking_settings['deposit_percent'] = setting_json.get('deposit_percent', 25)
+                booking_settings['currency'] = setting_json.get('currency', 'EUR')
+                stripe_mode = setting_json.get('mode', 'sandbox')
+                stripe_config = setting_json.get('stripe', {}).get(stripe_mode, {})
+                booking_settings['stripe_publishable_key'] = stripe_config.get('publishable_key', '')
+
+        # Group tour extras by tour_id
+        extras_by_tour = {}
+        for extra in tour_extras:
+            tid = extra.get('tour_id')
+            if tid:
+                extras_by_tour.setdefault(tid, []).append({
+                    'id': extra.get('id'),
+                    'name': extra.get('name'),
+                    'description': extra.get('description', ''),
+                    'price_eur': float(extra.get('price_eur', 0)),
+                    'price_type': extra.get('price_type', 'per_person'),
+                    'max_quantity': extra.get('max_quantity', 1),
+                    'sort_order': extra.get('sort_order', 0),
+                })
+    else:
+        extras_by_tour = {}
 
     # Group reviews by tour_id
     reviews_by_tour = {}
@@ -2446,7 +2514,11 @@ def main():
         # Get related tours (same destination, different tour)
         related = [t for t in tours if t.get('destination_id') == dest_id and t.get('id') != tour_id]
 
-        html = render_tour_page(tour, destination, related, tour_reviews, faqs, tours_by_id)
+        # Get extras for this tour
+        tour_extras_list = extras_by_tour.get(tour_id, [])
+
+        html = render_tour_page(tour, destination, related, tour_reviews, faqs, tours_by_id,
+                                tour_extras=tour_extras_list, booking_settings=booking_settings)
 
         if html:
             output_path = WEBSITE_DIR / 'tours' / f'{slug}.html'

@@ -6,6 +6,7 @@
     <title>{meta_title}</title>
     <meta name="description" content="{meta_description}"/>
     <link rel="stylesheet" href="../css/styles.min.css"/>
+    <link rel="stylesheet" href="../css/booking-modal.css"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script>
         tailwind.config = {
@@ -160,9 +161,9 @@
                     <span class="text-sm text-slate-300 font-medium uppercase tracking-wider">Starting From</span>
                     <span class="text-3xl font-bold">€{price_per_person_eur} <span class="text-lg font-normal text-slate-300">per person</span></span>
                 </div>
-                <a href="../checkout.html" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
+                <button onclick="openBookingModal()" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
                     Book Now
-                </a>
+                </button>
             </div>
         </div>
     </div>
@@ -273,9 +274,9 @@
             </div>
         </div>
         <div class="flex flex-col gap-4 mt-2">
-            <a href="../checkout.html" class="w-full bg-primary hover:bg-[#d97200] text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-colors shadow-lg shadow-primary/20">
+            <button onclick="openBookingModal()" class="w-full bg-primary hover:bg-[#d97200] text-white py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 transition-colors shadow-lg shadow-primary/20">
                 <span class="material-symbols-outlined text-[20px]">check</span> Proceed to Booking
-            </a>
+            </button>
             <a href="https://wa.me/353861234567" target="_blank" class="w-full bg-white border-2 border-brand-purple text-brand-purple py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors">
                 <span class="material-symbols-outlined text-[22px]">chat_bubble</span> Ask a Question
             </a>
@@ -472,5 +473,8 @@
 <!-- WHI Ground Control Integration -->
 <script src="../js/whi-config.js"></script>
 <script src="../js/whi-data.js"></script>
+<!-- Booking Modal -->
+{booking_data_script}
+<script src="../js/booking-modal.js"></script>
 </body>
 </html>
