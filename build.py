@@ -270,6 +270,29 @@ UI_STRINGS = {
         'australia': 'Australien',
         'canada': 'Kanada',
         'germany': 'Deutschland',
+        # About page / stats
+        'by_the_numbers': 'In Zahlen',
+        'years': 'Jahre',
+        'happy_walkers': 'Zufriedene Wanderer',
+        'tours_stat': 'Touren',
+        'destinations_stat': 'Reiseziele',
+        'countries_served': 'Bediente Länder',
+        'the_team': 'Das Team',
+        'cofound_ops': 'Mitgründer & Betrieb',
+        'cofound_hosp': 'Mitgründerin & Gastfreundschaft',
+        'why_self_guided': 'Warum selbstgeführt?',
+        'ready_walk_ireland': 'Bereit, Irland zu erwandern?',
+        'all_rights_reserved': 'Alle Rechte vorbehalten.',
+        'quick_links_heading': 'Schnelllinks',
+        # How It Works page
+        'step': 'Schritt',
+        'your_email': 'Ihre E-Mail',
+        'your_name': 'Ihr Name',
+        'your_message': 'Ihre Nachricht',
+        'send_message': 'Nachricht senden',
+        'phone': 'Telefon',
+        'email': 'E-Mail',
+        'address': 'Adresse',
     }
 }
 
@@ -583,6 +606,29 @@ def translate_html_ui(html, lang):
 
         # Footer tagline
         ">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff & Louise.<": f'>{t("footer_tagline", lang)}<',
+
+        # About page / stats section
+        '>By The Numbers<': f'>{t("by_the_numbers", lang)}<',
+        '>Years<': f'>{t("years", lang)}<',
+        '>Happy Walkers<': f'>{t("happy_walkers", lang)}<',
+        '>Countries Served<': f'>{t("countries_served", lang)}<',
+        '>The Team<': f'>{t("the_team", lang)}<',
+        '>Co-Founder & Operations<': f'>{t("cofound_ops", lang)}<',
+        '>Co-Founder &amp; Operations<': f'>{t("cofound_ops", lang)}<',
+        '>Co-Founder & Hospitality<': f'>{t("cofound_hosp", lang)}<',
+        '>Co-Founder &amp; Hospitality<': f'>{t("cofound_hosp", lang)}<',
+        '>Why Self-Guided?<': f'>{t("why_self_guided", lang)}<',
+        '>Ready to Walk Ireland?<': f'>{t("ready_walk_ireland", lang)}<',
+        '>All rights reserved.<': f'>{t("all_rights_reserved", lang)}<',
+
+        # Contact page
+        '>Your Name<': f'>{t("your_name", lang)}<',
+        '>Your Email<': f'>{t("your_email", lang)}<',
+        '>Your Message<': f'>{t("your_message", lang)}<',
+        '>Send Message<': f'>{t("send_message", lang)}<',
+        '>Phone<': f'>{t("phone", lang)}<',
+        '>Email<': f'>{t("email", lang)}<',
+        '>Address<': f'>{t("address", lang)}<',
     }
     for en_text, translated_text in replacements.items():
         html = html.replace(en_text, translated_text)
@@ -2900,7 +2946,7 @@ def build_static_pages(lang, translations):
                 find_text = translated_text.get('find', '')
                 replace_text = translated_text.get('replace', '')
                 if find_text and replace_text and find_text in html:
-                    html = html.replace(find_text, replace_text, 1)
+                    html = html.replace(find_text, replace_text)
                     replacements_applied += 1
             elif isinstance(translated_text, str):
                 # Simple string value — look for a matching pattern in sections
