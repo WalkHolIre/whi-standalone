@@ -338,10 +338,26 @@ def fetch_translations(lang):
     else:
         log(f"WARNING: Zero tour translations for {lang} — German pages will NOT be generated!", 'warn')
 
+    # Page translations (for static pages like homepage, about, contact)
+    log(f"\nStep 5: Fetch page_translations where language_code={lang}")
+    page_trans = fetch_supabase('page_translations', f'&language_code=eq.{lang}')
+    log(f"  Result: {len(page_trans) if page_trans else 0} rows")
+    if not page_trans:
+        log(f"Fallback — unfiltered fetch of ALL page_translations", 'warn')
+        all_page_trans = fetch_supabase('page_translations')
+        if all_page_trans:
+            page_trans = [pt for pt in all_page_trans if pt.get('language_code') == lang]
+            log(f"  After Python filter for '{lang}': {len(page_trans)} page translations")
+    page_dict = {pt['page_slug']: pt for pt in (page_trans or [])}
+    log(f"Final page translation count: {len(page_dict)}")
+    if page_dict:
+        log(f"  Pages with translations: {list(page_dict.keys())}")
+
     log(f"{'─' * 40}")
     return {
         'tours': tour_dict,
         'destinations': dest_dict,
+        'pages': page_dict,
     }
 
 
@@ -2692,6 +2708,145 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
+def build_static_pages(lang, translations):
+    """Build translated versions of static HTML pages (homepage, about, contact, etc.)."""
+    page_translations = translations.get('pages', {})
+    if not page_translations:
+        log(f"No page translations found for {lang} — skipping static pages")
+        return 0
+
+    lang_label = 'German' if lang == 'de' else 'Dutch' if lang == 'nl' else lang.upper()
+    log(f"\nBuilding {lang_label} static pages...")
+
+    # List of static pages that should be translated
+    STATIC_PAGES = [
+        'index',
+        'about',
+        'contact',
+        'how-it-works',
+        'tour-grading',
+        'tailor-made',
+        'self-guided-walking-holidays-ireland',
+        'solo-walking-holidays-ireland',
+        'walking-holidays-ireland-over-50s',
+        'wild-atlantic-way',
+        'northern-ireland',
+        'ancient-east',
+        'mountains-of-mourne',
+        'checkout',
+        'privacy-policy',
+        'terms-and-conditions',
+    ]
+
+    base_dir = WEBSITE_DIR / lang
+    base_dir.mkdir(parents=True, exist_ok=True)
+    count = 0
+
+    for page_slug in STATIC_PAGES:
+        if page_slug not in page_translations:
+            continue
+
+        pt = page_translations[page_slug]
+        sections = pt.get('sections', {})
+        if not sections:
+            log(f"  Skipping {page_slug} — no sections defined", 'warn')
+            continue
+
+        # Read the English source file
+        source_file = WEBSITE_DIR / f'{page_slug}.html'
+        if not source_file.exists():
+            log(f"  Source file not found: {source_file}", 'warn')
+            continue
+
+        with open(source_file, 'r') as f:
+            html = f.read()
+
+        # Apply section-by-section text replacement
+        replacements_applied = 0
+        for section_key, translated_text in sections.items():
+            if not translated_text or not translated_text.strip():
+                continue
+
+            # The sections dict maps English text → German text
+            # Keys prefixed with '__en__' contain the English original to find
+            # Keys without prefix are section identifiers with 'en' and 'de' sub-keys
+            # We support two formats:
+            # Format 1: {"en": "English text", "de": "German text"} — explicit find/replace pairs
+            # Format 2: Direct key-value where key is a label and value is {"find": "...", "replace": "..."}
+
+            if isinstance(translated_text, dict):
+                find_text = translated_text.get('find', '')
+                replace_text = translated_text.get('replace', '')
+                if find_text and replace_text and find_text in html:
+                    html = html.replace(find_text, replace_text, 1)
+                    replacements_applied += 1
+            elif isinstance(translated_text, str):
+                # Simple string value — look for a matching pattern in sections
+                # The convention is: section key maps to the translated text
+                # and we look for the English text via a companion _en key
+                en_key = f'{section_key}_en'
+                en_text = sections.get(en_key, '')
+                if en_text and translated_text and en_text in html:
+                    html = html.replace(en_text, translated_text, 1)
+                    replacements_applied += 1
+
+        # Apply the standard UI translations (header, footer, nav, buttons)
+        html = translate_html_ui(html, lang)
+
+        # Update page title if provided
+        page_title = pt.get('page_title')
+        if page_title:
+            html = re.sub(r'<title>.*?</title>', f'<title>{page_title}</title>', html, count=1)
+
+        # Update meta description if provided
+        meta_desc = pt.get('meta_description')
+        if meta_desc:
+            html = re.sub(
+                r'<meta\s+name="description"\s+content="[^"]*"',
+                f'<meta name="description" content="{meta_desc}"',
+                html, count=1
+            )
+
+        # Update lang attribute
+        html = html.replace('<html lang="en"', f'<html lang="{lang}"')
+
+        # Fix relative paths (since we're one level deeper)
+        html = html.replace('href="css/', 'href="../css/')
+        html = html.replace('href="js/', 'href="../js/')
+        html = html.replace('src="images/', 'src="../images/')
+        html = html.replace('src="js/', 'src="../js/')
+        html = html.replace('href="images/', 'href="../images/')
+        # Fix page links to point to translated versions where they exist
+        for ps in STATIC_PAGES:
+            if ps in page_translations:
+                html = html.replace(f'href="{ps}.html"', f'href="../{lang}/{ps}.html"')
+        # Fix tour/destination links
+        html = html.replace('href="tours/', f'href="../{lang}/tours/')
+        html = html.replace('href="tours.html"', f'href="../{lang}/tours.html"')
+        html = html.replace('href="destinations.html"', f'href="../{lang}/destinations.html"')
+
+        # Add hreflang tags
+        en_url = f'https://walkingholidayireland.com/{page_slug}.html'
+        if lang == 'de':
+            alt_url = f'https://walkingholidayireland.de/{page_slug}.html'
+        else:
+            alt_url = f'https://walkingholidayireland.com/{lang}/{page_slug}.html'
+        hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
+    <link rel="alternate" hreflang="{lang}" href="{alt_url}" />'''
+        html = html.replace('</head>', f'{hreflang_tags}\n</head>')
+
+        # Write the translated page
+        output_path = base_dir / f'{page_slug}.html'
+        if not DRY_RUN:
+            with open(output_path, 'w') as f:
+                f.write(html)
+            log(f"  Generated: {output_path} ({replacements_applied} section replacements)")
+        count += 1
+
+    log(f"Generated {count} {lang} static pages")
+    return count
+
+
 def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts,
                         translations, tours_by_id, destinations_by_id, regions_by_id,
                         reviews_by_tour, reviews_by_dest):
@@ -3521,7 +3676,10 @@ def main():
             reviews_by_dest=reviews_by_dest,
         )
 
-        log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages")
+        # Build translated static pages (homepage, about, contact, etc.)
+        lang_static = build_static_pages(lang, translations)
+
+        log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages, {lang_static} static pages")
 
     # Summary
     log("\n" + "=" * 60)
