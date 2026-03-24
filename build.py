@@ -285,16 +285,37 @@ def t(key, lang='en'):
 
 def fetch_translations(lang):
     """Fetch tour and destination translations for a language."""
+    # Try filtered fetch first, then fallback to fetch-all-and-filter
     log(f"Fetching tour_translations for language={lang}...")
     tour_trans = fetch_supabase('tour_translations', f'&language_code=eq.{lang}')
+
+    # If filtered fetch returns empty, try fetching all and filtering in Python
+    if not tour_trans:
+        log(f"Filtered fetch returned empty, trying unfiltered fetch...", 'warn')
+        all_tour_trans = fetch_supabase('tour_translations')
+        if all_tour_trans:
+            log(f"Unfiltered fetch got {len(all_tour_trans)} total translations")
+            tour_trans = [tt for tt in all_tour_trans if tt.get('language_code') == lang]
+            log(f"After filtering for {lang}: {len(tour_trans)} translations")
+        else:
+            log(f"Unfiltered fetch also returned empty — check table access", 'error')
+
     log(f"Got {len(tour_trans or [])} tour translations for {lang}")
+
     log(f"Fetching destination_translations for language={lang}...")
     dest_trans = fetch_supabase('destination_translations', f'&language_code=eq.{lang}')
+    if not dest_trans:
+        all_dest_trans = fetch_supabase('destination_translations')
+        if all_dest_trans:
+            dest_trans = [dt for dt in all_dest_trans if dt.get('language_code') == lang]
     log(f"Got {len(dest_trans or [])} destination translations for {lang}")
+
     tour_dict = {tt['tour_id']: tt for tt in (tour_trans or [])}
     dest_dict = {dt['destination_id']: dt for dt in (dest_trans or [])}
     if tour_dict:
-        log(f"Sample tour translation IDs: {list(tour_dict.keys())[:3]}", 'debug')
+        log(f"Sample tour translation IDs: {list(tour_dict.keys())[:3]}")
+    else:
+        log(f"WARNING: No tour translations found for {lang}!", 'warn')
     return {
         'tours': tour_dict,
         'destinations': dest_dict,
