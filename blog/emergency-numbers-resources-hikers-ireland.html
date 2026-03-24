@@ -32,21 +32,21 @@
         body { font-family: 'Inter', sans-serif; }
         header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
         /* Article prose styling */
-        .article-body h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .article-body h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .article-body h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .article-body p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .article-body ul, .article-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .article-body ul { list-style-type: disc; }
-        .article-body ol { list-style-type: decimal; }
-        .article-body li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .article-body strong { color: #1e293b; font-weight: 700; }
-        .article-body a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .article-body a:hover { color: #d97200; }
-        .article-body blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .article-body blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .article-body hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .article-body img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.75; font-size: 1.125rem; color: #475569; }
+        .prose h2 { font-size: 1.875rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1d150c; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #d97200; }
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
     </style>
     <script type="application/ld+json">
     {
@@ -73,7 +73,7 @@
     }
     </script>
 </head>
-<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -147,40 +147,46 @@
 
 <main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
-<!-- Article Header -->
-<section class="w-full bg-background-light border-b border-slate-200/60">
-    <div class="max-w-3xl mx-auto px-6 py-12 md:py-16">
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../index.html">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog.html">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Emergency Numbers And Resources For Hikers In Ireland</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-            <a href="../blog.html" class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined text-lg">arrow_back</span> Blog
-            </a>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">Blog</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">10 min read</span>
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Blog</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">August 26, 2023</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">10 min read</span>
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-6">
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
             Emergency Numbers And Resources For Hikers In Ireland
         </h1>
-        <p class="text-lg text-slate-500 leading-relaxed max-w-2xl">
-            
-        </p>
-        <div class="flex items-center gap-4 mt-8">
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <span class="text-white font-bold text-lg">W</span>
-            </div>
-            <div>
-                <p class="font-bold text-sm">Walking Holiday Ireland</p>
-                <p class="text-sm text-slate-500">August 26, 2023</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Article Body -->
-<article class="w-full max-w-3xl mx-auto px-6 py-12 md:py-16">
-    <div class="article-body">
-        
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://walkingholidayireland.com/wp-content/uploads/p80066-Emergency-Numbers-And-Resources-For-Hikers-In-Ireland-1d9e3053f4-360403023.jpg');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            
 <p>Hiking in Ireland's mountains and valleys can be an unforgettable adventure, but it's critical to know what resources are at hand if things go wrong. Did you know that 112 or 999 are the emergency numbers to call if you're in <strong>distress while hiking</strong> in Ireland? This blog post will guide you through <strong>essential contact information</strong>, <strong>useful resources for hikers</strong>, and <strong>safety steps</strong> to ensure a <strong>worry-free hike</strong> across our Emerald Isle.</p><p>Ready? Let's dive into keeping your Irish hiking experience safe and enjoyable!</p><h3>Key Takeaways</h3><ul><li>The emergency numbers to call in Ireland for hikers in distress are 112 or 999.</li><li>It is important to provide clear details about your location when calling emergency services, including street names, landmarks, or postal codes if possible.</li><li>Non-life-threatening emergencies can also be reported using the numbers 112 or 999 for fire services, police, and ambulance assistance.</li><li>Additional resources for hikers in Ireland include OSi and Mountain Rescue Ireland for safety support, SARLOC technology for locating lost hikers quickly, and the Irish Tourist Assistance Service (ITAS) for providing help to victims of crime while hiking.</li></ul></p><h2>Emergency Contacts in Ireland</h2><p><img src="https://app.agilitywriter.ai/img/2023/08/25/p80066-Emergency-Contacts-in-Ireland-8bcad96b6f-311750713.jpg" width="1344" height="768" class="awimage"><a href="https://www.gov.ie/en/service/89da6-how-to-contact-emergency-services-in-ireland/" target="_blank" rel="noopener">Contacting emergency services in Ireland</a> is crucial for hiker's safety, and knowing when to call 112 for your child or how to call an ambulance can make all the difference in an emergency situation.</p><h3>How to contact emergency services in Ireland</h3><p>In Ireland, you can contact emergency services direct. You just need to <strong>dial 999 from any phone</strong>. You can also <strong>use the number 112 on your phone</strong>. Text users with a hearing or speech problem should dial 18000 for help in an emergency.</p><p>The key thing to remember is that when you call, give them clear details about where you are. Use street names, landmarks or postal codes if possible.</p><h3>When to call 112 for your child</h3><p>Your child's safety is important. If your kid <strong>falls, hurts their head and loses alertness</strong>, call 112 right away. Dial the same number if they <strong>can't breathe</strong>. This <strong>calls an ambulance</strong> to help.</p><p>Children must also know how to use this number. But, <strong>teach them it's not for playtime fun</strong>. Calls that are not real take away help from those who need it most.</p><h3>How to call 112</h3><p><strong>Dialling 112 is the way to reach out during an emergency in Ireland.</strong> Here are easy steps to do it:</p><p><ol><li>Take your mobile phone or use a fixed phone line.</li><li><a href="https://en.wikipedia.org/wiki/112_(emergency_telephone_number)" target="_blank" rel="noopener">Dial 112 on your phone</a>.</li><li><strong>Stay calm and wait for the operator to pick up.</strong></li><li><strong>Give the operator all needed details about the emergency.</strong></li><li><strong>Share your exact location or address.</strong> Note any landmarks nearby that can help responders find you.</li><li><strong>Do not hang up unless the operator tells you to do so.</strong></li></ol></p><h3>Calling an ambulance</h3><p>In Ireland, <strong>use 999 or 112 to call an ambulance</strong> fast. It is free. Give the exact address of where help is needed. If you can see any big landmarks near you, tell them too. This will make it easier for the ambulance to find you in case of a medical emergency.</p><p>They might ask for directions so <strong>be ready to guide them if needed</strong>.</p><h3>Non-life-threatening emergencies</h3><p>In Ireland, you can <strong>call 112 or 999 for non-life-threatening emergencies</strong>. Urgent but minor medical incidents fall into this group. These can be times when someone is hurt, but not in great danger.</p><p>The numbers work to reach the fire services, police and ambulance in Ireland. If your need is not critical but still a problem, it's <strong>best to call 112 rather than delay help</strong>. In Dublin city too, <strong>using the numbers 999 or 112 works well for noncritical situations</strong> like these.</p><p>Text phone users can dial 18000 to report such nonurgent events.</p><h2>Additional Resources for Hikers</h2><p><img src="https://app.agilitywriter.ai/img/2023/08/25/p80066-Additional-Resources-for-Hikers-9f94580f98-121456264.jpg" width="1344" height="768" class="awimage"></p><p>- <a href="https://osi.ie/blog/osi-and-mountain-rescue-ireland/" target="_blank" rel="noopener">OSi and Mountain Rescue Ireland</a> provide valuable resources and support for hikers in Ireland.</p><p>- <a href="https://www.dsrtashburton.org.uk/component/k2/item/56-sarloc-a-method-for-locating-lost-climbers-and-walkers" target="_blank" rel="noopener">SARLOC technology</a> can be used to locate lost hikers, providing a lifeline in emergencies.</p><p>- The Irish Tourist Assistance Service (ITAS) offers assistance to visitors who become victims of crime while hiking.</p><p>https://www.youtube.com/watch?v=urju0fO9BK0</p><h3>OSi and Mountain Rescue Ireland</h3><p>OSi and Mountain Rescue Ireland work together to keep hikers safe. They are there for you at all times, day or night. The <strong>unpaid and voluntary teams</strong> run this <strong>24-hour service</strong>. The <strong>police force in both Ireland and Northern Ireland</strong> send them on <strong>tasks</strong>.</p><p>These teams also <strong>train dogs to help find lost people</strong>. By working with OSi, they make sure hikers can get the <strong>support they need</strong> when out in the wild.</p><h3>SARLOC technology for locating lost hikers</h3><p>SARLOC is a tool that helps find lost hikers. It's free and easy to use. To start, you need to call for help first. The rescue team will then send a text message with a link.</p><p>Once you open the link, SARLOC will find your location using your phone&rsquo;s browser. It has proven very useful in search and rescue tasks. It can easily locate those who need help quickly, even in tough spots like hills and cliffs.</p><h3>Irish Tourist Assistance Service (ITAS)</h3><p>The Irish Tourist Assistance Service (ITAS) is there to help visitors who experience crime while in Ireland. They offer <strong>immediate support and information</strong> to international tourists who have been through traumatic incidents.</p><p>ITAS can arrange things like <strong>accommodation and transportation</strong> for victims of crime, and they do this all for free. The service <strong>operates every day of the week</strong> and has <strong>staff and volunteers who speak different languages</strong> to provide assistance.</p><p>Their goal is to address all issues faced by tourists after a crime has occurred, with the aim of finding a resolution.</p><h2>What To Do If You Get Lost While Hiking in Ireland</h2><p>If you <strong>get lost</strong> while hiking in Ireland, here's what to do:</p><p><ul><li>Stay calm and try to find a good landmark.</li><li>Use your <strong>fully charged phone</strong> to call for help.</li><li>Inform someone who is not with you about your situation.</li><li>Follow any signs or trail markers to try and find your way back.</li><li>If you can't find your way, stay put and wait for rescue officials to arrive.</li></ul>https://www.youtube.com/watch?v=JTkBpN34JJY</p><h2>Safety Tips for Hikers</h2><p>Prepare well by researching the trail, checking weather conditions, and packing essential gear. Stay safe on your hiking adventures in Ireland!</p><p>https://www.youtube.com/watch?v=Bgu3db72lMw</p><h3>Prepare well for your hike</h3><p>To ensure a safe hiking trip in Ireland, it is important to prepare well in advance. Here are some key steps to consider:</p><p><ul><li>Bring <strong>navigation tools such as maps, compasses, or GPS devices</strong> to help you stay on track and find your way if needed.</li><li><a href="https://walkingholidayireland.com/how-prepare-weather-related-risks-irish-trails/">Check the weather forecast</a> before heading out and during your hike to avoid any unexpected weather conditions.</li><li>Access safety information for your hiking area, including any potential dangers or wildlife encounters that you should be aware of.</li><li><a href="https://walkingholidayireland.com/wildlife-safety-during-irish-hiking-adventures/">Research the wildlife</a> in the area beforehand so you can take appropriate precautions and know how to react if you encounter any animals.</li><li>Take advantage of new safety videos that have been created specifically for lost hikers in Ireland. They provide helpful tips on what to do if you get off track or become disoriented.</li><li>Choose appropriate hiking routes based on your fitness level and experience. It's important to select trails that match your abilities and interests.</li><li>Take physical maps and compasses with you as a backup, even if you plan to rely on digital navigation tools.</li></ul></p><h3>Carry a charged mobile phone</h3><p>Always carry a <strong>fully charged mobile phone</strong> when you go hiking. Smartphones in Ireland have <strong>useful features like flashlights, GPS, and emergency beacons</strong> that can help you if you get lost or need assistance.</p><p>The Irish government is even working on a phone tracker app to make hiking safer. However, keep in mind that cell phones may not always work in remote areas due to <strong>weak signal and battery issues</strong>.</p><p>It's a good idea to bring a <strong>backup communication device</strong> like a satellite emergency notification device (SEND) just in case your phone dies.</p><h3>Follow proper hiking protocols</h3><p>To stay safe while hiking, it's important to follow proper hiking protocols. Here are some key guidelines to keep in mind:</p><p><ul><li><strong>Wear appropriate clothing and footwear</strong> to protect yourself from the elements.</li><li><strong>Consult with a park ranger or experienced hikers</strong> for information and advice about the trail conditions.</li><li><a href="https://walkingholidayireland.com/importance-group-safety-when-hiking-ireland/">Bring at least one hiking companion</a> along for added safety and support.</li><li><strong>Familiarize yourself with park regulations</strong> and adhere to them throughout your hike.</li><li><strong>Plan your trip in advance</strong> by researching the route, terrain, and weather conditions.</li><li>Create an itinerary and share it with someone trustworthy who can notify authorities if you don't return on time.</li><li>Carry <a href="https://walkingholidayireland.com/essential-safety-tips-first-time-hikers-ireland/">essential safety gear</a> such as a first aid kit, navigation tools, a whistle, and a headlamp or flashlight.</li><li>Stay on designated trails to avoid getting lost or endangering fragile ecosystems.</li><li>Be mindful of wildlife encounters and maintain a respectful distance from animals you may encounter.</li><li>Use caution when crossing streams or other natural obstacles, and always prioritize your own safety.</li></ul></p><h3>Stay on designated trails</h3><p>Staying on designated trails is really important when you go hiking. It helps to keep you safe and <strong>prevents damage to the environment</strong>. By sticking to the trail, you <strong>avoid getting lost or injuring yourself</strong>.</p><p>Plus, it keeps plants, rocks, and other natural features protected from harm. Remember to respect nature by leaving it as you found it and not causing any ecological damage. So next time you're out hiking in Ireland, make sure to stay on the designated trails for your own safety and to preserve the beauty of nature around you.</p><h3>Notify someone of your hiking plans</h3><p><ul><li>Before heading out on a hike, <strong>inform a family member or friend</strong> about your expected whereabouts.</li><li>Share a <strong>brief description of your hiking route</strong> and the <strong>anticipated time of your return</strong> with them.</li><li>This helps to <strong>keep yourself safe while hiking</strong>.</li><li>It is considered the most <strong>basic step in ensuring your safety</strong> on the trail.</li><li>Communicate your plans and itinerary to someone you trust.</li><li>Inform them of any <strong>changes to your plans or unexpected delays</strong>.</li><li>Sharing your location can help others find you more easily if needed.</li><li>By alerting someone about your hiking plans, you increase the chances of being found quickly in case of an emergency.</li></ul></p><h2>Conclusion</h2><p>In conclusion, knowing the <strong>emergency numbers and resources</strong> for hikers in Ireland is essential for a <strong>safe hiking experience</strong>. By having access to these emergency contacts, such as 112 or 999, hikers can quickly reach out for help in case of an emergency.</p><p>Additionally, utilizing additional resources like the <strong>Irish Tourist Assistance Service and mountain rescue teams</strong> can provide further assistance and support. Remember to always prioritize safety and be well-prepared before embarking on any hiking adventure in Ireland.</p><p>Stay safe and enjoy your hike!</p><h2>FAQs</h2><h3>1. What are the emergency numbers to call when hiking in Ireland?</h3><p>In Ireland, if you encounter an emergency while hiking, dial 112 or 999 for immediate assistance.</p><h3>2. Are there specific resources available for hikers who need help in Ireland?</h3><p>Yes, Ireland has a Mountain Rescue service that specializes in helping hikers and climbers in distress. They can be reached through the emergency numbers mentioned above.</p><h3>3. Can I use my mobile phone to call for help while hiking in remote areas of Ireland?</h3><p>While coverage may vary in remote areas, it is generally possible to make emergency calls using your mobile phone. However, it's important to have a backup plan as reception might not always be reliable.</p><h3>4. What information should I provide when calling for help during a hiking emergency?</h3><p>When calling for help during a hiking emergency in Ireland, provide your location as accurately as possible, describe the nature of the issue or injury, and follow any instructions given by the emergency operator.</p><h3>5. How long does it take for rescue services to arrive after contacting them during a hiking emergency?</h3><p>The response time of rescue services may vary depending on various factors such as weather conditions and accessibility of the area. It's best to stay calm and wait patiently while providing updates on your condition if possible.</p>
 
 
@@ -216,68 +222,140 @@
 
 </div>
 
-    </div>
-</article>
+        </div>
 
-<!-- CTA Section -->
-<section class="w-full max-w-3xl mx-auto px-6 pb-16">
-    <div class="relative rounded-2xl overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-purple to-bright-purple"></div>
-        <div class="relative p-10 md:p-14 text-white text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Walk Ireland?</h2>
-            <p class="text-lg text-slate-200 mb-8 max-w-xl mx-auto">
-                Let us plan your perfect self-guided walking holiday. Choose from 16 tours across 7 stunning destinations.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../destinations.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-colors shadow-lg shadow-primary/30">
-                    Explore Walking Holidays
-                </a>
-                <a href="../contact.html" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-colors border border-white/20">
-                    Get in Touch
-                </a>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Blog</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Related Articles -->
-<section class="w-full max-w-7xl mx-auto px-6 pb-16">
-    <div class="flex items-center gap-3 mb-8">
-        <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-2xl font-bold">You Might Also Enjoy</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <a href="blackrock-village-county-louth.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Blackrock_Louth.jpg" alt="Discover Blackrock: County Louth&#x27;s Seaside Treasure" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../tours/dingle-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Discover Blackrock: County Louth&#x27;s Seaside Treasure</h3>
-                        <p class="text-slate-500 text-sm">The picturesque seaside village of Blackrock with its tranquil coves and rock pools lies on the shores of Dundalk Bay...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="newgrange.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/newgrange-entrance-4056-scaled.jpg" alt="Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/kerry-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</h3>
-                        <p class="text-slate-500 text-sm">The Newgrange Monument in the Boyne Valley is one of the must see places while on your walking tour or hiking tour in...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="leave-no-trace.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Leave-no-Trace-1.png" alt="Leave No Trace" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/wicklow-way-5-days.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Leave No Trace</h3>
-                        <p class="text-slate-500 text-sm">Leave No Trace is an Outdoor Ethics Programme designed to promote and inspire responsible outdoor recreation through ...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;699 &bull; 5 Days</p>
                     </div>
                 </a>
 
+            </div>
+            <a href="../destinations.html" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="blackrock-village-county-louth.html">Discover Blackrock: County Louth&#x27;s Seaside Treasure</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="newgrange.html">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="leave-no-trace.html">Leave No Trace</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations.html" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="../tours/dingle-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s most spectacular western peninsula walk</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/kerry-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s longest and most famous walking trail</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/wicklow-way-5-days.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">5 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s mountain trail, perfectly paced</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;699<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 5 Days</span>
+                        </div>
+                    </div>
+                </a>
+
+        </div>
     </div>
 </section>
 

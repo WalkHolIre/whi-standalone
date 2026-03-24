@@ -2706,6 +2706,57 @@ def main():
         with open(blog_template_path, 'r') as f:
             blog_template = f.read()
 
+        # Build sidebar tours widget (top 3 tours by sort_order)
+        sidebar_tours_html = ''
+        sidebar_tours = sorted(tours, key=lambda t: t.get('sort_order', 999))[:3]
+        for st in sidebar_tours:
+            st_slug = escape(st.get('slug', ''))
+            st_name = escape(st.get('name', ''))
+            st_days = st.get('duration_days', 0) or 0
+            st_price = st.get('price_per_person_eur', 0)
+            try:
+                st_price_display = f"From &euro;{float(st_price):.0f}" if st_price else ''
+            except (ValueError, TypeError):
+                st_price_display = ''
+            st_detail = f"{st_price_display} &bull; {st_days} Days" if st_price_display else f"{st_days} Days"
+            sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../tours/{st_slug}.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/{st_slug}/card.jpg" alt="{st_name}" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">{st_name}</h4>
+                        <p class="text-sm text-slate-500 mt-1">{st_detail}</p>
+                    </div>
+                </a>\n'''
+
+        # Build recommended tours cards (3 tours for full-width section)
+        recommended_tours_html = ''
+        rec_tours = sorted(tours, key=lambda t: t.get('sort_order', 999))[:3]
+        for rt in rec_tours:
+            rt_slug = escape(rt.get('slug', ''))
+            rt_name = escape(rt.get('name', ''))
+            rt_days = rt.get('duration_days', 0) or 0
+            rt_price = rt.get('price_per_person_eur', 0)
+            rt_desc = escape((rt.get('subtitle', '') or rt.get('short_description', '') or '')[:80])
+            try:
+                rt_price_display = f"&euro;{float(rt_price):.0f}" if rt_price else ''
+            except (ValueError, TypeError):
+                rt_price_display = ''
+            recommended_tours_html += f'''<a href="../tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">{rt_days} Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">{rt_name}</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">{rt_desc}</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">{rt_price_display}<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> {rt_days} Days</span>
+                        </div>
+                    </div>
+                </a>\n'''
+
         for post in posts:
             slug = post.get('slug', '')
             if not slug:
@@ -2718,12 +2769,14 @@ def main():
 
             title = post.get('title', '')
             excerpt = post.get('excerpt', '') or ''
+            featured_image = post.get('featured_image', '') or ''
             category = post.get('category', '') or 'Blog'
             meta_title = post.get('meta_title', '') or title
             meta_desc = post.get('meta_description', '') or excerpt[:160]
             published_date = post.get('published_date') or post.get('published_at', '')[:10] if post.get('published_at') else ''
             author = post.get('author') or post.get('author_name') or 'Walking Holiday Ireland'
             read_time = post.get('read_time_minutes') or max(1, len(content.split()) // 200)
+            tags = post.get('tags', []) or []
 
             # Format date for display
             date_display = published_date
@@ -2734,27 +2787,33 @@ def main():
             except (ValueError, TypeError):
                 pass
 
-            # Build related articles (up to 3 other posts)
+            # Hero image HTML (with dark caption bar like Stitch design)
+            hero_image_html = ''
+            if featured_image:
+                hero_image_html = f'''<div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('{escape(featured_image)}');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>'''
+            else:
+                hero_image_html = '<div class="aspect-[16/9] bg-gradient-to-br from-primary/20 to-brand-purple/20"></div>'
+
+            # Tags HTML (hashtag style)
+            tags_html = ''
+            if tags and isinstance(tags, list):
+                for tag in tags:
+                    tags_html += f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(str(tag))}</span>\n'
+            else:
+                # Generate tags from category
+                cat_tag = category.replace(' ', '')
+                tags_html = f'''<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(cat_tag)}</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>'''
+
+            # Build sidebar related articles (up to 3 other posts as simple links)
             related = [p for p in posts if p.get('slug') != slug][:3]
-            related_html = ''
+            sidebar_related_html = ''
             for rp in related:
                 rp_slug = rp.get('slug', '')
                 rp_title = rp.get('title', '')
-                rp_cat = rp.get('category', '') or 'Blog'
-                rp_img = rp.get('featured_image', '') or ''
-                rp_excerpt = rp.get('excerpt', '') or ''
-                if len(rp_excerpt) > 120:
-                    rp_excerpt = rp_excerpt[:117] + '...'
-                related_html += f'''<a href="{rp_slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="{escape(rp_img)}" alt="{escape(rp_title)}" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">{escape(rp_cat)}</span></div>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">{escape(rp_title)}</h3>
-                        <p class="text-slate-500 text-sm">{escape(rp_excerpt)}</p>
-                    </div>
-                </a>\n'''
+                sidebar_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp_slug)}.html">{escape(rp_title)}</a></li>\n'
 
             replacements = {
                 '{meta_title}': escape(meta_title),
@@ -2766,7 +2825,11 @@ def main():
                 '{article_body}': content,
                 '{date_display}': date_display,
                 '{date_published}': published_date,
-                '{related_articles_html}': related_html,
+                '{hero_image_html}': hero_image_html,
+                '{tags_html}': tags_html,
+                '{sidebar_tours_html}': sidebar_tours_html,
+                '{sidebar_related_html}': sidebar_related_html,
+                '{recommended_tours_html}': recommended_tours_html,
             }
 
             html = blog_template

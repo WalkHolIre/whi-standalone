@@ -32,21 +32,21 @@
         body { font-family: 'Inter', sans-serif; }
         header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
         /* Article prose styling */
-        .article-body h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .article-body h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .article-body h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .article-body p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .article-body ul, .article-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .article-body ul { list-style-type: disc; }
-        .article-body ol { list-style-type: decimal; }
-        .article-body li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .article-body strong { color: #1e293b; font-weight: 700; }
-        .article-body a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .article-body a:hover { color: #d97200; }
-        .article-body blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .article-body blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .article-body hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .article-body img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.75; font-size: 1.125rem; color: #475569; }
+        .prose h2 { font-size: 1.875rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1d150c; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #d97200; }
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
     </style>
     <script type="application/ld+json">
     {
@@ -73,7 +73,7 @@
     }
     </script>
 </head>
-<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -147,40 +147,46 @@
 
 <main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
-<!-- Article Header -->
-<section class="w-full bg-background-light border-b border-slate-200/60">
-    <div class="max-w-3xl mx-auto px-6 py-12 md:py-16">
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../index.html">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog.html">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">What Role Do Irish Legends Play In Naming Hiking Trails? </span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-            <a href="../blog.html" class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined text-lg">arrow_back</span> Blog
-            </a>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">Blog</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">11 min read</span>
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Blog</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">August 26, 2023</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">11 min read</span>
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-6">
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
             What Role Do Irish Legends Play In Naming Hiking Trails? 
         </h1>
-        <p class="text-lg text-slate-500 leading-relaxed max-w-2xl">
-            
-        </p>
-        <div class="flex items-center gap-4 mt-8">
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <span class="text-white font-bold text-lg">W</span>
-            </div>
-            <div>
-                <p class="font-bold text-sm">Walking Holiday Ireland</p>
-                <p class="text-sm text-slate-500">August 26, 2023</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Article Body -->
-<article class="w-full max-w-3xl mx-auto px-6 py-12 md:py-16">
-    <div class="article-body">
-        
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://walkingholidayireland.com/wp-content/uploads/p80058-What-Role-Do-Irish-Legends-Play-In-Naming-Hiking-Trails_-3361fc2288-1143626870.jpg');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            
 <p>Ever wondered why so many <strong>Irish hiking trails have intriguing names</strong>? Well, it's all thanks to <strong>ancient legends passed down through generations</strong>. Our blog post today delves into the fascinating role these timeless tales play in christening <strong>Ireland's captivating walking paths</strong>.</p><p>Ready for a <strong>mythological hike through history</strong>? Let&rsquo;s start exploring!</p><h3>Key Takeaways</h3><ul><li>Irish legends have a significant impact on the naming of hiking trails in Ireland, <strong>preserving cultural heritage</strong> and <strong>connecting hikers to ancient tales</strong>.</li><li>The Giant's Causeway, Cailleach Bheara's Curse, Queen Maeve Trail, and many other trails are named after famous figures and stories from Irish mythology.</li><li>These legends contribute to the allure of the hiking experience by inspiring imagination, adding mystery and wonder, and creating unforgettable adventures.</li><li>Irish folklore also plays a role in promoting tourism and generating interest in these trails, helping to support local economies.</li></ul></p><h2>Irish Legends and Hiking Trails</h2><p><img src="https://walkingholidayireland.com/wp-content/uploads/p80058-What-Role-Do-Irish-Legends-Play-In-Naming-Hiking-Trails_-3361fc2288-1143626870.jpg" width="1344" height="768" class="awimage"><a href="/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours/"></a><a href="/self-guided-walking-tours/giant-causeway-glens-of-antrim/"></a><a href="/the-giants-causeway/">Giant's Causeway</a> and Fionn Mac Cumhaill, the <a href="https://www.cicerone.co.uk/walking-among-legends-in-northern-ireland" target="_blank" rel="noopener">Cailleach Bheara's Curse and the Ring of Gullion</a>, and <a href="/hiking-the-kerry-way/">Queen Maeve Trail</a> and Knocknarea are just a few examples of how Irish legends have influenced the naming of hiking trails.</p><p>https://www.youtube.com/watch?v=1QEcEl939mU</p><h3>Giant's Causeway and Fionn Mac Cumhaill</h3><p>The Giant's Causeway is a special place in Northern Ireland. It has ties to a story about Fionn Mac Cumhaill, also known as Finn McCool. This hero from old Irish stories built the Giant's Causeway.</p><p>He wanted to fight Benandonner, a big Scottish giant. The rocks we see now are what is left of his road across the sea. Many people visit this place every year because it looks amazing and its story makes it even more interesting.</p><p>It sits at the base of tall, stony cliffs on <a href="/visit-the-nine-glens-of-antrim/">the Antrim plateau</a> in Northern Ireland and reminds us that our land holds great tales from long ago.</p><h3>The Cailleach Bheara's Curse and the Ring of Gullion</h3><p><strong>The Cailleach Bheara's Curse</strong> is a tale from Irish legends. She was the <strong>goddess of winter</strong> in <strong>Celtic mythology</strong>. The legend tells that she jumped from hill to hill, losing stones out of her apron.</p><p>These <strong>stones turned into cairns</strong> on the landscape. This story links deeply with the <a href="/self-guided-walking-tours/cooley-mourne-mountains/">Ring of Gullion hiking trail</a>. Many see this path as special because it tells about <strong>ancient folklore and myths</strong> like this one.</p><p>It&rsquo;s more than just a walk; it's also a chance to feel connected to old tales and gods such as the Cailleach Bheara, also known as <strong>Hag of Beara</strong>.</p><h3>Queen Maeve Trail and Knocknarea</h3><p>The Queen Maeve Trail is a great place for a hike. It sits on Knocknarea, in County Sligo, Ireland. This trail is around <strong>6 km long with an ascent of 300 meters</strong>. One needs <strong>strong boots and waterproof clothes</strong> to walk this trail.</p><p>This path gets its name from Queen Maeve. She was a famous Irish warrior queen from old tales and myths. At the top of Knocknarea, there's a big cairn linked to her legend. People call it 'Queen Maeve's Cairn'.</p><p>Walkers can see it when they reach the summit after about two or two and half hours of hiking.</p><h2>The Significance of Irish Legends in Naming Hiking Trails</h2><p><img src="https://walkingholidayireland.com/wp-content/uploads/p80058-What-Role-Do-Irish-Legends-Play-In-Naming-Hiking-Trails_-3361fc2288-1143626870.jpg" width="1344" height="768" class="awimage"></p><p>Irish legends play a significant role in naming hiking trails by preserving cultural heritage, connecting with nature and mythology, and promoting tourism and interest in Irish legends.</p><p>https://www.youtube.com/watch?v=uXfv3LDUjC4</p><h3>Preserving Cultural Heritage</h3><p><strong>Irish legends give names to hiking trails</strong>. This helps keep their cultural heritage alive. These <strong>names tell stories of the past</strong>. They <strong>link people today with the old times of Ireland</strong>.</p><p>Trails like Giant's Causeway and Knocknarea make hikers think about ancient tales. <strong>Each trail is a bridge to Ireland's rich past</strong>. Legends are not just stories, they are part of Irish identity and history.</p><p>Keeping these legends in mind keeps them from being lost over time.</p><h3>Connecting with Nature and Mythology</h3><p><strong>Irish legends bring hikers closer to nature and mythology</strong>. The <strong>naming of trails after famous tales stirs the soul</strong>. It makes walking more than just exercise. Hikers can feel like they are part of an old story as they trek along paths.</p><p>The <a href="https://en.wikipedia.org/wiki/Dindsenchas" target="_blank" rel="noopener">Metrical Dindshenchas</a> gives these legends life again. This work talks about how places in Ireland got their names. Trails named from this bring Irish history into today's world.</p><p><strong>Every step on a trail is like stepping into a time when gods, giants, and heroes walked the land</strong>.</p><h3>Promoting Tourism and Interest in Irish Legends</h3><p>Irish legends pull many visitors to Ireland's hiking trails. The odd tales and famous characters have a strong charm. People like the mystery of old stories told in new places. They want to walk where the Giant's Causeway got its start or find Queen Maeve's last resting place.</p><p>Folklore makes these normal walks into grand adventures. Tourism loves Irish mythology for this reason. It gives more reasons for people to visit these trails, which helps out local shops and hotels too! As more people learn about Irish folklore on these hikes, they share it with their friends back home.</p><p>This keeps our cultural heritage alive all around the world.</p><h2>Introduction to the Wicklow Way Trail and its Irish Legend</h2><p>The Wicklow Way, opened in 1981 after intensive campaigning efforts by J.B. Malone, holds the prestigious status of being Ireland's first official walking route. Sprawled across a vast expanse of about 127 km, its path winds through the scenic natural terrain of Dublin and ends in Carlow - traditional direction for hikers embarking on this journey.</p><p>Unveiling an epic spectacle as you navigate through the trail, with heather-covered landscapes stretching endlessly against mountainous backdrops, it engulfs you into unspoiled wilderness that is quintessential Ireland.</p><p>Sadly though, specific legends linked to Wicklow Way are elusive. However, given that Irish folklore traditionally plays a significant role in naming hiking trails across the country is an exciting premise to explore further lore related hikes within these settings.</p><p>While traversing along this famous Celtic route and soaking up vibrant views of rolling hills bedecked with blooming heather; one can't help but feel embedded in a rich tapestry weaved together with stories from legendary figures like Fionn Mac Cumhaill or Queen Maeve who continue to inspire imagination and add depth to these intensely beautiful geographical realms.</p><h2>Other Examples of Irish Legends in Naming Hiking Trails</h2><p>- <a href="https://en.wikipedia.org/wiki/Slieve_Gullion" target="_blank" rel="noopener">Culann and Slieve Gullion</a>, where hikers can explore the mythological connection between a great warrior and a prominent mountain.</p><p>- The Corrib Walking Trail in Connemara, which takes hikers through landscapes associated with Irish folktales and enchanting legends.</p><p>- The Tuatha de Danann, ancient mythical beings from Ireland's folklore who are honored through hiking trails that showcase the country's rich history and cultural heritage.</p><h3>Culann and Slieve Gullion</h3><p>Culann and Slieve Gullion are important figures in Irish folklore and mythology. Slieve Gullion is a mountain located in Ireland, known for its mystical and legendary associations.</p><p>Culann, on the other hand, was said to have lived on Slieve Gullion, possibly giving rise to the mountain's name. This mountain holds great significance in Irish mythology and history, being considered one of the most mythic mountains in all of Ireland.</p><p>The connection between Culann and Slieve Gullion is just one example of how <strong>Irish legends play a role in naming hiking trails throughout the country</strong>.</p><h3>The Corrib Walking Trail and Irish Folktales</h3><p><strong>The Corrib Walking Trail</strong> takes you through the stunning landscapes of <strong>Galway Bay</strong>, where ancient <strong>Irish folktales</strong> come to life. This trail is connected to the <strong>myths and legends surrounding the Corrib lake and river</strong>.</p><p>As you hike along the trail, you can immerse yourself in the stories and folklore associated with this beautiful region. From tales of <strong>mystical creatures like fairies and shapechangers</strong>, to <strong>stories passed down through generations</strong> about <strong>Connemara's dramatic landscape</strong>, there's a sense of magic and history that fills the air.</p><p>Whether you're an avid hiker or simply curious about Ireland's rich cultural heritage, exploring the Corrib Walking Trail will give you a deeper appreciation for Irish folktales and their connection to this enchanting part of the country.</p><h3>Tuatha de Danann and Ireland's Ancient History</h3><p>The <strong>Tuatha de Danann were powerful beings from Irish mythology</strong> who ruled as High Kings of Ireland a long time ago. <strong>They had magical powers</strong> and were considered captivating figures in Ireland's ancient history.</p><p>However, <strong>they were eventually defeated by the Milesians</strong>, another group of people who wanted to take control of Ireland. <strong>The Tuatha de Danann are associated with mythological cycles</strong> that the ancient Irish people embraced.</p><p>These cycles revolved around gods and included stories about the Fomorians, who were enemies of the Tuatha de Danann. In these ancient legends, rivers and streams were believed to act as boundaries between the world of the Tuatha de Danann and another mystical place called the Otherworld.</p><h2>The Power of Legends in Creating Memorable Hiking Experiences</h2><p>Legends add an element of excitement and intrigue to hiking trails, captivating hikers and creating unforgettable adventures in the beautiful Irish landscape.</p><h3>Inspiring Imagination and Adventure</h3><p>Irish legends have a way of sparking our imagination and igniting a sense of adventure, especially when it comes to hiking. These captivating stories of fairies, shape-shifters, and brave warriors transport us to a world filled with magic and wonder.</p><p>As we trek through the rugged landscapes and dense forests, we can't help but imagine encountering these legendary creatures along the way. The tales of Finn McCool, selkies, and Ireland's Pirate Queen add an exciting element to our hiking experiences, making them truly unforgettable.</p><p>Hiking in Ireland allows us to step into the pages of these mythical stories and become part of their narrative. Whether we're exploring magnificent coastal cliffs or embarking on family-friendly walks through charming countryside trails, there's always an air of mystery waiting to be unraveled.</p><p>With every step we take, we connect not only with nature but also with the rich heritage that these legends represent. Irish folklore adds depth and intrigue to our hikes, transforming them into thrilling adventures full of enchantment and discovery.</p><p>So next time you hit the trails in Ireland, let your imagination run wild as you delve into the magical world of its legends. Embrace the spirit of adventure as you walk in the footsteps of heroes from ancient times.</p><h3>Adding a Sense of Mystery and Wonder</h3><p>Naming hiking trails after Irish legends adds a <strong>sense of mystery and wonder</strong> to the hiking experience. When you embark on a trail with a name steeped in folklore, you can't help but feel a hint of enchantment and intrigue.</p><p>The legends come alive as you walk through the landscapes that inspired them. It's like stepping into another world, where adventure awaits around every corner. You find yourself wondering about the symbolism behind the names and imagining the stories that unfolded in these very places.</p><p>It creates an <strong>immersive experience</strong> that goes beyond simply walking a trail &ndash; it's an exploration of Ireland's cultural heritage and its deep connection to mythology. So, whether you're climbing Knocknarea or wandering along Slieve Gullion, be prepared to be captivated by the sense of mystery and wonder that Irish legends bring to these hiking trails.</p><h3>Building a Connection to the Land and its Stories</h3><p><strong>Irish legends and stories</strong> have a special way of building a <strong>connection to the land</strong> when it comes to <strong>hiking trails in Ireland</strong>. These tales, passed down through generations, are deeply rooted in the landscapes of Ireland.</p><p>From <strong>mythical creatures like fairies</strong> to magical beings, these legends bring <strong>enchantment and wonder</strong> to the hiking experience. Exploring the <strong>flora, geology, and walking trails</strong> allow hikers to become part of the narrative of the land.</p><p>It's a way to <strong>connect with nature and history</strong>, making every step along the trail more meaningful.</p><h2>Conclusion</h2><p>In conclusion, <strong>Irish legends play a vital role in naming hiking trails</strong> in Ireland. By <strong>preserving cultural heritage</strong>, <strong>connecting with nature and mythology</strong>, and <strong>promoting tourism and interest in Irish legends</strong>, these trails offer a unique experience for hikers.</p><p>From the Giant's Causeway to the Wicklow Way Trail, each trail tells a story and invites adventurers to become a part of Ireland's rich mythology. So lace up your boots and embark on a journey filled with imagination, mystery, and connection to the land!</p><h2>FAQs</h2><h3>1. Why are hiking trails named after Irish legends?</h3><p>Hiking trails in Ireland are often named after Irish legends to celebrate the country's rich mythology and heritage.</p><h3>2. What types of Irish legends are commonly used for naming hiking trails?</h3><p>Commonly used Irish legends for naming hiking trails include stories about famous warriors, mythical creatures, ancient heroes, and historical events.</p><h3>3. Do these legends have any significance to the trail itself?</h3><p>Yes, the chosen legend is often tied to the history or natural features of the trail, adding a sense of storytelling and cultural connection for hikers.</p><h3>4. Are there specific criteria for choosing an Irish legend to name a hiking trail?</h3><p>There is no strict criterion for choosing an Irish legend to name a hiking trail, but it generally revolves around relevance to the local area and capturing the imagination of hikers.</p><h3>5. Can you provide examples of famous hiking trails in Ireland named after Irish legends?</h3><p>Examples include "The Giant's Causeway Coastline Trail," named after legendary giant Fionn mac Cumhaill; "The T&aacute;in Way," inspired by the epic tale "T&aacute;in B&oacute; C&uacute;ailnge"; and "The Slieve Bloom Way," associated with ancient folklore tales from County Laois.</p>
 
 
@@ -217,68 +223,140 @@
 
 </div>
 
-    </div>
-</article>
+        </div>
 
-<!-- CTA Section -->
-<section class="w-full max-w-3xl mx-auto px-6 pb-16">
-    <div class="relative rounded-2xl overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-purple to-bright-purple"></div>
-        <div class="relative p-10 md:p-14 text-white text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Walk Ireland?</h2>
-            <p class="text-lg text-slate-200 mb-8 max-w-xl mx-auto">
-                Let us plan your perfect self-guided walking holiday. Choose from 16 tours across 7 stunning destinations.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../destinations.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-colors shadow-lg shadow-primary/30">
-                    Explore Walking Holidays
-                </a>
-                <a href="../contact.html" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-colors border border-white/20">
-                    Get in Touch
-                </a>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Blog</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Related Articles -->
-<section class="w-full max-w-7xl mx-auto px-6 pb-16">
-    <div class="flex items-center gap-3 mb-8">
-        <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-2xl font-bold">You Might Also Enjoy</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <a href="blackrock-village-county-louth.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Blackrock_Louth.jpg" alt="Discover Blackrock: County Louth&#x27;s Seaside Treasure" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../tours/dingle-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Discover Blackrock: County Louth&#x27;s Seaside Treasure</h3>
-                        <p class="text-slate-500 text-sm">The picturesque seaside village of Blackrock with its tranquil coves and rock pools lies on the shores of Dundalk Bay...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="newgrange.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/newgrange-entrance-4056-scaled.jpg" alt="Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/kerry-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</h3>
-                        <p class="text-slate-500 text-sm">The Newgrange Monument in the Boyne Valley is one of the must see places while on your walking tour or hiking tour in...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="leave-no-trace.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Leave-no-Trace-1.png" alt="Leave No Trace" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/wicklow-way-5-days.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Leave No Trace</h3>
-                        <p class="text-slate-500 text-sm">Leave No Trace is an Outdoor Ethics Programme designed to promote and inspire responsible outdoor recreation through ...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;699 &bull; 5 Days</p>
                     </div>
                 </a>
 
+            </div>
+            <a href="../destinations.html" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="blackrock-village-county-louth.html">Discover Blackrock: County Louth&#x27;s Seaside Treasure</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="newgrange.html">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="leave-no-trace.html">Leave No Trace</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations.html" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="../tours/dingle-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s most spectacular western peninsula walk</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/kerry-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s longest and most famous walking trail</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/wicklow-way-5-days.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">5 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s mountain trail, perfectly paced</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;699<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 5 Days</span>
+                        </div>
+                    </div>
+                </a>
+
+        </div>
     </div>
 </section>
 

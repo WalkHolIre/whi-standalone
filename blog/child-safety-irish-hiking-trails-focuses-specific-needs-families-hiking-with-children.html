@@ -32,21 +32,21 @@
         body { font-family: 'Inter', sans-serif; }
         header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
         /* Article prose styling */
-        .article-body h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .article-body h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .article-body h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .article-body p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .article-body ul, .article-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .article-body ul { list-style-type: disc; }
-        .article-body ol { list-style-type: decimal; }
-        .article-body li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .article-body strong { color: #1e293b; font-weight: 700; }
-        .article-body a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .article-body a:hover { color: #d97200; }
-        .article-body blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .article-body blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .article-body hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .article-body img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+        .prose p { margin-bottom: 1.5rem; line-height: 1.75; font-size: 1.125rem; color: #475569; }
+        .prose h2 { font-size: 1.875rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 1.25rem; color: #1d150c; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #d97200; }
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
     </style>
     <script type="application/ld+json">
     {
@@ -73,7 +73,7 @@
     }
     </script>
 </head>
-<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -147,40 +147,46 @@
 
 <main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
-<!-- Article Header -->
-<section class="w-full bg-background-light border-b border-slate-200/60">
-    <div class="max-w-3xl mx-auto px-6 py-12 md:py-16">
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../index.html">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog.html">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Child Safety On Irish Hiking Trails Focuses On The Specific Needs Of Families Hiking With Children.</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-            <a href="../blog.html" class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined text-lg">arrow_back</span> Blog
-            </a>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">Blog</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">10 min read</span>
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Blog</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">August 26, 2023</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">10 min read</span>
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-6">
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
             Child Safety On Irish Hiking Trails Focuses On The Specific Needs Of Families Hiking With Children.
         </h1>
-        <p class="text-lg text-slate-500 leading-relaxed max-w-2xl">
-            
-        </p>
-        <div class="flex items-center gap-4 mt-8">
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <span class="text-white font-bold text-lg">W</span>
-            </div>
-            <div>
-                <p class="font-bold text-sm">Walking Holiday Ireland</p>
-                <p class="text-sm text-slate-500">August 26, 2023</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Article Body -->
-<article class="w-full max-w-3xl mx-auto px-6 py-12 md:py-16">
-    <div class="article-body">
-        
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://walkingholidayireland.com/wp-content/uploads/p80069-Child-Safety-On-Irish-Hiking-Trails-Focuses-On-The-Specific-Needs-Of-Families-Hiking-With-Children.-82329abbbc-67366871.jpg');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            
 <p>Exploring the <strong>green landscapes of Ireland</strong> with kids in tow can be an enchanting experience, but safety must always come first. In fact, Ireland ranks as the <strong>9th most child-friendly country in Europe</strong> for hiking trails.</p><p>This blog will equip you with <strong>valuable tips and information</strong> to ensure your <strong>family's hiking adventures</strong> are <strong>safe and memorable</strong>. So gear up, let's dive into the essentials of <strong>child safety on Irish trails</strong>!</p><h3>Key Takeaways</h3><ul><li>Child safety on Irish hiking trails is crucial due to <strong>potential risks and hazards</strong> such as <strong>wild animals, steep cliffs, and poisonous plants</strong>.</li><li>Families hiking with children have <strong>specific needs</strong>, including <strong>choosing appropriate trails</strong> for kids' abilities, considering rest and eating spots, and finding trails with <strong>interesting features like plants or animals</strong>.</li><li><strong>Tips for ensuring child safety on hiking trails include choosing <strong>child</strong> - friendly paths</strong>, <strong>properly preparing and planning for the hike</strong>, <strong>staying together as a group</strong>, <strong>sticking to designated paths</strong>, and <strong>packing essential safety items</strong>.</li></ul></p><h2>Importance of Child Safety on Hiking Trails</h2><p><img src="https://app.agilitywriter.ai/img/2023/08/25/p80069-Importance-of-Child-Safety-on-Hiking-Trails-99bfe97050-541953460.jpg" width="1344" height="768" class="awimage"></p><p>Child safety on hiking trails is crucial due to the potential risks and hazards involved, particularly for families hiking with children.</p><p>https://www.youtube.com/watch?v=YduqNRprMQo</p><h3>Risks and potential hazards</h3><p>Care is key to keep kids safe on hiking trails. <strong>Wild animals</strong>, <strong>steep cliffs</strong> and <strong>poisonous plants</strong> are hazards they might face. <strong>Bad weather</strong> can make paths risky too. Children may get lost, feel very thirsty or tired if they leave the right path.</p><p>Keep your eyes open for these perils when out in the open country with children!</p><h3>Specific needs of families hiking with children</h3><p>Families hiking with children have special needs. Picking the right path is key. One that's too tough won't be fun for little legs. It should also be <strong>safe and free from big risks</strong> like high cliffs or deep water.</p><p>Next, think about <strong>places to rest and eat</strong> along the way as kids tire out sooner than adults do. Also, a <strong>trail with things to see</strong> such as plants or animals can keep children happy on the go.</p><p>Lastly, it's good if some <strong>parks adapt their trails</strong> to meet these needs of families and kids better! So find one of those if you can.</p><h2>Tips for Ensuring Child Safety on Hiking Trails</h2><p><img src="https://app.agilitywriter.ai/img/2023/08/25/p80069-Tips-for-Ensuring-Child-Safety-on-Hiking-Trails-5e63d65fa6-1639285410.jpg" width="1344" height="768" class="awimage"></p><p>Choose child-friendly trails, properly prepare and plan, <a href="https://walkingholidayireland.com/importance-group-safety-when-hiking-ireland/">stay together as a group</a>, stay on designated paths, and pack <a href="https://walkingholidayireland.com/essential-safety-tips-first-time-hikers-ireland/">essential safety items</a>.</p><h3>Choose child-friendly trails</h3><p>Picking safe hiking trails for children is a must. Families should look for <strong>kid-friendly hiking trails</strong> that are <strong>not too steep or rocky</strong>. These paths should also be short and have <strong>points of interest along the way</strong> to keep kids excited.</p><p>Ireland ranks 9th in Europe, making it a wonderful place to find child-safe hiking trails. There are lots of trail options suitable for kids. Choosing child-appropriate hiking trails can ensure a <strong>fun and safe adventure</strong> for all family members.</p><h3>Properly prepare and plan</h3><p>Before you go hiking, it's wise to plan and get ready. Check trail maps so you know where you are going. Pick a route that is good for kids and tell others about it too. This helps keep everyone safe on the hike.</p><p>Going hiking in open areas early in the morning can be fun but remember after 10 a.m., finding shaded trails is best to avoid strong sun rays. Sunscreen needs to go on everyone's skin before starting out, and again during the hike.</p><p>Being well-prepared makes outdoor adventure safer for your family!</p><h3>Stay together as a group</h3><p><strong>Sticking as a group is key when hiking</strong>. This tip helps to keep everyone safe. <strong>Kids may get hurt or lost if they wander off alone</strong>. So, it's best to keep an eye on them always.</p><p><strong>Picking trails that fit your children's abilities makes the hike fun for everyone</strong>. It also brings surprise to other hikers and trail guides who see children each day during hikes. Hiking as a family not only builds outdoor connection for kids, but it also strengthens family bonds.</p><h3>Stay on designated paths</h3><p><strong>Marked paths on hikes</strong> keep kids safe. Trails in Austria do a great job with this. They have <strong>family trails</strong>, <strong>fun stop spots</strong>, and <strong>places to eat lunch</strong>. The same is true for <a href="/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours/">Glenveagh National Park</a> but only if you <strong>plan well</strong> and <strong>bring the right gear</strong>.</p><p>Stick to the marked trails so no one gets lost or hurt!</p><h3>Pack essential safety items</h3><p>Make sure you have all the safety items before your hike. Fill up <strong>first aid kits with key things like band-aids, tweezers and gauze</strong>. Take a <strong>map and compass</strong> to stay on track. Pack <strong>food and water for energy</strong>, along with <strong>warm clothes in case it gets cool</strong>.</p><p>Don't forget <strong>sun hats or caps to shield from the sun&rsquo;s rays</strong>. Have sturdy shoes for safe walking on trails. Each item keeps your family safe while hiking.</p><h2>Highlighting Family-Friendly Scenic Hiking Trails in Ireland</h2><p>Ireland is home to a wide range of <a href="https://walkingholidayireland.com/family-friendly-scenic-hiking-trails-ireland/">family-friendly hiking trails</a> that offer stunning views and safe experiences for children. One such trail is the <a href="/self-guided-walking-tours/the-wicklow-way/"></a><a href="/self-guided-walking-tours/barrow-river-walking-tours/"></a><a href="https://nationalfamineway.ie/" target="_blank" rel="noopener">National Famine Way</a>, which provides an excellent opportunity for families to explore while learning about Ireland's history.</p><p>This child-friendly trail follows the footsteps of those who walked during the Great Famine, offering both <strong>educational and scenic value</strong>.</p><p>In addition to the National Famine Way, there are plenty of other family-friendly walks with beautiful scenery in Ireland. From <strong>coastal cliffs</strong> overlooking the sea to <strong>peaceful forest paths</strong>, there is something for every family's preference.</p><p>These trails are designed to be accessible for families, casual walkers, and even cyclists, allowing everyone to enjoy nature at their own pace.</p><p>Whether you're looking for a leisurely stroll or a more challenging adventure, Ireland has <strong>diverse terrain</strong> and <strong>stunning landscapes</strong> that will captivate both children and adults alike.</p><p>So pack your bags, lace up your boots, and embark on an unforgettable journey through Ireland's family-friendly hiking trails!</p><p>https://www.youtube.com/watch?v=3YD1U3nCUcU</p><h2>Engaging and Educational Activities for Children on Hiking Trails</h2><p>Children can participate in nature scavenger hunts, learn about trail etiquette and Leave No Trace principles, and identify plants and animals while hiking on trails.</p><p>https://www.youtube.com/watch?v=vG6lz5i-9os</p><h3>Nature scavenger hunts</h3><p>Nature scavenger hunts are <strong>engaging and educational activities</strong> for children on hiking trails. They add fun to family walks and <strong>help children explore the natural world</strong>. These scavenger hunts can make children fall in love with the outdoors and appreciate nature.</p><p>By searching for specific plants, animals, or objects along the trail, children <strong>develop problem-solving skills</strong> and learn about different species. These activities address the specific needs of families hiking with children by providing an interactive way to keep kids engaged during the hike while also fostering a sense of adventure and exploration.</p><h3>Identification of plants and animals</h3><p>On hiking trails in Ireland, children have the opportunity to engage in educational activities such as the <a href="https://walkingholidayireland.com/wildlife-safety-during-irish-hiking-adventures/"></a><a href="https://theconversation.com/identification-of-animals-and-plants-is-an-essential-skill-set-55450" target="_blank" rel="noopener">identification of plants and animals</a>. These activities promote <strong>nature exploration</strong>, <strong>wildlife observation</strong>, and <strong>ecological awareness</strong> among young hikers.</p><p>By learning about different species and their habitats, children develop a deeper understanding of <strong>biodiversity conservation</strong> and become more conscious of environmental stewardship.</p><p>This hands-on experience fosters outdoor learning and encourages a love for the natural world. As part of these activities, children can participate in <strong>guided hikes with knowledgeable naturalists</strong> who provide valuable insights into the flora and fauna found along the trails.</p><h3>Learning about trail etiquette and Leave No Trace principles</h3><p>Teaching children about <strong>trail etiquette</strong> and <strong>Leave No Trace principles</strong> is essential for their safety and the preservation of the hiking trails in Ireland. By <strong>educating children</strong> on how to behave responsibly and respectfully while on the trails, we can instill a sense of stewardship and conservation in them from an early age.</p><p>It's important to communicate expectations and rules to children before hiking, using simple language that they can understand. This includes teaching them about the <a href="https://lnt.org/why/7-principles/" target="_blank" rel="noopener">Seven Principles of Leave No Trace</a>, which provide a framework for practicing <strong>minimum impact practices</strong> in the outdoors.</p><p>Teaching children these principles will help ensure that they enjoy their hiking experience while also protecting nature for future generations.</p><h2>Resources and Support for Families Hiking with Children</h2><p>Local hiking organizations, <a href="https://walkingholidayireland.com/emergency-numbers-resources-hikers-ireland/"></a><a href="https://www.hse.gov.uk/guidance/index.htm" target="_blank" rel="noopener">safety guidelines and resources</a>, as well as online communities and forums, are available to provide families with the necessary support and information for safe and enjoyable hikes with children.</p><p>Discover these valuable resources that can enhance your family's hiking experience.</p><h3>Local hiking organizations</h3><p><strong>Local hiking organizations in Ireland</strong> play a crucial role in providing resources and support to families who enjoy hiking with their children. These organizations understand the specific needs of families and aim to ensure child safety on Irish hiking trails.</p><p>They help families by offering safety guidelines, educational materials, and useful resources for planning family-friendly hikes. Additionally, local hiking organizations often organize <strong>group hikes and nature walks</strong> specifically designed for families with children, allowing them to connect with other like-minded individuals and share experiences.</p><p>These organizations serve as <strong>valuable sources of information and support</strong> for families looking to explore the beautiful outdoor landscapes of Ireland while keeping their children safe during their adventures.</p><h3>Safety guidelines and resources</h3><p>To ensure the safety of children while hiking, it is important for parents to follow some guidelines and utilize available resources. Parents should always stay within sight of their children and make sure to choose <strong>child-friendly trails</strong> that are suitable for their abilities.</p><p>It is also important to be aware of <strong>trail safety rules</strong> and properly plan and prepare for the hike, including packing essential safety items such as first aid kits and extra water. Additionally, parents can seek support from local hiking organizations, access online communities and forums for sharing experiences and tips, as well as use <strong>available safety resources</strong> to ensure a safe and enjoyable hiking experience with their children.</p><h3>Online communities and forums for sharing experiences and tips</h3><p>There are <strong>online communities</strong> and <strong>forums</strong> dedicated to <strong>sharing experiences</strong> and tips for <strong>families hiking with children</strong> on <strong>Irish hiking trails</strong>. These communities and forums focus specifically on the needs of families hiking with children, particularly in terms of <strong>child safety</strong>.</p><p>The <strong>resources and support</strong> provided in these communities and forums aim to help families navigate hiking trails with their children in a safe and enjoyable manner. Parents can connect with other like-minded individuals, share their own experiences, and learn from the experiences of others to enhance their family hiking adventures.</p><h2>Conclusion</h2><p>In conclusion, <strong>child safety on Irish hiking trails</strong> is of utmost importance for families. By choosing <strong>child-friendly trails</strong>, <strong>properly preparing and planning</strong>, <strong>staying together as a group</strong>, and packing essential safety items, families can ensure a safe and enjoyable hiking experience with their children.</p><p>With the availability of family-friendly scenic trails in Ireland and engaging activities for children on the trails, families can create lasting memories while fostering a love for nature in their children.</p><p>Additionally, resources such as local hiking organizations and online communities provide support and guidance for families hiking with children.</p><h2>FAQs</h2><h3>1. Are Irish hiking trails safe for families with children?</h3><p>Yes, Irish hiking trails prioritize the safety of families with children and have specific measures in place to ensure their well-being.</p><h3>2. What are the specific needs of families hiking with children on Irish trails?</h3><p>Families hiking with children on Irish trails may require child-friendly facilities such as rest areas, toilets, and easy-to-follow trail markers.</p><h3>3. How can I ensure my child's safety while hiking in Ireland?</h3><p>To ensure your child's safety while hiking in Ireland, it is important to stay together as a family, follow trail guidelines, carry necessary supplies like water and snacks, and be aware of your surroundings at all times.</p><h3>4. Are there any restrictions or age limits for children on Irish hiking trails?</h3><p>Irish hiking trails do not typically have restrictions or age limits for children but it is advisable to choose a trail suitable for their abilities and consider their stamina when planning hikes.</p><h3>5. Can I bring a stroller or baby carrier on Irish hiking trails?</h3><p>While some Irish hiking trails may be stroller-friendly or allow the use of baby carriers, it is recommended to check beforehand as certain terrains might not be suitable for these types of equipment due to rugged terrain or steep slopes.</p>
 
 
@@ -217,68 +223,140 @@
 
 </div>
 
-    </div>
-</article>
+        </div>
 
-<!-- CTA Section -->
-<section class="w-full max-w-3xl mx-auto px-6 pb-16">
-    <div class="relative rounded-2xl overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-purple to-bright-purple"></div>
-        <div class="relative p-10 md:p-14 text-white text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Walk Ireland?</h2>
-            <p class="text-lg text-slate-200 mb-8 max-w-xl mx-auto">
-                Let us plan your perfect self-guided walking holiday. Choose from 16 tours across 7 stunning destinations.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../destinations.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-colors shadow-lg shadow-primary/30">
-                    Explore Walking Holidays
-                </a>
-                <a href="../contact.html" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-colors border border-white/20">
-                    Get in Touch
-                </a>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Blog</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Related Articles -->
-<section class="w-full max-w-7xl mx-auto px-6 pb-16">
-    <div class="flex items-center gap-3 mb-8">
-        <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-2xl font-bold">You Might Also Enjoy</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <a href="blackrock-village-county-louth.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Blackrock_Louth.jpg" alt="Discover Blackrock: County Louth&#x27;s Seaside Treasure" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../tours/dingle-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Discover Blackrock: County Louth&#x27;s Seaside Treasure</h3>
-                        <p class="text-slate-500 text-sm">The picturesque seaside village of Blackrock with its tranquil coves and rock pools lies on the shores of Dundalk Bay...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="newgrange.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/newgrange-entrance-4056-scaled.jpg" alt="Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/kerry-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</h3>
-                        <p class="text-slate-500 text-sm">The Newgrange Monument in the Boyne Valley is one of the must see places while on your walking tour or hiking tour in...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;899 &bull; 8 Days</p>
                     </div>
                 </a>
-<a href="leave-no-trace.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-                    <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="https://walkingholidayireland.com/wp-content/uploads/Leave-no-Trace-1.png" alt="Leave No Trace" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'">
-                        <div class="absolute top-4 left-4"><span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Blog</span></div>
+<a class="group flex gap-4 items-start" href="../tours/wicklow-way-5-days.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-lg mb-2 group-hover:text-primary transition-colors">Leave No Trace</h3>
-                        <p class="text-slate-500 text-sm">Leave No Trace is an Outdoor Ethics Programme designed to promote and inspire responsible outdoor recreation through ...</p>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;699 &bull; 5 Days</p>
                     </div>
                 </a>
 
+            </div>
+            <a href="../destinations.html" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="blackrock-village-county-louth.html">Discover Blackrock: County Louth&#x27;s Seaside Treasure</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="newgrange.html">Newgrange, Knowth and Dowth: Ireland&#x27;s Remarkable Heritage in the Boyne Valley</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="leave-no-trace.html">Leave No Trace</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations.html" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a href="../tours/dingle-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s most spectacular western peninsula walk</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/kerry-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">8 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s longest and most famous walking trail</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;899<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 8 Days</span>
+                        </div>
+                    </div>
+                </a>
+<a href="../tours/wicklow-way-5-days.html" class="bg-background-light rounded-xl overflow-hidden shadow-lg group hover:-translate-y-2 transition-transform duration-300">
+                    <div class="h-48 relative overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                        <span class="absolute top-4 right-4 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded uppercase">5 Days</span>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-slate-500 text-sm line-clamp-2 mb-4">Ireland&#x27;s mountain trail, perfectly paced</p>
+                        <div class="flex justify-between items-center border-t border-slate-200 pt-4 mt-4">
+                            <span class="font-bold text-primary">&euro;699<span class="text-xs text-slate-500 font-normal"> / pp</span></span>
+                            <span class="text-xs flex items-center gap-1 text-slate-500"><span class="material-symbols-outlined text-sm">event</span> 5 Days</span>
+                        </div>
+                    </div>
+                </a>
+
+        </div>
     </div>
 </section>
 
