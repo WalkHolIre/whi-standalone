@@ -236,6 +236,8 @@ def fetch_supabase(table, filters=None):
         if filters:
             query += filters
 
+        log(f"  REST API: GET {query[:120]}...")
+
         req = urllib.request.Request(
             query,
             headers={
@@ -244,15 +246,20 @@ def fetch_supabase(table, filters=None):
             }
         )
 
-        with urllib.request.urlopen(req, timeout=10) as response:
-            return json.loads(response.read())
+        with urllib.request.urlopen(req, timeout=30) as response:
+            status = response.status
+            body = response.read()
+            data = json.loads(body)
+            log(f"  REST API response: HTTP {status}, {len(data)} rows, {len(body)} bytes")
+            return data
     except urllib.error.HTTPError as e:
-        log(f"HTTP Error fetching {table}: {e.code} {e.reason}", 'error')
+        body = e.read().decode('utf-8', errors='replace')[:500] if hasattr(e, 'read') else 'no body'
+        log(f"HTTP Error fetching {table}: {e.code} {e.reason} — body: {body}", 'error')
         if e.code == 401:
             log("Check SUPABASE_KEY is set correctly", 'warn')
         return []
     except Exception as e:
-        log(f"Error fetching {table}: {e}", 'error')
+        log(f"Error fetching {table}: {type(e).__name__}: {e}", 'error')
         return []
 
 
@@ -285,37 +292,53 @@ def t(key, lang='en'):
 
 def fetch_translations(lang):
     """Fetch tour and destination translations for a language."""
-    # Try filtered fetch first, then fallback to fetch-all-and-filter
-    log(f"Fetching tour_translations for language={lang}...")
+    log(f"{'─' * 40}")
+    log(f"Fetching translations for language: {lang}")
+    log(f"{'─' * 40}")
+
+    # Try filtered fetch first
+    log(f"Step 1: Filtered fetch tour_translations where language_code={lang}")
     tour_trans = fetch_supabase('tour_translations', f'&language_code=eq.{lang}')
+    log(f"  Result: {len(tour_trans) if tour_trans else 0} rows (type: {type(tour_trans).__name__})")
 
     # If filtered fetch returns empty, try fetching all and filtering in Python
     if not tour_trans:
-        log(f"Filtered fetch returned empty, trying unfiltered fetch...", 'warn')
+        log(f"Step 2: Fallback — unfiltered fetch of ALL tour_translations", 'warn')
         all_tour_trans = fetch_supabase('tour_translations')
+        log(f"  Result: {len(all_tour_trans) if all_tour_trans else 0} rows")
         if all_tour_trans:
-            log(f"Unfiltered fetch got {len(all_tour_trans)} total translations")
+            langs_found = set(tt.get('language_code') for tt in all_tour_trans)
+            log(f"  Languages in table: {langs_found}")
             tour_trans = [tt for tt in all_tour_trans if tt.get('language_code') == lang]
-            log(f"After filtering for {lang}: {len(tour_trans)} translations")
+            log(f"  After Python filter for '{lang}': {len(tour_trans)} translations")
         else:
-            log(f"Unfiltered fetch also returned empty — check table access", 'error')
+            log(f"  Unfiltered fetch ALSO returned empty — table may not be exposed via REST API!", 'error')
 
-    log(f"Got {len(tour_trans or [])} tour translations for {lang}")
+    log(f"Final tour translation count: {len(tour_trans or [])}")
 
-    log(f"Fetching destination_translations for language={lang}...")
+    # Destination translations
+    log(f"\nStep 3: Filtered fetch destination_translations where language_code={lang}")
     dest_trans = fetch_supabase('destination_translations', f'&language_code=eq.{lang}')
+    log(f"  Result: {len(dest_trans) if dest_trans else 0} rows")
     if not dest_trans:
+        log(f"Step 4: Fallback — unfiltered fetch of ALL destination_translations", 'warn')
         all_dest_trans = fetch_supabase('destination_translations')
         if all_dest_trans:
             dest_trans = [dt for dt in all_dest_trans if dt.get('language_code') == lang]
-    log(f"Got {len(dest_trans or [])} destination translations for {lang}")
+            log(f"  After Python filter for '{lang}': {len(dest_trans)} translations")
+    log(f"Final destination translation count: {len(dest_trans or [])}")
 
+    # Build lookup dicts
     tour_dict = {tt['tour_id']: tt for tt in (tour_trans or [])}
     dest_dict = {dt['destination_id']: dt for dt in (dest_trans or [])}
+
     if tour_dict:
-        log(f"Sample tour translation IDs: {list(tour_dict.keys())[:3]}")
+        sample_ids = list(tour_dict.keys())[:3]
+        log(f"Tour translation IDs (sample): {sample_ids}")
     else:
-        log(f"WARNING: No tour translations found for {lang}!", 'warn')
+        log(f"WARNING: Zero tour translations for {lang} — German pages will NOT be generated!", 'warn')
+
+    log(f"{'─' * 40}")
     return {
         'tours': tour_dict,
         'destinations': dest_dict,
