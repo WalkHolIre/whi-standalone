@@ -2757,6 +2757,39 @@ def main():
                     </div>
                 </a>\n'''
 
+        # Build sidebar categories (unique categories with post counts)
+        from collections import Counter
+        cat_counter = Counter(p.get('category', 'Blog') or 'Blog' for p in posts if p.get('slug'))
+        sidebar_categories_html = ''
+        # "All Posts" link first
+        sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{len(posts)}</span></a></li>\n'
+        for cat_name, cat_count in cat_counter.most_common():
+            cat_s = (cat_name or 'blog').lower().replace(' ', '-').replace("'", '')
+            sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category={escape(cat_s)}"><span>{escape(cat_name)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
+
+        # Build sidebar recent posts (5 most recent by published_date)
+        sorted_posts = sorted(
+            [p for p in posts if p.get('slug')],
+            key=lambda p: p.get('published_date') or p.get('published_at', '')[:10] if p.get('published_at') else '',
+            reverse=True
+        )[:5]
+        sidebar_recent_posts_html = ''
+        for rp in sorted_posts:
+            rp_slug = rp.get('slug', '')
+            rp_title = rp.get('title', '')
+            rp_date = rp.get('published_date') or (rp.get('published_at', '')[:10] if rp.get('published_at') else '')
+            rp_date_display = rp_date
+            try:
+                from datetime import datetime as _dt
+                rp_dt = _dt.strptime(rp_date[:10], '%Y-%m-%d')
+                rp_date_display = rp_dt.strftime('%b %d, %Y')
+            except (ValueError, TypeError):
+                pass
+            sidebar_recent_posts_html += f'''<li><a class="group block" href="{escape(rp_slug)}.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">{escape(rp_title)}</p>
+                    <p class="text-xs text-slate-400 mt-1">{rp_date_display}</p>
+                </a></li>\n'''
+
         for post in posts:
             slug = post.get('slug', '')
             if not slug:
@@ -2827,6 +2860,8 @@ def main():
                 '{date_published}': published_date,
                 '{hero_image_html}': hero_image_html,
                 '{tags_html}': tags_html,
+                '{sidebar_categories_html}': sidebar_categories_html,
+                '{sidebar_recent_posts_html}': sidebar_recent_posts_html,
                 '{sidebar_tours_html}': sidebar_tours_html,
                 '{sidebar_related_html}': sidebar_related_html,
                 '{recommended_tours_html}': recommended_tours_html,
