@@ -115,7 +115,8 @@
 
 <!-- Hero Section -->
 <section class="relative h-[320px] md:h-[400px] flex items-center justify-center overflow-hidden">
-    <div class="absolute inset-0 bg-cover bg-center" style="background-image: linear-gradient(rgba(33,7,71,0.6), rgba(33,7,71,0.6)), url('images/hero/blog-hero.jpg');"></div>
+    <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('images/hero/blog-hero.jpg');"></div>
+    <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(181,141,182,0.85) 0%, rgba(63,15,135,0.75) 50%, rgba(33,7,71,0.65) 100%);"></div>
     <div class="relative z-10 text-center px-4">
         <span class="text-primary font-bold tracking-widest uppercase text-xs mb-3 block">Adventure Awaits</span>
         <h1 class="text-white text-4xl md:text-6xl font-black mb-4 tracking-tight">Stories from the Trail</h1>
@@ -128,13 +129,17 @@
 <!-- Blog Content -->
 <div class="max-w-7xl mx-auto px-6 py-12">
 
-    <!-- Category Filter Tabs -->
-    <div class="flex flex-wrap gap-3 mb-12 border-b border-primary/10 pb-6" id="blog-filters">
+    <!-- Category Filter Tabs + Search -->
+    <div class="flex flex-wrap items-center gap-3 mb-12 border-b border-primary/10 pb-6" id="blog-filters">
         <button class="blog-filter-btn active px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold transition-colors" data-category="all">All Posts</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="walking-routes">Walking Routes</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="travel-tips">Travel Tips</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="local-culture">Local Culture</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="hiking-gear">Hiking Gear</button>
+        <div class="ml-auto flex items-center rounded-lg bg-primary/5 border border-primary/10">
+            <span class="material-symbols-outlined pl-3 text-primary/60 text-xl">search</span>
+            <input id="blog-search" class="bg-transparent border-none focus:ring-0 text-sm py-2 px-3 placeholder:text-primary/40 w-44 md:w-56" placeholder="Search stories..." type="text"/>
+        </div>
     </div>
 
     <!-- Content Area -->
@@ -1525,13 +1530,25 @@
     var POSTS_PER_PAGE = 6;
     var allCards = Array.from(document.querySelectorAll('#blog-grid .blog-card'));
     var currentCategory = 'all';
+    var currentSearch = '';
     var currentPage = 1;
 
     function getFilteredCards() {
-        if (currentCategory === 'all') return allCards;
-        return allCards.filter(function(card) {
-            return card.getAttribute('data-category') === currentCategory;
-        });
+        var filtered = allCards;
+        if (currentCategory !== 'all') {
+            filtered = filtered.filter(function(card) {
+                return card.getAttribute('data-category') === currentCategory;
+            });
+        }
+        if (currentSearch) {
+            var q = currentSearch.toLowerCase();
+            filtered = filtered.filter(function(card) {
+                var title = (card.querySelector('h3') || {}).textContent || '';
+                var excerpt = (card.querySelector('p') || {}).textContent || '';
+                return title.toLowerCase().indexOf(q) !== -1 || excerpt.toLowerCase().indexOf(q) !== -1;
+            });
+        }
+        return filtered;
     }
 
     function render() {
@@ -1599,6 +1616,20 @@
             render();
         });
     });
+
+    // Search input
+    var searchInput = document.getElementById('blog-search');
+    var searchTimer;
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(function() {
+                currentSearch = searchInput.value.trim();
+                currentPage = 1;
+                render();
+            }, 250);
+        });
+    }
 
     render();
 })();
