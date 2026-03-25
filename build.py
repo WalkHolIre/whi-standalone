@@ -5,7 +5,7 @@ Walking Holiday Ireland — Pre-render Build System
 Fetches content from Supabase and generates static HTML pages from templates.
 
 Database schema (WHI Ground Control):
-  - tours: name, slug, subtitle, overview, description, highlights, itinerary (jsonb),
+  - tours: name, slug, subtitle, description, highlights, itinerary (jsonb),
            whats_included, whats_not_included, difficulty_level, duration_days,
            price_per_person_eur, best_months (text[]), hero_image, meta_title, seo_description
   - destinations: name, slug, short_description, overview, description, landscape_description,
@@ -442,7 +442,7 @@ def apply_tour_translation(tour, translation):
     if not translation:
         return tour
     merged = dict(tour)
-    translatable_fields = ['name', 'subtitle', 'overview', 'description', 'short_description',
+    translatable_fields = ['name', 'subtitle', 'description', 'short_description',
                           'highlights', 'whats_included', 'whats_not_included',
                           'meta_title', 'meta_description']
     for field in translatable_fields:
