@@ -944,7 +944,7 @@ def render_itinerary(itinerary_data, routes_by_id=None):
 
 
 def render_best_months(best_months):
-    """Convert best_months text array to month pill HTML."""
+    """Convert best_months text array to month pill HTML — only shows available months."""
     if not best_months:
         return ""
 
@@ -961,28 +961,30 @@ def render_best_months(best_months):
     month_names = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
     full_month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
-    html = """    <div class="grid grid-cols-1 gap-6">
-        <p class="text-lg text-slate-600 leading-relaxed">
-            Choose your ideal season based on weather, crowds, and daylight hours.
-        </p>
-        <div class="grid grid-cols-6 sm:grid-cols-12 gap-2">
-"""
-
+    # Only include months that are in the walking season (best_months list)
+    available_months = []
     for month_idx in range(12):
-        month_short = month_names[month_idx]
         month_full = full_month_names[month_idx]
-        # Match against both short and full month names
-        is_best = any(m.lower().startswith(month_full[:3].lower()) for m in best_months_list)
+        is_available = any(m.lower().startswith(month_full[:3].lower()) for m in best_months_list)
+        if is_available:
+            available_months.append((month_idx, month_names[month_idx]))
 
-        if is_best:
-            html += f"""            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">{month_short}</span><span class="material-symbols-outlined text-sm">star</span></div>
+    if not available_months:
+        return ""
+
+    # Dynamic grid: use number of available months as column count
+    num_months = len(available_months)
+    grid_cols = min(num_months, 6)
+
+    html = f"""    <div class="grid grid-cols-1 gap-6">
+        <div class="flex flex-wrap justify-center gap-3">
 """
-        else:
-            html += f"""            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">{month_short}</span><span class="material-symbols-outlined text-sm">check</span></div>
+
+    for month_idx, month_short in available_months:
+        html += f"""            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">{month_short}</div>
 """
 
     html += """        </div>
-        <p class="text-sm text-slate-500"><span class="text-primary font-bold">★</span> = Best months &nbsp; <span class="text-slate-500 font-bold">✓</span> = Available</p>
     </div>
 """
 
@@ -1825,6 +1827,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{included_excluded_html}': included_excluded_html,
         '{gallery_html}': gallery_html,
         '{best_months_html}': best_months_html,
+        '{best_time_text}': get_safe_text(destination, 'best_time_to_visit') if destination else '',
         '{reviews_html}': reviews_html,
         '{review_schema}': review_schema_html,
         '{related_tours_html}': related_html,

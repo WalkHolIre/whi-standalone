@@ -32,6 +32,7 @@
         @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .prose p + p { margin-top: 1.5em; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/tours/{tour_slug}.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/tours/{tour_slug}.html"/>
@@ -281,6 +282,9 @@
         <h2 class="text-3xl font-bold">Best Time to Visit</h2>
     </div>
     {best_months_html}
+    <div class="prose max-w-none text-slate-700 leading-relaxed mt-6" style="font-size:1.05rem; line-height:1.85;">
+        {best_time_text}
+    </div>
 </section>
 
 </div>
