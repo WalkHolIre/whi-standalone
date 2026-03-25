@@ -635,6 +635,26 @@ def translate_html_ui(html, lang):
     return html
 
 
+def render_accommodation_type_badges(accommodation_type):
+    """Render accommodation type badges from a Postgres text array."""
+    if not accommodation_type:
+        return ''
+    labels = {
+        'b_and_b': 'B&B / Guesthouse',
+        'hotel': 'Hotel',
+        'hostel': 'Hostel',
+        'self_catering': 'Self-Catering',
+    }
+    types = accommodation_type if isinstance(accommodation_type, list) else []
+    if not types:
+        return ''
+    badges = []
+    for t in types:
+        label = labels.get(t, t.replace('_', ' ').title())
+        badges.append(f'<span style="display:inline-block;padding:0.375rem 1rem;border-radius:9999px;font-size:0.875rem;font-weight:600;background:rgba(181,141,182,0.15);color:#210747;border:1px solid rgba(181,141,182,0.3);margin-right:0.5rem;margin-bottom:0.5rem;">{label}</span>')
+    return f'<div style="margin-bottom:1.5rem;">{"".join(badges)}</div>'
+
+
 def render_highlights(highlights_text):
     """Convert highlights to POI-style HTML cards (title, description, optional image).
 
@@ -1677,6 +1697,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{highlights}': highlights_html,
         '{who_is_it_for}': get_safe_text(tour, 'who_is_it_for') or get_safe_text(tour, 'description'),
         '{itinerary_html}': itinerary_html,
+        '{accommodation_type_badges}': render_accommodation_type_badges(tour.get('accommodation_type')),
         '{accommodation_description}': get_safe_text(tour, 'accommodation_description') or get_safe_text(tour, 'whats_included'),
         '{whats_included}': get_safe_text(tour, 'whats_included'),
         '{whats_not_included}': get_safe_text(tour, 'whats_not_included'),
