@@ -2167,12 +2167,14 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
             </section>'''
 
 
-def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
+def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_dest_reviews=None):
     """Render v3 tour cards for destination pages — matches JS card design in whi-tours.js exactly."""
     if not tours:
         return ""
     if reviews_by_tour is None:
         reviews_by_tour = {}
+    if all_dest_reviews is None:
+        all_dest_reviews = []
 
     # Region mappings — must match JS regionLabelMap and regionPageMap
     region_label_map = {
@@ -2273,11 +2275,12 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
         # Boot icons
         boots = f'<div class="flex items-center" title="Diff.: {escape(difficulty)}" style="gap:0;">{make_boots(difficulty)}</div>'
 
-        # Review stars + count (matches JS conditional rendering)
+        # Review stars + count — fall back to destination reviews if tour has none
         review_html = ''
         tour_reviews = reviews_by_tour.get(tour.get('id'), [])
-        if tour_reviews:
-            ratings = [r.get('rating', 0) for r in tour_reviews if r.get('rating')]
+        use_reviews = tour_reviews if tour_reviews else all_dest_reviews
+        if use_reviews:
+            ratings = [r.get('rating', 0) for r in use_reviews if r.get('rating')]
             if ratings:
                 avg_rating = round(sum(ratings) / len(ratings), 1)
                 review_count = len(ratings)
@@ -2452,7 +2455,8 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
             card_reviews_by_tour[tour_id].append(review)
 
     # Generate JSON data for JS tour card rendering (same design as main tours page)
-    dest_tours_json = render_tours_listing_json(tours, reviews_by_tour=card_reviews_by_tour)
+    # Pass all destination reviews as fallback for tours with no direct reviews
+    dest_tours_json = render_tours_listing_json(tours, reviews_by_tour=card_reviews_by_tour, all_dest_reviews=reviews)
 
     # Reviews
     reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
@@ -2610,10 +2614,12 @@ def compute_tour_distances(tour):
     return round(total_km, 1), total_ascent
 
 
-def render_tours_listing_json(tours, reviews_by_tour=None):
+def render_tours_listing_json(tours, reviews_by_tour=None, all_dest_reviews=None):
     """Build JSON data array for tours listing page client-side rendering."""
     if reviews_by_tour is None:
         reviews_by_tour = {}
+    if all_dest_reviews is None:
+        all_dest_reviews = []
     items = []
     for tour in tours:
         total_km, total_ascent = compute_tour_distances(tour)
@@ -2627,12 +2633,13 @@ def render_tours_listing_json(tours, reviews_by_tour=None):
         except (ValueError, TypeError):
             price_val = 0
 
-        # Review stats for this tour
+        # Review stats — fall back to destination reviews if tour has none
         tour_reviews = reviews_by_tour.get(tour.get('id'), [])
+        use_reviews = tour_reviews if tour_reviews else all_dest_reviews
         avg_rating = None
         review_count = 0
-        if tour_reviews:
-            ratings = [r.get('rating', 0) for r in tour_reviews if r.get('rating')]
+        if use_reviews:
+            ratings = [r.get('rating', 0) for r in use_reviews if r.get('rating')]
             if ratings:
                 avg_rating = round(sum(ratings) / len(ratings), 1)
                 review_count = len(ratings)
@@ -3722,7 +3729,7 @@ def main():
         with open(tours_listing_template_path, 'r') as f:
             tours_listing_template = f.read()
 
-        tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour)
+        tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour, all_dest_reviews=reviews)
         tours_schema = render_tours_listing_schema(tours)
         region_options = render_region_filter_options(tours)
         difficulty_options = render_difficulty_filter_options(tours)
