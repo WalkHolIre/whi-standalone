@@ -6,7 +6,7 @@
 
 const SUPABASE_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
 const BALANCE_DUE_DAYS = 42;
-const MIN_ADVANCE_DAYS = 7;
+const MIN_ADVANCE_DAYS = 21;
 
 // ============================================================================
 // I18N - TRANSLATIONS
@@ -76,10 +76,15 @@ const I18N = {
     processing: 'Processing...',
 
     // Confirmation
-    bookingConfirmed: 'Booking Confirmed!',
+    bookingConfirmed: 'Booking Request Received!',
     bookingRequested: 'Booking Requested!',
     bookingReference: 'Your booking reference is',
     whatHappensNext: 'What Happens Next',
+    whatHappensNextStep1: 'We will start working on your booking and confirm availability before sending you a booking confirmation.',
+    whatHappensNextStep2: 'Final payment is due 6 weeks before departure.',
+    whatHappensNextStep3: '21 days before departure we will send you your accommodation list and pre-departure documents with itinerary app login details.',
+    whatHappensNextStep4: 'Start your holiday knowing all the details have been expertly taken care of by us — relax!',
+    whatHappensNextStep5: 'Your walking adventure begins!',
     confirmAvailability: 'We confirm availability and send your booking details',
     receiveDeparturePack: 'You receive your pre-departure pack with itinerary',
     adventureBegins: 'Your walking adventure begins!',
@@ -89,6 +94,21 @@ const I18N = {
     email: 'Email: info@walkingholidayireland.com',
     whatsapp: 'WhatsApp: +353 42 937 5983',
     phone: 'Phone: +353 42 937 5983',
+
+    // Bedroom assignment
+    bedroomAssignment: 'Bedroom Assignment',
+    bedroomAssignmentHint: 'Please tell us your preferred room configuration',
+    bedroomPlaceholder: 'e.g. 1 double room, or 2 single rooms, or 1 twin room...',
+
+    // Payment options
+    howToProceed: 'How would you like to proceed?',
+    payDepositOption: 'Pay Deposit',
+    payFullOption: 'Pay in Full',
+    requestBookingOption: 'Request Booking',
+    noPaymentNow: 'No payment now — we confirm availability first',
+    bankTransfer: 'Bank Transfer',
+    comingSoon: 'Coming Soon',
+    payWith: 'Pay with',
 
     // Errors
     selectStartDate: 'Please select a start date',
@@ -174,10 +194,15 @@ const I18N = {
     processing: 'Wird verarbeitet...',
 
     // Confirmation
-    bookingConfirmed: 'Buchung bestätigt!',
+    bookingConfirmed: 'Buchungsanfrage erhalten!',
     bookingRequested: 'Buchungsanfrage gesendet!',
     bookingReference: 'Ihre Buchungsreferenz lautet',
     whatHappensNext: 'Was passiert als Nächstes?',
+    whatHappensNextStep1: 'Wir werden an Ihrer Buchung arbeiten und die Verfügbarkeit bestätigen, bevor wir Ihnen eine Buchungsbestätigung senden.',
+    whatHappensNextStep2: 'Die Restzahlung ist 6 Wochen vor der Abreise fällig.',
+    whatHappensNextStep3: '21 Tage vor der Abreise senden wir Ihnen Ihre Unterkunftsliste und Abreisedokumente mit Anmeldedaten der Reiseplan-App.',
+    whatHappensNextStep4: 'Starten Sie Ihren Urlaub in dem Wissen, dass alle Details von uns fachgerecht arrangiert wurden — entspannen Sie sich!',
+    whatHappensNextStep5: 'Ihr Wanderabenteuer beginnt!',
     confirmAvailability: 'Wir bestätigen die Verfügbarkeit und senden Ihre Buchungsdetails',
     receiveDeparturePack: 'Sie erhalten Ihr Abfahrtspaket mit Reiseplan',
     adventureBegins: 'Ihr Wanderabenteuer beginnt!',
@@ -187,6 +212,21 @@ const I18N = {
     email: 'E-Mail: info@walkingholidayireland.com',
     whatsapp: 'WhatsApp: +353 42 937 5983',
     phone: 'Telefon: +353 42 937 5983',
+
+    // Bedroom assignment
+    bedroomAssignment: 'Zimmerzuweisung',
+    bedroomAssignmentHint: 'Bitte teilen Sie uns Ihre bevorzugte Zimmerkonfiguration mit',
+    bedroomPlaceholder: 'z.B. 1 Doppelzimmer, oder 2 Einzelzimmer, oder 1 Zweibettzimmer...',
+
+    // Payment options
+    howToProceed: 'Wie möchten Sie vorgehen?',
+    payDepositOption: 'Anzahlung leisten',
+    payFullOption: 'Vollständig bezahlen',
+    requestBookingOption: 'Buchung anfragen',
+    noPaymentNow: 'Jetzt keine Zahlung — wir bestätigen die Verfügbarkeit zuerst',
+    bankTransfer: 'Banküberweisung',
+    comingSoon: 'Kommt bald',
+    payWith: 'Bezahlen mit',
 
     // Errors
     selectStartDate: 'Bitte wählen Sie ein Startdatum',
@@ -272,10 +312,15 @@ const I18N = {
     processing: 'Verwerken...',
 
     // Confirmation
-    bookingConfirmed: 'Boeking bevestigd!',
+    bookingConfirmed: 'Boekingsaanvraag ontvangen!',
     bookingRequested: 'Boekingsaanvraag verzonden!',
     bookingReference: 'Uw boekingsreferentie is',
     whatHappensNext: 'Wat gebeurt er nu?',
+    whatHappensNextStep1: 'We zullen aan uw boeking werken en de beschikbaarheid bevestigen voordat we u een boekingsbevestiging sturen.',
+    whatHappensNextStep2: 'Eindige betaling verschuldigd 6 weken voor vertrek.',
+    whatHappensNextStep3: '21 dagen voor vertrek sturen we u uw verblijfslijst en vertrekdocumenten met inloggegevens voor de reisroute-app.',
+    whatHappensNextStep4: 'Begin uw vakantie met het vertrouwen dat alle details vakkundig door ons zijn verzorgd — ontspan!',
+    whatHappensNextStep5: 'Uw wandelavontuur begint!',
     confirmAvailability: 'We bevestigen beschikbaarheid en sturen uw boekingsgegevens',
     receiveDeparturePack: 'U ontvangt uw vertrekpakket met reisschema',
     adventureBegins: 'Uw wandelavontuur begint!',
@@ -285,6 +330,21 @@ const I18N = {
     email: 'E-mail: info@walkingholidayireland.com',
     whatsapp: 'WhatsApp: +353 42 937 5983',
     phone: 'Telefoon: +353 42 937 5983',
+
+    // Bedroom assignment
+    bedroomAssignment: 'Kamertoewijzing',
+    bedroomAssignmentHint: 'Geef uw voorkeurskamerconfiguratie aan',
+    bedroomPlaceholder: 'bijv. 1 tweepersoonskamer, of 2 eenpersoonskamers, of 1 tweepersoonskamer...',
+
+    // Payment options
+    howToProceed: 'Hoe wilt u verder gaan?',
+    payDepositOption: 'Aanbetaling doen',
+    payFullOption: 'Volledig betalen',
+    requestBookingOption: 'Boeking aanvragen',
+    noPaymentNow: 'Nu geen betaling — we bevestigen eerst de beschikbaarheid',
+    bankTransfer: 'Bankoverschrijving',
+    comingSoon: 'Binnenkort beschikbaar',
+    payWith: 'Betaal met',
 
     // Errors
     selectStartDate: 'Selecteer een startdatum',
@@ -337,8 +397,10 @@ let bookingState = {
   },
   additionalTravellers: [],
   specialRequests: '',
+  bedroomAssignment: '',
 
   // Step 3
+  paymentOption: 'deposit', // 'deposit' | 'full' | 'enquiry'
   paymentMethod: 'stripe', // 'stripe' | 'enquiry'
   payFull: false,
   isSubmitting: false,
@@ -443,7 +505,7 @@ function calcPricing() {
 
   // Extras
   let extrasTotal = 0;
-  const walkingDays = tour.duration_days - 1;
+  const walkingDays = tour.walking_days || (tour.duration_days - 1);
 
   selectedExtras.forEach((extra) => {
     if (extra.price_type === 'per_person') {
@@ -494,9 +556,17 @@ function createModal() {
 
   const header = document.createElement('div');
   header.className = 'bm-header';
+  header.style.background = 'linear-gradient(135deg, #210747 0%, #3F0F87 100%)';
+  header.style.padding = '24px 32px';
+  header.style.display = 'flex';
+  header.style.justifyContent = 'space-between';
+  header.style.alignItems = 'flex-start';
   header.innerHTML = `
-    <h2 id="bm-title" class="bm-title"></h2>
-    <button class="bm-close-btn" aria-label="${t('close')}" onclick="window.closeBookingModal()">
+    <div style="flex: 1;">
+      <p id="bm-step-label" class="bm-step-label" style="color: white; font-size: 13px; font-weight: 500; margin: 0 0 8px 0;">Step 1 of 4</p>
+      <h2 id="bm-step-title" class="bm-step-title" style="color: #F17E00; font-size: 20px; font-weight: 700; margin: 0;">Tour & Extras</h2>
+    </div>
+    <button class="bm-close-btn" aria-label="${t('close')}" onclick="window.closeBookingModal()" style="background: none; border: none; cursor: pointer; padding: 0; color: white;">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
@@ -535,6 +605,20 @@ function createModal() {
 
 // All styling is in external css/booking-modal.css
 
+// ============================================================================
+// HEADER HELPER
+// ============================================================================
+
+function updateHeader(stepNum, subtitle) {
+  const stepLabel = document.getElementById('bm-step-label');
+  const stepTitle = document.getElementById('bm-step-title');
+  if (stepLabel) {
+    stepLabel.textContent = `Step ${stepNum} of 4`;
+  }
+  if (stepTitle) {
+    stepTitle.textContent = subtitle;
+  }
+}
 
 // ============================================================================
 // STEP RENDERING
@@ -661,7 +745,7 @@ function renderStep1() {
     </div>
   `;
 
-  document.getElementById('bm-title').textContent = t('stepTourExtras');
+  updateHeader(1, t('stepTourExtras'));
   renderFooter([
     { label: t('next'), onclick: () => goToStep(2), primary: true },
   ]);
@@ -729,29 +813,33 @@ function renderStep2() {
       <div class="bm-traveller-header">
         <h3 class="bm-traveller-title">${t('traveller')} 1 (${t('leadTraveller')})</h3>
       </div>
-      <div class="bm-form-group">
-        <label class="bm-label" for="bm-lead-fn">${t('firstName')} <span style="color: #ef4444;">*</span></label>
-        <input type="text" id="bm-lead-fn" class="bm-input"
-               value="${escapeHtml(bookingState.leadTraveller.firstName)}"
-               onchange="window.setLeadTraveller('firstName', this.value)">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="bm-form-group">
+          <label class="bm-label" for="bm-lead-fn">${t('firstName')} <span style="color: #ef4444;">*</span></label>
+          <input type="text" id="bm-lead-fn" class="bm-input"
+                 value="${escapeHtml(bookingState.leadTraveller.firstName)}"
+                 onchange="window.setLeadTraveller('firstName', this.value)">
+        </div>
+        <div class="bm-form-group">
+          <label class="bm-label" for="bm-lead-ln">${t('lastName')} <span style="color: #ef4444;">*</span></label>
+          <input type="text" id="bm-lead-ln" class="bm-input"
+                 value="${escapeHtml(bookingState.leadTraveller.lastName)}"
+                 onchange="window.setLeadTraveller('lastName', this.value)">
+        </div>
       </div>
-      <div class="bm-form-group">
-        <label class="bm-label" for="bm-lead-ln">${t('lastName')} <span style="color: #ef4444;">*</span></label>
-        <input type="text" id="bm-lead-ln" class="bm-input"
-               value="${escapeHtml(bookingState.leadTraveller.lastName)}"
-               onchange="window.setLeadTraveller('lastName', this.value)">
-      </div>
-      <div class="bm-form-group">
-        <label class="bm-label" for="bm-lead-email">${t('email')} <span style="color: #ef4444;">*</span></label>
-        <input type="email" id="bm-lead-email" class="bm-input"
-               value="${escapeHtml(bookingState.leadTraveller.email)}"
-               onchange="window.setLeadTraveller('email', this.value)">
-      </div>
-      <div class="bm-form-group">
-        <label class="bm-label" for="bm-lead-phone">${t('phone')}</label>
-        <input type="tel" id="bm-lead-phone" class="bm-input"
-               value="${escapeHtml(bookingState.leadTraveller.phone)}"
-               onchange="window.setLeadTraveller('phone', this.value)">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+        <div class="bm-form-group">
+          <label class="bm-label" for="bm-lead-email">${t('email')} <span style="color: #ef4444;">*</span></label>
+          <input type="email" id="bm-lead-email" class="bm-input"
+                 value="${escapeHtml(bookingState.leadTraveller.email)}"
+                 onchange="window.setLeadTraveller('email', this.value)">
+        </div>
+        <div class="bm-form-group">
+          <label class="bm-label" for="bm-lead-phone">${t('phone')}</label>
+          <input type="tel" id="bm-lead-phone" class="bm-input"
+                 value="${escapeHtml(bookingState.leadTraveller.phone)}"
+                 onchange="window.setLeadTraveller('phone', this.value)">
+        </div>
       </div>
       <div class="bm-form-group">
         <label class="bm-label" for="bm-lead-country">${t('country')} <span style="color: #ef4444;">*</span></label>
@@ -776,9 +864,16 @@ function renderStep2() {
       <textarea class="bm-textarea"
                 onchange="window.setSpecialRequests(this.value)">${escapeHtml(bookingState.specialRequests)}</textarea>
     </div>
+
+    <div class="bm-form-group" style="margin-top: 24px;">
+      <label class="bm-label" style="font-size: 16px; font-weight: 700;">${t('bedroomAssignment')}</label>
+      <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">${t('bedroomAssignmentHint')}</p>
+      <textarea class="bm-textarea" placeholder="${t('bedroomPlaceholder')}"
+                onchange="window.setBedroomAssignment(this.value)">${escapeHtml(bookingState.bedroomAssignment)}</textarea>
+    </div>
   `;
 
-  document.getElementById('bm-title').textContent = t('stepTravellerDetails');
+  updateHeader(2, t('stepTravellerDetails'));
   renderFooter([
     { label: t('back'), onclick: () => goToStep(1) },
     { label: t('next'), onclick: () => goToStep(3), primary: true },
@@ -794,64 +889,78 @@ function renderStep3() {
   const daysUntilStart = getDaysUntilStart(bookingState.startDate);
   const canPayDeposit = daysUntilStart >= BALANCE_DUE_DAYS;
 
-  let paymentMethodHtml = `
+  // Build payment options
+  let paymentOptionsHtml = `
     <div class="bm-form-group">
-      <label class="bm-label">${t('payByCard')}</label>
-      <div class="bm-radio-card ${bookingState.paymentMethod === 'stripe' ? 'bm-active' : ''}"
-           onclick="window.setPaymentMethod('stripe')">
-        <div class="bm-radio"></div>
-        <div class="bm-radio-content">
-          <h4 class="bm-radio-label">${t('payByCard')}</h4>
-          ${
-            canPayDeposit
-              ? `<p class="bm-radio-subtitle">${t('payDeposit')} / ${t('payFull')}</p>`
-              : `<p class="bm-radio-subtitle">${t('fullPaymentRequired')}</p>`
-          }
-        </div>
-      </div>
-    </div>
-
-    <div class="bm-form-group">
-      <div class="bm-radio-card ${bookingState.paymentMethod === 'enquiry' ? 'bm-active' : ''}"
-           onclick="window.setPaymentMethod('enquiry')">
-        <div class="bm-radio"></div>
-        <div class="bm-radio-content">
-          <h4 class="bm-radio-label">${t('requestBooking')}</h4>
-          <p class="bm-radio-subtitle">${t('requestBookingSubtitle')}</p>
-        </div>
-      </div>
-    </div>
+      <label class="bm-label" style="font-size: 16px; font-weight: 700; margin-bottom: 16px;">${t('howToProceed')}</label>
   `;
 
-  if (bookingState.paymentMethod === 'stripe' && canPayDeposit) {
-    paymentMethodHtml += `
-      <div class="bm-form-group">
-        <label class="bm-label">${t('payInFull')}</label>
-        <div class="bm-card ${bookingState.payFull ? 'bm-active' : ''}"
-             onclick="window.togglePayFull()">
-          <div class="bm-card-header">
-            <input type="checkbox" class="bm-checkbox"
-                   ${bookingState.payFull ? 'checked' : ''}
-                   onclick="event.stopPropagation()">
-            <div class="bm-card-content">
-              <p class="bm-card-title">${t('payInFull')}</p>
-              <p class="bm-card-description">${t('payInFull')} ${formatCurrency(pricing.subtotal)}</p>
-            </div>
+  if (canPayDeposit) {
+    paymentOptionsHtml += `
+      <div class="bm-radio-card ${bookingState.paymentOption === 'deposit' ? 'bm-active' : ''}"
+           onclick="window.setPaymentOption('deposit')"
+           style="padding: 16px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #d1d5db; background: ${bookingState.paymentOption === 'deposit' ? '#F17E00' : 'white'};"></div>
+          <div>
+            <p style="margin: 0; font-weight: 600; color: #1f2937;">${t('payDepositOption')} (25%) — ${formatCurrency(pricing.depositAmount)}</p>
           </div>
         </div>
       </div>
     `;
   }
 
-  let paymentButtonLabel = '';
-  if (bookingState.paymentMethod === 'enquiry') {
-    paymentButtonLabel = t('requestBooking');
-  } else if (bookingState.paymentMethod === 'stripe') {
-    if (canPayDeposit && !bookingState.payFull) {
-      paymentButtonLabel = `${t('payDeposit')} ${formatCurrency(pricing.depositAmount)}`;
-    } else {
-      paymentButtonLabel = `${t('payFull')} ${formatCurrency(pricing.subtotal)}`;
-    }
+  paymentOptionsHtml += `
+    <div class="bm-radio-card ${bookingState.paymentOption === 'full' ? 'bm-active' : ''}"
+         onclick="window.setPaymentOption('full')"
+         style="padding: 16px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #d1d5db; background: ${bookingState.paymentOption === 'full' ? '#F17E00' : 'white'};"></div>
+        <div>
+          <p style="margin: 0; font-weight: 600; color: #1f2937;">${t('payFullOption')} — ${formatCurrency(pricing.subtotal)}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bm-radio-card ${bookingState.paymentOption === 'enquiry' ? 'bm-active' : ''}"
+         onclick="window.setPaymentOption('enquiry')"
+         style="padding: 16px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; cursor: pointer; transition: all 0.2s;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #d1d5db; background: ${bookingState.paymentOption === 'enquiry' ? '#F17E00' : 'white'};"></div>
+        <div>
+          <p style="margin: 0; font-weight: 600; color: #1f2937;">${t('requestBookingOption')}</p>
+          <p style="margin: 4px 0 0 0; font-size: 13px; color: #6b7280;">${t('noPaymentNow')}</p>
+        </div>
+      </div>
+    </div>
+    </div>
+  `;
+
+  // Build payment buttons based on selected option
+  let paymentButtonsHtml = '';
+  if (bookingState.paymentOption === 'enquiry') {
+    paymentButtonsHtml = `
+      <div class="bm-form-group" style="margin-top: 24px;">
+        <button class="bm-btn bm-btn-primary" onclick="window.submitBooking()" style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: #F17E00; color: white; font-size: 16px; font-weight: 600; cursor: pointer;">
+          ${t('requestBooking')}
+        </button>
+      </div>
+    `;
+  } else {
+    paymentButtonsHtml = `
+      <div class="bm-form-group" style="margin-top: 24px;">
+        <button class="bm-btn" onclick="window.submitBooking()" style="width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer;">
+          <span style="color: #1f2937;">Stripe</span>
+        </button>
+        <button class="bm-btn" disabled style="width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #9ca3af; font-size: 16px; font-weight: 600; cursor: not-allowed; opacity: 0.6; position: relative;">
+          <span>PayPal</span>
+          <span style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); background: #6b7280; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">${t('comingSoon')}</span>
+        </button>
+        <button class="bm-btn" onclick="window.submitBooking()" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer;">
+          ${t('bankTransfer')}
+        </button>
+      </div>
+    `;
   }
 
   content.innerHTML = `
@@ -881,21 +990,13 @@ function renderStep3() {
       ${renderPricingSummary(pricing)}
     </div>
 
-    <div class="bm-form-group">
-      ${paymentMethodHtml}
-    </div>
+    ${paymentOptionsHtml}
+    ${paymentButtonsHtml}
   `;
 
-  document.getElementById('bm-title').textContent = t('stepReviewPay');
+  updateHeader(3, t('stepReviewPay'));
   renderFooter([
     { label: t('back'), onclick: () => goToStep(2) },
-    {
-      label: bookingState.isSubmitting ? t('processing') : paymentButtonLabel,
-      onclick: () => submitBooking(),
-      primary: true,
-      disabled: bookingState.isSubmitting,
-      spinner: bookingState.isSubmitting,
-    },
   ]);
 }
 
@@ -911,7 +1012,7 @@ function renderConfirmation(bookingRef, paymentMethod) {
         </svg>
       </div>
       <h2 class="bm-confirmation-title">
-        ${isEnquiry ? t('bookingRequested') : t('bookingConfirmed')}
+        ${t('bookingConfirmed')}
       </h2>
       <div class="bm-confirmation-ref">${escapeHtml(bookingRef)}</div>
       <p class="bm-confirmation-message">
@@ -920,11 +1021,13 @@ function renderConfirmation(bookingRef, paymentMethod) {
 
       <div class="bm-next-steps">
         <h4 class="bm-next-steps-title">${t('whatHappensNext')}</h4>
-        <ul class="bm-next-steps-list">
-          <li class="bm-next-steps-item">${t('confirmAvailability')}</li>
-          <li class="bm-next-steps-item">${t('receiveDeparturePack')}</li>
-          <li class="bm-next-steps-item">${t('adventureBegins')}</li>
-        </ul>
+        <ol class="bm-next-steps-list" style="list-style: decimal; padding-left: 20px;">
+          <li class="bm-next-steps-item">${t('whatHappensNextStep1')}</li>
+          <li class="bm-next-steps-item">${t('whatHappensNextStep2')}</li>
+          <li class="bm-next-steps-item">${t('whatHappensNextStep3')}</li>
+          <li class="bm-next-steps-item">${t('whatHappensNextStep4')}</li>
+          <li class="bm-next-steps-item">${t('whatHappensNextStep5')}</li>
+        </ol>
       </div>
 
       <div class="bm-contact-links">
@@ -942,7 +1045,7 @@ function renderConfirmation(bookingRef, paymentMethod) {
     </div>
   `;
 
-  document.getElementById('bm-title').textContent = '';
+  updateHeader(4, t('bookingConfirmed'));
   renderFooter([{ label: t('close'), onclick: () => window.closeBookingModal(), primary: true }]);
 }
 
@@ -1083,7 +1186,12 @@ function goToStep(step) {
 
 window.setStartDate = function (value) {
   bookingState.startDate = value;
-  renderStep1();
+  // Only update price summary, don't re-render entire step
+  const priceSummary = document.querySelector('.bm-price-summary');
+  if (priceSummary) {
+    const pricing = calcPricing();
+    priceSummary.innerHTML = renderPricingSummary(pricing);
+  }
 };
 
 window.incrementWalkers = function () {
@@ -1152,6 +1260,10 @@ window.setSpecialRequests = function (value) {
   bookingState.specialRequests = value;
 };
 
+window.setBedroomAssignment = function (value) {
+  bookingState.bedroomAssignment = value;
+};
+
 window.removeTraveller = function (index) {
   if (bookingState.walkers > bookingState.tour.min_walkers) {
     bookingState.walkers--;
@@ -1163,6 +1275,21 @@ window.removeTraveller = function (index) {
 // ============================================================================
 // STATE SETTERS (Step 3)
 // ============================================================================
+
+window.setPaymentOption = function (option) {
+  bookingState.paymentOption = option;
+  if (option === 'enquiry') {
+    bookingState.paymentMethod = 'enquiry';
+  } else {
+    bookingState.paymentMethod = 'stripe';
+  }
+  if (option === 'full') {
+    bookingState.payFull = true;
+  } else {
+    bookingState.payFull = false;
+  }
+  renderStep3();
+};
 
 window.setPaymentMethod = function (method) {
   bookingState.paymentMethod = method;
@@ -1232,6 +1359,7 @@ window.submitBooking = async function () {
     },
     additional_travellers: bookingState.additionalTravellers,
     special_requirements: bookingState.specialRequests,
+    bedroom_assignment: bookingState.bedroomAssignment,
     extras: bookingState.selectedExtras.map((e) => ({
       id: e.id,
       name: e.name,
@@ -1297,7 +1425,7 @@ window.openBookingModal = function () {
   // Initialize state
   bookingState.currentStep = 1;
   bookingState.startDate = null;
-  bookingState.walkers = 1;
+  bookingState.walkers = 2;
   bookingState.singleRoom = false;
   bookingState.extraDays = 0;
   bookingState.selectedExtras = [];
@@ -1311,9 +1439,31 @@ window.openBookingModal = function () {
   };
   bookingState.additionalTravellers = [];
   bookingState.specialRequests = '';
+  bookingState.bedroomAssignment = '';
+  bookingState.paymentOption = 'deposit';
   bookingState.paymentMethod = 'stripe';
   bookingState.payFull = false;
   bookingState.isSubmitting = false;
+
+  // Read sidebar quick-book values
+  const sidebarDate = document.getElementById('sidebar-start-date');
+  const sidebarWalkers = document.getElementById('sidebar-walkers');
+  if (sidebarDate && sidebarDate.value) {
+    bookingState.startDate = sidebarDate.value;
+  }
+  if (sidebarWalkers && sidebarWalkers.value) {
+    bookingState.walkers = parseInt(sidebarWalkers.value) || 2;
+  }
+
+  // Initialize additionalTravellers array to match walkers count
+  bookingState.additionalTravellers = [];
+  for (let i = 1; i < bookingState.walkers; i++) {
+    bookingState.additionalTravellers.push({
+      firstName: '',
+      lastName: '',
+      dietary: '',
+    });
+  }
 
   // Create modal
   if (!document.getElementById('bm-modal')) {

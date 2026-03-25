@@ -309,18 +309,18 @@
             <label class="text-sm font-bold">Preferred Start Date</label>
             <div class="relative">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
-                <input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
+                <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 28 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Number of Walkers</label>
             <div class="relative">
-                <select class="w-full appearance-none px-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium">
-                    <option>1 Person</option>
-                    <option selected>2 People</option>
-                    <option>3 People</option>
-                    <option>4+ People</option>
+                <select id="sidebar-walkers" class="w-full appearance-none px-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium">
+                    <option value="1">1 Person</option>
+                    <option value="2" selected>2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4+ People</option>
                 </select>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
             </div>
