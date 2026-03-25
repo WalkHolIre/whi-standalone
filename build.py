@@ -1689,7 +1689,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{hero_image}': escape(tour.get('hero_image') or f'images/routes/{tour.get("slug", "")}/hero.jpg'),
         '{difficulty_level}': escape(tour.get('difficulty_level', '')),
         '{duration_days}': str(tour.get('duration_days', 0)),
-        '{walking_days}': str(max(0, (tour.get('duration_days', 0) or 0) - 1)),
+        '{walking_days}': str(tour.get('walking_days') or max(0, (tour.get('duration_days', 0) or 0) - 1)),
         '{price_per_person_eur}': price_display,
         '{description}': get_safe_text(tour, 'description'),
         '{overview}': get_safe_text(tour, 'description'),
@@ -2245,15 +2245,16 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None):
         except (ValueError, TypeError):
             price_display = str(price)
 
-        # Compute per-day stats
+        # Compute per-day stats — use walking_days from DB if set, else days-1
         total_km, total_ascent = compute_tour_distances(tour)
         db_km = tour.get('total_distance_km')
         db_ascent = tour.get('elevation_gain_m')
         actual_km = float(db_km) if db_km else (total_km if total_km else 0)
         actual_ascent = int(db_ascent) if db_ascent else (total_ascent if total_ascent else 0)
-        walk_days = days - 1 if days > 1 else 1
-        km_per_day = round(actual_km / walk_days) if actual_km else None
-        ascent_per_day = round(actual_ascent / walk_days) if actual_ascent else None
+        db_walk_days = tour.get('walking_days')
+        walk_days = int(db_walk_days) if db_walk_days else (days - 1 if days > 1 else 1)
+        km_per_day = round(actual_km / walk_days, 1) if actual_km and walk_days else None
+        ascent_per_day = round(actual_ascent / walk_days) if actual_ascent and walk_days else None
         # Descent per day (matches JS)
         db_descent = tour.get('total_descent_m')
         actual_descent = int(db_descent) if db_descent else 0
@@ -2645,6 +2646,7 @@ def render_tours_listing_json(tours, reviews_by_tour=None):
             'region': tour.get('region_name', ''),
             'short_desc': tour.get('subtitle') or tour.get('short_description', ''),
             'featured': bool(tour.get('featured')),
+            'walking_days': int(tour.get('walking_days')) if tour.get('walking_days') else None,
             'total_km': float(db_km) if db_km else (total_km if total_km else None),
             'total_ascent': int(db_ascent) if db_ascent else (total_ascent if total_ascent else None),
             'total_descent': int(tour.get('total_descent_m')) if tour.get('total_descent_m') else None,
