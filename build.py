@@ -779,11 +779,10 @@ def render_highlights(highlights_text):
 
 
 def render_gallery(gallery_data):
-    """Render an image gallery grid from a Postgres text[] or JSON array of URLs."""
+    """Render an image gallery with masonry layout and lightbox."""
     if not gallery_data:
         return ""
 
-    # Parse various formats
     urls = []
     if isinstance(gallery_data, list):
         urls = gallery_data
@@ -799,8 +798,14 @@ def render_gallery(gallery_data):
     html = ""
     for i, url in enumerate(urls):
         url = escape(url)
-        html += f"""        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
-            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"/>
+        if i == 0:
+            html += f"""        <div class="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
+            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+"""
+        else:
+            html += f"""        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
+            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
         </div>
 """
     return html
@@ -853,7 +858,7 @@ def render_included_excluded(whats_included, whats_not_included):
     return html
 
 
-def render_itinerary(itinerary_data):
+def render_itinerary(itinerary_data, routes_by_id=None):
     """Convert itinerary JSONB to HTML day cards."""
     if not itinerary_data:
         return ""
@@ -869,13 +874,49 @@ def render_itinerary(itinerary_data):
     html = ""
     for idx, day in enumerate(days, 1):
         title = escape(str(day.get('title', f'Day {idx}')))
-        description = escape(str(day.get('description', '')))
+        description = str(day.get('description', ''))
         distance = day.get('distance', day.get('distance_km', ''))
         ascent = day.get('ascent', day.get('ascent_m', ''))
         terrain = day.get('terrain', '')
 
         badge_class = "bg-primary/10 text-primary" if idx == 1 else "bg-slate-100 text-slate-500"
         open_attr = "open" if idx == 1 else ""
+
+        # Look up route details for this day
+        route_ids = day.get('route_ids', [])
+        day_routes = []
+        if routes_by_id and route_ids:
+            for rid in route_ids:
+                route = routes_by_id.get(rid)
+                if route:
+                    day_routes.append(route)
+
+        # Compute aggregate stats for the day
+        day_distance = sum(r.get('distance_km', 0) or 0 for r in day_routes)
+        day_ascent = sum(r.get('elevation_gain_m', 0) or 0 for r in day_routes)
+        day_descent = sum(r.get('elevation_loss_m', 0) or 0 for r in day_routes)
+        day_duration = sum(r.get('estimated_duration_hours', 0) or 0 for r in day_routes)
+        day_start = day_routes[0].get('route_startpoint', '') if day_routes else ''
+        day_end = day_routes[-1].get('route_endpoint', '') if day_routes else ''
+
+        # Route detail badges
+        badges_html = ''
+        if day_routes:
+            badges_html = '<div class="flex flex-wrap gap-3 mb-4">'
+            if day_start and day_end:
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">pin_drop</span> {escape(day_start)} → {escape(day_end)}</span>'
+            if day_distance:
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">straighten</span> {day_distance:.1f} km</span>'
+            if day_ascent:
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">trending_up</span> ↑{int(day_ascent)}m</span>'
+            if day_descent:
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-blue-700 bg-blue-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">trending_down</span> ↓{int(day_descent)}m</span>'
+            if day_duration:
+                hours = int(day_duration)
+                mins = int((day_duration - hours) * 60)
+                dur_str = f'{hours}h {mins}m' if mins else f'{hours}h'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">schedule</span> {dur_str}</span>'
+            badges_html += '</div>'
 
         html += f"""        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" {open_attr}>
             <summary class="flex cursor-pointer items-center justify-between p-6 hover:bg-slate-50 transition-colors">
@@ -891,24 +932,10 @@ def render_itinerary(itinerary_data):
                 <span class="material-symbols-outlined text-slate-400 group-open:rotate-180 transition-transform duration-300">expand_more</span>
             </summary>
             <div class="px-6 pb-6 pt-2 border-t border-slate-100">
-                <div class="flex flex-wrap gap-3 mb-4">
-"""
-
-        if distance:
-            html += f"""                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">straighten</span> {escape(str(distance))}km
-                    </span>
-"""
-        if ascent:
-            html += f"""                    <span class="flex items-center gap-1.5 text-sm font-medium text-slate-500 bg-slate-100 px-3 py-1.5 rounded-md">
-                        <span class="material-symbols-outlined text-[18px]">terrain</span> {escape(str(ascent))}m ascent
-                    </span>
-"""
-
-        html += f"""                </div>
-                <p class="text-slate-600 leading-relaxed">
+                {badges_html}
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed">
                     {description}
-                </p>
+                </div>
             </div>
         </details>
 """
@@ -1528,9 +1555,15 @@ def render_tour_faq_section(tour_id, faqs, tour_name):
 
     # Build section HTML
     html = f"""    <section class="faq-section">
-        <div class="flex items-center gap-3 mb-8">
-            <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-            <h2 class="text-[1.75rem] font-black text-brand-purple">Frequently Asked Questions</h2>
+        <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-3">
+                <div class="w-1.5 h-8 bg-primary rounded-full"></div>
+                <h2 class="text-[1.75rem] font-black text-brand-purple">Frequently Asked Questions</h2>
+            </div>
+            <div class="flex gap-2">
+                <button onclick="this.closest('.faq-section').querySelectorAll('details').forEach(d=>d.open=true)" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-slate-100">Expand All</button>
+                <button onclick="this.closest('.faq-section').querySelectorAll('details').forEach(d=>d.open=false)" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-slate-100">Collapse All</button>
+            </div>
         </div>
         <div class="space-y-3">
 {accordion_html}        </div>
@@ -1640,8 +1673,76 @@ window.__WHI_LANG = "{lang}";
 </script>"""
 
 
+def render_route_map_data(itinerary_data, routes_by_id):
+    """Generate JSON data for Leaflet map with route coordinates and elevation profiles."""
+    if not itinerary_data or not routes_by_id:
+        return '[]'
+
+    try:
+        days = json.loads(itinerary_data) if isinstance(itinerary_data, str) else itinerary_data
+    except (json.JSONDecodeError, TypeError):
+        return '[]'
+
+    if not isinstance(days, list):
+        return '[]'
+
+    map_days = []
+    for idx, day in enumerate(days, 1):
+        route_ids = day.get('route_ids', [])
+        if not route_ids:
+            continue
+
+        day_coords = []
+        day_elevation = []
+        day_distance = 0
+        day_ascent = 0
+        day_descent = 0
+        day_duration = 0
+        day_name = day.get('title', f'Day {idx}')
+
+        for rid in route_ids:
+            route = routes_by_id.get(rid)
+            if not route:
+                continue
+
+            gpx = route.get('gpx_coordinates', [])
+            if isinstance(gpx, str):
+                try:
+                    gpx = json.loads(gpx)
+                except:
+                    gpx = []
+
+            if gpx and isinstance(gpx, list):
+                for pt in gpx:
+                    if isinstance(pt, list) and len(pt) >= 2:
+                        day_coords.append([pt[0], pt[1]])
+                        if len(pt) >= 3:
+                            day_elevation.append(pt[2])
+
+            day_distance += route.get('distance_km', 0) or 0
+            day_ascent += route.get('elevation_gain_m', 0) or 0
+            day_descent += route.get('elevation_loss_m', 0) or 0
+            day_duration += route.get('estimated_duration_hours', 0) or 0
+
+        if day_coords:
+            map_days.append({
+                'day': idx,
+                'title': day_name,
+                'coords': day_coords,
+                'elevation': day_elevation,
+                'distance_km': round(day_distance, 1),
+                'ascent_m': int(day_ascent),
+                'descent_m': int(day_descent),
+                'duration_hrs': round(day_duration, 1),
+                'start': day_coords[0] if day_coords else None,
+                'end': day_coords[-1] if day_coords else None,
+            })
+
+    return json.dumps(map_days)
+
+
 def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_id,
-                     tour_extras_by_tour=None, payment_settings=None, lang='en'):
+                     tour_extras_by_tour=None, payment_settings=None, routes_by_id=None, reviews_by_tour=None, lang='en'):
     """Render a tour page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'tour.html'
 
@@ -1654,19 +1755,35 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
 
     # Prepare data
     highlights_html = render_highlights(tour.get('highlights'))
-    itinerary_html = render_itinerary(tour.get('itinerary'))
+    itinerary_html = render_itinerary(tour.get('itinerary'), routes_by_id=routes_by_id)
     gallery_html = render_gallery(tour.get('gallery'))
     included_excluded_html = render_included_excluded(
         tour.get('whats_included'), tour.get('whats_not_included'))
-    best_months_html = render_best_months(tour.get('best_months'))
+
+    walking_season = tour.get('walking_season_override')
+    best_months_data = tour.get('best_months')
+    if walking_season and isinstance(walking_season, dict):
+        # Convert walking_season_override {start_month, end_month} to month list
+        month_names_full = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        start = walking_season.get('start_month', 0) or 0
+        end = walking_season.get('end_month', 0) or 0
+        if start and end:
+            if start <= end:
+                best_months_data = month_names_full[start-1:end]
+            else:
+                best_months_data = month_names_full[start-1:] + month_names_full[:end]
+    best_months_html = render_best_months(best_months_data)
     reviews_html = render_tour_review_section(reviews, tour, tours_by_id, prefix='../')
     review_schema_html = render_tour_page_schema(tour, reviews)
     # Use empty prefix for tour pages (already in tours/ subdirectory)
-    related_html = render_tour_cards(related_tours, prefix='')
+    related_html = render_dest_tour_cards_v3(related_tours, prefix='', reviews_by_tour=reviews_by_tour or {})
 
     # FAQ data
     tour_faq_html, tour_faq_list = render_tour_faq_section(tour.get('id'), faqs, tour.get('name', ''))
     tour_faq_schema = render_faq_schema(tour_faq_list, max_items=8)
+
+    # Route map data
+    route_map_json = render_route_map_data(tour.get('itinerary'), routes_by_id)
 
     # Price display
     price = tour.get('price_per_person_eur', 0)
@@ -1680,6 +1797,9 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
     dest_name = destination.get('name', '') if destination else ''
     dest_slug = destination.get('slug', '') if destination else ''
 
+    # Hero image URL — handle both absolute URLs and relative paths
+    hero_img_raw = tour.get('hero_image') or f'images/routes/{tour.get("slug", "")}/hero.jpg'
+
     # Build placeholders
     replacements = {
         '{meta_title}': escape(tour.get('meta_title') or tour.get('name', '')),
@@ -1687,6 +1807,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{tour_name}': escape(tour.get('name', '')),
         '{subtitle}': escape(tour.get('subtitle', '')),
         '{hero_image}': escape(tour.get('hero_image') or f'images/routes/{tour.get("slug", "")}/hero.jpg'),
+        '{hero_image_url}': escape(hero_img_raw) if hero_img_raw.startswith('http') else f'../{escape(hero_img_raw)}',
         '{difficulty_level}': escape(tour.get('difficulty_level', '')),
         '{duration_days}': str(tour.get('duration_days', 0)),
         '{walking_days}': str(tour.get('walking_days') or max(0, (tour.get('duration_days', 0) or 0) - 1)),
@@ -1712,6 +1833,10 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{tour_slug}': escape(tour.get('slug', '')),
         '{faq_section_html}': tour_faq_html,
         '{faq_schema}': tour_faq_schema,
+        '{route_map_json}': route_map_json,
+        '{accommodation_image}': tour.get('accommodation_image') or '',
+        '{accommodation_image_html}': f'<div class="rounded-xl overflow-hidden mb-6"><img src="{escape(tour.get("accommodation_image", ""))}" alt="Accommodation" class="w-full h-auto object-cover rounded-xl" loading="lazy"/></div>' if tour.get('accommodation_image') else '',
+        '{sale_banner_html}': '<div class="bg-primary text-white text-center py-2.5 font-bold text-sm tracking-wide uppercase">Special Offer — Save Now!</div>' if tour.get('sale_price') else '',
         '{booking_data_script}': generate_booking_data_script(
             tour,
             tour_extras_by_tour or {},
@@ -3331,7 +3456,8 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
         html = render_tour_page(translated_tour, translated_dest, translated_related, tour_reviews, faqs, tours_by_id,
                                 tour_extras_by_tour=tour_extras_by_tour or {},
-                                payment_settings=payment_settings or {}, lang=lang)
+                                payment_settings=payment_settings or {}, routes_by_id=routes_by_id,
+                                reviews_by_tour=reviews_by_tour, lang=lang)
 
         if html:
             html = translate_html_ui(html, lang)
@@ -3451,6 +3577,9 @@ def main():
         tour_extras_list = json.load(open(te_path)) if te_path.exists() else []
         gs_path = data_dir / 'global_settings.json'
         global_settings_list = json.load(open(gs_path)) if gs_path.exists() else []
+        # Local mode routes
+        routes_path = data_dir / 'routes.json'
+        routes = json.load(open(routes_path)) if routes_path.exists() else []
     else:
         log("Fetching tours from Supabase...")
         tours = fetch_supabase('tours', '&status=eq.published&order=sort_order')
@@ -3472,6 +3601,9 @@ def main():
 
         log("Fetching global settings from Supabase...")
         global_settings_list = fetch_supabase('global_settings', '')
+
+        log("Fetching routes from Supabase...")
+        routes = fetch_supabase('routes', '&order=sort_order') or []
 
         log("Fetching blog posts from Supabase...")
         posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
@@ -3495,12 +3627,13 @@ def main():
         log("No data fetched. Check Supabase connection and RLS policies.", 'error')
         return
 
-    log(f"Fetched {len(tours)} tours, {len(destinations)} destinations, {len(reviews)} reviews, {len(faqs)} FAQs, {len(regions)} regions, {len(posts)} blog posts")
+    log(f"Fetched {len(tours)} tours, {len(destinations)} destinations, {len(reviews)} reviews, {len(faqs)} FAQs, {len(regions)} regions, {len(routes)} routes, {len(posts)} blog posts")
 
     # Build lookups
     destinations_by_id = {d['id']: d for d in destinations}
     tours_by_id = {t['id']: t for t in tours}
     regions_by_id = {r['id']: r for r in regions}
+    routes_by_id = {r['id']: r for r in routes}
 
     # Build tour extras lookup (by tour_id)
     tour_extras_by_tour = {}
@@ -3558,7 +3691,8 @@ def main():
 
         html = render_tour_page(tour, destination, related, tour_reviews, faqs, tours_by_id,
                                 tour_extras_by_tour=tour_extras_by_tour,
-                                payment_settings=payment_settings, lang='en')
+                                payment_settings=payment_settings, routes_by_id=routes_by_id,
+                                reviews_by_tour=reviews_by_tour, lang='en')
 
         if html:
             output_path = WEBSITE_DIR / 'tours' / f'{slug}.html'
