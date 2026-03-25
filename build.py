@@ -3402,7 +3402,7 @@ def build_static_pages(lang, translations):
 def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts,
                         translations, tours_by_id, destinations_by_id, regions_by_id,
                         reviews_by_tour, reviews_by_dest,
-                        tour_extras_by_tour=None, payment_settings=None):
+                        tour_extras_by_tour=None, payment_settings=None, routes_by_id=None):
     """Build all pages for a specific language."""
     lang_label = 'German' if lang == 'de' else 'Dutch' if lang == 'nl' else lang.upper()
     log(f"\n{'=' * 60}")
@@ -4273,6 +4273,7 @@ def main():
             reviews_by_dest=reviews_by_dest,
             tour_extras_by_tour=tour_extras_by_tour,
             payment_settings=payment_settings,
+            routes_by_id=routes_by_id,
         )
 
         # Build translated static pages (homepage, about, contact, etc.)
