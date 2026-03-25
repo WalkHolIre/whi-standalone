@@ -636,31 +636,200 @@ def translate_html_ui(html, lang):
 
 
 def render_highlights(highlights_text):
-    """Convert highlights text (newline-separated) to HTML cards."""
+    """Convert highlights to POI-style HTML cards (title, description, optional image).
+
+    Supports three data shapes:
+    1. JSON array of objects: [{"title": "...", "description": "...", "image_url": "..."}]
+    2. JSON array of strings: ["highlight text", ...]
+    3. Plain text (newline-separated, optionally with **Title** markdown headers)
+
+    Max 4 highlights rendered in a 2×2 grid.
+    """
     if not highlights_text:
         return ""
 
-    # Handle both JSON array and plain text formats
+    # Parse input
+    highlights = None
     try:
-        highlights = json.loads(highlights_text) if isinstance(highlights_text, str) and highlights_text.startswith('[') else None
+        parsed = json.loads(highlights_text) if isinstance(highlights_text, str) and highlights_text.strip().startswith('[') else None
+        if isinstance(parsed, list):
+            highlights = parsed
     except (json.JSONDecodeError, TypeError):
-        highlights = None
+        pass
 
     if highlights is None:
-        # Split by newlines for plain text
-        highlights = [h.strip().lstrip('- ').lstrip('* ') for h in str(highlights_text).split('\n') if h.strip()]
+        # Plain text: try to parse markdown blocks separated by double newlines
+        # Supports: "**Title**\nDescription", "- **Title:** Description", plain text
+        raw = str(highlights_text)
+        blocks = re.split(r'\n{2,}', raw)
+        highlights = []
+        for block in blocks:
+            block = block.strip()
+            if not block:
+                continue
+            # Strip leading bullet markers with regex (preserves ** markers)
+            block = re.sub(r'^[-•]\s*', '', block)
+            lines = block.split('\n')
+            first_line = lines[0].strip()
+
+            # Pattern 1: "**Title**" as its own line, description on following lines
+            title_only = re.match(r'^\*\*(?:\d+\.\s*)?(.+?)\*\*\s*$', first_line)
+            if title_only and len(lines) > 1:
+                title = title_only.group(1).strip()
+                desc = ' '.join(l.strip() for l in lines[1:] if l.strip())
+                highlights.append({'title': title, 'description': desc})
+                continue
+
+            # Pattern 2: "**Title:** Description text" on one line
+            bold_split = re.match(r'^\*\*(?:\d+\.\s*)?(.+?)\*\*[:\s]*(.+)$', first_line, re.DOTALL)
+            if bold_split:
+                title = bold_split.group(1).strip().rstrip(':')
+                desc = bold_split.group(2).strip()
+                # Append any extra lines
+                if len(lines) > 1:
+                    desc += ' ' + ' '.join(l.strip() for l in lines[1:] if l.strip())
+                highlights.append({'title': title, 'description': desc.strip()})
+                continue
+
+            # Pattern 3: Plain text (no markdown)
+            plain = re.sub(r'\*\*(.+?)\*\*', r'\1', block)
+            if plain.strip():
+                highlights.append(plain.strip())
+
+    # Limit to 4 highlights
+    highlights = highlights[:4]
 
     html = ""
-    for highlight in highlights:
-        if not highlight:
+    for hl in highlights:
+        if not hl:
             continue
-        html += f"""        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
-            <div class="flex items-start gap-3 mb-3">
-                <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
-                <h3 class="font-bold text-lg leading-tight">{escape(str(highlight))}</h3>
+
+        # Normalize: could be a dict (object) or a plain string
+        if isinstance(hl, dict):
+            title = escape(hl.get('title') or hl.get('name', ''))
+            description = escape(hl.get('description', ''))
+            image_url = hl.get('image_url') or hl.get('image', '')
+        else:
+            # Plain string — try to split "**Title:** description" or use as-is
+            s = str(hl).strip().lstrip('- ')
+            bold_match = re.match(r'^\*\*(.+?)\*\*[:\s]*(.*)$', s, re.DOTALL)
+            if bold_match:
+                title = escape(bold_match.group(1).strip().lstrip('0123456789. '))
+                description = escape(bold_match.group(2).strip())
+            else:
+                title = escape(re.sub(r'\*\*(.+?)\*\*', r'\1', s))
+                description = ''
+            image_url = ''
+
+        if not title:
+            continue
+
+        if image_url:
+            # POI-style card with image
+            html += f"""        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-lg transition-all overflow-hidden">
+                <div class="aspect-[16/10] overflow-hidden">
+                    <img src="{escape(image_url)}" alt="{title}" class="w-full h-full object-cover" loading="lazy"/>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-bold text-lg mb-2">{title}</h3>
+                    <p class="text-slate-600 text-sm leading-relaxed">{description}</p>
+                </div>
             </div>
+"""
+        elif description:
+            # Card with title and description but no image
+            html += f"""        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg transition-all">
+                <div class="flex items-start gap-3 mb-3">
+                    <span class="material-symbols-outlined text-primary text-2xl shrink-0 mt-0.5">landscape</span>
+                    <h3 class="font-bold text-lg leading-tight">{title}</h3>
+                </div>
+                <p class="text-slate-600 text-sm leading-relaxed">{description}</p>
+            </div>
+"""
+        else:
+            # Simple text-only card (legacy format)
+            html += f"""        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
+                <div class="flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-2xl">check_circle</span>
+                    <h3 class="font-bold text-lg leading-tight">{title}</h3>
+                </div>
+            </div>
+"""
+    return html
+
+
+def render_gallery(gallery_data):
+    """Render an image gallery grid from a Postgres text[] or JSON array of URLs."""
+    if not gallery_data:
+        return ""
+
+    # Parse various formats
+    urls = []
+    if isinstance(gallery_data, list):
+        urls = gallery_data
+    elif isinstance(gallery_data, str):
+        # Postgres text[] comes as {url1,url2,...}
+        cleaned = gallery_data.strip('{}')
+        if cleaned:
+            urls = [u.strip('"').strip() for u in cleaned.split(',') if u.strip()]
+
+    if not urls:
+        return ""
+
+    html = ""
+    for i, url in enumerate(urls):
+        url = escape(url)
+        html += f"""        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
+            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy"/>
         </div>
 """
+    return html
+
+
+def render_included_excluded(whats_included, whats_not_included):
+    """Render what's included and not included as two side-by-side lists."""
+    def parse_items(text):
+        if not text:
+            return []
+        items = []
+        for line in str(text).split('\n'):
+            line = line.strip()
+            # Strip leading bullet markers
+            line = re.sub(r'^[-•*]+\s*', '', line)
+            # Strip markdown bold markers like "**Title:** text" → "Title: text"
+            line = re.sub(r'\*\*(.+?)\*\*', r'\1', line)
+            line = line.strip()
+            if line:
+                items.append(line)
+        return items
+
+    included = parse_items(whats_included)
+    excluded = parse_items(whats_not_included)
+
+    if not included and not excluded:
+        return ""
+
+    html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-8">'
+
+    if included:
+        html += '\n    <div class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100">'
+        html += '\n        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600">check_circle</span> What\'s Included</h3>'
+        html += '\n        <ul class="space-y-3">'
+        for item in included:
+            html += f'\n            <li class="flex gap-3 text-slate-700 text-sm"><span class="material-symbols-outlined text-emerald-500 text-lg shrink-0">done</span><span>{escape(item)}</span></li>'
+        html += '\n        </ul>'
+        html += '\n    </div>'
+
+    if excluded:
+        html += '\n    <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">'
+        html += '\n        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">block</span> Not Included</h3>'
+        html += '\n        <ul class="space-y-3">'
+        for item in excluded:
+            html += f'\n            <li class="flex gap-3 text-slate-500 text-sm"><span class="material-symbols-outlined text-slate-400 text-lg shrink-0">close</span><span>{escape(item)}</span></li>'
+        html += '\n        </ul>'
+        html += '\n    </div>'
+
+    html += '\n</div>'
     return html
 
 
@@ -1405,7 +1574,54 @@ def render_destination_faq_section(dest_id, faqs, dest_name):
     return html, curated_faqs
 
 
-def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_id):
+def generate_booking_data_script(tour, tour_extras_by_tour, payment_settings, lang='en'):
+    """Generate the <script> tag that injects booking modal data into the page.
+
+    The booking modal (booking-modal.js) reads:
+      - window.__WHI_TOUR: tour info needed for pricing
+      - window.__WHI_EXTRAS: optional add-ons for this tour
+      - window.__WHI_SETTINGS: payment config (deposit %)
+      - window.__WHI_LANG: language code for i18n
+    """
+    tour_id = tour.get('id', '')
+    tour_data = {
+        'id': tour_id,
+        'slug': tour.get('slug', ''),
+        'name': tour.get('name', ''),
+        'price_per_person_eur': float(tour.get('price_per_person_eur', 0) or 0),
+        'duration_days': int(tour.get('duration_days', 0) or 0),
+        'min_walkers': int(tour.get('min_walkers', 1) or 1),
+        'max_walkers': int(tour.get('max_walkers', 10) or 10),
+        'max_extra_days': int(tour.get('max_extra_days', 3) or 3),
+    }
+
+    # Get extras for this tour
+    extras = tour_extras_by_tour.get(tour_id, [])
+    extras_data = []
+    for ex in extras:
+        extras_data.append({
+            'id': ex.get('id', ''),
+            'name': ex.get('name', ''),
+            'description': ex.get('description', ''),
+            'price_eur': float(ex.get('price_eur', 0) or 0),
+            'price_type': ex.get('price_type', 'per_person'),
+            'max_quantity': int(ex.get('max_quantity', 1) or 1),
+        })
+
+    settings_data = {
+        'deposit_percent': payment_settings.get('deposit_percent', 25),
+    }
+
+    return f"""<script>
+window.__WHI_TOUR = {json.dumps(tour_data)};
+window.__WHI_EXTRAS = {json.dumps(extras_data)};
+window.__WHI_SETTINGS = {json.dumps(settings_data)};
+window.__WHI_LANG = "{lang}";
+</script>"""
+
+
+def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_id,
+                     tour_extras_by_tour=None, payment_settings=None, lang='en'):
     """Render a tour page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'tour.html'
 
@@ -1419,6 +1635,9 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
     # Prepare data
     highlights_html = render_highlights(tour.get('highlights'))
     itinerary_html = render_itinerary(tour.get('itinerary'))
+    gallery_html = render_gallery(tour.get('gallery'))
+    included_excluded_html = render_included_excluded(
+        tour.get('whats_included'), tour.get('whats_not_included'))
     best_months_html = render_best_months(tour.get('best_months'))
     reviews_html = render_tour_review_section(reviews, tour, tours_by_id, prefix='../')
     review_schema_html = render_tour_page_schema(tour, reviews)
@@ -1461,6 +1680,8 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{accommodation_description}': get_safe_text(tour, 'accommodation_description') or get_safe_text(tour, 'whats_included'),
         '{whats_included}': get_safe_text(tour, 'whats_included'),
         '{whats_not_included}': get_safe_text(tour, 'whats_not_included'),
+        '{included_excluded_html}': included_excluded_html,
+        '{gallery_html}': gallery_html,
         '{best_months_html}': best_months_html,
         '{reviews_html}': reviews_html,
         '{review_schema}': review_schema_html,
@@ -1470,6 +1691,12 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{tour_slug}': escape(tour.get('slug', '')),
         '{faq_section_html}': tour_faq_html,
         '{faq_schema}': tour_faq_schema,
+        '{booking_data_script}': generate_booking_data_script(
+            tour,
+            tour_extras_by_tour or {},
+            payment_settings or {},
+            lang
+        ),
     }
 
     # Apply replacements
@@ -3019,7 +3246,8 @@ def build_static_pages(lang, translations):
 
 def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts,
                         translations, tours_by_id, destinations_by_id, regions_by_id,
-                        reviews_by_tour, reviews_by_dest):
+                        reviews_by_tour, reviews_by_dest,
+                        tour_extras_by_tour=None, payment_settings=None):
     """Build all pages for a specific language."""
     lang_label = 'German' if lang == 'de' else 'Dutch' if lang == 'nl' else lang.upper()
     log(f"\n{'=' * 60}")
@@ -3071,7 +3299,9 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                    and (lang == 'en' or t_item.get('id') in tour_translations)]
         translated_related = [apply_tour_translation(rt, tour_translations.get(rt.get('id'))) for rt in related]
 
-        html = render_tour_page(translated_tour, translated_dest, translated_related, tour_reviews, faqs, tours_by_id)
+        html = render_tour_page(translated_tour, translated_dest, translated_related, tour_reviews, faqs, tours_by_id,
+                                tour_extras_by_tour=tour_extras_by_tour or {},
+                                payment_settings=payment_settings or {}, lang=lang)
 
         if html:
             html = translate_html_ui(html, lang)
@@ -3186,6 +3416,11 @@ def main():
                 posts = json.load(f)
         else:
             posts = []
+        # Local mode tour extras and global settings
+        te_path = data_dir / 'tour_extras.json'
+        tour_extras_list = json.load(open(te_path)) if te_path.exists() else []
+        gs_path = data_dir / 'global_settings.json'
+        global_settings_list = json.load(open(gs_path)) if gs_path.exists() else []
     else:
         log("Fetching tours from Supabase...")
         tours = fetch_supabase('tours', '&status=eq.published&order=sort_order')
@@ -3201,6 +3436,12 @@ def main():
 
         log("Fetching regions from Supabase...")
         regions = fetch_supabase('regions', '&order=sort_order')
+
+        log("Fetching tour extras from Supabase...")
+        tour_extras_list = fetch_supabase('tour_extras', '&is_active=eq.true&order=sort_order')
+
+        log("Fetching global settings from Supabase...")
+        global_settings_list = fetch_supabase('global_settings', '')
 
         log("Fetching blog posts from Supabase...")
         posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
@@ -3230,6 +3471,24 @@ def main():
     destinations_by_id = {d['id']: d for d in destinations}
     tours_by_id = {t['id']: t for t in tours}
     regions_by_id = {r['id']: r for r in regions}
+
+    # Build tour extras lookup (by tour_id)
+    tour_extras_by_tour = {}
+    for ex in (tour_extras_list or []):
+        tid = ex.get('tour_id')
+        if tid:
+            tour_extras_by_tour.setdefault(tid, []).append(ex)
+    log(f"Tour extras: {sum(len(v) for v in tour_extras_by_tour.values())} extras across {len(tour_extras_by_tour)} tours")
+
+    # Extract payment settings from global_settings
+    payment_settings = {'deposit_percent': 25}  # default
+    for gs in (global_settings_list or []):
+        if gs.get('setting_key') == 'payment_config':
+            pc = gs.get('setting_json', {})
+            if isinstance(pc, dict):
+                payment_settings['deposit_percent'] = pc.get('deposit_percent', 25)
+            break
+    log(f"Payment settings: deposit = {payment_settings['deposit_percent']}%")
 
     # Group reviews by tour_id
     reviews_by_tour = {}
@@ -3267,7 +3526,9 @@ def main():
         # Get related tours (same destination, different tour)
         related = [t for t in tours if t.get('destination_id') == dest_id and t.get('id') != tour_id]
 
-        html = render_tour_page(tour, destination, related, tour_reviews, faqs, tours_by_id)
+        html = render_tour_page(tour, destination, related, tour_reviews, faqs, tours_by_id,
+                                tour_extras_by_tour=tour_extras_by_tour,
+                                payment_settings=payment_settings, lang='en')
 
         if html:
             output_path = WEBSITE_DIR / 'tours' / f'{slug}.html'
@@ -3846,6 +4107,8 @@ def main():
             regions_by_id=regions_by_id,
             reviews_by_tour=reviews_by_tour,
             reviews_by_dest=reviews_by_dest,
+            tour_extras_by_tour=tour_extras_by_tour,
+            payment_settings=payment_settings,
         )
 
         # Build translated static pages (homepage, about, contact, etc.)

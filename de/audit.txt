@@ -1,0 +1,26 @@
+ISSUES FOUND:
+
+1. MAIN NAVIGATION LABELS (Desktop nav):
+   - Line 718: "Walking Holidays" should be "Wanderurlaub"
+   - Line 733: "How It Works" should be "So funktioniert es"
+   - Line 742: "Get in Touch" should be "Kontakt"
+
+2. INTERNAL LINKS (should have /de/ prefix):
+   - Line 718: href="/destinations.html" should be href="/de/destinations.html"
+   - Line 720-726: walking-area-*.html missing /de/ prefix
+   - Line 728: href="/tailor-made.html" should be href="/de/tailor-made.html"
+   - Line 733: href="/how-it-works.html" should be href="/de/how-it-works.html"
+   - Line 735: href="/how-it-works.html" should be href="/de/how-it-works.html"
+   - Line 736: href="/tour-grading.html" should be href="/de/tour-grading.html"
+   - Line 739: href="/about.html" should be href="/de/about.html"
+   - Line 740: href="blog.html" should be href="/de/blog.html"
+   - Line 741: href="/contact.html" should be href="/de/contact.html"
+   - Line 750: href="/destinations.html" should be href="/de/destinations.html"
+   - Line 751: href="/how-it-works.html" should be href="/de/how-it-works.html"
+   - Line 752: href="/about.html" should be href="/de/about.html"
+   - Line 753: href="blog.html" should be href="/de/blog.html"
+   - Line 754: href="/contact.html" should be href="/de/contact.html"
+   - Line 763: href="/tours.html" should be href="/de/tours.html"
+   - Line 776: action="tours.html" should be action="/de/tours.html"
+   - Line 807: href="/tours.html" should be href="/de/tours.html"
+
