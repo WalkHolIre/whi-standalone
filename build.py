@@ -3603,7 +3603,7 @@ def main():
         global_settings_list = fetch_supabase('global_settings', '')
 
         log("Fetching routes from Supabase...")
-        routes = fetch_supabase('routes', '&order=sort_order') or []
+        routes = fetch_supabase('routes', '&order=name') or []
 
         log("Fetching blog posts from Supabase...")
         posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
