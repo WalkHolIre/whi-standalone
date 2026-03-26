@@ -2313,6 +2313,9 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
     if all_dest_reviews is None:
         all_dest_reviews = []
 
+    # Image prefix: when prefix='' we're in tours/ subdir, so need ../ to reach root images
+    img_prefix = '../' if prefix == '' else ''
+
     # Region mappings — must match JS regionLabelMap and regionPageMap
     region_label_map = {
         'Dingle Peninsula': 'Wild Atlantic Way',
@@ -2350,7 +2353,7 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
         filled = get_boot_count(diff)
         boots = ''
         for i in range(3):
-            src = 'images/icons/boot-filled.svg' if i < filled else 'images/icons/boot-outline.svg'
+            src = f'{img_prefix}images/icons/boot-filled.svg' if i < filled else f'{img_prefix}images/icons/boot-outline.svg'
             boots += f'<img src="{src}" alt="" width="34" height="34" style="display:inline-block;margin-right:-2px;">'
         return boots
 
@@ -2405,7 +2408,7 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
         region_link = ''
         if region_label:
             if region_page:
-                region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold hover:underline" style="color:#3F0F87;" onclick="event.stopPropagation();event.preventDefault();window.location.href=\'{region_page}\';"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
+                region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold hover:underline" style="color:#3F0F87;" onclick="event.stopPropagation();event.preventDefault();window.location.href=\'{img_prefix}{region_page}\';"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
             else:
                 region_link = f'<span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:#3F0F87;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>'
 
@@ -2427,7 +2430,7 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
         stats = []
         stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
         if km_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><img src="images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;"><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><img src="{img_prefix}images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;"><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if descent_per_day:
@@ -2437,13 +2440,13 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
 
         html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="{escape(region_name)}" data-difficulty="{escape(difficulty)}" data-days="{days}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
+                    <img src="{img_prefix}images/routes/{slug}/card.jpg" srcset="{img_prefix}images/routes/{slug}/card-400w.jpg 400w, {img_prefix}images/routes/{slug}/card-800w.jpg 800w, {img_prefix}images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
                     <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
-                        <a href="price-promise.html" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
+                        <a href="{img_prefix}price-promise.html" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between flex-grow p-4 pb-2">
