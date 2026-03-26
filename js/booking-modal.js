@@ -1015,14 +1015,25 @@ function renderStep3() {
     <div id="bm-terms-error" style="display: none; color: #ef4444; font-size: 13px; margin-top: 8px; padding: 0 4px;">${t('termsRequired')}</div>
   `;
 
+  // Spinner HTML for loading state
+  const spinnerSvg = '<svg style="width:20px;height:20px;animation:bm-spin 1s linear infinite;" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="3" opacity="0.25"/><path d="M12 2a10 10 0 019.95 9" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>';
+  const submittingStyle = 'opacity: 0.6; pointer-events: none; cursor: wait;';
+
   // Build payment buttons based on selected option
   let paymentButtonsHtml = '';
   if (bookingState.paymentOption === 'enquiry') {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn bm-btn-primary" onclick="window.submitBooking()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; background: #F17E00; color: white; font-size: 16px; font-weight: 600; cursor: pointer;">
-          ${t('requestBooking')}
+        <button class="bm-btn bm-btn-primary" onclick="window.submitBooking()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; background: #F17E00; color: white; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; ${bookingState.isSubmitting ? submittingStyle : ''}" ${bookingState.isSubmitting ? 'disabled' : ''}>
+          ${bookingState.isSubmitting ? spinnerSvg + ' ' + t('processing') : t('requestBooking')}
         </button>
+      </div>
+    `;
+  } else if (bookingState.isSubmitting) {
+    paymentButtonsHtml = `
+      <div class="bm-form-group" style="margin-top: 24px; text-align: center; padding: 20px;">
+        ${spinnerSvg.replace('width:20px;height:20px;', 'width:32px;height:32px;color:#F17E00;')}
+        <p style="margin-top: 12px; color: #6b7280; font-size: 14px;">${t('processing')}</p>
       </div>
     `;
   } else {
@@ -1396,12 +1407,14 @@ window.setMailingList = function (checked) {
 };
 
 window.setPaymentMethodAndSubmit = function (method) {
+  if (bookingState.isSubmitting) return; // prevent double-click
   if (!bookingState.termsAccepted) {
     alert(t('termsRequired'));
     return;
   }
   bookingState.paymentMethod = method;
-  renderStep3();
+  bookingState.isSubmitting = true;
+  renderStep3(); // re-render shows spinner/disabled state
   window.submitBooking();
 };
 
