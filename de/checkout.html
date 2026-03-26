@@ -455,7 +455,7 @@
                             <input type="checkbox" id="dailyLunch" data-price="15">
                             <div class="checkbox-label">
                                 <span class="label-main">Tägliches Lunchpaket</span>
-                                <span class="label-sub">€15 pro Person pro Tag</span>
+                                <span class="label-sub">€15 pro Person pro Wandertag</span>
                             </div>
                         </div>
                         <div class="checkbox-wrapper">
@@ -870,7 +870,8 @@
             }
 
             if (dailyLunch.checked) {
-                const lunchCost = 15 * walkerCount * currentTour.days;
+                const walkingDays = (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1));
+                const lunchCost = 15 * walkerCount * walkingDays;
                 extrasTotal += lunchCost;
                 currentExtras.push(`Tägliches Lunchpaket (€${lunchCost})`);
             }
