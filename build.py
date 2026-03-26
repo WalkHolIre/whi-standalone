@@ -3656,6 +3656,14 @@ def main():
             break
     log(f"Payment settings: deposit = {payment_settings['deposit_percent']}%")
 
+    # Extract company config from global_settings
+    company_config = {}
+    for gs in (global_settings_list or []):
+        if gs.get('setting_key') == 'company_config':
+            company_config = gs.get('setting_json', {})
+            break
+    log(f"Company config loaded: {bool(company_config)}")
+
     # Group reviews by tour_id
     reviews_by_tour = {}
     for review in reviews:
@@ -4356,6 +4364,101 @@ def main():
         with open(manifest_path, 'w') as f:
             json.dump(manifest, f, indent=2)
         log(f"Manifest written to: {manifest_path}")
+
+    # ── Post-processing: replace hardcoded contact info with DB values ──
+    if company_config and not DRY_RUN:
+        log("\n" + "=" * 60)
+        log("Post-processing: applying company config to generated files...")
+        log("=" * 60)
+        apply_company_config(WEBSITE_DIR, company_config)
+
+
+def apply_company_config(website_dir, config):
+    """Replace hardcoded contact info in all generated HTML/JS files with values from company_config."""
+    import re
+
+    phones = config.get('phone_numbers', {})
+    social = config.get('social_media', {})
+    email = config.get('company_email', '')
+    address = config.get('company_address', '')
+
+    # Build replacement map: old hardcoded value -> new DB value
+    replacements = {}
+
+    # ── Phone numbers ──
+    landline = phones.get('landline', '')
+    mobile = phones.get('mobile', '')
+    whatsapp = phones.get('whatsapp', '')
+
+    # Format WhatsApp number for wa.me link (strip spaces, ensure no +)
+    wa_number = re.sub(r'[^0-9]', '', whatsapp) if whatsapp else ''
+
+    if landline:
+        # Hardcoded landline in various formats
+        landline_digits = re.sub(r'[^0-9]', '', landline)
+        replacements['+353 42 937 5983'] = landline
+        replacements['+353 (0) 42 937 5983'] = landline
+        replacements['+353429375983'] = '+' + landline_digits if landline_digits else '+353429375983'
+        replacements['tel:+353429375983'] = 'tel:+' + landline_digits if landline_digits else 'tel:+353429375983'
+        # Alternate number in FAQ data
+        replacements['+353 42 932 3396'] = landline
+
+    if mobile:
+        # Hardcoded mobile/personal number in contact.html
+        mobile_digits = re.sub(r'[^0-9]', '', mobile)
+        replacements['+353 86 123 4567'] = mobile
+        replacements['+353861234567'] = '+' + mobile_digits if mobile_digits else '+353861234567'
+        replacements['tel:+353861234567'] = 'tel:+' + mobile_digits if mobile_digits else 'tel:+353861234567'
+
+    if wa_number:
+        replacements['https://wa.me/353429375983'] = f'https://wa.me/{wa_number}'
+        # Also replace personal WhatsApp placeholder in contact.html
+        replacements['https://wa.me/353861234567'] = f'https://wa.me/{wa_number}'
+
+    # ── Email ──
+    if email:
+        replacements['info@walkingholidayireland.com'] = email
+
+    # ── Social media ──
+    social_map = {
+        'facebook': 'https://www.facebook.com/walkingholidayireland',
+        'instagram': 'https://www.instagram.com/walkingholidayireland',
+        'youtube': 'https://www.youtube.com/@walkingholidayireland',
+    }
+    for key, old_url in social_map.items():
+        new_url = social.get(key, '')
+        if new_url:
+            replacements[old_url] = new_url
+
+    if not replacements:
+        log("No contact replacements to apply (company_config may not have phone/social data yet)")
+        return
+
+    log(f"Applying {len(replacements)} contact info replacements...")
+    for old_val, new_val in replacements.items():
+        log(f"  {old_val[:40]:40s} -> {new_val[:40]}")
+
+    # Walk all HTML and JS files
+    file_count = 0
+    change_count = 0
+    for ext in ('*.html', '*.js'):
+        for filepath in website_dir.rglob(ext):
+            # Skip template files and data files
+            if '/_templates/' in str(filepath) or '/_data/' in str(filepath):
+                continue
+            try:
+                content = filepath.read_text(encoding='utf-8')
+                original = content
+                for old_val, new_val in replacements.items():
+                    content = content.replace(old_val, new_val)
+                if content != original:
+                    filepath.write_text(content, encoding='utf-8')
+                    change_count += 1
+                file_count += 1
+            except Exception as e:
+                log(f"  Warning: could not process {filepath}: {e}", 'warn')
+
+    log(f"Scanned {file_count} files, updated {change_count} with new contact info")
 
 
 if __name__ == '__main__':
