@@ -1641,12 +1641,16 @@ def generate_booking_data_script(tour, tour_extras_by_tour, payment_settings, la
       - window.__WHI_LANG: language code for i18n
     """
     tour_id = tour.get('id', '')
+    duration = int(tour.get('duration_days', 0) or 0)
+    walking = tour.get('walking_days')
     tour_data = {
         'id': tour_id,
         'slug': tour.get('slug', ''),
         'name': tour.get('name', ''),
         'price_per_person_eur': float(tour.get('price_per_person_eur', 0) or 0),
-        'duration_days': int(tour.get('duration_days', 0) or 0),
+        'duration_days': duration,
+        'walking_days': int(walking) if walking else max(0, duration - 1),
+        'extra_day_price_eur': float(tour.get('extra_day_price_eur', 0) or 0),
         'min_walkers': int(tour.get('min_walkers', 1) or 1),
         'max_walkers': int(tour.get('max_walkers', 10) or 10),
         'max_extra_days': int(tour.get('max_extra_days', 3) or 3),

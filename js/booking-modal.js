@@ -67,7 +67,7 @@ const I18N = {
     fullPaymentRequired: 'Full payment required',
 
     // Payment
-    payByCard: 'Pay by Card',
+    payByCard: 'Pay Securely',
     requestBooking: 'Request Booking',
     requestBookingSubtitle: 'No payment now — we\'ll confirm availability',
     payDeposit: 'Pay Deposit',
@@ -196,7 +196,7 @@ const I18N = {
     fullPaymentRequired: 'Vollzahlung erforderlich',
 
     // Payment
-    payByCard: 'Mit Karte bezahlen',
+    payByCard: 'Sicher bezahlen',
     requestBooking: 'Buchung anfragen',
     requestBookingSubtitle: 'Jetzt keine Zahlung – wir bestätigen die Verfügbarkeit',
     payDeposit: 'Anzahlung leisten',
@@ -325,7 +325,7 @@ const I18N = {
     fullPaymentRequired: 'Volledige betaling vereist',
 
     // Payment
-    payByCard: 'Betaal met kaart',
+    payByCard: 'Veilig betalen',
     requestBooking: 'Boeking aanvragen',
     requestBookingSubtitle: 'Nu geen betaling – we bevestigen de beschikbaarheid',
     payDeposit: 'Aanbetaling doen',
@@ -897,6 +897,7 @@ function renderStep2() {
         <div class="bm-form-group">
           <label class="bm-label" for="bm-lead-email">${t('email')} <span style="color: #ef4444;">*</span></label>
           <input type="email" id="bm-lead-email" class="bm-input"
+                 placeholder="johndoe@email.com"
                  value="${escapeHtml(bookingState.leadTraveller.email)}"
                  onchange="window.setLeadTraveller('email', this.value)">
         </div>
@@ -1039,16 +1040,25 @@ function renderStep3() {
   } else {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <svg viewBox="0 0 24 24" style="height:20px;width:20px;" fill="none"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" fill="#635BFF"/></svg>
-          <span>${t('payByCard')}</span>
-          <span style="margin-left: auto; display: flex; gap: 4px; align-items: center;">
-            <svg viewBox="0 0 48 32" style="height:20px;" fill="none"><rect width="48" height="32" rx="4" fill="#1A1F71"/><path d="M18.5 21.5l2.1-13h3.4l-2.1 13h-3.4zm14-13l-3.2 9-1.3-6.6-.4-2c-.2-.5-.7-.5-1.3-.5h-5.3l-.1.3c1.3.3 2.7.8 3.5 1.3l3 11.5h3.5l5.3-13h-3.7zm-20.4 0l-3.4 8.9-.4-1.9c-.7-2.3-2.8-4.8-5.2-6l3 11h3.5l5.3-13h-2.8z" fill="white"/><path d="M10.3 8.5c-.3-1.1-1.2-1.4-2.3-1.5H2.1L2 7.3c4 1 6.6 3.5 7.7 6.4l-1.1-5.2c-.2-.8-.8-1-1.3-1z" fill="#F7B600"/></svg>
-            <svg viewBox="0 0 48 32" style="height:20px;" fill="none"><rect width="48" height="32" rx="4" fill="#252525"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="29" cy="16" r="10" fill="#F79E1B"/><path d="M24 8.8a10 10 0 000 14.4 10 10 0 000-14.4z" fill="#FF5F00"/></svg>
-          </span>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer;">
+          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <svg viewBox="0 0 60 25" style="height:22px;" fill="none"><path d="M5 0h50a5 5 0 015 5v15a5 5 0 01-5 5H5a5 5 0 01-5-5V5a5 5 0 015-5z" fill="#635BFF"/><path d="M28.3 10.1c0-1.6 1.3-2.2 2.3-2.2 1.1 0 2 .4 2.7.9l.8-1.8c-.8-.5-2-1-3.4-1-2.8 0-4.7 1.5-4.7 3.9 0 3.8 5.2 3.2 5.2 4.8 0 .7-.6 1.1-1.5 1.1-1.3 0-2.5-.5-3.2-1.2l-.8 1.9c.9.7 2.3 1.2 3.8 1.2 2.9 0 4.9-1.4 4.9-4 0-4.1-5.1-3.4-5.1-4.6zm-9.5-3l-1.5 0 .1-.5c.1-.7.6-1.1 1.3-1.1.4 0 .6.1.8.2l.5-1.8c-.3-.1-.7-.2-1.3-.2-2.1 0-3.5 1.2-3.8 3.4h-1l-.3 1.6h1l-1.2 7.1h2.2l1.2-7.1h1.5l.3-1.6zm7.9 0h-2l-2.7 8.7h2.1l.6-2h2.9l.3 2h2l-1.7-8.7h-1.5zm-.4 5.1l1-3.3.6 3.3h-1.6zm17.1-5.1h-2.2l-3.9 8.7h2.2l.7-1.7h3.5l.4 1.7h2.1l-2.8-8.7zm-2.5 5.5l1.5-3.8.8 3.8h-2.3z" fill="white" opacity=".9"/></svg>
+              <span style="font-size: 16px; font-weight: 600;">${t('payByCard')}</span>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#1A1F71;border-radius:4px;padding:2px 6px;height:22px;"><svg viewBox="0 0 48 16" style="height:12px;" fill="none"><path d="M17.5 13.5l2.1-11h2.8l-2.1 11h-2.8zm11.5-11l-2.6 7.5-1.1-5.5-.3-1.6c-.2-.4-.6-.4-1.1-.4H20l-.1.2c1.1.2 2.2.7 2.9 1.1l2.5 9.7h2.9l4.4-11h-3.1zm-16.9 0L9.3 10l-.3-1.6C8.3 6.3 6.6 4.2 4.6 3l2.5 9.3h2.9l4.4-11h-2.3z" fill="white"/><path d="M8.5 2.5c-.2-.9-1-1.2-1.9-1.2H1.8L1.7 1.5c3.3.8 5.5 2.9 6.4 5.3l-.9-4.3c-.2-.7-.7-.9-1.1-.8z" fill="#F7B600"/></svg></span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#252525;border-radius:4px;padding:2px 6px;height:22px;"><svg viewBox="0 0 36 16" style="height:12px;" fill="none"><circle cx="14" cy="8" r="7" fill="#EB001B"/><circle cx="22" cy="8" r="7" fill="#F79E1B"/><path d="M18 2.5a7 7 0 000 11 7 7 0 000-11z" fill="#FF5F00"/></svg></span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#cc2277;letter-spacing:-0.3px;">iDEAL</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#005B99;">Bancontact</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#FFB3C7;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#17120F;">Klarna</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:600;color:#333;">SEPA</span>
+            <span style="display:inline-flex;align-items:center;justify-content:center;background:#000;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:600;color:#fff;letter-spacing:-0.3px;"> Pay</span>
+          </div>
         </button>
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <svg viewBox="0 0 101 32" style="height:22px;" fill="none"><path d="M12.2 4.3h8.1c2.7 0 5.5.2 7.2 2.3 1 1.2 1.4 2.9 1.2 4.7-.7 5-3.8 7.8-8.8 7.8h-2.3c-.7 0-1.2.5-1.3 1.1L15.1 27c-.1.5-.5.8-1 .8H9.8c-.5 0-.9-.5-.8-1l3-21.5c.1-.6.6-1 1.2-1z" fill="#003087"/><path d="M38.5 4.3h8.1c2.7 0 5.5.2 7.2 2.3 1 1.2 1.4 2.9 1.2 4.7-.7 5-3.8 7.8-8.8 7.8h-2.3c-.7 0-1.2.5-1.3 1.1l-1.2 6.8c-.1.5-.5.8-1 .8h-3.6c-.5 0-.9-.5-.8-1l3-21.5c.1-.6.6-1 1.2-1z" fill="#0070E0"/><path d="M70.3 8.6c.3-1.6-.1-2.7-.9-3.7C68.3 3.6 66.2 3 63.4 3h-8.8c-.7 0-1.3.5-1.4 1.2L49.7 27c-.1.5.3 1 .8 1h5.8l1.5-9.3c.1-.6.7-1.2 1.4-1.2h2.9c5.7 0 10.1-2.3 11.4-9 .5-2.8.2-5-.8-6.6z" fill="#003087"/><path d="M70.3 8.6c-.6 3.4-2.5 5.8-5.3 7.2-1.4.7-3.1 1-5 1h-3.5l-1.4 8.9c-.1.5-.5.8-1 .8h-4.3c-.5 0-.9-.5-.8-1l.2-1.4 1.3-8.3.1-.4c.1-.6.7-1.2 1.4-1.2h2.9c5.7 0 10.1-2.3 11.4-9 .5-2.8.2-5-.8-6.6.9.8 1.5 1.8 1.8 3.1 .3 1 .4 2.2.2 3.5l-1.2 7.6z" fill="#0070E0"/></svg>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
+          <svg viewBox="0 0 100 26" style="height:24px;" fill="none"><path d="M37.8 5.1h-4.5c-.3 0-.6.2-.6.5l-1.8 11.6c0 .3.2.5.4.5h2.2c.3 0 .6-.2.6-.5l.5-3.3c0-.3.3-.5.6-.5h1.5c3 0 4.8-1.5 5.2-4.4.2-1.3 0-2.3-.5-3-.6-.8-1.7-1.2-3.3-1.2zm.5 4.3c-.3 1.6-1.5 1.6-2.7 1.6h-.7l.5-3.1c0-.2.2-.3.4-.3h.3c.8 0 1.6 0 2 .5.2.3.3.7.2 1.3z" fill="#253B80"/><path d="M55.6 9.3h-2.2c-.2 0-.3.1-.4.3l-.1.6-.1-.2c-.4-.6-1.3-.8-2.2-.8-2.1 0-3.8 1.6-4.2 3.8-.2 1.1.1 2.2.7 2.9.6.7 1.4 1 2.3 1 1.7 0 2.6-1.1 2.6-1.1l-.1.5c0 .3.2.5.4.5h2c.3 0 .6-.2.6-.5l1.2-7.5c0-.2-.2-.5-.5-.5zm-2.6 3.7c-.2 1.1-1 1.8-2.1 1.8-.6 0-1-.2-1.3-.5-.3-.3-.4-.8-.3-1.3.2-1.1 1-1.9 2.1-1.9.5 0 1 .2 1.3.5.3.4.4.8.3 1.4z" fill="#253B80"/><path d="M67.5 9.3h-2.2c-.2 0-.4.1-.5.3l-2.9 4.3-1.2-4.1c-.1-.3-.4-.5-.7-.5H58c-.3 0-.5.3-.4.6l2.3 6.8-2.2 3.1c-.2.3 0 .7.4.7h2.2c.2 0 .4-.1.5-.3l7-10.2c.2-.3 0-.7-.3-.7z" fill="#253B80"/><path d="M74.4 5.1h-4.5c-.3 0-.6.2-.6.5l-1.8 11.6c0 .3.2.5.4.5h2.3c.2 0 .4-.2.5-.4l.5-3.3c0-.3.3-.5.6-.5h1.5c3 0 4.8-1.5 5.2-4.4.2-1.3 0-2.3-.5-3-.7-.8-1.7-1.2-3.3-1.2zm.5 4.3c-.3 1.6-1.5 1.6-2.7 1.6H72l.5-3.1c0-.2.2-.3.4-.3h.3c.8 0 1.6 0 2 .5.3.3.3.7.2 1.3z" fill="#179BD7"/><path d="M92.2 9.3H90c-.2 0-.3.1-.4.3l-.1.6-.1-.2c-.4-.6-1.3-.8-2.2-.8-2.1 0-3.8 1.6-4.2 3.8-.2 1.1.1 2.2.7 2.9.6.7 1.4 1 2.3 1 1.7 0 2.6-1.1 2.6-1.1l-.1.5c0 .3.2.5.4.5h2c.3 0 .6-.2.6-.5l1.2-7.5c0-.2-.2-.5-.5-.5zm-2.6 3.7c-.2 1.1-1 1.8-2.1 1.8-.6 0-1-.2-1.3-.5-.3-.3-.4-.8-.3-1.3.2-1.1 1-1.9 2.1-1.9.5 0 1 .2 1.3.5.3.4.4.8.3 1.4z" fill="#179BD7"/><path d="M94 5.4l-1.9 11.8c0 .3.2.5.4.5h1.9c.3 0 .6-.2.6-.5L97 5.6c0-.3-.2-.5-.4-.5H95c-.4 0-.8.1-1 .3z" fill="#179BD7"/></svg>
         </button>
       </div>
     `;
