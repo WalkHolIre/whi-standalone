@@ -95,10 +95,21 @@ const I18N = {
     whatsapp: 'WhatsApp: +353 42 932 3396',
     phone: 'Phone: +353 42 932 3396',
 
-    // Bedroom assignment
+    // Room assignment
     bedroomAssignment: 'Bedroom Assignment',
     bedroomAssignmentHint: 'Please tell us your preferred room configuration',
     bedroomPlaceholder: 'e.g. 1 double room, or 2 single rooms, or 1 twin room...',
+    roomType: 'Room Type',
+    roomSingle: 'Single',
+    roomDouble: 'Double',
+    roomTriple: 'Triple',
+    roomFamily: 'Family',
+
+    // T&Cs and mailing
+    termsAccept: 'I accept the',
+    termsLink: 'Terms & Conditions',
+    mailingListOptIn: 'Keep me updated with offers and walking tips',
+    termsRequired: 'Please accept the Terms & Conditions to continue',
 
     // Payment options
     howToProceed: 'How would you like to proceed?',
@@ -213,10 +224,21 @@ const I18N = {
     whatsapp: 'WhatsApp: +353 42 932 3396',
     phone: 'Telefon: +353 42 932 3396',
 
-    // Bedroom assignment
+    // Room assignment
     bedroomAssignment: 'Zimmerzuweisung',
     bedroomAssignmentHint: 'Bitte teilen Sie uns Ihre bevorzugte Zimmerkonfiguration mit',
     bedroomPlaceholder: 'z.B. 1 Doppelzimmer, oder 2 Einzelzimmer, oder 1 Zweibettzimmer...',
+    roomType: 'Zimmertyp',
+    roomSingle: 'Einzel',
+    roomDouble: 'Doppel',
+    roomTriple: 'Dreibett',
+    roomFamily: 'Familie',
+
+    // T&Cs and mailing
+    termsAccept: 'Ich akzeptiere die',
+    termsLink: 'AGB',
+    mailingListOptIn: 'Haltet mich über Angebote und Wandertipps auf dem Laufenden',
+    termsRequired: 'Bitte akzeptieren Sie die AGB um fortzufahren',
 
     // Payment options
     howToProceed: 'Wie möchten Sie vorgehen?',
@@ -331,10 +353,21 @@ const I18N = {
     whatsapp: 'WhatsApp: +353 42 932 3396',
     phone: 'Telefoon: +353 42 932 3396',
 
-    // Bedroom assignment
+    // Room assignment
     bedroomAssignment: 'Kamertoewijzing',
     bedroomAssignmentHint: 'Geef uw voorkeurskamerconfiguratie aan',
     bedroomPlaceholder: 'bijv. 1 tweepersoonskamer, of 2 eenpersoonskamers, of 1 tweepersoonskamer...',
+    roomType: 'Kamertype',
+    roomSingle: 'Enkel',
+    roomDouble: 'Dubbel',
+    roomTriple: 'Driepersoons',
+    roomFamily: 'Familie',
+
+    // T&Cs and mailing
+    termsAccept: 'Ik accepteer de',
+    termsLink: 'Algemene voorwaarden',
+    mailingListOptIn: 'Houd mij op de hoogte van aanbiedingen en wandeltips',
+    termsRequired: 'Accepteer de Algemene Voorwaarden om door te gaan',
 
     // Payment options
     howToProceed: 'Hoe wilt u verder gaan?',
@@ -394,6 +427,7 @@ let bookingState = {
     phone: '',
     country: '',
     dietary: '',
+    room: 'double',
   },
   additionalTravellers: [],
   specialRequests: '',
@@ -404,6 +438,8 @@ let bookingState = {
   paymentMethod: 'stripe', // 'stripe' | 'enquiry'
   payFull: false,
   isSubmitting: false,
+  termsAccepted: false,
+  mailingList: false,
 };
 
 // ============================================================================
@@ -770,12 +806,33 @@ function renderStep2() {
 
   const content = document.getElementById('bm-content');
 
+  const roomTypes = [
+    { id: 'single', icon: '\ud83d\udecf\ufe0f', label: t('roomSingle') },
+    { id: 'double', icon: '\ud83d\udecf\ufe0f\ud83d\udecf\ufe0f', label: t('roomDouble') },
+    { id: 'triple', icon: '\ud83d\udecf\ufe0f+\ud83d\udecf\ufe0f', label: t('roomTriple') },
+    { id: 'family', icon: '\ud83d\udecf\ufe0f\ud83d\udecf\ufe0f+\ud83d\udecf\ufe0f', label: t('roomFamily') },
+  ];
+
+  function roomSelector(currentRoom, onchangeFn) {
+    return `<div class="bm-form-group">
+      <label class="bm-label">${t('roomType')}</label>
+      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+        ${roomTypes.map(r => `<button type="button" onclick="${onchangeFn}('${r.id}')"
+          style="flex: 1; min-width: 70px; padding: 8px 4px; border: 2px solid ${currentRoom === r.id ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: ${currentRoom === r.id ? '#fff7ed' : 'white'}; cursor: pointer; text-align: center; transition: all 0.2s;">
+          <div style="font-size: 14px;">${r.icon}</div>
+          <div style="font-size: 11px; font-weight: ${currentRoom === r.id ? '700' : '500'}; color: ${currentRoom === r.id ? '#F17E00' : '#6b7280'}; margin-top: 2px;">${r.label}</div>
+        </button>`).join('')}
+      </div>
+    </div>`;
+  }
+
   let additionalTravellersHtml = '';
   for (let i = 1; i < bookingState.walkers; i++) {
     const traveller = bookingState.additionalTravellers[i - 1] || {
       firstName: '',
       lastName: '',
       dietary: '',
+      room: 'double',
     };
 
     additionalTravellersHtml += `
@@ -786,18 +843,21 @@ function renderStep2() {
             ${t('remove')}
           </button>
         </div>
-        <div class="bm-form-group">
-          <label class="bm-label" for="bm-traveller-${i}-fn">${t('firstName')}</label>
-          <input type="text" id="bm-traveller-${i}-fn" class="bm-input"
-                 value="${escapeHtml(traveller.firstName)}"
-                 onchange="window.setTravellerField(${i}, 'firstName', this.value)">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="bm-form-group">
+            <label class="bm-label" for="bm-traveller-${i}-fn">${t('firstName')}</label>
+            <input type="text" id="bm-traveller-${i}-fn" class="bm-input"
+                   value="${escapeHtml(traveller.firstName)}"
+                   onchange="window.setTravellerField(${i}, 'firstName', this.value)">
+          </div>
+          <div class="bm-form-group">
+            <label class="bm-label" for="bm-traveller-${i}-ln">${t('lastName')}</label>
+            <input type="text" id="bm-traveller-${i}-ln" class="bm-input"
+                   value="${escapeHtml(traveller.lastName)}"
+                   onchange="window.setTravellerField(${i}, 'lastName', this.value)">
+          </div>
         </div>
-        <div class="bm-form-group">
-          <label class="bm-label" for="bm-traveller-${i}-ln">${t('lastName')}</label>
-          <input type="text" id="bm-traveller-${i}-ln" class="bm-input"
-                 value="${escapeHtml(traveller.lastName)}"
-                 onchange="window.setTravellerField(${i}, 'lastName', this.value)">
-        </div>
+        ${roomSelector(traveller.room || 'double', `window.setTravellerField.bind(null, ${i}, 'room')`)}
         <div class="bm-form-group">
           <label class="bm-label" for="bm-traveller-${i}-diet">${t('dietaryRequirements')}</label>
           <input type="text" id="bm-traveller-${i}-diet" class="bm-input"
@@ -855,6 +915,7 @@ function renderStep2() {
                value="${escapeHtml(bookingState.leadTraveller.dietary)}"
                onchange="window.setLeadTraveller('dietary', this.value)">
       </div>
+      ${roomSelector(bookingState.leadTraveller.room || 'double', "window.setLeadTraveller.bind(null, 'room')")}
     </div>
 
     ${additionalTravellersHtml}
@@ -863,13 +924,6 @@ function renderStep2() {
       <label class="bm-label">${t('specialRequests')}</label>
       <textarea class="bm-textarea"
                 onchange="window.setSpecialRequests(this.value)">${escapeHtml(bookingState.specialRequests)}</textarea>
-    </div>
-
-    <div class="bm-form-group" style="margin-top: 24px;">
-      <label class="bm-label" style="font-size: 16px; font-weight: 700;">${t('bedroomAssignment')}</label>
-      <p style="font-size: 13px; color: #6b7280; margin-bottom: 12px;">${t('bedroomAssignmentHint')}</p>
-      <textarea class="bm-textarea" placeholder="${t('bedroomPlaceholder')}"
-                onchange="window.setBedroomAssignment(this.value)">${escapeHtml(bookingState.bedroomAssignment)}</textarea>
     </div>
   `;
 
@@ -936,12 +990,31 @@ function renderStep3() {
     </div>
   `;
 
+  // T&Cs and mailing list checkboxes
+  const termsAndMailingHtml = `
+    <div style="margin-top: 20px; padding: 16px; background: #f9fafb; border-radius: 8px;">
+      <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; margin-bottom: 12px;">
+        <input type="checkbox" id="bm-terms" ${bookingState.termsAccepted ? 'checked' : ''}
+               onchange="window.setTermsAccepted(this.checked)"
+               style="margin-top: 3px; width: 18px; height: 18px; accent-color: #F17E00;">
+        <span style="font-size: 14px; color: #374151;">${t('termsAccept')} <a href="/terms.html" target="_blank" style="color: #F17E00; text-decoration: underline;">${t('termsLink')}</a> <span style="color: #ef4444;">*</span></span>
+      </label>
+      <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer;">
+        <input type="checkbox" id="bm-mailing" ${bookingState.mailingList ? 'checked' : ''}
+               onchange="window.setMailingList(this.checked)"
+               style="margin-top: 3px; width: 18px; height: 18px; accent-color: #F17E00;">
+        <span style="font-size: 14px; color: #374151;">${t('mailingListOptIn')}</span>
+      </label>
+    </div>
+    <div id="bm-terms-error" style="display: none; color: #ef4444; font-size: 13px; margin-top: 8px; padding: 0 4px;">${t('termsRequired')}</div>
+  `;
+
   // Build payment buttons based on selected option
   let paymentButtonsHtml = '';
   if (bookingState.paymentOption === 'enquiry') {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn bm-btn-primary" onclick="window.submitBooking()" style="width: 100%; padding: 12px; border: none; border-radius: 8px; background: #F17E00; color: white; font-size: 16px; font-weight: 600; cursor: pointer;">
+        <button class="bm-btn bm-btn-primary" onclick="window.submitBooking()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; background: #F17E00; color: white; font-size: 16px; font-weight: 600; cursor: pointer;">
           ${t('requestBooking')}
         </button>
       </div>
@@ -949,15 +1022,16 @@ function renderStep3() {
   } else {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn" onclick="window.submitBooking()" style="width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer;">
-          <span style="color: #1f2937;">Stripe</span>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <img src="https://cdn.brandfetch.io/idxAg10C0L/theme/dark/symbol.svg" alt="Stripe" style="height: 20px;">
+          <span>${t('payByCard')}</span>
+          <span style="margin-left: auto; display: flex; gap: 4px;">
+            <img src="https://cdn.brandfetch.io/idHqUb3gWL/theme/dark/symbol.svg" alt="Visa" style="height: 16px;">
+            <img src="https://cdn.brandfetch.io/id8bOzXJ9d/theme/dark/symbol.svg" alt="Mastercard" style="height: 16px;">
+          </span>
         </button>
-        <button class="bm-btn" disabled style="width: 100%; padding: 12px; margin-bottom: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #9ca3af; font-size: 16px; font-weight: 600; cursor: not-allowed; opacity: 0.6; position: relative;">
-          <span>PayPal</span>
-          <span style="position: absolute; top: 50%; right: 12px; transform: translateY(-50%); background: #6b7280; color: white; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600;">${t('comingSoon')}</span>
-        </button>
-        <button class="bm-btn" onclick="window.submitBooking()" style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer;">
-          ${t('bankTransfer')}
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
+          <img src="https://cdn.brandfetch.io/idLpCFHe9G/theme/dark/logo.svg" alt="PayPal" style="height: 22px;">
         </button>
       </div>
     `;
@@ -1198,7 +1272,7 @@ window.incrementWalkers = function () {
   if (bookingState.walkers < bookingState.tour.max_walkers) {
     bookingState.walkers++;
     if (bookingState.additionalTravellers.length < bookingState.walkers - 1) {
-      bookingState.additionalTravellers.push({ firstName: '', lastName: '', dietary: '' });
+      bookingState.additionalTravellers.push({ firstName: '', lastName: '', dietary: '', room: 'double' });
     }
     renderStep1();
   }
@@ -1248,11 +1322,13 @@ window.toggleExtra = function (extraId) {
 
 window.setLeadTraveller = function (field, value) {
   bookingState.leadTraveller[field] = value;
+  if (field === 'room') renderStep2();
 };
 
 window.setTravellerField = function (index, field, value) {
   if (bookingState.additionalTravellers[index - 1]) {
     bookingState.additionalTravellers[index - 1][field] = value;
+    if (field === 'room') renderStep2();
   }
 };
 
@@ -1304,12 +1380,35 @@ window.togglePayFull = function () {
   renderStep3();
 };
 
+window.setTermsAccepted = function (checked) {
+  bookingState.termsAccepted = checked;
+};
+
+window.setMailingList = function (checked) {
+  bookingState.mailingList = checked;
+};
+
+window.setPaymentMethodAndSubmit = function (method) {
+  if (!bookingState.termsAccepted) {
+    alert(t('termsRequired'));
+    return;
+  }
+  bookingState.paymentMethod = method;
+  renderStep3();
+  window.submitBooking();
+};
+
 // ============================================================================
 // SUBMISSION
 // ============================================================================
 
 window.submitBooking = async function () {
   // Validation
+  if (!bookingState.termsAccepted) {
+    alert(t('termsRequired'));
+    return;
+  }
+
   if (!bookingState.startDate) {
     alert(t('selectStartDate'));
     return;
@@ -1356,8 +1455,14 @@ window.submitBooking = async function () {
       phone: bookingState.leadTraveller.phone,
       country: bookingState.leadTraveller.country,
       dietary: bookingState.leadTraveller.dietary,
+      room: bookingState.leadTraveller.room || 'double',
     },
-    additional_travellers: bookingState.additionalTravellers,
+    additional_travellers: bookingState.additionalTravellers.map(tr => ({
+      firstName: tr.firstName,
+      lastName: tr.lastName,
+      dietary: tr.dietary,
+      room: tr.room || 'double',
+    })),
     special_requirements: bookingState.specialRequests,
     bedroom_assignment: bookingState.bedroomAssignment,
     extras: bookingState.selectedExtras.map((e) => ({
@@ -1375,6 +1480,7 @@ window.submitBooking = async function () {
     payment_method: bookingState.paymentMethod,
     pay_full: payFull,
     payment_amount: payFull ? pricing.subtotal : pricing.depositAmount,
+    mailing_list: bookingState.mailingList,
     source: 'website',
     language: bookingState.lang || 'en',
     site_origin: window.location.origin,
@@ -1436,6 +1542,7 @@ window.openBookingModal = function () {
     phone: '',
     country: '',
     dietary: '',
+    room: 'double',
   };
   bookingState.additionalTravellers = [];
   bookingState.specialRequests = '';
@@ -1444,6 +1551,8 @@ window.openBookingModal = function () {
   bookingState.paymentMethod = 'stripe';
   bookingState.payFull = false;
   bookingState.isSubmitting = false;
+  bookingState.termsAccepted = false;
+  bookingState.mailingList = false;
 
   // Read sidebar quick-book values
   const sidebarDate = document.getElementById('sidebar-start-date');
@@ -1462,6 +1571,7 @@ window.openBookingModal = function () {
       firstName: '',
       lastName: '',
       dietary: '',
+      room: 'double',
     });
   }
 
