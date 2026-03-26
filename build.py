@@ -2210,48 +2210,8 @@ def render_dest_practical_section(destination):
 
 
 def render_dest_travel_tips_section(destination):
-    """Render the Travel Tips section (conditional)."""
-    tips = destination.get('travel_tips')
-    if not tips:
-        return ''
-    try:
-        tips_list = json.loads(tips) if isinstance(tips, str) else tips
-    except (json.JSONDecodeError, TypeError):
-        return ''
-    if not isinstance(tips_list, list) or len(tips_list) == 0:
-        return ''
-
-    cards = ''
-    tip_icons = ['lightbulb', 'backpack', 'checkroom', 'map', 'payments', 'local_taxi', 'restaurant', 'wb_sunny', 'health_and_safety', 'sim_card']
-    for i, tip in enumerate(tips_list[:3]):
-        title = escape(tip.get('title', tip.get('name', f'Tip {i+1}')))
-        desc = escape(tip.get('tip', tip.get('description', tip.get('content', ''))))
-        icon = tip_icons[i % len(tip_icons)]
-        cards += f'''<details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                            <summary class="flex items-center gap-4 p-5 cursor-pointer list-none select-none hover:bg-slate-50 transition-colors">
-                                <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0">{icon}</span>
-                                <h3 class="font-bold text-slate-900 flex-1">{title}</h3>
-                                <span class="material-symbols-outlined text-slate-400 text-xl transition-transform group-open:rotate-180 flex-shrink-0">expand_more</span>
-                            </summary>
-                            <div class="px-5 pb-5 pl-16">
-                                <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
-                            </div>
-                        </details>\n'''
-
-    return f'''<section class="w-full py-16 md:py-24 px-6">
-                <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-4 mb-12">
-                        <div class="w-1.5 h-10 bg-primary rounded-full flex-shrink-0"></div>
-                        <div>
-                            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Travel Tips</h2>
-                            <p class="text-slate-500 mt-1">Insider advice for your trip</p>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 gap-3">
-                        {cards}
-                    </div>
-                </div>
-            </section>'''
+    """Travel tips are now rendered inside the accommodation/practical section. Return empty."""
+    return ''
 
 
 def render_dest_cuisine_section(destination):
@@ -2520,20 +2480,50 @@ def render_dest_landscape_culture_section(destination):
             </section>'''
 
 
-def render_dest_accommodation_practical_section(destination):
-    """Render Accommodation + Practical Info as 2-column prose (same style as landscape/culture)."""
-    accommodation = destination.get('accommodation_style', '').strip()
-    practical = destination.get('practical_info', '').strip()
-
-    if not accommodation and not practical:
+def _render_travel_tips_column(destination):
+    """Render travel tips as click-to-expand accordions for embedding in a column."""
+    tips = destination.get('travel_tips')
+    if not tips:
+        return ''
+    try:
+        tips_list = json.loads(tips) if isinstance(tips, str) else tips
+    except (json.JSONDecodeError, TypeError):
+        return ''
+    if not isinstance(tips_list, list) or len(tips_list) == 0:
         return ''
 
-    # Both exist → 2-column layout matching landscape/culture style
-    if accommodation and practical:
-        return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
-                <div class="max-w-7xl mx-auto">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div>
+    tip_icons = ['lightbulb', 'backpack', 'checkroom', 'map', 'payments', 'local_taxi', 'restaurant', 'wb_sunny', 'health_and_safety', 'sim_card']
+    cards = ''
+    for i, tip in enumerate(tips_list[:3]):
+        title = escape(tip.get('title', tip.get('name', f'Tip {i+1}')))
+        desc = escape(tip.get('tip', tip.get('description', tip.get('content', ''))))
+        icon = tip_icons[i % len(tip_icons)]
+        cards += f'''<details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                                <summary class="flex items-center gap-3 p-4 cursor-pointer list-none select-none hover:bg-slate-50 transition-colors">
+                                    <span class="material-symbols-outlined text-primary text-xl flex-shrink-0">{icon}</span>
+                                    <span class="font-semibold text-sm text-slate-900 flex-1">{title}</span>
+                                    <span class="material-symbols-outlined text-slate-400 text-lg transition-transform group-open:rotate-180 flex-shrink-0">expand_more</span>
+                                </summary>
+                                <div class="px-4 pb-4 pl-12">
+                                    <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
+                                </div>
+                            </details>\n'''
+    return cards
+
+
+def render_dest_accommodation_practical_section(destination):
+    """Render Accommodation + Practical Info + Travel Tips as a 3-column section."""
+    accommodation = destination.get('accommodation_style', '').strip()
+    practical = destination.get('practical_info', '').strip()
+    tips_html = _render_travel_tips_column(destination)
+
+    if not accommodation and not practical and not tips_html:
+        return ''
+
+    # Build columns
+    columns = []
+    if accommodation:
+        columns.append(f'''<div>
                             <div class="flex items-start gap-3 mb-6">
                                 <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                                 <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Where You&#39;ll Stay</h2>
@@ -2541,8 +2531,9 @@ def render_dest_accommodation_practical_section(destination):
                             <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
                                 {get_safe_text(destination, "accommodation_style")}
                             </div>
-                        </div>
-                        <div>
+                        </div>''')
+    if practical:
+        columns.append(f'''<div>
                             <div class="flex items-start gap-3 mb-6">
                                 <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
                                 <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Getting Here</h2>
@@ -2550,25 +2541,26 @@ def render_dest_accommodation_practical_section(destination):
                             <div class="prose max-w-none text-slate-700 leading-relaxed space-y-4">
                                 {get_safe_text(destination, "practical_info")}
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </section>'''
+                        </div>''')
+    if tips_html:
+        columns.append(f'''<div>
+                            <div class="flex items-start gap-3 mb-6">
+                                <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
+                                <h2 class="text-2xl md:text-3xl font-black text-brand-purple">Travel Tips</h2>
+                            </div>
+                            <div class="space-y-3">
+                                {tips_html}
+                            </div>
+                        </div>''')
 
-    # Only one exists → single column
-    if accommodation:
-        title, field = "Where You&#39;ll Stay", "accommodation_style"
-    else:
-        title, field = "Getting Here", "practical_info"
+    col_count = len(columns)
+    grid_class = f'grid grid-cols-1 lg:grid-cols-{col_count} gap-12'
+    columns_html = '\n'.join(columns)
 
     return f'''<section class="w-full py-16 md:py-20 px-6 bg-slate-50">
                 <div class="max-w-7xl mx-auto">
-                    <div class="flex items-start gap-3 mb-6">
-                        <div class="w-1.5 h-8 bg-primary rounded-full flex-shrink-0"></div>
-                        <h2 class="text-2xl md:text-3xl font-black text-brand-purple">{title}</h2>
-                    </div>
-                    <div class="prose prose-lg max-w-none text-slate-700 leading-relaxed space-y-4">
-                        {get_safe_text(destination, field)}
+                    <div class="{grid_class}">
+                        {columns_html}
                     </div>
                 </div>
             </section>'''
