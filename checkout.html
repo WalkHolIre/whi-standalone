@@ -502,7 +502,9 @@
                                     <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
                                     <h4 class="font-bold text-xl text-green-800">Booking Confirmed!</h4>
                                 </div>
-                                <p class="text-green-800 mb-5">Thank you! We've received your booking and deposit. You'll receive a confirmation email shortly. Our team will be in touch within 24 hours with your full trip details.</p>
+                                <p class="text-green-800 mb-2">Thank you! We've received your booking and deposit.</p>
+                                <p class="text-green-700 text-sm mb-4">Your booking reference: <strong class="booking-ref text-green-900 font-mono"></strong></p>
+                                <p class="text-green-800 mb-5">You'll receive a confirmation email shortly. Our team will be in touch within 24 hours with your full trip details.</p>
                                 <a href="index.html" class="inline-flex items-center gap-2 bg-whi hover:bg-whi-dark text-white px-6 py-3 rounded-lg font-semibold transition hover:shadow-lg">
                                     <span class="material-symbols-outlined text-sm">home</span>
                                     Back to Homepage
@@ -1018,6 +1020,74 @@
         return true;
     }
 
+    // ─────────── Edge Function URL ───────────
+    const EDGE_FN_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/process-booking';
+
+    function getBookingPayload(paymentMethod) {
+        saveTravellerFields();
+        const walkerCount = travellers.length;
+        const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 0;
+        let extrasTotal = 0;
+        const extras = [];
+        if (document.getElementById('dailyLunch').checked) { const c = 15*walkerCount*walkingDays; extrasTotal+=c; extras.push(`Lunch (€${c})`); }
+        if (document.getElementById('polehire').checked) { extrasTotal+=20; extras.push('Poles (€20)'); }
+        if (document.getElementById('airportTransfer').checked) extras.push('Airport transfer (POA)');
+        if (document.getElementById('extraRestDay').checked) extras.push('Extra rest day (POA)');
+        if (document.getElementById('singleSupplement').checked) extras.push('Single supplement');
+
+        const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = currentTour && startDate ? new Date(new Date(startDate).getTime() + currentTour.days * 86400000).toISOString().split('T')[0] : null;
+
+        return {
+            tour_id: null,
+            tour_name: currentTour?.name || '',
+            tour_slug: currentTour?.slug || '',
+            start_date: startDate,
+            end_date: endDate,
+            number_of_walkers: walkerCount,
+            single_occupancy: document.getElementById('singleSupplement')?.checked || false,
+            lead_traveller: {
+                firstName: travellers[0]?.firstName || '',
+                lastName: travellers[0]?.lastName || '',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
+                room: travellers[0]?.room || 'double',
+            },
+            additional_travellers: travellers.slice(1).map(t => ({
+                firstName: t.firstName, lastName: t.lastName, room: t.room || 'double',
+            })),
+            special_requirements: document.getElementById('specialRequirements').value || '',
+            extras,
+            pricing: { total, deposit, balance: total - deposit },
+            payment_method: paymentMethod,
+            pay_full: false,
+            payment_amount: deposit,
+            source: 'website',
+            language: 'en',
+            site_origin: window.location.origin,
+            mailing_list: document.getElementById('mailingList').checked,
+        };
+    }
+
+    // Legacy wrapper for backward compat
+    function getBookingData() { return getBookingPayload(selectedPayment); }
+
+    function showBookingError(msg) {
+        alert(msg || 'Something went wrong. Please try again or contact us at info@walkingholidayireland.com');
+    }
+
+    function showBookingSuccess(ref) {
+        const el = document.getElementById('successMessage');
+        // Add booking reference to the success message
+        const refSpan = el.querySelector('.booking-ref');
+        if (refSpan) refSpan.textContent = ref;
+        el.classList.remove('hidden');
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+
     async function handleStripePayment() {
         if (!validateBeforePayment()) return;
 
@@ -1026,32 +1096,37 @@
         btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Processing...';
 
         try {
-            // In production: call your backend to create a PaymentIntent, then confirm with Stripe
-            // const res = await fetch('/api/create-payment-intent', { method: 'POST', body: JSON.stringify(getBookingData()) });
-            // const { clientSecret } = await res.json();
-            // const { error } = await stripe.confirmCardPayment(clientSecret, { payment_method: { card: cardElement } });
+            const payload = getBookingPayload('stripe');
+            const res = await fetch(EDGE_FN_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const result = await res.json();
 
-            // For now: simulate success after 2s
-            await new Promise(r => setTimeout(r, 2000));
+            if (!res.ok || !result.success) {
+                throw new Error(result.error || 'Booking failed');
+            }
 
-            // Show success
-            document.getElementById('successMessage').classList.remove('hidden');
+            // If Stripe returned a checkout URL, redirect to it
+            if (result.stripe_url) {
+                window.location.href = result.stripe_url;
+                return;
+            }
+
+            // Fallback: show success inline (if Stripe keys not configured)
+            showBookingSuccess(result.booking_reference);
             btn.style.display = 'none';
-            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-
-            // Send booking data
-            submitBookingData();
         } catch (err) {
-            alert('Payment failed: ' + err.message);
+            console.error('Stripe payment error:', err);
+            showBookingError('Payment processing failed: ' + err.message);
             btn.disabled = false;
             btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">lock</span> Pay Deposit — €${document.getElementById('payBtnAmount').textContent}`;
         }
     }
 
     function initPayPal() {
-        // PayPal renders when SDK is loaded
         if (typeof paypal === 'undefined') {
-            // Retry after SDK loads
             setTimeout(initPayPal, 1000);
             return;
         }
@@ -1065,12 +1140,29 @@
                         purchase_units: [{ amount: { value: deposit.toFixed(2), currency_code: 'EUR' }, description: `Deposit: ${currentTour?.name || 'Walking Holiday'}` }]
                     });
                 },
-                onApprove: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        document.getElementById('successMessage').classList.remove('hidden');
-                        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
-                        submitBookingData();
-                    });
+                onApprove: async function(data, actions) {
+                    try {
+                        await actions.order.capture();
+
+                        // Now record the booking in Supabase
+                        const payload = getBookingPayload('paypal');
+                        const res = await fetch(EDGE_FN_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload),
+                        });
+                        const result = await res.json();
+
+                        if (!res.ok || !result.success) {
+                            throw new Error(result.error || 'Booking recording failed');
+                        }
+
+                        showBookingSuccess(result.booking_reference);
+                    } catch (err) {
+                        console.error('PayPal booking error:', err);
+                        // Payment was captured but booking may have failed — show partial success
+                        showBookingSuccess('');
+                    }
                 },
                 onError: function(err) {
                     console.error('PayPal error:', err);
@@ -1080,38 +1172,9 @@
         } catch(e) { console.warn('PayPal init error:', e); }
     }
 
-    function getBookingData() {
-        saveTravellerFields();
-        const walkerCount = travellers.length;
-        const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 0;
-        let extrasTotal = 0;
-        const extras = [];
-        if (document.getElementById('dailyLunch').checked) { const c = 15*walkerCount*walkingDays; extrasTotal+=c; extras.push(`Lunch (€${c})`); }
-        if (document.getElementById('polehire').checked) { extrasTotal+=20; extras.push('Poles (€20)'); }
-        if (document.getElementById('airportTransfer').checked) extras.push('Airport (POA)');
-        if (document.getElementById('extraRestDay').checked) extras.push('Rest day (POA)');
-        if (document.getElementById('singleSupplement').checked) extras.push('Single supplement');
-
-        const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
-        return {
-            tour: currentTour?.name, tourSlug: currentTour?.slug,
-            startDate: document.getElementById('startDate').value,
-            travellers: travellers.map(t => ({ firstName: t.firstName, lastName: t.lastName, room: t.room })),
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            country: document.getElementById('country').value,
-            specialRequirements: document.getElementById('specialRequirements').value,
-            extras, total, deposit: Math.round(total * 0.25 * 100) / 100,
-            mailingList: document.getElementById('mailingList').checked,
-        };
-    }
-
     function submitBookingData() {
-        const data = getBookingData();
-        console.log('Booking submitted:', data);
-
-        // In production: POST to your Supabase Edge Function or API
-        // fetch('/api/bookings', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+        // Legacy function — actual submission now happens in handleStripePayment/initPayPal
+        console.log('submitBookingData called (no-op, handled by payment flow)');
     }
     </script>
     <script src="js/whi-nav.js"></script>
