@@ -437,5 +437,9 @@
         const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+<!-- Language Switcher Helper -->
+<script>
+function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+</script>
 </body>
 </html>

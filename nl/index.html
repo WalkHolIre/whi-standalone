@@ -35,7 +35,7 @@
                         "brand-purple": "#210747",
                         "bright-purple": "#3F0F87",
                         "accent-mauve": "#B58DB6",
-                        "backgroen-light": "#f8f7f5",
+                        "background-light": "#f8f7f5",
                     },
                     fontFamily: { "display": ["Inter", "sans-serif"] },
                 },
@@ -57,7 +57,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #1a1a1a;
-            backgroen-color: #f8f7f5;
+            background-color: #f8f7f5;
             line-height: 1.6;
         }
 
@@ -78,27 +78,27 @@
 
         /* Homepage utility bar — transparent over hero, white when scrolled */
         .utility-bar {
-            transition: backgroen-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         .utility-bar:not(.scrolled) {
-            backgroen-color: transparent !important;
+            background-color: transparent !important;
         }
         .utility-bar:not(.scrolled),
         .utility-bar:not(.scrolled) a { color: #ffffff !important; }
         .utility-bar:not(.scrolled) svg { fill: #ffffff !important; }
-        .utility-bar:not(.scrolled) .social-icon { backgroen: rgba(255,255,255,0.2) !important; }
+        .utility-bar:not(.scrolled) .social-icon { background: rgba(255,255,255,0.2) !important; }
         .utility-bar:not(.scrolled) .lang-btn { border-color: rgba(255,255,255,0.4) !important; color: rgba(255,255,255,0.8) !important; }
-        .utility-bar:not(.scrolled) .lang-btn.active { border-color: #ffffff !important; color: #ffffff !important; backgroen: rgba(255,255,255,0.2) !important; }
-        .utility-bar.scrolled { backgroen-color: #ffffff !important; }
+        .utility-bar:not(.scrolled) .lang-btn.active { border-color: #ffffff !important; color: #ffffff !important; background: rgba(255,255,255,0.2) !important; }
+        .utility-bar.scrolled { background-color: #ffffff !important; }
 
         /* Homepage header — transparent over hero, white when scrolled */
-        header.site-header { top:0; transition: backgroen-color 0.3s ease, box-shadow 0.3s ease; }
+        header.site-header { top:0; transition: background-color 0.3s ease, box-shadow 0.3s ease; }
         @media(min-width:768px){ header.site-header { top:44px; } }
-        header.site-header:not(.scrolled) { backgroen-color: transparent !important; border-color: transparent !important; }
+        header.site-header:not(.scrolled) { background-color: transparent !important; border-color: transparent !important; }
         header.site-header:not(.scrolled) .nav-link { color: #ffffff !important; }
         header.site-header:not(.scrolled) .nav-link:hover { color: #F17E00 !important; }
         header.site-header:not(.scrolled) .hamburger-btn { color: #ffffff !important; }
-        header.site-header.scrolled { backgroen-color: #ffffff !important; border-color: rgba(226,232,240,0.6) !important; }
+        header.site-header.scrolled { background-color: #ffffff !important; border-color: rgba(226,232,240,0.6) !important; }
 
         /* Scroll Indicator */
         .scroll-indicator {
@@ -122,47 +122,47 @@
 
         /* Button Styles */
         .btn-primary {
-            backgroen-color: #F17E00;
+            background-color: #F17E00;
             color: white;
             padding: 14px 32px;
             border-radius: 0.5rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: backgroen-color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
             cursor: pointer;
             border: none;
             font-size: 16px;
         }
 
         .btn-primary:hover {
-            backgroen-color: #d86b00;
+            background-color: #d86b00;
             transform: translateY(-2px);
         }
 
         .btn-secondary {
-            backgroen-color: transparent;
+            background-color: transparent;
             color: #210747;
             padding: 14px 32px;
             border-radius: 0.5rem;
             font-weight: 600;
             text-decoration: none;
             display: inline-block;
-            transition: backgroen-color 0.3s ease;
+            transition: background-color 0.3s ease;
             cursor: pointer;
             border: 2px solid #210747;
             font-size: 16px;
         }
 
         .btn-secondary:hover {
-            backgroen-color: #210747;
+            background-color: #210747;
             color: white;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
-            backgroen: url('images/hero/homepage-hero.jpg') center/cover no-repeat;
+            background: url('images/hero/homepage-hero.jpg') center/cover no-repeat;
             position: relative;
             display: flex;
             align-items: center;
@@ -178,7 +178,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            backgroen: linear-gradient(135deg, rgba(33, 7, 71, 0.85) 0%, rgba(63, 15, 135, 0.35) 100%);
+            background: linear-gradient(135deg, rgba(33, 7, 71, 0.85) 0%, rgba(63, 15, 135, 0.35) 100%);
             z-index: 1;
         }
 
@@ -224,7 +224,7 @@
             left: 12.5%;
             right: 12.5%;
             height: 3px;
-            backgroen: linear-gradient(90deg, #F17E00 0%, #B58DB6 50%, #210747 100%);
+            background: linear-gradient(90deg, #F17E00 0%, #B58DB6 50%, #210747 100%);
             z-index: 0;
         }
 
@@ -258,7 +258,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 80px;
-            backgroen: white;
+            background: white;
             border: 3px solid #F17E00;
             border-radius: 50%;
             display: flex;
@@ -291,7 +291,7 @@
         }
 
         .editorial-card {
-            backgroen: white;
+            background: white;
             border-radius: 1rem;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -336,7 +336,7 @@
         /* Difficulty Scale */
         .difficulty-item {
             padding: 24px;
-            backgroen: white;
+            background: white;
             border-radius: 0.75rem;
             margin-bottom: 16px;
             border-left: 6px solid #210747;
@@ -382,7 +382,7 @@
         }
 
         .testimonial-card {
-            backgroen: white;
+            background: white;
             padding: 32px;
             border-radius: 1rem;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -402,10 +402,10 @@
             font-size: 32px;
         }
 
-        .testimonial-avatar.avatar-1 { backgroen: #F17E00; }
-        .testimonial-avatar.avatar-2 { backgroen: #210747; }
-        .testimonial-avatar.avatar-3 { backgroen: #3F0F87; }
-        .testimonial-avatar.avatar-4 { backgroen: #B58DB6; }
+        .testimonial-avatar.avatar-1 { background: #F17E00; }
+        .testimonial-avatar.avatar-2 { background: #210747; }
+        .testimonial-avatar.avatar-3 { background: #3F0F87; }
+        .testimonial-avatar.avatar-4 { background: #B58DB6; }
 
         .stars {
             color: #FFC107;
@@ -474,7 +474,7 @@
 
         /* Veelgestelde Vragen */
         details {
-            backgroen: white;
+            background: white;
             padding: 24px;
             margin-bottom: 16px;
             border-radius: 0.75rem;
@@ -483,7 +483,7 @@
         }
 
         details[open] {
-            backgroen: #f8f7f5;
+            background: #f8f7f5;
             border-color: #F17E00;
         }
 
@@ -518,7 +518,7 @@
 
         /* Newsletter CTA */
         .newsletter-section {
-            backgroen: linear-gradient(135deg, #210747 0%, #3F0F87 100%);
+            background: linear-gradient(135deg, #210747 0%, #3F0F87 100%);
             color: white;
             padding: 80px 40px;
             text-align: center;
@@ -551,7 +551,7 @@
         }
 
         .newsletter-form button {
-            backgroen-color: #F17E00;
+            background-color: #F17E00;
             color: white;
             padding: 14px 32px;
             border: none;
@@ -559,17 +559,17 @@
             font-weight: 600;
             font-size: 16px;
             cursor: pointer;
-            transition: backgroen-color 0.3s ease;
+            transition: background-color 0.3s ease;
             font-family: 'Inter', sans-serif;
         }
 
         .newsletter-form button:hover {
-            backgroen-color: #d86b00;
+            background-color: #d86b00;
         }
 
         /* Footer */
         footer {
-            backgroen-color: #210747;
+            background-color: #210747;
             color: #fff;
             padding: 60px 40px 40px;
             margin-top: 80px;
@@ -626,7 +626,7 @@
         }
 
         .language-switcher button {
-            backgroen: transparent;
+            background: transparent;
             border: 1px solid #666;
             color: #ccc;
             padding: 6px 12px;
@@ -685,7 +685,7 @@
 </head>
 <body>
     <!-- Top Utility Bar -->
-<div class="utility-bar hidden md:block" style="backgroen-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;">
+<div class="utility-bar hidden md:block" style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;">
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:16px;">
             <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
@@ -693,20 +693,20 @@
             <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
-            <a class="social-icon" href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-lvanafel="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;backgroen:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            <a class="social-icon" href="https://www.instagram.com/walkingholidayireland///////////" target="_blank" rel="noopener" aria-lvanafel="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;backgroen:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-            <a class="social-icon" href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-lvanafel="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;backgroen:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a class="social-icon" href="mailto:info@walkingholidayireland.com" aria-lvanafel="E-mail" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;backgroen:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            <a class="social-icon" href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-lvanafel="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a class="social-icon" href="https://www.instagram.com/walkingholidayireland///////////" target="_blank" rel="noopener" aria-lvanafel="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a class="social-icon" href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-lvanafel="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a class="social-icon" href="mailto:info@walkingholidayireland.com" aria-lvanafel="E-mail" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-            <button class="lang-btn active" onclick="window.location.href='https://walkingholidayireland.com'" style="backgroen:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
-            <button class="lang-btn" onclick="window.location.href='https://walkingholidayireland.com/de'" style="backgroen:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
-            <button class="lang-btn" onclick="window.location.href='https://walkingholidayireland.com/nl'" style="backgroen:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+            <button class="lang-btn active" onclick="switchLang('en')" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button class="lang-btn" onclick="switchLang('de')" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button class="lang-btn" onclick="switchLang('nl')" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
         </div>
     </div>
 </div>
 
-<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="backgroen-color:#ffffff;">
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
             <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
                 <a href="/index.html" class="flex items-center gap-3">
                     <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
@@ -714,7 +714,7 @@
                 <nav class="hidden md:flex items-center gap-8">
                     <div class="relative group">
                         <a class="nav-link font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="/bestemmingen.html">Wandelvakanties <span class="material-symbols-outlined text-base">expand_more</span></a>
-                        <div class="vanafsolute top-full left-0 mt-2 w-64 bg-white roened-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div class="vanafsolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                             <a href="walking-area-dingle-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-schiereiland</a>
                             <a href="walking-area-kerry-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Graafschap Kerry</a>
                             <a href="walking-area-wicklow-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
@@ -729,14 +729,14 @@
                     </div>
                     <div class="relative group">
                         <a class="nav-link font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="/how-it-works.html">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
-                        <div class="vanafsolute top-full left-0 mt-2 w-56 bg-white roened-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                        <div class="vanafsolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                             <a href="/how-it-works.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overzicht</a>
                             <a href="/tour-grading.html" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour rating & Moeilijkheidsgraad</a>
                         </div>
                     </div>
                     <a class="nav-link font-semibold text-slate-700 hover:text-primary transition-colors" href="/vanafout.html">Over ons</a>
                     <a class="nav-link font-semibold text-slate-700 hover:text-primary transition-colors" href="blog.html">Blog</a>
-                    <a href="/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 roened-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                    <a href="/contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
                         Neem contact op
                     </a>
                 </nav>
@@ -749,7 +749,7 @@
                 <a href="/how-it-works.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Hoe het werkt</a>
                 <a href="/vanafout.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Over ons</a>
                 <a href="blog.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
-                <a href="/contact.html" class="block mt-4 bg-primary text-white text-center px-6 py-3 roened-lg font-bold">Contact</a>
+                <a href="/contact.html" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Contact</a>
             </div>
         </header>
 
@@ -770,11 +770,11 @@
     <!-- Tour Filter Search Bar (overlaps hero) -->
     <div style="position: relative; z-index: 10; margin-top: -60px; margin-bottom: 40px;">
         <div class="section-max-width" style="padding: 0 40px;">
-            <div style="backgroen: white; border-radius: 1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 24px 32px;">
+            <div style="background: white; border-radius: 1rem; box-shadow: 0 8px 32px rgba(0,0,0,0.15); padding: 24px 32px;">
                 <form action="walking-tours.html" method="get" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
                     <div style="flex: 2; min-width: 200px;">
                         <lvanafel style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Ziel</lvanafel>
-                        <select id="home-region" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; backgroen: #f8f7f5; appearance: none; backgroen-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); backgroen-repeat: no-repeat; backgroen-position: right 12px center;">
+                        <select id="home-region" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                             <option value="">Alles Wandelgebieden</option>
                             <option value="wild-atlantic-way">Wild Atlantic Way</option>
                             <option value="ancient-east">Iers alter Osten</option>
@@ -783,7 +783,7 @@
                     </div>
                     <div style="flex: 1.5; min-width: 160px;">
                         <lvanafel style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">Moeilijkheidsgraad</lvanafel>
-                        <select id="home-difficulty" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; backgroen: #f8f7f5; appearance: none; backgroen-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); backgroen-repeat: no-repeat; backgroen-position: right 12px center;">
+                        <select id="home-difficulty" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                             <option value="">Alles Stufen</option>
                             <option value="easy">Gemakkelijk</option>
                             <option value="moderate">Matig</option>
@@ -793,7 +793,7 @@
                     </div>
                     <div style="flex: 1; min-width: 120px;">
                         <lvanafel style="display: block; font-size: 12px; font-weight: 600; color: #210747; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">duur</lvanafel>
-                        <select id="home-duration" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; backgroen: #f8f7f5; appearance: none; backgroen-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); backgroen-repeat: no-repeat; backgroen-position: right 12px center;">
+                        <select id="home-duration" style="width: 100%; padding: 12px 16px; border: 1px solid #e0e0e0; border-radius: 0.5rem; font-size: 16px; font-family: 'Inter', sans-serif; color: #333; background: #f8f7f5; appearance: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22><path fill=%22%23666%22 d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
                             <option value="">Alles</option>
                             <option value="5">5 Dagen</option>
                             <option value="6">6 Dagen</option>
@@ -843,7 +843,7 @@
     </section>
 
     <!-- Price Match Promise -->
-    <section style="backgroen: linear-gradient(135deg, #210747 0%, #3F0F87 100%); padding: 48px 0;">
+    <section style="background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); padding: 48px 0;">
         <div class="section-max-width" style="padding: 0 40px; text-align: center;">
             <div style="display: flex; flex-direction: column; align-items: center; gap: 16px; max-width: 700px; margin: 0 auto;">
                 <div style="display: flex; align-items: center; gap: 12px;">
@@ -859,7 +859,7 @@
     </section>
 
     <!-- Explore Walking Regions Section -->
-    <section style="backgroen-color: #f8f7f5;">
+    <section style="background-color: #f8f7f5;">
         <div class="section-max-width">
             <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Erkenen Sie Wandelgebiedenn</h2>
 
@@ -898,8 +898,8 @@
     </section>
 
     <!-- Fitness Quiz CTA Section -->
-    <section style="position: relative; backgroen: url('images/hero/dingle-hero.jpg') center/cover no-repeat; padding: 0;">
-        <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(135deg, rgba(33,7,71,0.88) 0%, rgba(63,15,135,0.75) 100%);"></div>
+    <section style="position: relative; background: url('images/hero/dingle-hero.jpg') center/cover no-repeat; padding: 0;">
+        <div style="position: vanafsolute; inset: 0; background: linear-gradient(135deg, rgba(33,7,71,0.88) 0%, rgba(63,15,135,0.75) 100%);"></div>
         <div class="section-max-width" style="position: relative; z-index: 1; padding: 80px 40px; text-align: center;">
             <span class="material-symbols-outlined" style="font-size: 56px; color: #F17E00; display: block; margin-bottom: 24px;">hiking</span>
             <h2 style="font-size: 36px; margin-bottom: 16px; color: white;">Nicht sicher, welche Tour naar Ihnen passt?</h2>
@@ -925,7 +925,7 @@
     </section>
 
     <!-- Reviews Section — Full Width Carousel -->
-    <section style="backgroen: linear-gradient(135deg, #210747 0%, #3F0F87 100%); padding: 80px 0;">
+    <section style="background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); padding: 80px 0;">
         <div class="section-max-width" style="padding: 0 40px;">
             <div style="text-align: center; margin-bottom: 48px;">
                 <h2 style="font-size: 40px; color: white; margin-bottom: 16px;">Was unsere Wanderer sagen</h2>
@@ -941,7 +941,7 @@
             <div id="home-review-carousel" style="position: relative; overflow: hidden;">
                 <div id="home-review-track" style="display: flex; gap: 24px; transition: transform 0.5s ease;">
                     <!-- Review Card 1 -->
-                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; backgroen: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
                         <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
                         <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"The most wonderful week of my life. Everything was perfectly organised, and the landscapes were breathtaking. Cliff and Louise thought of everything."</p>
                         <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -954,7 +954,7 @@
                     </div>
 
                     <!-- Review Card 2 -->
-                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; backgroen: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
                         <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
                         <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"Cliff and Louise really do walk every route themselves. You can tell they genuinely care vanafout your experience. The Kerry Way was spectacular."</p>
                         <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -967,7 +967,7 @@
                     </div>
 
                     <!-- Review Card 3 -->
-                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; backgroen: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
                         <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
                         <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"The luggage transfer service meant we could travel light and enjoy the walks without worrying vanafout our bags. The Wicklow Way was pure magic."</p>
                         <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -980,7 +980,7 @@
                     </div>
 
                     <!-- Review Card 4 -->
-                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; backgroen: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
+                    <div style="flex: 0 0 calc(50% - 12px); min-width: 400px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.15); border-radius: 1rem; padding: 32px; display: flex; flex-direction: column;">
                         <div style="color: #FFC107; font-size: 18px; margin-bottom: 12px;">★★★★★</div>
                         <p style="color: white; font-size: 16px; line-height: 1.7; flex-grow: 1; font-style: italic;">"Best holiday we've ever had. The B&Bs were lovely, the routes were stunning, and we made great friends along the Burren Way."</p>
                         <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center;">
@@ -995,10 +995,10 @@
 
                 <!-- Carousel Controls -->
                 <div style="display: flex; justify-content: center; gap: 16px; margin-top: 32px;">
-                    <button id="review-prev" style="backgroen: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: backgroen 0.3s;" aria-lvanafel="Previous review">
+                    <button id="review-prev" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" aria-lvanafel="Previous review">
                         <span class="material-symbols-outlined">chevron_left</span>
                     </button>
-                    <button id="review-next" style="backgroen: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: backgroen 0.3s;" aria-lvanafel="Next review">
+                    <button id="review-next" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: white; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; transition: background 0.3s;" aria-lvanafel="Next review">
                         <span class="material-symbols-outlined">chevron_right</span>
                     </button>
                 </div>
@@ -1018,8 +1018,8 @@
 
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                 <a href="walking-area-dingle-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/dingle-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/dingle-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Dingle Way</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
@@ -1027,8 +1027,8 @@
                 </a>
 
                 <a href="walking-area-kerry-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/kerry-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/kerry-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Kerry Way</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
@@ -1036,8 +1036,8 @@
                 </a>
 
                 <a href="walking-area-wicklow-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/wicklow-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/wicklow-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Wicklow Way</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Iers alter Osten</p>
@@ -1045,8 +1045,8 @@
                 </a>
 
                 <a href="walking-area-burren-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/burren-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/burren-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Burren Way</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Wild Atlantic Way</p>
@@ -1054,8 +1054,8 @@
                 </a>
 
                 <a href="walking-area-causeway-coast.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/causeway-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/causeway-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Causeway Coast</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Noord-Ierland</p>
@@ -1063,8 +1063,8 @@
                 </a>
 
                 <a href="walking-area-cooley-mournes.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/cooley-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/cooley-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Cooley & Mournes</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Noord-Ierland</p>
@@ -1072,8 +1072,8 @@
                 </a>
 
                 <a href="walking-area-barrow-way.html" class="card-hover" style="position: relative; border-radius: 1rem; overflow: hidden; height: 280px; display: block; text-decoration: none;">
-                    <div style="position: vanafsolute; inset: 0; backgroen: url('images/hero/barrow-hero.jpg') center/cover;"></div>
-                    <div style="position: vanafsolute; inset: 0; backgroen: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
+                    <div style="position: vanafsolute; inset: 0; background: url('images/hero/barrow-hero.jpg') center/cover;"></div>
+                    <div style="position: vanafsolute; inset: 0; background: linear-gradient(to top, rgba(33,7,71,0.85) 0%, transparent 60%);"></div>
                     <div style="position: vanafsolute; bottom: 20px; left: 20px; right: 20px; color: white;">
                         <h3 style="font-size: 22px; font-weight: 700; margin-bottom: 4px;">Barrow Way</h3>
                         <p style="font-size: 14px; opacity: 0.8;">Iers alter Osten</p>
@@ -1088,7 +1088,7 @@
     </section>
 
     <!-- Veelgestelde Vragen Section -->
-    <section style="backgroen-color: #f8f7f5;">
+    <section style="background-color: #f8f7f5;">
         <div class="section-max-width">
             <h2 style="font-size: 40px; text-align: center; margin-bottom: 60px; color: #210747;">Ihre Vragen, beantwortet</h2>
 
@@ -1127,7 +1127,7 @@
     </section>
 
     <!-- Newsletter CTA Section -->
-    <section style="backgroen: transparent; padding: 0;">
+    <section style="background: transparent; padding: 0;">
         <div class="section-max-width">
             <div class="newsletter-section">
                 <h2>Bleiben Sie op dem Laufenden</h2>
@@ -1301,5 +1301,9 @@
         }
     }
     </script>
+<!-- Language Switcher Helper -->
+<script>
+function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+</script>
 </body>
 </html>
