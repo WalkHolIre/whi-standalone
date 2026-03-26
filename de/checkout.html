@@ -6,7 +6,21 @@
     <title>Wanderurlaub buchen | Wanderurlaub Irland</title>
 
     <!-- Tailwind CSS with Plugins -->
-    <link href="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        whi: '#F17E00',
+                        'whi-dark': '#d86c00',
+                        'whi-purple': '#210747',
+                        'whi-bg': '#f8f7f5',
+                    }
+                }
+            }
+        }
+    </script>
 
     <!-- Google Fonts - Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,650 +30,481 @@
     <!-- Material Symbols Outlined -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR&intent=capture&disable-funding=credit,card&locale=de_DE" defer></script>
+
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+        * { font-family: 'Inter', sans-serif; }
 
         .material-symbols-outlined {
             font-family: 'Material Symbols Outlined';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 24px;
-            display: inline-flex;
-            line-height: 1;
-            text-transform: none;
-            letter-spacing: normal;
-            word-wrap: normal;
-            white-space: nowrap;
-            direction: ltr;
+            font-weight: normal; font-style: normal; font-size: 24px;
+            display: inline-flex; line-height: 1;
+            text-transform: none; letter-spacing: normal; word-wrap: normal;
+            white-space: nowrap; direction: ltr;
         }
 
-        .hero-band {
-            background: linear-gradient(135deg, #F17E00 0%, #210747 100%);
+        .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
+
+        .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .step-dot.active { background-color: #F17E00; color: white; }
+        .step-dot.completed { background-color: #16a34a; color: white; }
+        .step-dot.inactive { background-color: #e5e7eb; color: #9ca3af; }
+        .step-connector { height: 2px; flex: 1; transition: background-color 0.3s; }
+        .step-connector.active { background-color: #F17E00; }
+        .step-connector.inactive { background-color: #e5e7eb; }
+
+        .step-panel { display: none; }
+        .step-panel.active { display: block; }
+
+        .room-option { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 8px; padding: 10px 14px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .room-option:hover { border-color: #F17E00; background-color: #fff7ed; }
+        .room-option.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
+        .room-option .bed-icons { font-size: 20px; line-height: 1; }
+
+        .sidebar-feature-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+
+        .mobile-summary-banner { display: none; }
+        @media (max-width: 1023px) {
+            .mobile-summary-banner { display: flex; position: sticky; top: 0; z-index: 40; }
+            .desktop-sidebar { display: none; }
         }
 
-        .primary-btn {
-            background-color: #F17E00;
-            color: white;
-            transition: all 0.3s ease;
-        }
+        .payment-method { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 10px; padding: 16px 20px; transition: all 0.2s; }
+        .payment-method:hover { border-color: #F17E00; }
+        .payment-method.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
 
-        .primary-btn:hover {
-            background-color: #d86c00;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(241, 126, 0, 0.3);
-        }
-
-        .primary-btn:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .secondary-btn {
-            background-color: #210747;
-            color: white;
-            transition: all 0.3s ease;
-        }
-
-        .secondary-btn:hover {
-            background-color: #3F0F87;
-        }
-
-        .form-section {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 24px;
-            margin-bottom: 20px;
-        }
-
-        .form-section h3 {
-            color: #210747;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .step-number {
-            background-color: #F17E00;
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 500;
-            color: #210747;
-            margin-bottom: 6px;
-            font-size: 14px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 14px;
-            font-family: 'Inter', sans-serif;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #F17E00;
-            box-shadow: 0 0 0 3px rgba(241, 126, 0, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        .checkbox-wrapper {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-            padding: 12px;
-            background-color: #f8f7f5;
-            border-radius: 6px;
-        }
-
-        .checkbox-wrapper input[type="checkbox"] {
-            width: auto;
-            margin-top: 4px;
-            cursor: pointer;
-        }
-
-        .checkbox-label {
-            flex: 1;
-        }
-
-        .checkbox-label .label-main {
-            font-weight: 500;
-            color: #210747;
-            margin-bottom: 2px;
-            display: block;
-        }
-
-        .checkbox-label .label-sub {
-            font-size: 13px;
-            color: #6b7280;
-            display: block;
-        }
-
-        .tour-info {
-            background-color: #f8f7f5;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 12px;
-            font-size: 14px;
-        }
-
-        .tour-info p {
-            margin: 4px 0;
-            color: #374151;
-        }
-
-        .tour-info strong {
-            color: #210747;
-        }
-
-        /* Right Sidebar */
-        .sidebar {
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            padding: 24px;
-            position: sticky;
-            top: 20px;
-            height: fit-content;
-        }
-
-        .sidebar h3 {
-            color: #210747;
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }
-
-        .sidebar-item {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid #f3f4f6;
-            font-size: 14px;
-        }
-
-        .sidebar-item.total {
-            border-bottom: 2px solid #F17E00;
-            padding: 12px 0;
-            font-weight: 600;
-            color: #210747;
-            font-size: 16px;
-        }
-
-        .sidebar-item.deposit {
-            background-color: #fff3e0;
-            padding: 12px;
-            margin: 12px 0;
-            border-radius: 6px;
-            font-weight: 600;
-            color: #d86c00;
-        }
-
-        .sidebar-contact {
-            background-color: #f8f7f5;
-            padding: 12px;
-            border-radius: 6px;
-            margin-top: 16px;
-            text-align: center;
-            font-size: 13px;
-        }
-
-        .sidebar-contact p {
-            color: #6b7280;
-            margin-bottom: 4px;
-        }
-
-        .sidebar-contact .phone {
-            font-weight: 600;
-            color: #F17E00;
-            font-size: 16px;
-        }
-
-        /* Card Element Placeholder */
-        .card-element-placeholder {
-            border: 2px dashed #d1d5db;
-            border-radius: 6px;
-            padding: 20px;
-            text-align: center;
-            background-color: #f9fafb;
-            margin: 16px 0;
-        }
-
-        .card-element-placeholder p {
-            color: #6b7280;
-            font-size: 14px;
-            margin: 0;
-        }
-
-        /* Payment Info */
-        .payment-info {
-            background-color: #f0fdf4;
-            border: 1px solid #86efac;
-            border-radius: 6px;
-            padding: 12px;
-            font-size: 13px;
-            color: #166534;
-            margin-bottom: 16px;
-        }
-
-        /* Trust Badges */
-        .trust-badges {
-            display: flex;
-            gap: 16px;
-            margin-top: 12px;
-            padding-top: 12px;
-            border-top: 1px solid #e5e7eb;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .trust-badge {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            font-size: 12px;
-            color: #6b7280;
-        }
-
-        .success-message {
-            background-color: #d1fae5;
-            border: 1px solid #6ee7b7;
-            border-radius: 6px;
-            padding: 16px;
-            color: #065f46;
-            margin-bottom: 16px;
-            display: none;
-        }
-
-        .success-message.show {
-            display: block;
-        }
-
-        @media (max-width: 1024px) {
-            .checkout-wrapper {
-                grid-template-columns: 1fr;
-            }
-
-            .sidebar {
-                position: static;
-            }
-        }
+        #card-element { border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; background: white; }
+        #card-element.StripeElement--focus { border-color: #F17E00; box-shadow: 0 0 0 3px rgba(241,126,0,0.1); }
+        #card-element.StripeElement--invalid { border-color: #ef4444; }
     </style>
-<meta name="description" content="Buchen Sie Ihren selbstgeführten Wanderurlaub in Irland. Wählen Sie Ihre Tour, Termine & Extras. Sichern Sie sich mit 25% Anzahlung. Gepäcktransfer & GPS-App inklusive.">
+    <meta name="description" content="Buchen Sie Ihren selbstgeführten Wanderurlaub in Irland. Wählen Sie Ihre Tour, Daten & Extras. Sichern Sie mit 25% Anzahlung.">
 </head>
-<body style="background-color: #f8f7f5;">
+<body class="bg-whi-bg">
     <!-- Header/Navigation -->
     <nav class="bg-white border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="index.html">
-                        <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="h-10">
-                    </a>
+                    <a href="index.html"><img src="../images/logo/whi_fc.png" alt="Wanderurlaub Irland" class="h-10"></a>
                 </div>
-
-                <!-- Navigation Menu -->
                 <div class="hidden md:flex gap-8">
-                    <div class="relative group">
-                        <button class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">
-                            Touren <span class="material-symbols-outlined text-sm">expand_more</span>
-                        </button>
-                        <div class="absolute left-0 mt-0 w-48 bg-white border border-gray-200 rounded-md shadow-lg hidden group-hover:block">
-                            <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-gray-700">Wild Atlantic Way</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-gray-700">Ireland's Ancient East</a>
-                            <a href="#" class="block px-4 py-2 hover:bg-orange-50 text-gray-700">Northern Ireland</a>
-                        </div>
-                    </div>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Touren</a>
                     <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Über uns</a>
                     <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Blog</a>
                     <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Kontakt</a>
                 </div>
-
-                <!-- CTA -->
                 <div>
-                    <a href="checkout.html" class="primary-btn px-6 py-2 rounded-lg font-medium text-sm">Jetzt buchen</a>
+                    <a href="checkout.html" class="bg-whi hover:bg-whi-dark text-white px-6 py-2 rounded-lg font-medium text-sm transition">Jetzt buchen</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <div class="hero-band text-white py-12">
+    <div class="hero-band text-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-4xl font-bold mb-2">Buchen Sie Ihren Wanderurlaub</h1>
-            <p class="text-lg opacity-90">Sichern Sie Ihre Termine mit einer 25% Anzahlung. Restbetrag fällig 42 Tage vor Abreise.</p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Wanderurlaub buchen</h1>
+            <p class="text-base md:text-lg opacity-90">Sichern Sie Ihre Daten mit 25% Anzahlung. Restbetrag 42 Tage vor Abreise fällig.</p>
+        </div>
+    </div>
+
+    <!-- Mobile Summary Banner -->
+    <div class="mobile-summary-banner bg-white border-b border-gray-200 px-4 py-3 items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-3 flex-1 min-w-0">
+            <img id="mobileBannerImg" src="../images/logo/whi_fc.png" alt="" class="w-12 h-12 rounded-lg object-cover hidden">
+            <div class="min-w-0">
+                <p id="mobileBannerTour" class="text-sm font-semibold text-whi-purple truncate">Tour wählen</p>
+                <p id="mobileBannerDates" class="text-xs text-gray-500 truncate">-</p>
+            </div>
+        </div>
+        <div class="text-right flex-shrink-0">
+            <p class="text-xs text-gray-500">Gesamt</p>
+            <p id="mobileBannerTotal" class="text-lg font-bold text-whi">€0</p>
+        </div>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <div class="flex items-center justify-center gap-0 max-w-xl mx-auto">
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot active" data-step="1">1</div>
+                <span class="text-xs font-medium text-whi-purple">Tour</span>
+            </div>
+            <div class="step-connector active flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="2">2</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel2">Reisende</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="3">3</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel3">Extras</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="4">4</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel4">Zahlung</span>
+            </div>
         </div>
     </div>
 
     <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="checkout-wrapper grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-            <!-- Left Column: Booking Form -->
+            <!-- Left Column -->
             <div class="lg:col-span-2">
-                <form id="checkoutForm">
-                    <!-- Step 1: Select Your Tour -->
-                    <div class="form-section">
-                        <h3>
-                            <span class="step-number">1</span>
-                            Wählen Sie Ihre Tour
-                        </h3>
-                        <div class="form-group">
-                            <label for="tourSelect">Welche Tour interessiert Sie?</label>
-                            <select id="tourSelect" required>
-                                <option value="">-- Tour auswählen --</option>
-                                <optgroup label="Wild Atlantic Way">
-                                    <option value="dingle-way">The Dingle Way - 8 Days (€899)</option>
-                                    <option value="kerry-way">The Kerry Way - 8 Days (€899)</option>
-                                    <option value="burren-5-days">Burren Way — 5 Days (€599)</option>
-                                    <option value="burren-6-days">Burren Way — 6 Days (€695)</option>
-                                    <option value="burren-7-days">Burren Way — 7 Days (€795)</option>
-                                    <option value="burren-way">Burren Way — 8 Days (€890)</option>
-                                </optgroup>
-                                <optgroup label="Ireland's Ancient East">
-                                    <option value="wicklow-way-5-days">Wicklow Way — 5 Days (€699)</option>
-                                    <option value="wicklow-way-7-days">Wicklow Way — 7 Days (€929)</option>
-                                    <option value="wicklow-way">Wicklow Way — 8 Days (€1,029)</option>
-                                    <option value="wicklow-way-10-days">Wicklow Way — 10 Days (€1,249)</option>
-                                    <option value="barrow-way-5-days">Barrow Way — 5 Days (€919)</option>
-                                    <option value="barrow-way">Barrow Way — 8 Days (€859)</option>
-                                </optgroup>
-                                <optgroup label="Northern Ireland">
-                                    <option value="causeway-coast-5-days">Causeway Coast — 5 Days (€599)</option>
-                                    <option value="causeway-coast">Giant's Causeway — 8 Days (€959)</option>
-                                    <option value="cooley-mournes">Cooley & Mournes — 8 Days (€879)</option>
-                                    <option value="cooley-peninsula-5-days">Cooley Peninsula — 5 Days (€539)</option>
-                                </optgroup>
-                            </select>
+                <form id="checkoutForm" novalidate>
+
+                    <!-- STEP 1: Tour & Daten -->
+                    <div class="step-panel active" id="step1">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">hiking</span>
+                                Tour wählen
+                            </h3>
+                            <div class="mb-4">
+                                <label for="tourSelect" class="block text-sm font-medium text-whi-purple mb-1">Welche Tour interessiert Sie?</label>
+                                <select id="tourSelect" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                    <option value="">-- Tour wählen --</option>
+                                    <optgroup label="Wild Atlantic Way">
+                                        <option value="dingle-way">Der Dingle Way — 8 Tage (€899)</option>
+                                        <option value="kerry-way">Der Kerry Way — 8 Tage (€899)</option>
+                                        <option value="burren-5-days">Burren Way — 5 Tage (€599)</option>
+                                        <option value="burren-6-days">Burren Way — 6 Tage (€695)</option>
+                                        <option value="burren-7-days">Burren Way — 7 Tage (€795)</option>
+                                        <option value="burren-way">Burren Way — 8 Tage (€890)</option>
+                                    </optgroup>
+                                    <optgroup label="Irlands alter Osten">
+                                        <option value="wicklow-way-5-days">Wicklow Way — 5 Tage (€699)</option>
+                                        <option value="wicklow-way-7-days">Wicklow Way — 7 Tage (€929)</option>
+                                        <option value="wicklow-way">Wicklow Way — 8 Tage (€1.029)</option>
+                                        <option value="wicklow-way-10-days">Wicklow Way — 10 Tage (€1.249)</option>
+                                        <option value="barrow-way-5-days">Barrow Way — 5 Tage (€919)</option>
+                                        <option value="barrow-way">Barrow Way — 8 Tage (€859)</option>
+                                    </optgroup>
+                                    <optgroup label="Nordirland">
+                                        <option value="causeway-coast-5-days">Causeway Coast — 5 Tage (€599)</option>
+                                        <option value="causeway-coast">Giant's Causeway — 8 Tage (€959)</option>
+                                        <option value="cooley-mournes">Cooley &amp; Mournes — 8 Tage (€879)</option>
+                                        <option value="cooley-peninsula-5-days">Cooley Halbinsel — 5 Tage (€539)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div id="tourInfo" class="bg-whi-bg p-4 rounded-lg text-sm hidden">
+                                <p class="mb-1"><strong class="text-whi-purple">Dauer:</strong> <span id="tourDays">-</span> Tage</p>
+                                <p class="mb-1"><strong class="text-whi-purple">Preis pro Person:</strong> €<span id="tourPrice">0</span></p>
+                                <p><strong class="text-whi-purple">Schwierigkeit:</strong> <span id="tourDifficulty">-</span></p>
+                            </div>
                         </div>
-                        <div id="tourInfo" class="tour-info" style="display: none;">
-                            <p><strong>Dauer:</strong> <span id="tourDays">-</span> Tage</p>
-                            <p><strong>Preis pro Person:</strong> €<span id="tourPrice">0</span></p>
-                            <p><strong>Schwierigkeit:</strong> <span id="tourDifficulty">-</span></p>
+
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">calendar_month</span>
+                                Reisedaten wählen
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="startDate" class="block text-sm font-medium text-whi-purple mb-1">Startdatum</label>
+                                    <input type="date" id="startDate" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                                <div>
+                                    <label for="numWalkers" class="block text-sm font-medium text-whi-purple mb-1">Anzahl Wanderer</label>
+                                    <input type="number" id="numWalkers" min="1" max="12" value="2" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="button" onclick="goToStep(2)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Weiter: Reisende <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Step 2: Choose Your Dates -->
-                    <div class="form-section">
-                        <h3>
-                            <span class="step-number">2</span>
-                            Wählen Sie Ihre Termine
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="form-group">
-                                <label for="startDate">Startdatum</label>
-                                <input type="date" id="startDate" required>
+                    <!-- STEP 2: Reisende & Zimmer -->
+                    <div class="step-panel" id="step2">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-whi-purple flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-whi">group</span>
+                                    Reisende
+                                </h3>
+                                <span class="text-sm text-gray-500" id="travellerCount">2 Reisende</span>
                             </div>
-                            <div class="form-group">
-                                <label for="numWalkers">Anzahl der Wanderer (1-8)</label>
-                                <input type="number" id="numWalkers" min="1" max="8" value="1" required>
+
+                            <div id="travellersContainer"></div>
+
+                            <button type="button" id="addTravellerBtn" onclick="addTraveller()" class="mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm font-medium text-gray-500 hover:border-whi hover:text-whi transition flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">person_add</span>
+                                Weiteren Reisenden hinzufügen
+                            </button>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">contact_mail</span>
+                                Kontakt Hauptreisender
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-whi-purple mb-1">E-Mail</label>
+                                    <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-whi-purple mb-1">Telefon</label>
+                                    <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="country" class="block text-sm font-medium text-whi-purple mb-1">Land</label>
+                                    <select id="country" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                        <option value="">-- Wählen --</option>
+                                        <option value="Germany">Deutschland</option>
+                                        <option value="Austria">Österreich</option>
+                                        <option value="Switzerland">Schweiz</option>
+                                        <option value="Netherlands">Niederlande</option>
+                                        <option value="Ireland">Irland</option>
+                                        <option value="UK">Vereinigtes Königreich</option>
+                                        <option value="France">Frankreich</option>
+                                        <option value="USA">Vereinigte Staaten</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="specialRequirements" class="block text-sm font-medium text-whi-purple mb-1">Besondere Wünsche</label>
+                                    <input type="text" id="specialRequirements" placeholder="Ernährung, Barrierefreiheit..." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
                             </div>
                         </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="singleSupplement">
-                            <div class="checkbox-label">
-                                <span class="label-main">Einzelzimmerzuschlag</span>
-                                <span class="label-sub" id="singleSupplementText">€X pro Zimmer pro Nacht für Einzelbelegung</span>
-                            </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" onclick="goToStep(1)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                            </button>
+                            <button type="button" onclick="goToStep(3)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Weiter: Extras <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Step 3: Optional Extras -->
-                    <div class="form-section">
-                        <h3>
-                            <span class="step-number">3</span>
-                            Optionale Extras
-                        </h3>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="airportTransfer" data-price="POA">
-                            <div class="checkbox-label">
-                                <span class="label-main">Flughafentransfer</span>
-                                <span class="label-sub">€auf Anfrage</span>
+                    <!-- STEP 3: Extras -->
+                    <div class="step-panel" id="step3">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">add_circle</span>
+                                Optionale Extras
+                            </h3>
+
+                            <div class="space-y-3">
+                                <label class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="airportTransfer" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Flughafentransfer</span>
+                                        <span class="text-sm text-gray-500">Preis auf Anfrage</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="dailyLunch" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Tägliche Lunchpakete</span>
+                                        <span class="text-sm text-gray-500">€15 pro Person pro Wandertag</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi" id="lunchPriceLabel">€0</span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="extraRestDay" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Zusätzlicher Ruhetag</span>
+                                        <span class="text-sm text-gray-500">Preis auf Anfrage</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="polehire" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Wanderstöcke leihen</span>
+                                        <span class="text-sm text-gray-500">€20 pro Paar</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">€20</span>
+                                </label>
+
+                                <label class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="singleSupplement">
+                                    <div class="flex-1 mt-[-2px]">
+                                        <span class="font-medium text-whi-purple block">Einzelzimmerzuschlag</span>
+                                        <span class="text-sm text-gray-500" id="singleSupplementText">Zuschlag für Einzelbelegung pro Zimmer pro Nacht</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </label>
                             </div>
                         </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="dailyLunch" data-price="15">
-                            <div class="checkbox-label">
-                                <span class="label-main">Tägliches Lunchpaket</span>
-                                <span class="label-sub">€15 pro Person pro Wandertag</span>
-                            </div>
-                        </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="extraRestDay" data-price="POA">
-                            <div class="checkbox-label">
-                                <span class="label-main">Zusätzlicher Ruhetag</span>
-                                <span class="label-sub">€auf Anfrage</span>
-                            </div>
-                        </div>
-                        <div class="checkbox-wrapper">
-                            <input type="checkbox" id="polehire" data-price="20">
-                            <div class="checkbox-label">
-                                <span class="label-main">Wanderstöcke mieten</span>
-                                <span class="label-sub">€20 pro Paar</span>
-                            </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" onclick="goToStep(2)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                            </button>
+                            <button type="button" onclick="goToStep(4)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Weiter: Zahlung <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- Step 4: Your Details -->
-                    <div class="form-section">
-                        <h3>
-                            <span class="step-number">4</span>
-                            Ihre Daten
-                        </h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="form-group">
-                                <label for="firstName">Vorname</label>
-                                <input type="text" id="firstName" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Nachname</label>
-                                <input type="text" id="lastName" required>
-                            </div>
-                        </div>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div class="form-group">
-                                <label for="email">E-Mail</label>
-                                <input type="email" id="email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Telefon</label>
-                                <input type="tel" id="phone" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Land</label>
-                            <select id="country" required>
-                                <option value="">-- Land auswählen --</option>
-                                <option value="Ireland">Irland</option>
-                                <option value="UK">Vereinigtes Königreich</option>
-                                <option value="Germany">Deutschland</option>
-                                <option value="Netherlands">Niederlande</option>
-                                <option value="France">Frankreich</option>
-                                <option value="USA">Vereinigte Staaten</option>
-                                <option value="Canada">Kanada</option>
-                                <option value="Australia">Australien</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="specialRequirements">Besondere Anforderungen</label>
-                            <textarea id="specialRequirements" placeholder="Ernährungswünsche, Barrierefreiheit, etc."></textarea>
-                        </div>
-                    </div>
-
-                    <!-- Step 5: Payment -->
-                    <div class="form-section">
-                        <h3>
-                            <span class="step-number">5</span>
-                            Zahlung
-                        </h3>
-
-                        <!-- Order Summary -->
-                        <div class="bg-gray-50 p-4 rounded-lg mb-6">
-                            <h4 class="font-semibold text-gray-900 mb-3">Bestellübersicht</h4>
+                    <!-- STEP 4: Zahlung -->
+                    <div class="step-panel" id="step4">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">receipt_long</span>
+                                Bestellübersicht
+                            </h3>
                             <div class="space-y-2 text-sm">
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Tour:</span>
-                                    <span class="font-medium text-gray-900" id="orderTour">-</span>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900" id="reviewTour">-</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Daten</span><span class="font-medium text-gray-900" id="reviewDates">-</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="reviewWalkers">2</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Preis pro Person</span><span class="font-medium text-gray-900">€<span id="reviewPpp">0</span></span></div>
+                                <div class="border-t border-gray-200 my-1"></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Zwischensumme</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
+                                <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
+                                <div class="border-t-2 border-whi my-1"></div>
+                                <div class="flex justify-between py-2 text-lg font-bold"><span class="text-whi-purple">Gesamt</span><span class="text-whi" id="reviewTotal">€0</span></div>
+                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
+                                    <span class="font-semibold text-orange-900">Anzahlung (25%)</span>
+                                    <span class="font-bold text-orange-700 text-lg" id="reviewDeposit">€0</span>
                                 </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Termine:</span>
-                                    <span class="font-medium text-gray-900" id="orderDates">-</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Wanderer:</span>
-                                    <span class="font-medium text-gray-900" id="orderWalkers">1</span>
-                                </div>
-                                <div class="flex justify-between">
-                                    <span class="text-gray-600">Preis pro Person:</span>
-                                    <span class="font-medium text-gray-900">€<span id="orderPrice">0</span></span>
-                                </div>
-                                <div class="border-t border-gray-300 my-2 pt-2">
-                                    <div class="flex justify-between">
-                                        <span class="text-gray-600">Zwischensumme:</span>
-                                        <span class="font-medium text-gray-900">€<span id="orderSubtotal">0</span></span>
+                                <p class="text-xs text-gray-500 mt-2" id="paymentText">Restbetrag 42 Tage vor Abreise fällig.</p>
+                            </div>
+                        </div>
+
+                        <!-- AGB und Newsletter -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <div class="space-y-4">
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" id="acceptTerms" required class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <span class="text-sm text-gray-700">Ich akzeptiere die <a href="/agb" target="_blank" class="text-whi font-medium underline hover:text-whi-dark">AGB</a> und <a href="/datenschutz" target="_blank" class="text-whi font-medium underline hover:text-whi-dark">Datenschutzerklärung</a> <span class="text-red-500">*</span></span>
+                                </label>
+                                <label class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" id="mailingList" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <span class="text-sm text-gray-700">Informieren Sie mich über Wandertipps, neue Routen &amp; Sonderangebote</span>
+                                </label>
+                            </div>
+                            <p id="termsError" class="text-red-500 text-sm mt-2 hidden">Bitte akzeptieren Sie die AGB um fortzufahren.</p>
+                        </div>
+
+                        <!-- Zahlungsmethode -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">credit_card</span>
+                                Zahlungsmethode
+                            </h3>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-indigo-600">credit_card</span>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-whi-purple text-sm">Kartenzahlung</p>
+                                            <p class="text-xs text-gray-500">Visa, Mastercard, Amex</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div id="extrasDisplay" style="display: none;">
-                                    <div class="flex justify-between text-gray-600 text-xs mb-2">
-                                        <span>Extras:</span>
-                                        <span id="extrasText">-</span>
+                                <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                                            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.764.764 0 0 1 .757-.655h6.803c2.254 0 3.867.58 4.648 1.674.347.48.554 1.013.617 1.587.066.595.003 1.3-.195 2.09l-.009.034v.31l.244.137a2.73 2.73 0 0 1 .495.365c.361.35.605.802.714 1.338.113.553.092 1.21-.062 1.95-.178.852-.466 1.594-.856 2.206a4.297 4.297 0 0 1-1.353 1.392c-.53.34-1.148.587-1.84.73a9.078 9.078 0 0 1-2.204.254h-.524a1.58 1.58 0 0 0-1.562 1.332l-.027.16-.524 3.32-.019.114a.16.16 0 0 1-.157.137H7.076z"/></svg>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-whi-purple text-sm">PayPal</p>
+                                            <p class="text-xs text-gray-500">Mit Ihrem PayPal-Konto bezahlen</p>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="border-t border-gray-300 my-2 pt-2">
-                                    <div class="flex justify-between font-semibold text-lg">
-                                        <span>Gesamt:</span>
-                                        <span class="text-orange-600">€<span id="orderTotal">0</span></span>
-                                    </div>
+                            </div>
+
+                            <div id="stripePanel">
+                                <div class="mb-3">
+                                    <label class="block text-sm font-medium text-whi-purple mb-2">Kartendaten</label>
+                                    <div id="card-element"></div>
+                                    <p id="card-errors" class="text-red-500 text-sm mt-2 hidden"></p>
                                 </div>
-                                <div class="bg-orange-50 border border-orange-200 rounded p-2 mt-2">
-                                    <div class="flex justify-between text-orange-900 font-semibold">
-                                        <span>Anzahlung (25%):</span>
-                                        <span>€<span id="orderDeposit">0</span></span>
-                                    </div>
+                                <button type="button" id="stripePayBtn" onclick="handleStripePayment()" class="w-full bg-whi hover:bg-whi-dark text-white py-3.5 rounded-lg font-semibold text-lg transition hover:shadow-lg disabled:bg-gray-300 disabled:cursor-not-allowed">
+                                    <span class="material-symbols-outlined text-sm align-middle mr-1">lock</span>
+                                    Anzahlung bezahlen — €<span id="payBtnAmount">0</span>
+                                </button>
+                            </div>
+
+                            <div id="paypalPanel" class="hidden">
+                                <div id="paypal-button-container" class="mb-3"></div>
+                                <p class="text-xs text-center text-gray-500">Sie werden zu PayPal weitergeleitet.</p>
+                            </div>
+
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-3 mt-4 text-sm text-green-800 flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-600 text-base mt-0.5">shield</span>
+                                <span>Ihre Zahlung wird sicher verarbeitet. Heute wird nur die 25% Anzahlung berechnet.</span>
+                            </div>
+
+                            <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">lock</span> Sichere Zahlung
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">verified_user</span> SSL-verschlüsselt
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">support_agent</span> 24h Support
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Payment Info -->
-                        <div class="payment-info">
-                            <p id="paymentText">Ihnen werden €0 berechnet (25% Anzahlung). Restbetrag von €0 fällig 42 Tage vor Abreise.</p>
-                        </div>
-
-                        <!-- Card Element Placeholder -->
-                        <div class="card-element-placeholder">
-                            <p>Die Zahlungsabwicklung wird in Kürze aktiviert. Bitte kontaktieren Sie uns, um Ihre Buchung abzuschließen.</p>
-                        </div>
-                        <div id="card-element" style="display: none;"></div>
-
-                        <!-- Success Message -->
-                        <div id="successMessage" class="success-message">
-                            <p><strong>Vielen Dank!</strong> Wir haben Ihre Buchungsanfrage erhalten. Unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden, um die Buchung zu bestätigen und die Zahlung zu arrangieren.</p>
-                        </div>
-
-                        <!-- Submit Button -->
-                        <button type="submit" class="primary-btn w-full py-3 rounded-lg font-semibold text-lg mb-4">
-                            Anzahlung bezahlen
-                        </button>
-
-                        <!-- Trust Badges -->
-                        <div class="trust-badges">
-                            <div class="trust-badge">
-                                <span class="material-symbols-outlined text-sm">lock</span>
-                                Sichere Zahlung
+                        <div id="successMessage" class="bg-green-100 border border-green-300 rounded-xl p-6 text-green-800 hidden">
+                            <div class="flex items-center gap-3 mb-2">
+                                <span class="material-symbols-outlined text-green-600">check_circle</span>
+                                <h4 class="font-bold text-lg">Buchung bestätigt!</h4>
                             </div>
-                            <div class="trust-badge">
-                                <span class="material-symbols-outlined text-sm">verified_user</span>
-                                SSL-verschlüsselt
-                            </div>
+                            <p>Vielen Dank! Wir haben Ihre Buchung und Anzahlung erhalten. Sie erhalten in Kürze eine Bestätigungsmail. Unser Team meldet sich innerhalb von 24 Stunden mit Ihren vollständigen Reisedetails.</p>
+                        </div>
+
+                        <div class="flex justify-between mt-4">
+                            <button type="button" onclick="goToStep(3)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                            </button>
                         </div>
                     </div>
                 </form>
             </div>
 
-            <!-- Right Column: Order Summary Sidebar -->
-            <div class="lg:col-span-1">
-                <div class="sidebar">
-                    <h3>Ihre Buchung</h3>
-
-                    <div class="sidebar-item">
-                        <span class="text-gray-600">Tour</span>
-                        <span class="font-medium text-gray-900" id="sidebarTour">-</span>
-                    </div>
-
-                    <div class="sidebar-item">
-                        <span class="text-gray-600">Termine</span>
-                        <span class="font-medium text-gray-900" id="sidebarDates">-</span>
-                    </div>
-
-                    <div class="sidebar-item">
-                        <span class="text-gray-600">Wanderer</span>
-                        <span class="font-medium text-gray-900" id="sidebarWalkers">1</span>
-                    </div>
-
-                    <div class="sidebar-item">
-                        <span class="text-gray-600">Preis/Person</span>
-                        <span class="font-medium text-gray-900">€<span id="sidebarPrice">0</span></span>
-                    </div>
-
-                    <div class="sidebar-item">
-                        <span class="text-gray-600">Zwischensumme</span>
-                        <span class="font-medium text-gray-900">€<span id="sidebarSubtotal">0</span></span>
-                    </div>
-
-                    <div id="sidebarExtras" style="display: none;">
-                        <div class="sidebar-item">
-                            <span class="text-gray-600">Extras</span>
-                            <span class="font-medium text-gray-900" id="sidebarExtrasPrice">€0</span>
+            <!-- Right Sidebar (desktop) -->
+            <div class="lg:col-span-1 desktop-sidebar">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm sticky top-4">
+                    <img id="sidebarImage" src="../images/routes/dingle-way/card.jpg" alt="Tour" class="sidebar-feature-img rounded-t-xl" onerror="this.style.display='none'">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold text-whi-purple mb-3">Ihre Buchung</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900 text-right max-w-[55%] truncate" id="sidebarTour">-</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Daten</span><span class="font-medium text-gray-900 text-right" id="sidebarDates">-</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="sidebarWalkers">2</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Preis/Person</span><span class="font-medium text-gray-900">€<span id="sidebarPrice">0</span></span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Zwischensumme</span><span class="font-medium text-gray-900">€<span id="sidebarSubtotal">0</span></span></div>
+                            <div id="sidebarExtras" class="hidden"><div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="sidebarExtrasPrice">€0</span></div></div>
+                            <div class="flex justify-between py-2 text-base font-bold border-t-2 border-whi mt-1"><span class="text-whi-purple">Gesamt</span><span class="text-whi" id="sidebarTotal">€0</span></div>
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
+                                <span class="font-semibold text-orange-900 text-sm">Anzahlung (25%)</span>
+                                <span class="font-bold text-orange-700" id="sidebarDeposit">€0</span>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="sidebar-item total">
-                        <span>Gesamt</span>
-                        <span id="sidebarTotal">€0</span>
-                    </div>
-
-                    <div class="sidebar-item deposit">
-                        <span>Anzahlung (25%)</span>
-                        <span id="sidebarDeposit">€0</span>
-                    </div>
-
-                    <div class="sidebar-contact">
-                        <p>Fragen? Rufen Sie an</p>
-                        <div class="phone">+353 42 932 3396</div>
+                        <div class="bg-whi-bg rounded-lg p-3 mt-4 text-center">
+                            <p class="text-xs text-gray-500 mb-1">Fragen? Rufen Sie an</p>
+                            <a href="tel:+353879573856" class="text-base font-bold text-whi hover:text-whi-dark transition">+353 87 957 3856</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -670,7 +515,6 @@
     <footer class="bg-gray-900 text-gray-300 mt-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-                <!-- About -->
                 <div>
                     <h4 class="text-white font-semibold mb-4">Über uns</h4>
                     <ul class="space-y-2 text-sm">
@@ -679,8 +523,6 @@
                         <li><a href="#" class="hover:text-white transition">Team</a></li>
                     </ul>
                 </div>
-
-                <!-- Discover -->
                 <div>
                     <h4 class="text-white font-semibold mb-4">Entdecken</h4>
                     <ul class="space-y-2 text-sm">
@@ -689,8 +531,6 @@
                         <li><a href="#" class="hover:text-white transition">Blog</a></li>
                     </ul>
                 </div>
-
-                <!-- Support -->
                 <div>
                     <h4 class="text-white font-semibold mb-4">Hilfe</h4>
                     <ul class="space-y-2 text-sm">
@@ -699,11 +539,9 @@
                         <li><a href="#" class="hover:text-white transition">AGB</a></li>
                     </ul>
                 </div>
-
-                <!-- Contact -->
                 <div>
                     <h4 class="text-white font-semibold mb-4">Kontakt</h4>
-                    <p class="text-sm mb-2">+353 42 932 3396</p>
+                    <p class="text-sm mb-2">+353 87 957 3856</p>
                     <p class="text-sm mb-4">info@walkingholidayireland.com</p>
                     <div class="flex gap-4">
                         <a href="#" class="hover:text-white transition">Facebook</a>
@@ -711,307 +549,403 @@
                     </div>
                 </div>
             </div>
-
             <div class="border-t border-gray-700 pt-8">
-                <p class="text-sm text-center">© 2026 Wanderurlaub Irland. Alle Rechte vorbehalten.</p>
+                <p class="text-sm text-center">&copy; 2025 Walking Holiday Ireland. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Tour Data -->
     <script>
-        const TOURS = [
-            {slug:'dingle-way',name:'The Dingle Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Intermediate'},
-            {slug:'kerry-way',name:'The Kerry Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Challenging'},
-            {slug:'burren-5-days',name:'Burren Way — 5 Days',days:5,price:599,region:'Wild Atlantic Way',difficulty:'Moderate'},
-            {slug:'burren-6-days',name:'Burren Way — 6 Days',days:6,price:695,region:'Wild Atlantic Way',difficulty:'Moderate'},
-            {slug:'burren-7-days',name:'Burren Way — 7 Days',days:7,price:795,region:'Wild Atlantic Way',difficulty:'Moderate'},
-            {slug:'burren-way',name:'Burren Way — 8 Days',days:8,price:890,region:'Wild Atlantic Way',difficulty:'Moderate'},
-            {slug:'wicklow-way-5-days',name:'Wicklow Way — 5 Days',days:5,price:699,region:"Ireland's Ancient East",difficulty:'Moderate'},
-            {slug:'wicklow-way-7-days',name:'Wicklow Way — 7 Days',days:7,price:929,region:"Ireland's Ancient East",difficulty:'Challenging'},
-            {slug:'wicklow-way',name:'Wicklow Way — 8 Days',days:8,price:1029,region:"Ireland's Ancient East",difficulty:'Moderate'},
-            {slug:'wicklow-way-10-days',name:'Wicklow Way — 10 Days',days:10,price:1249,region:"Ireland's Ancient East",difficulty:'Moderate'},
-            {slug:'barrow-way-5-days',name:'Barrow Way — 5 Days',days:5,price:919,region:"Ireland's Ancient East",difficulty:'Easy'},
-            {slug:'barrow-way',name:'Barrow Way — 8 Days',days:8,price:859,region:"Ireland's Ancient East",difficulty:'Easy'},
-            {slug:'causeway-coast-5-days',name:'Causeway Coast — 5 Days',days:5,price:599,region:'Northern Ireland',difficulty:'Moderate'},
-            {slug:'causeway-coast',name:"Giant's Causeway — 8 Days",days:8,price:959,region:'Northern Ireland',difficulty:'Moderate'},
-            {slug:'cooley-mournes',name:'Cooley & Mournes — 8 Days',days:8,price:879,region:'Northern Ireland',difficulty:'Challenging'},
-            {slug:'cooley-peninsula-5-days',name:'Cooley Peninsula — 5 Days',days:5,price:539,region:'Northern Ireland',difficulty:'Moderate'}
-        ];
+    // ─────────── Tour Data ───────────
+    const TOURS = [
+        {slug:'dingle-way',name:'Der Dingle Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Mittel',img:'dingle-way'},
+        {slug:'kerry-way',name:'Der Kerry Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Anspruchsvoll',img:'kerry-way'},
+        {slug:'burren-5-days',name:'Burren Way — 5 Tage',days:5,price:599,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-6-days',name:'Burren Way — 6 Tage',days:6,price:695,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-7-days',name:'Burren Way — 7 Tage',days:7,price:795,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-way',name:'Burren Way — 8 Tage',days:8,price:890,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'wicklow-way-5-days',name:'Wicklow Way — 5 Tage',days:5,price:699,region:'Irlands alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'wicklow-way-7-days',name:'Wicklow Way — 7 Tage',days:7,price:929,region:'Irlands alter Osten',difficulty:'Anspruchsvoll',img:'wicklow-way'},
+        {slug:'wicklow-way',name:'Wicklow Way — 8 Tage',days:8,price:1029,region:'Irlands alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'wicklow-way-10-days',name:'Wicklow Way — 10 Tage',days:10,price:1249,region:'Irlands alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'barrow-way-5-days',name:'Barrow Way — 5 Tage',days:5,price:919,region:'Irlands alter Osten',difficulty:'Leicht',img:'barrow-way'},
+        {slug:'barrow-way',name:'Barrow Way — 8 Tage',days:8,price:859,region:'Irlands alter Osten',difficulty:'Leicht',img:'barrow-way'},
+        {slug:'causeway-coast-5-days',name:'Causeway Coast — 5 Tage',days:5,price:599,region:'Nordirland',difficulty:'Moderat',img:'causeway-coast'},
+        {slug:'causeway-coast',name:"Giant's Causeway — 8 Tage",days:8,price:959,region:'Nordirland',difficulty:'Moderat',img:'causeway-coast'},
+        {slug:'cooley-mournes',name:'Cooley & Mournes — 8 Tage',days:8,price:879,region:'Nordirland',difficulty:'Anspruchsvoll',img:'cooley-mournes'},
+        {slug:'cooley-peninsula-5-days',name:'Cooley Halbinsel — 5 Tage',days:5,price:539,region:'Nordirland',difficulty:'Moderat',img:'cooley-peninsula-5-days'}
+    ];
 
-        // Get tour by slug
-        function getTour(slug) {
-            return TOURS.find(t => t.slug === slug);
-        }
+    const ROOM_TYPES = [
+        { id: 'single', label: 'Einzel', icon: '🛏️', desc: 'Einzelbett' },
+        { id: 'double', label: 'Doppel', icon: '🛏️🛏️', desc: 'Doppelbett' },
+        { id: 'triple', label: 'Dreibett', icon: '🛏️+🛏️', desc: '2 Einzelbetten' },
+        { id: 'family', label: 'Familie', icon: '🛏️🛏️+🛏️', desc: 'Doppel + Einzel' },
+    ];
 
-        // DOM Elements
-        const tourSelect = document.getElementById('tourSelect');
-        const tourInfo = document.getElementById('tourInfo');
-        const tourDays = document.getElementById('tourDays');
-        const tourPrice = document.getElementById('tourPrice');
-        const tourDifficulty = document.getElementById('tourDifficulty');
+    let currentStep = 1;
+    let currentTour = null;
+    let travellers = [];
+    let selectedPayment = 'stripe';
 
-        const startDate = document.getElementById('startDate');
-        const numWalkers = document.getElementById('numWalkers');
-        const singleSupplement = document.getElementById('singleSupplement');
-        const singleSupplementText = document.getElementById('singleSupplementText');
+    // Stripe
+    let stripe, cardElement;
+    try {
+        stripe = Stripe('pk_test_placeholder');
+        const elements = stripe.elements();
+        cardElement = elements.create('card', {
+            style: { base: { fontSize: '16px', fontFamily: 'Inter, sans-serif', color: '#210747', '::placeholder': { color: '#9ca3af' } }, invalid: { color: '#ef4444' } }
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('card-element');
+            if (el) cardElement.mount('#card-element');
+            cardElement.on('change', (event) => {
+                const errEl = document.getElementById('card-errors');
+                if (event.error) { errEl.textContent = event.error.message; errEl.classList.remove('hidden'); }
+                else { errEl.classList.add('hidden'); }
+            });
+        });
+    } catch(e) { console.warn('Stripe nicht geladen:', e); }
 
-        const airportTransfer = document.getElementById('airportTransfer');
-        const dailyLunch = document.getElementById('dailyLunch');
-        const extraRestDay = document.getElementById('extraRestDay');
-        const polehire = document.getElementById('polehire');
+    document.addEventListener('DOMContentLoaded', () => {
+        const walkerCount = parseInt(document.getElementById('numWalkers').value) || 2;
+        initTravellers(walkerCount);
 
-        const firstName = document.getElementById('firstName');
-        const lastName = document.getElementById('lastName');
-        const email = document.getElementById('email');
-        const phone = document.getElementById('phone');
-        const country = document.getElementById('country');
-        const specialRequirements = document.getElementById('specialRequirements');
-
-        const checkoutForm = document.getElementById('checkoutForm');
-        const successMessage = document.getElementById('successMessage');
-
-        // Order summary elements
-        const orderTour = document.getElementById('orderTour');
-        const orderDates = document.getElementById('orderDates');
-        const orderWalkers = document.getElementById('orderWalkers');
-        const orderPrice = document.getElementById('orderPrice');
-        const orderSubtotal = document.getElementById('orderSubtotal');
-        const orderTotal = document.getElementById('orderTotal');
-        const orderDeposit = document.getElementById('orderDeposit');
-        const extrasDisplay = document.getElementById('extrasDisplay');
-        const extrasText = document.getElementById('extrasText');
-        const paymentText = document.getElementById('paymentText');
-
-        // Sidebar elements
-        const sidebarTour = document.getElementById('sidebarTour');
-        const sidebarDates = document.getElementById('sidebarDates');
-        const sidebarWalkers = document.getElementById('sidebarWalkers');
-        const sidebarPrice = document.getElementById('sidebarPrice');
-        const sidebarSubtotal = document.getElementById('sidebarSubtotal');
-        const sidebarExtras = document.getElementById('sidebarExtras');
-        const sidebarExtrasPrice = document.getElementById('sidebarExtrasPrice');
-        const sidebarTotal = document.getElementById('sidebarTotal');
-        const sidebarDeposit = document.getElementById('sidebarDeposit');
-
-        // Current selections
-        let currentTour = null;
-        let currentExtras = [];
-
-        // Tour selection handler
-        tourSelect.addEventListener('change', function() {
-            const tour = getTour(this.value);
-            if (tour) {
-                currentTour = tour;
-
-                // Show tour info
-                tourInfo.style.display = 'block';
-                tourDays.textContent = tour.days;
-                tourPrice.textContent = tour.price.toLocaleString();
-                tourDifficulty.textContent = tour.difficulty;
-
-                // Update order summary
-                orderTour.textContent = tour.name;
-                sidebarTour.textContent = tour.name;
-
-                updateOrderSummary();
+        document.getElementById('tourSelect').addEventListener('change', function() {
+            currentTour = TOURS.find(t => t.slug === this.value) || null;
+            if (currentTour) {
+                document.getElementById('tourInfo').classList.remove('hidden');
+                document.getElementById('tourDays').textContent = currentTour.days;
+                document.getElementById('tourPrice').textContent = currentTour.price.toLocaleString();
+                document.getElementById('tourDifficulty').textContent = currentTour.difficulty;
+                const imgPath = `../images/routes/${currentTour.img}/card.jpg`;
+                document.getElementById('sidebarImage').src = imgPath;
+                document.getElementById('sidebarImage').style.display = 'block';
+                const mobImg = document.getElementById('mobileBannerImg');
+                mobImg.src = imgPath;
+                mobImg.classList.remove('hidden');
             } else {
-                tourInfo.style.display = 'none';
-                currentTour = null;
+                document.getElementById('tourInfo').classList.add('hidden');
+                document.getElementById('sidebarImage').style.display = 'none';
+                document.getElementById('mobileBannerImg').classList.add('hidden');
             }
+            updatePricing();
         });
 
-        // Date and walker handlers
-        startDate.addEventListener('change', updateOrderSummary);
-        numWalkers.addEventListener('change', updateOrderSummary);
-        singleSupplement.addEventListener('change', updateOrderSummary);
-
-        // Extras handlers
-        airportTransfer.addEventListener('change', updateOrderSummary);
-        dailyLunch.addEventListener('change', updateOrderSummary);
-        extraRestDay.addEventListener('change', updateOrderSummary);
-        polehire.addEventListener('change', updateOrderSummary);
-
-        // Update order summary
-        function updateOrderSummary() {
-            if (!currentTour) {
-                resetOrderSummary();
-                return;
-            }
-
-            // Dates
-            const startDateStr = startDate.value ? new Date(startDate.value).toLocaleDateString('de-DE', {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            }) : '-';
-            const endDate = startDate.value ? new Date(new Date(startDate.value).getTime() + currentTour.days * 24 * 60 * 60 * 1000) : null;
-            const endDateStr = endDate ? endDate.toLocaleDateString('de-DE', {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric'
-            }) : '-';
-            const datesDisplay = startDate.value ? `${startDateStr} - ${endDateStr}` : '-';
-
-            // Walkers
-            const walkerCount = parseInt(numWalkers.value) || 1;
-
-            // Price calculations
-            const basePrice = currentTour.price * walkerCount;
-
-            // Extras
-            let extrasTotal = 0;
-            currentExtras = [];
-
-            if (airportTransfer.checked) {
-                currentExtras.push('Flughafentransfer (auf Anfrage)');
-            }
-
-            if (dailyLunch.checked) {
-                const walkingDays = (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1));
-                const lunchCost = 15 * walkerCount * walkingDays;
-                extrasTotal += lunchCost;
-                currentExtras.push(`Tägliches Lunchpaket (€${lunchCost})`);
-            }
-
-            if (extraRestDay.checked) {
-                currentExtras.push('Zusätzlicher Ruhetag (auf Anfrage)');
-            }
-
-            if (polehire.checked) {
-                const poleCost = 20;
-                extrasTotal += poleCost;
-                currentExtras.push(`Wanderstöcke (€${poleCost})`);
-            }
-
-            const total = basePrice + extrasTotal;
-            const deposit = Math.round(total * 0.25 * 100) / 100;
-            const balance = total - deposit;
-
-            // Update order summary display
-            orderDates.textContent = datesDisplay;
-            orderWalkers.textContent = walkerCount;
-            orderPrice.textContent = currentTour.price.toLocaleString();
-            orderSubtotal.textContent = basePrice.toLocaleString();
-            orderTotal.textContent = total.toLocaleString();
-            orderDeposit.textContent = deposit.toLocaleString();
-
-            paymentText.textContent = `Ihnen werden €${deposit.toLocaleString()} berechnet (25% Anzahlung). Restbetrag von €${balance.toLocaleString()} fällig 42 Tage vor Abreise.`;
-
-            // Update extras display
-            if (currentExtras.length > 0) {
-                extrasDisplay.style.display = 'block';
-                extrasText.textContent = currentExtras.join(', ');
-            } else {
-                extrasDisplay.style.display = 'none';
-            }
-
-            // Update sidebar
-            sidebarDates.textContent = datesDisplay;
-            sidebarWalkers.textContent = walkerCount;
-            sidebarPrice.textContent = currentTour.price.toLocaleString();
-            sidebarSubtotal.textContent = basePrice.toLocaleString();
-            sidebarTotal.textContent = `€${total.toLocaleString()}`;
-            sidebarDeposit.textContent = `€${deposit.toLocaleString()}`;
-
-            if (currentExtras.length > 0) {
-                sidebarExtras.style.display = 'block';
-                sidebarExtrasPrice.textContent = `€${extrasTotal.toLocaleString()}`;
-            } else {
-                sidebarExtras.style.display = 'none';
-            }
-        }
-
-        // Reset order summary
-        function resetOrderSummary() {
-            tourInfo.style.display = 'none';
-            orderTour.textContent = '-';
-            orderDates.textContent = '-';
-            orderWalkers.textContent = '1';
-            orderPrice.textContent = '0';
-            orderSubtotal.textContent = '0';
-            orderTotal.textContent = '0';
-            orderDeposit.textContent = '0';
-            extrasDisplay.style.display = 'none';
-            paymentText.textContent = "Ihnen werden €0 berechnet (25% Anzahlung). Restbetrag von €0 fällig 42 Tage vor Abreise.";
-
-            sidebarTour.textContent = '-';
-            sidebarDates.textContent = '-';
-            sidebarWalkers.textContent = '1';
-            sidebarPrice.textContent = '0';
-            sidebarSubtotal.textContent = '0';
-            sidebarTotal.textContent = '€0';
-            sidebarDeposit.textContent = '€0';
-            sidebarExtras.style.display = 'none';
-        }
-
-        // Form submission
-        checkoutForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            if (!currentTour) {
-                alert('Bitte wählen Sie eine Tour');
-                return;
-            }
-
-            // Collect form data
-            const formData = {
-                tour: currentTour.name,
-                startDate: startDate.value,
-                walkers: numWalkers.value,
-                singleSupplement: singleSupplement.checked,
-                airportTransfer: airportTransfer.checked,
-                dailyLunch: dailyLunch.checked,
-                extraRestDay: extraRestDay.checked,
-                polehire: polehire.checked,
-                firstName: firstName.value,
-                lastName: lastName.value,
-                email: email.value,
-                phone: phone.value,
-                country: country.value,
-                specialRequirements: specialRequirements.value,
-                total: orderTotal.textContent.replace(/,/g, ''),
-                deposit: orderDeposit.textContent.replace(/,/g, '')
-            };
-
-            // For now, show success message and create mailto as fallback
-            successMessage.classList.add('show');
-
-            // Fallback: Create mailto link with booking details
-            const mailtoSubject = `Wanderurlaub Buchung: ${currentTour.name}`;
-            const mailtoBody = `
-Buchungsdetails:
-Tour: ${formData.tour}
-Startdatum: ${formData.startDate}
-Anzahl Wanderer: ${formData.walkers}
-Einzelzimmerzuschlag: ${formData.singleSupplement ? 'Ja' : 'Nein'}
-Extras: ${currentExtras.length > 0 ? currentExtras.join(', ') : 'Keine'}
-
-Gästedaten:
-Name: ${formData.firstName} ${formData.lastName}
-E-Mail: ${formData.email}
-Telefon: ${formData.phone}
-Land: ${formData.country}
-Besondere Anforderungen: ${formData.specialRequirements || 'Keine'}
-
-Gesamt: €${formData.total}
-Anzahlung (25%): €${formData.deposit}
-            `;
-
-            console.log('Booking data:', formData);
-            console.log('mailto:', `mailto:info@walkingholidayireland.com?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`);
-
-            // Scroll to success message
-            setTimeout(() => {
-                successMessage.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+        document.getElementById('numWalkers').addEventListener('change', function() {
+            const count = Math.max(1, Math.min(12, parseInt(this.value) || 1));
+            this.value = count;
+            syncTravellers(count);
+            updatePricing();
         });
 
-        // Initialize
-        resetOrderSummary();
+        document.getElementById('startDate').addEventListener('change', updatePricing);
+
+        ['airportTransfer','dailyLunch','extraRestDay','polehire','singleSupplement'].forEach(id => {
+            document.getElementById(id).addEventListener('change', updatePricing);
+        });
+
+        initPayPal();
+    });
+
+    function initTravellers(count) {
+        travellers = [];
+        for (let i = 0; i < count; i++) travellers.push({ firstName: '', lastName: '', room: 'double' });
+        renderTravellers();
+    }
+
+    function syncTravellers(count) {
+        while (travellers.length < count) travellers.push({ firstName: '', lastName: '', room: 'double' });
+        while (travellers.length > count) travellers.pop();
+        renderTravellers();
+    }
+
+    function addTraveller() {
+        if (travellers.length >= 12) return;
+        travellers.push({ firstName: '', lastName: '', room: 'double' });
+        document.getElementById('numWalkers').value = travellers.length;
+        renderTravellers();
+        updatePricing();
+    }
+
+    function removeTraveller(index) {
+        if (travellers.length <= 1) return;
+        saveTravellerFields();
+        travellers.splice(index, 1);
+        document.getElementById('numWalkers').value = travellers.length;
+        renderTravellers();
+        updatePricing();
+    }
+
+    function saveTravellerFields() {
+        travellers.forEach((t, i) => {
+            const fn = document.getElementById(`travFirstName_${i}`);
+            const ln = document.getElementById(`travLastName_${i}`);
+            if (fn) t.firstName = fn.value;
+            if (ln) t.lastName = ln.value;
+        });
+    }
+
+    function selectRoom(travellerIdx, roomId) {
+        saveTravellerFields();
+        travellers[travellerIdx].room = roomId;
+        renderTravellers();
+    }
+
+    function renderTravellers() {
+        const container = document.getElementById('travellersContainer');
+        document.getElementById('travellerCount').textContent = `${travellers.length} Reisende${travellers.length === 1 ? 'r' : ''}`;
+        container.innerHTML = travellers.map((t, i) => `
+            <div class="border border-gray-200 rounded-xl p-4 mb-3 ${i === 0 ? 'bg-orange-50/40 border-orange-200' : ''}">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-semibold text-whi-purple">
+                        ${i === 0 ? '<span class="material-symbols-outlined text-whi text-base align-middle mr-1">star</span> Hauptreisender' : `Reisender ${i + 1}`}
+                    </span>
+                    ${i > 0 ? `<button type="button" onclick="removeTraveller(${i})" class="text-gray-400 hover:text-red-500 transition" title="Entfernen"><span class="material-symbols-outlined text-sm">close</span></button>` : ''}
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Vorname</label>
+                        <input type="text" id="travFirstName_${i}" value="${escapeHtml(t.firstName)}" placeholder="Vorname" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-whi focus:ring-whi"
+                            onchange="travellers[${i}].firstName=this.value">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-500 mb-1">Nachname</label>
+                        <input type="text" id="travLastName_${i}" value="${escapeHtml(t.lastName)}" placeholder="Nachname" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-whi focus:ring-whi"
+                            onchange="travellers[${i}].lastName=this.value">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-medium text-gray-500 mb-2">Zimmertyp</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        ${ROOM_TYPES.map(r => `
+                            <div class="room-option ${t.room === r.id ? 'selected' : ''}" onclick="selectRoom(${i}, '${r.id}')">
+                                <span class="bed-icons">${r.icon}</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-whi-purple">${r.label}</div>
+                                    <div class="text-[10px] text-gray-400">${r.desc}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function goToStep(step) {
+        if (step > currentStep) {
+            if (currentStep === 1) {
+                if (!currentTour) { alert('Bitte wählen Sie eine Tour.'); return; }
+                if (!document.getElementById('startDate').value) { alert('Bitte wählen Sie ein Startdatum.'); return; }
+            }
+            if (currentStep === 2) {
+                saveTravellerFields();
+                const missing = travellers.some(t => !t.firstName.trim() || !t.lastName.trim());
+                if (missing) { alert('Bitte füllen Sie alle Namen der Reisenden aus.'); return; }
+                if (!document.getElementById('email').value) { alert('Bitte geben Sie Ihre E-Mail ein.'); return; }
+            }
+        }
+        if (currentStep === 2) saveTravellerFields();
+        currentStep = step;
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`step${step}`).classList.add('active');
+        document.querySelectorAll('.step-dot').forEach(dot => {
+            const s = parseInt(dot.dataset.step);
+            dot.className = 'step-dot ' + (s < step ? 'completed' : s === step ? 'active' : 'inactive');
+            if (s < step) dot.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+            else dot.textContent = s;
+        });
+        document.querySelectorAll('.step-connector').forEach((conn, idx) => {
+            conn.className = 'step-connector flex-1 mx-2 mt-[-18px] ' + (idx < step - 1 ? 'active' : 'inactive');
+        });
+        ['stepLabel2','stepLabel3','stepLabel4'].forEach((id, idx) => {
+            const labelStep = idx + 2;
+            document.getElementById(id).className = 'text-xs font-medium ' + (labelStep <= step ? 'text-whi-purple' : 'text-gray-400');
+        });
+        if (step === 4) updateReviewPanel();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updatePricing() {
+        if (!currentTour) { resetPricing(); return; }
+        const walkerCount = travellers.length;
+        const startDateVal = document.getElementById('startDate').value;
+        let datesDisplay = '-';
+        if (startDateVal) {
+            const start = new Date(startDateVal);
+            const end = new Date(start.getTime() + currentTour.days * 86400000);
+            const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'short', day: 'numeric' });
+            datesDisplay = `${fmt(start)} – ${fmt(end)}, ${start.getFullYear()}`;
+        }
+        let extrasTotal = 0;
+        const extras = [];
+        const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
+        if (document.getElementById('dailyLunch').checked) {
+            const cost = 15 * walkerCount * walkingDays;
+            extrasTotal += cost;
+            extras.push(`Lunchpakete (€${cost})`);
+            document.getElementById('lunchPriceLabel').textContent = `€${cost}`;
+        } else {
+            document.getElementById('lunchPriceLabel').textContent = `€${15 * walkerCount * walkingDays}`;
+        }
+        if (document.getElementById('polehire').checked) { extrasTotal += 20; extras.push('Wanderstöcke (€20)'); }
+        if (document.getElementById('airportTransfer').checked) extras.push('Flughafentransfer (a.A.)');
+        if (document.getElementById('extraRestDay').checked) extras.push('Ruhetag (a.A.)');
+        const basePrice = currentTour.price * walkerCount;
+        const total = basePrice + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        const balance = total - deposit;
+        document.getElementById('sidebarTour').textContent = currentTour.name;
+        document.getElementById('sidebarDates').textContent = datesDisplay;
+        document.getElementById('sidebarWalkers').textContent = walkerCount;
+        document.getElementById('sidebarPrice').textContent = currentTour.price.toLocaleString();
+        document.getElementById('sidebarSubtotal').textContent = basePrice.toLocaleString();
+        document.getElementById('sidebarTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('sidebarDeposit').textContent = `€${deposit.toLocaleString()}`;
+        if (extrasTotal > 0) { document.getElementById('sidebarExtras').classList.remove('hidden'); document.getElementById('sidebarExtrasPrice').textContent = `€${extrasTotal.toLocaleString()}`; }
+        else { document.getElementById('sidebarExtras').classList.add('hidden'); }
+        document.getElementById('mobileBannerTour').textContent = currentTour.name;
+        document.getElementById('mobileBannerDates').textContent = datesDisplay;
+        document.getElementById('mobileBannerTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('payBtnAmount').textContent = deposit.toLocaleString();
+        document.getElementById('paymentText').textContent = `Sie zahlen €${deposit.toLocaleString()} (25% Anzahlung). Restbetrag von €${balance.toLocaleString()} 42 Tage vor Abreise fällig.`;
+    }
+
+    function resetPricing() {
+        document.getElementById('sidebarTour').textContent = '-';
+        document.getElementById('sidebarDates').textContent = '-';
+        ['sidebarPrice','sidebarSubtotal'].forEach(id => document.getElementById(id).textContent = '0');
+        document.getElementById('sidebarTotal').textContent = '€0';
+        document.getElementById('sidebarDeposit').textContent = '€0';
+        document.getElementById('sidebarExtras').classList.add('hidden');
+        document.getElementById('mobileBannerTour').textContent = 'Tour wählen';
+        document.getElementById('mobileBannerDates').textContent = '-';
+        document.getElementById('mobileBannerTotal').textContent = '€0';
+        document.getElementById('payBtnAmount').textContent = '0';
+    }
+
+    function updateReviewPanel() {
+        if (!currentTour) return;
+        const walkerCount = travellers.length;
+        const startDateVal = document.getElementById('startDate').value;
+        let datesDisplay = '-';
+        if (startDateVal) {
+            const start = new Date(startDateVal);
+            const end = new Date(start.getTime() + currentTour.days * 86400000);
+            const fmt = (d) => d.toLocaleDateString('de-DE', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            datesDisplay = `${fmt(start)} – ${fmt(end)}`;
+        }
+        const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
+        let extrasTotal = 0;
+        if (document.getElementById('dailyLunch').checked) extrasTotal += 15 * walkerCount * walkingDays;
+        if (document.getElementById('polehire').checked) extrasTotal += 20;
+        const basePrice = currentTour.price * walkerCount;
+        const total = basePrice + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        document.getElementById('reviewTour').textContent = currentTour.name;
+        document.getElementById('reviewDates').textContent = datesDisplay;
+        document.getElementById('reviewWalkers').textContent = walkerCount;
+        document.getElementById('reviewPpp').textContent = currentTour.price.toLocaleString();
+        document.getElementById('reviewSubtotal').textContent = basePrice.toLocaleString();
+        document.getElementById('reviewTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('reviewDeposit').textContent = `€${deposit.toLocaleString()}`;
+        if (extrasTotal > 0) { document.getElementById('reviewExtrasRow').classList.remove('hidden'); document.getElementById('reviewExtrasAmt').textContent = `€${extrasTotal.toLocaleString()}`; }
+        else { document.getElementById('reviewExtrasRow').classList.add('hidden'); }
+    }
+
+    function selectPayment(method) {
+        selectedPayment = method;
+        document.getElementById('stripeMethod').classList.toggle('selected', method === 'stripe');
+        document.getElementById('paypalMethod').classList.toggle('selected', method === 'paypal');
+        document.getElementById('stripePanel').classList.toggle('hidden', method !== 'stripe');
+        document.getElementById('paypalPanel').classList.toggle('hidden', method !== 'paypal');
+    }
+
+    function validateBeforePayment() {
+        const terms = document.getElementById('acceptTerms');
+        const termsErr = document.getElementById('termsError');
+        if (!terms.checked) { termsErr.classList.remove('hidden'); terms.scrollIntoView({ behavior: 'smooth', block: 'center' }); return false; }
+        termsErr.classList.add('hidden');
+        return true;
+    }
+
+    async function handleStripePayment() {
+        if (!validateBeforePayment()) return;
+        const btn = document.getElementById('stripePayBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Wird verarbeitet...';
+        try {
+            await new Promise(r => setTimeout(r, 2000));
+            document.getElementById('successMessage').classList.remove('hidden');
+            btn.style.display = 'none';
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            submitBookingData();
+        } catch (err) {
+            alert('Zahlung fehlgeschlagen: ' + err.message);
+            btn.disabled = false;
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">lock</span> Anzahlung bezahlen — €${document.getElementById('payBtnAmount').textContent}`;
+        }
+    }
+
+    function initPayPal() {
+        if (typeof paypal === 'undefined') { setTimeout(initPayPal, 1000); return; }
+        try {
+            paypal.Buttons({
+                style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+                createOrder: function(data, actions) {
+                    if (!validateBeforePayment()) return;
+                    const deposit = parseFloat(document.getElementById('payBtnAmount').textContent.replace(/,/g, '')) || 0;
+                    return actions.order.create({ purchase_units: [{ amount: { value: deposit.toFixed(2), currency_code: 'EUR' }, description: `Anzahlung: ${currentTour?.name || 'Wanderurlaub'}` }] });
+                },
+                onApprove: function(data, actions) {
+                    return actions.order.capture().then(function(details) {
+                        document.getElementById('successMessage').classList.remove('hidden');
+                        document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                        submitBookingData();
+                    });
+                },
+                onError: function(err) { console.error('PayPal Fehler:', err); alert('PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut.'); }
+            }).render('#paypal-button-container');
+        } catch(e) { console.warn('PayPal init Fehler:', e); }
+    }
+
+    function getBookingData() {
+        saveTravellerFields();
+        const walkerCount = travellers.length;
+        const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 0;
+        let extrasTotal = 0;
+        const extras = [];
+        if (document.getElementById('dailyLunch').checked) { const c = 15*walkerCount*walkingDays; extrasTotal+=c; extras.push(`Lunch (€${c})`); }
+        if (document.getElementById('polehire').checked) { extrasTotal+=20; extras.push('Stöcke (€20)'); }
+        if (document.getElementById('airportTransfer').checked) extras.push('Transfer (a.A.)');
+        if (document.getElementById('extraRestDay').checked) extras.push('Ruhetag (a.A.)');
+        if (document.getElementById('singleSupplement').checked) extras.push('Einzelzimmerzuschlag');
+        const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
+        return {
+            tour: currentTour?.name, tourSlug: currentTour?.slug,
+            startDate: document.getElementById('startDate').value,
+            travellers: travellers.map(t => ({ firstName: t.firstName, lastName: t.lastName, room: t.room })),
+            email: document.getElementById('email').value, phone: document.getElementById('phone').value,
+            country: document.getElementById('country').value, specialRequirements: document.getElementById('specialRequirements').value,
+            extras, total, deposit: Math.round(total * 0.25 * 100) / 100,
+            mailingList: document.getElementById('mailingList').checked,
+        };
+    }
+
+    function submitBookingData() {
+        const data = getBookingData();
+        console.log('Buchung gesendet:', data);
+    }
     </script>
-    <script src="js/whi-nav.js"></script>
+    <script src="../js/whi-nav.js"></script>
 </body>
 </html>
