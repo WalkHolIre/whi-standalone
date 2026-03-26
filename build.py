@@ -33,6 +33,48 @@ DRY_RUN = '--dry-run' in sys.argv
 VERBOSE = '--verbose' in sys.argv or '-v' in sys.argv
 LOCAL_MODE = '--local' in sys.argv
 
+# ── Multilingual URL Configuration ──────────────────────────────────
+# Each language gets its own domain/subfolder and translated filenames.
+LANG_DOMAINS = {
+    'en': 'https://walkingholidayireland.com',
+    'de': 'https://walkingholidayireland.de',
+    'nl': 'https://walkingholidayireland.com/nl',
+}
+
+def lang_url(lang, path):
+    """Build an absolute URL for a given language and path."""
+    base = LANG_DOMAINS.get(lang, f'https://walkingholidayireland.com/{lang}')
+    return f'{base}/{path.lstrip("/")}'
+
+# Translated folder/prefix names per language
+TOUR_FOLDER = {'en': 'walking-tours', 'de': 'wandertouren', 'nl': 'wandeltochten'}
+WALKING_AREA_PREFIX = {'en': 'walking-area', 'de': 'wandergebiet', 'nl': 'wandelgebied'}
+DESTINATION_PREFIX = {'en': 'destination', 'de': 'wanderziel', 'nl': 'wandelbestemming'}
+
+# Translated static page filenames: (en_slug) → {lang: translated_slug}
+STATIC_SLUG_MAP = {
+    'about':            {'de': 'ueber-uns',            'nl': 'over-ons'},
+    'contact':          {'de': 'kontakt',              'nl': 'contact'},
+    'how-it-works':     {'de': 'so-funktioniert-es',   'nl': 'hoe-het-werkt'},
+    'tour-grading':     {'de': 'tourbewertung',        'nl': 'moeilijkheidsgraad'},
+    'tailor-made':      {'de': 'massgeschneidert',     'nl': 'op-maat'},
+    'reviews':          {'de': 'bewertungen',          'nl': 'beoordelingen'},
+    'self-guided-walking-holidays-ireland': {'de': 'individuelle-wanderferien-irland', 'nl': 'wandelvakantie-ierland-op-eigen-houtje'},
+    'solo-walking-holidays-ireland':        {'de': 'solo-wanderurlaub-irland',         'nl': 'solo-wandelvakantie-ierland'},
+    'walking-holidays-ireland-over-50s':    {'de': 'wanderurlaub-irland-50-plus',      'nl': 'wandelvakantie-ierland-50-plus'},
+    'northern-ireland': {'de': 'nordirland',           'nl': 'noord-ierland'},
+    'privacy-policy':   {'de': 'datenschutz',          'nl': 'privacybeleid'},
+    'terms-and-conditions': {'de': 'agb',              'nl': 'algemene-voorwaarden'},
+    'destinations':     {'de': 'wanderziele-irland',   'nl': 'wandelbestemmingen'},
+    'walking-tours':    {'de': 'wandertouren',         'nl': 'wandeltochten'},
+}
+
+def translate_static_slug(en_slug, lang):
+    """Return the translated filename slug for a static page, or the English slug if no translation."""
+    if lang == 'en':
+        return en_slug
+    return STATIC_SLUG_MAP.get(en_slug, {}).get(lang, en_slug)
+
 # Track generation
 generated = {
     'tours': [],
@@ -3382,24 +3424,39 @@ def build_static_pages(lang, translations):
         html = html.replace('src="images/', 'src="/images/')
         html = html.replace('src="js/', 'src="/js/')
         html = html.replace('href="images/', 'href="/images/')
-        # Fix page links — keep them at root level (Worker handles routing)
+        # Fix page links — use translated filenames at root level
         for ps in STATIC_PAGES:
             if ps in page_translations:
-                html = html.replace(f'href="{ps}.html"', f'href="/{ps}.html"')
-        # Fix tour/destination links
-        html = html.replace('href="walking-tours/', 'href="/walking-tours/')
-        html = html.replace('href="walking-tours.html"', 'href="/walking-tours.html"')
-        html = html.replace('href="destinations.html"', 'href="/destinations.html"')
+                translated_ps = translate_static_slug(ps, lang)
+                html = html.replace(f'href="{ps}.html"', f'href="/{translated_ps}.html"')
+        # Fix tour/destination links with translated folder names
+        tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+        html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
+        html = html.replace('href="walking-tours.html"', f'href="/{translate_static_slug("walking-tours", lang)}.html"')
+        html = html.replace('href="destinations.html"', f'href="/{translate_static_slug("destinations", lang)}.html"')
 
-        # Add hreflang tags
-        en_url = f'https://walkingholidayireland.com/{page_slug}.html'
-        lang_url = f'https://walkingholidayireland.com/{lang}/{page_slug}.html'
-        hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
+        # Add canonical URL for this language
+        translated_slug = translate_static_slug(page_slug, lang)
+        canonical_url = lang_url(lang, f'{translated_slug}.html')
+        # Replace any existing canonical, or add one
+        html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
+        if 'rel="canonical"' not in html:
+            html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
+
+        # Add hreflang tags (all three languages)
+        de_slug = translate_static_slug(page_slug, 'de')
+        nl_slug = translate_static_slug(page_slug, 'nl')
+        hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{lang_url('en', f'{page_slug}.html')}" />
+    <link rel="alternate" hreflang="de" href="{lang_url('de', f'{de_slug}.html')}" />
+    <link rel="alternate" hreflang="nl" href="{lang_url('nl', f'{nl_slug}.html')}" />'''
         html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
-        # Write the translated page
-        output_path = base_dir / f'{page_slug}.html'
+        # Add switchLang() function for language switcher
+        switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
+        html = html.replace('</body>', f'{switchlang_js}\n</body>')
+
+        # Write the translated page with translated filename
+        output_path = base_dir / f'{translated_slug}.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
                 f.write(html)
@@ -3475,18 +3532,42 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
             if lang != 'en':
                 # Convert relative paths to absolute so they work both
-                # at /de/walking-tours/ on .com
+                # at /de/wandertouren/ on .de and /nl/wandeltochten/ on .com
                 html = html.replace('href="../', 'href="/')
                 html = html.replace('src="../', 'src="/')
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
-                en_url = f'https://walkingholidayireland.com/walking-tours/{slug}.html'
-                lang_url = f'https://walkingholidayireland.com/{lang}/walking-tours/{slug}.html'
-                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
+                # Fix internal links to use translated paths
+                tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+                wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+                dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
+                html = html.replace('href="/walking-tours/', f'href="/{tour_folder}/')
+                html = html.replace('href="/walking-area-', f'href="/{wa_prefix}-')
+                html = html.replace('href="/destination-', f'href="/{dest_prefix}-')
+                html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
+                html = html.replace('href="destination-', f'href="/{dest_prefix}-')
+
+                # Canonical URL
+                canonical_tour_url = lang_url(lang, f'{tour_folder}/{slug}.html')
+                html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_tour_url}"', html)
+                if 'rel="canonical"' not in html:
+                    html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_tour_url}"/>\n</head>')
+
+                # hreflang tags (all three languages)
+                en_tour_url = lang_url('en', f'walking-tours/{slug}.html')
+                de_tour_url = lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html')
+                nl_tour_url = lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html')
+                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_tour_url}" />
+    <link rel="alternate" hreflang="de" href="{de_tour_url}" />
+    <link rel="alternate" hreflang="nl" href="{nl_tour_url}" />'''
                 html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
-            output_path = base_dir / 'walking-tours' / f'{slug}.html'
+                # switchLang() for language switcher
+                switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
+                html = html.replace('</body>', f'{switchlang_js}\n</body>')
+
+            tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+            output_path = base_dir / tour_folder / f'{slug}.html'
 
             if DRY_RUN:
                 log(f"Would generate: {output_path}", 'debug')
@@ -3535,14 +3616,43 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             if lang != 'en':
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
-                en_url = f'https://walkingholidayireland.com/walking-area-{slug}.html'
-                lang_url = f'https://walkingholidayireland.com/{lang}/walking-area-{slug}.html'
-                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
+                # Fix internal links to use translated paths
+                tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+                wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+                dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
+                html = html.replace('href="/walking-tours/', f'href="/{tour_folder}/')
+                html = html.replace('href="/walking-area-', f'href="/{wa_prefix}-')
+                html = html.replace('href="/destination-', f'href="/{dest_prefix}-')
+                html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
+                html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
+                html = html.replace('href="destination-', f'href="/{dest_prefix}-')
+                html = html.replace('href="../walking-tours/', f'href="/{tour_folder}/')
+                html = html.replace('src="../', 'src="/')
+                html = html.replace('href="../', 'href="/')
+
+                # Canonical URL
+                canonical_dest_url = lang_url(lang, f'{wa_prefix}-{slug}.html')
+                html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_dest_url}"', html)
+                if 'rel="canonical"' not in html:
+                    html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
+
+                # hreflang tags (all three languages)
+                en_dest_url = lang_url('en', f'walking-area-{slug}.html')
+                de_dest_url = lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html')
+                nl_dest_url = lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html')
+                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_dest_url}" />
+    <link rel="alternate" hreflang="de" href="{de_dest_url}" />
+    <link rel="alternate" hreflang="nl" href="{nl_dest_url}" />'''
                 html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
-            output_path = base_dir / f'walking-area-{slug}.html'
-            dest_path = base_dir / f'destination-{slug}.html'
+                # switchLang() for language switcher
+                switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
+                html = html.replace('</body>', f'{switchlang_js}\n</body>')
+
+            wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+            dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
+            output_path = base_dir / f'{wa_prefix}-{slug}.html'
+            dest_path = base_dir / f'{dest_prefix}-{slug}.html'
 
             if not DRY_RUN:
                 with open(output_path, 'w') as f:
