@@ -806,11 +806,17 @@ function renderStep2() {
 
   const content = document.getElementById('bm-content');
 
+  // Line-art bed SVG icons
+  const bedSvgSingle = '<svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:28px;"><rect x="4" y="6" width="40" height="24" rx="3"/><path d="M8 16h32v8H8z"/><rect x="16" y="10" width="16" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="44" y1="30" x2="44" y2="34"/></svg>';
+  const bedSvgDouble = '<svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:28px;"><rect x="4" y="6" width="40" height="24" rx="3"/><path d="M8 16h32v8H8z"/><rect x="10" y="10" width="12" height="6" rx="2"/><rect x="26" y="10" width="12" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="44" y1="30" x2="44" y2="34"/></svg>';
+  const bedSvgTriple = '<svg viewBox="0 0 64 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:46px;height:28px;"><rect x="4" y="6" width="56" height="24" rx="3"/><path d="M8 16h48v8H8z"/><rect x="8" y="10" width="14" height="6" rx="2"/><rect x="25" y="10" width="14" height="6" rx="2"/><rect x="42" y="10" width="14" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="60" y1="30" x2="60" y2="34"/></svg>';
+  const bedSvgFamily = '<svg viewBox="0 0 58 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:32px;"><rect x="4" y="6" width="50" height="24" rx="3"/><path d="M8 16h42v8H8z"/><rect x="10" y="10" width="16" height="6" rx="2"/><rect x="30" y="10" width="16" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="54" y1="30" x2="54" y2="34"/><rect x="14" y="32" width="30" height="10" rx="2"/><path d="M20 38h18v4H20z"/><rect x="22" y="34" width="6" height="4" rx="1.5"/><rect x="30" y="34" width="6" height="4" rx="1.5"/></svg>';
+
   const roomTypes = [
-    { id: 'single', icon: '\ud83d\udecf\ufe0f', label: t('roomSingle') },
-    { id: 'double', icon: '\ud83d\udecf\ufe0f\ud83d\udecf\ufe0f', label: t('roomDouble') },
-    { id: 'triple', icon: '\ud83d\udecf\ufe0f+\ud83d\udecf\ufe0f', label: t('roomTriple') },
-    { id: 'family', icon: '\ud83d\udecf\ufe0f\ud83d\udecf\ufe0f+\ud83d\udecf\ufe0f', label: t('roomFamily') },
+    { id: 'single', icon: bedSvgSingle, label: t('roomSingle') },
+    { id: 'double', icon: bedSvgDouble, label: t('roomDouble') },
+    { id: 'triple', icon: bedSvgTriple, label: t('roomTriple') },
+    { id: 'family', icon: bedSvgFamily, label: t('roomFamily') },
   ];
 
   function roomSelector(currentRoom, onchangeFn) {
@@ -818,9 +824,9 @@ function renderStep2() {
       <label class="bm-label">${t('roomType')}</label>
       <div style="display: flex; gap: 6px; flex-wrap: wrap;">
         ${roomTypes.map(r => `<button type="button" onclick="${onchangeFn}('${r.id}')"
-          style="flex: 1; min-width: 70px; padding: 8px 4px; border: 2px solid ${currentRoom === r.id ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: ${currentRoom === r.id ? '#fff7ed' : 'white'}; cursor: pointer; text-align: center; transition: all 0.2s;">
-          <div style="font-size: 14px;">${r.icon}</div>
-          <div style="font-size: 11px; font-weight: ${currentRoom === r.id ? '700' : '500'}; color: ${currentRoom === r.id ? '#F17E00' : '#6b7280'}; margin-top: 2px;">${r.label}</div>
+          style="flex: 1; min-width: 70px; padding: 10px 4px; border: 2px solid ${currentRoom === r.id ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: ${currentRoom === r.id ? '#fff7ed' : 'white'}; cursor: pointer; text-align: center; transition: all 0.2s; color: ${currentRoom === r.id ? '#F17E00' : '#9ca3af'};">
+          <div style="display:flex;justify-content:center;">${r.icon}</div>
+          <div style="font-size: 11px; font-weight: ${currentRoom === r.id ? '700' : '500'}; color: ${currentRoom === r.id ? '#F17E00' : '#6b7280'}; margin-top: 4px;">${r.label}</div>
         </button>`).join('')}
       </div>
     </div>`;
