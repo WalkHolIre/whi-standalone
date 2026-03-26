@@ -2223,17 +2223,20 @@ def render_dest_travel_tips_section(destination):
 
     cards = ''
     tip_icons = ['lightbulb', 'backpack', 'checkroom', 'map', 'payments', 'local_taxi', 'restaurant', 'wb_sunny', 'health_and_safety', 'sim_card']
-    for i, tip in enumerate(tips_list):
+    for i, tip in enumerate(tips_list[:3]):
         title = escape(tip.get('title', tip.get('name', f'Tip {i+1}')))
-        desc = escape(tip.get('description', tip.get('content', '')))
+        desc = escape(tip.get('tip', tip.get('description', tip.get('content', ''))))
         icon = tip_icons[i % len(tip_icons)]
-        cards += f'''<div class="flex items-start gap-4 bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
-                            <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0">{icon}</span>
-                            <div>
-                                <h3 class="font-bold text-slate-900 mb-1">{title}</h3>
+        cards += f'''<details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                            <summary class="flex items-center gap-4 p-5 cursor-pointer list-none select-none hover:bg-slate-50 transition-colors">
+                                <span class="material-symbols-outlined text-primary text-2xl flex-shrink-0">{icon}</span>
+                                <h3 class="font-bold text-slate-900 flex-1">{title}</h3>
+                                <span class="material-symbols-outlined text-slate-400 text-xl transition-transform group-open:rotate-180 flex-shrink-0">expand_more</span>
+                            </summary>
+                            <div class="px-5 pb-5 pl-16">
                                 <p class="text-slate-600 text-sm leading-relaxed">{desc}</p>
                             </div>
-                        </div>\n'''
+                        </details>\n'''
 
     return f'''<section class="w-full py-16 md:py-24 px-6">
                 <div class="max-w-7xl mx-auto">
@@ -2244,7 +2247,7 @@ def render_dest_travel_tips_section(destination):
                             <p class="text-slate-500 mt-1">Insider advice for your trip</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="grid grid-cols-1 gap-3">
                         {cards}
                     </div>
                 </div>
