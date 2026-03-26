@@ -8,3 +8,5 @@ Disallow: /src/
 Disallow: /node_modules/
 
 Sitemap: https://walkingholidayireland.com/sitemap.xml
+Sitemap: https://walkingholidayireland.com/de/sitemap.xml
+Sitemap: https://walkingholidayireland.com/nl/sitemap.xml

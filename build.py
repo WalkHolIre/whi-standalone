@@ -1285,12 +1285,12 @@ def render_destination_review_section(reviews_list, destination, tours_by_id, pr
     return carousel_html
 
 
-def render_tour_cards(tours, prefix='tours/'):
+def render_tour_cards(tours, prefix='walking-tours/'):
     """Render tour card HTML for destination pages.
 
     Args:
         tours: List of tour dictionaries
-        prefix: URL prefix for links. Use 'tours/' for root pages, '' for tour pages
+        prefix: URL prefix for links. Use 'walking-tours/' for root pages, '' for tour pages
     """
     if not tours:
         return ""
@@ -2271,7 +2271,7 @@ def render_dest_reviews_section(reviews, destination, tours_by_id):
             </section>'''
 
 
-def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_dest_reviews=None):
+def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=None, all_dest_reviews=None):
     """Render v3 tour cards for destination pages — matches JS card design in whi-tours.js exactly."""
     if not tours:
         return ""
@@ -2280,7 +2280,7 @@ def render_dest_tour_cards_v3(tours, prefix='tours/', reviews_by_tour=None, all_
     if all_dest_reviews is None:
         all_dest_reviews = []
 
-    # Image prefix: when prefix='' we're in tours/ subdir, so need ../ to reach root images
+    # Image prefix: when prefix='' we're in walking-tours/ subdir, so need ../ to reach root images
     img_prefix = '../' if prefix == '' else ''
 
     # Region mappings — must match JS regionLabelMap and regionPageMap
@@ -2834,7 +2834,7 @@ def render_tours_listing_schema(tours):
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
@@ -3166,7 +3166,7 @@ def render_tour_page_schema(tour, reviews_list):
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html",
+        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
@@ -3187,7 +3187,7 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/tours/{tour.get('slug', '')}.html"
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html"
         },
         "brand": {
             "@type": "Brand",
@@ -3387,18 +3387,15 @@ def build_static_pages(lang, translations):
             if ps in page_translations:
                 html = html.replace(f'href="{ps}.html"', f'href="/{ps}.html"')
         # Fix tour/destination links
-        html = html.replace('href="tours/', 'href="/tours/')
-        html = html.replace('href="tours.html"', 'href="/tours.html"')
+        html = html.replace('href="walking-tours/', 'href="/walking-tours/')
+        html = html.replace('href="walking-tours.html"', 'href="/walking-tours.html"')
         html = html.replace('href="destinations.html"', 'href="/destinations.html"')
 
         # Add hreflang tags
         en_url = f'https://walkingholidayireland.com/{page_slug}.html'
-        if lang == 'de':
-            alt_url = f'https://walkingholidayireland.de/{page_slug}.html'
-        else:
-            alt_url = f'https://walkingholidayireland.com/{lang}/{page_slug}.html'
+        lang_url = f'https://walkingholidayireland.com/{lang}/{page_slug}.html'
         hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="{lang}" href="{alt_url}" />'''
+    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
         html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
         # Write the translated page
@@ -3478,18 +3475,18 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
             if lang != 'en':
                 # Convert relative paths to absolute so they work both
-                # at /de/tours/ on .com and at /tours/ on .de domain
+                # at /de/walking-tours/ on .com
                 html = html.replace('href="../', 'href="/')
                 html = html.replace('src="../', 'src="/')
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
-                en_url = f'https://walkingholidayireland.com/tours/{slug}.html'
-                de_url = f'https://walkingholidayireland.de/tours/{slug}.html'
+                en_url = f'https://walkingholidayireland.com/walking-tours/{slug}.html'
+                lang_url = f'https://walkingholidayireland.com/{lang}/walking-tours/{slug}.html'
                 hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="de" href="{de_url}" />'''
+    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
                 html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
-            output_path = base_dir / 'tours' / f'{slug}.html'
+            output_path = base_dir / 'walking-tours' / f'{slug}.html'
 
             if DRY_RUN:
                 log(f"Would generate: {output_path}", 'debug')
@@ -3539,9 +3536,9 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
                 en_url = f'https://walkingholidayireland.com/walking-area-{slug}.html'
-                de_url = f'https://walkingholidayireland.de/walking-area-{slug}.html'
+                lang_url = f'https://walkingholidayireland.com/{lang}/walking-area-{slug}.html'
                 hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="de" href="{de_url}" />'''
+    <link rel="alternate" hreflang="{lang}" href="{lang_url}" />'''
                 html = html.replace('</head>', f'{hreflang_tags}\n</head>')
 
             output_path = base_dir / f'walking-area-{slug}.html'
@@ -3907,7 +3904,7 @@ def main():
         for key, value in tours_listing_replacements.items():
             tours_listing_html = tours_listing_html.replace(key, str(value))
 
-        output_path = WEBSITE_DIR / 'tours.html'
+        output_path = WEBSITE_DIR / 'walking-tours.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
                 f.write(tours_listing_html)
@@ -3987,7 +3984,7 @@ def main():
             except (ValueError, TypeError):
                 st_price_display = ''
             st_detail = f"{st_price_display} &bull; {st_days} Days" if st_price_display else f"{st_days} Days"
-            sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../tours/{st_slug}.html">
+            sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../walking-tours/{st_slug}.html">
                     <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
                         <img src="../images/routes/{st_slug}/card.jpg" alt="{st_name}" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
@@ -4013,7 +4010,7 @@ def main():
             except (ValueError, TypeError):
                 rt_price_display = ''
             recommended_tours_html += f'''
-            <a href="../tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="../walking-tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{rt_days} Days</span>
@@ -4230,7 +4227,7 @@ def main():
                 t_price_display = ''
 
             recommended_html += f'''
-            <a href="tours/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="walking-tours/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} Days</span>
@@ -4321,12 +4318,12 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/', '1.0', 'weekly'))
 
         # Listing pages — high priority
-        sitemap_urls.append(('https://walkingholidayireland.com/tours.html', '0.9', 'weekly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/walking-tours.html', '0.9', 'weekly'))
         sitemap_urls.append(('https://walkingholidayireland.com/destinations.html', '0.9', 'weekly'))
 
         # Individual tour pages
         for slug in generated['tours']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/tours/{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/walking-tours/{slug}.html', '0.8', 'monthly'))
 
         # Individual destination / walking area pages (canonical is walking-area-)
         for slug in generated['destinations']:

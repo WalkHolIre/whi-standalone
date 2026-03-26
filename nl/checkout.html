@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wandelvakantie buchen | Wandelvakantie Ierland</title>
+
+    <!-- Tailwind CSS with Plugins -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        whi: '#F17E00',
+                        'whi-dark': '#d86c00',
+                        'whi-purple': '#210747',
+                        'whi-bg': '#f8f7f5',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Material Symbols Outlined -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- PayPal -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AYZaH3LKhhhyx3sPgHovsGJXKEOyF_rHZ22ZstweM8iSOPKzOxICQ_I9yEHBATbTAlKMice6T32hFwKK&currency=EUR&intent=capture&disvanafle-funding=credit,card&locale=de_DE" defer></script>
+
+    <style>
+        * { font-family: 'Inter', sans-serif; }
+
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal; font-style: normal; font-size: 24px;
+            display: inline-flex; line-height: 1;
+            text-transform: none; letter-spacing: normal; word-wrap: normal;
+            white-space: nowrap; direction: ltr;
+        }
+
+        .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
+
+        .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .step-dot.active { background-color: #F17E00; color: white; }
+        .step-dot.completed { background-color: #16a34a; color: white; }
+        .step-dot.inactive { background-color: #e5e7eb; color: #9ca3af; }
+        .step-connector { height: 2px; flex: 1; transition: background-color 0.3s; }
+        .step-connector.active { background-color: #F17E00; }
+        .step-connector.inactive { background-color: #e5e7eb; }
+
+        .step-panel { display: none; }
+        .step-panel.active { display: block; }
+
+        .room-option { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 8px; padding: 10px 14px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .room-option:hover { border-color: #F17E00; background-color: #fff7ed; }
+        .room-option.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
+        .room-option .bed-icons { font-size: 20px; line-height: 1; }
+
+        .sidebar-feature-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
+
+        .mobile-summary-banner { display: none; }
+        @media (max-width: 1023px) {
+            .mobile-summary-banner { display: flex; position: sticky; top: 0; z-index: 40; }
+            .desktop-sidebar { display: none; }
+        }
+
+        .payment-method { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 10px; padding: 16px 20px; transition: all 0.2s; }
+        .payment-method:hover { border-color: #F17E00; }
+        .payment-method.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
+
+        #card-element { border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; background: white; }
+        #card-element.StripeElement--focus { border-color: #F17E00; box-shadow: 0 0 0 3px rgba(241,126,0,0.1); }
+        #card-element.StripeElement--invalid { border-color: #ef4444; }
+    </style>
+    <meta name="description" content="Boeken Sie uw selbstgeführten Wandelvakantie in Ierland. Wählen Sie Ihre Tour, Datums & Extras. Sichern Sie met 25% Anzahlung.">
+</head>
+<body class="bg-whi-bg">
+    <!-- Header/Navigation -->
+    <nav class="bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html"><img src="../images/logo/whi_fc.png" alt="Wandelvakantie Ierland" class="h-10"></a>
+                </div>
+                <div class="hidden md:flex gap-8">
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Touren</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Over ons</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Blog</a>
+                    <a href="#" class="text-gray-700 hover:text-orange-500 py-2 font-medium transition">Contact</a>
+                </div>
+                <div>
+                    <a href="checkout.html" class="bg-whi hover:bg-whi-dark text-white px-6 py-2 rounded-lg font-medium text-sm transition">Nu boeken</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-band text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Wandelvakantie buchen</h1>
+            <p class="text-base md:text-lg opacity-90">Sichern Sie Ihre Datums met 25% Anzahlung. Restbetrag 42 Dagen vor Vanafreise fällig.</p>
+        </div>
+    </div>
+
+    <!-- Mobile Summary Banner -->
+    <div class="mobile-summary-banner bg-white border-b border-gray-200 px-4 py-3 items-center justify-between gap-4 shadow-sm">
+        <div class="flex items-center gap-3 flex-1 min-w-0">
+            <img id="mobileBannerImg" src="../images/logo/whi_fc.png" alt="" class="w-12 h-12 rounded-lg object-cover hidden">
+            <div class="min-w-0">
+                <p id="mobileBannerTour" class="text-sm font-semibold text-whi-purple truncate">Tour wählen</p>
+                <p id="mobileBannerDates" class="text-xs text-gray-500 truncate">-</p>
+            </div>
+        </div>
+        <div class="text-right flex-shrink-0">
+            <p class="text-xs text-gray-500">Gesamt</p>
+            <p id="mobileBannerTotal" class="text-lg font-bold text-whi">€0</p>
+        </div>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
+        <div class="flex items-center justify-center gap-0 max-w-xl mx-auto">
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot active" data-step="1">1</div>
+                <span class="text-xs font-medium text-whi-purple">Tour</span>
+            </div>
+            <div class="step-connector active flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="2">2</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLvanafel2">Reisende</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="3">3</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLvanafel3">Extras</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="4">4</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLvanafel4">Betaling</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+            <!-- Left Column -->
+            <div class="lg:col-span-2">
+                <form id="checkoutForm" novalidate>
+
+                    <!-- STEP 1: Tour & Datums -->
+                    <div class="step-panel active" id="step1">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">hiking</span>
+                                Tour wählen
+                            </h3>
+                            <div class="mb-4">
+                                <lvanafel for="tourSelect" class="block text-sm font-medium text-whi-purple mb-1">Welche Tour interessiert Sie?</lvanafel>
+                                <select id="tourSelect" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                    <option value="">-- Tour wählen --</option>
+                                    <optgroup lvanafel="Wild Atlantic Way">
+                                        <option value="dingle-way">Der Dingle Way — 8 Dagen (€899)</option>
+                                        <option value="kerry-way">Der Kerry Way — 8 Dagen (€899)</option>
+                                        <option value="burren-5-days">Burren Way — 5 Dagen (€599)</option>
+                                        <option value="burren-6-days">Burren Way — 6 Dagen (€695)</option>
+                                        <option value="burren-7-days">Burren Way — 7 Dagen (€795)</option>
+                                        <option value="burren-way">Burren Way — 8 Dagen (€890)</option>
+                                    </optgroup>
+                                    <optgroup lvanafel="Iers alter Osten">
+                                        <option value="wicklow-way-5-days">Wicklow Way — 5 Dagen (€699)</option>
+                                        <option value="wicklow-way-7-days">Wicklow Way — 7 Dagen (€929)</option>
+                                        <option value="wicklow-way">Wicklow Way — 8 Dagen (€1.029)</option>
+                                        <option value="wicklow-way-10-days">Wicklow Way — 10 Dagen (€1.249)</option>
+                                        <option value="barrow-way-5-days">Barrow Way — 5 Dagen (€919)</option>
+                                        <option value="barrow-way">Barrow Way — 8 Dagen (€859)</option>
+                                    </optgroup>
+                                    <optgroup lvanafel="Nordirland">
+                                        <option value="causeway-coast-5-days">Causeway Coast — 5 Dagen (€599)</option>
+                                        <option value="causeway-coast">Giant's Causeway — 8 Dagen (€959)</option>
+                                        <option value="cooley-mournes">Cooley &amp; Mournes — 8 Dagen (€879)</option>
+                                        <option value="cooley-peninsula-5-days">Cooley Schiereiland — 5 Dagen (€539)</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div id="tourInfo" class="bg-whi-bg p-4 rounded-lg text-sm hidden">
+                                <p class="mb-1"><strong class="text-whi-purple">Dauer:</strong> <span id="tourDagen">-</span> Dagen</p>
+                                <p class="mb-1"><strong class="text-whi-purple">Prijs pro Person:</strong> €<span id="tourPrice">0</span></p>
+                                <p><strong class="text-whi-purple">Moeilijkheid:</strong> <span id="tourDifficulty">-</span></p>
+                            </div>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">calendar_month</span>
+                                Reisedaten wählen
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <lvanafel for="startDate" class="block text-sm font-medium text-whi-purple mb-1">Startdatum</lvanafel>
+                                    <input type="date" id="startDate" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                                <div>
+                                    <lvanafel for="numWalkers" class="block text-sm font-medium text-whi-purple mb-1">Anzahl Wanderer</lvanafel>
+                                    <input type="number" id="numWalkers" min="1" max="12" value="2" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end">
+                            <button type="button" onclick="goToStep(2)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Volgende: Reisende <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: Reisende & Zimmer -->
+                    <div class="step-panel" id="step2">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-semibold text-whi-purple flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-whi">group</span>
+                                    Reisende
+                                </h3>
+                                <span class="text-sm text-gray-500" id="travellerCount">2 Reisende</span>
+                            </div>
+
+                            <div id="travellersContainer"></div>
+
+                            <button type="button" id="addTravellerBtn" onclick="addTraveller()" class="mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm font-medium text-gray-500 hover:border-whi hover:text-whi transition flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined text-sm">person_add</span>
+                                Volgendeen Reisenden hinzufügen
+                            </button>
+                        </div>
+
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">contact_mail</span>
+                                Contact Hauptreisender
+                            </h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                                <div>
+                                    <lvanafel for="email" class="block text-sm font-medium text-whi-purple mb-1">E-mail</lvanafel>
+                                    <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                                <div>
+                                    <lvanafel for="phone" class="block text-sm font-medium text-whi-purple mb-1">Telefoonnummer</lvanafel>
+                                    <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <lvanafel for="country" class="block text-sm font-medium text-whi-purple mb-1">Land</lvanafel>
+                                    <select id="country" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                        <option value="">-- Wählen --</option>
+                                        <option value="Germany">Deutschland</option>
+                                        <option value="Austria">Österreich</option>
+                                        <option value="Switzerland">Schweiz</option>
+                                        <option value="Netherlands">Niederlande</option>
+                                        <option value="Ireland">Ierland</option>
+                                        <option value="UK">Vereinigtes Königreich</option>
+                                        <option value="France">Frankreich</option>
+                                        <option value="USA">Vereinigte Staaten</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <lvanafel for="specialRequirements" class="block text-sm font-medium text-whi-purple mb-1">Besondere Wünsche</lvanafel>
+                                    <input type="text" id="specialRequirements" placeholder="Ernährung, Barrierefreiheit..." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-whi focus:ring-whi">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" onclick="goToStep(1)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Terug
+                            </button>
+                            <button type="button" onclick="goToStep(3)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Volgende: Extras <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: Extras -->
+                    <div class="step-panel" id="step3">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">add_circle</span>
+                                Optionale Extras
+                            </h3>
+
+                            <div class="space-y-3">
+                                <lvanafel class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="airportTransfer" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Flughafentransfer</span>
+                                        <span class="text-sm text-gray-500">Prijs op Anfrage</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </lvanafel>
+
+                                <lvanafel class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="dailyLunch" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Dagelijkse Lunchpakete</span>
+                                        <span class="text-sm text-gray-500">€15 pro Person pro Wandertag</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi" id="lunchPriceLvanafel">€0</span>
+                                </lvanafel>
+
+                                <lvanafel class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="extraRestDay" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Zusätzlicher Ruhetag</span>
+                                        <span class="text-sm text-gray-500">Prijs op Anfrage</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </lvanafel>
+
+                                <lvanafel class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="polehire" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <div class="flex-1">
+                                        <span class="font-medium text-whi-purple block">Wanderstöcke leihen</span>
+                                        <span class="text-sm text-gray-500">€20 pro Paar</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">€20</span>
+                                </lvanafel>
+
+                                <lvanafel class="flex items-start gap-3 p-4 bg-whi-bg rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                                    <input type="checkbox" id="singleSupplement">
+                                    <div class="flex-1 mt-[-2px]">
+                                        <span class="font-medium text-whi-purple block">Einzelzimmerzuschlag</span>
+                                        <span class="text-sm text-gray-500" id="singleSupplementText">Zuschlag voor Einzelbelegung pro Zimmer per nacht</span>
+                                    </div>
+                                    <span class="text-sm font-semibold text-whi">a.A.</span>
+                                </lvanafel>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <button type="button" onclick="goToStep(2)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Terug
+                            </button>
+                            <button type="button" onclick="goToStep(4)" class="bg-whi hover:bg-whi-dark text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                                Volgende: Betaling <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: Betaling -->
+                    <div class="step-panel" id="step4">
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">receipt_long</span>
+                                Bestellübersicht
+                            </h3>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900" id="reviewTour">-</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Datums</span><span class="font-medium text-gray-900" id="reviewDates">-</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="reviewWalkers">2</span></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Prijs pro Person</span><span class="font-medium text-gray-900">€<span id="reviewPpp">0</span></span></div>
+                                <div class="border-t border-gray-200 my-1"></div>
+                                <div class="flex justify-between py-1"><span class="text-gray-500">Zwischensumme</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
+                                <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
+                                <div class="border-t-2 border-whi my-1"></div>
+                                <div class="flex justify-between py-2 text-lg font-bold"><span class="text-whi-purple">Gesamt</span><span class="text-whi" id="reviewTotal">€0</span></div>
+                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
+                                    <span class="font-semibold text-orange-900">Anzahlung (25%)</span>
+                                    <span class="font-bold text-orange-700 text-lg" id="reviewDeposit">€0</span>
+                                </div>
+                                <p class="text-xs text-gray-500 mt-2" id="paymentText">Restbetrag 42 Dagen vor Vanafreise fällig.</p>
+                            </div>
+                        </div>
+
+                        <!-- AGB und Newsletter -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <div class="space-y-4">
+                                <lvanafel class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" id="acceptTerms" required class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <span class="text-sm text-gray-700">Ich akzeptiere die <a href="/agb" target="_blank" class="text-whi font-medium underline hover:text-whi-dark">AGB</a> und <a href="/datenschutz" target="_blank" class="text-whi font-medium underline hover:text-whi-dark">Datumsschutzerklärung</a> <span class="text-red-500">*</span></span>
+                                </lvanafel>
+                                <lvanafel class="flex items-start gap-3 cursor-pointer">
+                                    <input type="checkbox" id="mailingList" class="mt-1 w-4 h-4 rounded border-gray-300 text-whi focus:ring-whi">
+                                    <span class="text-sm text-gray-700">Informieren Sie mich over Wandertipps, neue Routen &amp; Sonderangebote</span>
+                                </lvanafel>
+                            </div>
+                            <p id="termsError" class="text-red-500 text-sm mt-2 hidden">Bitte akzeptieren Sie die AGB um fortzufahren.</p>
+                        </div>
+
+                        <!-- Betaalmethode -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <h3 class="text-lg font-semibold text-whi-purple mb-4 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-whi">credit_card</span>
+                                Betaalmethode
+                            </h3>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                                <!-- Stripe / Kartenzahlung (Standard) -->
+                                <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <!-- Stripe logo -->
+                                        <svg viewBox="0 0 60 25" class="h-7 flex-shrink-0" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M5 10.2c0-.7.6-1 1.5-1 1.4 0 3.1.4 4.5 1.2V6.7C9.5 6.1 8 5.8 6.5 5.8 2.6 5.8 0 7.8 0 11c0 5 6.8 4.2 6.8 6.3 0 .8-.7 1.1-1.7 1.1-1.5 0-3.4-.6-4.9-1.4v3.7c1.7.7 3.3 1 4.9 1 4 0 6.8-2 6.8-5.2C12 11 5 11.9 5 10.2zM16 3.3l-4.5 1V7l4.5-1V3.3zm0 3.4h-4.5v14h4.5v-14zm5.3 1.3l-.3-1.3H17v14h4.5v-9.5c1.1-1.4 2.9-1.1 3.4-1v-4.1c-.6-.2-2.7-.6-3.6 1.9zm7.5-1.9c-1.8 0-2.9.8-3.5 1.4l-.2-1.1h-4v18.7l4.5-1v-4.5c.7.5 1.6 1.2 3.2 1.2 3.2 0 6.2-2.6 6.2-8.3 0-5.2-3-8.4-6.2-8.4zm-1.1 12.8c-1.1 0-1.7-.4-2.1-.9v-7.2c.5-.5 1.1-1 2.2-1 1.7 0 2.8 1.9 2.8 4.5 0 2.7-1.1 4.6-2.9 4.6zm14.7-12.6c-4.5 0-7.3 3.4-7.3 8.3 0 5.5 3.3 8.2 7.9 8.2 2.3 0 4-.5 5.3-1.2v-3.4c-1.3.7-2.8 1.1-4.7 1.1-1.9 0-3.5-.7-3.7-2.9h9.3c0-.2 0-1.3 0-1.7 0-5-2.4-8.4-6.8-8.4zm-2.7 6.6c0-2.2 1.3-3.1 2.5-3.1 1.2 0 2.4.9 2.4 3.1h-4.9z"/></svg>
+                                        <span class="bg-whi text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STANDARD</span>
+                                    </div>
+                                    <p class="font-semibold text-whi-purple text-sm">Kartenzahlung</p>
+                                    <div class="flex items-center gap-1.5 mt-1.5">
+                                        <!-- Visa -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.5 0 1.5 1.4 2.3 2.4 2.8 1 .5 1.4.9 1.4 1.3 0 .7-.8 1-1.6 1-1.1 0-1.6-.2-2.5-.5l-.3-.2-.4 2.2c.6.3 1.8.5 3 .5 2.8 0 4.7-1.4 4.7-3.6 0-1.2-.7-2.1-2.3-2.9-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.9 0 1.5.2 2 .4l.2.1.4-2zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.8l-4 9.7h2.8l.6-1.5h3.5l.3 1.5h2.5l-2.2-10.5zm-3.4 6.8l1.1-3c0-.1.2-.6.4-1l.2.9.6 3.1h-2.3zM16 10.5l-2.5 7.2-.3-1.3c-.5-1.6-2-3.4-3.7-4.3l2.4 9h2.8l4.2-10.5H16z" fill="#1A1F71"/><path d="M11 10.5H6.8l-.1.3c3.4.9 5.6 2.9 6.5 5.4l-.9-4.7c-.2-.6-.7-.9-1.3-1z" fill="#F9A533"/></svg>
+                                        <!-- Mastercard -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 0 1 0 11.4 8 8 0 0 1 0-11.4z" fill="#FF5F00"/></svg>
+                                        <!-- Amex -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="18" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">AMEX</text></svg>
+                                    </div>
+                                </div>
+                                <!-- PayPal -->
+                                <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
+                                    <div class="mb-2">
+                                        <!-- PayPal logo -->
+                                        <svg viewBox="0 0 100 26" class="h-7" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.4h-7c-.5 0-.9.3-1 .8L1.7 22c-.1.4.2.7.6.7h3.3c.5 0 .9-.3 1-.8l.9-5.5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.4-1.9zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#003087"/><path d="M35.4 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8l1.8-11.1c.1-.3-.3-.6-.7-.6zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#003087"/><path d="M55.4 10h-3.4c-.3 0-.6.2-.8.4l-4.4 6.5-1.9-6.3c-.1-.4-.5-.6-.9-.6h-3.3c-.4 0-.7.4-.6.8l3.5 10.3-3.3 4.7c-.3.4 0 1 .5 1h3.4c.3 0 .6-.2.8-.4l10.7-15.5c.3-.4 0-.9-.3-.9z" fill="#003087"/><path d="M67 3.4h-7c-.5 0-.9.3-1 .8l-2.8 17.8c-.1.4.2.7.6.7h3.6c.3 0 .6-.3.7-.6l.8-5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.3-1.6zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#0070BA"/><path d="M89.9 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8L90.6 11c0-.5-.3-.8-.7-1zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#0070BA"/><path d="M92.6 3.9l-2.9 18c-.1.4.2.7.6.7h2.9c.5 0 .9-.3 1-.8l2.8-17.8c.1-.4-.2-.7-.6-.7h-3.2c-.3 0-.5.2-.6.6z" fill="#0070BA"/></svg>
+                                    </div>
+                                    <p class="font-semibold text-whi-purple text-sm">PayPal</p>
+                                    <p class="text-xs text-gray-500 mt-0.5">Mit Ihrem PayPal-Konto bezahlen</p>
+                                </div>
+                            </div>
+
+                            <div id="stripePanel">
+                                <div class="mb-3">
+                                    <lvanafel class="block text-sm font-medium text-whi-purple mb-2">Kartendaten</lvanafel>
+                                    <div id="card-element"></div>
+                                    <p id="card-errors" class="text-red-500 text-sm mt-2 hidden"></p>
+                                </div>
+                                <button type="button" id="stripePayBtn" onclick="handleStripePayment()" class="w-full bg-whi hover:bg-whi-dark text-white py-3.5 rounded-lg font-semibold text-lg transition hover:shadow-lg disvanafled:bg-gray-300 disvanafled:cursor-not-allowed">
+                                    <span class="material-symbols-outlined text-sm align-middle mr-1">lock</span>
+                                    Anzahlung bezahlen — €<span id="payBtnAmount">0</span>
+                                </button>
+                            </div>
+
+                            <div id="paypalPanel" class="hidden">
+                                <div id="paypal-button-container" class="mb-3"></div>
+                                <p class="text-xs text-center text-gray-500">Sie werden naar PayPal weitergeleitet.</p>
+                            </div>
+
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-3 mt-4 text-sm text-green-800 flex items-start gap-2">
+                                <span class="material-symbols-outlined text-green-600 text-base mt-0.5">shield</span>
+                                <span>Ihre Betaling wird sicher verarbeitet. Heute wird nur die 25% Anzahlung berechnet.</span>
+                            </div>
+
+                            <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">lock</span> Sichere Betaling
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">verified_user</span> SSL-verschlüsselt
+                                </div>
+                                <div class="flex items-center gap-1 text-xs text-gray-500">
+                                    <span class="material-symbols-outlined text-sm">support_agent</span> 24h Ondersteuning
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="successMessage" class="bg-white border border-green-300 rounded-xl overflow-hidden hidden shadow-md">
+                            <div class="bg-green-50 px-6 py-5 flex items-center justify-center border-b border-green-200">
+                                <a href="index.html"><img src="../images/logo/whi_fc.png" alt="Wandelvakantie Ierland" class="h-12"></a>
+                            </div>
+                            <div class="p-6">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
+                                    <h4 class="font-bold text-xl text-green-800">Boeking bestätigt!</h4>
+                                </div>
+                                <p class="text-green-800 mb-2">Vielen Dank! Wir hvanafen Ihre Boeking und Anzahlung erhalten.</p>
+                                <p class="text-green-700 text-sm mb-4">Ihre Boekingsreferenz: <strong class="booking-ref text-green-900 font-mono"></strong></p>
+                                <p class="text-green-800 mb-5">Sie erhalten in Kürze eine Bestätigungsmail. Unser Team meldet sich binnen van 24 uur met uw vollständigen Reisedetails.</p>
+                                <a href="index.html" class="inline-flex items-center gap-2 bg-whi hover:bg-whi-dark text-white px-6 py-3 rounded-lg font-semibold transition hover:shadow-lg">
+                                    <span class="material-symbols-outlined text-sm">home</span>
+                                    Terug naar Startseite
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between mt-4">
+                            <button type="button" onclick="goToStep(3)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Terug
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Right Sidebar (desktop) -->
+            <div class="lg:col-span-1 desktop-sidebar">
+                <div class="bg-white border border-gray-200 rounded-xl shadow-sm sticky top-4">
+                    <img id="sidebarImage" src="../images/routes/dingle-way/card.jpg" alt="Tour" class="sidebar-feature-img rounded-t-xl" onerror="this.style.display='none'">
+                    <div class="p-5">
+                        <h3 class="text-lg font-semibold text-whi-purple mb-3">Ihre Boeking</h3>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900 text-right max-w-[55%] truncate" id="sidebarTour">-</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Datums</span><span class="font-medium text-gray-900 text-right" id="sidebarDates">-</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="sidebarWalkers">2</span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Prijs/Person</span><span class="font-medium text-gray-900">€<span id="sidebarPrice">0</span></span></div>
+                            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Zwischensumme</span><span class="font-medium text-gray-900">€<span id="sidebarSubtotal">0</span></span></div>
+                            <div id="sidebarExtras" class="hidden"><div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="sidebarExtrasPrice">€0</span></div></div>
+                            <div class="flex justify-between py-2 text-base font-bold border-t-2 border-whi mt-1"><span class="text-whi-purple">Gesamt</span><span class="text-whi" id="sidebarTotal">€0</span></div>
+                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
+                                <span class="font-semibold text-orange-900 text-sm">Anzahlung (25%)</span>
+                                <span class="font-bold text-orange-700" id="sidebarDeposit">€0</span>
+                            </div>
+                        </div>
+                        <div class="bg-whi-bg rounded-lg p-3 mt-4 text-center">
+                            <p class="text-xs text-gray-500 mb-1">Vragen? Rufen Sie an</p>
+                            <a href="tel:+353879573856" class="text-base font-bold text-whi hover:text-whi-dark transition">+353 87 957 3856</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Over ons</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Over ons</a></li>
+                        <li><a href="#" class="hover:text-white transition">Unsere Geschichte</a></li>
+                        <li><a href="#" class="hover:text-white transition">Team</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Entdecken</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Alles Touren</a></li>
+                        <li><a href="#" class="hover:text-white transition">Reiseführer</a></li>
+                        <li><a href="#" class="hover:text-white transition">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Hulp</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-white transition">Veelgestelde Vragen</a></li>
+                        <li><a href="#" class="hover:text-white transition">AGB</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Contact</h4>
+                    <p class="text-sm mb-2">+353 87 957 3856</p>
+                    <p class="text-sm mb-4">info@walkingholidayireland.com</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="hover:text-white transition">Facebook</a>
+                        <a href="#" class="hover:text-white transition">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-8">
+                <p class="text-sm text-center">&copy; 2025 Walking Holiday Ireland. Alles Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    // ─────────── Tour Data ───────────
+    const TOURS = [
+        {slug:'dingle-way',name:'Der Dingle Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Mittel',img:'dingle-way'},
+        {slug:'kerry-way',name:'Der Kerry Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Anspruchsvoll',img:'kerry-way'},
+        {slug:'burren-5-days',name:'Burren Way — 5 Dagen',days:5,price:599,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-6-days',name:'Burren Way — 6 Dagen',days:6,price:695,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-7-days',name:'Burren Way — 7 Dagen',days:7,price:795,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'burren-way',name:'Burren Way — 8 Dagen',days:8,price:890,region:'Wild Atlantic Way',difficulty:'Moderat',img:'burren-way'},
+        {slug:'wicklow-way-5-days',name:'Wicklow Way — 5 Dagen',days:5,price:699,region:'Iers alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'wicklow-way-7-days',name:'Wicklow Way — 7 Dagen',days:7,price:929,region:'Iers alter Osten',difficulty:'Anspruchsvoll',img:'wicklow-way'},
+        {slug:'wicklow-way',name:'Wicklow Way — 8 Dagen',days:8,price:1029,region:'Iers alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'wicklow-way-10-days',name:'Wicklow Way — 10 Dagen',days:10,price:1249,region:'Iers alter Osten',difficulty:'Moderat',img:'wicklow-way'},
+        {slug:'barrow-way-5-days',name:'Barrow Way — 5 Dagen',days:5,price:919,region:'Iers alter Osten',difficulty:'Gemakkelijk',img:'barrow-way'},
+        {slug:'barrow-way',name:'Barrow Way — 8 Dagen',days:8,price:859,region:'Iers alter Osten',difficulty:'Gemakkelijk',img:'barrow-way'},
+        {slug:'causeway-coast-5-days',name:'Causeway Coast — 5 Dagen',days:5,price:599,region:'Nordirland',difficulty:'Moderat',img:'causeway-coast'},
+        {slug:'causeway-coast',name:"Giant's Causeway — 8 Dagen",days:8,price:959,region:'Nordirland',difficulty:'Moderat',img:'causeway-coast'},
+        {slug:'cooley-mournes',name:'Cooley & Mournes — 8 Dagen',days:8,price:879,region:'Nordirland',difficulty:'Anspruchsvoll',img:'cooley-mournes'},
+        {slug:'cooley-peninsula-5-days',name:'Cooley Schiereiland — 5 Dagen',days:5,price:539,region:'Nordirland',difficulty:'Moderat',img:'cooley-peninsula-5-days'}
+    ];
+
+    const ROOM_TYPES = [
+        { id: 'single', lvanafel: 'Einzel', icon: '🛏️', desc: 'Einzelbett' },
+        { id: 'double', lvanafel: 'Doppel', icon: '🛏️🛏️', desc: 'Doppelbett' },
+        { id: 'triple', lvanafel: 'Dreibett', icon: '🛏️+🛏️', desc: '2 Einzelbetten' },
+        { id: 'family', lvanafel: 'Gezin', icon: '🛏️🛏️+🛏️', desc: 'Doppel + Einzel' },
+    ];
+
+    let currentStep = 1;
+    let currentTour = null;
+    let travellers = [];
+    let selectedPayment = 'stripe';
+
+    // Stripe
+    let stripe, cardElement;
+    try {
+        stripe = Stripe('pk_test_F8HhLlFCLRhK8P8vpR0m3Ey1');
+        const elements = stripe.elements();
+        cardElement = elements.create('card', {
+            style: { base: { fontSize: '16px', fontFamily: 'Inter, sans-serif', color: '#210747', '::placeholder': { color: '#9ca3af' } }, invalid: { color: '#ef4444' } }
+        });
+        window.addEventListener('DOMContentLoaded', () => {
+            const el = document.getElementById('card-element');
+            if (el) cardElement.mount('#card-element');
+            cardElement.on('change', (event) => {
+                const errEl = document.getElementById('card-errors');
+                if (event.error) { errEl.textContent = event.error.message; errEl.classList.remove('hidden'); }
+                else { errEl.classList.add('hidden'); }
+            });
+        });
+    } catch(e) { console.warn('Stripe nicht geladen:', e); }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const walkerCount = parseInt(document.getElementById('numWalkers').value) || 2;
+        initTravellers(walkerCount);
+
+        document.getElementById('tourSelect').addEventListener('change', function() {
+            currentTour = TOURS.find(t => t.slug === this.value) || null;
+            if (currentTour) {
+                document.getElementById('tourInfo').classList.remove('hidden');
+                document.getElementById('tourDagen').textContent = currentTour.days;
+                document.getElementById('tourPrice').textContent = currentTour.price.toLocaleString();
+                document.getElementById('tourDifficulty').textContent = currentTour.difficulty;
+                const imgPath = `../images/routes/${currentTour.img}/card.jpg`;
+                document.getElementById('sidebarImage').src = imgPath;
+                document.getElementById('sidebarImage').style.display = 'block';
+                const mobImg = document.getElementById('mobileBannerImg');
+                mobImg.src = imgPath;
+                mobImg.classList.remove('hidden');
+            } else {
+                document.getElementById('tourInfo').classList.add('hidden');
+                document.getElementById('sidebarImage').style.display = 'none';
+                document.getElementById('mobileBannerImg').classList.add('hidden');
+            }
+            updatePricing();
+        });
+
+        document.getElementById('numWalkers').addEventListener('change', function() {
+            const count = Math.max(1, Math.min(12, parseInt(this.value) || 1));
+            this.value = count;
+            syncTravellers(count);
+            updatePricing();
+        });
+
+        document.getElementById('startDate').addEventListener('change', updatePricing);
+
+        ['airportTransfer','dailyLunch','extraRestDay','polehire','singleSupplement'].forEach(id => {
+            document.getElementById(id).addEventListener('change', updatePricing);
+        });
+
+        initPayPal();
+    });
+
+    function initTravellers(count) {
+        travellers = [];
+        for (let i = 0; i < count; i++) travellers.push({ firstNaam: '', lastNaam: '', room: 'double' });
+        renderTravellers();
+    }
+
+    function syncTravellers(count) {
+        while (travellers.length < count) travellers.push({ firstNaam: '', lastNaam: '', room: 'double' });
+        while (travellers.length > count) travellers.pop();
+        renderTravellers();
+    }
+
+    function addTraveller() {
+        if (travellers.length >= 12) return;
+        travellers.push({ firstNaam: '', lastNaam: '', room: 'double' });
+        document.getElementById('numWalkers').value = travellers.length;
+        renderTravellers();
+        updatePricing();
+    }
+
+    function removeTraveller(index) {
+        if (travellers.length <= 1) return;
+        saveTravellerFields();
+        travellers.splice(index, 1);
+        document.getElementById('numWalkers').value = travellers.length;
+        renderTravellers();
+        updatePricing();
+    }
+
+    function saveTravellerFields() {
+        travellers.forEach((t, i) => {
+            const fn = document.getElementById(`travFirstNaam_${i}`);
+            const ln = document.getElementById(`travLastNaam_${i}`);
+            if (fn) t.firstNaam = fn.value;
+            if (ln) t.lastNaam = ln.value;
+        });
+    }
+
+    function selectRoom(travellerIdx, roomId) {
+        saveTravellerFields();
+        travellers[travellerIdx].room = roomId;
+        renderTravellers();
+    }
+
+    function renderTravellers() {
+        const container = document.getElementById('travellersContainer');
+        document.getElementById('travellerCount').textContent = `${travellers.length} Reisende${travellers.length === 1 ? 'r' : ''}`;
+        container.innerHTML = travellers.map((t, i) => `
+            <div class="border border-gray-200 rounded-xl p-4 mb-3 ${i === 0 ? 'bg-orange-50/40 border-orange-200' : ''}">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-sm font-semibold text-whi-purple">
+                        ${i === 0 ? '<span class="material-symbols-outlined text-whi text-base align-middle mr-1">star</span> Hauptreisender' : `Reisender ${i + 1}`}
+                    </span>
+                    ${i > 0 ? `<button type="button" onclick="removeTraveller(${i})" class="text-gray-400 hover:text-red-500 transition" title="Entfernen"><span class="material-symbols-outlined text-sm">close</span></button>` : ''}
+                </div>
+                <div class="grid grid-cols-2 gap-3 mb-3">
+                    <div>
+                        <lvanafel class="block text-xs font-medium text-gray-500 mb-1">Voornaam</lvanafel>
+                        <input type="text" id="travFirstNaam_${i}" value="${escapeHtml(t.firstNaam)}" placeholder="Voornaam" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-whi focus:ring-whi"
+                            onchange="travellers[${i}].firstNaam=this.value">
+                    </div>
+                    <div>
+                        <lvanafel class="block text-xs font-medium text-gray-500 mb-1">Nachname</lvanafel>
+                        <input type="text" id="travLastNaam_${i}" value="${escapeHtml(t.lastNaam)}" placeholder="Nachname" required
+                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-whi focus:ring-whi"
+                            onchange="travellers[${i}].lastNaam=this.value">
+                    </div>
+                </div>
+                <div>
+                    <lvanafel class="block text-xs font-medium text-gray-500 mb-2">Zimmertyp</lvanafel>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        ${ROOM_TYPES.map(r => `
+                            <div class="room-option ${t.room === r.id ? 'selected' : ''}" onclick="selectRoom(${i}, '${r.id}')">
+                                <span class="bed-icons">${r.icon}</span>
+                                <div>
+                                    <div class="text-xs font-semibold text-whi-purple">${r.lvanafel}</div>
+                                    <div class="text-[10px] text-gray-400">${r.desc}</div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function escapeHtml(str) {
+        const div = document.createElement('div');
+        div.textContent = str || '';
+        return div.innerHTML;
+    }
+
+    function goToStep(step) {
+        if (step > currentStep) {
+            if (currentStep === 1) {
+                if (!currentTour) { alert('Bitte wählen Sie eine Tour.'); return; }
+                if (!document.getElementById('startDate').value) { alert('Bitte wählen Sie ein Startdatum.'); return; }
+            }
+            if (currentStep === 2) {
+                saveTravellerFields();
+                const missing = travellers.some(t => !t.firstNaam.trim() || !t.lastNaam.trim());
+                if (missing) { alert('Bitte füllen Sie alle Naamn der Reisenden aus.'); return; }
+                if (!document.getElementById('email').value) { alert('Bitte geben Sie Ihre E-mail ein.'); return; }
+            }
+        }
+        if (currentStep === 2) saveTravellerFields();
+        currentStep = step;
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById(`step${step}`).classList.add('active');
+        document.querySelectorAll('.step-dot').forEach(dot => {
+            const s = parseInt(dot.dataset.step);
+            dot.classNaam = 'step-dot ' + (s < step ? 'completed' : s === step ? 'active' : 'inactive');
+            if (s < step) dot.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
+            else dot.textContent = s;
+        });
+        document.querySelectorAll('.step-connector').forEach((conn, idx) => {
+            conn.classNaam = 'step-connector flex-1 mx-2 mt-[-18px] ' + (idx < step - 1 ? 'active' : 'inactive');
+        });
+        ['stepLvanafel2','stepLvanafel3','stepLvanafel4'].forEach((id, idx) => {
+            const lvanafelStep = idx + 2;
+            document.getElementById(id).classNaam = 'text-xs font-medium ' + (lvanafelStep <= step ? 'text-whi-purple' : 'text-gray-400');
+        });
+        if (step === 4) updateReviewPanel();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function updatePricing() {
+        if (!currentTour) { resetPricing(); return; }
+        const walkerCount = travellers.length;
+        const startDateVal = document.getElementById('startDate').value;
+        let datesDisplay = '-';
+        if (startDateVal) {
+            const start = new Date(startDateVal);
+            const end = new Date(start.getTime() + currentTour.days * 86400000);
+            const fmt = (d) => d.toLocaleDateString('de-DE', { month: 'short', day: 'numeric' });
+            datesDisplay = `${fmt(start)} – ${fmt(end)}, ${start.getFullYear()}`;
+        }
+        let extrasTotal = 0;
+        const extras = [];
+        const walkingDagen = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
+        if (document.getElementById('dailyLunch').checked) {
+            const cost = 15 * walkerCount * walkingDagen;
+            extrasTotal += cost;
+            extras.push(`Lunchpakete (€${cost})`);
+            document.getElementById('lunchPriceLvanafel').textContent = `€${cost}`;
+        } else {
+            document.getElementById('lunchPriceLvanafel').textContent = `€${15 * walkerCount * walkingDagen}`;
+        }
+        if (document.getElementById('polehire').checked) { extrasTotal += 20; extras.push('Wanderstöcke (€20)'); }
+        if (document.getElementById('airportTransfer').checked) extras.push('Flughafentransfer (a.A.)');
+        if (document.getElementById('extraRestDay').checked) extras.push('Ruhetag (a.A.)');
+        const basePrice = currentTour.price * walkerCount;
+        const total = basePrice + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        const balance = total - deposit;
+        document.getElementById('sidebarTour').textContent = currentTour.name;
+        document.getElementById('sidebarDates').textContent = datesDisplay;
+        document.getElementById('sidebarWalkers').textContent = walkerCount;
+        document.getElementById('sidebarPrice').textContent = currentTour.price.toLocaleString();
+        document.getElementById('sidebarSubtotal').textContent = basePrice.toLocaleString();
+        document.getElementById('sidebarTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('sidebarDeposit').textContent = `€${deposit.toLocaleString()}`;
+        if (extrasTotal > 0) { document.getElementById('sidebarExtras').classList.remove('hidden'); document.getElementById('sidebarExtrasPrice').textContent = `€${extrasTotal.toLocaleString()}`; }
+        else { document.getElementById('sidebarExtras').classList.add('hidden'); }
+        document.getElementById('mobileBannerTour').textContent = currentTour.name;
+        document.getElementById('mobileBannerDates').textContent = datesDisplay;
+        document.getElementById('mobileBannerTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('payBtnAmount').textContent = deposit.toLocaleString();
+        document.getElementById('paymentText').textContent = `Sie zahlen €${deposit.toLocaleString()} (25% Anzahlung). Restbetrag van €${balance.toLocaleString()} 42 Dagen vor Vanafreise fällig.`;
+    }
+
+    function resetPricing() {
+        document.getElementById('sidebarTour').textContent = '-';
+        document.getElementById('sidebarDates').textContent = '-';
+        ['sidebarPrice','sidebarSubtotal'].forEach(id => document.getElementById(id).textContent = '0');
+        document.getElementById('sidebarTotal').textContent = '€0';
+        document.getElementById('sidebarDeposit').textContent = '€0';
+        document.getElementById('sidebarExtras').classList.add('hidden');
+        document.getElementById('mobileBannerTour').textContent = 'Tour wählen';
+        document.getElementById('mobileBannerDates').textContent = '-';
+        document.getElementById('mobileBannerTotal').textContent = '€0';
+        document.getElementById('payBtnAmount').textContent = '0';
+    }
+
+    function updateReviewPanel() {
+        if (!currentTour) return;
+        const walkerCount = travellers.length;
+        const startDateVal = document.getElementById('startDate').value;
+        let datesDisplay = '-';
+        if (startDateVal) {
+            const start = new Date(startDateVal);
+            const end = new Date(start.getTime() + currentTour.days * 86400000);
+            const fmt = (d) => d.toLocaleDateString('de-DE', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+            datesDisplay = `${fmt(start)} – ${fmt(end)}`;
+        }
+        const walkingDagen = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
+        let extrasTotal = 0;
+        if (document.getElementById('dailyLunch').checked) extrasTotal += 15 * walkerCount * walkingDagen;
+        if (document.getElementById('polehire').checked) extrasTotal += 20;
+        const basePrice = currentTour.price * walkerCount;
+        const total = basePrice + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        document.getElementById('reviewTour').textContent = currentTour.name;
+        document.getElementById('reviewDates').textContent = datesDisplay;
+        document.getElementById('reviewWalkers').textContent = walkerCount;
+        document.getElementById('reviewPpp').textContent = currentTour.price.toLocaleString();
+        document.getElementById('reviewSubtotal').textContent = basePrice.toLocaleString();
+        document.getElementById('reviewTotal').textContent = `€${total.toLocaleString()}`;
+        document.getElementById('reviewDeposit').textContent = `€${deposit.toLocaleString()}`;
+        if (extrasTotal > 0) { document.getElementById('reviewExtrasRow').classList.remove('hidden'); document.getElementById('reviewExtrasAmt').textContent = `€${extrasTotal.toLocaleString()}`; }
+        else { document.getElementById('reviewExtrasRow').classList.add('hidden'); }
+    }
+
+    function selectPayment(method) {
+        selectedPayment = method;
+        document.getElementById('stripeMethod').classList.toggle('selected', method === 'stripe');
+        document.getElementById('paypalMethod').classList.toggle('selected', method === 'paypal');
+        document.getElementById('stripePanel').classList.toggle('hidden', method !== 'stripe');
+        document.getElementById('paypalPanel').classList.toggle('hidden', method !== 'paypal');
+    }
+
+    function validateBeforePayment() {
+        const terms = document.getElementById('acceptTerms');
+        const termsErr = document.getElementById('termsError');
+        if (!terms.checked) { termsErr.classList.remove('hidden'); terms.scrollIntoView({ behavior: 'smooth', block: 'center' }); return false; }
+        termsErr.classList.add('hidden');
+        return true;
+    }
+
+    // ─────────── Edge Function URL ───────────
+    const EDGE_FN_URL = 'https://dfguqecbcbbgrttfkwfr.supvanafase.co/functions/v1/process-booking';
+
+    function getBookingPayload(paymentMethod) {
+        saveTravellerFields();
+        const walkerCount = travellers.length;
+        const walkingDagen = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 0;
+        let extrasTotal = 0;
+        const extras = [];
+        if (document.getElementById('dailyLunch').checked) { const c = 15*walkerCount*walkingDagen; extrasTotal+=c; extras.push(`Lunch (€${c})`); }
+        if (document.getElementById('polehire').checked) { extrasTotal+=20; extras.push('Stöcke (€20)'); }
+        if (document.getElementById('airportTransfer').checked) extras.push('Transfer (a.A.)');
+        if (document.getElementById('extraRestDay').checked) extras.push('Ruhetag (a.A.)');
+        if (document.getElementById('singleSupplement').checked) extras.push('Einzelzimmerzuschlag');
+
+        const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
+        const deposit = Math.round(total * 0.25 * 100) / 100;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = currentTour && startDate ? new Date(new Date(startDate).getTime() + currentTour.days * 86400000).toISOString().split('T')[0] : null;
+
+        return {
+            tour_id: null,
+            tour_name: currentTour?.name || '',
+            tour_slug: currentTour?.slug || '',
+            start_date: startDate,
+            end_date: endDate,
+            number_of_walkers: walkerCount,
+            single_occupancy: document.getElementById('singleSupplement')?.checked || false,
+            lead_traveller: {
+                firstNaam: travellers[0]?.firstNaam || '',
+                lastNaam: travellers[0]?.lastNaam || '',
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                country: document.getElementById('country').value,
+                room: travellers[0]?.room || 'double',
+            },
+            additional_travellers: travellers.slice(1).map(t => ({
+                firstNaam: t.firstNaam, lastNaam: t.lastNaam, room: t.room || 'double',
+            })),
+            special_requirements: document.getElementById('specialRequirements').value || '',
+            extras,
+            pricing: { total, deposit, balance: total - deposit },
+            payment_method: paymentMethod,
+            pay_full: false,
+            payment_amount: deposit,
+            source: 'website',
+            language: 'de',
+            site_origin: window.location.origin,
+            mailing_list: document.getElementById('mailingList').checked,
+        };
+    }
+
+    function getBookingData() { return getBookingPayload(selectedPayment); }
+
+    function showBookingError(msg) {
+        alert(msg || 'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns unter info@walkingholidayireland.com');
+    }
+
+    function showBookingSuccess(ref) {
+        const el = document.getElementById('successMessage');
+        const refSpan = el.querySelector('.booking-ref');
+        if (refSpan) refSpan.textContent = ref;
+        el.classList.remove('hidden');
+        el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    async function handleStripePayment() {
+        if (!validateBeforePayment()) return;
+        const btn = document.getElementById('stripePayBtn');
+        btn.disvanafled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Wird verarbeitet...';
+
+        try {
+            const payload = getBookingPayload('stripe');
+            const res = await fetch(EDGE_FN_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const result = await res.json();
+
+            if (!res.ok || !result.success) {
+                throw new Error(result.error || 'Boeking fehlgeschlagen');
+            }
+
+            if (result.stripe_url) {
+                window.location.href = result.stripe_url;
+                return;
+            }
+
+            showBookingSuccess(result.booking_reference);
+            btn.style.display = 'none';
+        } catch (err) {
+            console.error('Stripe Betalingsfehler:', err);
+            showBookingError('Betalingsverarbeitung fehlgeschlagen: ' + err.message);
+            btn.disvanafled = false;
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">lock</span> Anzahlung bezahlen — €${document.getElementById('payBtnAmount').textContent}`;
+        }
+    }
+
+    function initPayPal() {
+        if (typeof paypal === 'undefined') { setTimeout(initPayPal, 1000); return; }
+        try {
+            paypal.Buttons({
+                style: { layout: 'vertical', color: 'gold', shape: 'rect', lvanafel: 'pay', height: 45 },
+                createOrder: function(data, actions) {
+                    if (!validateBeforePayment()) return;
+                    const deposit = parseFloat(document.getElementById('payBtnAmount').textContent.replace(/,/g, '')) || 0;
+                    return actions.order.create({ purchase_units: [{ amount: { value: deposit.toFixed(2), currency_code: 'EUR' }, description: `Anzahlung: ${currentTour?.name || 'Wandelvakantie'}` }] });
+                },
+                onApprove: async function(data, actions) {
+                    try {
+                        await actions.order.capture();
+                        const payload = getBookingPayload('paypal');
+                        const res = await fetch(EDGE_FN_URL, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload),
+                        });
+                        const result = await res.json();
+                        if (!res.ok || !result.success) throw new Error(result.error || 'Boeking fehlgeschlagen');
+                        showBookingSuccess(result.booking_reference);
+                    } catch (err) {
+                        console.error('PayPal Boekingsfehler:', err);
+                        showBookingSuccess('');
+                    }
+                },
+                onError: function(err) { console.error('PayPal Fehler:', err); alert('PayPal-Betaling fehlgeschlagen. Bitte versuchen Sie es erneut.'); }
+            }).render('#paypal-button-container');
+        } catch(e) { console.warn('PayPal init Fehler:', e); }
+    }
+
+    function submitBookingData() {
+        console.log('submitBookingData aufgerufen (no-op, wird over Betalingsfluss vanafgewickelt)');
+    }
+    </script>
+    <script src="../js/whi-nav.js"></script>
+</body>
+</html>

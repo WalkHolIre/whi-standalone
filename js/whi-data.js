@@ -312,8 +312,8 @@
         filteredTours = filteredTours.slice(0, options.limit);
       }
 
-      // Determine path prefix (are we in /tours/ subfolder?)
-      const isInSubfolder = window.location.pathname.includes('/tours/');
+      // Determine path prefix (are we in /walking-tours/ subfolder?)
+      const isInSubfolder = window.location.pathname.includes('/walking-tours/');
       const prefix = isInSubfolder ? '../' : '';
 
       const cardsHTML = filteredTours.map(tour => {

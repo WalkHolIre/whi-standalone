@@ -2,11 +2,11 @@
 # Old site URL redirects (301 permanent) — activate when going live
 
 # Trail pages from old site
-/self-guided-hiking-tours/the-dingle-way/  /tours/dingle-way.html  301
-/self-guided-hiking-tours/the-wicklow-way/  /tours/wicklow-way.html  301
-/self-guided-hiking-tours/barrow-way/  /tours/barrow-way.html  301
-/self-guided-hiking-tours/cooley-and-mourne-mountains/  /tours/cooley-mournes.html  301
-/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours/  /tours/causeway-coast.html  301
+/self-guided-hiking-tours/the-dingle-way/  /walking-tours/dingle-way.html  301
+/self-guided-hiking-tours/the-wicklow-way/  /walking-tours/wicklow-way.html  301
+/self-guided-hiking-tours/barrow-way/  /walking-tours/barrow-way.html  301
+/self-guided-hiking-tours/cooley-and-mourne-mountains/  /walking-tours/cooley-mournes.html  301
+/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours/  /walking-tours/causeway-coast.html  301
 
 # Blog content from old site
 /the-famine-roads-of-ireland/  /blog/the-famine-roads-of-ireland.html  301
@@ -66,7 +66,46 @@
 /destination-wicklow.html  /walking-area-wicklow.html  301
 
 # Catch trailing slashes
-/tours/  /tours.html  301
+# /tours/ → /walking-tours/ URL migration (301 permanent)
+/tours/dingle-way.html  /walking-tours/dingle-way.html  301
+/tours/kerry-way.html  /walking-tours/kerry-way.html  301
+/tours/wicklow-way.html  /walking-tours/wicklow-way.html  301
+/tours/wicklow-way-5-days.html  /walking-tours/wicklow-way-5-days.html  301
+/tours/wicklow-way-7-days.html  /walking-tours/wicklow-way-7-days.html  301
+/tours/wicklow-way-10-days.html  /walking-tours/wicklow-way-10-days.html  301
+/tours/burren-5-days.html  /walking-tours/burren-5-days.html  301
+/tours/burren-6-days.html  /walking-tours/burren-6-days.html  301
+/tours/burren-7-days.html  /walking-tours/burren-7-days.html  301
+/tours/barrow-way-5-days-easy.html  /walking-tours/barrow-way-5-days-easy.html  301
+/tours/barrow-way-5-days.html  /walking-tours/barrow-way-5-days.html  301
+/tours/barrow-way.html  /walking-tours/barrow-way.html  301
+/tours/Full-Barrow-Way-Walking.html  /walking-tours/full-barrow-way-walking.html  301
+/tours/causeway-coast.html  /walking-tours/causeway-coast.html  301
+/tours/causeway-coast-5-days.html  /walking-tours/causeway-coast-5-days.html  301
+/tours/cooley-mournes.html  /walking-tours/cooley-mournes.html  301
+/tours/cooley-peninsula-5-days.html  /walking-tours/cooley-peninsula-5-days.html  301
+/tours/burren-way.html  /walking-tours/burren-way.html  301
+/tours.html  /walking-tours.html  301
+
+# DE tour redirects
+/de/tours/dingle-way.html  /de/walking-tours/dingle-way.html  301
+/de/tours/kerry-way.html  /de/walking-tours/kerry-way.html  301
+/de/tours/wicklow-way.html  /de/walking-tours/wicklow-way.html  301
+/de/tours/wicklow-way-5-days.html  /de/walking-tours/wicklow-way-5-days.html  301
+/de/tours/wicklow-way-7-days.html  /de/walking-tours/wicklow-way-7-days.html  301
+/de/tours/wicklow-way-10-days.html  /de/walking-tours/wicklow-way-10-days.html  301
+/de/tours/burren-5-days.html  /de/walking-tours/burren-5-days.html  301
+/de/tours/burren-6-days.html  /de/walking-tours/burren-6-days.html  301
+/de/tours/burren-7-days.html  /de/walking-tours/burren-7-days.html  301
+/de/tours/barrow-way-5-days-easy.html  /de/walking-tours/barrow-way-5-days-easy.html  301
+/de/tours/Full-Barrow-Way-Walking.html  /de/walking-tours/full-barrow-way-walking.html  301
+/de/tours/causeway-coast.html  /de/walking-tours/causeway-coast.html  301
+/de/tours/causeway-coast-5-days.html  /de/walking-tours/causeway-coast-5-days.html  301
+/de/tours/cooley-mournes.html  /de/walking-tours/cooley-mournes.html  301
+/de/tours/cooley-peninsula-5-days.html  /de/walking-tours/cooley-peninsula-5-days.html  301
+/de/tours.html  /de/walking-tours.html  301
+
+/tours/  /walking-tours.html  301
 /blog/  /blog.html  301
 /faq/  /faq.html  301
 /about/  /about.html  301
