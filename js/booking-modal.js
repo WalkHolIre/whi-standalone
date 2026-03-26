@@ -1023,15 +1023,15 @@ function renderStep3() {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
         <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <img src="https://cdn.brandfetch.io/idxAg10C0L/theme/dark/symbol.svg" alt="Stripe" style="height: 20px;">
+          <svg viewBox="0 0 24 24" style="height:20px;width:20px;" fill="none"><path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.591-7.305z" fill="#635BFF"/></svg>
           <span>${t('payByCard')}</span>
-          <span style="margin-left: auto; display: flex; gap: 4px;">
-            <img src="https://cdn.brandfetch.io/idHqUb3gWL/theme/dark/symbol.svg" alt="Visa" style="height: 16px;">
-            <img src="https://cdn.brandfetch.io/id8bOzXJ9d/theme/dark/symbol.svg" alt="Mastercard" style="height: 16px;">
+          <span style="margin-left: auto; display: flex; gap: 4px; align-items: center;">
+            <svg viewBox="0 0 48 32" style="height:20px;" fill="none"><rect width="48" height="32" rx="4" fill="#1A1F71"/><path d="M18.5 21.5l2.1-13h3.4l-2.1 13h-3.4zm14-13l-3.2 9-1.3-6.6-.4-2c-.2-.5-.7-.5-1.3-.5h-5.3l-.1.3c1.3.3 2.7.8 3.5 1.3l3 11.5h3.5l5.3-13h-3.7zm-20.4 0l-3.4 8.9-.4-1.9c-.7-2.3-2.8-4.8-5.2-6l3 11h3.5l5.3-13h-2.8z" fill="white"/><path d="M10.3 8.5c-.3-1.1-1.2-1.4-2.3-1.5H2.1L2 7.3c4 1 6.6 3.5 7.7 6.4l-1.1-5.2c-.2-.8-.8-1-1.3-1z" fill="#F7B600"/></svg>
+            <svg viewBox="0 0 48 32" style="height:20px;" fill="none"><rect width="48" height="32" rx="4" fill="#252525"/><circle cx="19" cy="16" r="10" fill="#EB001B"/><circle cx="29" cy="16" r="10" fill="#F79E1B"/><path d="M24 8.8a10 10 0 000 14.4 10 10 0 000-14.4z" fill="#FF5F00"/></svg>
           </span>
         </button>
         <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 14px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: white; color: #1f2937; font-size: 16px; font-weight: 600; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;">
-          <img src="https://cdn.brandfetch.io/idLpCFHe9G/theme/dark/logo.svg" alt="PayPal" style="height: 22px;">
+          <svg viewBox="0 0 101 32" style="height:22px;" fill="none"><path d="M12.2 4.3h8.1c2.7 0 5.5.2 7.2 2.3 1 1.2 1.4 2.9 1.2 4.7-.7 5-3.8 7.8-8.8 7.8h-2.3c-.7 0-1.2.5-1.3 1.1L15.1 27c-.1.5-.5.8-1 .8H9.8c-.5 0-.9-.5-.8-1l3-21.5c.1-.6.6-1 1.2-1z" fill="#003087"/><path d="M38.5 4.3h8.1c2.7 0 5.5.2 7.2 2.3 1 1.2 1.4 2.9 1.2 4.7-.7 5-3.8 7.8-8.8 7.8h-2.3c-.7 0-1.2.5-1.3 1.1l-1.2 6.8c-.1.5-.5.8-1 .8h-3.6c-.5 0-.9-.5-.8-1l3-21.5c.1-.6.6-1 1.2-1z" fill="#0070E0"/><path d="M70.3 8.6c.3-1.6-.1-2.7-.9-3.7C68.3 3.6 66.2 3 63.4 3h-8.8c-.7 0-1.3.5-1.4 1.2L49.7 27c-.1.5.3 1 .8 1h5.8l1.5-9.3c.1-.6.7-1.2 1.4-1.2h2.9c5.7 0 10.1-2.3 11.4-9 .5-2.8.2-5-.8-6.6z" fill="#003087"/><path d="M70.3 8.6c-.6 3.4-2.5 5.8-5.3 7.2-1.4.7-3.1 1-5 1h-3.5l-1.4 8.9c-.1.5-.5.8-1 .8h-4.3c-.5 0-.9-.5-.8-1l.2-1.4 1.3-8.3.1-.4c.1-.6.7-1.2 1.4-1.2h2.9c5.7 0 10.1-2.3 11.4-9 .5-2.8.2-5-.8-6.6.9.8 1.5 1.8 1.8 3.1 .3 1 .4 2.2.2 3.5l-1.2 7.6z" fill="#0070E0"/></svg>
         </button>
       </div>
     `;
@@ -1065,6 +1065,7 @@ function renderStep3() {
     </div>
 
     ${paymentOptionsHtml}
+    ${termsAndMailingHtml}
     ${paymentButtonsHtml}
   `;
 
