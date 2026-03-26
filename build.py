@@ -882,22 +882,24 @@ def render_itinerary(itinerary_data, routes_by_id=None):
         badge_class = "bg-primary/10 text-primary" if idx == 1 else "bg-slate-100 text-slate-500"
         open_attr = "open" if idx == 1 else ""
 
-        # Look up route details for this day
+        # Look up route details for this day — use FIRST route only
+        # (additional routes are alternative options, not part of the main itinerary)
         route_ids = day.get('route_ids', [])
-        day_routes = []
+        primary_route = None
         if routes_by_id and route_ids:
             for rid in route_ids:
                 route = routes_by_id.get(rid)
                 if route:
-                    day_routes.append(route)
+                    primary_route = route
+                    break  # Use only the first matching route
 
-        # Compute aggregate stats for the day
-        day_distance = sum(r.get('distance_km', 0) or 0 for r in day_routes)
-        day_ascent = sum(r.get('elevation_gain_m', 0) or 0 for r in day_routes)
-        day_descent = sum(r.get('elevation_loss_m', 0) or 0 for r in day_routes)
-        day_duration = sum(r.get('estimated_duration_hours', 0) or 0 for r in day_routes)
-        day_start = day_routes[0].get('route_startpoint', '') if day_routes else ''
-        day_end = day_routes[-1].get('route_endpoint', '') if day_routes else ''
+        # Stats from the primary route only
+        day_distance = (primary_route.get('distance_km', 0) or 0) if primary_route else 0
+        day_ascent = (primary_route.get('elevation_gain_m', 0) or 0) if primary_route else 0
+        day_descent = (primary_route.get('elevation_loss_m', 0) or 0) if primary_route else 0
+        day_duration = (primary_route.get('estimated_duration_hours', 0) or 0) if primary_route else 0
+        day_start = primary_route.get('route_startpoint', '') if primary_route else ''
+        day_end = primary_route.get('route_endpoint', '') if primary_route else ''
 
         # Route detail badges
         badges_html = ''
@@ -1702,12 +1704,16 @@ def render_route_map_data(itinerary_data, routes_by_id):
         day_duration = 0
         day_name = day.get('title', f'Day {idx}')
 
+        # Use only the FIRST route per day (others are alternative options)
+        primary_route = None
         for rid in route_ids:
             route = routes_by_id.get(rid)
-            if not route:
-                continue
+            if route:
+                primary_route = route
+                break
 
-            gpx = route.get('gpx_coordinates', [])
+        if primary_route:
+            gpx = primary_route.get('gpx_coordinates', [])
             if isinstance(gpx, str):
                 try:
                     gpx = json.loads(gpx)
@@ -1718,13 +1724,16 @@ def render_route_map_data(itinerary_data, routes_by_id):
                 for pt in gpx:
                     if isinstance(pt, list) and len(pt) >= 2:
                         day_coords.append([pt[0], pt[1]])
-                        if len(pt) >= 3:
-                            day_elevation.append(pt[2])
+                        if len(pt) >= 3 and pt[2] is not None:
+                            try:
+                                day_elevation.append(float(pt[2]))
+                            except (ValueError, TypeError):
+                                pass
 
-            day_distance += route.get('distance_km', 0) or 0
-            day_ascent += route.get('elevation_gain_m', 0) or 0
-            day_descent += route.get('elevation_loss_m', 0) or 0
-            day_duration += route.get('estimated_duration_hours', 0) or 0
+            day_distance = primary_route.get('distance_km', 0) or 0
+            day_ascent = primary_route.get('elevation_gain_m', 0) or 0
+            day_descent = primary_route.get('elevation_loss_m', 0) or 0
+            day_duration = primary_route.get('estimated_duration_hours', 0) or 0
 
         if day_coords:
             map_days.append({
@@ -1838,7 +1847,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
         '{faq_schema}': tour_faq_schema,
         '{route_map_json}': route_map_json,
         '{accommodation_image}': tour.get('accommodation_image') or '',
-        '{accommodation_image_html}': f'<div class="rounded-xl overflow-hidden mb-6"><img src="{escape(tour.get("accommodation_image", ""))}" alt="Accommodation" class="w-full h-auto object-cover rounded-xl" loading="lazy"/></div>' if tour.get('accommodation_image') else '',
+        '{accommodation_image_html}': f'<div class="float-right ml-6 mb-4" style="max-width:300px;"><img src="{escape(tour.get("accommodation_image", ""))}" alt="Accommodation" class="w-full h-auto object-cover rounded-xl" loading="lazy"/></div>' if tour.get('accommodation_image') else '',
         '{sale_banner_html}': '<div class="bg-primary text-white text-center py-2.5 font-bold text-sm tracking-wide uppercase">Special Offer — Save Now!</div>' if tour.get('sale_price') else '',
         '{booking_data_script}': generate_booking_data_script(
             tour,
