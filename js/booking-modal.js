@@ -92,8 +92,8 @@ const I18N = {
     paymentProcessing: 'Your payment is being processed. You\'ll receive a confirmation email shortly.',
     contactUs: 'Get in touch',
     email: 'Email: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 937 5983',
-    phone: 'Phone: +353 42 937 5983',
+    whatsapp: 'WhatsApp: +353 42 932 3396',
+    phone: 'Phone: +353 42 932 3396',
 
     // Bedroom assignment
     bedroomAssignment: 'Bedroom Assignment',
@@ -210,8 +210,8 @@ const I18N = {
     paymentProcessing: 'Ihre Zahlung wird verarbeitet. Sie erhalten bald eine Bestätigungsemail.',
     contactUs: 'Kontaktieren Sie uns',
     email: 'E-Mail: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 937 5983',
-    phone: 'Telefon: +353 42 937 5983',
+    whatsapp: 'WhatsApp: +353 42 932 3396',
+    phone: 'Telefon: +353 42 932 3396',
 
     // Bedroom assignment
     bedroomAssignment: 'Zimmerzuweisung',
@@ -328,8 +328,8 @@ const I18N = {
     paymentProcessing: 'Uw betaling wordt verwerkt. U ontvangt binnenkort een bevestigingse-mail.',
     contactUs: 'Neem contact op',
     email: 'E-mail: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 937 5983',
-    phone: 'Telefoon: +353 42 937 5983',
+    whatsapp: 'WhatsApp: +353 42 932 3396',
+    phone: 'Telefoon: +353 42 932 3396',
 
     // Bedroom assignment
     bedroomAssignment: 'Kamertoewijzing',
@@ -1035,10 +1035,10 @@ function renderConfirmation(bookingRef, paymentMethod) {
         <a href="mailto:info@walkingholidayireland.com" class="bm-contact-link">
           ${t('email')}
         </a>
-        <a href="https://wa.me/353429375983" target="_blank" class="bm-contact-link">
+        <a href="https://wa.me/353879573856" target="_blank" class="bm-contact-link">
           ${t('whatsapp')}
         </a>
-        <a href="tel:+353429375983" class="bm-contact-link">
+        <a href="tel:+353429323396" class="bm-contact-link">
           ${t('phone')}
         </a>
       </div>
