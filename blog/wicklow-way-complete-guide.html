@@ -6,12 +6,11 @@
     <title>The Ultimate Wicklow Way Complete Guide: 127km Through Ireland&#x27;s Mountain Wilderness | Walking Holiday Ireland</title>
     <meta name="description" content="Learn about the Wicklow Way complete guide with comprehensive advice and expert insights for Irish walking holidays. Start planning your perfect getaway now."/>
     <link rel="canonical" href="https://walkingholidayireland.com/blog/wicklow-way-complete-guide.html"/>
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png"/>
+    <link rel="stylesheet" href="../css/styles.min.css"/>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries,typography"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
@@ -20,38 +19,77 @@
                         "bright-purple": "#3F0F87",
                         "accent-mauve": "#B58DB6",
                         "background-light": "#f8f7f5",
-                        "background-dark": "#1a1625",
                     },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "3xl": "1.5rem", "full": "9999px"
-                    },
+                    fontFamily: { "display": ["Inter", "sans-serif"] },
                 },
             },
         }
     </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
-        @media(min-width:768px){header.site-header{top:44px;}} header.site-header{top:0;}
-        /* Article prose styling */
-        .article-body h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; }
-        .article-body h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
-        .article-body h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
-        .article-body p { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 1.25rem; }
-        .article-body ul, .article-body ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
-        .article-body ul { list-style-type: disc; }
-        .article-body ol { list-style-type: decimal; }
-        .article-body li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
-        .article-body strong { color: #1e293b; font-weight: 700; }
-        .article-body a { color: #F17E00; text-decoration: underline; text-underline-offset: 2px; }
-        .article-body a:hover { color: #d97200; }
-        .article-body blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
-        .article-body blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
-        .article-body hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
-        .article-body img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     </style>
     <script type="application/ld+json">
     {
@@ -59,8 +97,8 @@
         "@type": "BlogPosting",
         "headline": "The Ultimate Wicklow Way Complete Guide: 127km Through Ireland&#x27;s Mountain Wilderness",
         "description": "Learn about the Wicklow Way complete guide with comprehensive advice and expert insights for Irish walking holidays. Start planning your perfect getaway now.",
-        "datePublished": "2026-02-09",
-        "dateModified": "2026-02-09",
+        "datePublished": "2026-02-16",
+        "dateModified": "2026-02-16",
         "author": {
             "@type": "Organization",
             "name": "Walking Holiday Ireland",
@@ -78,7 +116,7 @@
     }
     </script>
 </head>
-<body class="bg-white text-slate-900 antialiased overflow-x-hidden">
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -86,99 +124,111 @@
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:16px;">
             <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
-            <a href="tel:+353879573856" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 87 957 3856</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
             <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
             <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            <a href="https://www.instagram.com/walkingholidayireland///////////////" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
             <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
             <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
-            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" aria-label="WhatsApp" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
             <button onclick="window.location.href='https://walkingholidayireland.com'" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/de'" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/nl'" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+            <button onclick="window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
         </div>
     </div>
 </div>
 
-<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color: #ffffff;">
-    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:15px;padding-bottom:15px;">
-        <a href="../index.html" class="flex items-center gap-3">
-            <img src="../images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
-        </a>
-        <nav class="hidden md:flex items-center gap-8">
-            <div class="relative group">
-                <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations.html">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
-                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="../tours.html" class="block px-5 py-2.5 font-bold text-primary hover:bg-primary/5 transition-colors">Self-Guided Walking</a><div class="border-t border-slate-100 mt-1 pt-1"><span class="block px-5 py-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400">Walking Areas</span><a href="../walking-area-dingle-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a><a href="../walking-area-kerry-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a><a href="../walking-area-wicklow-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a><a href="../walking-area-burren-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a><a href="../walking-area-causeway-coast.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a><a href="../walking-area-cooley-mournes.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a><a href="../walking-area-barrow-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a><a href="../walking-area-connemara.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Connemara</a><a href="../walking-area-beara-way.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Beara Peninsula</a><a href="../walking-area-antrim-glens.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Glens of Antrim</a><a href="../walking-area-mourne-mountains.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Mourne Mountains</a><a href="../walking-area-the-sperrins.html" class="block px-5 py-2 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Sperrins</a></div><div class="border-t border-slate-100 mt-1 pt-1"><a href="../tailor-made.html" class="block px-5 py-2.5 font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a></div>
-                </div>
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../index.html" class="flex items-center gap-3">
+                    <img src="../images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations.html">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../walking-area-dingle-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a>
+                            <a href="../walking-area-kerry-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../walking-area-wicklow-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a>
+                            <a href="../walking-area-burren-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a>
+                            <a href="../walking-area-causeway-coast.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../walking-area-cooley-mournes.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a>
+                            <a href="../walking-area-barrow-way.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../tailor-made.html" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works.html">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../how-it-works.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
+                            <a href="../tour-grading.html" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about.html">About Us</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog.html">Blog</a>
+                    <a href="../contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Get in Touch
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
             </div>
-            <div class="relative group">
-                <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works.html">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
-                <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="../how-it-works.html" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
-                    <a href="../tour-grading.html" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
-                </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="../destinations.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
+                <a href="../how-it-works.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+                <a href="../about.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">About Us</a>
+                <a href="../blog.html" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact.html" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Get in Touch</a>
             </div>
-            <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about.html">About Us</a>
-            <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog.html">Blog</a>
-            <a href="../contact.html" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
-                Get in Touch
-            </a>
-        </nav>
-        <button class="md:hidden text-slate-900">
-            <span class="material-symbols-outlined text-3xl">menu</span>
-        </button>
-    </div>
-</header>
+        </header>
 
 <main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
-<!-- Article Header -->
-
-<!-- Blog Feature Image -->
-<div class="blog-feature-image w-full max-w-5xl mx-auto px-6 pt-4">
-    <div class="rounded-2xl overflow-hidden h-64 md:h-96">
-        <img src="../images/blog/wicklow-way-complete-guide.jpg" alt="" class="w-full h-full object-cover" loading="eager">
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../index.html">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog.html">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">The Ultimate Wicklow Way Complete Guide: 127km Through Ireland&#x27;s Mountain Wilderness</span>
     </div>
 </div>
 
-<section class="w-full bg-background-light border-b border-slate-200/60">
-    <div class="max-w-3xl mx-auto px-6 py-12 md:py-16">
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-            <a href="../blog.html" class="text-sm font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1">
-                <span class="material-symbols-outlined text-lg">arrow_back</span> Blog
-            </a>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">Trail Guide</span>
-            <span class="text-slate-300">|</span>
-            <span class="text-xs uppercase font-bold text-slate-500 tracking-widest">17 min read</span>
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Walking Guides</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">February 16, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">17 min read</span>
         </div>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-6">
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
             The Ultimate Wicklow Way Complete Guide: 127km Through Ireland&#x27;s Mountain Wilderness
         </h1>
-        <p class="text-lg text-slate-500 leading-relaxed max-w-2xl">
-            Learn about the Wicklow Way complete guide with comprehensive advice and expert insights for Irish walking holidays. Start planning your perfect getaway now.
-        </p>
-        <div class="flex items-center gap-4 mt-8">
-            <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center">
-                <span class="text-white font-bold text-lg">W</span>
-            </div>
-            <div>
-                <p class="font-bold text-sm">Walking Holiday Ireland</p>
-                <p class="text-sm text-slate-500">Feb 09, 2026</p>
-            </div>
-        </div>
-    </div>
-</section>
 
-<!-- Article Body -->
-<article class="w-full max-w-3xl mx-auto px-6 py-12 md:py-16">
-    <div class="article-body">
-        <p>Standing at Marlay Park with Dublin's urban hum fading behind you, there's a moment of pure magic when you realize you've left the city behind. In front of you stretches 127 kilometres of the most beautiful trail in Ireland—the <strong>Wicklow Way complete guide</strong> you're about to read is your companion for one of Europe's greatest long-distance walks.</p>
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-gradient-to-br from-primary/20 to-brand-purple/20"></div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <p>Standing at Marlay Park with Dublin's urban hum fading behind you, there's a moment of pure magic when you realize you've left the city behind. In front of you stretches 127 kilometres of the most beautiful trail in Ireland—the <strong>Wicklow Way complete guide</strong> you're about to read is your companion for one of Europe's greatest long-distance walks.</p>
 <p>I've walked this trail more times than I can count, and every time it surprises me. The rain comes sideways through a mountain pass. The wind carries the smell of heather and peat. You round a corner and suddenly Glendalough's ancient monastic city spreads below you like something from a medieval manuscript. This isn't just a hike; it's a journey through Ireland's wild heart, and I want to help you experience it the way we at Walking Holiday Ireland believe it should be walked—at your own pace, with time to breathe, to notice, to really <em>be</em> there.</p>
 <p>Whether you're thinking about a short 5-day adventure or committing to the full 10-day expedition, this <strong>Wicklow Way complete guide</strong> will give you everything you need to walk confident and walk well.</p>
 <h2>Why the Wicklow Way? What Makes It Special</h2>
@@ -390,106 +440,185 @@
 <hr/>
 <p><em>The Wicklow Way is Ireland's most accessible long-distance trail and one of Europe's great walks. Whether you're doing 5 days or 10, the experience will stay with you. Get in touch with Walking Holiday Ireland today, and let's plan your adventure. We'll handle the logistics—accommodation, luggage transfers, route planning—so you can focus on what matters: putting one foot in front of the other and rediscovering yourself on the trail.</em></p>
 <p><em>Your Wicklow Way journey is waiting. Let's make it unforgettable.</em></p>
-    </div>
-</article>
+        </div>
 
-<!-- CTA Section -->
-<section class="w-full max-w-3xl mx-auto px-6 pb-16">
-    <div class="relative rounded-2xl overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-purple to-bright-purple"></div>
-        <div class="relative p-10 md:p-14 text-white text-center">
-            <h2 class="text-2xl md:text-3xl font-bold mb-4">Ready to Walk Ireland?</h2>
-            <p class="text-lg text-slate-200 mb-8 max-w-xl mx-auto">
-                Let us plan your perfect self-guided walking holiday. Choose from 16 tours across 7 stunning destinations.
-            </p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="../destinations.html" class="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-xl font-bold transition-colors shadow-lg shadow-primary/30">
-                    Explore Walking Holidays
-                </a>
-                <a href="../contact.html" class="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-xl font-bold transition-colors border border-white/20">
-                    Get in Touch
-                </a>
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingGuides</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10 lg:sticky lg:top-[140px] lg:self-start">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">105</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=blog"><span>Blog</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">78</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=walking-guides"><span>Walking Guides</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">9</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=planning-&amp;-tips"><span>Planning &amp; Tips</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">6</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=best-of"><span>Best Of</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">6</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=walking-holidays"><span>Walking Holidays</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">3</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=health-&amp;-wellness"><span>Health &amp; Wellness</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=history-&amp;-culture"><span>History &amp; Culture</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category=walking-areas"><span>Walking Areas</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="seasonal-considerations-multi-day-hiking-ireland.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Multi-Day Hiking in Ireland: Your Complete Season-by-Season Guide</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 23, 2026</p>
+                </a></li>
+<li><a class="group block" href="walking-holidays-ireland-2026.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Walking Holidays Ireland 2026: Your Guide to Seasonal Trails</p>
+                    <p class="text-xs text-slate-400 mt-1">Feb 16, 2026</p>
+                </a></li>
+<li><a class="group block" href="best-time-visit-ireland-hiking.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Best Time to Visit Ireland for Hiking: Month-by-Month Guide</p>
+                    <p class="text-xs text-slate-400 mt-1">Feb 16, 2026</p>
+                </a></li>
+<li><a class="group block" href="dingle-way-walking-guide.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">The Complete Dingle Way Walking Guide: Ireland&#x27;s Most Scenic Coastal Trail</p>
+                    <p class="text-xs text-slate-400 mt-1">Feb 16, 2026</p>
+                </a></li>
+<li><a class="group block" href="antrim-coast-walk.html">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Antrim Coast Walk: Northern Ireland&#x27;s Dramatic Shoreline</p>
+                    <p class="text-xs text-slate-400 mt-1">Feb 16, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- Related Articles -->
-<section class="w-full max-w-7xl mx-auto px-6 pb-16">
-    <div class="flex items-center gap-3 mb-8">
-        <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-2xl font-bold">You Might Also Enjoy</h2>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <a href="../blog/dingle-way-walking-guide.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-            <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Trail Guide</span>
-                </div>
-            </div>
-            <div class="flex flex-col justify-between flex-grow p-6">
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Feb 02, 2026</span>
-                        <span class="text-slate-300">&bull;</span>
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">23 min read</span>
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../walking-tours/dingle-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug">The Complete Dingle Way Walking Guide: Ireland&#x27;s Most Scenic Coastal Trail</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed line-clamp-2">Complete the complete dingle way walking guide: ireland&#x27;s most scenic coastal trail guide with detailed information. Expert tips, maps, and insider kn</p>
-                </div>
-                <div class="flex items-center gap-2 text-primary font-bold mt-4 group-hover:gap-3 transition-all">
-                    Read More
-                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                </div>
-            </div>
-        </a>
-
-        <a href="../blog/kerry-way-walking-guide.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-            <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Trail Guide</span>
-                </div>
-            </div>
-            <div class="flex flex-col justify-between flex-grow p-6">
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Feb 05, 2026</span>
-                        <span class="text-slate-300">&bull;</span>
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">19 min read</span>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug">The Complete Kerry Way Walking Guide: Stage-by-Stage Trail Map for Ireland&#x27;s Most Scenic Trek</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed line-clamp-2">Learn about the complete kerry way walking guide: stage-by-stage trail map for ireland&#x27;s most scenic trek. Comprehensive guide with practical advice a</p>
-                </div>
-                <div class="flex items-center gap-2 text-primary font-bold mt-4 group-hover:gap-3 transition-all">
-                    Read More
-                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                </div>
-            </div>
-        </a>
-
-        <a href="../blog/plan-hiking-trip-ireland.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-lg hover:shadow-2xl transition-all flex flex-col h-full">
-            <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                <div class="absolute top-4 left-4">
-                    <span class="bg-slate-900 text-white px-3 py-1 rounded-lg text-xs font-bold uppercase">Planning</span>
-                </div>
-            </div>
-            <div class="flex flex-col justify-between flex-grow p-6">
-                <div>
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Mar 02, 2026</span>
-                        <span class="text-slate-300">&bull;</span>
-                        <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">11 min read</span>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/kerry-way.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 leading-snug">Plan Your Hiking Trip in Ireland: Step-by-Step Guide</h3>
-                    <p class="text-slate-600 text-sm leading-relaxed line-clamp-2">Master the art of planning your Irish hiking adventure with our comprehensive guide. From booking to gear, discover seasonal timing and expert tips.</p>
-                </div>
-                <div class="flex items-center gap-2 text-primary font-bold mt-4 group-hover:gap-3 transition-all">
-                    Read More
-                    <span class="material-symbols-outlined text-lg">arrow_forward</span>
-                </div>
-            </div>
-        </a>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/wicklow-way-5-days.html">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
 
+            </div>
+            <a href="../destinations.html" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="seasonal-considerations-multi-day-hiking-ireland.html">Multi-Day Hiking in Ireland: Your Complete Season-by-Season Guide</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="walking-holidays-ireland-2026.html">Walking Holidays Ireland 2026: Your Guide to Seasonal Trails</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="best-time-visit-ireland-hiking.html">Best Time to Visit Ireland for Hiking: Month-by-Month Guide</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations.html" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="../walking-tours/dingle-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/dingle-way/card.jpg" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/kerry-way.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/kerry-way/card.jpg" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/wicklow-way-5-days.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/wicklow-way-5-days/card.jpg" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s mountain trail, perfec...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
     </div>
 </section>
 
@@ -500,7 +629,7 @@
     <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
-                <img src="../images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="h-10 mb-4"/>
+                <img src="../images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="h-10 mb-4" loading="lazy"/>
                 <p class="text-slate-300 text-sm leading-relaxed">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.</p>
             </div>
             <div>
@@ -536,23 +665,18 @@
                     <div class="flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5">
                         <span class="text-xs font-bold text-primary">EN</span>
                     </div>
-                    <a href="https://walkingholidayireland.de" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">DE</span>
                     </a>
-                    <a href="https://wandelvakantieierland.nl" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">NL</span>
                     </a>
                 </div>
             </div>
         </div>
         <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
-            <p><div class="flex flex-wrap justify-center gap-6 mb-4">
-            <a href="../faq.html" class="text-sm hover:text-primary transition-colors">FAQ</a>
-            <a href="../privacy-policy.html" class="text-sm hover:text-primary transition-colors">Privacy Policy</a>
-            <a href="../terms-and-conditions.html" class="text-sm hover:text-primary transition-colors">Terms &amp; Conditions</a>
-        </div>
-        &copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
-            <div style="margin-top:12px;"><img src="../images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" style="height:28px;opacity:0.6;" loading="lazy"/></div>
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+            <div style="margin-top:12px;"><img src="images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" style="height:28px;opacity:0.6;" loading="lazy"/></div>
         </div>
     </div>
 </footer>
@@ -560,6 +684,5 @@
     <!-- WHI Ground Control Integration -->
     <script src="../js/whi-config.js"></script>
     <script src="../js/whi-data.js"></script>
-    <script src="../js/whi-nav.js"></script>
 </body>
 </html>
