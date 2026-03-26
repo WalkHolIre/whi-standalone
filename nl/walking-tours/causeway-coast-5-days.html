@@ -209,7 +209,7 @@
                     <span class="text-3xl font-bold">€645 <span class="text-lg font-normal text-slate-300">pro Person</span></span>
                 </div>
                 <button onclick="openBookingModal()" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center roened-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
-                    Book Now
+                    Nu boeken
                 </button>
             </div>
         </div>
@@ -412,9 +412,9 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         <div class="grid grid-cols-4 gap-4 text-center" id="map-stats-content"></div>
     </div>
     <div id="tour-map" class="w-full h-[400px] border-x border-b border-slate-200 shadow-sm z-0 roened-b-xl"></div>
-    <!-- Elevation Profile -->
+    <!-- Hoogteprofiel -->
     <div id="elevation-chart" class="w-full mt-4 bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hidden">
-        <div id="elev-title" class="px-6 py-3 font-bold text-lg text-brand-purple">Elevation Profile</div>
+        <div id="elev-title" class="px-6 py-3 font-bold text-lg text-brand-purple">Hoogteprofiel</div>
         <div class="px-4 pb-4" style="height:180px;">
             <canvas id="elevation-canvas" style="width:100%;height:100%;"></canvas>
         </div>
@@ -437,7 +437,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     </div>
 </section>
 
-<!-- What's Included / Not Included -->
+<!-- Inbegrepen / Niet inbegrepen -->
 <section>
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary roened-full"></div>
@@ -445,7 +445,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div class="bg-emerald-50/50 roened-2xl p-6 border border-emerald-100">
-        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600">check_circle</span> What's Included</h3>
+        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600">check_circle</span> Inbegrepen</h3>
         <ul class="space-y-3">
             <li class="flex gap-3 text-slate-700 text-sm"><span class="material-symbols-outlined text-emerald-500 text-lg shrink-0">done</span><span>Accommodatie: 4 nachten in zorgvuldig geselecteerden B&amp;B-Gastenhäusern</span></li>
             <li class="flex gap-3 text-slate-700 text-sm"><span class="material-symbols-outlined text-emerald-500 text-lg shrink-0">done</span><span>Ontbijt: Vollständiges irisches Ontbijt jeden Morgen</span></li>
@@ -456,7 +456,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </ul>
     </div>
     <div class="bg-slate-50 roened-2xl p-6 border border-slate-200">
-        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">block</span> Not Included</h3>
+        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">block</span> Niet inbegrepen</h3>
         <ul class="space-y-3">
             <li class="flex gap-3 text-slate-500 text-sm"><span class="material-symbols-outlined text-slate-400 text-lg shrink-0">close</span><span>Flüge: Nach Ierland oder Noord-Ierland</span></li>
             <li class="flex gap-3 text-slate-500 text-sm"><span class="material-symbols-outlined text-slate-400 text-lg shrink-0">close</span><span>Reiseversicherung: Sie müssen diese selbst buchen</span></li>
@@ -473,7 +473,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
 <section id="gallery-section" class="hidden">
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary roened-full"></div>
-        <h2 class="text-3xl font-bold">Photo Gallery</h2>
+        <h2 class="text-3xl font-bold">Fotogalerij</h2>
     </div>
     <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
         
@@ -609,7 +609,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
                 <div class="w-1.5 h-8 bg-primary roened-full"></div>
-                <h2 class="text-[1.75rem] font-black text-brand-purple">Frequently Asked Questions</h2>
+                <h2 class="text-[1.75rem] font-black text-brand-purple">Veelgestelde Vragen</h2>
             </div>
             <div class="flex gap-2">
                 <button onclick="this.closest('.faq-section').querySelectorAll('details').forEach(d=>d.open=true)" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors px-3 py-1.5 roened-lg hover:bg-slate-100">Expand All</button>
@@ -628,7 +628,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is included in a self-guided walking holiday?" data-answer="our self-guided tours include: carefully selected family-run b&b accommodation, comfortvanafle en-suite bedrooms (where availvanafle), a full irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. extra nights and local transport information can be arranged on request.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is included in a self-guided walking holiday?</span>
+                <span>Wat is inbegrepen in een zelfbegeleide wandelvakantie?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -637,7 +637,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is not included in the tour price?" data-answer="the tour price does not include flights, travel and baggage insurance, lunches, or evening meals.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is NOT included in the tour price?</span>
+                <span>Wat is NIET inbegrepen in de tourprijs?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -646,7 +646,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is a gps app or digital navigation included?" data-answer="yes. our tours include a digital route guide with gps navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Is a GPS app or digital navigation included?</span>
+                <span>Is een GPS-app of digitale navigatie inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -664,7 +664,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are evening meals included?" data-answer="evening meals are not included in the standard tour price. your b&b hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Are evening meals included?</span>
+                <span>Zijn avondmaaltijden inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -673,7 +673,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are lunches included?" data-answer="lunches are not included. however, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Are lunches included?</span>
+                <span>Zijn lunches inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -682,7 +682,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         </details>
         <details class="group bg-white roened-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is the difference between a self-guided and a guided walking tour?" data-answer="on a self-guided tour, you walk independently using our detailed maps, route notes, and gps app, with your luggage transferred each day and 24/7 support availvanafle. a guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. guided tours also include built-in companionship with fellow walkers.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is the difference between a self-guided and a guided walking tour?</span>
+                <span>Wat is het verschil tussen een zelfbegeleide en een geleide wandeltour?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -703,7 +703,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
         "mainEntity": [
                 {
                         "@type": "Question",
-                        "name": "What is included in a self-guided walking holiday?",
+                        "name": "Wat is inbegrepen in een zelfbegeleide wandelvakantie?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Our self-guided tours include: carefully selected family-run B&B accommodation, comfortvanafle en-suite bedrooms (where availvanafle), a full Irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. Extra nights and local transport information can be arranged on request."
@@ -711,7 +711,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
                 },
                 {
                         "@type": "Question",
-                        "name": "What is NOT included in the tour price?",
+                        "name": "Wat is NIET inbegrepen in de tourprijs?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "The tour price does not include flights, travel and baggage insurance, lunches, or evening meals."
@@ -719,7 +719,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
                 },
                 {
                         "@type": "Question",
-                        "name": "Is a GPS app or digital navigation included?",
+                        "name": "Is een GPS-app of digitale navigatie inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Yes. Our tours include a digital route guide with GPS navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal."
@@ -735,7 +735,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
                 },
                 {
                         "@type": "Question",
-                        "name": "Are evening meals included?",
+                        "name": "Zijn avondmaaltijden inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Evening meals are not included in the standard tour price. Your B&B hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request."
@@ -743,7 +743,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
                 },
                 {
                         "@type": "Question",
-                        "name": "Are lunches included?",
+                        "name": "Zijn lunches inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Lunches are not included. However, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route."
@@ -751,7 +751,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
                 },
                 {
                         "@type": "Question",
-                        "name": "What is the difference between a self-guided and a guided walking tour?",
+                        "name": "Wat is het verschil tussen een zelfbegeleide en een geleide wandeltour?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "On a self-guided tour, you walk independently using our detailed maps, route notes, and GPS app, with your luggage transferred each day and 24/7 support availvanafle. A guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. Guided tours also include built-in companionship with fellow walkers."
@@ -983,7 +983,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     var hasElev = layers.some(function(l){ return l.data.elevation && l.data.elevation.length > 0; });
     if (!hasElev) { chart.classList.add('hidden'); return; }
     chart.classList.remove('hidden');
-    document.getElementById('elev-title').textContent = 'Elevation Profile \u2014 All Dagen';
+    document.getElementById('elev-title').textContent = 'Hoogteprofiel \u2014 All Dagen';
 
     var canvas = document.getElementById('elevation-canvas');
     var parent = canvas.parentElement;
@@ -1087,7 +1087,7 @@ Your final day pulls together everything. Walk past Dunluce Castle — those imp
     if (!day.elevation || !day.elevation.length) { document.getElementById('elevation-chart').classList.add('hidden'); return; }
     var chart = document.getElementById('elevation-chart');
     chart.classList.remove('hidden');
-    document.getElementById('elev-title').textContent = 'Elevation Profile \u2014 Day ' + day.day;
+    document.getElementById('elev-title').textContent = 'Hoogteprofiel \u2014 Day ' + day.day;
     document.getElementById('elev-legend').classList.add('hidden');
 
     var canvas = document.getElementById('elevation-canvas');
