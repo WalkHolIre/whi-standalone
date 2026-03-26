@@ -560,7 +560,7 @@ Whether you're drawn by archaeological sites, stunning natural landscapes, Irish
 
 <!-- Sidebar / Sticky Column -->
 <div class="lg:col-span-1">
-<div class="sticky top-24 flex flex-col gap-8">
+<div class="sticky top-[72px] flex flex-col gap-8">
 
 <!-- BOOKING PANEL -->
 <div class="bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden">
@@ -1054,7 +1054,17 @@ Whether you're drawn by archaeological sites, stunning natural landscapes, Irish
     var totalDist = 0;
     layers.forEach(function(l){
       var e = l.data.elevation || [];
-      for (var i=0;i<e.length;i++){ if(e[i]<globalMin)globalMin=e[i]; if(e[i]>globalMax)globalMax=e[i]; }
+      // Filter out NaN/null/undefined values
+      var clean = [];
+      for (var i=0;i<e.length;i++){
+        var v = parseFloat(e[i]);
+        if (!isNaN(v) && isFinite(v)) {
+          clean.push(v);
+          if(v<globalMin) globalMin=v;
+          if(v>globalMax) globalMax=v;
+        }
+      }
+      l.data.elevation = clean;
       totalDist += l.data.distance_km || 0;
     });
     if (globalMin === Infinity) { chart.classList.add('hidden'); return; }
