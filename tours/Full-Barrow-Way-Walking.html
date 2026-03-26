@@ -32,6 +32,7 @@
         @media(min-width:768px){ header.site-header{ top:44px; } }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .prose p + p { margin-top: 1.5em; }
     </style>
     <link rel="canonical" href="https://walkingholidayireland.com/tours/Full-Barrow-Way-Walking.html"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/tours/Full-Barrow-Way-Walking.html"/>
@@ -561,26 +562,20 @@
         <h2 class="text-3xl font-bold">Best Time to Visit</h2>
     </div>
         <div class="grid grid-cols-1 gap-6">
-        <p class="text-lg text-slate-600 leading-relaxed">
-            Choose your ideal season based on weather, crowds, and daylight hours.
-        </p>
-        <div class="grid grid-cols-6 sm:grid-cols-12 gap-2">
-            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">Jan</span><span class="material-symbols-outlined text-sm">check</span></div>
-            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">Feb</span><span class="material-symbols-outlined text-sm">check</span></div>
-            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">Mar</span><span class="material-symbols-outlined text-sm">check</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Apr</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">May</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Jun</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Jul</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Aug</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Sep</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-primary/10 text-primary border border-primary/30"><span class="text-xs font-bold block">Oct</span><span class="material-symbols-outlined text-sm">star</span></div>
-            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">Nov</span><span class="material-symbols-outlined text-sm">check</span></div>
-            <div class="text-center p-3 rounded-lg bg-slate-100 text-slate-400"><span class="text-xs font-bold block">Dec</span><span class="material-symbols-outlined text-sm">check</span></div>
+        <div class="flex flex-wrap justify-center gap-3">
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Apr</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">May</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Jun</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Jul</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Aug</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Sep</div>
+            <div class="text-center px-5 py-3 rounded-xl bg-primary/10 text-primary border border-primary/30 font-bold text-sm">Oct</div>
         </div>
-        <p class="text-sm text-slate-500"><span class="text-primary font-bold">★</span> = Best months &nbsp; <span class="text-slate-500 font-bold">✓</span> = Available</p>
     </div>
 
+    <div class="prose max-w-none text-slate-700 leading-relaxed mt-6" style="font-size:1.05rem; line-height:1.85;">
+        <h3>May, June and September are ideal.</h3><ul><li><p><strong>May</strong> offers long bright evenings, fresh wildflowers and bright green foliage.</p></li><li><p><strong>June</strong> provides the longest daylight hours.</p></li><li><p><strong>July</strong> and <strong>August</strong> are busiest; book three to four months ahead.</p></li><li><p><strong>September</strong> is the finest: bracken turns gold and rust, light on the water is clear and beautiful, wildflowers remain, and accommodation books more easily.</p></li><li><p><strong>October</strong> brings autumn colours and is very walkable.</p></li></ul><p>The trail is accessible year-round, but winter sections can be muddy with shorter daylight.</p>
+    </div>
 </section>
 
 </div>
@@ -605,18 +600,18 @@
             <label class="text-sm font-bold">Preferred Start Date</label>
             <div class="relative">
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
-                <input class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
+                <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 28 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Number of Walkers</label>
             <div class="relative">
-                <select class="w-full appearance-none px-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium">
-                    <option>1 Person</option>
-                    <option selected>2 People</option>
-                    <option>3 People</option>
-                    <option>4+ People</option>
+                <select id="sidebar-walkers" class="w-full appearance-none px-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium">
+                    <option value="1">1 Person</option>
+                    <option value="2" selected>2 People</option>
+                    <option value="3">3 People</option>
+                    <option value="4">4+ People</option>
                 </select>
                 <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
             </div>
