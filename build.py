@@ -903,7 +903,7 @@ def render_itinerary(itinerary_data, routes_by_id=None):
 
         # Route detail badges
         badges_html = ''
-        if day_routes:
+        if primary_route:
             badges_html = '<div class="flex flex-wrap gap-3 mb-4">'
             if day_start and day_end:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">pin_drop</span> {escape(day_start)} → {escape(day_end)}</span>'
