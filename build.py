@@ -1338,7 +1338,7 @@ def render_poi_grid(points_of_interest):
         return ""
 
     html = ""
-    for poi in pois:
+    for poi in pois[:4]:
         title = escape(poi.get('name', ''))
         description = escape(poi.get('description', ''))
         image_url = poi.get('image_url', '') or poi.get('image', '')
@@ -1995,7 +1995,7 @@ def render_dest_poi_section(destination):
                             <p class="text-slate-500 mt-1">Key highlights you&#39;ll discover in {name}</p>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {poi_html}
                     </div>
                 </div>
@@ -2030,7 +2030,7 @@ def render_dest_activities_section(destination):
     }
 
     cards = ''
-    for i, act in enumerate(acts):
+    for i, act in enumerate(acts[:4]):
         title = escape(act.get('name', act.get('title', '')))
         desc = escape(act.get('description', ''))
         # Try to match an icon
