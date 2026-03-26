@@ -194,15 +194,41 @@
     </footer>
 
     <script>
-        // Extract and display booking reference from URL
-        document.addEventListener('DOMContentLoaded', function() {
-            const ref = new URLSearchParams(window.location.search).get('ref');
+        // Extract booking reference and confirm Stripe payment
+        document.addEventListener('DOMContentLoaded', async function() {
+            const params = new URLSearchParams(window.location.search);
+            const ref = params.get('ref');
+            const sessionId = params.get('session_id');
             const refElement = document.getElementById('booking-ref');
 
             if (ref) {
                 refElement.textContent = ref;
             } else {
                 refElement.textContent = 'Referenz wird geladen...';
+            }
+
+            if (ref) {
+                try {
+                    const payload = { booking_reference: ref };
+                    if (sessionId) payload.session_id = sessionId;
+
+                    const response = await fetch('https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/confirm-stripe-payment', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload),
+                    });
+
+                    const data = await response.json();
+                    if (data.success) {
+                        console.log('[BOOKING] Payment confirmed:', data);
+                    } else if (data.already_confirmed) {
+                        console.log('[BOOKING] Already confirmed');
+                    } else {
+                        console.warn('[BOOKING] Confirmation response:', data);
+                    }
+                } catch (err) {
+                    console.error('[BOOKING] Payment confirmation error:', err);
+                }
             }
         });
     </script>
