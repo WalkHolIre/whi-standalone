@@ -110,6 +110,8 @@
 }
     </script>
 
+<link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days.html" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.com/de/walking-tours/cooley-peninsula-5-days.html" />
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 
@@ -209,7 +211,7 @@
                     <span class="text-3xl font-bold">€645 <span class="text-lg font-normal text-slate-300">pro Person</span></span>
                 </div>
                 <button onclick="openBookingModal()" class="w-full sm:w-auto flex min-w-[200px] cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold transition-transform hover:scale-105 shadow-lg shadow-primary/30">
-                    Jetzt buchen
+                    Book Now
                 </button>
             </div>
         </div>
@@ -234,7 +236,7 @@
 <section>
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-3xl font-bold">Höhepunkte</h2>
+        <h2 class="text-3xl font-bold">Highlights</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm hover:shadow-lg transition-all">
@@ -397,7 +399,7 @@
 <section id="route-map-section" class="hidden">
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-3xl font-bold">Route &amp; Karte</h2>
+        <h2 class="text-3xl font-bold">Route &amp; Map</h2>
     </div>
     <div class="flex flex-wrap gap-2 mb-4" id="map-day-buttons"></div>
     <!-- Map title bar -->
@@ -407,9 +409,9 @@
         <div class="grid grid-cols-4 gap-4 text-center" id="map-stats-content"></div>
     </div>
     <div id="tour-map" class="w-full h-[400px] border-x border-b border-slate-200 shadow-sm z-0 rounded-b-xl"></div>
-    <!-- Höhenprofil -->
+    <!-- Elevation Profile -->
     <div id="elevation-chart" class="w-full mt-4 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hidden">
-        <div id="elev-title" class="px-6 py-3 font-bold text-lg text-brand-purple">Höhenprofil</div>
+        <div id="elev-title" class="px-6 py-3 font-bold text-lg text-brand-purple">Elevation Profile</div>
         <div class="px-4 pb-4" style="height:180px;">
             <canvas id="elevation-canvas" style="width:100%;height:100%;"></canvas>
         </div>
@@ -433,7 +435,7 @@
     </div>
 </section>
 
-<!-- Im Preis enthalten / Nicht enthalten -->
+<!-- What's Included / Not Included -->
 <section>
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary rounded-full"></div>
@@ -441,7 +443,7 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <div class="bg-emerald-50/50 rounded-2xl p-6 border border-emerald-100">
-        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600">check_circle</span> Im Preis enthalten</h3>
+        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-emerald-600">check_circle</span> What's Included</h3>
         <ul class="space-y-3">
             <li class="flex gap-3 text-slate-700 text-sm"><span class="material-symbols-outlined text-emerald-500 text-lg shrink-0">done</span><span>Unterkunft: 4 Nächte in handverlesenen B&amp;B-Gästehäusern</span></li>
             <li class="flex gap-3 text-slate-700 text-sm"><span class="material-symbols-outlined text-emerald-500 text-lg shrink-0">done</span><span>Frühstück: Vollständiges irisches Frühstück jeden Morgen</span></li>
@@ -452,7 +454,7 @@
         </ul>
     </div>
     <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200">
-        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">block</span> Nicht enthalten</h3>
+        <h3 class="text-xl font-bold mb-5 flex items-center gap-2"><span class="material-symbols-outlined text-slate-400">block</span> Not Included</h3>
         <ul class="space-y-3">
             <li class="flex gap-3 text-slate-500 text-sm"><span class="material-symbols-outlined text-slate-400 text-lg shrink-0">close</span><span>Flüge: Nach Irland</span></li>
             <li class="flex gap-3 text-slate-500 text-sm"><span class="material-symbols-outlined text-slate-400 text-lg shrink-0">close</span><span>Reiseversicherung: Sie müssen diese selbst buchen</span></li>
@@ -468,7 +470,7 @@
 <section id="gallery-section" class="hidden">
     <div class="flex items-center gap-3 mb-8">
         <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-        <h2 class="text-3xl font-bold">Fotogalerie</h2>
+        <h2 class="text-3xl font-bold">Photo Gallery</h2>
     </div>
     <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
         
@@ -605,7 +607,7 @@
         <div class="flex items-center justify-between mb-8">
             <div class="flex items-center gap-3">
                 <div class="w-1.5 h-8 bg-primary rounded-full"></div>
-                <h2 class="text-[1.75rem] font-black text-brand-purple">Häufig gestellte Fragen</h2>
+                <h2 class="text-[1.75rem] font-black text-brand-purple">Frequently Asked Questions</h2>
             </div>
             <div class="flex gap-2">
                 <button onclick="this.closest('.faq-section').querySelectorAll('details').forEach(d=>d.open=true)" class="text-sm font-medium text-slate-500 hover:text-primary transition-colors px-3 py-1.5 rounded-lg hover:bg-slate-100">Expand All</button>
@@ -615,7 +617,7 @@
         <div class="space-y-3">
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is included in a self-guided walking holiday?" data-answer="our self-guided tours include: carefully selected family-run b&b accommodation, comfortable en-suite bedrooms (where available), a full irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. extra nights and local transport information can be arranged on request.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Was ist in einem selbstgeführten Wanderurlaub enthalten?</span>
+                <span>What is included in a self-guided walking holiday?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -624,7 +626,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is not included in the tour price?" data-answer="the tour price does not include flights, travel and baggage insurance, lunches, or evening meals.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Was ist NICHT im Tourpreis enthalten?</span>
+                <span>What is NOT included in the tour price?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -633,7 +635,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is a gps app or digital navigation included?" data-answer="yes. our tours include a digital route guide with gps navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Ist eine GPS-App oder digitale Navigation enthalten?</span>
+                <span>Is a GPS app or digital navigation included?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -642,7 +644,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is 24/7 emergency support really available?" data-answer="yes. our team provides 24/7 local emergency contact support throughout your tour. if you encounter any difficulties on the trail or with your accommodation, you can reach us at any time.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Ist 24/7-Notfallunterstützung wirklich verfügbar?</span>
+                <span>Is 24/7 emergency support really available?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -651,7 +653,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are evening meals included?" data-answer="evening meals are not included in the standard tour price. your b&b hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Sind Abendessen enthalten?</span>
+                <span>Are evening meals included?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -660,7 +662,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are lunches included?" data-answer="lunches are not included. however, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Sind Mittagessen enthalten?</span>
+                <span>Are lunches included?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -669,7 +671,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is the difference between a self-guided and a guided walking tour?" data-answer="on a self-guided tour, you walk independently using our detailed maps, route notes, and gps app, with your luggage transferred each day and 24/7 support available. a guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. guided tours also include built-in companionship with fellow walkers.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Was ist der Unterschied zwischen einer selbstgeführten und einer geführten Wandertour?</span>
+                <span>What is the difference between a self-guided and a guided walking tour?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -678,7 +680,7 @@
         </details>
         <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="which type of tour is best for first-time visitors to ireland?" data-answer="for first-time visitors, a guided tour is often recommended, as it provides expert support, helps you learn the trails, and offers the chance to meet other walkers. experienced hikers frequently prefer the freedom and flexibility of self-guided tours at their own pace.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Welcher Tourtyp ist am besten für Erstbesucher in Irland?</span>
+                <span>Which type of tour is best for first-time visitors to Ireland?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
@@ -699,7 +701,7 @@
         "mainEntity": [
                 {
                         "@type": "Question",
-                        "name": "Was ist in einem selbstgeführten Wanderurlaub enthalten?",
+                        "name": "What is included in a self-guided walking holiday?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Our self-guided tours include: carefully selected family-run B&B accommodation, comfortable en-suite bedrooms (where available), a full Irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. Extra nights and local transport information can be arranged on request."
@@ -707,7 +709,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Was ist NICHT im Tourpreis enthalten?",
+                        "name": "What is NOT included in the tour price?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "The tour price does not include flights, travel and baggage insurance, lunches, or evening meals."
@@ -715,7 +717,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Ist eine GPS-App oder digitale Navigation enthalten?",
+                        "name": "Is a GPS app or digital navigation included?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Yes. Our tours include a digital route guide with GPS navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal."
@@ -723,7 +725,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Ist 24/7-Notfallunterstützung wirklich verfügbar?",
+                        "name": "Is 24/7 emergency support really available?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Yes. Our team provides 24/7 local emergency contact support throughout your tour. If you encounter any difficulties on the trail or with your accommodation, you can reach us at any time."
@@ -731,7 +733,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Sind Abendessen enthalten?",
+                        "name": "Are evening meals included?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Evening meals are not included in the standard tour price. Your B&B hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request."
@@ -739,7 +741,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Sind Mittagessen enthalten?",
+                        "name": "Are lunches included?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "Lunches are not included. However, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route."
@@ -747,7 +749,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Was ist der Unterschied zwischen einer selbstgeführten und einer geführten Wandertour?",
+                        "name": "What is the difference between a self-guided and a guided walking tour?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "On a self-guided tour, you walk independently using our detailed maps, route notes, and GPS app, with your luggage transferred each day and 24/7 support available. A guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. Guided tours also include built-in companionship with fellow walkers."
@@ -755,7 +757,7 @@
                 },
                 {
                         "@type": "Question",
-                        "name": "Welcher Tourtyp ist am besten für Erstbesucher in Irland?",
+                        "name": "Which type of tour is best for first-time visitors to Ireland?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
                                 "text": "For first-time visitors, a guided tour is often recommended, as it provides expert support, helps you learn the trails, and offers the chance to meet other walkers. Experienced hikers frequently prefer the freedom and flexibility of self-guided tours at their own pace."
@@ -1002,7 +1004,7 @@
     var hasElev = layers.some(function(l){ return l.data.elevation && l.data.elevation.length > 0; });
     if (!hasElev) { chart.classList.add('hidden'); return; }
     chart.classList.remove('hidden');
-    document.getElementById('elev-title').textContent = 'Höhenprofil \u2014 All Days';
+    document.getElementById('elev-title').textContent = 'Elevation Profile \u2014 All Days';
 
     var canvas = document.getElementById('elevation-canvas');
     var parent = canvas.parentElement;
@@ -1106,7 +1108,7 @@
     if (!day.elevation || !day.elevation.length) { document.getElementById('elevation-chart').classList.add('hidden'); return; }
     var chart = document.getElementById('elevation-chart');
     chart.classList.remove('hidden');
-    document.getElementById('elev-title').textContent = 'Höhenprofil \u2014 Day ' + day.day;
+    document.getElementById('elev-title').textContent = 'Elevation Profile \u2014 Day ' + day.day;
     document.getElementById('elev-legend').classList.add('hidden');
 
     var canvas = document.getElementById('elevation-canvas');
@@ -1174,7 +1176,7 @@
 <script src="/js/whi-data.js"></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
-window.__WHI_TOUR = {"id": "9bd28f55-b2fd-4193-9d9b-814038187250", "slug": "cooley-peninsula-5-days", "name": "Cooley Peninsula 5-Tage Wanderurlaub", "price_per_person_eur": 645.0, "duration_days": 5, "min_walkers": 1, "max_walkers": 20, "walking_days": 4, "extra_day_price_eur": 0, "max_extra_days": 3};
+window.__WHI_TOUR = {"id": "9bd28f55-b2fd-4193-9d9b-814038187250", "slug": "cooley-peninsula-5-days", "name": "Cooley Peninsula 5-Tage Wanderurlaub", "price_per_person_eur": 645.0, "duration_days": 5, "walking_days": 4, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
 window.__WHI_EXTRAS = [{"id": "d76b93ca-ad92-4333-b394-f28227afb4ba", "name": "Airport Transfer (Dublin)", "description": "Private transfer from Dublin Airport to your first accommodation", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "56a23fda-44b1-48a9-b303-d129133a8c74", "name": "Airport Transfer (Kerry/Shannon)", "description": "Private transfer from Kerry or Shannon Airport", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "16205ef2-e7d9-44a8-a635-7768ede4d66a", "name": "Daily Packed Lunches", "description": "Freshly prepared packed lunch for each walking day", "price_eur": 15.0, "price_type": "per_person_per_day", "max_quantity": 1}, {"id": "56565a40-c9b2-4915-98a3-9ead9c431493", "name": "Extra Rest Day", "description": "Add an extra non-walking day to explore at your leisure", "price_eur": 0.0, "price_type": "poa", "max_quantity": 3}, {"id": "610b9f35-832e-408d-a422-d911fdcf2b12", "name": "Walking Pole Hire", "description": "Professional hiking poles for the duration of your trip", "price_eur": 20.0, "price_type": "per_person", "max_quantity": 1}];
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "de";
