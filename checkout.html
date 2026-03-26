@@ -34,7 +34,7 @@
     <script src="https://js.stripe.com/v3/"></script>
 
     <!-- PayPal -->
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR&intent=capture&disable-funding=credit,card" defer></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYZaH3LKhhhyx3sPgHovsGJXKEOyF_rHZ22ZstweM8iSOPKzOxICQ_I9yEHBATbTAlKMice6T32hFwKK&currency=EUR&intent=capture&disable-funding=credit,card" defer></script>
 
     <style>
         * { font-family: 'Inter', sans-serif; }
@@ -425,29 +425,31 @@
                             </h3>
 
                             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                                <!-- Stripe / Card Payment -->
+                                <!-- Stripe / Card Payment (Default) -->
                                 <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-indigo-600">credit_card</span>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-whi-purple text-sm">Card Payment</p>
-                                            <p class="text-xs text-gray-500">Visa, Mastercard, Amex</p>
-                                        </div>
+                                    <div class="flex items-center gap-3 mb-2">
+                                        <!-- Stripe logo -->
+                                        <svg viewBox="0 0 60 25" class="h-7 flex-shrink-0" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M5 10.2c0-.7.6-1 1.5-1 1.4 0 3.1.4 4.5 1.2V6.7C9.5 6.1 8 5.8 6.5 5.8 2.6 5.8 0 7.8 0 11c0 5 6.8 4.2 6.8 6.3 0 .8-.7 1.1-1.7 1.1-1.5 0-3.4-.6-4.9-1.4v3.7c1.7.7 3.3 1 4.9 1 4 0 6.8-2 6.8-5.2C12 11 5 11.9 5 10.2zM16 3.3l-4.5 1V7l4.5-1V3.3zm0 3.4h-4.5v14h4.5v-14zm5.3 1.3l-.3-1.3H17v14h4.5v-9.5c1.1-1.4 2.9-1.1 3.4-1v-4.1c-.6-.2-2.7-.6-3.6 1.9zm7.5-1.9c-1.8 0-2.9.8-3.5 1.4l-.2-1.1h-4v18.7l4.5-1v-4.5c.7.5 1.6 1.2 3.2 1.2 3.2 0 6.2-2.6 6.2-8.3 0-5.2-3-8.4-6.2-8.4zm-1.1 12.8c-1.1 0-1.7-.4-2.1-.9v-7.2c.5-.5 1.1-1 2.2-1 1.7 0 2.8 1.9 2.8 4.5 0 2.7-1.1 4.6-2.9 4.6zm14.7-12.6c-4.5 0-7.3 3.4-7.3 8.3 0 5.5 3.3 8.2 7.9 8.2 2.3 0 4-.5 5.3-1.2v-3.4c-1.3.7-2.8 1.1-4.7 1.1-1.9 0-3.5-.7-3.7-2.9h9.3c0-.2 0-1.3 0-1.7 0-5-2.4-8.4-6.8-8.4zm-2.7 6.6c0-2.2 1.3-3.1 2.5-3.1 1.2 0 2.4.9 2.4 3.1h-4.9z"/></svg>
+                                        <span class="bg-whi text-white text-[10px] font-bold px-1.5 py-0.5 rounded">DEFAULT</span>
+                                    </div>
+                                    <p class="font-semibold text-whi-purple text-sm">Card Payment</p>
+                                    <div class="flex items-center gap-1.5 mt-1.5">
+                                        <!-- Visa -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.5 0 1.5 1.4 2.3 2.4 2.8 1 .5 1.4.9 1.4 1.3 0 .7-.8 1-1.6 1-1.1 0-1.6-.2-2.5-.5l-.3-.2-.4 2.2c.6.3 1.8.5 3 .5 2.8 0 4.7-1.4 4.7-3.6 0-1.2-.7-2.1-2.3-2.9-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.9 0 1.5.2 2 .4l.2.1.4-2zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.8l-4 9.7h2.8l.6-1.5h3.5l.3 1.5h2.5l-2.2-10.5zm-3.4 6.8l1.1-3c0-.1.2-.6.4-1l.2.9.6 3.1h-2.3zM16 10.5l-2.5 7.2-.3-1.3c-.5-1.6-2-3.4-3.7-4.3l2.4 9h2.8l4.2-10.5H16z" fill="#1A1F71"/><path d="M11 10.5H6.8l-.1.3c3.4.9 5.6 2.9 6.5 5.4l-.9-4.7c-.2-.6-.7-.9-1.3-1z" fill="#F9A533"/></svg>
+                                        <!-- Mastercard -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 0 1 0 11.4 8 8 0 0 1 0-11.4z" fill="#FF5F00"/></svg>
+                                        <!-- Amex -->
+                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="18" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">AMEX</text></svg>
                                     </div>
                                 </div>
                                 <!-- PayPal -->
                                 <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
-                                    <div class="flex items-center gap-3">
-                                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                                            <svg viewBox="0 0 24 24" class="w-6 h-6" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.764.764 0 0 1 .757-.655h6.803c2.254 0 3.867.58 4.648 1.674.347.48.554 1.013.617 1.587.066.595.003 1.3-.195 2.09l-.009.034v.31l.244.137a2.73 2.73 0 0 1 .495.365c.361.35.605.802.714 1.338.113.553.092 1.21-.062 1.95-.178.852-.466 1.594-.856 2.206a4.297 4.297 0 0 1-1.353 1.392c-.53.34-1.148.587-1.84.73a9.078 9.078 0 0 1-2.204.254h-.524a1.58 1.58 0 0 0-1.562 1.332l-.027.16-.524 3.32-.019.114a.16.16 0 0 1-.157.137H7.076z"/></svg>
-                                        </div>
-                                        <div>
-                                            <p class="font-semibold text-whi-purple text-sm">PayPal</p>
-                                            <p class="text-xs text-gray-500">Pay with your PayPal account</p>
-                                        </div>
+                                    <div class="mb-2">
+                                        <!-- PayPal logo -->
+                                        <svg viewBox="0 0 100 26" class="h-7" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.4h-7c-.5 0-.9.3-1 .8L1.7 22c-.1.4.2.7.6.7h3.3c.5 0 .9-.3 1-.8l.9-5.5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.4-1.9zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#003087"/><path d="M35.4 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8l1.8-11.1c.1-.3-.3-.6-.7-.6zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#003087"/><path d="M55.4 10h-3.4c-.3 0-.6.2-.8.4l-4.4 6.5-1.9-6.3c-.1-.4-.5-.6-.9-.6h-3.3c-.4 0-.7.4-.6.8l3.5 10.3-3.3 4.7c-.3.4 0 1 .5 1h3.4c.3 0 .6-.2.8-.4l10.7-15.5c.3-.4 0-.9-.3-.9z" fill="#003087"/><path d="M67 3.4h-7c-.5 0-.9.3-1 .8l-2.8 17.8c-.1.4.2.7.6.7h3.6c.3 0 .6-.3.7-.6l.8-5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.3-1.6zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#0070BA"/><path d="M89.9 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8L90.6 11c0-.5-.3-.8-.7-1zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#0070BA"/><path d="M92.6 3.9l-2.9 18c-.1.4.2.7.6.7h2.9c.5 0 .9-.3 1-.8l2.8-17.8c.1-.4-.2-.7-.6-.7h-3.2c-.3 0-.5.2-.6.6z" fill="#0070BA"/></svg>
                                     </div>
+                                    <p class="font-semibold text-whi-purple text-sm">PayPal</p>
+                                    <p class="text-xs text-gray-500 mt-0.5">Pay with your PayPal account</p>
                                 </div>
                             </div>
 
@@ -654,8 +656,7 @@
     // ─────────── Stripe Init ───────────
     let stripe, cardElement;
     try {
-        // Replace with your live publishable key
-        stripe = Stripe('pk_test_placeholder');
+        stripe = Stripe('pk_test_F8HhLlFCLRhK8P8vpR0m3Ey1');
         const elements = stripe.elements();
         cardElement = elements.create('card', {
             style: {
