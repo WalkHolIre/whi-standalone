@@ -3234,22 +3234,55 @@ def render_tours_listing_schema(tours):
 
         total_km, total_ascent = compute_tour_distances(tour)
 
+        slug = tour.get('slug', '')
+        tour_image = tour.get('hero_image') or f"images/routes/{slug}/hero.jpg"
+        if not tour_image.startswith('http'):
+            tour_image = f"https://walkingholidayireland.com/{tour_image}"
+
         item = {
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}",
+            "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
                 "description": tour.get('subtitle') or tour.get('short_description', ''),
+                "image": tour_image,
                 "duration": f"P{tour.get('duration_days', 0)}D",
                 "touristType": "Walker",
                 "offers": {
                     "@type": "Offer",
                     "price": price_display,
                     "priceCurrency": "EUR",
-                    "availability": "https://schema.org/InStock"
+                    "availability": "https://schema.org/InStock",
+                    "shippingDetails": {
+                        "@type": "OfferShippingDetails",
+                        "deliveryTime": {
+                            "@type": "ShippingDeliveryTime",
+                            "handlingTime": {
+                                "@type": "QuantitativeValue",
+                                "minValue": 0,
+                                "maxValue": 0,
+                                "unitCode": "DAY"
+                            }
+                        },
+                        "shippingRate": {
+                            "@type": "MonetaryAmount",
+                            "value": "0",
+                            "currency": "EUR"
+                        },
+                        "shippingDestination": {
+                            "@type": "DefinedRegion",
+                            "addressCountry": "IE"
+                        }
+                    },
+                    "hasMerchantReturnPolicy": {
+                        "@type": "MerchantReturnPolicy",
+                        "applicableCountry": "IE",
+                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                        "merchantReturnDays": 0
+                    }
                 }
             }
         }
@@ -3565,12 +3598,18 @@ def render_tour_page_schema(tour, reviews_list):
     except (ValueError, TypeError):
         price_display = str(price)
 
+    slug = tour.get('slug', '')
+    tour_image = tour.get('hero_image') or f"images/routes/{slug}/hero.jpg"
+    if not tour_image.startswith('http'):
+        tour_image = f"https://walkingholidayireland.com/{tour_image}"
+
     schema = {
         "@context": "https://schema.org",
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}",
+        "image": tour_image,
+        "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
@@ -3591,7 +3630,34 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}"
+            "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
+            "shippingDetails": {
+                "@type": "OfferShippingDetails",
+                "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
+                    }
+                },
+                "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "0",
+                    "currency": "EUR"
+                },
+                "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "IE"
+                }
+            },
+            "hasMerchantReturnPolicy": {
+                "@type": "MerchantReturnPolicy",
+                "applicableCountry": "IE",
+                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
+                "merchantReturnDays": 0
+            }
         },
         "brand": {
             "@type": "Brand",
@@ -3630,12 +3696,18 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     """Render enhanced TouristDestination schema for individual destination pages."""
     stats = compute_review_stats(reviews_list)
 
+    dest_slug = destination.get('slug', '')
+    dest_image = destination.get('hero_image') or f"images/destinations/{dest_slug}/hero.jpg"
+    if not dest_image.startswith('http'):
+        dest_image = f"https://walkingholidayireland.com/{dest_image}"
+
     schema = {
         "@context": "https://schema.org",
         "@type": "TouristDestination",
         "name": destination.get('name', ''),
         "description": strip_html_tags(destination.get('seo_description') or destination.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/destination-{destination.get('slug', '')}",
+        "image": dest_image,
+        "url": f"https://walkingholidayireland.com/destination-{dest_slug}",
         "containedInPlace": {
             "@type": "Country",
             "name": destination.get('country', 'Ireland')
@@ -3893,6 +3965,17 @@ def post_process_html(html):
         if tagline_end in html:
             stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;opacity:0.6;" loading="lazy" width="537"/>'
             html = html.replace(tagline_end, stripe, 1)
+
+    # 8. Wire up subscribe forms
+    # Add subscribe-cta class to blog sidebar subscribe boxes
+    html = html.replace(
+        '<div class="space-y-3">\n                <input class="w-full bg-white/10',
+        '<div class="space-y-3 subscribe-cta">\n                <input class="w-full bg-white/10')
+    # Remove onsubmit="return false;" from newsletter forms
+    html = html.replace('onsubmit="return false;"', '')
+    # Inject subscribe.js before </body>
+    if 'subscribe.js' not in html and '</body>' in html:
+        html = html.replace('</body>', '<script src="/js/subscribe.js" defer></script>\n</body>')
 
     return html
 
