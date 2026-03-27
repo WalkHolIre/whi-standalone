@@ -764,7 +764,16 @@ def translate_html_ui(html, lang):
         '>7 Days<': f'>{t("7_days", lang)}<',
         '>8-10 Days<': f'>{t("8_10_days", lang)}<',
         '>Find Tours<': f'>{t("find_tours", lang)}<',
+    }
+    for old, new in replacements.items():
+        html = html.replace(old, new)
 
+    # Handle button/link text that has whitespace around it (not directly between > and <)
+    html = re.sub(r'(id="home-search-btn"[^>]*>.*?</span>)\s*Find Tours\s*(</a>)',
+                  rf'\1 {t("find_tours", lang)} \2', html, flags=re.DOTALL)
+
+    # Continue with more replacements
+    replacements = {
         # Homepage CTAs & sections
         '>Take the Fitness Quiz<': f'>{t("take_fitness_quiz", lang)}<',
         '>Learn Our Story<': f'>{t("learn_our_story", lang)}<',
@@ -3511,7 +3520,7 @@ def set_hreflang_tags(html, en_url, de_url, nl_url):
     switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
-var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();if(t===lang){b.style.background='#C4B5FD';b.style.borderColor='#7C3AED';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>"""
 
@@ -3772,6 +3781,8 @@ def build_static_pages(lang, translations):
         tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
         html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
         html = html.replace('href="walking-tours.html"', f'href="/{translate_static_slug("walking-tours", lang)}.html"')
+        html = html.replace('action="walking-tours.html"', f'action="/{translate_static_slug("walking-tours", lang)}.html"')
+        html = html.replace("window.location.href = 'walking-tours.html'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}.html'")
         html = html.replace('href="destinations.html"', f'href="/{translate_static_slug("destinations", lang)}.html"')
 
         # Add canonical URL for this language
