@@ -3782,14 +3782,17 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
         dest_id = destination.get('id')
 
         if lang != 'en':
+            # Skip destinations that have neither a destination translation nor any tour translations
+            has_dest_translation = dest_id in dest_translations
             dest_tours_translated = [t_item for t_item in tours
                                     if t_item.get('destination_id') == dest_id
                                     and t_item.get('id') in tour_translations]
-            if not dest_tours_translated:
+            if not has_dest_translation and not dest_tours_translated:
                 continue
 
         translated_dest = apply_dest_translation(destination, dest_translations.get(dest_id))
         dest_tours = [t_item for t_item in tours if t_item.get('destination_id') == dest_id]
+        # Use translated tour data where available, fall back to English
         translated_dest_tours = [apply_tour_translation(dt, tour_translations.get(dt.get('id'))) for dt in dest_tours]
 
         dest_reviews = []
