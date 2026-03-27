@@ -38,7 +38,7 @@ LOCAL_MODE = '--local' in sys.argv
 LANG_DOMAINS = {
     'en': 'https://walkingholidayireland.com',
     'de': 'https://walkingholidayireland.de',
-    'nl': 'https://walkingholidayireland.com/nl',
+    'nl': 'https://wandelvakantieierland.nl',
 }
 
 def lang_url(lang, path):
