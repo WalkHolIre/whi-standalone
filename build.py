@@ -4596,23 +4596,77 @@ def main():
             for key, value in replacements.items():
                 html = html.replace(key, str(value))
 
-            # Canonical URL for blog article
-            blog_canonical = lang_url('en', f'blog/{slug}.html')
-            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{blog_canonical}"', html)
-            if 'rel="canonical"' not in html:
-                html = html.replace('</head>', f'    <link rel="canonical" href="{blog_canonical}"/>\n</head>')
+            # Build hreflang URLs — use localized slugs when available
+            slug_de = post.get('slug_de', '').strip() if post.get('slug_de') else ''
+            slug_nl = post.get('slug_nl', '').strip() if post.get('slug_nl') else ''
+            en_blog_url = lang_url('en', f'blog/{slug}.html')
+            de_blog_url = lang_url('de', f'blog/{slug_de}.html') if slug_de else en_blog_url
+            nl_blog_url = lang_url('nl', f'blog/{slug_nl}.html') if slug_nl else en_blog_url
 
-            # Set hreflang (EN-only blog, but strip any old wrong hreflang and add correct EN + x-default)
+            # Canonical URL for EN blog article
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{en_blog_url}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{en_blog_url}"/>\n</head>')
+
+            # Set hreflang with correct localized URLs
             html = set_hreflang_tags(html,
-                en_url=blog_canonical,
-                de_url=blog_canonical,
-                nl_url=blog_canonical)
+                en_url=en_blog_url,
+                de_url=de_blog_url,
+                nl_url=nl_blog_url)
 
             output_path = blog_dir / f'{slug}.html'
             if not DRY_RUN:
                 with open(output_path, 'w') as f:
                     f.write(html)
             generated_blog_slugs.append(slug)
+
+            # Generate DE blog page if translated slug exists
+            if slug_de and post.get('content_de'):
+                de_html = blog_template
+                de_replacements = dict(replacements)
+                de_replacements['{article_title}'] = escape(post.get('title_de') or title)
+                de_replacements['{article_body}'] = post.get('content_de') or content
+                de_replacements['{meta_title}'] = escape(post.get('meta_title_de') or post.get('title_de') or title)
+                de_replacements['{meta_description}'] = escape(post.get('meta_description_de') or post.get('excerpt_de') or excerpt)
+                de_replacements['{slug}'] = slug_de
+                for key, value in de_replacements.items():
+                    de_html = de_html.replace(key, str(value))
+                de_html = de_html.replace('<html lang="en"', '<html lang="de"')
+                de_html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{de_blog_url}"', de_html)
+                if 'rel="canonical"' not in de_html:
+                    de_html = de_html.replace('</head>', f'    <link rel="canonical" href="{de_blog_url}"/>\n</head>')
+                de_html = set_hreflang_tags(de_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                de_html = fix_relative_paths(de_html)
+                de_blog_dir = WEBSITE_DIR / 'de' / 'blog'
+                de_blog_dir.mkdir(parents=True, exist_ok=True)
+                if not DRY_RUN:
+                    with open(de_blog_dir / f'{slug_de}.html', 'w') as f:
+                        f.write(de_html)
+                    log(f"Generated DE blog: blog/{slug_de}.html")
+
+            # Generate NL blog page if translated slug exists
+            if slug_nl and post.get('content_nl'):
+                nl_html = blog_template
+                nl_replacements = dict(replacements)
+                nl_replacements['{article_title}'] = escape(post.get('title_nl') or title)
+                nl_replacements['{article_body}'] = post.get('content_nl') or content
+                nl_replacements['{meta_title}'] = escape(post.get('meta_title_nl') or post.get('title_nl') or title)
+                nl_replacements['{meta_description}'] = escape(post.get('meta_description_nl') or post.get('excerpt_nl') or excerpt)
+                nl_replacements['{slug}'] = slug_nl
+                for key, value in nl_replacements.items():
+                    nl_html = nl_html.replace(key, str(value))
+                nl_html = nl_html.replace('<html lang="en"', '<html lang="nl"')
+                nl_html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{nl_blog_url}"', nl_html)
+                if 'rel="canonical"' not in nl_html:
+                    nl_html = nl_html.replace('</head>', f'    <link rel="canonical" href="{nl_blog_url}"/>\n</head>')
+                nl_html = set_hreflang_tags(nl_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                nl_html = fix_relative_paths(nl_html)
+                nl_blog_dir = WEBSITE_DIR / 'nl' / 'blog'
+                nl_blog_dir.mkdir(parents=True, exist_ok=True)
+                if not DRY_RUN:
+                    with open(nl_blog_dir / f'{slug_nl}.html', 'w') as f:
+                        f.write(nl_html)
+                    log(f"Generated NL blog: blog/{slug_nl}.html")
 
         log(f"Generated {len(generated_blog_slugs)} blog article pages")
     else:
@@ -4864,6 +4918,12 @@ def main():
                 sp_slug = translate_static_slug(sp, sm_lang)
                 if (sm_dir / f'{sp_slug}.html').exists():
                     sm_urls.append((f'{sm_base}/{sp_slug}.html', '0.5', 'monthly'))
+
+            # Blog pages (localized)
+            blog_lang_dir = sm_dir / 'blog'
+            if blog_lang_dir.exists():
+                for bp in sorted(blog_lang_dir.glob('*.html')):
+                    sm_urls.append((f'{sm_base}/blog/{bp.name}', '0.6', 'monthly'))
 
             sm_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
             sm_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
