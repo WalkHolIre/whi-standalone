@@ -3974,6 +3974,11 @@ def post_process_html(html):
             stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;width:auto;opacity:0.6;" loading="lazy"/>'
             html = html.replace(tagline_end, stripe, 1)
 
+    # 7b. Fix newsletter input text color (white on white)
+    html = html.replace('.newsletter-form input {', '.newsletter-form input {\n            color: #333;')
+    # Avoid double injection
+    html = html.replace('color: #333;\n            color: #333;', 'color: #333;')
+
     # 8. Wire up subscribe forms
     # Add subscribe-cta class to blog sidebar subscribe boxes
     html = html.replace(
