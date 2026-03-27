@@ -117,6 +117,7 @@
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days.html" />
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -188,7 +189,7 @@
             </div>
         </header>
 
-<main class="flex-grow flex flex-col items-center w-full">
+<main id="main-content" class="flex-grow flex flex-col items-center w-full">
 
 <!-- Full-Width Hero Section -->
 <section class="w-full relative h-[70vh] md:h-[80vh] overflow-hidden">
@@ -1172,10 +1173,10 @@
 </script>
 
 <!-- Reviews Carousel -->
-<script src="/js/whi-reviews.js"></script>
+<script src="/js/whi-reviews.js" defer></script>
 <!-- WHI Ground Control Integration -->
-<script src="/js/whi-config.js"></script>
-<script src="/js/whi-data.js"></script>
+<script src="/js/whi-config.js" defer></script>
+<script src="/js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
 window.__WHI_TOUR = {"id": "9bd28f55-b2fd-4193-9d9b-814038187250", "slug": "cooley-peninsula-5-days", "name": "Cooley Peninsula 5-Tage Wanderurlaub", "price_per_person_eur": 645.0, "duration_days": 5, "walking_days": 4, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
@@ -1183,7 +1184,7 @@ window.__WHI_EXTRAS = [{"id": "d76b93ca-ad92-4333-b394-f28227afb4ba", "name": "A
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "de";
 </script>
-<script src="/js/booking-modal.js"></script>
+<script src="/js/booking-modal.js" defer></script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>

@@ -103,6 +103,7 @@
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-area-causeway-coast.html" />
 </head>
 <body class="bg-white">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
     <div class="flex flex-col min-h-screen">
         <!-- Top Utility Bar -->
 <div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
@@ -173,7 +174,7 @@
             </div>
         </header>
 
-        <main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+        <main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
             <!-- ═══════════ 1. HERO ═══════════ -->
             <section class="w-full relative h-[70vh] md:h-[85vh] flex items-end">
@@ -794,9 +795,9 @@
 ]
     </script>
     <script src="/js/whi-dest-tours.js"></script>
-    <script src="/js/whi-reviews.js"></script>
-    <script src="/js/whi-config.js"></script>
-    <script src="/js/whi-data.js"></script>
+    <script src="/js/whi-reviews.js" defer></script>
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>

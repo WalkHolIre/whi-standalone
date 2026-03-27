@@ -117,6 +117,7 @@
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-tours/wicklow-way-10-days.html" />
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -188,7 +189,7 @@
             </div>
         </header>
 
-<main class="flex-grow flex flex-col items-center w-full">
+<main id="main-content" class="flex-grow flex flex-col items-center w-full">
 
 <!-- Full-Width Hero Section -->
 <section class="w-full relative h-[70vh] md:h-[80vh] overflow-hidden">
@@ -1329,10 +1330,10 @@ This is the true gift of a 10-day trip: you're not a hiking machine moving from 
 </script>
 
 <!-- Reviews Carousel -->
-<script src="../js/whi-reviews.js"></script>
+<script src="../js/whi-reviews.js" defer></script>
 <!-- WHI Ground Control Integration -->
-<script src="../js/whi-config.js"></script>
-<script src="../js/whi-data.js"></script>
+<script src="../js/whi-config.js" defer></script>
+<script src="../js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
 window.__WHI_TOUR = {"id": "79d2b9f8-6fdc-4d83-a83c-909b61147b7e", "slug": "wicklow-way-10-days", "name": "Wicklow Way 10 Days", "price_per_person_eur": 1195.0, "duration_days": 10, "walking_days": 9, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
@@ -1340,7 +1341,7 @@ window.__WHI_EXTRAS = [{"id": "9856aeaf-3321-497c-8f2f-b9542307ebf5", "name": "A
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "en";
 </script>
-<script src="../js/booking-modal.js"></script>
+<script src="../js/booking-modal.js" defer></script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>

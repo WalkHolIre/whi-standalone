@@ -115,8 +115,15 @@
         }
     }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/connemara-national-park.html" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.com/blog/connemara-national-park.html" />
+    <link rel="alternate" hreflang="nl" href="https://walkingholidayireland.com/blog/connemara-national-park.html" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/connemara-national-park.html" />
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -188,7 +195,7 @@
             </div>
         </header>
 
-<main class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
 
 <!-- Breadcrumbs -->
 <div class="max-w-6xl mx-auto w-full px-6 py-6">
@@ -986,7 +993,8 @@
 </footer>
 
     <!-- WHI Ground Control Integration -->
-    <script src="../js/whi-config.js"></script>
-    <script src="../js/whi-data.js"></script>
+    <script src="../js/whi-config.js" defer></script>
+    <script src="../js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>

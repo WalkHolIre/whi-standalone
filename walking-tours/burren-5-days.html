@@ -117,6 +117,7 @@
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-tours/burren-5-days.html" />
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Navigation -->
 <!-- Top Utility Bar -->
@@ -188,7 +189,7 @@
             </div>
         </header>
 
-<main class="flex-grow flex flex-col items-center w-full">
+<main id="main-content" class="flex-grow flex flex-col items-center w-full">
 
 <!-- Full-Width Hero Section -->
 <section class="w-full relative h-[70vh] md:h-[80vh] overflow-hidden">
@@ -1236,10 +1237,10 @@
 </script>
 
 <!-- Reviews Carousel -->
-<script src="../js/whi-reviews.js"></script>
+<script src="../js/whi-reviews.js" defer></script>
 <!-- WHI Ground Control Integration -->
-<script src="../js/whi-config.js"></script>
-<script src="../js/whi-data.js"></script>
+<script src="../js/whi-config.js" defer></script>
+<script src="../js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
 window.__WHI_TOUR = {"id": "5723933d-6b42-4e20-8281-1074d12e386e", "slug": "burren-5-days", "name": "Burren Walking Holiday 5D", "price_per_person_eur": 610.0, "duration_days": 5, "walking_days": 3, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
@@ -1247,7 +1248,7 @@ window.__WHI_EXTRAS = [{"id": "6ff85bc1-b275-49f4-ba50-f8410af6e77b", "name": "A
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "en";
 </script>
-<script src="../js/booking-modal.js"></script>
+<script src="../js/booking-modal.js" defer></script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>
