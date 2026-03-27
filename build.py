@@ -142,7 +142,7 @@ UI_STRINGS = {
         'quick_facts': 'Walking Area Quick Facts',
         'walking_tours_in': 'Walking Tours in',
         'self_guided_desc': 'Self-guided walking holidays with accommodation and luggage transfers included',
-        'tailor_made_cta': 'Want something different? Let us create a tailor-made tour for you',
+        'tailor_made_cta': 'Want something different? Let us create a tailor-made walking tour for you',
         'the_landscape': 'The Landscape',
         'landscape_sub': 'What to expect along the way',
         'points_of_interest': 'Points of Interest',
@@ -177,6 +177,25 @@ UI_STRINGS = {
         'best_price_guarantee': 'Best price guarantee — see our price promise',
         'tour_grading': 'Tour Grading & Difficulty',
         'walking': 'Walking',
+        # Tour listing page
+        'self_guided_walking_tours': 'Self-Guided Walking Tours',
+        'listing_subtitle': "Choose from 15 tours across Ireland's most stunning landscapes. 5 to 10 days, every level.",
+        'region_label': 'Region',
+        'all_walking_regions': 'All Walking Regions',
+        'all_levels': 'All Levels',
+        'all_durations': 'All Durations',
+        'short_5': 'Short (5 days)',
+        'week_6_8': 'Week (6–8 days)',
+        'extended_9': 'Extended (9+ days)',
+        'sort_by': 'Sort by',
+        'popular': 'Popular',
+        'price_low_high': 'Price (low–high)',
+        'price_high_low': 'Price (high–low)',
+        'duration_short_long': 'Duration (short–long)',
+        'of_x_tours': 'of 15 tours',
+        'cant_decide': "Can't decide? Let us help.",
+        'cant_decide_sub': "Tell us what you're looking for and we'll recommend the perfect walking holiday for you.",
+        'get_recommendation': 'Get a Personalised Recommendation',
     },
     'de': {
         'book_now': 'Jetzt Buchen',
@@ -265,6 +284,25 @@ UI_STRINGS = {
         'best_price_guarantee': 'Bestpreisgarantie — siehe unsere Preisgarantie',
         'tour_grading': 'Tourbewertung & Schwierigkeitsgrad',
         'walking': 'Wandern',
+        # Tour listing page
+        'self_guided_walking_tours': 'Selbstgeführte Wandertouren',
+        'listing_subtitle': 'Wählen Sie aus 15 Touren durch Irlands schönste Landschaften. 5 bis 10 Tage, für jedes Niveau.',
+        'region_label': 'Wandergebiet',
+        'all_walking_regions': 'Alle Wandergebiete',
+        'all_levels': 'Alle Stufen',
+        'all_durations': 'Alle Dauern',
+        'short_5': 'Kurz (5 Tage)',
+        'week_6_8': 'Woche (6–8 Tage)',
+        'extended_9': 'Verlängert (9+ Tage)',
+        'sort_by': 'Sortieren',
+        'popular': 'Beliebt',
+        'price_low_high': 'Preis (niedrig–hoch)',
+        'price_high_low': 'Preis (hoch–niedrig)',
+        'duration_short_long': 'Dauer (kurz–lang)',
+        'of_x_tours': 'von 15 Wandertouren',
+        'cant_decide': 'Können Sie sich nicht entscheiden? Wir helfen Ihnen.',
+        'cant_decide_sub': 'Sagen Sie uns, was Sie suchen, und wir empfehlen Ihnen den perfekten Wanderurlaub.',
+        'get_recommendation': 'Persönliche Empfehlung erhalten',
         # Search/filter
         'hiking_region': 'Wandergebiet',
         'destination': 'Ziel',
@@ -276,7 +314,7 @@ UI_STRINGS = {
         'intermediate': 'Fortgeschritten',
         'challenging': 'Anspruchsvoll',
         'any': 'Alle',
-        'find_tours': 'Touren Finden',
+        'find_tours': 'Wandertouren Finden',
         '5_days': '5 Tage',
         '6_days': '6 Tage',
         '7_days': '7 Tage',
@@ -361,10 +399,10 @@ UI_STRINGS = {
         'similar_walks_sub': 'Vergelijkbare moeilijkheidsgraad en nabijgelegen bestemmingen',
         'walking_tours': 'Wandeltochten',
         'walking_holidays': 'Wandelvakanties',
-        'how_it_works': 'Hoe het werkt',
+        'how_it_works': 'Hoe werkt het?',
         'about_us': 'Over Ons',
         'blog': 'Blog',
-        'get_in_touch': 'Neem Contact Op',
+        'get_in_touch': 'Neem Contact',
         'home': 'Home',
         'overview': 'Overzicht',
         'get_free_quote': 'Gratis Offerte',
@@ -415,7 +453,7 @@ UI_STRINGS = {
         'ready_to_walk': 'Klaar om te Wandelen',
         'ready_to_walk_desc': 'Laat ons uw perfecte zelfgeleide wandelvakantie plannen. Elke tour omvat accommodatie, bagagetransfer, kaarten en 24/7 lokale ondersteuning.',
         'call_us': 'Bel Ons',
-        'footer_tagline': "Zelfgeleide wandelvakanties door Ierlands mooiste landschappen sinds 2012. Familiebedrijf van Cliff & Louise.",
+        'footer_tagline': "Zelfstandige wandelvakanties door de meest adembenemende landschappen van Ierland sinds 2012. Familiebedrijf van Cliff &amp; Louise.",
         'quick_links': 'Snelkoppelingen',
         'all_rights': 'Walking Holiday Ireland. Alle rechten voorbehouden.',
         'secure_payments': 'Veilige betalingen via Stripe',
@@ -431,6 +469,25 @@ UI_STRINGS = {
         'best_price_guarantee': 'Beste prijsgarantie — zie onze prijsbelofte',
         'tour_grading': 'Moeilijkheidsgraad & Beoordeling',
         'walking': 'Wandelen',
+        # Tour listing page
+        'self_guided_walking_tours': 'Wandeltochten op eigen tempo',
+        'listing_subtitle': 'Kies uit 15 routes door de meest adembenemende landschappen van Ierland. 5 tot 10 dagen, voor elk niveau.',
+        'region_label': 'Wandel Regio',
+        'all_walking_regions': 'Alle Wandelgebieden',
+        'all_levels': 'Alle Niveaus',
+        'all_durations': 'Alle Lengtes',
+        'short_5': 'Kort (5 Dagen)',
+        'week_6_8': 'Week (6–8 Dagen)',
+        'extended_9': 'Verlengd (9+ Dagen)',
+        'sort_by': 'Sorteer op',
+        'popular': 'Populair',
+        'price_low_high': 'Prijs (laag–hoog)',
+        'price_high_low': 'Prijs (hoog–laag)',
+        'duration_short_long': 'Lengtes (kort–lang)',
+        'of_x_tours': 'uit 15 Wandeltochten',
+        'cant_decide': 'Kunt u niet kiezen? Wij helpen u graag.',
+        'cant_decide_sub': 'Vertel ons wat u zoekt en wij bevelen de perfecte wandelvakantie voor u aan.',
+        'get_recommendation': 'Ontvang een persoonlijk advies',
         # Search/filter
         'hiking_region': 'Wandelgebied',
         'destination': 'Bestemming',
@@ -442,7 +499,7 @@ UI_STRINGS = {
         'intermediate': 'Gevorderd',
         'challenging': 'Veeleisend',
         'any': 'Alle',
-        'find_tours': 'Zoek Tours',
+        'find_tours': 'Zoek Wandeltochten',
         '5_days': '5 Dagen',
         '6_days': '6 Dagen',
         '7_days': '7 Dagen',
@@ -842,6 +899,25 @@ def translate_html_ui(html, lang):
         '>Duration<': f'>{t("duration", lang)}<',
         '>Best Months<': f'>{t("best_months", lang)}<',
 
+        # Tour listing page — hero
+        '>Self-Guided Walking Tours<': f'>{t("self_guided_walking_tours", lang)}<',
+        # Tour listing page — search bar labels
+        '>Region<': f'>{t("region_label", lang)}<',
+        '>All Walking Regions<': f'>{t("all_walking_regions", lang)}<',
+        '>All Levels<': f'>{t("all_levels", lang)}<',
+        '>All Durations<': f'>{t("all_durations", lang)}<',
+        '>Short (5 days)<': f'>{t("short_5", lang)}<',
+        '>Week (6–8 days)<': f'>{t("week_6_8", lang)}<',
+        '>Extended (9+ days)<': f'>{t("extended_9", lang)}<',
+        '>Sort by<': f'>{t("sort_by", lang)}<',
+        '>Popular<': f'>{t("popular", lang)}<',
+        '>Price (low–high)<': f'>{t("price_low_high", lang)}<',
+        '>Price (high–low)<': f'>{t("price_high_low", lang)}<',
+        '>Duration (short–long)<': f'>{t("duration_short_long", lang)}<',
+        # Tour listing page — CTA
+        ">Can't decide? Let us help.<": f'>{t("cant_decide", lang)}<',
+        ">Get a Personalised Recommendation<": f'>{t("get_recommendation", lang)}<',
+
         # Search/filter section
         '>Hiking Region<': f'>{t("hiking_region", lang)}<',
         '>Destination<': f'>{t("destination", lang)}<',
@@ -857,6 +933,7 @@ def translate_html_ui(html, lang):
         '>6 Days<': f'>{t("6_days", lang)}<',
         '>7 Days<': f'>{t("7_days", lang)}<',
         '>8-10 Days<': f'>{t("8_10_days", lang)}<',
+        '>Find Walking Tours<': f'>{t("find_tours", lang)}<',
         '>Find Tours<': f'>{t("find_tours", lang)}<',
     }
     for old, new in replacements.items():
@@ -921,6 +998,7 @@ def translate_html_ui(html, lang):
 
         # Footer tagline
         ">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff & Louise.<": f'>{t("footer_tagline", lang)}<',
+        ">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.<": f'>{t("footer_tagline", lang)}<',
 
         # About page / stats section
         '>By The Numbers<': f'>{t("by_the_numbers", lang)}<',
@@ -947,6 +1025,17 @@ def translate_html_ui(html, lang):
     }
     for en_text, translated_text in replacements.items():
         html = html.replace(en_text, translated_text)
+
+    # Tour listing page — longer strings that need exact matching
+    html = html.replace(
+        "Choose from 15 tours across Ireland's most stunning landscapes. 5 to 10 days, every level.",
+        t('listing_subtitle', lang))
+    html = html.replace(
+        "Tell us what you're looking for and we'll recommend the perfect walking holiday for you.",
+        t('cant_decide_sub', lang))
+    # Tour count: "of 15 tours" → translated
+    html = re.sub(r'of (\d+) tours', lambda m: f'{t("of_x_tours", lang).replace("15", m.group(1))}', html)
+
     return html
 
 
@@ -3782,6 +3871,28 @@ def post_process_html(html):
         css_link = '    <link rel="stylesheet" href="/css/styles.min.css"/>\n'
         # Insert before first <link or <style in <head>
         html = re.sub(r'(<link\s)', css_link + r'\1', html, count=1)
+
+    # 5. Fix footer logo stretch (add width:auto)
+    html = re.sub(
+        r'(whi_fc\.png[^>]*class="h-10 mb-4")(\s+loading)',
+        r'\1" style="width:auto;\2', html)
+    # But avoid double style attr — fix if already has style
+    html = html.replace('" style="width:auto;" style="width:auto;', '" style="width:auto;')
+
+    # 6. Footer tagline: text-sm → text-base italic
+    html = html.replace(
+        'class="text-slate-300 text-sm leading-relaxed">Self-guided walking holidays',
+        'class="text-slate-300 text-base italic leading-relaxed">Self-guided walking holidays')
+
+    # 7. Move Stripe logo into footer logo column (remove from bottom bar, add after tagline)
+    html = re.sub(
+        r'\s*<div style="margin-top:12px;">\s*<img src="[^"]*stripe-secure-payments\.png"[^/]*/>\s*</div>',
+        '', html)
+    if 'stripe-secure-payments' not in html:
+        tagline_end = 'Family-run by Cliff &amp; Louise.</p>'
+        if tagline_end in html:
+            stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;opacity:0.6;" loading="lazy" width="537"/>'
+            html = html.replace(tagline_end, stripe, 1)
 
     return html
 
