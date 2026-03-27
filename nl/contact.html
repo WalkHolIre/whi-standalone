@@ -175,31 +175,31 @@
         <h2 class="text-3xl font-bold mb-2">Stuur Ons een Aanvraag</h2>
         <p class="text-slate-600 mb-8">Vertel ons uw wandeldromen en wij maken een persoonlijk plan.</p>
 
-        <form class="flex flex-col gap-6" action="mailto:info@walkingholidayireland.com" method="POST" enctype="text/plain">
+        <form id="contactForm" class="flex flex-col gap-6">
             <!-- Full Name -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Full Name</label>
-                <input name="name" required class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="Your full name" type="text"/>
+                <label class="text-sm font-bold">Volledige Naam</label>
+                <input name="name" required class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="Uw volledige naam" type="text"/>
             </div>
 
             <!-- Email -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Email Address</label>
-                <input name="email" required class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="you@example.com" type="email"/>
+                <label class="text-sm font-bold">E-mailadres</label>
+                <input name="email" required class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="u@voorbeeld.com" type="email"/>
             </div>
 
             <!-- Phone (Optional) -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Phone Number <span class="text-slate-400 font-normal">(optional)</span></label>
+                <label class="text-sm font-bold">Telefoonnummer <span class="text-slate-400 font-normal">(optioneel)</span></label>
                 <input name="phone" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="+353 87 957 3856" type="tel"/>
             </div>
 
             <!-- Interested In -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Interested in</label>
+                <label class="text-sm font-bold">Ge&iuml;nteresseerd in</label>
                 <div class="relative">
                     <select name="tour" class="w-full appearance-none px-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-2 focus:ring-primary focus:border-primary font-medium">
-                        <option value="">Select a tour...</option>
+                        <option value="">Selecteer een tour...</option>
                         <option value="Dingle Way">Dingle Way</option>
                         <option value="Kerry Way">Kerry Way</option>
                         <option value="Wicklow Way">Wicklow Way</option>
@@ -207,8 +207,8 @@
                         <option value="Burren Way">Burren Way</option>
                         <option value="Causeway Coast">Causeway Coast</option>
                         <option value="Cooley & Mournes">Cooley & Mournes</option>
-                        <option value="Tailor-Made Tour">Tailor-Made Tour</option>
-                        <option value="General Enquiry">General Enquiry</option>
+                        <option value="Op Maat Gemaakte Tour">Op Maat Gemaakte Tour</option>
+                        <option value="Algemene Vraag">Algemene Vraag</option>
                     </select>
                     <span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">expand_more</span>
                 </div>
@@ -216,32 +216,95 @@
 
             <!-- Preferred Dates -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Preferred dates</label>
-                <input name="dates" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="e.g. May 2026" type="text"/>
+                <label class="text-sm font-bold">Voorkeursdatums</label>
+                <input name="dates" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="bijv. mei 2026" type="text"/>
             </div>
 
             <!-- Number of Walkers -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Number of walkers</label>
+                <label class="text-sm font-bold">Aantal wandelaars</label>
                 <input name="walkers" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="1" type="number" min="1"/>
             </div>
 
             <!-- Message -->
             <div class="flex flex-col gap-2">
-                <label class="text-sm font-bold">Message</label>
-                <textarea name="message" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="Any special requirements or questions..." rows="6"></textarea>
+                <label class="text-sm font-bold">Bericht</label>
+                <textarea name="message" class="rounded-xl border border-slate-200 bg-background-light px-4 py-3.5 focus:ring-2 focus:ring-primary focus:border-primary w-full font-medium" placeholder="Speciale wensen of vragen..." rows="6"></textarea>
             </div>
+
+            <!-- Error message -->
+            <div id="formError" style="display:none;background:#fef2f2;border:1px solid #fecaca;border-radius:12px;padding:16px;color:#dc2626;font-weight:500;text-align:center;"></div>
 
             <!-- Submit Button -->
             <div class="mt-4">
-                <button class="w-full flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-[#d97200] transition-colors shadow-lg shadow-primary/20" type="submit">
+                <button id="submitBtn" class="w-full flex cursor-pointer items-center justify-center rounded-xl h-14 px-8 bg-primary text-white text-lg font-bold hover:bg-[#d97200] transition-colors shadow-lg shadow-primary/20" type="submit">
                     <span class="material-symbols-outlined mr-2">send</span>
-                    Send Enquiry
+                    Aanvraag Versturen
                 </button>
             </div>
 
             <p class="text-sm text-slate-500 text-center">Wij nemen binnen 24 uur contact met u op met een persoonlijke offerte.</p>
         </form>
+
+        <!-- Success message (hidden by default) -->
+        <div id="formSuccess" style="display:none;text-align:center;padding:40px 20px;">
+            <div style="width:64px;height:64px;background:#f0fdf4;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:20px;">
+                <span class="material-symbols-outlined" style="font-size:32px;color:#16a34a;">check_circle</span>
+            </div>
+            <h2 style="color:#210747;font-size:28px;font-weight:800;margin-bottom:12px;">Bedankt!</h2>
+            <p style="color:#555;font-size:16px;line-height:1.6;max-width:400px;margin:0 auto 20px;">Uw aanvraag is verzonden. Wij nemen binnen 24 uur contact met u op met een persoonlijke offerte.</p>
+            <p style="color:#888;font-size:14px;">Er is een bevestiging naar uw inbox gestuurd.</p>
+        </div>
+
+        <script>
+        (function(){
+            var form = document.getElementById('contactForm');
+            var btn = document.getElementById('submitBtn');
+            var errDiv = document.getElementById('formError');
+            var successDiv = document.getElementById('formSuccess');
+
+            form.addEventListener('submit', function(e){
+                e.preventDefault();
+                errDiv.style.display = 'none';
+                btn.disabled = true;
+                btn.innerHTML = '<span class="material-symbols-outlined mr-2 animate-spin">progress_activity</span> Verzenden...';
+
+                var data = {
+                    name: form.querySelector('[name=name]').value.trim(),
+                    email: form.querySelector('[name=email]').value.trim(),
+                    phone: form.querySelector('[name=phone]').value.trim(),
+                    tour: form.querySelector('[name=tour]').value,
+                    dates: form.querySelector('[name=dates]').value.trim(),
+                    walkers: form.querySelector('[name=walkers]').value,
+                    message: form.querySelector('[name=message]').value.trim(),
+                    language: document.documentElement.lang || 'nl',
+                    source: window.location.hostname
+                };
+
+                fetch('https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/contact-form', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(function(res){ return res.json().then(function(j){ return {ok: res.ok, data: j}; }); })
+                .then(function(result){
+                    if (result.ok && result.data.success) {
+                        form.style.display = 'none';
+                        successDiv.style.display = 'block';
+                        window.scrollTo({top: successDiv.offsetTop - 100, behavior: 'smooth'});
+                    } else {
+                        throw new Error(result.data.error || 'Verzenden mislukt');
+                    }
+                })
+                .catch(function(err){
+                    errDiv.textContent = 'Er is iets misgegaan. Probeer het opnieuw of mail ons op info@walkingholidayireland.com';
+                    errDiv.style.display = 'block';
+                    btn.disabled = false;
+                    btn.innerHTML = '<span class="material-symbols-outlined mr-2">send</span> Aanvraag Versturen';
+                });
+            });
+        })();
+        </script>
     </div>
 </div>
 
