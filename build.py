@@ -5191,6 +5191,37 @@ def main():
 
         log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages, {lang_static} static pages")
 
+    # ── Add hreflang tags to EN static pages ─────────────────
+    # EN source files aren't processed by build_static_pages() (that only runs
+    # for de/nl). We need to inject hreflang + switchLang into them so the
+    # language switcher works on the English site too.
+    EN_STATIC_PAGES = [
+        'about', 'contact', 'how-it-works', 'tour-grading', 'tailor-made',
+        'reviews', 'self-guided-walking-holidays-ireland',
+        'solo-walking-holidays-ireland', 'walking-holidays-ireland-over-50s',
+        'northern-ireland', 'privacy-policy', 'terms-and-conditions',
+        'destinations',
+    ]
+    if not DRY_RUN:
+        en_hreflang_count = 0
+        for page_slug in EN_STATIC_PAGES:
+            en_file = WEBSITE_DIR / f'{page_slug}.html'
+            if not en_file.exists():
+                continue
+            html = en_file.read_text()
+            # Skip if hreflang already present (e.g. generated pages)
+            if 'rel="alternate" hreflang="de"' in html:
+                continue
+            de_slug = translate_static_slug(page_slug, 'de')
+            nl_slug = translate_static_slug(page_slug, 'nl')
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', f'{page_slug}.html'),
+                de_url=lang_url('de', f'{de_slug}.html'),
+                nl_url=lang_url('nl', f'{nl_slug}.html'))
+            en_file.write_text(html)
+            en_hreflang_count += 1
+        log(f"Added hreflang tags to {en_hreflang_count} EN static pages")
+
     # Summary
     log("\n" + "=" * 60)
     log(f"Build complete: {len(generated['tours'])} tours, {len(generated['destinations'])} destinations")
