@@ -182,7 +182,7 @@
             return '<div style="width:100%;max-width:420px;margin:0 auto;">' +
                 '<div style="position:relative;">' +
                 ribbonHtml +
-                '<a href="tours/' + tour.slug + '.html" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
+                '<a href="walking-tours/' + tour.slug + '" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
                     /* Image area with gradient overlay and title */
                     '<div style="position:relative;aspect-ratio:4/3;overflow:hidden;">' +
                         '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;" loading="lazy" onerror="this.style.display=\'none\'"/>' +

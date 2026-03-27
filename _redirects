@@ -205,7 +205,8 @@
 # 7. INTERNAL URL RENAMES: /tours/ → /walking-tours/
 # ═══════════════════════════════════════════════════════════
 
-/tours/dingle-way.html  /walking-tours/dingle-way  301
+# With .html extension
+/tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
 /tours/kerry-way.html  /walking-tours/kerry-way  301
 /tours/wicklow-way.html  /walking-tours/wicklow-way  301
 /tours/wicklow-way-5-days.html  /walking-tours/wicklow-way-5-days  301
@@ -225,6 +226,28 @@
 /tours/burren-way.html  /walking-tours/burren-way  301
 /tours.html  /walking-tours  301
 /tours/  /walking-tours  301
+
+# Without .html extension (Cloudflare Pages serves .html files at extensionless URLs)
+/tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
+/tours/dingle-way-walking-tour-8d  /walking-tours/dingle-way-walking-tour-8d  301
+/tours/kerry-way  /walking-tours/kerry-way  301
+/tours/wicklow-way  /walking-tours/wicklow-way  301
+/tours/wicklow-way-5-days  /walking-tours/wicklow-way-5-days  301
+/tours/wicklow-way-7-days  /walking-tours/wicklow-way-7-days  301
+/tours/wicklow-way-10-days  /walking-tours/wicklow-way-10-days  301
+/tours/burren-5-days  /walking-tours/burren-5-days  301
+/tours/burren-6-days  /walking-tours/burren-6-days  301
+/tours/burren-7-days  /walking-tours/burren-7-days  301
+/tours/barrow-way-5-days-easy  /walking-tours/barrow-way-5-days-easy  301
+/tours/barrow-way-5-days  /walking-tours/barrow-way-5-days  301
+/tours/barrow-way  /walking-tours/barrow-way  301
+/tours/full-barrow-way-walking  /walking-tours/full-barrow-way-walking  301
+/tours/Full-Barrow-Way-Walking  /walking-tours/full-barrow-way-walking  301
+/tours/causeway-coast  /walking-tours/causeway-coast  301
+/tours/causeway-coast-5-days  /walking-tours/causeway-coast-5-days  301
+/tours/cooley-mournes  /walking-tours/cooley-mournes  301
+/tours/cooley-peninsula-5-days  /walking-tours/cooley-peninsula-5-days  301
+/tours/burren-way  /walking-tours/burren-way  301
 
 # ═══════════════════════════════════════════════════════════
 # 8. DE INTERNAL REDIRECTS (old English URLs → translated)
@@ -363,6 +386,9 @@
 /comments/feed/  /  301
 
 # ── AUTO-GENERATED SLUG REDIRECTS (do not edit below) ──
-/walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d.html  301
-/de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d.html  301
-/nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d.html  301
+/walking-tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
+/walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
+/de/wandertouren/dingle-way  /de/wandertouren/dingle-way-walking-tour-8d  301
+/de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
+/nl/wandeltochten/dingle-way  /nl/wandeltochten/dingle-way-walking-tour-8d  301
+/nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301

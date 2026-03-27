@@ -5759,22 +5759,30 @@ def main():
 
         auto_lines = []
 
-        # Tour slug redirects
+        # Tour slug redirects (both with and without .html for Cloudflare Pages)
         for tour in tours:
             prev = (tour.get('previous_slug') or '').strip()
             curr = (tour.get('slug') or '').strip()
             if prev and curr and prev != curr:
-                auto_lines.append(f'/walking-tours/{prev}.html  /walking-tours/{curr}.html  301')
-                # Also redirect DE and NL tour paths
-                auto_lines.append(f'/de/wandertouren/{prev}.html  /de/wandertouren/{curr}.html  301')
-                auto_lines.append(f'/nl/wandeltochten/{prev}.html  /nl/wandeltochten/{curr}.html  301')
+                # Extensionless redirects (primary — how users actually browse)
+                auto_lines.append(f'/walking-tours/{prev}  /walking-tours/{curr}  301')
+                auto_lines.append(f'/de/wandertouren/{prev}  /de/wandertouren/{curr}  301')
+                auto_lines.append(f'/nl/wandeltochten/{prev}  /nl/wandeltochten/{curr}  301')
+                # With .html extension (for legacy links / crawlers)
+                auto_lines.append(f'/walking-tours/{prev}.html  /walking-tours/{curr}  301')
+                auto_lines.append(f'/de/wandertouren/{prev}.html  /de/wandertouren/{curr}  301')
+                auto_lines.append(f'/nl/wandeltochten/{prev}.html  /nl/wandeltochten/{curr}  301')
+                # Also from old /tours/ path
+                auto_lines.append(f'/tours/{prev}  /walking-tours/{curr}  301')
+                auto_lines.append(f'/tours/{prev}.html  /walking-tours/{curr}  301')
 
-        # Blog slug redirects
+        # Blog slug redirects (both with and without .html)
         for post in posts:
             prev = (post.get('previous_slug') or '').strip()
             curr = (post.get('slug') or '').strip()
             if prev and curr and prev != curr:
-                auto_lines.append(f'/blog/{prev}.html  /blog/{curr}.html  301')
+                auto_lines.append(f'/blog/{prev}  /blog/{curr}  301')
+                auto_lines.append(f'/blog/{prev}.html  /blog/{curr}  301')
 
         if auto_lines:
             auto_block = f'\n\n{auto_redirect_marker}\n' + '\n'.join(auto_lines) + '\n'
