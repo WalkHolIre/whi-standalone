@@ -3344,7 +3344,7 @@ def render_destinations_by_region(destinations, tours, regions_by_id, reviews_by
 
             html += f"""            <a href="destination-{dest_slug}" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/destinations/{dest_slug}/card.jpg" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="images/destinations/{dest_slug}/card.jpg" srcset="images/destinations/{dest_slug}/card-400w.jpg 400w, images/destinations/{dest_slug}/card-800w.jpg 800w, images/destinations/{dest_slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:50%;background:linear-gradient(to top,rgba(33,7,71,0.7) 0%,rgba(33,7,71,0) 100%);"></div>
                     <h3 class="absolute bottom-3 left-4 right-4 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{dest_name}</h3>
                 </div>
@@ -4749,7 +4749,7 @@ def main():
             st_detail = f"{st_price_display} &bull; {st_days} Days" if st_price_display else f"{st_days} Days"
             sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../walking-tours/{st_slug}">
                     <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                        <img src="../images/routes/{st_slug}/card.jpg" alt="{st_name}" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
+                        <img src="../images/routes/{st_slug}/card.jpg" srcset="../images/routes/{st_slug}/card-400w.jpg 400w, ../images/routes/{st_slug}/card-800w.jpg 800w, ../images/routes/{st_slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{st_name}" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     </div>
                     <div>
                         <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">{st_name}</h4>
@@ -4775,7 +4775,7 @@ def main():
             recommended_tours_html += f'''
             <a href="../walking-tours/{rt_slug}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="../images/routes/{rt_slug}/card.jpg" srcset="../images/routes/{rt_slug}/card-400w.jpg 400w, ../images/routes/{rt_slug}/card-800w.jpg 800w, ../images/routes/{rt_slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{rt_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{rt_days} Days</span>
                 </div>
                 <div class="p-4">
@@ -5064,7 +5064,7 @@ def main():
             recommended_html += f'''
             <a href="walking-tours/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="images/routes/{escape(t_slug)}/card.jpg" srcset="images/routes/{escape(t_slug)}/card-400w.jpg 400w, images/routes/{escape(t_slug)}/card-800w.jpg 800w, images/routes/{escape(t_slug)}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} Days</span>
                 </div>
                 <div class="p-4">
@@ -5219,7 +5219,7 @@ def main():
                 lang_rec_html += f'''
             <a href="{bcfg['tour_folder']}/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="images/routes/{escape(t_slug)}/card.jpg" srcset="images/routes/{escape(t_slug)}/card-400w.jpg 400w, images/routes/{escape(t_slug)}/card-800w.jpg 800w, images/routes/{escape(t_slug)}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} {bcfg['days']}</span>
                 </div>
                 <div class="p-4">
