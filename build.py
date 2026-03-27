@@ -4544,7 +4544,7 @@ def main():
             log("blog.html not found, skipping listing page", 'warn')
 
     # ── Build Language Sites ─────────────────────────────────
-    LANGUAGES_TO_BUILD = ['de']  # Add 'nl', 'es', 'fr' later
+    LANGUAGES_TO_BUILD = ['de', 'nl']  # Add 'es', 'fr' later
 
     for lang in LANGUAGES_TO_BUILD:
         log(f"\nFetching {lang} translations from Supabase...")
