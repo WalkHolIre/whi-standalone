@@ -361,3 +361,9 @@
 /wp-json/*  /  301
 /feed/  /  301
 /comments/feed/  /  301
+
+
+# ── AUTO-GENERATED SLUG REDIRECTS (do not edit below) ──
+/walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d.html  301
+/de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d.html  301
+/nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d.html  301
