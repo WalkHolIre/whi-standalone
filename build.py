@@ -5226,25 +5226,23 @@ def main():
     NOT_FOUND_TRANSLATIONS = {
         'de': {
             'title': 'Seite nicht gefunden | Walking Holiday Ireland',
-            'heading': 'Weg nicht gefunden',
-            'message': 'Dieser Pfad führt leider ins Nichts. Selbst die besten Wanderer nehmen manchmal eine falsche Abzweigung.',
-            'home_btn': 'Zur Startseite',
-            'tours_btn': 'Wandertouren entdecken',
+            'home_btn': 'Zur\u00fcck zur Startseite',
+            'tours_btn': 'Wandertouren finden',
             'help': 'Brauchen Sie Hilfe?',
             'contact': 'Kontakt aufnehmen',
             'tours_url': '/wandertouren.html',
             'contact_url': '/kontakt.html',
+            'illustration_alt': 'Ein verwirrter Wanderer, der sich an einer Kreuzung verlaufen hat - 404 Seite nicht gefunden',
         },
         'nl': {
             'title': 'Pagina niet gevonden | Walking Holiday Ireland',
-            'heading': 'Pad niet gevonden',
-            'message': 'Dit pad leidt nergens heen. Zelfs de beste wandelaars slaan weleens een verkeerde afslag in.',
             'home_btn': 'Terug naar home',
             'tours_btn': 'Wandeltochten bekijken',
             'help': 'Hulp nodig?',
             'contact': 'Neem contact op',
             'tours_url': '/wandeltochten.html',
             'contact_url': '/contact.html',
+            'illustration_alt': 'Een verwarde wandelaar die verdwaald is bij een kruispunt - 404 pagina niet gevonden',
         },
     }
     if not DRY_RUN:
@@ -5256,16 +5254,15 @@ def main():
                 lang_html = lang_html.replace('<html lang="en"', f'<html lang="{lang_code}"')
                 lang_html = lang_html.replace('<title>Page Not Found | Walking Holiday Ireland</title>',
                                               f'<title>{t404["title"]}</title>')
-                lang_html = lang_html.replace('>Trail Not Found<', f'>{t404["heading"]}<')
-                lang_html = lang_html.replace(
-                    "Looks like this path doesn't lead anywhere. Even the best walkers take a wrong turn sometimes.",
-                    t404['message'])
-                lang_html = lang_html.replace('>Back to Homepage<', f'>{t404["home_btn"]}<')
-                lang_html = lang_html.replace('>Browse Walking Tours<', f'>{t404["tours_btn"]}<')
+                lang_html = lang_html.replace('Hike Back to Home', t404['home_btn'])
+                lang_html = lang_html.replace('Find a Real Trail', t404['tours_btn'])
                 lang_html = lang_html.replace('href="/walking-tours.html"', f'href="{t404["tours_url"]}"')
                 lang_html = lang_html.replace('href="/contact.html"', f'href="{t404["contact_url"]}"')
-                lang_html = lang_html.replace('>Need help?', f'>{t404["help"]}')
+                lang_html = lang_html.replace('Need help?', f'{t404["help"]}')
                 lang_html = lang_html.replace('>Get in touch<', f'>{t404["contact"]}<')
+                lang_html = lang_html.replace(
+                    'A confused hiker lost at a crossroads with signs pointing to the pub and the bog',
+                    t404['illustration_alt'])
                 out_path = WEBSITE_DIR / lang_code / '404.html'
                 out_path.parent.mkdir(parents=True, exist_ok=True)
                 out_path.write_text(lang_html)
