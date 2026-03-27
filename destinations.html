@@ -6,10 +6,9 @@
     <title>Walking Holiday Destinations Ireland | 8 Stunning Routes</title>
     <meta name="description" content="Discover Ireland's best self-guided walking holidays. Choose from 8 iconic routes: Dingle Way, Kerry Way, Wicklow Way, and more. Self-guided from €610."/>
     <link rel="canonical" href="https://walkingholidayireland.com/destinations.html"/>
-    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/destinations.html"/>
-    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.com/de/destinations.html"/>
-    <link rel="alternate" hreflang="nl" href="https://walkingholidayireland.com/nl/destinations.html"/>
-    <link rel="icon" type="image/png" href="images/logo/favicon.png"/>
+
+
+<link rel="icon" type="image/png" href="images/logo/favicon.png"/>
     <link rel="preload" as="image" href="images/hero/kerry-hero.jpg" imagesrcset="images/hero/kerry-hero-400w.jpg 400w, images/hero/kerry-hero-800w.jpg 800w, images/hero/kerry-hero.jpg 1200w" imagesizes="100vw"/>
     <!-- Open Graph -->
     <meta property="og:type" content="website"/>
@@ -196,6 +195,12 @@
 }
     </script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/destinations.html" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/wanderziele-irland.html" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/wandelbestemmingen.html" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/destinations.html" />
 </head>
 <body class="bg-background-light">
     <div class="flex flex-col min-h-screen">
@@ -657,5 +662,6 @@
 <script src="js/whi-config.js"></script>
 <script src="js/whi-data.js"></script>
 <script src="js/whi-nav.js"></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
 </body>
 </html>

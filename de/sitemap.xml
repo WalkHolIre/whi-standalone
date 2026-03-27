@@ -1,309 +1,207 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://walkingholidayireland.de/agb.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/ancient-east.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/bewertungen.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/blog.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/datenschutz.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/faq.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.de/</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.de/individuelle-wanderferien-irland.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/kontakt.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/massgeschneidert.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/mountains-of-mourne.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/nordirland.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/so-funktioniert-es.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/solo-wanderurlaub-irland.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/tourbewertung.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/ueber-uns.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-barrow-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-burren-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-causeway-coast.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-causeway-glens.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-cooley-mournes.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-dingle-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-kerry-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandergebiet-wicklow-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.de/wandertouren.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderurlaub-irland-50-plus.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-barrow-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-burren-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-causeway-coast.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-causeway-glens.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-cooley-mournes.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-dingle-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-kerry-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wanderziel-wicklow-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wanderziele-irland.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.de/wild-atlantic-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <loc>https://walkingholidayireland.de/wandertouren/Full-Barrow-Way-Walking.html</loc>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/barrow-way-5-days-easy.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/burren-5-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/burren-6-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/burren-7-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/causeway-coast-5-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/causeway-coast.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/cooley-mournes.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/cooley-peninsula-5-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/dingle-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/wandertouren/full-barrow-way-walking.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/kerry-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/wicklow-way-10-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/wicklow-way-5-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/wicklow-way-7-days.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.de/wandertouren/wicklow-way.html</loc>
-    <lastmod>2026-03-26</lastmod>
+    <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-barrow-way.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-burren-way.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-causeway-coast.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-causeway-glens.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-cooley-mournes.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-dingle-way.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-kerry-way.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/wandergebiet-wicklow-way.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/bewertungen.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/ueber-uns.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/kontakt.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/so-funktioniert-es.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/massgeschneidert.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/tourbewertung.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/datenschutz.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/agb.html</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>
