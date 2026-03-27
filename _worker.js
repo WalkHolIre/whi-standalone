@@ -73,6 +73,10 @@ const SLUG_MAP = {
     '/privacy-policy': '/datenschutz',
     '/terms-and-conditions': '/agb',
     '/faq': '/faq',
+    '/mountains-of-mourne': '/mourne-mountains',
+    '/best-hiking-trails-ireland': '/beste-wanderwege-irland',
+    '/hiking-ireland': '/wandern-irland',
+    '/checkout': '/buchung',
   },
   '/nl': {
     '/about': '/over-ons',
@@ -90,6 +94,10 @@ const SLUG_MAP = {
     '/privacy-policy': '/privacybeleid',
     '/terms-and-conditions': '/algemene-voorwaarden',
     '/faq': '/faq',
+    '/mountains-of-mourne': '/mourne-mountains',
+    '/best-hiking-trails-ireland': '/beste-wandelpaden-ierland',
+    '/hiking-ireland': '/wandelen-ierland',
+    '/checkout': '/boeken',
   },
 };
 

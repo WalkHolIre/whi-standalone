@@ -67,6 +67,12 @@ STATIC_SLUG_MAP = {
     'terms-and-conditions': {'de': 'agb',              'nl': 'algemene-voorwaarden'},
     'destinations':     {'de': 'wanderziele-irland',   'nl': 'wandelbestemmingen'},
     'walking-tours':    {'de': 'wandertouren',         'nl': 'wandeltochten'},
+    'wild-atlantic-way':{'de': 'wild-atlantic-way',    'nl': 'wild-atlantic-way'},
+    'ancient-east':     {'de': 'ancient-east',         'nl': 'ancient-east'},
+    'mountains-of-mourne': {'de': 'mourne-mountains',  'nl': 'mourne-mountains'},
+    'best-hiking-trails-ireland': {'de': 'beste-wanderwege-irland', 'nl': 'beste-wandelpaden-ierland'},
+    'hiking-ireland':   {'de': 'wandern-irland',       'nl': 'wandelen-ierland'},
+    'checkout':         {'de': 'buchung',              'nl': 'boeken'},
 }
 
 def translate_static_slug(en_slug, lang):
@@ -3892,6 +3898,8 @@ def build_static_pages(lang, translations):
         'checkout',
         'privacy-policy',
         'terms-and-conditions',
+        'best-hiking-trails-ireland',
+        'hiking-ireland',
     ]
 
     base_dir = WEBSITE_DIR / lang
@@ -3905,8 +3913,7 @@ def build_static_pages(lang, translations):
         pt = page_translations[page_slug]
         sections = pt.get('sections', {})
         if not sections:
-            log(f"  Skipping {page_slug} — no sections defined", 'warn')
-            continue
+            log(f"  {page_slug} — no sections, will apply UI translation only")
 
         # Read the English source file
         source_file = WEBSITE_DIR / f'{page_slug}.html'
