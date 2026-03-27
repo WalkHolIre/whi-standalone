@@ -9,4 +9,4 @@ Disallow: /node_modules/
 
 Sitemap: https://walkingholidayireland.com/sitemap.xml
 Sitemap: https://walkingholidayireland.de/sitemap.xml
-Sitemap: https://walkingholidayireland.com/nl/sitemap.xml
+Sitemap: https://wandelvakantieierland.nl/sitemap.xml

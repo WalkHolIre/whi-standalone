@@ -3478,6 +3478,37 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
+def set_hreflang_tags(html, en_url, de_url, nl_url):
+    """Remove any existing hreflang tags and switchLang script, then add fresh ones.
+
+    This prevents duplicate hreflang tags when EN source files already contain
+    hardcoded hreflang links that point to old URL structures.
+    Adds x-default pointing to the English version (SEO best practice).
+    """
+    # Strip existing hreflang links
+    html = re.sub(r'\s*<link\s+rel="alternate"\s+hreflang="[^"]*"\s+href="[^"]*"\s*/?\s*>\s*', '\n', html)
+    # Strip existing switchLang script
+    html = re.sub(r'\s*<script>function switchLang\(lang\)\{[^<]*\}</script>\s*', '\n', html)
+
+    # Add preconnect hints for Google Fonts if page uses them and hints are missing
+    preconnect = ''
+    if 'fonts.googleapis.com' in html and 'rel="preconnect" href="https://fonts.googleapis.com"' not in html:
+        preconnect = '''    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+'''
+
+    hreflang_block = f'''{preconnect}    <link rel="alternate" hreflang="en" href="{en_url}" />
+    <link rel="alternate" hreflang="de" href="{de_url}" />
+    <link rel="alternate" hreflang="nl" href="{nl_url}" />
+    <link rel="alternate" hreflang="x-default" href="{en_url}" />'''
+
+    switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
+
+    html = html.replace('</head>', f'{hreflang_block}\n</head>')
+    html = html.replace('</body>', f'{switchlang_js}\n</body>')
+    return html
+
+
 def html_flexible_replace(html, find_text, replace_text):
     """Replace find_text in html, tolerating HTML tags interspersed in the source.
 
@@ -3689,17 +3720,13 @@ def build_static_pages(lang, translations):
         if 'rel="canonical"' not in html:
             html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-        # Add hreflang tags (all three languages)
+        # Set hreflang tags (strips old ones, adds fresh with x-default)
         de_slug = translate_static_slug(page_slug, 'de')
         nl_slug = translate_static_slug(page_slug, 'nl')
-        hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{lang_url('en', f'{page_slug}.html')}" />
-    <link rel="alternate" hreflang="de" href="{lang_url('de', f'{de_slug}.html')}" />
-    <link rel="alternate" hreflang="nl" href="{lang_url('nl', f'{nl_slug}.html')}" />'''
-        html = html.replace('</head>', f'{hreflang_tags}\n</head>')
-
-        # Add switchLang() function for language switcher
-        switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
-        html = html.replace('</body>', f'{switchlang_js}\n</body>')
+        html = set_hreflang_tags(html,
+            en_url=lang_url('en', f'{page_slug}.html'),
+            de_url=lang_url('de', f'{de_slug}.html'),
+            nl_url=lang_url('nl', f'{nl_slug}.html'))
 
         # Write the translated page with translated filename
         output_path = base_dir / f'{translated_slug}.html'
@@ -3791,24 +3818,18 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
                 html = html.replace('href="destination-', f'href="/{dest_prefix}-')
 
-                # Canonical URL
-                canonical_tour_url = lang_url(lang, f'{tour_folder}/{slug}.html')
-                html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_tour_url}"', html)
-                if 'rel="canonical"' not in html:
-                    html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_tour_url}"/>\n</head>')
+            # Canonical URL (all languages)
+            tour_folder_for_url = TOUR_FOLDER.get(lang, 'walking-tours')
+            canonical_tour_url = lang_url(lang, f'{tour_folder_for_url}/{slug}.html')
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_tour_url}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_tour_url}"/>\n</head>')
 
-                # hreflang tags (all three languages)
-                en_tour_url = lang_url('en', f'walking-tours/{slug}.html')
-                de_tour_url = lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html')
-                nl_tour_url = lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html')
-                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_tour_url}" />
-    <link rel="alternate" hreflang="de" href="{de_tour_url}" />
-    <link rel="alternate" hreflang="nl" href="{nl_tour_url}" />'''
-                html = html.replace('</head>', f'{hreflang_tags}\n</head>')
-
-                # switchLang() for language switcher
-                switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
-                html = html.replace('</body>', f'{switchlang_js}\n</body>')
+            # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', f'walking-tours/{slug}.html'),
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html'),
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html'))
 
             tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
             output_path = base_dir / tour_folder / f'{slug}.html'
@@ -3878,24 +3899,18 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 html = html.replace('href="destination-', f'href="/{dest_prefix}-')
                 html = html.replace('href="../walking-tours/', f'href="/{tour_folder}/')
 
-                # Canonical URL
-                canonical_dest_url = lang_url(lang, f'{wa_prefix}-{slug}.html')
-                html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_dest_url}"', html)
-                if 'rel="canonical"' not in html:
-                    html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
+            # Canonical URL (all languages)
+            wa_prefix_for_url = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+            canonical_dest_url = lang_url(lang, f'{wa_prefix_for_url}-{slug}.html')
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_dest_url}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
 
-                # hreflang tags (all three languages)
-                en_dest_url = lang_url('en', f'walking-area-{slug}.html')
-                de_dest_url = lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html')
-                nl_dest_url = lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html')
-                hreflang_tags = f'''<link rel="alternate" hreflang="en" href="{en_dest_url}" />
-    <link rel="alternate" hreflang="de" href="{de_dest_url}" />
-    <link rel="alternate" hreflang="nl" href="{nl_dest_url}" />'''
-                html = html.replace('</head>', f'{hreflang_tags}\n</head>')
-
-                # switchLang() for language switcher
-                switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>"""
-                html = html.replace('</body>', f'{switchlang_js}\n</body>')
+            # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', f'walking-area-{slug}.html'),
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html'))
 
             wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
             dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
@@ -4149,6 +4164,12 @@ def main():
         for key, value in faq_replacements.items():
             faq_html = faq_html.replace(key, str(value))
 
+        # Fix hreflang and canonical for EN FAQ page
+        faq_html = set_hreflang_tags(faq_html,
+            en_url=lang_url('en', 'faq.html'),
+            de_url=lang_url('de', f'{translate_static_slug("faq", "de")}.html'),
+            nl_url=lang_url('nl', f'{translate_static_slug("faq", "nl")}.html'))
+
         output_path = WEBSITE_DIR / 'faq.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
@@ -4214,6 +4235,12 @@ def main():
         for key, value in reviews_replacements.items():
             reviews_page_html = reviews_page_html.replace(key, str(value))
 
+        # Fix hreflang and canonical for EN Reviews page
+        reviews_page_html = set_hreflang_tags(reviews_page_html,
+            en_url=lang_url('en', 'reviews.html'),
+            de_url=lang_url('de', f'{translate_static_slug("reviews", "de")}.html'),
+            nl_url=lang_url('nl', f'{translate_static_slug("reviews", "nl")}.html'))
+
         output_path = WEBSITE_DIR / 'reviews.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
@@ -4262,6 +4289,12 @@ def main():
         for key, value in tours_listing_replacements.items():
             tours_listing_html = tours_listing_html.replace(key, str(value))
 
+        # Fix hreflang for EN tours listing
+        tours_listing_html = set_hreflang_tags(tours_listing_html,
+            en_url=lang_url('en', 'walking-tours.html'),
+            de_url=lang_url('de', f'{translate_static_slug("walking-tours", "de")}.html'),
+            nl_url=lang_url('nl', f'{translate_static_slug("walking-tours", "nl")}.html'))
+
         output_path = WEBSITE_DIR / 'walking-tours.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
@@ -4309,6 +4342,12 @@ def main():
         dests_listing_html = dests_listing_template
         for key, value in dests_listing_replacements.items():
             dests_listing_html = dests_listing_html.replace(key, str(value))
+
+        # Fix hreflang for EN destinations listing
+        dests_listing_html = set_hreflang_tags(dests_listing_html,
+            en_url=lang_url('en', 'destinations.html'),
+            de_url=lang_url('de', f'{translate_static_slug("destinations", "de")}.html'),
+            nl_url=lang_url('nl', f'{translate_static_slug("destinations", "nl")}.html'))
 
         output_path = WEBSITE_DIR / 'destinations.html'
         if not DRY_RUN:
@@ -4715,6 +4754,60 @@ def main():
         with open(sitemap_path, 'w') as f:
             f.write(sitemap_xml)
         log(f"Sitemap generated: {sitemap_path} ({len(sitemap_urls)} URLs)")
+
+        # Generate DE and NL sitemaps using correct domains
+        for sm_lang in LANGUAGES_TO_BUILD:
+            sm_base = LANG_DOMAINS.get(sm_lang, '')
+            sm_dir = WEBSITE_DIR / sm_lang
+            if not sm_dir.exists():
+                continue
+            sm_urls = []
+            tour_folder = TOUR_FOLDER.get(sm_lang, 'walking-tours')
+            wa_prefix = WALKING_AREA_PREFIX.get(sm_lang, 'walking-area')
+
+            # Homepage
+            sm_urls.append((f'{sm_base}/', '1.0', 'weekly'))
+
+            # Listing pages
+            sm_urls.append((f'{sm_base}/{translate_static_slug("walking-tours", sm_lang)}.html', '0.9', 'weekly'))
+            sm_urls.append((f'{sm_base}/{translate_static_slug("destinations", sm_lang)}.html', '0.9', 'weekly'))
+
+            # Tour pages
+            tour_dir = sm_dir / tour_folder
+            if tour_dir.exists():
+                for tp in sorted(tour_dir.glob('*.html')):
+                    sm_urls.append((f'{sm_base}/{tour_folder}/{tp.name}', '0.8', 'monthly'))
+
+            # Destination / walking area pages
+            for dp in sorted(sm_dir.glob(f'{wa_prefix}-*.html')):
+                sm_urls.append((f'{sm_base}/{dp.name}', '0.8', 'monthly'))
+
+            # Reviews, FAQ
+            reviews_slug = translate_static_slug('reviews', sm_lang)
+            if (sm_dir / f'{reviews_slug}.html').exists():
+                sm_urls.append((f'{sm_base}/{reviews_slug}.html', '0.7', 'monthly'))
+
+            # Static pages
+            static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading',
+                          'privacy-policy', 'terms-and-conditions']
+            for sp in static_pages:
+                sp_slug = translate_static_slug(sp, sm_lang)
+                if (sm_dir / f'{sp_slug}.html').exists():
+                    sm_urls.append((f'{sm_base}/{sp_slug}.html', '0.5', 'monthly'))
+
+            sm_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
+            sm_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+            for url, priority, changefreq in sm_urls:
+                sm_xml += f'  <url>\n    <loc>{url}</loc>\n'
+                sm_xml += f'    <lastmod>{today}</lastmod>\n'
+                sm_xml += f'    <changefreq>{changefreq}</changefreq>\n'
+                sm_xml += f'    <priority>{priority}</priority>\n  </url>\n'
+            sm_xml += '</urlset>\n'
+
+            sm_path = sm_dir / 'sitemap.xml'
+            with open(sm_path, 'w') as f:
+                f.write(sm_xml)
+            log(f"Sitemap generated: {sm_path} ({len(sm_urls)} URLs)")
 
     # Write manifest
     manifest = {
