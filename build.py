@@ -5055,6 +5055,73 @@ def main():
         log("=" * 60)
         apply_company_config(WEBSITE_DIR, company_config)
 
+    # ── IndexNow: notify search engines of updated URLs ──
+    if not DRY_RUN:
+        submit_indexnow()
+
+
+def submit_indexnow():
+    """Ping IndexNow with all site URLs so Bing/Yandex index changes quickly."""
+    import urllib.request
+    INDEXNOW_KEY = '974eb9a9f6e441b8b16c2460adb0e7c3'
+    HOSTS = {
+        'en': 'https://walkingholidayireland.com',
+        'de': 'https://walkingholidayireland.de',
+        'nl': 'https://wandelvakantieierland.nl',
+    }
+
+    log("\n" + "=" * 60)
+    log("IndexNow: notifying search engines of updated URLs...")
+    log("=" * 60)
+
+    # Collect all generated HTML file URLs for each host
+    for lang, host in HOSTS.items():
+        urls = []
+        if lang == 'en':
+            scan_dir = WEBSITE_DIR
+        else:
+            scan_dir = WEBSITE_DIR / lang
+
+        if not scan_dir.exists():
+            log(f"  Skipping {lang} — directory not found: {scan_dir}")
+            continue
+
+        for html_file in scan_dir.rglob('*.html'):
+            # Skip templates, partials, and non-page files
+            rel = html_file.relative_to(scan_dir)
+            rel_str = str(rel).replace('\\', '/')
+            if rel_str.startswith('_') or '/.' in rel_str:
+                continue
+            # For EN, skip de/ and nl/ subdirectories (they belong to other hosts)
+            if lang == 'en' and (rel_str.startswith('de/') or rel_str.startswith('nl/')):
+                continue
+            urls.append(f'{host}/{rel_str}')
+
+        if not urls:
+            log(f"  No URLs found for {lang}, skipping")
+            continue
+
+        # IndexNow batch API (max 10,000 URLs per request)
+        payload = json.dumps({
+            'host': host.replace('https://', '').replace('http://', ''),
+            'key': INDEXNOW_KEY,
+            'keyLocation': f'{host}/{INDEXNOW_KEY}.txt',
+            'urlList': urls[:10000],
+        })
+
+        try:
+            req = urllib.request.Request(
+                'https://api.indexnow.org/IndexNow',
+                data=payload.encode('utf-8'),
+                headers={'Content-Type': 'application/json; charset=utf-8'},
+                method='POST'
+            )
+            resp = urllib.request.urlopen(req, timeout=15)
+            log(f"  {lang.upper()}: Submitted {len(urls)} URLs — HTTP {resp.status}")
+        except Exception as e:
+            log(f"  {lang.upper()}: IndexNow submission failed — {e}", 'warn')
+            log(f"  (This is non-fatal; site builds are unaffected)")
+
 
 def apply_company_config(website_dir, config):
     """Replace hardcoded contact info in all generated HTML/JS files with values from company_config."""
