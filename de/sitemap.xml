@@ -157,12 +157,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.de/bewertungen.html</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.de/ueber-uns.html</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
@@ -188,18 +182,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.de/tourbewertung.html</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/datenschutz.html</loc>
-    <lastmod>2026-03-27</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.de/agb.html</loc>
     <lastmod>2026-03-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

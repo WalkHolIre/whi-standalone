@@ -141,9 +141,9 @@
             <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-            <button onclick="window.location.href='https://walkingholidayireland.com'" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
         </div>
     </div>
 </div>
@@ -579,13 +579,13 @@
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
                 </ul>
                 <div class="flex gap-3 mt-6">
-                    <div class="flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
                         <span class="text-xs font-bold text-primary">EN</span>
                     </div>
-                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">DE</span>
                     </a>
-                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">NL</span>
                     </a>
                 </div>
@@ -601,6 +601,11 @@
     <!-- WHI Ground Control Integration -->
     <script src="../js/whi-config.js" defer></script>
     <script src="../js/whi-data.js" defer></script>
-<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}</script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();if(t===lang){b.style.background='#C4B5FD';b.style.borderColor='#7C3AED';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 </body>
 </html>
