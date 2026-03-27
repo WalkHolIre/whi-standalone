@@ -3478,6 +3478,58 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
+def html_flexible_replace(html, find_text, replace_text):
+    """Replace find_text in html, tolerating HTML tags interspersed in the source.
+
+    Problem: page_translations store plain-text find strings like
+    "Daily luggage transfers between B&Bs" but the English source HTML
+    wraps words in tags: "<strong>Daily luggage transfers</strong> between B&Bs".
+    A simple str.replace() never matches.
+
+    Solution: first try exact match. If that fails, build a regex that
+    allows optional HTML tags (and &amp; entities) between words, so the
+    plain-text find string matches the tagged HTML. The matched span
+    (including its tags) is then replaced with the translation.
+
+    Returns (new_html, matched: bool).
+    """
+    # 1. Fast path — exact match
+    if find_text in html:
+        return html.replace(find_text, replace_text, 1), True
+
+    # 2. Build a regex allowing inline HTML tags between words
+    words = find_text.split()
+    if not words:
+        return html, False
+
+    # Only consume inline formatting tags at the edges (not container <span>, <div>, etc.)
+    INLINE_TAG = r'(?:</?(?:strong|em|b|i|a|u|mark|small|sub|sup)\b[^>]*>)*'
+    # Between words, allow any closing/opening tags + whitespace
+    ANY_TAG = r'(?:<[^>]*>)*'
+    BETWEEN = ANY_TAG + r'\s+' + ANY_TAG
+
+    # Escape each word for regex; also handle & vs &amp;
+    escaped = []
+    for w in words:
+        ew = re.escape(w)
+        # Allow & to match &amp; in HTML source
+        ew = ew.replace(r'\&', r'(?:&|&amp;)')
+        escaped.append(ew)
+
+    # Leading/trailing: only inline formatting tags. Between words: any tags.
+    pattern = INLINE_TAG + BETWEEN.join(escaped) + INLINE_TAG
+
+    try:
+        match = re.search(pattern, html)
+    except re.error:
+        return html, False
+
+    if match:
+        return html[:match.start()] + replace_text + html[match.end():], True
+
+    return html, False
+
+
 def fix_relative_paths(html):
     """Convert all relative asset paths to absolute so pages work from any subdirectory.
     Covers src=, href=, srcset=, CSS url(), and ../  patterns for images, css, js, fonts."""
@@ -3579,18 +3631,22 @@ def build_static_pages(lang, translations):
             if isinstance(translated_text, dict):
                 find_text = translated_text.get('find', '')
                 replace_text = translated_text.get('replace', '')
-                if find_text and replace_text and find_text in html:
-                    html = html.replace(find_text, replace_text)
-                    replacements_applied += 1
+                if find_text and replace_text:
+                    html, matched = html_flexible_replace(html, find_text, replace_text)
+                    if matched:
+                        replacements_applied += 1
+                    else:
+                        log(f"    Section '{section_key}' — find text not matched in {page_slug}", 'warn')
             elif isinstance(translated_text, str):
                 # Simple string value — look for a matching pattern in sections
                 # The convention is: section key maps to the translated text
                 # and we look for the English text via a companion _en key
                 en_key = f'{section_key}_en'
                 en_text = sections.get(en_key, '')
-                if en_text and translated_text and en_text in html:
-                    html = html.replace(en_text, translated_text, 1)
-                    replacements_applied += 1
+                if en_text and translated_text:
+                    html, matched = html_flexible_replace(html, en_text, translated_text)
+                    if matched:
+                        replacements_applied += 1
 
         # Apply the standard UI translations (header, footer, nav, buttons)
         html = translate_html_ui(html, lang)
