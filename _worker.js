@@ -51,6 +51,91 @@ function getCleanUrlRedirect(pathname, search, hash) {
   return null;
 }
 
+/**
+ * Translate English URL slugs to the correct language for DE/NL domains.
+ * Returns the translated path if a redirect is needed, or null if no translation applies.
+ */
+const SLUG_MAP = {
+  '/de': {
+    // Static pages
+    '/about': '/ueber-uns',
+    '/contact': '/kontakt',
+    '/how-it-works': '/so-funktioniert-es',
+    '/tour-grading': '/tourbewertung',
+    '/tailor-made': '/massgeschneidert',
+    '/reviews': '/bewertungen',
+    '/destinations': '/wanderziele-irland',
+    '/walking-tours': '/wandertouren',
+    '/self-guided-walking-holidays-ireland': '/individuelle-wanderferien-irland',
+    '/solo-walking-holidays-ireland': '/solo-wanderurlaub-irland',
+    '/walking-holidays-ireland-over-50s': '/wanderurlaub-irland-50-plus',
+    '/northern-ireland': '/nordirland',
+    '/privacy-policy': '/datenschutz',
+    '/terms-and-conditions': '/agb',
+    '/faq': '/faq',
+  },
+  '/nl': {
+    '/about': '/over-ons',
+    '/contact': '/contact',
+    '/how-it-works': '/hoe-het-werkt',
+    '/tour-grading': '/moeilijkheidsgraad',
+    '/tailor-made': '/op-maat',
+    '/reviews': '/beoordelingen',
+    '/destinations': '/wandelbestemmingen',
+    '/walking-tours': '/wandeltochten',
+    '/self-guided-walking-holidays-ireland': '/wandelvakantie-ierland-op-eigen-houtje',
+    '/solo-walking-holidays-ireland': '/solo-wandelvakantie-ierland',
+    '/walking-holidays-ireland-over-50s': '/wandelvakantie-ierland-50-plus',
+    '/northern-ireland': '/noord-ierland',
+    '/privacy-policy': '/privacybeleid',
+    '/terms-and-conditions': '/algemene-voorwaarden',
+    '/faq': '/faq',
+  },
+};
+
+// Prefix translations: walking-area → wandergebiet/wandelgebied, etc.
+const PREFIX_MAP = {
+  '/de': {
+    'walking-area-': 'wandergebiet-',
+    'destination-': 'wanderziel-',
+    'walking-tours/': 'wandertouren/',
+  },
+  '/nl': {
+    'walking-area-': 'wandelgebied-',
+    'destination-': 'wandelbestemming-',
+    'walking-tours/': 'wandeltochten/',
+  },
+};
+
+function translateSlug(cleanPath, langPrefix) {
+  if (!langPrefix) return null;
+  const map = SLUG_MAP[langPrefix];
+  if (!map) return null;
+
+  // Exact match for static pages
+  if (map[cleanPath]) {
+    // Only redirect if the translation is different from the current path
+    if (map[cleanPath] !== cleanPath) {
+      return map[cleanPath];
+    }
+    return null;
+  }
+
+  // Prefix-based translation (walking-area-*, destination-*, walking-tours/*)
+  const prefixes = PREFIX_MAP[langPrefix];
+  if (prefixes) {
+    // Strip leading slash for prefix matching
+    const pathNoSlash = cleanPath.slice(1);
+    for (const [enPrefix, langPrefixStr] of Object.entries(prefixes)) {
+      if (pathNoSlash.startsWith(enPrefix)) {
+        return '/' + pathNoSlash.replace(enPrefix, langPrefixStr);
+      }
+    }
+  }
+
+  return null;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -112,6 +197,16 @@ export default {
       return new Response(null, {
         status: 301,
         headers: { 'Location': cleanRedirect },
+      });
+    }
+
+    // Translate EN slugs to the correct language (301 redirect)
+    // Visitors may arrive via old links or search engines using EN URLs
+    const translatedPath = translateSlug(cleanPath, langPrefix);
+    if (translatedPath) {
+      return new Response(null, {
+        status: 301,
+        headers: { 'Location': translatedPath + url.search + url.hash },
       });
     }
 

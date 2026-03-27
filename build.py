@@ -4509,6 +4509,79 @@ def main():
             json.dump(faqs, f, indent=2)
         log(f"Cached {len(faqs)} FAQs to _data/faqs.json")
 
+    # Store EN listing pages so we can generate DE/NL versions later
+    en_listing_pages = {}
+
+    # ── Helper: generate a single lang version of an EN listing page ──
+    def generate_translated_listing(en_html, en_slug, lang, translations):
+        """Take a fully-rendered EN listing page and produce a single lang version.
+
+        Applies UI translation, fixes lang attribute, canonical, hreflang,
+        OG tags, and internal links. Writes to the lang subdirectory.
+        """
+        lang_dir = WEBSITE_DIR / lang
+        lang_dir.mkdir(parents=True, exist_ok=True)
+
+        html = en_html
+
+        # Translate UI strings (buttons, labels, nav, footer)
+        html = translate_html_ui(html, lang)
+
+        # Update lang attribute
+        html = html.replace('<html lang="en"', f'<html lang="{lang}"')
+
+        # Fix relative asset paths to absolute (since page moves into /de or /nl)
+        html = fix_relative_paths(html)
+
+        # Fix internal links to use translated paths
+        tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+        wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+        dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
+        html = html.replace('href="/walking-tours/', f'href="/{tour_folder}/')
+        html = html.replace('href="/walking-area-', f'href="/{wa_prefix}-')
+        html = html.replace('href="/destination-', f'href="/{dest_prefix}-')
+        html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
+        html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
+        html = html.replace('href="destination-', f'href="/{dest_prefix}-')
+        html = html.replace('href="walking-tours"', f'href="/{translate_static_slug("walking-tours", lang)}"')
+        html = html.replace('href="destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
+        html = html.replace('href="reviews"', f'href="/{translate_static_slug("reviews", lang)}"')
+        html = html.replace('href="faq"', f'href="/{translate_static_slug("faq", lang)}"')
+
+        # Canonical + OG tags
+        translated_slug = translate_static_slug(en_slug, lang)
+        canonical = lang_url(lang, translated_slug)
+        html = re.sub(r'<link rel="canonical" href="[^"]*"',
+                      f'<link rel="canonical" href="{canonical}"', html)
+        if 'rel="canonical"' not in html:
+            html = html.replace('</head>', f'    <link rel="canonical" href="{canonical}"/>\n</head>')
+        html = fix_og_tags(html, canonical, lang=lang)
+
+        # Hreflang (strips old, adds fresh)
+        html = set_hreflang_tags(html,
+            en_url=lang_url('en', en_slug),
+            de_url=lang_url('de', translate_static_slug(en_slug, 'de')),
+            nl_url=lang_url('nl', translate_static_slug(en_slug, 'nl')))
+
+        # Apply page-specific translation from page_translations table
+        page_trans = translations.get('pages', {})
+        pt = page_trans.get(en_slug, {})
+        if pt:
+            page_title = pt.get('page_title')
+            if page_title:
+                html = re.sub(r'<title>[^<]*</title>', f'<title>{page_title}</title>', html, count=1)
+            meta_desc = pt.get('meta_description')
+            if meta_desc:
+                html = re.sub(r'<meta\s+name="description"\s+content="[^"]*"',
+                              f'<meta name="description" content="{meta_desc}"', html, count=1)
+
+        # Write output
+        output_path = lang_dir / f'{translated_slug}.html'
+        if not DRY_RUN:
+            with open(output_path, 'w') as f:
+                f.write(html)
+            log(f"Generated {lang} listing: {output_path}")
+
     # Build FAQ page
     log("\nGenerating FAQ page...")
     faq_template_path = WEBSITE_DIR / '_templates' / 'faq.html'
@@ -4541,6 +4614,7 @@ def main():
             with open(output_path, 'w') as f:
                 f.write(faq_html)
             log(f"Generated: {output_path}")
+        en_listing_pages['faq'] = faq_html
     else:
         log("FAQ template not found, skipping", 'warn')
 
@@ -4612,6 +4686,7 @@ def main():
             with open(output_path, 'w') as f:
                 f.write(reviews_page_html)
             log(f"Generated: {output_path}")
+        en_listing_pages['reviews'] = reviews_page_html
     else:
         log("Reviews template not found, skipping", 'warn')
 
@@ -4666,6 +4741,7 @@ def main():
             with open(output_path, 'w') as f:
                 f.write(tours_listing_html)
             log(f"Generated: {output_path}")
+        en_listing_pages['walking-tours'] = tours_listing_html
     else:
         log("Tours listing template not found, skipping", 'warn')
 
@@ -4720,6 +4796,7 @@ def main():
             with open(output_path, 'w') as f:
                 f.write(dests_listing_html)
             log(f"Generated: {output_path}")
+        en_listing_pages['destinations'] = dests_listing_html
     else:
         log("Destinations listing template not found, skipping", 'warn')
 
@@ -5347,7 +5424,15 @@ def main():
         # Build translated static pages (homepage, about, contact, etc.)
         lang_static = build_static_pages(lang, translations)
 
-        log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages, {lang_static} static pages")
+        # Build translated listing pages (tours, destinations, reviews, FAQ)
+        lang_listing_count = 0
+        for en_slug, en_html in en_listing_pages.items():
+            generate_translated_listing(en_html, en_slug, lang, translations)
+            lang_listing_count += 1
+        if lang_listing_count:
+            log(f"Generated {lang_listing_count} {lang} listing pages")
+
+        log(f"\n{lang.upper()} site: {lang_tours} tour pages, {lang_dests} destination pages, {lang_static} static pages, {lang_listing_count} listing pages")
 
     # ── Add hreflang tags to EN static pages ─────────────────
     # EN source files aren't processed by build_static_pages() (that only runs
