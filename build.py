@@ -3506,6 +3506,29 @@ def set_hreflang_tags(html, en_url, de_url, nl_url):
 
     html = html.replace('</head>', f'{hreflang_block}\n</head>')
     html = html.replace('</body>', f'{switchlang_js}\n</body>')
+
+    # Apply accessibility and performance improvements
+    html = post_process_html(html)
+
+    return html
+
+
+def post_process_html(html):
+    """Apply final accessibility and performance improvements to any generated page."""
+    # 1. Add skip-to-content link (accessibility — WCAG 2.1 AA)
+    if 'skip-to-content' not in html and '<body' in html:
+        skip_link = '<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>'
+        html = re.sub(r'(<body[^>]*>)', rf'\1\n{skip_link}', html, count=1)
+        # Add id="main-content" to first <main> tag if not already present
+        if 'id="main-content"' not in html:
+            html = re.sub(r'<main\b([^>]*?)>', r'<main id="main-content"\1>', html, count=1)
+
+    # 2. Defer non-critical JS files (performance)
+    defer_scripts = ['whi-reviews.js', 'whi-config.js', 'whi-data.js', 'booking-modal.js']
+    for script_name in defer_scripts:
+        html = html.replace(f'src="../js/{script_name}">', f'src="../js/{script_name}" defer>')
+        html = html.replace(f'src="/js/{script_name}">', f'src="/js/{script_name}" defer>')
+
     return html
 
 
@@ -4573,6 +4596,18 @@ def main():
             for key, value in replacements.items():
                 html = html.replace(key, str(value))
 
+            # Canonical URL for blog article
+            blog_canonical = lang_url('en', f'blog/{slug}.html')
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{blog_canonical}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{blog_canonical}"/>\n</head>')
+
+            # Set hreflang (EN-only blog, but strip any old wrong hreflang and add correct EN + x-default)
+            html = set_hreflang_tags(html,
+                en_url=blog_canonical,
+                de_url=blog_canonical,
+                nl_url=blog_canonical)
+
             output_path = blog_dir / f'{slug}.html'
             if not DRY_RUN:
                 with open(output_path, 'w') as f:
@@ -4683,6 +4718,16 @@ def main():
             rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)\s*<!-- Populated by build\.py -->\s*(</div>)'
             rec_replacement = r'\g<1>' + recommended_html + '\n        ' + r'\g<2>'
             blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new, flags=_re.DOTALL)
+
+            # Canonical and hreflang for blog listing
+            blog_list_canonical = lang_url('en', 'blog.html')
+            blog_listing_new = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{blog_list_canonical}"', blog_listing_new)
+            if 'rel="canonical"' not in blog_listing_new:
+                blog_listing_new = blog_listing_new.replace('</head>', f'    <link rel="canonical" href="{blog_list_canonical}"/>\n</head>')
+            blog_listing_new = set_hreflang_tags(blog_listing_new,
+                en_url=blog_list_canonical,
+                de_url=blog_list_canonical,
+                nl_url=blog_list_canonical)
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
