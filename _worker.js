@@ -91,6 +91,25 @@ export default {
       }
     }
 
+    // Serve language-specific 404 page when asset not found
+    if (response.status === 404) {
+      try {
+        const notFoundUrl = new URL(url);
+        notFoundUrl.pathname = langPrefix + '/404.html';
+        const notFoundResp = await env.ASSETS.fetch(
+          new Request(notFoundUrl.toString(), { headers: request.headers })
+        );
+        if (notFoundResp.status === 200) {
+          return new Response(notFoundResp.body, {
+            status: 404,
+            headers: notFoundResp.headers,
+          });
+        }
+      } catch (e) {
+        // Fall through to original 404
+      }
+    }
+
     return response;
   },
 };
