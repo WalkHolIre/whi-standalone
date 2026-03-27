@@ -1565,7 +1565,7 @@ def render_tour_review_section(reviews_list, tour, tours_by_id, prefix='../'):
         carousel_id="tour-reviews",
         heading=heading,
         show_tour=False,
-        link_url=f"{prefix}reviews.html",
+        link_url=f"{prefix}reviews",
         link_text=f"Read all {len(reviews_list)} reviews",
         prefix=prefix
     )
@@ -1586,7 +1586,7 @@ def render_destination_review_section(reviews_list, destination, tours_by_id, pr
         carousel_id="dest-reviews",
         heading=heading,
         show_tour=True,
-        link_url=f"{prefix}reviews.html",
+        link_url=f"{prefix}reviews",
         link_text=f"Read all {len(reviews_list)} reviews",
         prefix=prefix
     )
@@ -1618,7 +1618,7 @@ def render_tour_cards(tours, prefix='walking-tours/'):
         except (ValueError, TypeError):
             price_display = str(price)
 
-        html += f"""            <a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
+        html += f"""            <a href="{prefix}{slug}" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all">
                 <div class="aspect-[4/3] overflow-hidden bg-slate-100">
                     <img src="images/routes/{slug}/card.jpg" srcset="images/routes/{slug}/card-400w.jpg 400w, images/routes/{slug}/card-800w.jpg 800w, images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.parentElement.style.background='linear-gradient(135deg, #f17e00 0%, #210747 100%)'"/>
                 </div>
@@ -1880,7 +1880,7 @@ def render_tour_faq_section(tour_id, faqs, tour_name):
         </div>
         <div class="space-y-3">
 {accordion_html}        </div>
-        <p class="text-sm text-slate-500 mt-6">Showing {len(curated_faqs)} of {len(tour_faqs)} FAQs · <a href="../faq.html" class="text-primary font-semibold hover:underline">View all FAQs</a></p>
+        <p class="text-sm text-slate-500 mt-6">Showing {len(curated_faqs)} of {len(tour_faqs)} FAQs · <a href="../faq" class="text-primary font-semibold hover:underline">View all FAQs</a></p>
     </section>
 
 """
@@ -1933,7 +1933,7 @@ def render_destination_faq_section(dest_id, faqs, dest_name):
         </div>
         <div class="space-y-3">
 {accordion_html}        </div>
-        <p class="text-sm text-slate-500 mt-6">Showing {len(curated_faqs)} of {len(dest_faqs)} FAQs · <a href="faq.html" class="text-primary font-semibold hover:underline">View all FAQs</a></p>
+        <p class="text-sm text-slate-500 mt-6">Showing {len(curated_faqs)} of {len(dest_faqs)} FAQs · <a href="faq" class="text-primary font-semibold hover:underline">View all FAQs</a></p>
     </section>
 
 """
@@ -2714,7 +2714,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
 
         stats_bar = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' + ''.join(stats) + '</div>'
 
-        html += f'''<a href="{prefix}{slug}.html" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="{escape(region_name)}" data-difficulty="{escape(difficulty)}" data-days="{days}">
+        html += f'''<a href="{prefix}{slug}" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="{escape(region_name)}" data-difficulty="{escape(difficulty)}" data-days="{days}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{img_prefix}images/routes/{slug}/card.jpg" srcset="{img_prefix}images/routes/{slug}/card-400w.jpg 400w, {img_prefix}images/routes/{slug}/card-800w.jpg 800w, {img_prefix}images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
@@ -2722,7 +2722,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
-                        <a href="{img_prefix}price-promise.html" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
+                        <a href="{img_prefix}price-promise" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between flex-grow p-4 pb-2">
@@ -3143,7 +3143,7 @@ def render_tours_listing_schema(tours):
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}",
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
@@ -3342,7 +3342,7 @@ def render_destinations_by_region(destinations, tours, regions_by_id, reviews_by
                     review_count = len(ratings)
                     review_html = f'<div class="flex items-center gap-1.5"><div class="flex items-center gap-0.5">{render_dest_stars_html(avg_rating)}</div><span class="text-sm font-bold text-slate-700">{avg_rating}</span><span class="text-xs text-slate-400">({review_count})</span></div>'
 
-            html += f"""            <a href="destination-{dest_slug}.html" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
+            html += f"""            <a href="destination-{dest_slug}" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/destinations/{dest_slug}/card.jpg" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:50%;background:linear-gradient(to top,rgba(33,7,71,0.7) 0%,rgba(33,7,71,0) 100%);"></div>
@@ -3434,7 +3434,7 @@ def render_destinations_listing_schema(destinations, tours):
             "@type": "ListItem",
             "position": idx,
             "name": dest.get('name', ''),
-            "url": f"https://walkingholidayireland.com/destination-{dest.get('slug', '')}.html",
+            "url": f"https://walkingholidayireland.com/destination-{dest.get('slug', '')}",
             "item": {
                 "@type": "TouristDestination",
                 "name": dest.get('name', ''),
@@ -3475,7 +3475,7 @@ def render_tour_page_schema(tour, reviews_list):
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html",
+        "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}",
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
@@ -3496,7 +3496,7 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}.html"
+            "url": f"https://walkingholidayireland.com/walking-tours/{tour.get('slug', '')}"
         },
         "brand": {
             "@type": "Brand",
@@ -3540,7 +3540,7 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
         "@type": "TouristDestination",
         "name": destination.get('name', ''),
         "description": strip_html_tags(destination.get('seo_description') or destination.get('short_description', '')),
-        "url": f"https://walkingholidayireland.com/destination-{destination.get('slug', '')}.html",
+        "url": f"https://walkingholidayireland.com/destination-{destination.get('slug', '')}",
         "containedInPlace": {
             "@type": "Country",
             "name": destination.get('country', 'Ireland')
@@ -3864,18 +3864,18 @@ def build_static_pages(lang, translations):
         for ps in STATIC_PAGES:
             if ps in page_translations:
                 translated_ps = translate_static_slug(ps, lang)
-                html = html.replace(f'href="{ps}.html"', f'href="/{translated_ps}.html"')
+                html = html.replace(f'href="{ps}"', f'href="/{translated_ps}"')
         # Fix tour/destination links with translated folder names
         tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
         html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
-        html = html.replace('href="walking-tours.html"', f'href="/{translate_static_slug("walking-tours", lang)}.html"')
-        html = html.replace('action="walking-tours.html"', f'action="/{translate_static_slug("walking-tours", lang)}.html"')
-        html = html.replace("window.location.href = 'walking-tours.html'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}.html'")
-        html = html.replace('href="destinations.html"', f'href="/{translate_static_slug("destinations", lang)}.html"')
+        html = html.replace('href="walking-tours"', f'href="/{translate_static_slug("walking-tours", lang)}"')
+        html = html.replace('action="walking-tours"', f'action="/{translate_static_slug("walking-tours", lang)}"')
+        html = html.replace("window.location.href = 'walking-tours'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}'")
+        html = html.replace('href="destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
 
         # Add canonical URL for this language
         translated_slug = translate_static_slug(page_slug, lang)
-        canonical_url = lang_url(lang, f'{translated_slug}.html')
+        canonical_url = lang_url(lang, f'{translated_slug}')
         # Replace any existing canonical, or add one
         html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
         if 'rel="canonical"' not in html:
@@ -3885,9 +3885,9 @@ def build_static_pages(lang, translations):
         de_slug = translate_static_slug(page_slug, 'de')
         nl_slug = translate_static_slug(page_slug, 'nl')
         html = set_hreflang_tags(html,
-            en_url=lang_url('en', f'{page_slug}.html'),
-            de_url=lang_url('de', f'{de_slug}.html'),
-            nl_url=lang_url('nl', f'{nl_slug}.html'))
+            en_url=lang_url('en', f'{page_slug}'),
+            de_url=lang_url('de', f'{de_slug}'),
+            nl_url=lang_url('nl', f'{nl_slug}'))
 
         # Write the translated page with translated filename
         output_path = base_dir / f'{translated_slug}.html'
@@ -4011,16 +4011,16 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
             # Canonical URL (all languages)
             tour_folder_for_url = TOUR_FOLDER.get(lang, 'walking-tours')
-            canonical_tour_url = lang_url(lang, f'{tour_folder_for_url}/{slug}.html')
+            canonical_tour_url = lang_url(lang, f'{tour_folder_for_url}/{slug}')
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_tour_url}"', html)
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_tour_url}"/>\n</head>')
 
             # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', f'walking-tours/{slug}.html'),
-                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html'),
-                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html'))
+                en_url=lang_url('en', f'walking-tours/{slug}'),
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}'),
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}'))
 
             tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
             output_path = base_dir / tour_folder / f'{slug}.html'
@@ -4092,16 +4092,16 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
             # Canonical URL (all languages)
             wa_prefix_for_url = WALKING_AREA_PREFIX.get(lang, 'walking-area')
-            canonical_dest_url = lang_url(lang, f'{wa_prefix_for_url}-{slug}.html')
+            canonical_dest_url = lang_url(lang, f'{wa_prefix_for_url}-{slug}')
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_dest_url}"', html)
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
 
             # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', f'walking-area-{slug}.html'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html'),
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html'))
+                en_url=lang_url('en', f'walking-area-{slug}'),
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
 
             wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
             dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
@@ -4279,16 +4279,16 @@ def main():
 
         if html:
             # Canonical URL for EN tour
-            canonical_url = lang_url('en', f'walking-tours/{slug}.html')
+            canonical_url = lang_url('en', f'walking-tours/{slug}')
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
             # Set hreflang tags (strips old ones, adds correct ones with x-default)
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', f'walking-tours/{slug}.html'),
-                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html'),
-                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html'))
+                en_url=lang_url('en', f'walking-tours/{slug}'),
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}'),
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}'))
 
             tour_folder = TOUR_FOLDER.get('en', 'walking-tours')
             output_path = WEBSITE_DIR / tour_folder / f'{slug}.html'
@@ -4323,16 +4323,16 @@ def main():
 
         if html:
             # Canonical URL for EN destination
-            canonical_url = lang_url('en', f'walking-area-{slug}.html')
+            canonical_url = lang_url('en', f'walking-area-{slug}')
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
             # Set hreflang tags (strips old ones, adds correct ones with x-default)
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', f'walking-area-{slug}.html'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html'),
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html'))
+                en_url=lang_url('en', f'walking-area-{slug}'),
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
 
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
@@ -4382,9 +4382,9 @@ def main():
 
         # Fix hreflang and canonical for EN FAQ page
         faq_html = set_hreflang_tags(faq_html,
-            en_url=lang_url('en', 'faq.html'),
-            de_url=lang_url('de', f'{translate_static_slug("faq", "de")}.html'),
-            nl_url=lang_url('nl', f'{translate_static_slug("faq", "nl")}.html'))
+            en_url=lang_url('en', 'faq'),
+            de_url=lang_url('de', f'{translate_static_slug("faq", "de")}'),
+            nl_url=lang_url('nl', f'{translate_static_slug("faq", "nl")}'))
 
         output_path = WEBSITE_DIR / 'faq.html'
         if not DRY_RUN:
@@ -4453,9 +4453,9 @@ def main():
 
         # Fix hreflang and canonical for EN Reviews page
         reviews_page_html = set_hreflang_tags(reviews_page_html,
-            en_url=lang_url('en', 'reviews.html'),
-            de_url=lang_url('de', f'{translate_static_slug("reviews", "de")}.html'),
-            nl_url=lang_url('nl', f'{translate_static_slug("reviews", "nl")}.html'))
+            en_url=lang_url('en', 'reviews'),
+            de_url=lang_url('de', f'{translate_static_slug("reviews", "de")}'),
+            nl_url=lang_url('nl', f'{translate_static_slug("reviews", "nl")}'))
 
         output_path = WEBSITE_DIR / 'reviews.html'
         if not DRY_RUN:
@@ -4507,9 +4507,9 @@ def main():
 
         # Fix hreflang for EN tours listing
         tours_listing_html = set_hreflang_tags(tours_listing_html,
-            en_url=lang_url('en', 'walking-tours.html'),
-            de_url=lang_url('de', f'{translate_static_slug("walking-tours", "de")}.html'),
-            nl_url=lang_url('nl', f'{translate_static_slug("walking-tours", "nl")}.html'))
+            en_url=lang_url('en', 'walking-tours'),
+            de_url=lang_url('de', f'{translate_static_slug("walking-tours", "de")}'),
+            nl_url=lang_url('nl', f'{translate_static_slug("walking-tours", "nl")}'))
 
         output_path = WEBSITE_DIR / 'walking-tours.html'
         if not DRY_RUN:
@@ -4561,9 +4561,9 @@ def main():
 
         # Fix hreflang for EN destinations listing
         dests_listing_html = set_hreflang_tags(dests_listing_html,
-            en_url=lang_url('en', 'destinations.html'),
-            de_url=lang_url('de', f'{translate_static_slug("destinations", "de")}.html'),
-            nl_url=lang_url('nl', f'{translate_static_slug("destinations", "nl")}.html'))
+            en_url=lang_url('en', 'destinations'),
+            de_url=lang_url('de', f'{translate_static_slug("destinations", "de")}'),
+            nl_url=lang_url('nl', f'{translate_static_slug("destinations", "nl")}'))
 
         output_path = WEBSITE_DIR / 'destinations.html'
         if not DRY_RUN:
@@ -4597,7 +4597,7 @@ def main():
             except (ValueError, TypeError):
                 st_price_display = ''
             st_detail = f"{st_price_display} &bull; {st_days} Days" if st_price_display else f"{st_days} Days"
-            sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../walking-tours/{st_slug}.html">
+            sidebar_tours_html += f'''<a class="group flex gap-4 items-start" href="../walking-tours/{st_slug}">
                     <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
                         <img src="../images/routes/{st_slug}/card.jpg" alt="{st_name}" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" onerror="this.style.display='none'"/>
                     </div>
@@ -4623,7 +4623,7 @@ def main():
             except (ValueError, TypeError):
                 rt_price_display = ''
             recommended_tours_html += f'''
-            <a href="../walking-tours/{rt_slug}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="../walking-tours/{rt_slug}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="../images/routes/{rt_slug}/card.jpg" alt="{rt_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{rt_days} Days</span>
@@ -4643,10 +4643,10 @@ def main():
         cat_counter = Counter(p.get('category', 'Blog') or 'Blog' for p in posts if p.get('slug'))
         sidebar_categories_html = ''
         # "All Posts" link first
-        sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{len(posts)}</span></a></li>\n'
+        sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{len(posts)}</span></a></li>\n'
         for cat_name, cat_count in cat_counter.most_common():
             cat_s = (cat_name or 'blog').lower().replace(' ', '-').replace("'", '')
-            sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog.html?category={escape(cat_s)}"><span>{escape(cat_name)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
+            sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category={escape(cat_s)}"><span>{escape(cat_name)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
 
         # Build sidebar recent posts (5 most recent by published_date)
         sorted_posts = sorted(
@@ -4666,7 +4666,7 @@ def main():
                 rp_date_display = rp_dt.strftime('%b %d, %Y')
             except (ValueError, TypeError):
                 pass
-            sidebar_recent_posts_html += f'''<li><a class="group block" href="{escape(rp_slug)}.html">
+            sidebar_recent_posts_html += f'''<li><a class="group block" href="{escape(rp_slug)}">
                     <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">{escape(rp_title)}</p>
                     <p class="text-xs text-slate-400 mt-1">{rp_date_display}</p>
                 </a></li>\n'''
@@ -4739,7 +4739,7 @@ def main():
             for rp in related:
                 rp_slug = rp.get('slug', '')
                 rp_title = rp.get('title', '')
-                sidebar_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp_slug)}.html">{escape(rp_title)}</a></li>\n'
+                sidebar_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp_slug)}">{escape(rp_title)}</a></li>\n'
 
             replacements = {
                 '{meta_title}': escape(meta_title),
@@ -4767,9 +4767,9 @@ def main():
             # Build hreflang URLs — use localized slugs when available
             slug_de = post.get('slug_de', '').strip() if post.get('slug_de') else ''
             slug_nl = post.get('slug_nl', '').strip() if post.get('slug_nl') else ''
-            en_blog_url = lang_url('en', f'blog/{slug}.html')
-            de_blog_url = lang_url('de', f'blog/{slug_de}.html') if slug_de else en_blog_url
-            nl_blog_url = lang_url('nl', f'blog/{slug_nl}.html') if slug_nl else en_blog_url
+            en_blog_url = lang_url('en', f'blog/{slug}')
+            de_blog_url = lang_url('de', f'blog/{slug_de}') if slug_de else en_blog_url
+            nl_blog_url = lang_url('nl', f'blog/{slug_nl}') if slug_nl else en_blog_url
 
             # Canonical URL for EN blog article
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{en_blog_url}"', html)
@@ -4873,7 +4873,7 @@ def main():
 
             grid_cards += f'''
         <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
-            <a href="blog/{escape(ps)}.html" class="flex flex-col h-full">
+            <a href="blog/{escape(ps)}" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
@@ -4906,7 +4906,7 @@ def main():
                 t_price_display = ''
 
             recommended_html += f'''
-            <a href="walking-tours/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="walking-tours/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} Days</span>
@@ -4942,14 +4942,14 @@ def main():
             blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new, flags=_re.DOTALL)
 
             # Canonical and hreflang for blog listing
-            blog_list_canonical = lang_url('en', 'blog.html')
+            blog_list_canonical = lang_url('en', 'blog')
             blog_listing_new = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{blog_list_canonical}"', blog_listing_new)
             if 'rel="canonical"' not in blog_listing_new:
                 blog_listing_new = blog_listing_new.replace('</head>', f'    <link rel="canonical" href="{blog_list_canonical}"/>\n</head>')
             blog_listing_new = set_hreflang_tags(blog_listing_new,
                 en_url=blog_list_canonical,
-                de_url=lang_url('de', 'blog.html'),
-                nl_url=lang_url('nl', 'blog.html'))
+                de_url=lang_url('de', 'blog'),
+                nl_url=lang_url('nl', 'blog'))
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
@@ -5024,7 +5024,7 @@ def main():
 
                 lang_grid_cards += f'''
         <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
-            <a href="blog/{escape(lang_slug)}.html" class="flex flex-col h-full">
+            <a href="blog/{escape(lang_slug)}" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
@@ -5060,7 +5060,7 @@ def main():
                 except (ValueError, TypeError):
                     t_price_display = ''
                 lang_rec_html += f'''
-            <a href="{bcfg['tour_folder']}/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="{bcfg['tour_folder']}/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} {bcfg['days']}</span>
@@ -5124,10 +5124,10 @@ def main():
             lang_blog = fix_relative_paths(lang_blog)
 
             # Set canonical and hreflang
-            en_blog_list = lang_url('en', 'blog.html')
-            de_blog_list = lang_url('de', 'blog.html')
-            nl_blog_list = lang_url('nl', 'blog.html')
-            this_blog_list = lang_url(blang, 'blog.html')
+            en_blog_list = lang_url('en', 'blog')
+            de_blog_list = lang_url('de', 'blog')
+            nl_blog_list = lang_url('nl', 'blog')
+            this_blog_list = lang_url(blang, 'blog')
 
             lang_blog = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{this_blog_list}"', lang_blog)
             if 'rel="canonical"' not in lang_blog:
@@ -5215,9 +5215,9 @@ def main():
             de_slug = translate_static_slug(page_slug, 'de')
             nl_slug = translate_static_slug(page_slug, 'nl')
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', f'{page_slug}.html'),
-                de_url=lang_url('de', f'{de_slug}.html'),
-                nl_url=lang_url('nl', f'{nl_slug}.html'))
+                en_url=lang_url('en', f'{page_slug}'),
+                de_url=lang_url('de', f'{de_slug}'),
+                nl_url=lang_url('nl', f'{nl_slug}'))
             en_file.write_text(html)
             en_hreflang_count += 1
         log(f"Added hreflang tags to {en_hreflang_count} EN static pages")
@@ -5230,8 +5230,8 @@ def main():
             'tours_btn': 'Wandertouren finden',
             'help': 'Brauchen Sie Hilfe?',
             'contact': 'Kontakt aufnehmen',
-            'tours_url': '/wandertouren.html',
-            'contact_url': '/kontakt.html',
+            'tours_url': '/wandertouren',
+            'contact_url': '/kontakt',
             'illustration_alt': 'Ein verwirrter Wanderer, der sich an einer Kreuzung verlaufen hat - 404 Seite nicht gefunden',
         },
         'nl': {
@@ -5240,8 +5240,8 @@ def main():
             'tours_btn': 'Wandeltochten bekijken',
             'help': 'Hulp nodig?',
             'contact': 'Neem contact op',
-            'tours_url': '/wandeltochten.html',
-            'contact_url': '/contact.html',
+            'tours_url': '/wandeltochten',
+            'contact_url': '/contact',
             'illustration_alt': 'Een verwarde wandelaar die verdwaald is bij een kruispunt - 404 pagina niet gevonden',
         },
     }
@@ -5256,8 +5256,8 @@ def main():
                                               f'<title>{t404["title"]}</title>')
                 lang_html = lang_html.replace('Hike Back to Home', t404['home_btn'])
                 lang_html = lang_html.replace('Find a Real Trail', t404['tours_btn'])
-                lang_html = lang_html.replace('href="/walking-tours.html"', f'href="{t404["tours_url"]}"')
-                lang_html = lang_html.replace('href="/contact.html"', f'href="{t404["contact_url"]}"')
+                lang_html = lang_html.replace('href="/walking-tours"', f'href="{t404["tours_url"]}"')
+                lang_html = lang_html.replace('href="/contact"', f'href="{t404["contact_url"]}"')
                 lang_html = lang_html.replace('Need help?', f'{t404["help"]}')
                 lang_html = lang_html.replace('>Get in touch<', f'>{t404["contact"]}<')
                 lang_html = lang_html.replace(
@@ -5329,20 +5329,20 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/', '1.0', 'weekly'))
 
         # Listing pages — high priority
-        sitemap_urls.append(('https://walkingholidayireland.com/walking-tours.html', '0.9', 'weekly'))
-        sitemap_urls.append(('https://walkingholidayireland.com/destinations.html', '0.9', 'weekly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/walking-tours', '0.9', 'weekly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/destinations', '0.9', 'weekly'))
 
         # Individual tour pages
         for slug in generated['tours']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/walking-tours/{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/walking-tours/{slug}', '0.8', 'monthly'))
 
         # Individual destination / walking area pages (canonical is walking-area-)
         for slug in generated['destinations']:
-            sitemap_urls.append((f'https://walkingholidayireland.com/walking-area-{slug}.html', '0.8', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/walking-area-{slug}', '0.8', 'monthly'))
 
         # Reviews and FAQ
-        sitemap_urls.append(('https://walkingholidayireland.com/reviews.html', '0.7', 'monthly'))
-        sitemap_urls.append(('https://walkingholidayireland.com/faq.html', '0.7', 'monthly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/reviews', '0.7', 'monthly'))
+        sitemap_urls.append(('https://walkingholidayireland.com/faq', '0.7', 'monthly'))
 
         # Static pages
         for page in ['about.html', 'contact.html', 'how-it-works.html', 'tailor-made.html', 'tour-grading.html', 'blog.html']:
@@ -5351,7 +5351,7 @@ def main():
 
         # Blog articles (only generated/published posts)
         for blog_slug in generated_blog_slugs:
-            sitemap_urls.append((f'https://walkingholidayireland.com/blog/{blog_slug}.html', '0.6', 'monthly'))
+            sitemap_urls.append((f'https://walkingholidayireland.com/blog/{blog_slug}', '0.6', 'monthly'))
 
         sitemap_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
         sitemap_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -5383,23 +5383,23 @@ def main():
             sm_urls.append((f'{sm_base}/', '1.0', 'weekly'))
 
             # Listing pages
-            sm_urls.append((f'{sm_base}/{translate_static_slug("walking-tours", sm_lang)}.html', '0.9', 'weekly'))
-            sm_urls.append((f'{sm_base}/{translate_static_slug("destinations", sm_lang)}.html', '0.9', 'weekly'))
+            sm_urls.append((f'{sm_base}/{translate_static_slug("walking-tours", sm_lang)}', '0.9', 'weekly'))
+            sm_urls.append((f'{sm_base}/{translate_static_slug("destinations", sm_lang)}', '0.9', 'weekly'))
 
             # Tour pages
             tour_dir = sm_dir / tour_folder
             if tour_dir.exists():
                 for tp in sorted(tour_dir.glob('*.html')):
-                    sm_urls.append((f'{sm_base}/{tour_folder}/{tp.name}', '0.8', 'monthly'))
+                    sm_urls.append((f'{sm_base}/{tour_folder}/{tp.stem}', '0.8', 'monthly'))
 
             # Destination / walking area pages
             for dp in sorted(sm_dir.glob(f'{wa_prefix}-*.html')):
-                sm_urls.append((f'{sm_base}/{dp.name}', '0.8', 'monthly'))
+                sm_urls.append((f'{sm_base}/{dp.stem}', '0.8', 'monthly'))
 
             # Reviews, FAQ
             reviews_slug = translate_static_slug('reviews', sm_lang)
             if (sm_dir / f'{reviews_slug}.html').exists():
-                sm_urls.append((f'{sm_base}/{reviews_slug}.html', '0.7', 'monthly'))
+                sm_urls.append((f'{sm_base}/{reviews_slug}', '0.7', 'monthly'))
 
             # Static pages
             static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading',
@@ -5407,13 +5407,13 @@ def main():
             for sp in static_pages:
                 sp_slug = translate_static_slug(sp, sm_lang)
                 if (sm_dir / f'{sp_slug}.html').exists():
-                    sm_urls.append((f'{sm_base}/{sp_slug}.html', '0.5', 'monthly'))
+                    sm_urls.append((f'{sm_base}/{sp_slug}', '0.5', 'monthly'))
 
             # Blog pages (localized)
             blog_lang_dir = sm_dir / 'blog'
             if blog_lang_dir.exists():
                 for bp in sorted(blog_lang_dir.glob('*.html')):
-                    sm_urls.append((f'{sm_base}/blog/{bp.name}', '0.6', 'monthly'))
+                    sm_urls.append((f'{sm_base}/blog/{bp.stem}', '0.6', 'monthly'))
 
             sm_xml = '<?xml version="1.0" encoding="UTF-8"?>\n'
             sm_xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
