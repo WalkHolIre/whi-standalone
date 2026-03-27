@@ -4819,8 +4819,8 @@ def main():
                 blog_listing_new = blog_listing_new.replace('</head>', f'    <link rel="canonical" href="{blog_list_canonical}"/>\n</head>')
             blog_listing_new = set_hreflang_tags(blog_listing_new,
                 en_url=blog_list_canonical,
-                de_url=blog_list_canonical,
-                nl_url=blog_list_canonical)
+                de_url=lang_url('de', 'blog.html'),
+                nl_url=lang_url('nl', 'blog.html'))
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
@@ -4828,6 +4828,194 @@ def main():
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
             log("blog.html not found, skipping listing page", 'warn')
+
+        # ── Build DE & NL Blog Listing Pages ─────────────────────
+        BLOG_LANG_CONFIG = {
+            'de': {
+                'title': 'Wandern in Irland Blog | Wanderführer, Tipps & Geschichten',
+                'meta_desc': 'Entdecken Sie Wanderführer, Reisetipps und Geschichten von Irlands schönsten Wanderrouten.',
+                'hero_title': 'Geschichten vom Wanderweg',
+                'hero_subtitle': 'Entdecken Sie den Zauber Irlands, Schritt für Schritt. Expertenführer, lokale Geheimnisse und die besten Wanderwege.',
+                'all_posts': 'Alle Beiträge',
+                'read_article': 'Artikel Lesen',
+                'search_placeholder': 'Beiträge suchen...',
+                'recommended_tours': 'Empfohlene Touren',
+                'rec_subtitle': 'Bereit zu wandern? Entdecken Sie unsere beliebtesten Wandertouren in Irland.',
+                'days': 'Tage',
+                'details': 'Details',
+                'slug_field': 'slug_de',
+                'title_field': 'title_de',
+                'excerpt_field': 'excerpt_de',
+                'content_field': 'content_de',
+                'tour_folder': 'wandertouren',
+            },
+            'nl': {
+                'title': 'Wandelen in Ierland Blog | Wandelgidsen, Tips & Verhalen',
+                'meta_desc': 'Ontdek wandelgidsen, reistips en verhalen van de mooiste wandelroutes in Ierland.',
+                'hero_title': 'Verhalen van het Wandelpad',
+                'hero_subtitle': 'Ontdek de magie van Ierland, stap voor stap. Expertgidsen, lokale geheimen en de beste wandelpaden.',
+                'all_posts': 'Alle Berichten',
+                'read_article': 'Lees Artikel',
+                'search_placeholder': 'Berichten zoeken...',
+                'recommended_tours': 'Aanbevolen Tours',
+                'rec_subtitle': 'Klaar om te wandelen? Ontdek onze populairste wandeltochten in Ierland.',
+                'days': 'Dagen',
+                'details': 'Details',
+                'slug_field': 'slug_nl',
+                'title_field': 'title_nl',
+                'excerpt_field': 'excerpt_nl',
+                'content_field': 'content_nl',
+                'tour_folder': 'wandeltochten',
+            },
+        }
+
+        for blang, bcfg in BLOG_LANG_CONFIG.items():
+            log(f"\nGenerating {blang.upper()} blog listing page...")
+
+            # Build translated blog cards — include ALL posts (using translated title/excerpt where available)
+            lang_grid_cards = ''
+            lang_post_count = 0
+            for post in posts:
+                ps = post.get('slug', '')
+                if ps not in generated_blog_slugs:
+                    continue
+                # Use translated slug if available, otherwise fall back to EN slug
+                lang_slug = (post.get(bcfg['slug_field'], '') or '').strip() or ps
+                p_img = post.get('featured_image', '') or ''
+                p_cat = post.get('category', '') or 'Walking Routes'
+                p_title = post.get(bcfg['title_field']) or post.get('title', '')
+                p_excerpt = post.get(bcfg['excerpt_field']) or post.get('excerpt', '') or ''
+                if len(p_excerpt) > 160:
+                    p_excerpt = p_excerpt[:157] + '...'
+                p_date = post.get('published_date') or (post.get('published_at', '')[:10] if post.get('published_at') else '')
+                try:
+                    p_date_display = _dt.strptime(p_date[:10], '%Y-%m-%d').strftime('%B %d, %Y')
+                except (ValueError, TypeError):
+                    p_date_display = p_date
+
+                lang_grid_cards += f'''
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
+            <a href="blog/{escape(lang_slug)}.html" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">{escape(p_cat)}</span>
+                    <span class="text-xs text-slate-500">{p_date_display}</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{escape(p_title)}</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">{escape(p_excerpt)}</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    {bcfg['read_article']} <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>'''
+                lang_post_count += 1
+
+            if lang_post_count == 0:
+                log(f"  No blog posts for {blang.upper()}, skipping listing")
+                continue
+
+            # Build translated recommended tours
+            lang_rec_html = ''
+            for tour in featured_tours:
+                t_slug = tour.get('slug', '')
+                t_name = escape(tour.get('name', ''))
+                t_days = tour.get('duration_days', 0) or 0
+                t_price = tour.get('price_per_person_eur', 0)
+                t_subtitle = escape(tour.get('subtitle', '') or tour.get('short_description', '') or '')
+                if len(t_subtitle) > 40:
+                    t_subtitle = t_subtitle[:37] + '...'
+                try:
+                    t_price_display = f"&euro;{float(t_price):.0f}" if t_price else ''
+                except (ValueError, TypeError):
+                    t_price_display = ''
+                lang_rec_html += f'''
+            <a href="{bcfg['tour_folder']}/{escape(t_slug)}.html" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="images/routes/{escape(t_slug)}/card.jpg" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} {bcfg['days']}</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">{t_name}</h4>
+                    <p class="text-xs text-slate-500 mb-3">{t_subtitle}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">{t_price_display}</span>
+                        <span class="text-xs font-bold underline underline-offset-4">{bcfg['details']}</span>
+                    </div>
+                </div>
+            </a>'''
+
+            # Start from the EN blog listing as a base
+            lang_blog = blog_listing_new
+
+            # Replace HTML lang
+            lang_blog = lang_blog.replace('<html lang="en"', f'<html lang="{blang}"')
+
+            # Replace title and meta description
+            lang_blog = _re.sub(r'<title>[^<]*</title>', f'<title>{bcfg["title"]}</title>', lang_blog)
+            lang_blog = _re.sub(r'<meta name="description" content="[^"]*"', f'<meta name="description" content="{bcfg["meta_desc"]}"', lang_blog)
+
+            # Replace hero text
+            lang_blog = lang_blog.replace('>Stories from the Trail<', f'>{bcfg["hero_title"]}<')
+            # Replace hero subtitle (tricky — just replace the key phrase)
+            lang_blog = _re.sub(
+                r'Discover the magic of Ireland.*?hiking in Ireland</a>\.',
+                bcfg['hero_subtitle'],
+                lang_blog, flags=_re.DOTALL)
+
+            # Replace filter button text
+            lang_blog = lang_blog.replace('>All Posts<', f'>{bcfg["all_posts"]}<')
+            lang_blog = lang_blog.replace('Search stories...', bcfg['search_placeholder'])
+
+            # Replace recommended tours section
+            lang_blog = lang_blog.replace('>Recommended Tours<', f'>{bcfg["recommended_tours"]}<')
+            # Replace recommended tours subtitle
+            lang_blog = _re.sub(
+                r'Ready to walk\?.*?Ireland\.',
+                bcfg['rec_subtitle'],
+                lang_blog)
+
+            # Replace blog cards
+            new_grid = f'''<!-- Content Area -->
+    <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+{lang_grid_cards}
+    </div>'''
+            grid_pattern = r'<!-- Content Area -->.*?</div>\s*\n\s*\n\s*<!-- Pagination -->'
+            lang_blog = _re.sub(grid_pattern, new_grid + '\n\n    <!-- Pagination -->', lang_blog, flags=_re.DOTALL)
+
+            # Replace recommended tours cards
+            rec_pattern2 = r'(<div[^>]*id="recommended-tours"[^>]*>).*?(</div>)'
+            lang_blog = _re.sub(rec_pattern2, r'\g<1>' + lang_rec_html + '\n        ' + r'\g<2>', lang_blog, flags=_re.DOTALL)
+
+            # Translate common UI via translate_html_ui
+            lang_blog = translate_html_ui(lang_blog, blang)
+
+            # Fix relative paths for lang subdirectory
+            lang_blog = fix_relative_paths(lang_blog)
+
+            # Set canonical and hreflang
+            en_blog_list = lang_url('en', 'blog.html')
+            de_blog_list = lang_url('de', 'blog.html')
+            nl_blog_list = lang_url('nl', 'blog.html')
+            this_blog_list = lang_url(blang, 'blog.html')
+
+            lang_blog = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{this_blog_list}"', lang_blog)
+            if 'rel="canonical"' not in lang_blog:
+                lang_blog = lang_blog.replace('</head>', f'    <link rel="canonical" href="{this_blog_list}"/>\n</head>')
+
+            lang_blog = set_hreflang_tags(lang_blog,
+                en_url=en_blog_list,
+                de_url=de_blog_list,
+                nl_url=nl_blog_list)
+
+            # Write to lang directory
+            lang_blog_dir = WEBSITE_DIR / blang
+            lang_blog_dir.mkdir(parents=True, exist_ok=True)
+            if not DRY_RUN:
+                with open(lang_blog_dir / 'blog.html', 'w') as f:
+                    f.write(lang_blog)
+                log(f"  Generated {blang.upper()} blog listing with {lang_post_count} posts")
 
     # ── Build Language Sites ─────────────────────────────────
     LANGUAGES_TO_BUILD = ['de', 'nl']  # Add 'es', 'fr' later
@@ -4839,9 +5027,11 @@ def main():
         lang_dir = WEBSITE_DIR / lang
         if lang_dir.exists():
             import glob as _glob
-            stale_files = list(lang_dir.glob('**/*.html'))
+            stale_files = [f for f in lang_dir.glob('**/*.html')
+                           if 'blog' not in str(f.relative_to(lang_dir)).split('/')[0]
+                           and f.name != 'blog.html']
             if stale_files:
-                log(f"Cleaning {len(stale_files)} old {lang} HTML files before rebuild...")
+                log(f"Cleaning {len(stale_files)} old {lang} HTML files before rebuild (preserving blog/)...")
                 for f in stale_files:
                     f.unlink()
 
@@ -5007,7 +5197,7 @@ def main():
 
             # Static pages
             static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading',
-                          'privacy-policy', 'terms-and-conditions']
+                          'privacy-policy', 'terms-and-conditions', 'blog']
             for sp in static_pages:
                 sp_slug = translate_static_slug(sp, sm_lang)
                 if (sm_dir / f'{sp_slug}.html').exists():
