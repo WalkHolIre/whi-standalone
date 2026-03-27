@@ -284,7 +284,7 @@ UI_STRINGS = {
         'meet_cliff_louise': 'Treffen Sie Cliff & Louise',
         'stay_updated': 'Bleiben Sie auf dem Laufenden',
         'subscribe': 'Abonnieren',
-        'your_questions': 'Ihre Fragen, beantwortet',
+        'your_questions': 'Ihre Fragen zu Wandertouren in Irland — Beantwortet',
         # FAQ items on homepage
         'faq_lost': 'Was passiert, wenn ich mich verlaufe?',
         'faq_luggage': 'Wie funktioniert der Gepäcktransfer?',
@@ -448,7 +448,7 @@ UI_STRINGS = {
         'meet_cliff_louise': 'Maak Kennis met Cliff & Louise',
         'stay_updated': 'Blijf Op De Hoogte',
         'subscribe': 'Inschrijven',
-        'your_questions': 'Uw Vragen, Beantwoord',
+        'your_questions': 'Uw Vragen over Wandeltochten in Ierland Beantwoord',
         # FAQ items on homepage
         'faq_lost': 'Wat als ik verdwaal?',
         'faq_luggage': 'Hoe werkt de bagagetransfer?',
@@ -771,7 +771,7 @@ def translate_html_ui(html, lang):
         '>Meet Cliff &amp; Louise<': f'>{t("meet_cliff_louise", lang)}<',
         '>Stay Updated on Walking Ireland<': f'>{t("stay_updated", lang)}<',
         '>Subscribe<': f'>{t("subscribe", lang)}<',
-        '>Your Questions, Answered<': f'>{t("your_questions", lang)}<',
+        '>Your Irish Walking Tour Questions Answered<': f'>{t("your_questions", lang)}<',
 
         # Homepage FAQ items
         '>What if I get lost?<': f'>{t("faq_lost", lang)}<',
