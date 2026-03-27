@@ -3478,6 +3478,38 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
+def fix_relative_paths(html):
+    """Convert all relative asset paths to absolute so pages work from any subdirectory.
+    Covers src=, href=, srcset=, CSS url(), and ../  patterns for images, css, js, fonts."""
+    # Standard attributes: src="images/..." , href="css/..." etc.
+    html = html.replace('src="images/', 'src="/images/')
+    html = html.replace('href="images/', 'href="/images/')
+    html = html.replace('src="js/', 'src="/js/')
+    html = html.replace('href="js/', 'href="/js/')
+    html = html.replace('href="css/', 'href="/css/')
+    html = html.replace('href="fonts/', 'href="/fonts/')
+    html = html.replace('src="fonts/', 'src="/fonts/')
+    # CSS background-image url() with single or double quotes
+    html = html.replace("url('images/", "url('/images/")
+    html = html.replace('url("images/', 'url("/images/')
+    html = html.replace("url('fonts/", "url('/fonts/")
+    # Parent-relative paths (../) — convert to absolute
+    html = html.replace('src="../images/', 'src="/images/')
+    html = html.replace('href="../images/', 'href="/images/')
+    html = html.replace('src="../js/', 'src="/js/')
+    html = html.replace('href="../js/', 'href="/js/')
+    html = html.replace('href="../css/', 'href="/css/')
+    html = html.replace("url('../images/", "url('/images/")
+    html = html.replace('url("../images/', 'url("/images/')
+    # srcset attribute values (space-separated, may contain multiple image paths)
+    html = re.sub(r'srcset="(?:\.\.\/)?images/', 'srcset="/images/', html)
+    html = re.sub(r'(srcset="[^"]*?)(?<!/)\bimages/', r'\1/images/', html)
+    # imagesrcset in preload link tags
+    html = re.sub(r'imagesrcset="(?:\.\.\/)?images/', 'imagesrcset="/images/', html)
+    html = re.sub(r'(imagesrcset="[^"]*?)(?<!/)\bimages/', r'\1/images/', html)
+    return html
+
+
 def build_static_pages(lang, translations):
     """Build translated versions of static HTML pages (homepage, about, contact, etc.)."""
     page_translations = translations.get('pages', {})
@@ -3580,17 +3612,8 @@ def build_static_pages(lang, translations):
         # Update lang attribute
         html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
-        # Fix relative paths to absolute paths
-        # Files live in /de/ on origin but are served at root on .de domain
-        # Using absolute /path ensures they work in both contexts
-        html = html.replace('href="css/', 'href="/css/')
-        html = html.replace('href="js/', 'href="/js/')
-        html = html.replace('src="images/', 'src="/images/')
-        html = html.replace('src="js/', 'src="/js/')
-        html = html.replace('href="images/', 'href="/images/')
-        # Fix CSS background-image url() relative paths
-        html = html.replace("url('images/", "url('/images/")
-        html = html.replace('url("images/', 'url("/images/')
+        # Fix all relative asset paths to absolute
+        html = fix_relative_paths(html)
         # Fix page links — use translated filenames at root level
         for ps in STATIC_PAGES:
             if ps in page_translations:
@@ -3698,13 +3721,8 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             html = translate_html_ui(html, lang)
 
             if lang != 'en':
-                # Convert relative paths to absolute so they work both
-                # at /de/wandertouren/ on .de and /nl/wandeltochten/ on .com
-                html = html.replace('href="../', 'href="/')
-                html = html.replace('src="../', 'src="/')
-                html = html.replace("url('../", "url('/")
-                html = html.replace("url('images/", "url('/images/")
-                html = html.replace('url("images/', 'url("/images/')
+                # Fix all relative asset paths to absolute
+                html = fix_relative_paths(html)
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
                 # Fix internal links to use translated paths
@@ -3786,6 +3804,9 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             if lang != 'en':
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
+                # Fix all relative asset paths to absolute
+                html = fix_relative_paths(html)
+
                 # Fix internal links to use translated paths
                 tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
                 wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
@@ -3797,11 +3818,6 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
                 html = html.replace('href="destination-', f'href="/{dest_prefix}-')
                 html = html.replace('href="../walking-tours/', f'href="/{tour_folder}/')
-                html = html.replace('src="../', 'src="/')
-                html = html.replace('href="../', 'href="/')
-                html = html.replace("url('../", "url('/")
-                html = html.replace("url('images/", "url('/images/")
-                html = html.replace('url("images/', 'url("/images/')
 
                 # Canonical URL
                 canonical_dest_url = lang_url(lang, f'{wa_prefix}-{slug}.html')
