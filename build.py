@@ -3762,6 +3762,21 @@ def post_process_html(html):
         html = html.replace(f'src="../js/{script_name}">', f'src="../js/{script_name}" defer>')
         html = html.replace(f'src="/js/{script_name}">', f'src="/js/{script_name}" defer>')
 
+    # 3. Remove Tailwind CDN script (replaced by compiled CSS)
+    html = re.sub(
+        r'\s*<script\s+src="https://cdn\.tailwindcss\.com[^"]*">\s*</script>\s*\n?',
+        '\n', html, flags=re.IGNORECASE)
+    # Remove tailwind.config inline script block
+    html = re.sub(
+        r'\s*<script>\s*\n\s*tailwind\.config\s*=\s*\{.*?\}\s*\n\s*</script>\s*\n?',
+        '\n', html, flags=re.DOTALL)
+
+    # 4. Ensure compiled CSS link is present
+    if 'styles.min.css' not in html:
+        css_link = '    <link rel="stylesheet" href="/css/styles.min.css"/>\n'
+        # Insert before first <link or <style in <head>
+        html = re.sub(r'(<link\s)', css_link + r'\1', html, count=1)
+
     return html
 
 
