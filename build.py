@@ -3640,6 +3640,12 @@ def render_tour_page_schema(tour, reviews_list):
                         "minValue": 0,
                         "maxValue": 0,
                         "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                        "@type": "QuantitativeValue",
+                        "minValue": 0,
+                        "maxValue": 0,
+                        "unitCode": "DAY"
                     }
                 },
                 "shippingRate": {
