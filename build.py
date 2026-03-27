@@ -4099,7 +4099,8 @@ def main():
                 de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html'),
                 nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html'))
 
-            output_path = WEBSITE_DIR / 'tours' / f'{slug}.html'
+            tour_folder = TOUR_FOLDER.get('en', 'walking-tours')
+            output_path = WEBSITE_DIR / tour_folder / f'{slug}.html'
 
             if DRY_RUN:
                 log(f"Would generate: {output_path}", 'debug')
