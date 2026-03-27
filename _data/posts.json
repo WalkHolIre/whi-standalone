@@ -79,7 +79,9 @@
     "categories": [
       "Planning & Tips",
       "Seasonal"
-    ]
+    ],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "9bfb9469-cd2c-4a25-8327-8caf42cf5aec",
@@ -123,7 +125,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "6997a473-1952-4acd-a32e-aedd44cc4879",
@@ -167,7 +171,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "9480f6b0-998a-4f6c-9220-3b57b0069250",
@@ -211,7 +217,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "da4db3d1-4f43-4b8e-93d3-971968450942",
@@ -255,7 +263,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "fa6060ee-eb5d-4826-b2b4-4debe1f3df67",
@@ -299,7 +309,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "9a6b8814-5ac6-4972-9319-bb68b9eb302c",
@@ -343,7 +355,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a5de5525-9fdb-43c8-9537-090631d3f720",
@@ -387,7 +401,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c1dd5e8d-5c06-41a1-9913-9ff2e1602ea2",
@@ -431,7 +447,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c056be1d-d92c-4c27-9bc8-073afa6ab382",
@@ -475,7 +493,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "87788470-158b-47f2-9516-762318953266",
@@ -523,7 +543,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "4b1434de-2a25-4457-9a5e-a0aa2b31d91a",
@@ -567,7 +589,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "438bc997-b024-49c5-808a-e1f088a68a28",
@@ -611,7 +635,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "aa912367-215d-447a-9c8d-c498e22ea82f",
@@ -655,7 +681,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "87f90f05-dd07-47f7-978e-c5e42b325e0d",
@@ -699,7 +727,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "7ed0b3a8-b5fd-46a3-9e61-2f79c7b7ce82",
@@ -743,7 +773,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "2f54b02f-2460-4ca3-85ee-1ff8d50183fb",
@@ -787,7 +819,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c091f10e-ea57-48f4-a3b6-52e27e4cd2f4",
@@ -831,7 +865,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "11753476-cb64-41e3-b5e1-18bd8a82f7fd",
@@ -875,7 +911,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "171988b1-b248-44c3-a172-c530fe351987",
@@ -919,7 +957,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "9be601ca-f70b-4231-9e75-13190c0068eb",
@@ -963,7 +1003,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "bbfcb70d-fa64-431f-9659-235ddecf45c3",
@@ -1015,7 +1057,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "65484615-f615-4dda-9656-f242203153de",
@@ -1059,7 +1103,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "59485445-7aac-4608-ab1a-970635b00e62",
@@ -1103,7 +1149,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "f7ade136-a5de-4956-9f90-b36679848610",
@@ -1147,7 +1195,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "67483e0c-7b11-4100-b346-1a898a91b195",
@@ -1197,7 +1247,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "0d2986d0-b930-47ae-8930-a8ddc95ad95f",
@@ -1278,7 +1330,9 @@
     ],
     "categories": [
       "Walking Areas"
-    ]
+    ],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "33af9b72-b23b-43dc-b67a-f8a7fb2aa35c",
@@ -1322,7 +1376,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "cb86bafb-8e53-4265-a80d-2837616d1109",
@@ -1366,7 +1422,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "5d3fc4d9-17d3-40f8-9e21-708ac70f0a47",
@@ -1410,7 +1468,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "e1633b3b-4ee8-4632-b369-7edb7ad5e5d6",
@@ -1454,7 +1514,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "cf577603-6019-4740-a847-e79b69240685",
@@ -1498,7 +1560,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "4948f140-5521-4467-954d-baaf665e1559",
@@ -1542,7 +1606,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "e7ed29ed-310e-437a-9a90-12385f815838",
@@ -1586,7 +1652,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "bd1ffcc0-5244-47aa-b6da-966ecc3151ac",
@@ -1630,7 +1698,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "ffdcacc6-accd-4ef0-a389-866852ad70d5",
@@ -1674,7 +1744,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "91c71982-f675-45f5-a3b6-5fa4648756c4",
@@ -1718,7 +1790,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "e6ccaf5d-1d67-453e-af29-5fed06426137",
@@ -1762,7 +1836,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "f7400733-5871-462d-b983-32a16d6c092f",
@@ -1806,7 +1882,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "092ae283-4c9b-4974-890c-9ff3fc6ec88e",
@@ -1850,7 +1928,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "b48bd2f9-b68d-4200-8739-b49e0d320982",
@@ -1894,7 +1974,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "0ce4cd14-be73-429d-b5a7-fde91efd9f8a",
@@ -1938,7 +2020,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "2ef7739b-aabd-4e84-a7de-a325b9b89181",
@@ -1982,7 +2066,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "2112a5bd-4b1e-466d-87e4-2902c9267946",
@@ -2026,7 +2112,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "dda799e2-e6db-4096-a7a3-d2dc21aceab0",
@@ -2070,7 +2158,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "af602520-d988-46bd-93c5-3e1def977432",
@@ -2114,7 +2204,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a2fee83b-1f2a-4fbc-b756-6d30bbfc6dd7",
@@ -2158,7 +2250,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "d54a7caf-1498-4fd6-ae21-352e74dc5831",
@@ -2202,7 +2296,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "48484e43-8da7-4135-b3b9-7db6e9a4431d",
@@ -2246,7 +2342,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "28fb5d5d-749b-4f45-b925-a6cd5d01108b",
@@ -2290,7 +2388,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "701f1c37-8d12-4dbb-9279-fedd8bedd125",
@@ -2334,7 +2434,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "880f04cb-83ed-4b51-8d17-f108e681e452",
@@ -2378,7 +2480,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "e9598b53-c041-470d-90fe-bfb0d428e1fa",
@@ -2422,7 +2526,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "fb092854-1b43-4e15-b686-0ca06dd87acd",
@@ -2466,7 +2572,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "3ca94c7e-6ffa-4f85-8fdb-eebed2927441",
@@ -2510,7 +2618,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "ae26c63e-347b-49dc-90e4-33386278d30a",
@@ -2554,7 +2664,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "6b35339e-b22b-4cec-8ea2-c0ae90549441",
@@ -2598,7 +2710,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "02a12be3-d3a4-495a-ab77-f86ebcda0f6c",
@@ -2642,7 +2756,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a1bc8498-1575-4b25-9b29-e4496d78a9c1",
@@ -2686,7 +2802,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c8316b1f-2088-4d44-b8b8-884afd889a43",
@@ -2730,7 +2848,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c6e322da-de29-4ba8-bb98-d4bf764b7b1b",
@@ -2774,7 +2894,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "17e02b8e-4514-4a7d-84d4-283a71763f06",
@@ -2818,7 +2940,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "d4e8ba81-e0c0-47fc-80ad-0d12011e56eb",
@@ -2862,7 +2986,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "88065e2b-0c67-4c61-8b0f-e7ff346b0207",
@@ -2906,7 +3032,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "6db33c02-5ffb-420c-8dbb-b8fdb4884d72",
@@ -2950,7 +3078,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "21284d68-8269-417f-a80d-74f9505f6ed2",
@@ -2994,7 +3124,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "d85be8cf-46f8-4028-afac-55f7d9353aa1",
@@ -3038,7 +3170,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "4841b29e-c8df-4433-aa75-fcbe426128c8",
@@ -3082,7 +3216,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "643329ed-eda6-4b79-8bc3-fcdeb939d6cb",
@@ -3126,7 +3262,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "f39108db-1c8f-445b-bc1c-18f85afe4d65",
@@ -3170,7 +3308,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a07e44fe-ef8c-417b-a58c-4c632ccca3fc",
@@ -3214,7 +3354,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "5ca1ca7c-35ec-452c-a03c-68e7faf08233",
@@ -3258,7 +3400,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c2985176-0140-43b9-bd21-5f6f91853a4b",
@@ -3302,7 +3446,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a40f4288-e999-4e42-ad73-534da2a7d60c",
@@ -3346,7 +3492,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "f0393dd2-acd0-41b7-8e7c-9483aadaa867",
@@ -3390,7 +3538,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "1b818219-24b4-4bc0-96cc-4550d4323f4d",
@@ -3434,7 +3584,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "01398636-6b5c-448a-b935-4605ccbdef5f",
@@ -3478,7 +3630,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "ff19a00c-df2d-4a79-a6d4-b2ea02b89248",
@@ -3522,7 +3676,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "e9846048-0fd5-415f-ac6d-89efe81cc24a",
@@ -3566,7 +3722,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "49ebc591-46bb-4a46-a43b-dcfddbec7961",
@@ -3610,7 +3768,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "60dde1e4-8f63-43e4-8f9b-96e3ba670efd",
@@ -3654,7 +3814,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "243ad2bb-5f1c-42e9-90fc-26df135cfeba",
@@ -3698,7 +3860,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a941d4de-b0e6-4fed-9302-12f0d315310d",
@@ -3742,7 +3906,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "b09c6be5-8f86-4031-949d-1d0404bf774e",
@@ -3786,7 +3952,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "0c178ce5-6496-4ce4-a673-5a17fa187abf",
@@ -3830,7 +3998,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "30319e54-b55c-42a5-b1cf-1d19f9771ed0",
@@ -3874,7 +4044,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "c003bd3d-da1f-410f-8cd1-4a40023c719c",
@@ -3918,7 +4090,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "10699251-b94b-4610-a63e-5d6815a3da6c",
@@ -3962,7 +4136,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "1daa8201-f07c-44c3-b145-31fa74ba5b62",
@@ -4006,7 +4182,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "b77f3446-22d3-43f0-81dd-64aff3b64544",
@@ -4050,7 +4228,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "b5e8a4ff-b532-4228-8d0f-cfe438b1d0ef",
@@ -4094,7 +4274,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "ca21280d-643c-4c6b-a972-bfb3e30802a5",
@@ -4138,7 +4320,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "976f51b6-a57a-4e9d-8053-7944987812e6",
@@ -4182,7 +4366,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "5d660f05-2da0-48fd-b4a5-cfe98477a362",
@@ -4226,7 +4412,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "1b5287f1-fb2e-4687-9b76-628f55ddc961",
@@ -4270,7 +4458,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "253dab78-f690-49d2-b057-307ae093b02c",
@@ -4314,7 +4504,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "f06e73a9-0e7c-412d-b797-156b9865b0a8",
@@ -4358,7 +4550,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "8925a2bf-caf3-44f0-aba5-f200cd962c36",
@@ -4402,7 +4596,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "53e61967-d6cb-4b2d-967a-095b575ae1a2",
@@ -4446,7 +4642,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "090ac2d5-1b54-49c6-ba73-efca5e7f8cfa",
@@ -4490,7 +4688,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a1f51319-bcb3-4c73-8c29-779cbae585f4",
@@ -4534,7 +4734,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "9375549f-3b31-4f8c-91bb-2adbccfd5322",
@@ -4578,7 +4780,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "a6473b64-a348-41c4-9fad-8157240e8ae4",
@@ -4622,7 +4826,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "76bd8511-dba8-4c0a-b157-4f3a93334084",
@@ -4666,7 +4872,9 @@
     "related_tour_id": null,
     "related_destination_id": null,
     "internal_link_keywords": [],
-    "categories": []
+    "categories": [],
+    "slug_de": null,
+    "slug_nl": null
   },
   {
     "id": "7100f98e-f93c-49c2-a371-0856dd26a64b",
@@ -4714,6 +4922,8 @@
     "internal_link_keywords": [],
     "categories": [
       "Walking Routes"
-    ]
+    ],
+    "slug_de": null,
+    "slug_nl": null
   }
 ]
