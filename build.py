@@ -3649,6 +3649,103 @@ var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=
     return html
 
 
+def fix_og_tags(html, canonical_url, lang='en', title=None, description=None, image=None):
+    """Fix Open Graph and Twitter Card meta tags for the given language/URL.
+
+    - Updates og:url to match the canonical URL (correct domain + clean URL)
+    - Optionally updates og:title, og:description, og:image and twitter: equivalents
+    - Adds OG/Twitter tags if missing entirely
+    """
+    from html import escape as html_escape
+
+    # Fix og:url to match canonical
+    if re.search(r'<meta\s+property="og:url"', html):
+        html = re.sub(
+            r'<meta\s+property="og:url"\s+content="[^"]*"',
+            f'<meta property="og:url" content="{canonical_url}"',
+            html
+        )
+    elif 'og:title' in html:
+        # Has some OG tags but missing og:url — add it
+        html = re.sub(
+            r'(<meta\s+property="og:title")',
+            f'<meta property="og:url" content="{canonical_url}"/>\n    \\1',
+            html, count=1
+        )
+
+    # Update og:title and twitter:title if translated title provided
+    if title:
+        safe_title = html_escape(title, quote=True)
+        html = re.sub(r'<meta\s+property="og:title"\s+content="[^"]*"',
+                       f'<meta property="og:title" content="{safe_title}"', html)
+        html = re.sub(r'<meta\s+name="twitter:title"\s+content="[^"]*"',
+                       f'<meta name="twitter:title" content="{safe_title}"', html)
+
+    # Update og:description and twitter:description if translated description provided
+    if description:
+        safe_desc = html_escape(description, quote=True)
+        html = re.sub(r'<meta\s+property="og:description"\s+content="[^"]*"',
+                       f'<meta property="og:description" content="{safe_desc}"', html)
+        html = re.sub(r'<meta\s+name="twitter:description"\s+content="[^"]*"',
+                       f'<meta name="twitter:description" content="{safe_desc}"', html)
+
+    # If no OG tags at all, add a basic set
+    if 'og:title' not in html:
+        og_title = html_escape(title or '', quote=True) if title else ''
+        og_desc = html_escape(description or '', quote=True) if description else ''
+        og_image = image or 'https://walkingholidayireland.com/images/hero/kerry-hero.jpg'
+        og_block = f'''    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{canonical_url}"/>'''
+        if og_title:
+            og_block += f'\n    <meta property="og:title" content="{og_title}"/>'
+        if og_desc:
+            og_block += f'\n    <meta property="og:description" content="{og_desc}"/>'
+        og_block += f'''
+    <meta property="og:image" content="{og_image}"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>'''
+        if og_title:
+            og_block += f'\n    <meta name="twitter:title" content="{og_title}"/>'
+        if og_desc:
+            og_block += f'\n    <meta name="twitter:description" content="{og_desc}"/>'
+        og_block += f'\n    <meta name="twitter:image" content="{og_image}"/>'
+        html = html.replace('</head>', f'{og_block}\n</head>')
+
+    return html
+
+
+def inject_breadcrumb_schema(html, breadcrumbs):
+    """Inject BreadcrumbList JSON-LD schema into a page.
+
+    breadcrumbs: list of (name, url) tuples, e.g.
+        [('Home', 'https://...'), ('Walking Tours', 'https://.../walking-tours'), ('Kerry Way', None)]
+    The last item's URL can be None (current page — uses position only).
+    """
+    if 'BreadcrumbList' in html:
+        return html  # Already has breadcrumbs
+
+    items = []
+    for i, (name, url) in enumerate(breadcrumbs, 1):
+        item = {
+            "@type": "ListItem",
+            "position": i,
+            "name": name,
+        }
+        if url:
+            item["item"] = url
+        items.append(item)
+
+    schema = json.dumps({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": items,
+    }, indent=4, ensure_ascii=False)
+
+    breadcrumb_tag = f'    <script type="application/ld+json">\n    {schema}\n    </script>\n'
+    html = html.replace('</head>', f'{breadcrumb_tag}</head>')
+    return html
+
+
 def post_process_html(html):
     """Apply final accessibility and performance improvements to any generated page."""
     # 1. Add skip-to-content link (accessibility — WCAG 2.1 AA)
@@ -3881,6 +3978,11 @@ def build_static_pages(lang, translations):
         if 'rel="canonical"' not in html:
             html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
+        # Fix OG tags to use correct language domain and clean URL
+        html = fix_og_tags(html, canonical_url, lang=lang,
+            title=pt.get('meta_title') if pt else None,
+            description=pt.get('meta_description') if pt else None)
+
         # Set hreflang tags (strips old ones, adds fresh with x-default)
         de_slug = translate_static_slug(page_slug, 'de')
         nl_slug = translate_static_slug(page_slug, 'nl')
@@ -4016,11 +4118,28 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_tour_url}"/>\n</head>')
 
+            # Fix OG tags to use correct language domain and clean URL
+            tour_trans = tour_translations.get(tour.get('id'), {}) if lang != 'en' else {}
+            html = fix_og_tags(html, canonical_tour_url, lang=lang,
+                title=tour_trans.get('name') or tour_trans.get('meta_title'),
+                description=tour_trans.get('seo_description') or tour_trans.get('subtitle'))
+
             # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-tours/{slug}'),
                 de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}'),
                 nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}'))
+
+            # BreadcrumbList schema: Home > Walking Tours > Tour Name
+            tour_folder_local = TOUR_FOLDER.get(lang, 'walking-tours')
+            tours_listing_slug = translate_static_slug('walking-tours', lang)
+            tours_listing_label = {'en': 'Walking Tours', 'de': 'Wandertouren', 'nl': 'Wandeltochten'}.get(lang, 'Walking Tours')
+            tour_name = translated_tour.get('name') or tour.get('name', slug)
+            html = inject_breadcrumb_schema(html, [
+                ('Home', lang_url(lang, '')),
+                (tours_listing_label, lang_url(lang, tours_listing_slug)),
+                (tour_name, None),
+            ])
 
             tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
             output_path = base_dir / tour_folder / f'{slug}.html'
@@ -4097,11 +4216,27 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
 
+            # Fix OG tags to use correct language domain and clean URL
+            dest_trans = dest_translations.get(dest_id, {}) if lang != 'en' else {}
+            html = fix_og_tags(html, canonical_dest_url, lang=lang,
+                title=dest_trans.get('name') or dest_trans.get('meta_title'),
+                description=dest_trans.get('seo_description') or dest_trans.get('short_description'))
+
             # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
                 de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
                 nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
+
+            # BreadcrumbList schema: Home > Destinations > Destination Name
+            dest_listing_slug = translate_static_slug('destinations', lang)
+            dest_listing_label = {'en': 'Destinations', 'de': 'Reiseziele', 'nl': 'Bestemmingen'}.get(lang, 'Destinations')
+            dest_name = translated_dest.get('name') or destination.get('name', slug)
+            html = inject_breadcrumb_schema(html, [
+                ('Home', lang_url(lang, '')),
+                (dest_listing_label, lang_url(lang, dest_listing_slug)),
+                (dest_name, None),
+            ])
 
             wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
             dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
@@ -4776,6 +4911,8 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{en_blog_url}"/>\n</head>')
 
+            html = fix_og_tags(html, en_blog_url, lang='en')
+
             # Set hreflang with correct localized URLs
             html = set_hreflang_tags(html,
                 en_url=en_blog_url,
@@ -4804,6 +4941,8 @@ def main():
                 if 'rel="canonical"' not in de_html:
                     de_html = de_html.replace('</head>', f'    <link rel="canonical" href="{de_blog_url}"/>\n</head>')
                 de_html = set_hreflang_tags(de_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                de_html = fix_og_tags(de_html, de_blog_url, lang='de',
+                    title=post.get('title_de'), description=post.get('meta_description_de') or post.get('excerpt_de'))
                 de_html = fix_relative_paths(de_html)
                 de_blog_dir = WEBSITE_DIR / 'de' / 'blog'
                 de_blog_dir.mkdir(parents=True, exist_ok=True)
@@ -4828,6 +4967,8 @@ def main():
                 if 'rel="canonical"' not in nl_html:
                     nl_html = nl_html.replace('</head>', f'    <link rel="canonical" href="{nl_blog_url}"/>\n</head>')
                 nl_html = set_hreflang_tags(nl_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                nl_html = fix_og_tags(nl_html, nl_blog_url, lang='nl',
+                    title=post.get('title_nl'), description=post.get('meta_description_nl') or post.get('excerpt_nl'))
                 nl_html = fix_relative_paths(nl_html)
                 nl_blog_dir = WEBSITE_DIR / 'nl' / 'blog'
                 nl_blog_dir.mkdir(parents=True, exist_ok=True)
@@ -4950,6 +5091,7 @@ def main():
                 en_url=blog_list_canonical,
                 de_url=lang_url('de', 'blog'),
                 nl_url=lang_url('nl', 'blog'))
+            blog_listing_new = fix_og_tags(blog_listing_new, blog_list_canonical, lang='en')
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
@@ -5137,6 +5279,7 @@ def main():
                 en_url=en_blog_list,
                 de_url=de_blog_list,
                 nl_url=nl_blog_list)
+            lang_blog = fix_og_tags(lang_blog, this_blog_list, lang=blang)
 
             # Write to lang directory
             lang_blog_dir = WEBSITE_DIR / blang
@@ -5197,13 +5340,28 @@ def main():
     # language switcher works on the English site too.
     EN_STATIC_PAGES = [
         'about', 'contact', 'how-it-works', 'tour-grading', 'tailor-made',
-        'reviews', 'self-guided-walking-holidays-ireland',
+        'reviews', 'faq', 'walking-tours', 'destinations',
+        'self-guided-walking-holidays-ireland',
         'solo-walking-holidays-ireland', 'walking-holidays-ireland-over-50s',
         'northern-ireland', 'privacy-policy', 'terms-and-conditions',
-        'destinations',
     ]
     if not DRY_RUN:
         en_hreflang_count = 0
+
+        # Homepage (index.html) — special case: slug is '' not 'index'
+        index_file = WEBSITE_DIR / 'index.html'
+        if index_file.exists():
+            html = index_file.read_text()
+            if 'rel="alternate" hreflang="de"' not in html:
+                html = set_hreflang_tags(html,
+                    en_url=lang_url('en', ''),
+                    de_url=lang_url('de', ''),
+                    nl_url=lang_url('nl', ''))
+                html = fix_og_tags(html, lang_url('en', ''), lang='en')
+                index_file.write_text(html)
+                en_hreflang_count += 1
+                log("Added hreflang + OG tags to EN homepage")
+
         for page_slug in EN_STATIC_PAGES:
             en_file = WEBSITE_DIR / f'{page_slug}.html'
             if not en_file.exists():
@@ -5218,6 +5376,9 @@ def main():
                 en_url=lang_url('en', f'{page_slug}'),
                 de_url=lang_url('de', f'{de_slug}'),
                 nl_url=lang_url('nl', f'{nl_slug}'))
+            # Fix OG tags (adds them if missing, fixes og:url)
+            canonical = lang_url('en', page_slug)
+            html = fix_og_tags(html, canonical, lang='en')
             en_file.write_text(html)
             en_hreflang_count += 1
         log(f"Added hreflang tags to {en_hreflang_count} EN static pages")
