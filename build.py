@@ -3588,6 +3588,9 @@ def build_static_pages(lang, translations):
         html = html.replace('src="images/', 'src="/images/')
         html = html.replace('src="js/', 'src="/js/')
         html = html.replace('href="images/', 'href="/images/')
+        # Fix CSS background-image url() relative paths
+        html = html.replace("url('images/", "url('/images/")
+        html = html.replace('url("images/', 'url("/images/')
         # Fix page links — use translated filenames at root level
         for ps in STATIC_PAGES:
             if ps in page_translations:
@@ -3699,6 +3702,9 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 # at /de/wandertouren/ on .de and /nl/wandeltochten/ on .com
                 html = html.replace('href="../', 'href="/')
                 html = html.replace('src="../', 'src="/')
+                html = html.replace("url('../", "url('/")
+                html = html.replace("url('images/", "url('/images/")
+                html = html.replace('url("images/', 'url("/images/')
                 html = html.replace('<html lang="en"', f'<html lang="{lang}"')
 
                 # Fix internal links to use translated paths
@@ -3793,6 +3799,9 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 html = html.replace('href="../walking-tours/', f'href="/{tour_folder}/')
                 html = html.replace('src="../', 'src="/')
                 html = html.replace('href="../', 'href="/')
+                html = html.replace("url('../", "url('/")
+                html = html.replace("url('images/", "url('/images/")
+                html = html.replace('url("images/', 'url("/images/')
 
                 # Canonical URL
                 canonical_dest_url = lang_url(lang, f'{wa_prefix}-{slug}.html')
