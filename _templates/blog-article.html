@@ -134,9 +134,9 @@
             <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-            <button onclick="window.location.href='https://walkingholidayireland.com'" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
-            <button onclick="window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
         </div>
     </div>
 </div>
@@ -351,10 +351,10 @@
                     <div class="flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5">
                         <span class="text-xs font-bold text-primary">EN</span>
                     </div>
-                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/de'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">DE</span>
                     </a>
-                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
                         <span class="text-xs font-bold text-slate-400">NL</span>
                     </a>
                 </div>

@@ -3507,6 +3507,34 @@ def set_hreflang_tags(html, en_url, de_url, nl_url):
     html = html.replace('</head>', f'{hreflang_block}\n</head>')
     html = html.replace('</body>', f'{switchlang_js}\n</body>')
 
+    # Replace old-style language switcher buttons (hardcoded window.location.href)
+    # with switchLang() calls that use the correct hreflang URLs
+    html = re.sub(
+        r"""<button\s+onclick="window\.location\.href='[^']*'"(\s+style="[^"]*")>(EN)</button>""",
+        r'<button onclick="switchLang(\'en\')" class="lang-btn"\1>EN</button>',
+        html
+    )
+    html = re.sub(
+        r"""<button\s+onclick="window\.location\.href='[^']*'"(\s+style="[^"]*")>(DE)</button>""",
+        r'<button onclick="switchLang(\'de\')" class="lang-btn"\1>DE</button>',
+        html
+    )
+    html = re.sub(
+        r"""<button\s+onclick="window\.location\.href='[^']*'"(\s+style="[^"]*")>(NL)</button>""",
+        r'<button onclick="switchLang(\'nl\')" class="lang-btn"\1>NL</button>',
+        html
+    )
+
+    # Also fix footer/mobile-nav language links that use window.location.href
+    html = html.replace(
+        """onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/de'+window.location.pathname\"""",
+        """onclick="event.preventDefault();switchLang('de')\""""
+    )
+    html = html.replace(
+        """onclick="event.preventDefault();window.location.href='https://walkingholidayireland.com/nl'+window.location.pathname\"""",
+        """onclick="event.preventDefault();switchLang('nl')\""""
+    )
+
     # Apply accessibility and performance improvements
     html = post_process_html(html)
 
@@ -4794,6 +4822,18 @@ def main():
     LANGUAGES_TO_BUILD = ['de', 'nl']  # Add 'es', 'fr' later
 
     for lang in LANGUAGES_TO_BUILD:
+        # Clean old generated HTML files before rebuilding each language
+        # This prevents stale pages (e.g. from a previous build with different
+        # translations) from persisting in the repo.
+        lang_dir = WEBSITE_DIR / lang
+        if lang_dir.exists():
+            import glob as _glob
+            stale_files = list(lang_dir.glob('**/*.html'))
+            if stale_files:
+                log(f"Cleaning {len(stale_files)} old {lang} HTML files before rebuild...")
+                for f in stale_files:
+                    f.unlink()
+
         log(f"\nFetching {lang} translations from Supabase...")
         translations = fetch_translations(lang)
 
