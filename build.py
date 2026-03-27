@@ -4087,6 +4087,18 @@ def main():
                                 reviews_by_tour=reviews_by_tour, lang='en')
 
         if html:
+            # Canonical URL for EN tour
+            canonical_url = lang_url('en', f'walking-tours/{slug}.html')
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
+
+            # Set hreflang tags (strips old ones, adds correct ones with x-default)
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', f'walking-tours/{slug}.html'),
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}.html'),
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}.html'))
+
             output_path = WEBSITE_DIR / 'tours' / f'{slug}.html'
 
             if DRY_RUN:
@@ -4118,6 +4130,18 @@ def main():
         html = render_destination_page(destination, dest_tours, dest_reviews, faqs, tours_by_id)
 
         if html:
+            # Canonical URL for EN destination
+            canonical_url = lang_url('en', f'walking-area-{slug}.html')
+            html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
+
+            # Set hreflang tags (strips old ones, adds correct ones with x-default)
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', f'walking-area-{slug}.html'),
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}.html'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}.html'))
+
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
             walking_area_path = WEBSITE_DIR / f'walking-area-{slug}.html'
