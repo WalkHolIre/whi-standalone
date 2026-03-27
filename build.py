@@ -647,6 +647,64 @@ def fetch_translations(lang):
     }
 
 
+def extract_inline_translation(tour, lang):
+    """Extract translation from language-suffixed columns in the tours table.
+
+    Ground Control saves translations as e.g. name_de, description_nl directly
+    on the tours row. This extracts them into a translation dict compatible
+    with apply_tour_translation().
+    """
+    if lang == 'en':
+        return None
+    field_map = {
+        'name': f'name_{lang}',
+        'subtitle': f'subtitle_{lang}',
+        'description': f'description_{lang}',
+        'short_description': f'short_description_{lang}',
+        'highlights': f'highlights_{lang}',
+        'whats_included': f'whats_included_{lang}',
+        'whats_not_included': f'whats_not_included_{lang}',
+        'who_is_it_for': f'who_is_it_for_{lang}',
+        'accommodation_description': f'accommodation_description_{lang}',
+        'itinerary': f'itinerary_{lang}',
+        'meta_title': f'meta_title_{lang}',
+        'seo_description': f'seo_description_{lang}',
+        'meta_description': f'seo_description_{lang}',
+    }
+    result = {}
+    has_content = False
+    for base_field, col_name in field_map.items():
+        val = tour.get(col_name)
+        if val:
+            if isinstance(val, str) and val.strip():
+                result[base_field] = val
+                has_content = True
+            elif isinstance(val, (list, dict)):
+                result[base_field] = val
+                has_content = True
+    return result if has_content else None
+
+
+def merge_translations(inline_trans, table_trans):
+    """Merge inline (tours table _lang columns) and table (tour_translations) translations.
+
+    Inline translations take priority (they're more recent / from the editor).
+    Table translations fill in any gaps.
+    """
+    if not inline_trans and not table_trans:
+        return None
+    if not table_trans:
+        return inline_trans
+    if not inline_trans:
+        return table_trans
+    # Start with table translation, overlay inline on top
+    merged = dict(table_trans)
+    for key, val in inline_trans.items():
+        if val:
+            merged[key] = val
+    return merged
+
+
 def apply_tour_translation(tour, translation):
     """Merge translation data over English tour data. Only overrides non-empty fields."""
     if not translation:
@@ -654,14 +712,44 @@ def apply_tour_translation(tour, translation):
     merged = dict(tour)
     translatable_fields = ['name', 'subtitle', 'description', 'short_description',
                           'highlights', 'whats_included', 'whats_not_included',
-                          'meta_title', 'meta_description']
+                          'who_is_it_for', 'accommodation_description', 'itinerary',
+                          'meta_title', 'meta_description', 'seo_description']
     for field in translatable_fields:
         val = translation.get(field)
-        if val and val.strip():
+        if val and ((isinstance(val, str) and val.strip()) or isinstance(val, (list, dict))):
             merged[field] = val
             if field == 'meta_description':
                 merged['seo_description'] = val
     return merged
+
+
+def extract_inline_dest_translation(destination, lang):
+    """Extract translation from language-suffixed columns in the destinations table."""
+    if lang == 'en':
+        return None
+    field_map = {
+        'name': f'name_{lang}',
+        'short_description': f'short_description_{lang}',
+        'overview': f'overview_{lang}',
+        'description': f'description_{lang}',
+        'landscape_description': f'landscape_description_{lang}',
+        'cultural_highlights': f'cultural_highlights_{lang}',
+        'difficulty_overview': f'difficulty_overview_{lang}',
+        'accommodation_style': f'accommodation_style_{lang}',
+        'practical_info': f'practical_info_{lang}',
+        'who_is_it_for': f'who_is_it_for_{lang}',
+        'best_time_to_visit': f'best_time_to_visit_{lang}',
+        'meta_title': f'meta_title_{lang}',
+        'meta_description': f'meta_description_{lang}',
+    }
+    result = {}
+    has_content = False
+    for base_field, col_name in field_map.items():
+        val = destination.get(col_name)
+        if val and isinstance(val, str) and val.strip():
+            result[base_field] = val
+            has_content = True
+    return result if has_content else None
 
 
 def apply_dest_translation(destination, translation):
@@ -3829,13 +3917,43 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
         base_dir = WEBSITE_DIR / lang
         base_dir.mkdir(parents=True, exist_ok=True)
 
-    tour_translations = translations.get('tours', {})
-    dest_translations = translations.get('destinations', {})
+    table_tour_translations = translations.get('tours', {})
+    table_dest_translations = translations.get('destinations', {})
+
+    # Build combined translation lookup: merge inline (_lang columns on tours table)
+    # with tour_translations table entries. Inline takes priority.
+    tour_translations = {}
+    inline_count = 0
+    for tour in tours:
+        tid = tour.get('id')
+        if not tid:
+            continue
+        inline_trans = extract_inline_translation(tour, lang)
+        table_trans = table_tour_translations.get(tid)
+        combined = merge_translations(inline_trans, table_trans)
+        if combined:
+            tour_translations[tid] = combined
+            if inline_trans:
+                inline_count += 1
 
     translated_count = len(tour_translations)
-    log(f"Found {translated_count} tour translations for {lang}")
+    log(f"Found {translated_count} tour translations for {lang} ({inline_count} from inline columns, {len(table_tour_translations)} from tour_translations table)")
     if tour_translations:
         log(f"Translation tour_ids: {list(tour_translations.keys())}")
+
+    # Build combined destination translation lookup (same pattern as tours)
+    dest_translations = {}
+    for dest in destinations:
+        did = dest.get('id')
+        if not did:
+            continue
+        inline_dest = extract_inline_dest_translation(dest, lang)
+        table_dest = table_dest_translations.get(did)
+        combined_dest = merge_translations(inline_dest, table_dest)
+        if combined_dest:
+            dest_translations[did] = combined_dest
+
+    log(f"Found {len(dest_translations)} destination translations for {lang}")
 
     # Build tour pages
     log(f"\nGenerating {lang} tour pages...")
