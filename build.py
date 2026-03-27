@@ -4875,6 +4875,49 @@ def main():
             log(f"  - {error}", 'error')
     log("=" * 60)
 
+    # ── Generate automatic redirects from previous_slug ─────
+    if not DRY_RUN:
+        redirects_path = WEBSITE_DIR / '_redirects'
+        auto_redirect_marker = '# ── AUTO-GENERATED SLUG REDIRECTS (do not edit below) ──'
+
+        # Read existing _redirects and strip any previous auto-generated block
+        existing_redirects = ''
+        if redirects_path.exists():
+            existing_redirects = redirects_path.read_text()
+            if auto_redirect_marker in existing_redirects:
+                existing_redirects = existing_redirects[:existing_redirects.index(auto_redirect_marker)].rstrip()
+
+        auto_lines = []
+
+        # Tour slug redirects
+        for tour in tours:
+            prev = (tour.get('previous_slug') or '').strip()
+            curr = (tour.get('slug') or '').strip()
+            if prev and curr and prev != curr:
+                auto_lines.append(f'/walking-tours/{prev}.html  /walking-tours/{curr}.html  301')
+                # Also redirect DE and NL tour paths
+                auto_lines.append(f'/de/wandertouren/{prev}.html  /de/wandertouren/{curr}.html  301')
+                auto_lines.append(f'/nl/wandeltochten/{prev}.html  /nl/wandeltochten/{curr}.html  301')
+
+        # Blog slug redirects
+        for post in posts:
+            prev = (post.get('previous_slug') or '').strip()
+            curr = (post.get('slug') or '').strip()
+            if prev and curr and prev != curr:
+                auto_lines.append(f'/blog/{prev}.html  /blog/{curr}.html  301')
+
+        if auto_lines:
+            auto_block = f'\n\n{auto_redirect_marker}\n' + '\n'.join(auto_lines) + '\n'
+            redirects_path.write_text(existing_redirects + auto_block)
+            log(f"Generated {len(auto_lines)} automatic slug redirects")
+        else:
+            # Restore file without stale auto block if no redirects needed
+            if auto_redirect_marker not in (redirects_path.read_text() if redirects_path.exists() else ''):
+                pass  # nothing to do
+            else:
+                redirects_path.write_text(existing_redirects + '\n')
+            log("No slug redirects needed")
+
     # Generate sitemap.xml
     if not DRY_RUN:
         today = datetime.now().strftime('%Y-%m-%d')
