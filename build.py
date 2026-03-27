@@ -3950,12 +3950,14 @@ def post_process_html(html):
         # Insert before first <link or <style in <head>
         html = re.sub(r'(<link\s)', css_link + r'\1', html, count=1)
 
-    # 5. Fix footer logo stretch (add width:auto)
+    # 5. Fix footer logo stretch (remove width/height attrs, add width:auto)
     html = re.sub(
-        r'(whi_fc\.png[^>]*class="h-10 mb-4")(\s+loading)',
-        r'\1" style="width:auto;\2', html)
-    # But avoid double style attr — fix if already has style
-    html = html.replace('" style="width:auto;" style="width:auto;', '" style="width:auto;')
+        r'(<img[^>]*whi_fc\.png[^>]*?)(\s+width="[^"]*")', r'\1', html)
+    html = re.sub(
+        r'(<img[^>]*whi_fc\.png[^>]*?)(\s+height="[^"]*")', r'\1', html)
+    html = re.sub(
+        r'(whi_fc\.png[^>]*class=")(h-10 mb-4")',
+        r'\1mb-4" style="height:40px;width:auto;', html)
 
     # 6. Footer tagline: text-sm → text-base italic
     html = html.replace(
@@ -3969,7 +3971,7 @@ def post_process_html(html):
     if 'stripe-secure-payments' not in html:
         tagline_end = 'Family-run by Cliff &amp; Louise.</p>'
         if tagline_end in html:
-            stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;opacity:0.6;" loading="lazy" width="537"/>'
+            stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;width:auto;opacity:0.6;" loading="lazy"/>'
             html = html.replace(tagline_end, stripe, 1)
 
     # 8. Wire up subscribe forms

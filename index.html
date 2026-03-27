@@ -595,6 +595,7 @@
 
         .footer-logo img {
             height: 40px;
+            width: auto;
             margin-bottom: 16px;
         }
 
@@ -1144,7 +1145,7 @@
                 <!-- Logo & Description -->
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" loading="lazy" width="189" height="101">
+                        <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" loading="lazy" style="height:60px;width:auto;">
                     </div>
                     <p style="font-size: 14px; color: #ccc; margin-bottom: 20px;">Self-guided walking holidays through Ireland's most stunning landscapes.</p>
                 </div>
@@ -1169,7 +1170,9 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="about">About Us</a></li>
+                        <li><a href="how-it-works">How It Works</a></li>
                         <li><a href="tour-grading">Tour Grading</a></li>
+                        <li><a href="faq">FAQ</a></li>
                         <li><a href="blog">Blog</a></li>
                         <li><a href="contact">Contact</a></li>
                         <li><a href="privacy-policy">Privacy Policy</a></li>
@@ -1303,5 +1306,6 @@
 <script>
 function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 </script>
+<script src="js/subscribe.js" defer></script>
 </body>
 </html>
