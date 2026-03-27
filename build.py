@@ -260,7 +260,9 @@ UI_STRINGS = {
         'tour_grading': 'Tourbewertung & Schwierigkeitsgrad',
         'walking': 'Wandern',
         # Search/filter
+        'hiking_region': 'Wandergebiet',
         'destination': 'Ziel',
+        'all_hiking_areas': 'Alle Wandergebiete',
         'all_walking_areas': 'Alle Wandergebiete',
         'any_level': 'Alle Stufen',
         'easy': 'Leicht',
@@ -424,7 +426,9 @@ UI_STRINGS = {
         'tour_grading': 'Moeilijkheidsgraad & Beoordeling',
         'walking': 'Wandelen',
         # Search/filter
+        'hiking_region': 'Wandelgebied',
         'destination': 'Bestemming',
+        'all_hiking_areas': 'Alle Wandelgebieden',
         'all_walking_areas': 'Alle Wandelgebieden',
         'any_level': 'Alle Niveaus',
         'easy': 'Gemakkelijk',
@@ -745,7 +749,9 @@ def translate_html_ui(html, lang):
         '>Best Months<': f'>{t("best_months", lang)}<',
 
         # Search/filter section
+        '>Hiking Region<': f'>{t("hiking_region", lang)}<',
         '>Destination<': f'>{t("destination", lang)}<',
+        '>All Hiking Areas<': f'>{t("all_hiking_areas", lang)}<',
         '>All Walking Areas<': f'>{t("all_walking_areas", lang)}<',
         '>Any Level<': f'>{t("any_level", lang)}<',
         '>Easy<': f'>{t("easy", lang)}<',

@@ -258,8 +258,22 @@
     if (durationFilter) durationFilter.addEventListener('change', applyFiltersAndSort);
     if (sortFilter) sortFilter.addEventListener('change', applyFiltersAndSort);
 
-    // Initial render
-    renderTours(toursData);
+    // Pre-select filters from URL params (e.g. from homepage search)
+    (function() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('region') && regionFilter) {
+            regionFilter.value = params.get('region');
+        }
+        if (params.get('difficulty') && difficultyFilter) {
+            difficultyFilter.value = params.get('difficulty');
+        }
+        if (params.get('duration') && durationFilter) {
+            durationFilter.value = params.get('duration');
+        }
+    })();
+
+    // Initial render (with any URL-param pre-selections applied)
+    applyFiltersAndSort();
 
     /* Difficulty modal — injected once */
     if (!document.getElementById('difficultyModal')) {
