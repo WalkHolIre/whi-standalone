@@ -6,10 +6,9 @@
     <title>Walking Holidays Ireland | Self-Guided Hiking Tours & Trails</title>
     <meta name="description" content="Self-guided walking holidays and hiking tours across Ireland. 15 trails from Kerry to Causeway Coast with handpicked B&Bs, luggage transfers & personal support."/>
     <link rel="canonical" href="https://walkingholidayireland.com/"/>
-    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/"/>
-    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.com/de/"/>
-    <link rel="alternate" hreflang="nl" href="https://walkingholidayireland.com/nl/"/>
-    <link rel="icon" type="image/png" href="images/logo/favicon.png"/>
+
+
+<link rel="icon" type="image/png" href="images/logo/favicon.png"/>
     <link rel="preload" as="image" href="images/hero/homepage-hero.jpg" fetchpriority="high"/>
     <!-- Open Graph -->
     <meta property="og:type" content="website"/>
@@ -684,8 +683,19 @@
             margin: 0 auto;
         }
     </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/" />
 </head>
 <body>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
     <!-- Top Utility Bar -->
 <div class="utility-bar hidden md:block" style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;">
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
@@ -710,7 +720,7 @@
 
 <header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
             <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
-                <a href="index" class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
                     <img src="images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
                 </a>
                 <nav class="hidden md:flex items-center gap-8">
@@ -990,7 +1000,7 @@
                                 <div style="color: white; font-weight: 600;">Janet</div>
                                 <div style="color: rgba(255,255,255,0.5); font-size: 14px;">United Kingdom</div>
                             </div>
-                            <a href="tours/dingle-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Dingle Way →</a>
+                            <a href="walking-tours/dingle-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Dingle Way →</a>
                         </div>
                     </div>
 
@@ -1003,7 +1013,7 @@
                                 <div style="color: white; font-weight: 600;">Michael</div>
                                 <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Australia</div>
                             </div>
-                            <a href="tours/kerry-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Kerry Way →</a>
+                            <a href="walking-tours/kerry-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Kerry Way →</a>
                         </div>
                     </div>
 
@@ -1016,7 +1026,7 @@
                                 <div style="color: white; font-weight: 600;">Sarah</div>
                                 <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Canada</div>
                             </div>
-                            <a href="tours/wicklow-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Wicklow Way →</a>
+                            <a href="walking-tours/wicklow-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Wicklow Way →</a>
                         </div>
                     </div>
 
@@ -1029,7 +1039,7 @@
                                 <div style="color: white; font-weight: 600;">Paul & Margaret</div>
                                 <div style="color: rgba(255,255,255,0.5); font-size: 14px;">Germany</div>
                             </div>
-                            <a href="tours/burren-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Burren Way →</a>
+                            <a href="walking-tours/burren-way" style="color: #F17E00; font-size: 14px; font-weight: 600; text-decoration: none;">Burren Way →</a>
                         </div>
                     </div>
                 </div>
@@ -1131,7 +1141,7 @@
         <div class="section-max-width">
             <div class="newsletter-section">
                 <h2>Stay Updated on Walking Ireland</h2>
-                <form class="newsletter-form" onsubmit="return false;">
+                <form class="newsletter-form" >
                     <input type="email" placeholder="Enter your email" required>
                     <button type="submit">Subscribe</button>
                 </form>
@@ -1308,5 +1318,17 @@
 function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 </script>
 <script src="js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 </body>
 </html>

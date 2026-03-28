@@ -2703,18 +2703,18 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         'The Sperrins': 'Sperrins Heritage Trail',
     }
     region_page_map = {
-        'Dingle Peninsula': 'walking-area-dingle-way.html',
-        'County Kerry': 'walking-area-kerry-way.html',
-        'Wicklow Mountains': 'walking-area-wicklow-way.html',
-        'South East Ireland': 'walking-area-barrow-way.html',
-        'The Burren': 'walking-area-burren-way.html',
-        'Causeway Coast': 'walking-area-causeway-coast.html',
-        'Cooley Peninsula': 'walking-area-cooley-mournes.html',
-        'Connemara': 'walking-area-connemara.html',
-        'Beara Peninsula': 'walking-area-beara-way.html',
-        'Glens of Antrim': 'walking-area-antrim-glens.html',
-        'Mourne Mountains': 'walking-area-mourne-mountains.html',
-        'The Sperrins': 'walking-area-the-sperrins.html',
+        'Dingle Peninsula': 'walking-area-dingle-way',
+        'County Kerry': 'walking-area-kerry-way',
+        'Wicklow Mountains': 'walking-area-wicklow-way',
+        'South East Ireland': 'walking-area-barrow-way',
+        'The Burren': 'walking-area-burren-way',
+        'Causeway Coast': 'walking-area-causeway-coast',
+        'Cooley Peninsula': 'walking-area-cooley-mournes',
+        'Connemara': 'walking-area-connemara',
+        'Beara Peninsula': 'walking-area-beara-way',
+        'Glens of Antrim': 'walking-area-antrim-glens',
+        'Mourne Mountains': 'walking-area-mourne-mountains',
+        'The Sperrins': 'walking-area-the-sperrins',
     }
 
     def get_boot_count(diff):
@@ -3990,6 +3990,9 @@ def post_process_html(html):
     if 'subscribe.js' not in html and '</body>' in html:
         html = html.replace('</body>', '<script src="/js/subscribe.js" defer></script>\n</body>')
 
+    # Strip .html extensions from all internal links (clean URLs)
+    html = strip_html_extensions(html)
+
     return html
 
 
@@ -4043,6 +4046,40 @@ def html_flexible_replace(html, find_text, replace_text):
         return html[:match.start()] + replace_text + html[match.end():], True
 
     return html, False
+
+
+def strip_html_extensions(html):
+    """Remove .html extensions from all internal href values.
+
+    Cloudflare Pages serves extensionless URLs natively, so links like
+    href="about.html" should become href="about" and
+    href="/walking-tours/dingle-way.html" should become "/walking-tours/dingle-way".
+
+    Only strips .html from href attributes — not from src, srcset, template paths, etc.
+    Does NOT touch external links (http:// or https://).
+    """
+    import re as _re
+    # Match href="...something.html" but NOT external URLs
+    # This handles href="about.html", href="/walking-tours/foo.html", href="../blog/bar.html"
+    def _strip_ext(m):
+        prefix = m.group(1)  # href=" or href='
+        url = m.group(2)     # the URL
+        quote = m.group(3)   # closing quote
+        # Don't touch external links or anchors
+        if url.startswith('http://') or url.startswith('https://') or url.startswith('mailto:') or url.startswith('#'):
+            return f'{prefix}{url}{quote}'
+        # Strip .html extension
+        if url.endswith('.html'):
+            url = url[:-5]
+        # Special case: "index" at end should become "/" or be removed
+        if url.endswith('/index'):
+            url = url[:-5]  # "/index" → "/"
+        elif url == 'index':
+            url = '/'
+        return f'{prefix}{url}{quote}'
+
+    html = _re.sub(r'(href=["\'])([^"\']*?)(["\']\s*/?>|["\'])', _strip_ext, html)
+    return html
 
 
 def fix_relative_paths(html):
@@ -5666,24 +5703,20 @@ def main():
         index_file = WEBSITE_DIR / 'index.html'
         if index_file.exists():
             html = index_file.read_text()
-            if 'rel="alternate" hreflang="de"' not in html:
-                html = set_hreflang_tags(html,
-                    en_url=lang_url('en', ''),
-                    de_url=lang_url('de', ''),
-                    nl_url=lang_url('nl', ''))
-                html = fix_og_tags(html, lang_url('en', ''), lang='en')
-                index_file.write_text(html)
-                en_hreflang_count += 1
-                log("Added hreflang + OG tags to EN homepage")
+            html = set_hreflang_tags(html,
+                en_url=lang_url('en', ''),
+                de_url=lang_url('de', ''),
+                nl_url=lang_url('nl', ''))
+            html = fix_og_tags(html, lang_url('en', ''), lang='en')
+            index_file.write_text(html)
+            en_hreflang_count += 1
+            log("Processed EN homepage (hreflang + clean links)")
 
         for page_slug in EN_STATIC_PAGES:
             en_file = WEBSITE_DIR / f'{page_slug}.html'
             if not en_file.exists():
                 continue
             html = en_file.read_text()
-            # Skip if hreflang already present (e.g. generated pages)
-            if 'rel="alternate" hreflang="de"' in html:
-                continue
             de_slug = translate_static_slug(page_slug, 'de')
             nl_slug = translate_static_slug(page_slug, 'nl')
             html = set_hreflang_tags(html,
@@ -5695,7 +5728,7 @@ def main():
             html = fix_og_tags(html, canonical, lang='en')
             en_file.write_text(html)
             en_hreflang_count += 1
-        log(f"Added hreflang tags to {en_hreflang_count} EN static pages")
+        log(f"Processed {en_hreflang_count} EN static pages (hreflang + clean links)")
 
     # ── Generate translated 404 pages ──────────────────────────
     NOT_FOUND_TRANSLATIONS = {
@@ -5827,9 +5860,9 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/reviews', '0.7', 'monthly'))
         sitemap_urls.append(('https://walkingholidayireland.com/faq', '0.7', 'monthly'))
 
-        # Static pages
-        for page in ['about.html', 'contact.html', 'how-it-works.html', 'tailor-made.html', 'tour-grading.html', 'blog.html']:
-            if (WEBSITE_DIR / page).exists():
+        # Static pages (clean URLs — no .html extensions)
+        for page in ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog']:
+            if (WEBSITE_DIR / f'{page}.html').exists():
                 sitemap_urls.append((f'https://walkingholidayireland.com/{page}', '0.5', 'monthly'))
 
         # Blog articles (only generated/published posts)
