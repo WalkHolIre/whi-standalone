@@ -223,7 +223,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/walking-holidays-ireland-2026</loc>
+    <loc>https://walkingholidayireland.com/blog/best-hikes-killarney-national-park</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -236,6 +236,12 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/dingle-way-walking-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/walking-holidays-ireland-over-50</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -259,6 +265,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/burren-way-walking-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/glens-of-antrim-walking</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -271,7 +283,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/burren-way-walking-guide</loc>
+    <loc>https://walkingholidayireland.com/blog/wicklow-way-complete-guide</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -283,61 +295,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/walking-holidays-ireland-over-50</loc>
+    <loc>https://walkingholidayireland.com/blog/scenic-walks-ireland-2026</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/best-hikes-killarney-national-park</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/wicklow-way-complete-guide</loc>
+    <loc>https://walkingholidayireland.com/blog/walking-holidays-ireland-2026</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/best-hiking-trails-ireland-2026</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/kerry-way-walking-guide</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/self-guided-walking-holidays-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/dingle-way-vs-kerry-way</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/benefits-hiking-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/plan-hiking-trip-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/hiking-cooley-peninsula-tain-way-carlingford</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -355,13 +325,25 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/guided-vs-self-guided-walking-holidays</loc>
+    <loc>https://walkingholidayireland.com/blog/benefits-hiking-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/scenic-walks-ireland-2026</loc>
+    <loc>https://walkingholidayireland.com/blog/dingle-way-vs-kerry-way</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/hiking-cooley-peninsula-tain-way-carlingford</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/guided-vs-self-guided-walking-holidays</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -373,19 +355,25 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/plan-hiking-trip-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/kerry-way-walking-guide</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/self-guided-walking-holidays-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/mountains-o-mourne-don-mclean</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/blackrock-village-county-louth</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/newgrange</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -397,55 +385,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/choose-right-pair-hiking-boots</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/louth-business-awards-2017</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/layering-for-hiking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-pay-for-your-walking-tour</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/terms-and-conditions</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/travel-to-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/grading-of-hiking-tours</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/visit-the-nine-glens-of-antrim</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/the-dingle-versus-the-kerry-way-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -457,7 +397,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/donegal-hiking-experience</loc>
+    <loc>https://walkingholidayireland.com/blog/blackrock-village-county-louth</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -469,7 +409,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/tips-for-hiking-in-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/choose-right-pair-hiking-boots</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/donegal-hiking-experience</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -481,13 +427,25 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/frequently-asked-questions-faq</loc>
+    <loc>https://walkingholidayireland.com/blog/how-to-pay-for-your-walking-tour</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-read-the-weather</loc>
+    <loc>https://walkingholidayireland.com/blog/newgrange</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/louth-business-awards-2017</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/tips-for-hiking-in-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -499,19 +457,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-use-a-compass-on-the-trail</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/the-monasterboice-monastic-site</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/footcare-for-hikers-and-walkers</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -523,37 +469,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/ireland-national-parks</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/differences-between-rambling-and-hiking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/guide-to-the-best-hiking-sunglasses</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/st-kevin-of-glendalough</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/15-places-to-visit-in-northern-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-prepare-for-a-hike</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -565,13 +481,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/hiking-in-the-rain-in-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/best-hiking-snacks-to-pack-our-walking-holiday-guide</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/best-hiking-snacks-to-pack-our-walking-holiday-guide</loc>
+    <loc>https://walkingholidayireland.com/blog/differences-between-rambling-and-hiking</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/frequently-asked-questions-faq</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -583,25 +505,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/discover-galway-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/what-if-you-get-lost-while-hiking</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-plan-your-hiking-trip-in-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/learning-nordic-walking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/solo-inn-to-inn-hiking-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/womens-guide-to-solo-hiking-in-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -625,7 +535,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/best-walks-in-northern-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/discover-galway-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -643,55 +553,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/ballycroy-national-park-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/best-hikes-in-killarney-national-park</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/best-handheld-gps-for-hiking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/what-if-you-get-lost-while-hiking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/womens-guide-to-solo-hiking-in-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/ireland-solo-hiking-experience</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/checklist-for-solo-hiking</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/best-trails-in-ireland-for-solo-hikers</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/safety-tips-hiking-alone-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -709,7 +571,55 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/learning-nordic-walking</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/solo-inn-to-inn-hiking-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/ireland-solo-hiking-experience</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/what-role-do-irish-legends-play-in-naming-hiking-trails</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/the-connection-between-irish-myths-and-hiking-trails</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/beginner-friendly-hiking-trails-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/challenging-yet-scenic-hiking-routes-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/budget-friendly-scenic-hikes-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -727,43 +637,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/short-scenic-hiking-routes-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/budget-friendly-scenic-hikes-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/beginner-friendly-hiking-trails-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/top-rated-scenic-walks-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/what-role-do-irish-legends-play-in-naming-hiking-trails</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/how-to-choose-a-historically-rich-hiking-destination-in-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -775,25 +649,13 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/short-scenic-hiking-routes-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/safe-water-consumption-tips-hiking-ireland</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/the-connection-between-irish-myths-and-hiking-trails</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/historical-sites-to-visit-on-your-irish-hiking-journey</loc>
-    <lastmod>2026-03-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/emergency-numbers-resources-hikers-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -805,13 +667,91 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/cosan-na-naomh-walking-footsteps-saints-mountains</loc>
+    <loc>https://walkingholidayireland.com/blog/ancient-traditions-irish-heritage-pilgrimage-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/cnoc-na-dtobar-pilgrim-path</loc>
+    <loc>https://walkingholidayireland.com/blog/seasonal-guide-when-see-ireland-s-blooms-migrations</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/footcare-for-hikers-and-walkers</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/guide-to-the-best-hiking-sunglasses</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/how-to-prepare-for-a-hike</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/hiking-in-the-rain-in-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/historical-sites-to-visit-on-your-irish-hiking-journey</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/layering-for-hiking</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/safety-tips-hiking-alone-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/terms-and-conditions</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/15-places-to-visit-in-northern-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/best-walks-in-northern-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/ballycroy-national-park-ireland</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/best-handheld-gps-for-hiking</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/best-trails-in-ireland-for-solo-hikers</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -829,13 +769,31 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/ancient-traditions-irish-heritage-pilgrimage-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/emergency-numbers-resources-hikers-ireland</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/seasonal-guide-when-see-ireland-s-blooms-migrations</loc>
+    <loc>https://walkingholidayireland.com/blog/cosan-na-naomh-walking-footsteps-saints-mountains</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/cnoc-na-dtobar-pilgrim-path</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/how-to-read-the-weather</loc>
+    <lastmod>2026-03-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/how-to-use-a-compass-on-the-trail</loc>
     <lastmod>2026-03-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
