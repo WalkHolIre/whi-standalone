@@ -4065,9 +4065,18 @@ def strip_html_extensions(html):
         prefix = m.group(1)  # href=" or href='
         url = m.group(2)     # the URL
         quote = m.group(3)   # closing quote
-        # Don't touch external links or anchors
-        if url.startswith('http://') or url.startswith('https://') or url.startswith('mailto:') or url.startswith('#'):
+        # Don't touch external links, anchors, mailto, tel
+        if url.startswith(('http://', 'https://', 'mailto:', 'tel:', '#', 'javascript:')):
             return f'{prefix}{url}{quote}'
+        # Split off query string and fragment before processing
+        fragment = ''
+        query = ''
+        if '#' in url:
+            url, fragment = url.split('#', 1)
+            fragment = '#' + fragment
+        if '?' in url:
+            url, query = url.split('?', 1)
+            query = '?' + query
         # Strip .html extension
         if url.endswith('.html'):
             url = url[:-5]
@@ -4076,9 +4085,9 @@ def strip_html_extensions(html):
             url = url[:-5]  # "/index" → "/"
         elif url == 'index':
             url = '/'
-        return f'{prefix}{url}{quote}'
+        return f'{prefix}{url}{query}{fragment}{quote}'
 
-    html = _re.sub(r'(href=["\'])([^"\']*?)(["\']\s*/?>|["\'])', _strip_ext, html)
+    html = _re.sub(r'(href=["\'])([^"\']*?)(["\'])', _strip_ext, html)
     return html
 
 
