@@ -1218,6 +1218,15 @@ def translate_html_ui(html, lang):
     # "Insider advice for your trip"
     html = html.replace('>Insider advice for your trip<', f'>{t("travel_tips_sub", lang)}<')
 
+    # ── Translate nav/internal link hrefs to correct language slugs ──
+    for en_slug, slug_map in STATIC_SLUG_MAP.items():
+        translated_slug = slug_map.get(lang)
+        if translated_slug and translated_slug != en_slug:
+            # href="english-slug" → href="translated-slug" (root-level links)
+            html = html.replace(f'href="{en_slug}"', f'href="{translated_slug}"')
+            # href="../english-slug" → href="../translated-slug" (subfolder links)
+            html = html.replace(f'href="../{en_slug}"', f'href="../{translated_slug}"')
+
     return html
 
 
