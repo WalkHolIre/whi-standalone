@@ -5789,8 +5789,11 @@ def main():
                 ps = post.get('slug', '')
                 if ps not in generated_blog_slugs:
                     continue
-                # Use translated slug if available, otherwise fall back to EN slug
-                lang_slug = (post.get(bcfg['slug_field'], '') or '').strip() or ps
+                # Only show posts that have a translated page (slug + content)
+                lang_slug = (post.get(bcfg['slug_field'], '') or '').strip()
+                lang_content = (post.get(bcfg['content_field'], '') or '').strip()
+                if not lang_slug or not lang_content:
+                    continue
                 p_img = post.get('featured_image', '') or ''
                 p_cat = post.get('category', '') or 'Walking Routes'
                 p_title = post.get(bcfg['title_field']) or post.get('title', '')
