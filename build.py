@@ -88,6 +88,10 @@ generated = {
     'errors': []
 }
 
+# Pages that have noindex — exclude from sitemaps (legal/policy pages in all languages)
+NOINDEX_PAGES = {'privacy-policy', 'terms-and-conditions', 'datenschutz', 'agb',
+                 'privacybeleid', 'algemene-voorwaarden'}
+
 # UI translations for multiple languages
 UI_STRINGS = {
     'en': {
@@ -95,7 +99,7 @@ UI_STRINGS = {
         'starting_from': 'Starting From',
         'per_person': 'per person',
         'days': 'Days',
-        'nights': 'Nights',
+        'nights': 'Hikes',
         'highlights': 'Highlights',
         'tour_itinerary': 'Tour Itinerary',
         'whats_included': "What's Included",
@@ -176,6 +180,9 @@ UI_STRINGS = {
         'price_promise': 'Price Promise',
         'best_price_guarantee': 'Best price guarantee — see our price promise',
         'tour_grading': 'Tour Grading & Difficulty',
+        'faq_nav': 'FAQ',
+        'terms_nav': 'Terms & Conditions',
+        'reviews_nav': 'Reviews',
         'walking': 'Walking',
         # Tour listing page
         'self_guided_walking_tours': 'Self-Guided Walking Tours',
@@ -202,7 +209,7 @@ UI_STRINGS = {
         'starting_from': 'Ab',
         'per_person': 'pro Person',
         'days': 'Tage',
-        'nights': 'Nächte',
+        'nights': 'Wanderungen',
         'highlights': 'Highlights',
         'tour_itinerary': 'Reiseverlauf',
         'whats_included': 'Inklusivleistungen',
@@ -214,10 +221,10 @@ UI_STRINGS = {
         'similar_walks_sub': 'Ähnlicher Schwierigkeitsgrad und nahegelegene Ziele',
         'walking_tours': 'Wandertouren',
         'walking_holidays': 'Wanderurlaub',
-        'how_it_works': 'So funktioniert es',
+        'how_it_works': 'Wie funktioniert es?',
         'about_us': 'Über Uns',
         'blog': 'Blog',
-        'get_in_touch': 'Kontakt',
+        'get_in_touch': 'Kontaktieren Sie uns!',
         'home': 'Startseite',
         'overview': 'Überblick',
         'get_free_quote': 'Kostenloses Angebot',
@@ -282,7 +289,10 @@ UI_STRINGS = {
         'day': 'Tag',
         'price_promise': 'Preisgarantie',
         'best_price_guarantee': 'Bestpreisgarantie — siehe unsere Preisgarantie',
-        'tour_grading': 'Tourbewertung & Schwierigkeitsgrad',
+        'tour_grading': 'Schwierigkeitsgrad',
+        'faq_nav': 'FAQ',
+        'terms_nav': 'AGB',
+        'reviews_nav': 'Bewertungen',
         'walking': 'Wandern',
         # Tour listing page
         'self_guided_walking_tours': 'Selbstgeführte Wandertouren',
@@ -387,7 +397,7 @@ UI_STRINGS = {
         'starting_from': 'Vanaf',
         'per_person': 'per persoon',
         'days': 'Dagen',
-        'nights': 'Nachten',
+        'nights': 'Wandelingen',
         'highlights': 'Hoogtepunten',
         'tour_itinerary': 'Reisschema',
         'whats_included': 'Inbegrepen',
@@ -402,7 +412,7 @@ UI_STRINGS = {
         'how_it_works': 'Hoe werkt het?',
         'about_us': 'Over Ons',
         'blog': 'Blog',
-        'get_in_touch': 'Neem Contact',
+        'get_in_touch': 'Neem contact op',
         'home': 'Home',
         'overview': 'Overzicht',
         'get_free_quote': 'Gratis Offerte',
@@ -467,7 +477,10 @@ UI_STRINGS = {
         'day': 'Dag',
         'price_promise': 'Prijsgarantie',
         'best_price_guarantee': 'Beste prijsgarantie — zie onze prijsbelofte',
-        'tour_grading': 'Moeilijkheidsgraad & Beoordeling',
+        'tour_grading': 'Moeilijkheidsgraad',
+        'faq_nav': 'FAQ',
+        'terms_nav': 'Algemene Voorwaarden',
+        'reviews_nav': 'Beoordelingen',
         'walking': 'Wandelen',
         # Tour listing page
         'self_guided_walking_tours': 'Wandeltochten op eigen tempo',
@@ -841,9 +854,16 @@ def translate_html_ui(html, lang):
         '>Home<': f'>{t("home", lang)}<',
         '>Walking Tours<': f'>{t("walking_tours", lang)}<',
         '>Walking Holidays<': f'>{t("walking_holidays", lang)}<',
+        '>Walking Holidays <': f'>{t("walking_holidays", lang)} <',
         '>How It Works<': f'>{t("how_it_works", lang)}<',
+        '>How It Works <': f'>{t("how_it_works", lang)} <',
         '>Tour Grading &amp; Difficulty<': f'>{t("tour_grading", lang)}<',
         '>Tour Grading & Difficulty<': f'>{t("tour_grading", lang)}<',
+        '>FAQ<': f'>{t("faq_nav", lang)}<',
+        '>Terms &amp; Conditions<': f'>{t("terms_nav", lang)}<',
+        '>Terms & Conditions<': f'>{t("terms_nav", lang)}<',
+        '>Reviews<': f'>{t("reviews_nav", lang)}<',
+        '>Tailor-Made Tours<': f'>{t("tailor_made", lang)}<',
         '>About Us<': f'>{t("about_us", lang)}<',
         '>Blog<': f'>{t("blog", lang)}<',
         '>Get in Touch<': f'>{t("get_in_touch", lang)}<',
@@ -1035,6 +1055,13 @@ def translate_html_ui(html, lang):
         t('cant_decide_sub', lang))
     # Tour count: "of 15 tours" → translated
     html = re.sub(r'of (\d+) tours', lambda m: f'{t("of_x_tours", lang).replace("15", m.group(1))}', html)
+
+    # Desktop nav: "Get in Touch" on its own line with whitespace
+    html = re.sub(
+        r'(class="[^"]*bg-primary[^"]*"[^>]*>)\s*Get in Touch\s*(</a>)',
+        lambda m: f'{m.group(1)}\n                        {t("get_in_touch", lang)}\n                    {m.group(2)}',
+        html
+    )
 
     return html
 
@@ -3754,11 +3781,12 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
-def set_hreflang_tags(html, en_url, de_url, nl_url):
+def set_hreflang_tags(html, en_url, de_url=None, nl_url=None):
     """Remove any existing hreflang tags and switchLang script, then add fresh ones.
 
-    This prevents duplicate hreflang tags when EN source files already contain
-    hardcoded hreflang links that point to old URL structures.
+    Only emits hreflang tags for languages that have a genuine translated page.
+    Pass de_url=None or nl_url=None to skip that language (prevents referencing
+    the EN page from multiple language groups — Ahrefs audit issue #1).
     Adds x-default pointing to the English version (SEO best practice).
     """
     # Strip existing hreflang links
@@ -3773,10 +3801,14 @@ def set_hreflang_tags(html, en_url, de_url, nl_url):
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 '''
 
-    hreflang_block = f'''{preconnect}    <link rel="alternate" hreflang="en" href="{en_url}" />
-    <link rel="alternate" hreflang="de" href="{de_url}" />
-    <link rel="alternate" hreflang="nl" href="{nl_url}" />
-    <link rel="alternate" hreflang="x-default" href="{en_url}" />'''
+    # Build hreflang block — only include languages with genuine translations
+    hreflang_lines = [f'{preconnect}    <link rel="alternate" hreflang="en" href="{en_url}" />']
+    if de_url:
+        hreflang_lines.append(f'    <link rel="alternate" hreflang="de" href="{de_url}" />')
+    if nl_url:
+        hreflang_lines.append(f'    <link rel="alternate" hreflang="nl" href="{nl_url}" />')
+    hreflang_lines.append(f'    <link rel="alternate" hreflang="x-default" href="{en_url}" />')
+    hreflang_block = '\n'.join(hreflang_lines)
 
     switchlang_js = """<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
@@ -4399,11 +4431,15 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 title=tour_trans.get('name') or tour_trans.get('meta_title'),
                 description=tour_trans.get('seo_description') or tour_trans.get('subtitle'))
 
-            # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
+            # Set hreflang tags — only include languages with actual translations
+            # When building DE/NL, current lang always has translation (otherwise we skipped it).
+            # For the OTHER non-EN language, check the inline columns on the tour.
+            _t_has_de = (lang == 'de') or bool((tour.get('name_de') or '').strip() or (tour.get('description_de') or '').strip())
+            _t_has_nl = (lang == 'nl') or bool((tour.get('name_nl') or '').strip() or (tour.get('description_nl') or '').strip())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-tours/{slug}'),
-                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}'),
-                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}'))
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}') if _t_has_de else None,
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}') if _t_has_nl else None)
 
             # BreadcrumbList schema: Home > Walking Tours > Tour Name
             tour_folder_local = TOUR_FOLDER.get(lang, 'walking-tours')
@@ -4497,11 +4533,13 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 title=dest_trans.get('name') or dest_trans.get('meta_title'),
                 description=dest_trans.get('seo_description') or dest_trans.get('short_description'))
 
-            # Set hreflang tags for all languages (strips old ones, adds fresh with x-default)
+            # Set hreflang tags — only include languages with actual translations
+            _d_has_de = (lang == 'de') or bool((destination.get('name_de') or '').strip() or (destination.get('description_de') or '').strip())
+            _d_has_nl = (lang == 'nl') or bool((destination.get('name_nl') or '').strip() or (destination.get('description_nl') or '').strip())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if _d_has_de else None,
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if _d_has_nl else None)
 
             # BreadcrumbList schema: Home > Destinations > Destination Name
             dest_listing_slug = translate_static_slug('destinations', lang)
@@ -4573,7 +4611,7 @@ def main():
         destinations = fetch_supabase('destinations', '&status=eq.published&order=sort_order')
 
         log("Fetching reviews from Supabase...")
-        reviews = fetch_supabase('reviews', '&status=eq.published&order=featured.desc,rating.desc,review_date.desc')
+        reviews = fetch_supabase('reviews', '&status=in.(published,approved)&order=featured.desc,rating.desc,review_date.desc')
 
         log("Fetching FAQs from Supabase...")
         faqs = fetch_supabase('faqs', '&status=eq.published&language=eq.en&order=section,sort_order')
@@ -4664,6 +4702,27 @@ def main():
                 reviews_by_dest[dest_id] = []
             reviews_by_dest[dest_id].append(review)
 
+    # Pre-compute which tours/destinations have DE and NL translations
+    # (used by EN pages to only emit hreflang when translation exists)
+    tours_with_de = set()
+    tours_with_nl = set()
+    dests_with_de = set()
+    dests_with_nl = set()
+    for t in tours:
+        tid = t.get('id')
+        # Use strip() to treat empty strings as missing — Supabase may return '' not None
+        if (t.get('name_de') or '').strip() or (t.get('description_de') or '').strip():
+            tours_with_de.add(tid)
+        if (t.get('name_nl') or '').strip() or (t.get('description_nl') or '').strip():
+            tours_with_nl.add(tid)
+    for d in destinations:
+        did = d.get('id')
+        if (d.get('name_de') or '').strip() or (d.get('description_de') or '').strip():
+            dests_with_de.add(did)
+        if (d.get('name_nl') or '').strip() or (d.get('description_nl') or '').strip():
+            dests_with_nl.add(did)
+    log(f"Translation coverage: {len(tours_with_de)} tours DE, {len(tours_with_nl)} tours NL, {len(dests_with_de)} dests DE, {len(dests_with_nl)} dests NL")
+
     # Build tour pages
     log("\nGenerating tour pages...")
     for tour in tours:
@@ -4694,11 +4753,11 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-            # Set hreflang tags (strips old ones, adds correct ones with x-default)
+            # Set hreflang tags — only include languages with genuine translations
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-tours/{slug}'),
-                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}'),
-                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}'))
+                de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}') if tour_id in tours_with_de else None,
+                nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}') if tour_id in tours_with_nl else None)
 
             tour_folder = TOUR_FOLDER.get('en', 'walking-tours')
             output_path = WEBSITE_DIR / tour_folder / f'{slug}.html'
@@ -4738,11 +4797,11 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-            # Set hreflang tags (strips old ones, adds correct ones with x-default)
+            # Set hreflang tags — only include languages with genuine translations
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if dest_id in dests_with_de else None,
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if dest_id in dests_with_nl else None)
 
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
@@ -5180,6 +5239,42 @@ def main():
             yt_pattern = r'(?:<p>\s*)?(?:<a[^>]*>)?\s*(?:https?://)?(?:www\.)?(?:youtu\.be/(?P<id1>[\w-]+)|youtube\.com/watch\?v=(?P<id2>[\w-]+)|youtube\.com/embed/(?P<id3>[\w-]+))(?:[^\s<]*)?\s*(?:</a>)?(?:\s*</p>)?'
             content = _re.sub(yt_pattern, _yt_embed, content)
 
+            # ── Render TOC blocks ──
+            # The TipTap editor saves <div data-type="toc" class="toc-block"></div>
+            # Replace with actual table of contents generated from H2/H3 headings
+            if 'data-type="toc"' in content:
+                headings = _re.findall(r'<(h[23])[^>]*>(.*?)</\1>', content, _re.IGNORECASE)
+                if headings:
+                    toc_items = []
+                    for tag, text in headings:
+                        clean_text = _re.sub(r'<[^>]+>', '', text).strip()
+                        anchor_id = _re.sub(r'[^a-z0-9]+', '-', clean_text.lower()).strip('-')
+                        indent = 'ml-4' if tag.lower() == 'h3' else ''
+                        toc_items.append(f'<li class="{indent}"><a href="#{anchor_id}" class="text-primary hover:text-primary/80 hover:underline transition-colors">{escape(clean_text)}</a></li>')
+                    toc_html = f'''<nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800">Table of Contents</h3>
+                <ol class="space-y-2 text-sm">
+                    {''.join(toc_items)}
+                </ol>
+            </nav>'''
+                    # Replace the empty TOC div with rendered TOC
+                    content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', toc_html, content)
+
+                    # Add anchor IDs to the actual headings so TOC links work
+                    def _add_heading_id(m):
+                        tag = m.group(1)
+                        attrs = m.group(2) or ''
+                        text = m.group(3)
+                        clean = _re.sub(r'<[^>]+>', '', text).strip()
+                        anchor = _re.sub(r'[^a-z0-9]+', '-', clean.lower()).strip('-')
+                        if 'id=' in attrs:
+                            return m.group(0)
+                        return f'<{tag}{attrs} id="{anchor}">{text}</{tag}>'
+                    content = _re.sub(r'<(h[23])([^>]*)>(.*?)</\1>', _add_heading_id, content, flags=_re.IGNORECASE)
+                else:
+                    # No headings found — remove the empty TOC div
+                    content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', '', content)
+
             title = post.get('title', '')
             excerpt = post.get('excerpt', '') or ''
             featured_image = post.get('featured_image', '') or ''
@@ -5251,21 +5346,26 @@ def main():
             for key, value in replacements.items():
                 html = html.replace(key, str(value))
 
-            # Build hreflang URLs — use localized slugs when available
+            # Build hreflang URLs — ONLY include languages with genuine translations
             slug_de = post.get('slug_de', '').strip() if post.get('slug_de') else ''
             slug_nl = post.get('slug_nl', '').strip() if post.get('slug_nl') else ''
+            has_de = bool(slug_de and post.get('content_de'))
+            has_nl = bool(slug_nl and post.get('content_nl'))
             en_blog_url = lang_url('en', f'blog/{slug}')
-            de_blog_url = lang_url('de', f'blog/{slug_de}') if slug_de else en_blog_url
-            nl_blog_url = lang_url('nl', f'blog/{slug_nl}') if slug_nl else en_blog_url
+            de_blog_url = lang_url('de', f'blog/{slug_de}') if has_de else None
+            nl_blog_url = lang_url('nl', f'blog/{slug_nl}') if has_nl else None
 
             # Canonical URL for EN blog article
             html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{en_blog_url}"', html)
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{en_blog_url}"/>\n</head>')
 
-            html = fix_og_tags(html, en_blog_url, lang='en')
+            html = fix_og_tags(html, en_blog_url, lang='en',
+                title=post.get('meta_title') or title,
+                description=post.get('meta_description') or excerpt[:160],
+                image=post.get('featured_image'))
 
-            # Set hreflang with correct localized URLs
+            # Set hreflang — only for languages with actual translated content
             html = set_hreflang_tags(html,
                 en_url=en_blog_url,
                 de_url=de_blog_url,
@@ -5292,7 +5392,8 @@ def main():
                 de_html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{de_blog_url}"', de_html)
                 if 'rel="canonical"' not in de_html:
                     de_html = de_html.replace('</head>', f'    <link rel="canonical" href="{de_blog_url}"/>\n</head>')
-                de_html = set_hreflang_tags(de_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                de_hreflang_nl = nl_blog_url if has_nl else None
+                de_html = set_hreflang_tags(de_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=de_hreflang_nl)
                 de_html = fix_og_tags(de_html, de_blog_url, lang='de',
                     title=post.get('title_de'), description=post.get('meta_description_de') or post.get('excerpt_de'))
                 de_html = fix_relative_paths(de_html)
@@ -5318,7 +5419,8 @@ def main():
                 nl_html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{nl_blog_url}"', nl_html)
                 if 'rel="canonical"' not in nl_html:
                     nl_html = nl_html.replace('</head>', f'    <link rel="canonical" href="{nl_blog_url}"/>\n</head>')
-                nl_html = set_hreflang_tags(nl_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=nl_blog_url)
+                nl_hreflang_de = de_blog_url if has_de else None
+                nl_html = set_hreflang_tags(nl_html, en_url=en_blog_url, de_url=nl_hreflang_de, nl_url=nl_blog_url)
                 nl_html = fix_og_tags(nl_html, nl_blog_url, lang='nl',
                     title=post.get('title_nl'), description=post.get('meta_description_nl') or post.get('excerpt_nl'))
                 nl_html = fix_relative_paths(nl_html)
@@ -5701,9 +5803,12 @@ def main():
     EN_STATIC_PAGES = [
         'about', 'contact', 'how-it-works', 'tour-grading', 'tailor-made',
         'reviews', 'faq', 'walking-tours', 'destinations',
-        'self-guided-walking-holidays-ireland',
+        'self-guided-walking-holidays-ireland', 'self-guided-walking-tours',
         'solo-walking-holidays-ireland', 'walking-holidays-ireland-over-50s',
         'northern-ireland', 'privacy-policy', 'terms-and-conditions',
+        'wild-atlantic-way', 'ancient-east', 'mountains-of-mourne',
+        'best-hiking-trails-ireland', 'hiking-ireland',
+        'blog', 'checkout', 'booking-success',
     ]
     if not DRY_RUN:
         en_hreflang_count = 0
@@ -5712,11 +5817,14 @@ def main():
         index_file = WEBSITE_DIR / 'index.html'
         if index_file.exists():
             html = index_file.read_text()
+            homepage_canonical = lang_url('en', '')
             html = set_hreflang_tags(html,
-                en_url=lang_url('en', ''),
+                en_url=homepage_canonical,
                 de_url=lang_url('de', ''),
                 nl_url=lang_url('nl', ''))
-            html = fix_og_tags(html, lang_url('en', ''), lang='en')
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{homepage_canonical}"/>\n</head>')
+            html = fix_og_tags(html, homepage_canonical, lang='en')
             index_file.write_text(html)
             en_hreflang_count += 1
             log("Processed EN homepage (hreflang + clean links)")
@@ -5732,12 +5840,34 @@ def main():
                 en_url=lang_url('en', f'{page_slug}'),
                 de_url=lang_url('de', f'{de_slug}'),
                 nl_url=lang_url('nl', f'{nl_slug}'))
-            # Fix OG tags (adds them if missing, fixes og:url)
+            # Add canonical tag if missing
             canonical = lang_url('en', page_slug)
+            if 'rel="canonical"' not in html:
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical}"/>\n</head>')
+            else:
+                html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical}"', html)
+            # Fix OG tags (adds them if missing, fixes og:url)
             html = fix_og_tags(html, canonical, lang='en')
             en_file.write_text(html)
             en_hreflang_count += 1
-        log(f"Processed {en_hreflang_count} EN static pages (hreflang + clean links)")
+
+        # Catch any remaining EN HTML files without canonical (walking-area variants, etc.)
+        for leftover in WEBSITE_DIR.glob('*.html'):
+            if leftover.name.startswith('_') or leftover.name == '404.html':
+                continue
+            try:
+                html = leftover.read_text()
+            except Exception:
+                continue
+            if '<head' in html and 'rel="canonical"' not in html:
+                slug = leftover.stem
+                canonical = lang_url('en', slug)
+                html = html.replace('</head>', f'    <link rel="canonical" href="{canonical}"/>\n</head>')
+                html = fix_og_tags(html, canonical, lang='en')
+                leftover.write_text(html)
+                en_hreflang_count += 1
+
+        log(f"Processed {en_hreflang_count} EN static pages (hreflang + canonical + OG tags)")
 
     # ── Generate translated 404 pages ──────────────────────────
     NOT_FOUND_TRANSLATIONS = {
@@ -5870,8 +6000,9 @@ def main():
         sitemap_urls.append(('https://walkingholidayireland.com/faq', '0.7', 'monthly'))
 
         # Static pages (clean URLs — no .html extensions)
+        # Exclude noindex pages (legal/policy pages) from sitemap
         for page in ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog']:
-            if (WEBSITE_DIR / f'{page}.html').exists():
+            if page not in NOINDEX_PAGES and (WEBSITE_DIR / f'{page}.html').exists():
                 sitemap_urls.append((f'https://walkingholidayireland.com/{page}', '0.5', 'monthly'))
 
         # Blog articles (only generated/published posts)
@@ -5926,12 +6057,11 @@ def main():
             if (sm_dir / f'{reviews_slug}.html').exists():
                 sm_urls.append((f'{sm_base}/{reviews_slug}', '0.7', 'monthly'))
 
-            # Static pages
-            static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading',
-                          'privacy-policy', 'terms-and-conditions', 'blog']
+            # Static pages — exclude noindex pages (legal/policy) from sitemap
+            static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog']
             for sp in static_pages:
                 sp_slug = translate_static_slug(sp, sm_lang)
-                if (sm_dir / f'{sp_slug}.html').exists():
+                if sp_slug not in NOINDEX_PAGES and (sm_dir / f'{sp_slug}.html').exists():
                     sm_urls.append((f'{sm_base}/{sp_slug}', '0.5', 'monthly'))
 
             # Blog pages (localized)
@@ -5976,9 +6106,118 @@ def main():
         log("=" * 60)
         apply_company_config(WEBSITE_DIR, company_config)
 
+    # ── Post-build SEO validation ──
+    if not DRY_RUN:
+        validate_seo_health(WEBSITE_DIR)
+
     # ── IndexNow: notify search engines of updated URLs ──
     if not DRY_RUN:
         submit_indexnow()
+
+
+def validate_seo_health(site_dir):
+    """Post-build SEO validation — catches regressions before deployment.
+
+    Scans all generated HTML files and reports:
+    1. Hreflang pointing to non-existent pages
+    2. Pages missing canonical tags
+    3. Pages missing OG tags
+    4. Noindex pages that appear in sitemaps
+    5. Hreflang referencing EN URL from multiple language groups
+    """
+    log("\n" + "=" * 60)
+    log("SEO VALIDATION: scanning generated files...")
+    log("=" * 60)
+
+    issues = []
+    warnings = []
+
+    # Collect all generated HTML file paths (for existence checks)
+    all_html_files = set()
+    for html_file in site_dir.rglob('*.html'):
+        # Convert to a relative URL-like path
+        rel = str(html_file.relative_to(site_dir)).replace('.html', '').replace('\\', '/')
+        all_html_files.add(rel)
+
+    # Scan all HTML files
+    checked = 0
+    for html_file in site_dir.rglob('*.html'):
+        if 'node_modules' in str(html_file) or '_templates' in str(html_file):
+            continue
+
+        try:
+            content = html_file.read_text(errors='ignore')
+        except Exception:
+            continue
+        checked += 1
+
+        rel_path = str(html_file.relative_to(site_dir))
+
+        # 1. Check for canonical tag (skip 404 page — shouldn't have canonical)
+        if '<head' in content and 'rel="canonical"' not in content and '404' not in rel_path:
+            issues.append(f"MISSING CANONICAL: {rel_path}")
+
+        # 2. Check for OG tags (skip legal/policy pages)
+        if '<head' in content and 'og:title' not in content:
+            if not any(skip in rel_path for skip in ['privacy', 'terms', 'datenschutz', 'agb', 'privacybeleid', 'algemene']):
+                warnings.append(f"MISSING OG TAGS: {rel_path}")
+
+        # 3. Check hreflang tags point to existing files
+        hreflang_matches = re.findall(r'hreflang="([^"]+)"\s+href="([^"]+)"', content)
+        for lang_code, href in hreflang_matches:
+            if lang_code == 'x-default':
+                continue
+            # Extract path from full URL
+            for domain in LANG_DOMAINS.values():
+                if href.startswith(domain):
+                    path = href[len(domain):].strip('/')
+                    if path and path not in all_html_files:
+                        # Check with lang prefix
+                        lang_prefix = ''
+                        if 'walkingholidayireland.de' in domain:
+                            lang_prefix = 'de/'
+                        elif 'wandelvakantieierland.nl' in domain:
+                            lang_prefix = 'nl/'
+                        full_check = f"{lang_prefix}{path}" if lang_prefix else path
+                        if full_check not in all_html_files:
+                            issues.append(f"HREFLANG BROKEN: {rel_path} → {lang_code}={href} (file not found)")
+
+        # 4. Check for EN URL used in DE/NL hreflang (the #1 audit issue)
+        en_hreflang = [h for l, h in hreflang_matches if l == 'en']
+        de_hreflang = [h for l, h in hreflang_matches if l == 'de']
+        nl_hreflang = [h for l, h in hreflang_matches if l == 'nl']
+        if en_hreflang and de_hreflang:
+            if en_hreflang[0] == de_hreflang[0]:
+                issues.append(f"HREFLANG DUPLICATE: {rel_path} — DE hreflang points to EN URL ({en_hreflang[0]})")
+        if en_hreflang and nl_hreflang:
+            if en_hreflang[0] == nl_hreflang[0]:
+                issues.append(f"HREFLANG DUPLICATE: {rel_path} — NL hreflang points to EN URL ({en_hreflang[0]})")
+
+    # 5. Check sitemaps don't include noindex pages
+    for sitemap_path in site_dir.rglob('sitemap.xml'):
+        sitemap_content = sitemap_path.read_text(errors='ignore')
+        for noindex_slug in NOINDEX_PAGES:
+            if f'/{noindex_slug}<' in sitemap_content or f'/{noindex_slug}' in sitemap_content:
+                # More precise check
+                if re.search(rf'<loc>[^<]*/{re.escape(noindex_slug)}[^/]*</loc>', sitemap_content):
+                    issues.append(f"NOINDEX IN SITEMAP: {sitemap_path.relative_to(site_dir)} contains /{noindex_slug}")
+
+    # Report results
+    if issues:
+        log(f"\n✗ SEO VALIDATION FAILED: {len(issues)} issues found", 'error')
+        for issue in issues[:20]:  # Show first 20
+            log(f"  ✗ {issue}", 'error')
+        if len(issues) > 20:
+            log(f"  ... and {len(issues) - 20} more issues", 'error')
+    else:
+        log(f"\n✓ SEO VALIDATION PASSED: {checked} files checked, 0 issues")
+
+    if warnings:
+        log(f"  ⚠ {len(warnings)} warnings (non-blocking):", 'warn')
+        for w in warnings[:10]:
+            log(f"    ⚠ {w}", 'warn')
+
+    return len(issues) == 0
 
 
 def submit_indexnow():
