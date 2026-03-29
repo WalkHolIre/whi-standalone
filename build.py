@@ -4719,13 +4719,12 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 title=dest_trans.get('name') or dest_trans.get('meta_title'),
                 description=dest_trans.get('seo_description') or dest_trans.get('short_description'))
 
-            # Set hreflang tags — only include languages with actual translations
-            _d_has_de = (lang == 'de') or bool((destination.get('name_de') or '').strip() or (destination.get('description_de') or '').strip())
-            _d_has_nl = (lang == 'nl') or bool((destination.get('name_nl') or '').strip() or (destination.get('description_nl') or '').strip())
+            # Set hreflang tags — always include all 3 languages for destinations
+            # (all destinations are generated in DE/NL via template translation)
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if _d_has_de else None,
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if _d_has_nl else None)
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
 
             # BreadcrumbList schema: Home > Destinations > Destination Name
             dest_listing_slug = translate_static_slug('destinations', lang)
@@ -4983,11 +4982,12 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-            # Set hreflang tags — only include languages with genuine translations
+            # Set hreflang tags — always include all 3 languages for destinations
+            # (all destinations are generated in DE/NL via template translation)
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if dest_id in dests_with_de else None,
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if dest_id in dests_with_nl else None)
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
 
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
