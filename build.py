@@ -1203,6 +1203,21 @@ def translate_html_ui(html, lang):
     # "View all FAQs"
     html = html.replace('>View all FAQs<', f'>{t("view_all_faqs", lang)}<')
 
+    # ── Destination section subtitles (generated in render functions with names) ──
+    # "Key highlights you'll discover in {Name}"
+    html = re.sub(r'>Key highlights you&#39;ll discover in ([^<]+)<', lambda m: f'>{t("poi_sub", lang)} {m.group(1)}<', html)
+    html = re.sub(r">Key highlights you'll discover in ([^<]+)<", lambda m: f'>{t("poi_sub", lang)} {m.group(1)}<', html)
+    # "What to expect along the way"
+    html = html.replace('>What to expect along the way<', f'>{t("landscape_sub", lang)}<')
+    # "The stories and traditions of {Name}"
+    html = re.sub(r'>The stories and traditions of ([^<]+)<', lambda m: f'>{t("culture_sub", lang)} {m.group(1)}<', html)
+    # "Handpicked accommodation along the route"
+    html = html.replace('>Handpicked accommodation along the route<', f'>{t("stay_sub", lang)}<')
+    # "Everything you need to know before you go"
+    html = html.replace('>Everything you need to know before you go<', f'>{t("getting_here_sub", lang)}<')
+    # "Insider advice for your trip"
+    html = html.replace('>Insider advice for your trip<', f'>{t("travel_tips_sub", lang)}<')
+
     return html
 
 
@@ -1481,9 +1496,9 @@ def render_itinerary(itinerary_data, routes_by_id=None):
             if day_distance:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]" style="transform:rotate(90deg)">favorite_route</span> {day_distance:.1f} km</span>'
             if day_ascent:
-                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">trending_up</span> ↑{int(day_ascent)}m</span>'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">landscape</span> ↑{int(day_ascent)}m</span>'
             if day_descent:
-                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-blue-700 bg-blue-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">trending_down</span> ↓{int(day_descent)}m</span>'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-blue-700 bg-blue-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">landscape</span> ↓{int(day_descent)}m</span>'
             if day_duration:
                 hours = int(day_duration)
                 mins = int((day_duration - hours) * 60)
@@ -2970,9 +2985,9 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         if km_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;transform:rotate(90deg)">favorite_route</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px">landscape</span><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if descent_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 7l5 10 5-10"/><path d="M4 4h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&darr;{descent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px">landscape</span><span class="text-xs font-bold text-slate-700 mt-1">&darr;{descent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
 
         stats_bar = '<div class="flex items-start justify-evenly py-3 px-2 border-t border-slate-100 gap-2">' + ''.join(stats) + '</div>'
 
@@ -6377,10 +6392,20 @@ def main():
             except Exception:
                 continue
             orig = c
-            if 'Self-Guided Holidays' not in c:
+            if 'Self-Guided Holidays' not in c and t('self_guided_holidays_nav', 'de') not in c and t('self_guided_holidays_nav', 'nl') not in c:
+                # Determine language from path for correct slug
+                rp = str(html_file.relative_to(WEBSITE_DIR))
+                if rp.startswith('de/') or rp.startswith('de\\'):
+                    sg_slug = STATIC_SLUG_MAP['self-guided-walking-holidays-ireland']['de']
+                elif rp.startswith('nl/') or rp.startswith('nl\\'):
+                    sg_slug = STATIC_SLUG_MAP['self-guided-walking-holidays-ireland']['nl']
+                else:
+                    sg_slug = 'self-guided-walking-holidays-ireland'
                 for old_nav, new_nav in NAV_LINK_FIXES:
                     if old_nav in c:
-                        c = c.replace(old_nav, new_nav)
+                        # Replace the English self-guided slug with the correct translated one
+                        fixed_nav = new_nav.replace('self-guided-walking-holidays-ireland', sg_slug)
+                        c = c.replace(old_nav, fixed_nav)
                         break
             if c != orig:
                 nav_count += 1
