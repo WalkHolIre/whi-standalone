@@ -188,6 +188,16 @@ UI_STRINGS = {
         'terms_nav': 'Terms & Conditions',
         'reviews_nav': 'Reviews',
         'walking': 'Walking',
+        # Why WHI section (self-guided holidays page)
+        'why_whi': 'Why Walking Holiday Ireland',
+        'why_walk_every': 'We Walk Every Route',
+        'why_walk_every_desc': "Cliff and Louise walk every trail, every year. You're booking with walkers who know these trails intimately.",
+        'why_irish_owned': 'Irish-Owned Since 2012',
+        'why_irish_owned_desc': "Over a decade of experience. We're not a corporation — we're walking enthusiasts running a real business.",
+        'why_gps': 'GPS App on Every Tour',
+        'why_gps_desc': 'Advanced GPS app with offline maps. Walk at your pace knowing exactly where you are at all times.',
+        'why_only_operator': 'Only Operator Covering Antrim to Cooley',
+        'why_only_operator_desc': "We're the only company offering self-guided walks across all 7 walking regions from north to south.",
         # Tour listing page
         'self_guided_walking_tours': 'Self-Guided Walking Tours',
         'listing_subtitle': "Choose from 15 tours across Ireland's most stunning landscapes. 5 to 10 days, every level.",
@@ -302,6 +312,16 @@ UI_STRINGS = {
         'terms_nav': 'AGB',
         'reviews_nav': 'Bewertungen',
         'walking': 'Wandern',
+        # Why WHI section
+        'why_whi': 'Warum Walking Holiday Ireland',
+        'why_walk_every': 'Wir wandern jede Route',
+        'why_walk_every_desc': 'Cliff und Louise wandern jeden Weg, jedes Jahr. Sie buchen bei Wanderern, die diese Wege bestens kennen.',
+        'why_irish_owned': 'Irisch geführt seit 2012',
+        'why_irish_owned_desc': 'Über ein Jahrzehnt Erfahrung. Wir sind kein Konzern — wir sind Wanderbegeisterte, die ein echtes Unternehmen führen.',
+        'why_gps': 'GPS-App bei jeder Tour',
+        'why_gps_desc': 'Fortschrittliche GPS-App mit Offline-Karten. Wandern Sie in Ihrem Tempo und wissen Sie jederzeit genau, wo Sie sind.',
+        'why_only_operator': 'Einziger Anbieter von Antrim bis Cooley',
+        'why_only_operator_desc': 'Wir sind das einzige Unternehmen, das selbstgeführte Wanderungen in allen 7 Wanderregionen von Nord nach Süd anbietet.',
         # Tour listing page
         'self_guided_walking_tours': 'Selbstgeführte Wandertouren',
         'listing_subtitle': 'Wählen Sie aus 15 Touren durch Irlands schönste Landschaften. 5 bis 10 Tage, für jedes Niveau.',
@@ -497,6 +517,16 @@ UI_STRINGS = {
         'terms_nav': 'Algemene Voorwaarden',
         'reviews_nav': 'Beoordelingen',
         'walking': 'Wandelen',
+        # Why WHI section
+        'why_whi': 'Waarom Walking Holiday Ireland',
+        'why_walk_every': 'Wij bewandelen elke route',
+        'why_walk_every_desc': 'Cliff en Louise bewandelen elk pad, elk jaar. U boekt bij wandelaars die deze routes door en door kennen.',
+        'why_irish_owned': 'Iers familiebedrijf sinds 2012',
+        'why_irish_owned_desc': 'Meer dan tien jaar ervaring. Wij zijn geen groot bedrijf — wij zijn wandelliefhebbers die een echt bedrijf runnen.',
+        'why_gps': 'GPS-app bij elke tour',
+        'why_gps_desc': 'Geavanceerde GPS-app met offline kaarten. Wandel op uw eigen tempo en weet altijd precies waar u bent.',
+        'why_only_operator': 'Enige aanbieder van Antrim tot Cooley',
+        'why_only_operator_desc': 'Wij zijn het enige bedrijf dat begeleide wandelingen aanbiedt in alle 7 wandelgebieden van noord tot zuid.',
         # Tour listing page
         'self_guided_walking_tours': 'Wandeltochten op eigen tempo',
         'listing_subtitle': 'Kies uit 15 routes door de meest adembenemende landschappen van Ierland. 5 tot 10 dagen, voor elk niveau.',
@@ -878,6 +908,12 @@ def translate_html_ui(html, lang):
         '>Tour Grading &amp; Difficulty<': f'>{t("tour_grading", lang)}<',
         '>Tour Grading & Difficulty<': f'>{t("tour_grading", lang)}<',
         '>Self-Guided Holidays<': f'>{t("self_guided_holidays_nav", lang)}<',
+        # Why WHI section
+        '>Why Walking Holiday Ireland<': f'>{t("why_whi", lang)}<',
+        '>We Walk Every Route<': f'>{t("why_walk_every", lang)}<',
+        '>Irish-Owned Since 2012<': f'>{t("why_irish_owned", lang)}<',
+        '>GPS App on Every Tour<': f'>{t("why_gps", lang)}<',
+        '>Only Operator Covering Antrim to Cooley<': f'>{t("why_only_operator", lang)}<',
         '>FAQ<': f'>{t("faq_nav", lang)}<',
         '>Terms &amp; Conditions<': f'>{t("terms_nav", lang)}<',
         '>Terms & Conditions<': f'>{t("terms_nav", lang)}<',
@@ -1079,6 +1115,20 @@ def translate_html_ui(html, lang):
     html = html.replace(
         'Family-run since 2012 &middot; Best Price Promise &middot; 24/7 Local Support',
         t('family_run_trust', lang))
+
+    # Why WHI section — longer description strings
+    html = html.replace(
+        "Cliff and Louise walk every trail, every year. You're booking with walkers who know these trails intimately.",
+        t('why_walk_every_desc', lang))
+    html = html.replace(
+        "Over a decade of experience. We're not a corporation — we're walking enthusiasts running a real business.",
+        t('why_irish_owned_desc', lang))
+    html = html.replace(
+        'Advanced GPS app with offline maps. Walk at your pace knowing exactly where you are at all times.',
+        t('why_gps_desc', lang))
+    html = html.replace(
+        "We're the only company offering self-guided walks across all 7 walking regions from north to south.",
+        t('why_only_operator_desc', lang))
 
     # Tour listing page — longer strings that need exact matching
     html = html.replace(
@@ -6186,6 +6236,22 @@ def main():
             ('href="destination-cooley-mournes"', 'href="walking-area-cooley-mournes"'),
             # tour-grading.html → tour-grading (remove .html extension)
             ('tour-grading.html"', 'tour-grading"'),
+            # Schema JSON-LD: destination-* → walking-area-* in "url" fields
+            ('/destination-dingle-way"', '/walking-area-dingle-way"'),
+            ('/destination-kerry-way"', '/walking-area-kerry-way"'),
+            ('/destination-wicklow-way"', '/walking-area-wicklow-way"'),
+            ('/destination-burren-way"', '/walking-area-burren-way"'),
+            ('/destination-causeway-coast"', '/walking-area-causeway-coast"'),
+            ('/destination-causeway-glens"', '/walking-area-causeway-glens"'),
+            ('/destination-barrow-way"', '/walking-area-barrow-way"'),
+            ('/destination-cooley-mournes"', '/walking-area-cooley-mournes"'),
+            ('/destination-cooley-peninsula"', '/walking-area-cooley-peninsula"'),
+            ('/destination-beara-way"', '/walking-area-beara-way"'),
+            ('/destination-connemara"', '/walking-area-connemara"'),
+            ('/destination-dublin-wicklow"', '/walking-area-dublin-wicklow"'),
+            ('/destination-mourne-mountains"', '/walking-area-mourne-mountains"'),
+            ('/destination-antrim-glens"', '/walking-area-antrim-glens"'),
+            ('/destination-the-sperrins"', '/walking-area-the-sperrins"'),
         ]
 
         ahrefs_count = 0
