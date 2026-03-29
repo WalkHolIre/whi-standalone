@@ -165,6 +165,9 @@ UI_STRINGS = {
         'ready_to_walk': 'Ready to Walk',
         'ready_to_walk_desc': 'Let us plan your perfect self-guided walking holiday. Every tour includes accommodation, luggage transfers, maps, and 24/7 local support.',
         'call_us': 'Call Us',
+        'not_sure_where': 'Not Sure Where to Walk?',
+        'not_sure_desc': "We'll help you pick the perfect destination based on your fitness level, interests, and available time. Every tour includes accommodation, luggage transfers, and 24/7 local support.",
+        'family_run_trust': 'Family-run since 2012 &middot; Best Price Promise &middot; 24/7 Local Support',
         'footer_tagline': "Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff & Louise.",
         'quick_links': 'Quick Links',
         'all_rights': 'Walking Holiday Ireland. All rights reserved.',
@@ -180,6 +183,7 @@ UI_STRINGS = {
         'price_promise': 'Price Promise',
         'best_price_guarantee': 'Best price guarantee — see our price promise',
         'tour_grading': 'Tour Grading & Difficulty',
+        'self_guided_holidays_nav': 'Self-Guided Holidays',
         'faq_nav': 'FAQ',
         'terms_nav': 'Terms & Conditions',
         'reviews_nav': 'Reviews',
@@ -275,6 +279,9 @@ UI_STRINGS = {
         'ready_to_walk': 'Bereit zum Wandern',
         'ready_to_walk_desc': 'Lassen Sie uns Ihren perfekten individuellen Wanderurlaub planen. Jede Tour beinhaltet Unterkunft, Gepäcktransfer, Karten und 24/7 lokale Unterstützung.',
         'call_us': 'Rufen Sie uns an',
+        'not_sure_where': 'Nicht sicher, wo Sie wandern sollen?',
+        'not_sure_desc': 'Wir helfen Ihnen, das perfekte Ziel basierend auf Ihrem Fitnesslevel, Ihren Interessen und Ihrer verfügbaren Zeit zu finden. Jede Tour beinhaltet Unterkunft, Gepäcktransfer und 24/7 lokale Unterstützung.',
+        'family_run_trust': 'Familiengeführt seit 2012 &middot; Bestpreisgarantie &middot; 24/7 Lokale Unterstützung',
         'footer_tagline': 'Individuelle Wanderurlaube durch Irlands schönste Landschaften seit 2012. Familiengeführt von Cliff & Louise.',
         'quick_links': 'Quicklinks',
         'all_rights': 'Walking Holiday Ireland. Alle Rechte vorbehalten.',
@@ -290,6 +297,7 @@ UI_STRINGS = {
         'price_promise': 'Preisgarantie',
         'best_price_guarantee': 'Bestpreisgarantie — siehe unsere Preisgarantie',
         'tour_grading': 'Schwierigkeitsgrad',
+        'self_guided_holidays_nav': 'Individuelle Wanderferien',
         'faq_nav': 'FAQ',
         'terms_nav': 'AGB',
         'reviews_nav': 'Bewertungen',
@@ -466,6 +474,9 @@ UI_STRINGS = {
         'ready_to_walk': 'Klaar om te Wandelen',
         'ready_to_walk_desc': 'Laat ons uw perfecte zelfgeleide wandelvakantie plannen. Elke tour omvat accommodatie, bagagetransfer, kaarten en 24/7 lokale ondersteuning.',
         'call_us': 'Bel Ons',
+        'not_sure_where': 'Niet zeker waar te wandelen?',
+        'not_sure_desc': 'Wij helpen u de perfecte bestemming te kiezen op basis van uw fitnessniveau, interesses en beschikbare tijd. Elke tour omvat accommodatie, bagagetransfer en 24/7 lokale ondersteuning.',
+        'family_run_trust': 'Familiebedrijf sinds 2012 &middot; Beste Prijsgarantie &middot; 24/7 Lokale Ondersteuning',
         'footer_tagline': "Zelfstandige wandelvakanties door de meest adembenemende landschappen van Ierland sinds 2012. Familiebedrijf van Cliff &amp; Louise.",
         'quick_links': 'Snelkoppelingen',
         'all_rights': 'Walking Holiday Ireland. Alle rechten voorbehouden.',
@@ -481,6 +492,7 @@ UI_STRINGS = {
         'price_promise': 'Prijsgarantie',
         'best_price_guarantee': 'Beste prijsgarantie — zie onze prijsbelofte',
         'tour_grading': 'Moeilijkheidsgraad',
+        'self_guided_holidays_nav': 'Wandelvakantie op Eigen Houtje',
         'faq_nav': 'FAQ',
         'terms_nav': 'Algemene Voorwaarden',
         'reviews_nav': 'Beoordelingen',
@@ -865,6 +877,7 @@ def translate_html_ui(html, lang):
         '>How It Works <': f'>{t("how_it_works", lang)} <',
         '>Tour Grading &amp; Difficulty<': f'>{t("tour_grading", lang)}<',
         '>Tour Grading & Difficulty<': f'>{t("tour_grading", lang)}<',
+        '>Self-Guided Holidays<': f'>{t("self_guided_holidays_nav", lang)}<',
         '>FAQ<': f'>{t("faq_nav", lang)}<',
         '>Terms &amp; Conditions<': f'>{t("terms_nav", lang)}<',
         '>Terms & Conditions<': f'>{t("terms_nav", lang)}<',
@@ -917,6 +930,7 @@ def translate_html_ui(html, lang):
         '>Insider advice for your trip<': f'>{t("travel_tips_sub", lang)}<',
         '>Local Cuisine<': f'>{t("local_cuisine", lang)}<',
         '>Call Us<': f'>{t("call_us", lang)}<',
+        '>Not Sure Where to Walk?<': f'>{t("not_sure_where", lang)}<',
         '>Quick Links<': f'>{t("quick_links", lang)}<',
         '>Tailor-Made Tours<': f'>{t("tailor_made", lang)}<',
         '>Contact<': f'>{t("contact", lang)}<',
@@ -1054,6 +1068,17 @@ def translate_html_ui(html, lang):
     }
     for en_text, translated_text in replacements.items():
         html = html.replace(en_text, translated_text)
+
+    # CTA section — longer strings
+    html = html.replace(
+        "We'll help you pick the perfect destination based on your fitness level, interests, and available time. Every tour includes accommodation, luggage transfers, and 24/7 local support.",
+        t('not_sure_desc', lang))
+    html = html.replace(
+        "Let us plan your perfect self-guided walking holiday. Every tour includes accommodation, luggage transfers, maps, and 24/7 local support.",
+        t('ready_to_walk_desc', lang))
+    html = html.replace(
+        'Family-run since 2012 &middot; Best Price Promise &middot; 24/7 Local Support',
+        t('family_run_trust', lang))
 
     # Tour listing page — longer strings that need exact matching
     html = html.replace(
@@ -4012,7 +4037,7 @@ def post_process_html(html):
     if 'stripe-secure-payments' not in html:
         tagline_end = 'Family-run by Cliff &amp; Louise.</p>'
         if tagline_end in html:
-            stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="height:28px;width:auto;opacity:0.6;" loading="lazy"/>'
+            stripe = tagline_end + '\n                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>'
             html = html.replace(tagline_end, stripe, 1)
 
     # 7b. Fix newsletter input text color (white on white)
@@ -4278,6 +4303,12 @@ def build_static_pages(lang, translations):
             if ps in page_translations:
                 translated_ps = translate_static_slug(ps, lang)
                 html = html.replace(f'href="{ps}"', f'href="/{translated_ps}"')
+        # Ensure critical links are always translated even without page_translations
+        for fallback_slug in ['contact', 'about', 'how-it-works', 'tour-grading', 'tailor-made', 'faq', 'self-guided-walking-holidays-ireland']:
+            translated_fb = translate_static_slug(fallback_slug, lang)
+            if translated_fb != fallback_slug:
+                html = html.replace(f'href="{fallback_slug}"', f'href="/{translated_fb}"')
+                html = html.replace(f'href="../{fallback_slug}"', f'href="/{translated_fb}"')
         # Fix tour/destination links with translated folder names
         tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
         html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
@@ -4293,7 +4324,9 @@ def build_static_pages(lang, translations):
 
         # Add canonical URL for this language
         translated_slug = translate_static_slug(page_slug, lang)
-        canonical_url = lang_url(lang, f'{translated_slug}')
+        # Special case: homepage 'index' → canonical should be root '/' not '/index'
+        canonical_path = '' if page_slug == 'index' else translated_slug
+        canonical_url = lang_url(lang, canonical_path)
         # Replace any existing canonical, or add one
         html = re.sub(r'<link rel="canonical" href="[^"]*"', f'<link rel="canonical" href="{canonical_url}"', html)
         if 'rel="canonical"' not in html:
@@ -4305,12 +4338,15 @@ def build_static_pages(lang, translations):
             description=pt.get('meta_description') if pt else None)
 
         # Set hreflang tags (strips old ones, adds fresh with x-default)
+        en_path = '' if page_slug == 'index' else page_slug
         de_slug = translate_static_slug(page_slug, 'de')
         nl_slug = translate_static_slug(page_slug, 'nl')
+        de_path = '' if page_slug == 'index' else de_slug
+        nl_path = '' if page_slug == 'index' else nl_slug
         html = set_hreflang_tags(html,
-            en_url=lang_url('en', f'{page_slug}'),
-            de_url=lang_url('de', f'{de_slug}'),
-            nl_url=lang_url('nl', f'{nl_slug}'))
+            en_url=lang_url('en', en_path),
+            de_url=lang_url('de', de_path),
+            nl_url=lang_url('nl', nl_path))
 
         # Write the translated page with translated filename
         output_path = base_dir / f'{translated_slug}.html'
@@ -5817,7 +5853,7 @@ def main():
     EN_STATIC_PAGES = [
         'about', 'contact', 'how-it-works', 'tour-grading', 'tailor-made',
         'reviews', 'faq', 'walking-tours', 'destinations',
-        'self-guided-walking-holidays-ireland', 'self-guided-walking-tours',
+        'self-guided-walking-holidays-ireland',
         'solo-walking-holidays-ireland', 'walking-holidays-ireland-over-50s',
         'northern-ireland', 'privacy-policy', 'terms-and-conditions',
         'wild-atlantic-way', 'ancient-east', 'mountains-of-mourne',
@@ -5850,10 +5886,13 @@ def main():
             html = en_file.read_text()
             de_slug = translate_static_slug(page_slug, 'de')
             nl_slug = translate_static_slug(page_slug, 'nl')
+            # Only emit DE/NL hreflang if the translated page actually exists
+            de_file = WEBSITE_DIR / 'de' / f'{de_slug}.html'
+            nl_file = WEBSITE_DIR / 'nl' / f'{nl_slug}.html'
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'{page_slug}'),
-                de_url=lang_url('de', f'{de_slug}'),
-                nl_url=lang_url('nl', f'{nl_slug}'))
+                de_url=lang_url('de', f'{de_slug}') if de_file.exists() else None,
+                nl_url=lang_url('nl', f'{nl_slug}') if nl_file.exists() else None)
             # Add canonical tag if missing
             canonical = lang_url('en', page_slug)
             if 'rel="canonical"' not in html:
@@ -6119,6 +6158,100 @@ def main():
         log("Post-processing: applying company config to generated files...")
         log("=" * 60)
         apply_company_config(WEBSITE_DIR, company_config)
+
+    # ── Post-processing: inject Ahrefs analytics & fix internal redirects ──
+    if not DRY_RUN:
+        log("\n" + "=" * 60)
+        log("Post-processing: Ahrefs analytics + internal redirect fixes...")
+        log("=" * 60)
+
+        AHREFS_SCRIPT = (
+            '    <script src="https://analytics.ahrefs.com/analytics.js" '
+            'data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>\n'
+        )
+
+        # Internal link redirect fixes (old URL → correct URL)
+        LINK_FIXES = [
+            # Dingle Way footer/nav link (site-wide redirect)
+            ('walking-tours/dingle-way"', 'walking-tours/dingle-way-walking-tour-8d"'),
+            ('../walking-tours/dingle-way"', '../walking-tours/dingle-way-walking-tour-8d"'),
+            # Old destination-* links → walking-area-*
+            ('href="destination-dingle-way"', 'href="walking-area-dingle-way"'),
+            ('href="destination-kerry-way"', 'href="walking-area-kerry-way"'),
+            ('href="destination-wicklow-way"', 'href="walking-area-wicklow-way"'),
+            ('href="destination-burren-way"', 'href="walking-area-burren-way"'),
+            ('href="destination-causeway-coast"', 'href="walking-area-causeway-coast"'),
+            ('href="destination-causeway-glens"', 'href="walking-area-causeway-glens"'),
+            ('href="destination-barrow-way"', 'href="walking-area-barrow-way"'),
+            ('href="destination-cooley-mournes"', 'href="walking-area-cooley-mournes"'),
+            # tour-grading.html → tour-grading (remove .html extension)
+            ('tour-grading.html"', 'tour-grading"'),
+        ]
+
+        ahrefs_count = 0
+        link_fix_count = 0
+        for html_file in list(WEBSITE_DIR.rglob('*.html')):
+            if html_file.name.startswith('_'):
+                continue
+            try:
+                content = html_file.read_text()
+            except Exception:
+                continue
+            original = content
+
+            # Inject Ahrefs script if not already present
+            if 'analytics.ahrefs.com' not in content and '</head>' in content:
+                content = content.replace('</head>', AHREFS_SCRIPT + '</head>')
+                ahrefs_count += 1
+
+            # Fix internal redirects
+            for old, new in LINK_FIXES:
+                if old in content:
+                    content = content.replace(old, new)
+
+            if content != original:
+                link_fix_count += 1
+                html_file.write_text(content)
+
+        # Inject "Self-Guided Holidays" nav link under How It Works dropdown
+        NAV_LINK_FIXES = [
+            # Root-level pages: href="tour-grading" (font-bold variant)
+            (
+                '<a href="tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>',
+                '<a href="tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>\n                            <a href="self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>'
+            ),
+            # Subdirectory pages: href="../tour-grading" (font-bold variant)
+            (
+                '<a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>',
+                '<a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>\n                            <a href="../self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>'
+            ),
+            # Root-level pages: font-medium variant (privacy, terms)
+            (
+                '<a href="tour-grading" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Tour Grading &amp; Difficulty</a>',
+                '<a href="tour-grading" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Tour Grading &amp; Difficulty</a>\n                    <a href="self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>'
+            ),
+        ]
+        nav_count = 0
+        for html_file in list(WEBSITE_DIR.rglob('*.html')):
+            if html_file.name.startswith('_'):
+                continue
+            try:
+                c = html_file.read_text()
+            except Exception:
+                continue
+            orig = c
+            if 'Self-Guided Holidays' not in c:
+                for old_nav, new_nav in NAV_LINK_FIXES:
+                    if old_nav in c:
+                        c = c.replace(old_nav, new_nav)
+                        break
+            if c != orig:
+                nav_count += 1
+                html_file.write_text(c)
+
+        log(f"  Ahrefs analytics injected into {ahrefs_count} pages")
+        log(f"  Internal redirect links fixed in {link_fix_count} pages")
+        log(f"  Self-Guided nav link injected into {nav_count} pages")
 
     # ── Post-build SEO validation ──
     if not DRY_RUN:
