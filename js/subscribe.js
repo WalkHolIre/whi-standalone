@@ -8,10 +8,8 @@
     var SUPABASE_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
     var SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmZ3VxZWNiY2JiZ3J0dGZrd2ZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3ODY1OTEsImV4cCI6MjA4ODM2MjU5MX0.ckTn_XP0wKdxTK_KELaEq-02gcmSyaBGdA2iAfBuVIk';
 
-    // Detect language from URL path
-    var lang = 'en';
-    if (location.pathname.indexOf('/de/') === 0) lang = 'de';
-    else if (location.pathname.indexOf('/nl/') === 0) lang = 'nl';
+    // Detect language from <html lang="..."> attribute (works on all domains)
+    var lang = (document.documentElement.lang || 'en').substring(0, 2);
 
     // Messages per language
     var MSG = {

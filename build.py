@@ -141,6 +141,9 @@ UI_STRINGS = {
         'read_all_reviews': 'Read all reviews',
         'faq_title': 'Frequently Asked Questions',
         'view_all_faqs': 'View all FAQs',
+        'expand_all': 'Expand All',
+        'collapse_all': 'Collapse All',
+        'showing_x_of_y_faqs': 'Showing {x} of {y} FAQs',
         'about_destination': 'About',
         'guide_to_walking': 'Your guide to walking in this stunning region',
         'quick_facts': 'Walking Area Quick Facts',
@@ -163,7 +166,11 @@ UI_STRINGS = {
         'travel_tips_sub': 'Insider advice for your trip',
         'local_cuisine': 'Local Cuisine',
         'ready_to_walk': 'Ready to Walk',
+        'ready_to_explore': 'Ready to Explore',
         'ready_to_walk_desc': 'Let us plan your perfect self-guided walking holiday. Every tour includes accommodation, luggage transfers, maps, and 24/7 local support.',
+        'browse_tours_desc': 'Browse our self-guided walking tours with accommodation, luggage transfers and 24/7 support included.',
+        'view_walking_tours': 'View Walking Tours',
+        'who_is_it_for_dest': 'Who Is It For?',
         'call_us': 'Call Us',
         'not_sure_where': 'Not Sure Where to Walk?',
         'not_sure_desc': "We'll help you pick the perfect destination based on your fitness level, interests, and available time. Every tour includes accommodation, luggage transfers, and 24/7 local support.",
@@ -265,6 +272,9 @@ UI_STRINGS = {
         'read_all_reviews': 'Alle Bewertungen lesen',
         'faq_title': 'Häufig Gestellte Fragen',
         'view_all_faqs': 'Alle FAQs ansehen',
+        'expand_all': 'Alle öffnen',
+        'collapse_all': 'Alle schließen',
+        'showing_x_of_y_faqs': '{x} von {y} FAQs angezeigt',
         'about_destination': 'Über',
         'guide_to_walking': 'Ihr Wanderführer durch diese atemberaubende Region',
         'quick_facts': 'Kurzübersicht Wandergebiet',
@@ -287,7 +297,11 @@ UI_STRINGS = {
         'travel_tips_sub': 'Insider-Tipps für Ihre Reise',
         'local_cuisine': 'Lokale Küche',
         'ready_to_walk': 'Bereit zum Wandern',
+        'ready_to_explore': 'Bereit zum Entdecken',
         'ready_to_walk_desc': 'Lassen Sie uns Ihren perfekten individuellen Wanderurlaub planen. Jede Tour beinhaltet Unterkunft, Gepäcktransfer, Karten und 24/7 lokale Unterstützung.',
+        'browse_tours_desc': 'Entdecken Sie unsere individuellen Wandertouren mit Unterkunft, Gepäcktransfer und 24/7 Betreuung inklusive.',
+        'view_walking_tours': 'Wandertouren ansehen',
+        'who_is_it_for_dest': 'Für wen ist es geeignet?',
         'call_us': 'Rufen Sie uns an',
         'not_sure_where': 'Nicht sicher, wo Sie wandern sollen?',
         'not_sure_desc': 'Wir helfen Ihnen, das perfekte Ziel basierend auf Ihrem Fitnesslevel, Ihren Interessen und Ihrer verfügbaren Zeit zu finden. Jede Tour beinhaltet Unterkunft, Gepäcktransfer und 24/7 lokale Unterstützung.',
@@ -470,6 +484,9 @@ UI_STRINGS = {
         'read_all_reviews': 'Alle beoordelingen lezen',
         'faq_title': 'Veelgestelde Vragen',
         'view_all_faqs': 'Alle veelgestelde vragen bekijken',
+        'expand_all': 'Alles openen',
+        'collapse_all': 'Alles sluiten',
+        'showing_x_of_y_faqs': '{x} van {y} veelgestelde vragen weergegeven',
         'about_destination': 'Over',
         'guide_to_walking': 'Uw gids voor wandelen in deze prachtige regio',
         'quick_facts': 'Wandelgebied in het Kort',
@@ -492,7 +509,11 @@ UI_STRINGS = {
         'travel_tips_sub': 'Insider-tips voor uw reis',
         'local_cuisine': 'Lokale Keuken',
         'ready_to_walk': 'Klaar om te Wandelen',
+        'ready_to_explore': 'Klaar om te Ontdekken',
         'ready_to_walk_desc': 'Laat ons uw perfecte zelfgeleide wandelvakantie plannen. Elke tour omvat accommodatie, bagagetransfer, kaarten en 24/7 lokale ondersteuning.',
+        'browse_tours_desc': 'Bekijk onze zelfgeleide wandeltochten met accommodatie, bagagetransfer en 24/7 ondersteuning inbegrepen.',
+        'view_walking_tours': 'Wandeltochten bekijken',
+        'who_is_it_for_dest': 'Voor wie is het geschikt?',
         'call_us': 'Bel Ons',
         'not_sure_where': 'Niet zeker waar te wandelen?',
         'not_sure_desc': 'Wij helpen u de perfecte bestemming te kiezen op basis van uw fitnessniveau, interesses en beschikbare tijd. Elke tour omvat accommodatie, bagagetransfer en 24/7 lokale ondersteuning.',
@@ -1146,6 +1167,41 @@ def translate_html_ui(html, lang):
         lambda m: f'{m.group(1)}\n                        {t("get_in_touch", lang)}\n                    {m.group(2)}',
         html
     )
+
+    # ── Dynamic destination/tour headings with names (keep name for SEO) ──
+    # "About {Name}" → "Über {Name}" / "Over {Name}"
+    html = re.sub(r'>About ([^<]+)<', lambda m: f'>{t("about_destination", lang)} {m.group(1)}<', html)
+    # "Your guide to walking in this stunning region"
+    html = html.replace('>Your guide to walking in this stunning region<', f'>{t("guide_to_walking", lang)}<')
+    # "Walking Tours in {Name}" → "Wandertouren in {Name}" / "Wandeltochten in {Name}"
+    html = re.sub(r'>Walking Tours in ([^<]+)<', lambda m: f'>{t("walking_tours_in", lang)} {m.group(1)}<', html)
+    # "Self-guided walking holidays with accommodation and luggage transfers included"
+    html = html.replace('>Self-guided walking holidays with accommodation and luggage transfers included<', f'>{t("self_guided_desc", lang)}<')
+    # "Things to Do in {Name}" → "Aktivitäten in {Name}" / "Activiteiten in {Name}"
+    html = re.sub(r'>Things to Do in ([^<]+)<', lambda m: f'>{t("things_to_do", lang)} {m.group(1)}<', html)
+    # "Top activities and experiences in the area"
+    html = html.replace('>Top activities and experiences in the area<', f'>{t("things_to_do_sub", lang)}<')
+    # "Ready to Explore {Name}?" → "Bereit zum Entdecken {Name}?" / "Klaar om te Ontdekken {Name}?"
+    html = re.sub(r'>Ready to Explore ([^<]+)\?<', lambda m: f'>{t("ready_to_explore", lang)} {m.group(1)}?<', html)
+    # "Browse our self-guided walking tours with accommodation, luggage transfers and 24/7 support included."
+    html = html.replace('>Browse our self-guided walking tours with accommodation, luggage transfers and 24/7 support included.<', f'>{t("browse_tours_desc", lang)}<')
+    # "View Walking Tours"
+    html = re.sub(r'>View Walking Tours<', f'>{t("view_walking_tours", lang)}<', html)
+    # "Ready to Walk {Name}?" → "Bereit zum Wandern {Name}?" / "Klaar om te Wandelen {Name}?"
+    html = re.sub(r'>Ready to Walk ([^<]+)\?<', lambda m: f'>{t("ready_to_walk", lang)} {m.group(1)}?<', html)
+    # "Frequently Asked Questions"
+    html = html.replace('>Frequently Asked Questions<', f'>{t("faq_title", lang)}<')
+    # "Who Is It For?" (destination pages use this variant)
+    html = html.replace('>Who Is It For?<', f'>{t("who_is_it_for_dest", lang)}<')
+    # "Want something different? Let us create a tailor-made tour for you"
+    html = re.sub(r'>Want something different\? Let us create a tailor-made (?:walking )?tour for you<', f'>{t("tailor_made_cta", lang)}<', html)
+    # "Expand All" / "Collapse All" (FAQ section buttons)
+    html = html.replace('>Expand All<', f'>{t("expand_all", lang)}<')
+    html = html.replace('>Collapse All<', f'>{t("collapse_all", lang)}<')
+    # "Showing X of Y FAQs" → translated
+    html = re.sub(r'>Showing (\d+) of (\d+) FAQs', lambda m: f'>{t("showing_x_of_y_faqs", lang).replace("{x}", m.group(1)).replace("{y}", m.group(2))}', html)
+    # "View all FAQs"
+    html = html.replace('>View all FAQs<', f'>{t("view_all_faqs", lang)}<')
 
     return html
 
