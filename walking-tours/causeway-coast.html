@@ -1430,7 +1430,7 @@ Your final coastal walk follows the drama to its conclusion. Walk past Dunluce C
     map.fitBounds(layers[i].polyline.getBounds(), {padding: [40, 40]});
     titleBar.textContent = d.title;
     // Show stats bar
-    statsContent.innerHTML = '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">straighten</span><span class="text-xs text-slate-500">Distance</span><span class="font-bold text-brand-purple">' + d.distance_km + ' km</span></div>' +
+    statsContent.innerHTML = '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl" style="transform:rotate(90deg)">favorite_route</span><span class="text-xs text-slate-500">Distance</span><span class="font-bold text-brand-purple">' + d.distance_km + ' km</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_up</span><span class="text-xs text-slate-500">Ascent</span><span class="font-bold text-brand-purple">' + d.ascent_m + ' m</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_down</span><span class="text-xs text-slate-500">Descent</span><span class="font-bold text-brand-purple">' + (d.descent_m || d.ascent_m) + ' m</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">schedule</span><span class="text-xs text-slate-500">Duration</span><span class="font-bold text-brand-purple">' + (d.duration_hrs ? d.duration_hrs + 'h' : '-') + '</span></div>';

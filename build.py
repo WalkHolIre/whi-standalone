@@ -1423,7 +1423,7 @@ def render_itinerary(itinerary_data, routes_by_id=None):
             if day_start and day_end:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">pin_drop</span> {escape(day_start)} → {escape(day_end)}</span>'
             if day_distance:
-                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">straighten</span> {day_distance:.1f} km</span>'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]" style="transform:rotate(90deg)">favorite_route</span> {day_distance:.1f} km</span>'
             if day_ascent:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">trending_up</span> ↑{int(day_ascent)}m</span>'
             if day_descent:
@@ -2912,7 +2912,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         stats = []
         stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
         if km_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><img src="{img_prefix}images/icons/distance.svg" alt="" width="20" height="20" style="display:inline-block;"><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;transform:rotate(90deg)">favorite_route</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><path d="M7 17l5-10 5 10"/><path d="M4 20h16"/></svg><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if descent_per_day:
@@ -4366,6 +4366,12 @@ def build_static_pages(lang, translations):
         html = html.replace('action="walking-tours"', f'action="/{translate_static_slug("walking-tours", lang)}"')
         html = html.replace("window.location.href = 'walking-tours'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}'")
         html = html.replace('href="destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
+        # Translate walking-area-* nav links to localized prefix
+        wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+        if wa_prefix != 'walking-area':
+            html = html.replace('href="walking-area-', f'href="/{wa_prefix}-')
+            html = html.replace('href="../walking-area-', f'href="/{wa_prefix}-')
+            html = html.replace('href="/walking-area-', f'href="/{wa_prefix}-')
         # Fix absolute-path stats card links (href="/about", href="/reviews", etc.)
         html = html.replace('href="/about"', f'href="/{translate_static_slug("about", lang)}"')
         html = html.replace('href="/reviews"', f'href="/{translate_static_slug("reviews", lang)}"')
@@ -6274,6 +6280,15 @@ def main():
             for old, new in LINK_FIXES:
                 if old in content:
                     content = content.replace(old, new)
+
+            # Translate walking-area nav links for DE/NL pages
+            rel_path = str(html_file.relative_to(WEBSITE_DIR))
+            if rel_path.startswith('de/') or rel_path.startswith('de\\'):
+                content = content.replace('href="walking-area-', 'href="wandergebiet-')
+                content = content.replace('href="../walking-area-', 'href="../wandergebiet-')
+            elif rel_path.startswith('nl/') or rel_path.startswith('nl\\'):
+                content = content.replace('href="walking-area-', 'href="wandelgebied-')
+                content = content.replace('href="../walking-area-', 'href="../wandelgebied-')
 
             if content != original:
                 link_fix_count += 1

@@ -175,13 +175,13 @@
                     <div class="relative group">
                         <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations">Wanderurlaub <span class="material-symbols-outlined text-base">expand_more</span></a>
                         <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                            <a href="../walking-area-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-Halbinsel</a>
-                            <a href="../walking-area-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
-                            <a href="../walking-area-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
-                            <a href="../walking-area-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
-                            <a href="../walking-area-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
-                            <a href="../walking-area-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
-                            <a href="../walking-area-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
+                            <a href="../wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-Halbinsel</a>
+                            <a href="../wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../wandergebiet-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
+                            <a href="../wandergebiet-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
+                            <a href="../wandergebiet-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../wandergebiet-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
+                            <a href="../wandergebiet-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
                             <div class="border-t border-slate-100 mt-2 pt-2">
                                 <a href="../tailor-made" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Maßgeschneiderte Touren</a>
                             </div>
@@ -1084,7 +1084,7 @@
     map.fitBounds(layers[i].polyline.getBounds(), {padding: [40, 40]});
     titleBar.textContent = d.title;
     // Show stats bar
-    statsContent.innerHTML = '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">straighten</span><span class="text-xs text-slate-500">Distance</span><span class="font-bold text-brand-purple">' + d.distance_km + ' km</span></div>' +
+    statsContent.innerHTML = '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl" style="transform:rotate(90deg)">favorite_route</span><span class="text-xs text-slate-500">Distance</span><span class="font-bold text-brand-purple">' + d.distance_km + ' km</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_up</span><span class="text-xs text-slate-500">Ascent</span><span class="font-bold text-brand-purple">' + d.ascent_m + ' m</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_down</span><span class="text-xs text-slate-500">Descent</span><span class="font-bold text-brand-purple">' + (d.descent_m || d.ascent_m) + ' m</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">schedule</span><span class="text-xs text-slate-500">Dauer</span><span class="font-bold text-brand-purple">' + (d.duration_hrs ? d.duration_hrs + 'h' : '-') + '</span></div>';
