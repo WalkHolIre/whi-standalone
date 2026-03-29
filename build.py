@@ -6392,7 +6392,7 @@ def main():
             except Exception:
                 continue
             orig = c
-            if 'Self-Guided Holidays' not in c and t('self_guided_holidays_nav', 'de') not in c and t('self_guided_holidays_nav', 'nl') not in c:
+            if 'Self-Guided Holidays' not in c and UI_STRINGS['de'].get('self_guided_holidays_nav', '') not in c and UI_STRINGS['nl'].get('self_guided_holidays_nav', '') not in c:
                 # Determine language from path for correct slug
                 rp = str(html_file.relative_to(WEBSITE_DIR))
                 if rp.startswith('de/') or rp.startswith('de\\'):
