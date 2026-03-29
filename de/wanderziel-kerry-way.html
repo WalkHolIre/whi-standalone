@@ -74,7 +74,14 @@
                 "@type": "Country",
                 "name": "Ireland"
         },
-        "touristType": "Walker"
+        "touristType": "Walker",
+        "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "bestRating": "5",
+                "worstRating": "1",
+                "reviewCount": "3"
+        }
 }
     </script>
 
@@ -83,7 +90,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-area-kerry-way" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/wandergebiet-kerry-way" />
-    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/wandelgebied-kerry-way" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-area-kerry-way" />
 </head>
 <body class="bg-white">
@@ -118,7 +124,7 @@
                 </a>
                 <nav class="hidden md:flex items-center gap-8">
                     <div class="relative group">
-                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="destinations">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="destinations">Wanderurlaub <span class="material-symbols-outlined text-base">expand_more</span></a>
                         <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                             <a href="/wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-Halbinsel</a>
                             <a href="/wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
@@ -133,16 +139,16 @@
                         </div>
                     </div>
                     <div class="relative group">
-                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="how-it-works">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="how-it-works">Wie funktioniert es? <span class="material-symbols-outlined text-base">expand_more</span></a>
                         <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
                             <a href="how-it-works" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Überblick</a>
-                            <a href="tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tourbewertung & Schwierigkeitsgrad</a>
+                            <a href="tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Schwierigkeitsgrad</a>
                         </div>
                     </div>
                     <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="about">Über Uns</a>
                     <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="blog">Blog</a>
                     <a href="contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
-                        Get in Touch
+                        Kontaktieren Sie uns!
                     </a>
                 </nav>
                 <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
@@ -151,10 +157,10 @@
             </div>
             <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
                 <a href="destinations" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wanderurlaub</a>
-                <a href="how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">So funktioniert es</a>
+                <a href="how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wie funktioniert es?</a>
                 <a href="about" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Über Uns</a>
                 <a href="blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
-                <a href="contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Kontakt</a>
+                <a href="contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Kontaktieren Sie uns!</a>
             </div>
         </header>
 
@@ -482,7 +488,87 @@
             
 
             <!-- ═══════════ 11. REVIEWS ═══════════ -->
-            
+            <section class="w-full py-16 md:py-20 px-6 bg-slate-50">
+                <div class="max-w-7xl mx-auto">
+                    <div id="dest-reviews" class="review-carousel" data-auto-advance="8000">
+        <div class="flex items-center gap-3 mb-2">
+            <div class="w-1.5 h-8 bg-primary rounded-full"></div>
+            <h2 class="text-3xl md:text-4xl font-black text-brand-purple">Was unsere Wanderer sagen</h2>
+        </div>
+        <div class="flex items-center gap-3 mb-8">
+            <div class="flex"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+            <span class="text-lg font-bold text-slate-700">5.0</span>
+            <span class="text-slate-500">·</span>
+            <span class="text-slate-500">3 reviews</span>
+        </div>
+        <div class="relative">
+            <div class="carousel-track flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory hide-scrollbar pb-4">
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="b5a78481-51b4-470a-a6b1-50f1b7cf0278" data-dest="28d57c89-e120-4ad5-8f63-9668d0c26d5e" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">J</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Joke</h4>
+                        <p class="text-sm text-slate-500">Netherlands</p><p class="text-sm text-primary font-semibold mt-1">The Kerry Way Hiking Tour — 8 Days</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">Hallo Cliff! Mijn zus en ik hebben enorm genoten van onze wandelreis</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the ...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the locations of the B&amp;Bs. They are very special. We&#x27;ll be back!</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="b5a78481-51b4-470a-a6b1-50f1b7cf0278" data-dest="28d57c89-e120-4ad5-8f63-9668d0c26d5e" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">J</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Joke</h4>
+                        <p class="text-sm text-slate-500">Netherlands</p><p class="text-sm text-primary font-semibold mt-1">The Kerry Way Hiking Tour — 8 Days</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">Hello Cliff! My sister and I both enjoyed our walking trip enormously</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the ...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the locations of the B&amp;Bs. They are very special. We&#x27;ll be back!</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="b5a78481-51b4-470a-a6b1-50f1b7cf0278" data-dest="28d57c89-e120-4ad5-8f63-9668d0c26d5e" data-rating="5">
+                <div class="flex items-center gap-4 mb-4">
+                    <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">J</div>
+                    <div>
+                        <h4 class="font-bold text-lg">Joke</h4>
+                        <p class="text-sm text-slate-500">Netherlands</p><p class="text-sm text-primary font-semibold mt-1">The Kerry Way Hiking Tour — 8 Days</p>
+                    </div>
+                </div>
+                <div class="flex mb-3"><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span><span class="material-symbols-outlined text-lg text-primary">star</span></div>
+                <h5 class="font-bold mb-2">Hallo Cliff! Meine Schwester und ich haben unsere Wanderreise sehr genossen</h5>
+                <p class="review-truncated text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the ...</p>
+                <div class="review-full hidden mt-2">
+                    <p class="text-slate-600 leading-relaxed">Hello Cliff! My sister and I both enjoyed our walking trip enormously. All the transfers and B&amp;Bs were perfect. I recommended the trip to all friends who asked how it was. I hope you can keep the locations of the B&amp;Bs. They are very special. We&#x27;ll be back!</p>
+                </div>
+                <button class="review-toggle text-primary font-semibold text-sm mt-2 hover:underline" onclick="this.previousElementSibling.classList.toggle('hidden'); this.textContent = this.textContent === 'Read more' ? 'Show less' : 'Read more'">Read more</button>
+            </div>
+            </div>
+            <button class="carousel-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
+                <span class="material-symbols-outlined">chevron_left</span>
+            </button>
+            <button class="carousel-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors hidden md:flex z-10">
+                <span class="material-symbols-outlined">chevron_right</span>
+            </button>
+        </div>
+        <div class="flex items-center justify-center gap-2 mt-6">
+<button class="carousel-dot w-2.5 h-2.5 rounded-full bg-primary transition-colors" data-page="0"></button>
+        </div>
+        <div class="text-center mt-2">
+            <a href="reviews" class="inline-flex items-center gap-1 text-primary font-semibold hover:underline mt-4">Read all 3 reviews <span class="material-symbols-outlined text-lg">arrow_forward</span></a>
+        </div>
+    </div>
+
+                </div>
+            </section>
 
                 <script type="application/ld+json">
 {
@@ -496,7 +582,14 @@
                 "@type": "Country",
                 "name": "Ireland"
         },
-        "touristType": "Walker"
+        "touristType": "Walker",
+        "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "bestRating": "5",
+                "worstRating": "1",
+                "reviewCount": "3"
+        }
 }
     </script>
 
@@ -724,14 +817,14 @@
                         <h4 class="font-bold mb-4 text-primary">Quicklinks</h4>
                         <ul class="space-y-2 text-sm text-slate-300">
                             <li><a href="about" class="hover:text-primary transition-colors">Über Uns</a></li>
-                            <li><a href="how-it-works" class="hover:text-primary transition-colors">So funktioniert es</a></li>
+                            <li><a href="how-it-works" class="hover:text-primary transition-colors">Wie funktioniert es?</a></li>
                             <li><a href="tailor-made" class="hover:text-primary transition-colors">Maßgeschneiderte Touren</a></li>
                             <li><a href="blog" class="hover:text-primary transition-colors">Blog</a></li>
                             <li><a href="contact" class="hover:text-primary transition-colors">Kontakt</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h4 class="font-bold mb-4 text-primary">Kontakt</h4>
+                        <h4 class="font-bold mb-4 text-primary">Kontaktieren Sie uns!</h4>
                         <ul class="space-y-3 text-sm text-slate-300">
                             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
                             <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 42 932 3396</li>
@@ -779,7 +872,9 @@
     "walking_days": 7,
     "total_km": null,
     "total_ascent": null,
-    "total_descent": null
+    "total_descent": null,
+    "avg_rating": 5.0,
+    "review_count": 3
   }
 ]
     </script>
