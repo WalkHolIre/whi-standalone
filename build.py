@@ -1489,7 +1489,7 @@ def render_review_card(review, tour_name='', show_tour=False, prefix=''):
                     <p class="text-sm text-slate-500 italic">{escape(whi_response)}</p>
                 </div>"""
 
-    html = f"""        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="{escape(review.get('tour_id', ''))}" data-dest="{escape(review.get('destination_id', ''))}" data-rating="{rating}">
+    html = f"""        <div class="review-card bg-white rounded-2xl p-6 md:p-8 shadow-sm border border-slate-200 flex-shrink-0 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]" data-tour="{escape(review.get('tour_id') or '')}" data-dest="{escape(review.get('destination_id') or '')}" data-rating="{rating}">
                 <div class="flex items-center gap-4 mb-4">
                     <div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-lg">{initial}</div>
                     <div>
