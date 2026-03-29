@@ -25,20 +25,31 @@
 
     if (!toursGrid) return;
 
-    /* Region → walking area page mapping */
+    /* Detect language from <html lang="..."> */
+    var pageLang = (document.documentElement.lang || 'en').substring(0, 2);
+
+    /* Tour folder prefix per language */
+    var tourFolderMap = { en: 'walking-tours', de: 'wandertouren', nl: 'wandeltochten' };
+    var tourFolder = tourFolderMap[pageLang] || 'walking-tours';
+
+    /* Walking area prefix per language */
+    var waPrefix = { en: 'walking-area', de: 'wandergebiet', nl: 'wandelgebied' };
+    var waPfx = waPrefix[pageLang] || 'walking-area';
+
+    /* Region → walking area page mapping (uses language-aware prefix) */
     var regionPageMap = {
-        'Dingle Peninsula': 'walking-area-dingle-way.html',
-        'County Kerry': 'walking-area-kerry-way.html',
-        'Wicklow Mountains': 'walking-area-wicklow-way.html',
-        'South East Ireland': 'walking-area-barrow-way.html',
-        'The Burren': 'walking-area-burren-way.html',
-        'Causeway Coast': 'walking-area-causeway-coast.html',
-        'Cooley Peninsula': 'walking-area-cooley-mournes.html',
-        'Connemara': 'walking-area-connemara.html',
-        'Beara Peninsula': 'walking-area-beara-way.html',
-        'Glens of Antrim': 'walking-area-antrim-glens.html',
-        'Mourne Mountains': 'walking-area-mourne-mountains.html',
-        'The Sperrins': 'walking-area-the-sperrins.html'
+        'Dingle Peninsula': waPfx + '-dingle-way',
+        'County Kerry': waPfx + '-kerry-way',
+        'Wicklow Mountains': waPfx + '-wicklow-way',
+        'South East Ireland': waPfx + '-barrow-way',
+        'The Burren': waPfx + '-burren-way',
+        'Causeway Coast': waPfx + '-causeway-coast',
+        'Cooley Peninsula': waPfx + '-cooley-mournes',
+        'Connemara': waPfx + '-connemara',
+        'Beara Peninsula': waPfx + '-beara-way',
+        'Glens of Antrim': waPfx + '-antrim-glens',
+        'Mourne Mountains': waPfx + '-mourne-mountains',
+        'The Sperrins': waPfx + '-the-sperrins'
     };
 
     /* Region → Wild Atlantic Way / descriptive label */
@@ -96,7 +107,7 @@
 
     /* SVG icons for stats bar */
     var iconDays = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
-    var iconDistance = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
+    var iconDistance = '<span class="material-symbols-outlined" style="font-size:24px;color:#F17E00;margin-bottom:4px;transform:rotate(90deg);display:inline-block;">favorite_route</span>';
     var iconAscent = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
 
     function renderTours(tours) {
@@ -182,7 +193,7 @@
             return '<div style="width:100%;max-width:420px;margin:0 auto;">' +
                 '<div style="position:relative;">' +
                 ribbonHtml +
-                '<a href="walking-tours/' + tour.slug + '" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
+                '<a href="' + tourFolder + '/' + tour.slug + '" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;" data-region="' + tour.region + '" data-difficulty="' + tour.difficulty + '" data-days="' + tour.days + '">' +
                     /* Image area with gradient overlay and title */
                     '<div style="position:relative;aspect-ratio:4/3;overflow:hidden;">' +
                         '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;" loading="lazy" onerror="this.style.display=\'none\'"/>' +
