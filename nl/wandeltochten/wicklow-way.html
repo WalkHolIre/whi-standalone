@@ -1763,8 +1763,8 @@
     titleBar.textContent = d.title;
     // Show stats bar
     statsContent.innerHTML = '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl" style="transform:rotate(90deg)">favorite_route</span><span class="text-xs text-slate-500">Distance</span><span class="font-bold text-brand-purple">' + d.distance_km + ' km</span></div>' +
-      '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_up</span><span class="text-xs text-slate-500">Ascent</span><span class="font-bold text-brand-purple">' + d.ascent_m + ' m</span></div>' +
-      '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">trending_down</span><span class="text-xs text-slate-500">Descent</span><span class="font-bold text-brand-purple">' + (d.descent_m || d.ascent_m) + ' m</span></div>' +
+      '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">landscape</span><span class="text-xs text-slate-500">Ascent</span><span class="font-bold text-brand-purple">' + d.ascent_m + ' m</span></div>' +
+      '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">landscape</span><span class="text-xs text-slate-500">Descent</span><span class="font-bold text-brand-purple">' + (d.descent_m || d.ascent_m) + ' m</span></div>' +
       '<div class="flex flex-col items-center"><span class="material-symbols-outlined text-primary text-xl">schedule</span><span class="text-xs text-slate-500">Duur</span><span class="font-bold text-brand-purple">' + (d.duration_hrs ? d.duration_hrs + 'h' : '-') + '</span></div>';
     statsBar.classList.remove('hidden');
     drawSingleElevation(d, layers[i].color);
