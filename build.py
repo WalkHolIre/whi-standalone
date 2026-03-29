@@ -371,9 +371,12 @@ UI_STRINGS = {
         # About page / stats
         'by_the_numbers': 'In Zahlen',
         'years': 'Jahre',
+        'years_experience': 'Jahre Erfahrung',
         'happy_walkers': 'Zufriedene Wanderer',
         'tours_stat': 'Touren',
+        'walking_tours_stat': 'Wandertouren',
         'destinations_stat': 'Reiseziele',
+        'destinations_stat_label': 'Wanderziele',
         'countries_served': 'Bediente Länder',
         'the_team': 'Das Team',
         'cofound_ops': 'Mitgründer & Betrieb',
@@ -559,9 +562,12 @@ UI_STRINGS = {
         # About page / stats
         'by_the_numbers': 'In Cijfers',
         'years': 'Jaar',
+        'years_experience': 'Jaar Ervaring',
         'happy_walkers': 'Tevreden Wandelaars',
         'tours_stat': 'Tours',
+        'walking_tours_stat': 'Wandeltochten',
         'destinations_stat': 'Bestemmingen',
+        'destinations_stat_label': 'Bestemmingen',
         'countries_served': 'Bediende Landen',
         'the_team': 'Het Team',
         'cofound_ops': 'Mede-oprichter & Operatie',
@@ -1023,7 +1029,10 @@ def translate_html_ui(html, lang):
         # About page / stats section
         '>By The Numbers<': f'>{t("by_the_numbers", lang)}<',
         '>Years<': f'>{t("years", lang)}<',
+        '>Years Experience<': f'>{t("years_experience", lang)}<',
         '>Happy Walkers<': f'>{t("happy_walkers", lang)}<',
+        '>Walking Tours<': f'>{t("walking_tours_stat", lang)}<',
+        '>Destinations<': f'>{t("destinations_stat_label", lang)}<',
         '>Countries Served<': f'>{t("countries_served", lang)}<',
         '>The Team<': f'>{t("the_team", lang)}<',
         '>Co-Founder & Operations<': f'>{t("cofound_ops", lang)}<',
@@ -3989,7 +3998,7 @@ def post_process_html(html):
         r'(<img[^>]*whi_fc\.png[^>]*?)(\s+height="[^"]*")', r'\1', html)
     html = re.sub(
         r'(whi_fc\.png[^>]*class=")(h-10 mb-4")',
-        r'\1mb-4" style="height:40px;width:auto;', html)
+        r'\1mb-4" style="height:40px;width:auto;"', html)
 
     # 6. Footer tagline: text-sm → text-base italic
     html = html.replace(
@@ -4276,6 +4285,11 @@ def build_static_pages(lang, translations):
         html = html.replace('action="walking-tours"', f'action="/{translate_static_slug("walking-tours", lang)}"')
         html = html.replace("window.location.href = 'walking-tours'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}'")
         html = html.replace('href="destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
+        # Fix absolute-path stats card links (href="/about", href="/reviews", etc.)
+        html = html.replace('href="/about"', f'href="/{translate_static_slug("about", lang)}"')
+        html = html.replace('href="/reviews"', f'href="/{translate_static_slug("reviews", lang)}"')
+        html = html.replace('href="/walking-tours"', f'href="/{translate_static_slug("walking-tours", lang)}"')
+        html = html.replace('href="/destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
 
         # Add canonical URL for this language
         translated_slug = translate_static_slug(page_slug, lang)

@@ -835,6 +835,61 @@
         </div>
     </section>
 
+    <!-- Company Stats Section — Animated Flip Counter -->
+    <section class="stats-flip-section" style="padding:3rem 1.5rem;text-align:center;background:linear-gradient(135deg,#3b1070 0%,#5b21b6 40%,#6d28d9 70%,#4c1d95 100%);position:relative;overflow:hidden;margin:0;">
+      <div style="position:absolute;inset:0;background:radial-gradient(circle at 20% 80%,rgba(251,146,60,.12) 0%,transparent 50%),radial-gradient(circle at 80% 20%,rgba(251,146,60,.08) 0%,transparent 50%);pointer-events:none;"></div>
+      <div class="stats-flip-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:1000px;margin:0 auto;position:relative;">
+        <a href="/about" class="stat-flip-card" style="display:block;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:1rem;padding:2rem 1rem 1.75rem;border:1px solid rgba(255,255,255,.12);text-decoration:none;transition:transform .3s,background .3s,border-color .3s;overflow:hidden;position:relative;">
+          <div style="width:52px;height:52px;margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:14px;border:1px solid rgba(255,255,255,.15);color:#fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:26px;height:26px;"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+          </div>
+          <div class="flip-number-wrapper" data-target="14" data-suffix="+" style="display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:1rem;height:4.2rem;overflow:hidden;"></div>
+          <p style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.08em;">Years Experience</p>
+        </a>
+        <a href="/reviews" class="stat-flip-card" style="display:block;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:1rem;padding:2rem 1rem 1.75rem;border:1px solid rgba(255,255,255,.12);text-decoration:none;transition:transform .3s,background .3s,border-color .3s;overflow:hidden;position:relative;">
+          <div style="width:52px;height:52px;margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:14px;border:1px solid rgba(255,255,255,.15);color:#fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:26px;height:26px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+          </div>
+          <div class="flip-number-wrapper" data-target="3400" data-suffix="+" style="display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:1rem;height:4.2rem;overflow:hidden;"></div>
+          <p style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.08em;">Happy Walkers</p>
+        </a>
+        <a href="/walking-tours" class="stat-flip-card" style="display:block;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:1rem;padding:2rem 1rem 1.75rem;border:1px solid rgba(255,255,255,.12);text-decoration:none;transition:transform .3s,background .3s,border-color .3s;overflow:hidden;position:relative;">
+          <div style="width:52px;height:52px;margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:14px;border:1px solid rgba(255,255,255,.15);color:#fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:26px;height:26px;"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498 4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 0 0-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0Z"/></svg>
+          </div>
+          <div class="flip-number-wrapper" data-target="16" data-suffix="" style="display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:1rem;height:4.2rem;overflow:hidden;"></div>
+          <p style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.08em;">Walking Tours</p>
+        </a>
+        <a href="/destinations" class="stat-flip-card" style="display:block;background:rgba(255,255,255,.08);backdrop-filter:blur(8px);border-radius:1rem;padding:2rem 1rem 1.75rem;border:1px solid rgba(255,255,255,.12);text-decoration:none;transition:transform .3s,background .3s,border-color .3s;overflow:hidden;position:relative;">
+          <div style="width:52px;height:52px;margin:0 auto 1.25rem;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.1);border-radius:14px;border:1px solid rgba(255,255,255,.15);color:#fff;">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="width:26px;height:26px;"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z"/></svg>
+          </div>
+          <div class="flip-number-wrapper" data-target="10" data-suffix="" style="display:flex;align-items:baseline;justify-content:center;gap:4px;margin-bottom:1rem;height:4.2rem;overflow:hidden;"></div>
+          <p style="font-size:1rem;font-weight:800;color:#fff;text-transform:uppercase;letter-spacing:.08em;">Destinations</p>
+        </a>
+      </div>
+    </section>
+    <style>
+    .stat-flip-card:hover{transform:translateY(-4px);background:rgba(255,255,255,.14)!important;border-color:rgba(251,146,60,.4)!important;}
+    .stat-flip-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#fb923c,#f97316);opacity:0;transition:opacity .3s;}
+    .stat-flip-card:hover::before{opacity:1;}
+    .flip-digit{display:inline-block;position:relative;width:2.4rem;height:4.2rem;background:#0f0a1e;border-radius:8px;overflow:hidden;box-shadow:0 3px 8px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.06);}
+    .flip-digit::after{content:'';position:absolute;top:50%;left:0;right:0;height:1.5px;background:rgba(0,0,0,.5);box-shadow:0 1px 0 rgba(255,255,255,.03);z-index:5;}
+    .flip-digit .digit-strip{display:flex;flex-direction:column;}
+    .flip-digit .digit-strip span{display:flex;align-items:center;justify-content:center;width:2.4rem;height:4.2rem;font-size:2.6rem;font-weight:900;color:#f8fafc;font-variant-numeric:tabular-nums;letter-spacing:-.02em;font-family:'Inter',system-ui,monospace;}
+    .flip-suffix{font-size:2.6rem;font-weight:900;color:#fb923c;margin-left:3px;line-height:4.2rem;text-shadow:0 0 20px rgba(251,146,60,.4);}
+    @media(max-width:768px){.stats-flip-grid{grid-template-columns:repeat(2,1fr)!important;gap:1.25rem!important;}}
+    </style>
+    <script>
+    (function(){
+      function buildFlipDigits(w){var t=w.dataset.target,s=w.dataset.suffix||'';w.innerHTML='';for(var i=0;i<t.length;i++){var d=document.createElement('div');d.className='flip-digit';var st=document.createElement('div');st.className='digit-strip';for(var n=0;n<=9;n++){var sp=document.createElement('span');sp.textContent=n;st.appendChild(sp);}d.appendChild(st);w.appendChild(d);}if(s){var sx=document.createElement('span');sx.className='flip-suffix';sx.textContent=s;w.appendChild(sx);}}
+      function animateWrapper(w,delay){var t=w.dataset.target,digits=w.querySelectorAll('.flip-digit'),h=4.2*16;digits.forEach(function(d){d.querySelector('.digit-strip').style.transition='none';d.querySelector('.digit-strip').style.transform='translateY(0)';});void w.offsetHeight;digits.forEach(function(d,i){var td=parseInt(t[i]),strip=d.querySelector('.digit-strip'),dur=0.9+td*0.12;setTimeout(function(){strip.style.transition='transform '+dur+'s cubic-bezier(0.22,1,0.36,1)';strip.style.transform='translateY(-'+td*h+'px)';},delay+i*280);});}
+      function animateAll(){document.querySelectorAll('.flip-number-wrapper').forEach(function(w,i){buildFlipDigits(w);animateWrapper(w,300+i*350);});}
+      var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){animateAll();obs.disconnect();}});},{threshold:0.3});
+      document.addEventListener('DOMContentLoaded',function(){document.querySelectorAll('.flip-number-wrapper').forEach(buildFlipDigits);var s=document.querySelector('.stats-flip-section');if(s)obs.observe(s);});
+    })();
+    </script>
+
     <!-- How It Works Section -->
     <section id="how-it-works">
         <div class="section-max-width">
