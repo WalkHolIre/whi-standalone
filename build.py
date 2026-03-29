@@ -3008,7 +3008,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>
-                        <a href="{img_prefix}price-promise" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
+                        <a href="{img_prefix}terms-and-conditions" class="text-[10px] text-slate-400 hover:text-primary underline" title="Best price guarantee — see our price promise" onclick="event.stopPropagation();">*Price Promise</a>
                     </div>
                 </div>
                 <div class="flex flex-col justify-between flex-grow p-4 pb-2">
