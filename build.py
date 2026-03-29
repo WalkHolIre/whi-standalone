@@ -5305,6 +5305,50 @@ def main():
         log("Destinations listing template not found, skipping", 'warn')
 
     # ── Build Blog Pages ──────────────────────────────────────
+    # ── Helper: process blog content (WP comments, YouTube embeds, TOC) ──
+    def process_blog_content(content, toc_title='Table of Contents'):
+        """Process blog HTML content: strip WP comments, embed YouTube, render TOC."""
+        import re as _re
+        content = _re.sub(r'<!-- /?wp:\w+[^>]* -->', '', content)
+        # Auto-embed YouTube links
+        def _yt_embed(m):
+            vid = m.group('id1') or m.group('id2') or m.group('id3')
+            if vid:
+                return f'''<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'''
+            return m.group(0)
+        yt_pattern = r'(?:<p>\s*)?(?:<a[^>]*>)?\s*(?:https?://)?(?:www\.)?(?:youtu\.be/(?P<id1>[\w-]+)|youtube\.com/watch\?v=(?P<id2>[\w-]+)|youtube\.com/embed/(?P<id3>[\w-]+))(?:[^\s<]*)?\s*(?:</a>)?(?:\s*</p>)?'
+        content = _re.sub(yt_pattern, _yt_embed, content)
+        # Render TOC blocks
+        if 'data-type="toc"' in content:
+            headings = _re.findall(r'<(h2)[^>]*>(.*?)</\1>', content, _re.IGNORECASE)
+            if headings:
+                toc_items = []
+                for tag, text in headings:
+                    clean_text = _re.sub(r'<[^>]+>', '', text).strip()
+                    anchor_id = _re.sub(r'[^a-z0-9]+', '-', clean_text.lower()).strip('-')
+                    toc_items.append(f'<li><a href="#{anchor_id}" class="text-primary hover:text-primary/80 hover:underline transition-colors">{escape(clean_text)}</a></li>')
+                toc_html = f'''<nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800">{toc_title}</h3>
+                <ol class="space-y-2 text-sm">
+                    {''.join(toc_items)}
+                </ol>
+            </nav>'''
+                content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', toc_html, content)
+                # Add anchor IDs to H2 and H3 headings so TOC links work
+                def _add_heading_id(m):
+                    tag = m.group(1)
+                    attrs = m.group(2) or ''
+                    text = m.group(3)
+                    clean = _re.sub(r'<[^>]+>', '', text).strip()
+                    anchor = _re.sub(r'[^a-z0-9]+', '-', clean.lower()).strip('-')
+                    if 'id=' in attrs:
+                        return m.group(0)
+                    return f'<{tag}{attrs} id="{anchor}">{text}</{tag}>'
+                content = _re.sub(r'<(h[23])([^>]*)>(.*?)</\1>', _add_heading_id, content, flags=_re.IGNORECASE)
+            else:
+                content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', '', content)
+        return content
+
     log("\nGenerating blog pages...")
     blog_template_path = WEBSITE_DIR / '_templates' / 'blog-article.html'
     blog_dir = WEBSITE_DIR / 'blog'
@@ -5407,58 +5451,7 @@ def main():
             if not slug:
                 continue
 
-            content = post.get('content', '')
-            # Strip WordPress block comments
-            import re as _re
-            content = _re.sub(r'<!-- /?wp:\w+[^>]* -->', '', content)
-
-            # Auto-embed YouTube links — matches youtu.be/ID, youtube.com/watch?v=ID, youtube.com/embed/ID
-            # Standalone links (on their own line or wrapped in <p> tags alone)
-            def _yt_embed(m):
-                vid = m.group('id1') or m.group('id2') or m.group('id3')
-                if vid:
-                    return f'''<div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/{vid}" title="YouTube video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>'''
-                return m.group(0)
-
-            # Match YouTube URLs that are standalone (in <p> tags, <a> tags wrapping the URL, or bare)
-            yt_pattern = r'(?:<p>\s*)?(?:<a[^>]*>)?\s*(?:https?://)?(?:www\.)?(?:youtu\.be/(?P<id1>[\w-]+)|youtube\.com/watch\?v=(?P<id2>[\w-]+)|youtube\.com/embed/(?P<id3>[\w-]+))(?:[^\s<]*)?\s*(?:</a>)?(?:\s*</p>)?'
-            content = _re.sub(yt_pattern, _yt_embed, content)
-
-            # ── Render TOC blocks ──
-            # The TipTap editor saves <div data-type="toc" class="toc-block"></div>
-            # Replace with actual table of contents generated from H2/H3 headings
-            if 'data-type="toc"' in content:
-                headings = _re.findall(r'<(h[23])[^>]*>(.*?)</\1>', content, _re.IGNORECASE)
-                if headings:
-                    toc_items = []
-                    for tag, text in headings:
-                        clean_text = _re.sub(r'<[^>]+>', '', text).strip()
-                        anchor_id = _re.sub(r'[^a-z0-9]+', '-', clean_text.lower()).strip('-')
-                        indent = 'ml-4' if tag.lower() == 'h3' else ''
-                        toc_items.append(f'<li class="{indent}"><a href="#{anchor_id}" class="text-primary hover:text-primary/80 hover:underline transition-colors">{escape(clean_text)}</a></li>')
-                    toc_html = f'''<nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
-                <h3 class="text-lg font-bold mb-4 text-slate-800">Table of Contents</h3>
-                <ol class="space-y-2 text-sm">
-                    {''.join(toc_items)}
-                </ol>
-            </nav>'''
-                    # Replace the empty TOC div with rendered TOC
-                    content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', toc_html, content)
-
-                    # Add anchor IDs to the actual headings so TOC links work
-                    def _add_heading_id(m):
-                        tag = m.group(1)
-                        attrs = m.group(2) or ''
-                        text = m.group(3)
-                        clean = _re.sub(r'<[^>]+>', '', text).strip()
-                        anchor = _re.sub(r'[^a-z0-9]+', '-', clean.lower()).strip('-')
-                        if 'id=' in attrs:
-                            return m.group(0)
-                        return f'<{tag}{attrs} id="{anchor}">{text}</{tag}>'
-                    content = _re.sub(r'<(h[23])([^>]*)>(.*?)</\1>', _add_heading_id, content, flags=_re.IGNORECASE)
-                else:
-                    # No headings found — remove the empty TOC div
-                    content = _re.sub(r'<div[^>]*data-type="toc"[^>]*>(?:</div>)?', '', content)
+            content = process_blog_content(post.get('content', ''))
 
             title = post.get('title', '')
             excerpt = post.get('excerpt', '') or ''
@@ -5567,7 +5560,7 @@ def main():
                 de_html = blog_template
                 de_replacements = dict(replacements)
                 de_replacements['{article_title}'] = escape(post.get('title_de') or title)
-                de_replacements['{article_body}'] = post.get('content_de') or content
+                de_replacements['{article_body}'] = process_blog_content(post.get('content_de') or content, toc_title='Inhaltsverzeichnis')
                 de_replacements['{meta_title}'] = escape(post.get('meta_title_de') or post.get('title_de') or title)
                 de_replacements['{meta_description}'] = escape(post.get('meta_description_de') or post.get('excerpt_de') or excerpt)
                 de_replacements['{slug}'] = slug_de
@@ -5594,7 +5587,7 @@ def main():
                 nl_html = blog_template
                 nl_replacements = dict(replacements)
                 nl_replacements['{article_title}'] = escape(post.get('title_nl') or title)
-                nl_replacements['{article_body}'] = post.get('content_nl') or content
+                nl_replacements['{article_body}'] = process_blog_content(post.get('content_nl') or content, toc_title='Inhoudsopgave')
                 nl_replacements['{meta_title}'] = escape(post.get('meta_title_nl') or post.get('title_nl') or title)
                 nl_replacements['{meta_description}'] = escape(post.get('meta_description_nl') or post.get('excerpt_nl') or excerpt)
                 nl_replacements['{slug}'] = slug_nl
@@ -5758,6 +5751,20 @@ def main():
                 'excerpt_field': 'excerpt_de',
                 'content_field': 'content_de',
                 'tour_folder': 'wandertouren',
+                'categories': {
+                    'Walking Routes': 'Wanderrouten',
+                    'Travel Tips': 'Reisetipps',
+                    'Local Culture': 'Lokale Kultur',
+                    'Hiking Gear': 'Wanderausrüstung',
+                    'Planning Your Trip': 'Reiseplanung',
+                    'Walking Holidays': 'Wanderurlaub',
+                    'Trail Guides': 'Wegführer',
+                    'Gear & Equipment': 'Ausrüstung & Zubehör',
+                    'Health & Wellness': 'Gesundheit & Wohlbefinden',
+                    'Irish Culture & Heritage': 'Irische Kultur & Geschichte',
+                    'National Parks & Wildlife': 'Nationalparks & Tierwelt',
+                    'Safety & Weather': 'Sicherheit & Wetter',
+                },
             },
             'nl': {
                 'title': 'Wandelen in Ierland Blog | Wandelgidsen, Tips & Verhalen',
@@ -5776,6 +5783,20 @@ def main():
                 'excerpt_field': 'excerpt_nl',
                 'content_field': 'content_nl',
                 'tour_folder': 'wandeltochten',
+                'categories': {
+                    'Walking Routes': 'Wandelroutes',
+                    'Travel Tips': 'Reistips',
+                    'Local Culture': 'Lokale Cultuur',
+                    'Hiking Gear': 'Wandeluitrusting',
+                    'Planning Your Trip': 'Reis Plannen',
+                    'Walking Holidays': 'Wandelvakanties',
+                    'Trail Guides': 'Routegidsen',
+                    'Gear & Equipment': 'Uitrusting & Accessoires',
+                    'Health & Wellness': 'Gezondheid & Welzijn',
+                    'Irish Culture & Heritage': 'Ierse Cultuur & Erfgoed',
+                    'National Parks & Wildlife': 'Nationale Parken & Natuur',
+                    'Safety & Weather': 'Veiligheid & Weer',
+                },
             },
         }
 
@@ -5795,7 +5816,8 @@ def main():
                 if not lang_slug or not lang_content:
                     continue
                 p_img = post.get('featured_image', '') or ''
-                p_cat = post.get('category', '') or 'Walking Routes'
+                p_cat_en = post.get('category', '') or 'Walking Routes'
+                p_cat = bcfg.get('categories', {}).get(p_cat_en, p_cat_en)
                 p_title = post.get(bcfg['title_field']) or post.get('title', '')
                 p_excerpt = post.get(bcfg['excerpt_field']) or post.get('excerpt', '') or ''
                 if len(p_excerpt) > 160:
@@ -5880,6 +5902,9 @@ def main():
             # Replace filter button text
             lang_blog = lang_blog.replace('>All Posts<', f'>{bcfg["all_posts"]}<')
             lang_blog = lang_blog.replace('Search stories...', bcfg['search_placeholder'])
+            # Translate category filter button labels
+            for en_cat, lang_cat in bcfg.get('categories', {}).items():
+                lang_blog = lang_blog.replace(f'>{en_cat}<', f'>{lang_cat}<')
 
             # Replace recommended tours section
             lang_blog = lang_blog.replace('>Recommended Tours<', f'>{bcfg["recommended_tours"]}<')
