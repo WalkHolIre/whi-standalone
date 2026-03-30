@@ -30,7 +30,7 @@
 # 2. OLD WORDPRESS TOUR PAGES → NEW TOUR PAGES
 # ═══════════════════════════════════════════════════════════
 
-/self-guided-hiking-tours/the-dingle-way/  /walking-tours/dingle-way  301
+/self-guided-hiking-tours/the-dingle-way/  /walking-tours/dingle-way-walking-tour-8d  301
 /self-guided-hiking-tours/the-kerry-way/  /walking-tours/kerry-way  301
 /self-guided-hiking-tours/the-wicklow-way/  /walking-tours/wicklow-way  301
 /self-guided-hiking-tours/barrow-way/  /walking-tours/barrow-way  301
@@ -267,7 +267,7 @@
 # 8. DE INTERNAL REDIRECTS (old English URLs → translated)
 # ═══════════════════════════════════════════════════════════
 
-/de/tours/dingle-way.html  /de/wandertouren/dingle-way  301
+/de/tours/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
 /de/tours/kerry-way.html  /de/wandertouren/kerry-way  301
 /de/tours/wicklow-way.html  /de/wandertouren/wicklow-way  301
 /de/tours/wicklow-way-5-days.html  /de/wandertouren/wicklow-way-5-days  301
@@ -284,7 +284,7 @@
 /de/tours/cooley-peninsula-5-days.html  /de/wandertouren/cooley-peninsula-5-days  301
 /de/tours.html  /de/wandertouren  301
 /de/walking-tours.html  /de/wandertouren  301
-/de/walking-tours/dingle-way.html  /de/wandertouren/dingle-way  301
+/de/walking-tours/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
 /de/walking-tours/kerry-way.html  /de/wandertouren/kerry-way  301
 /de/walking-tours/wicklow-way.html  /de/wandertouren/wicklow-way  301
 /de/walking-tours/wicklow-way-5-days.html  /de/wandertouren/wicklow-way-5-days  301
@@ -324,23 +324,44 @@
 /de/walking-area-beara-way.html  /de/wandergebiet-beara-way  301
 /de/walking-area-causeway-glens.html  /de/wandergebiet-causeway-glens  301
 /de/walking-area-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
-/de/destination-wicklow-way.html  /de/wanderziel-wicklow-way  301
-/de/destination-dingle-way.html  /de/wanderziel-dingle-way  301
-/de/destination-kerry-way.html  /de/wanderziel-kerry-way  301
-/de/destination-burren-way.html  /de/wanderziel-burren-way  301
-/de/destination-causeway-coast.html  /de/wanderziel-causeway-coast  301
-/de/destination-cooley-mournes.html  /de/wanderziel-cooley-mournes  301
-/de/destination-barrow-way.html  /de/wanderziel-barrow-way  301
-/de/destination-beara-way.html  /de/wanderziel-beara-way  301
-/de/destination-causeway-glens.html  /de/wanderziel-causeway-glens  301
-/de/destination-cooley-peninsula.html  /de/wanderziel-cooley-peninsula  301
+/de/destination-wicklow-way.html  /de/wandergebiet-wicklow-way  301
+/de/destination-dingle-way.html  /de/wandergebiet-dingle-way  301
+/de/destination-kerry-way.html  /de/wandergebiet-kerry-way  301
+/de/destination-burren-way.html  /de/wandergebiet-burren-way  301
+/de/destination-causeway-coast.html  /de/wandergebiet-causeway-coast  301
+/de/destination-cooley-mournes.html  /de/wandergebiet-cooley-mournes  301
+/de/destination-barrow-way.html  /de/wandergebiet-barrow-way  301
+/de/destination-beara-way.html  /de/wandergebiet-beara-way  301
+/de/destination-causeway-glens.html  /de/wandergebiet-causeway-glens  301
+/de/destination-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
+# DE wanderziel-* (old duplicate) → wandergebiet-* (canonical)
+/de/wanderziel-wicklow-way  /de/wandergebiet-wicklow-way  301
+/de/wanderziel-wicklow-way.html  /de/wandergebiet-wicklow-way  301
+/de/wanderziel-dingle-way  /de/wandergebiet-dingle-way  301
+/de/wanderziel-dingle-way.html  /de/wandergebiet-dingle-way  301
+/de/wanderziel-kerry-way  /de/wandergebiet-kerry-way  301
+/de/wanderziel-kerry-way.html  /de/wandergebiet-kerry-way  301
+/de/wanderziel-burren-way  /de/wandergebiet-burren-way  301
+/de/wanderziel-burren-way.html  /de/wandergebiet-burren-way  301
+/de/wanderziel-causeway-coast  /de/wandergebiet-causeway-coast  301
+/de/wanderziel-causeway-coast.html  /de/wandergebiet-causeway-coast  301
+/de/wanderziel-cooley-mournes  /de/wandergebiet-cooley-mournes  301
+/de/wanderziel-cooley-mournes.html  /de/wandergebiet-cooley-mournes  301
+/de/wanderziel-barrow-way  /de/wandergebiet-barrow-way  301
+/de/wanderziel-barrow-way.html  /de/wandergebiet-barrow-way  301
+/de/wanderziel-beara-way  /de/wandergebiet-beara-way  301
+/de/wanderziel-beara-way.html  /de/wandergebiet-beara-way  301
+/de/wanderziel-causeway-glens  /de/wandergebiet-causeway-glens  301
+/de/wanderziel-causeway-glens.html  /de/wandergebiet-causeway-glens  301
+/de/wanderziel-cooley-peninsula  /de/wandergebiet-cooley-peninsula  301
+/de/wanderziel-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
 
 # ═══════════════════════════════════════════════════════════
 # 9. NL INTERNAL REDIRECTS (old English URLs → translated)
 # ═══════════════════════════════════════════════════════════
 
 /nl/walking-tours.html  /nl/wandeltochten  301
-/nl/walking-tours/dingle-way.html  /nl/wandeltochten/dingle-way  301
+/nl/walking-tours/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301
 /nl/walking-tours/kerry-way.html  /nl/wandeltochten/kerry-way  301
 /nl/walking-tours/wicklow-way.html  /nl/wandeltochten/wicklow-way  301
 /nl/walking-tours/wicklow-way-5-days.html  /nl/wandeltochten/wicklow-way-5-days  301
@@ -379,16 +400,37 @@
 /nl/walking-area-beara-way.html  /nl/wandelgebied-beara-way  301
 /nl/walking-area-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
 /nl/walking-area-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
-/nl/destination-wicklow-way.html  /nl/wandelbestemming-wicklow-way  301
-/nl/destination-dingle-way.html  /nl/wandelbestemming-dingle-way  301
-/nl/destination-kerry-way.html  /nl/wandelbestemming-kerry-way  301
-/nl/destination-burren-way.html  /nl/wandelbestemming-burren-way  301
-/nl/destination-causeway-coast.html  /nl/wandelbestemming-causeway-coast  301
-/nl/destination-cooley-mournes.html  /nl/wandelbestemming-cooley-mournes  301
-/nl/destination-barrow-way.html  /nl/wandelbestemming-barrow-way  301
-/nl/destination-beara-way.html  /nl/wandelbestemming-beara-way  301
-/nl/destination-causeway-glens.html  /nl/wandelbestemming-causeway-glens  301
-/nl/destination-cooley-peninsula.html  /nl/wandelbestemming-cooley-peninsula  301
+/nl/destination-wicklow-way.html  /nl/wandelgebied-wicklow-way  301
+/nl/destination-dingle-way.html  /nl/wandelgebied-dingle-way  301
+/nl/destination-kerry-way.html  /nl/wandelgebied-kerry-way  301
+/nl/destination-burren-way.html  /nl/wandelgebied-burren-way  301
+/nl/destination-causeway-coast.html  /nl/wandelgebied-causeway-coast  301
+/nl/destination-cooley-mournes.html  /nl/wandelgebied-cooley-mournes  301
+/nl/destination-barrow-way.html  /nl/wandelgebied-barrow-way  301
+/nl/destination-beara-way.html  /nl/wandelgebied-beara-way  301
+/nl/destination-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
+/nl/destination-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
+# NL wandelbestemming-* (old duplicate) → wandelgebied-* (canonical)
+/nl/wandelbestemming-wicklow-way  /nl/wandelgebied-wicklow-way  301
+/nl/wandelbestemming-wicklow-way.html  /nl/wandelgebied-wicklow-way  301
+/nl/wandelbestemming-dingle-way  /nl/wandelgebied-dingle-way  301
+/nl/wandelbestemming-dingle-way.html  /nl/wandelgebied-dingle-way  301
+/nl/wandelbestemming-kerry-way  /nl/wandelgebied-kerry-way  301
+/nl/wandelbestemming-kerry-way.html  /nl/wandelgebied-kerry-way  301
+/nl/wandelbestemming-burren-way  /nl/wandelgebied-burren-way  301
+/nl/wandelbestemming-burren-way.html  /nl/wandelgebied-burren-way  301
+/nl/wandelbestemming-causeway-coast  /nl/wandelgebied-causeway-coast  301
+/nl/wandelbestemming-causeway-coast.html  /nl/wandelgebied-causeway-coast  301
+/nl/wandelbestemming-cooley-mournes  /nl/wandelgebied-cooley-mournes  301
+/nl/wandelbestemming-cooley-mournes.html  /nl/wandelgebied-cooley-mournes  301
+/nl/wandelbestemming-barrow-way  /nl/wandelgebied-barrow-way  301
+/nl/wandelbestemming-barrow-way.html  /nl/wandelgebied-barrow-way  301
+/nl/wandelbestemming-beara-way  /nl/wandelgebied-beara-way  301
+/nl/wandelbestemming-beara-way.html  /nl/wandelgebied-beara-way  301
+/nl/wandelbestemming-causeway-glens  /nl/wandelgebied-causeway-glens  301
+/nl/wandelbestemming-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
+/nl/wandelbestemming-cooley-peninsula  /nl/wandelgebied-cooley-peninsula  301
+/nl/wandelbestemming-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
 
 # ═══════════════════════════════════════════════════════════
 # 9a. OLD DUTCH WORDPRESS URLS → NEW NL PAGES

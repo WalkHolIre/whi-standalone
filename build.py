@@ -94,7 +94,8 @@ generated = {
 
 # Pages that have noindex — exclude from sitemaps (legal/policy pages in all languages)
 NOINDEX_PAGES = {'privacy-policy', 'terms-and-conditions', 'datenschutz', 'agb',
-                 'privacybeleid', 'algemene-voorwaarden'}
+                 'privacybeleid', 'algemene-voorwaarden',
+                 'checkout', 'booking-success', 'code', 'buchung', 'boeken'}
 
 # UI translations for multiple languages
 UI_STRINGS = {
@@ -3665,7 +3666,7 @@ def render_destinations_by_region(destinations, tours, regions_by_id, reviews_by
                     review_count = len(ratings)
                     review_html = f'<div class="flex items-center gap-1.5"><div class="flex items-center gap-0.5">{render_dest_stars_html(avg_rating)}</div><span class="text-sm font-bold text-slate-700">{avg_rating}</span><span class="text-xs text-slate-400">({review_count})</span></div>'
 
-            html += f"""            <a href="destination-{dest_slug}" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
+            html += f"""            <a href="walking-area-{dest_slug}" class="dest-card group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full" data-region="{region_slug}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/destinations/{dest_slug}/card.jpg" srcset="images/destinations/{dest_slug}/card-400w.jpg 400w, images/destinations/{dest_slug}/card-800w.jpg 800w, images/destinations/{dest_slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{dest_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:50%;background:linear-gradient(to top,rgba(33,7,71,0.7) 0%,rgba(33,7,71,0) 100%);"></div>
@@ -4787,14 +4788,11 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             ])
 
             wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
-            dest_prefix = DESTINATION_PREFIX.get(lang, 'destination')
             output_path = base_dir / f'{wa_prefix}-{slug}.html'
-            dest_path = base_dir / f'{dest_prefix}-{slug}.html'
+            # NOTE: {dest_prefix}-{slug} redirects to {wa_prefix}-{slug} via _redirects
 
             if not DRY_RUN:
                 with open(output_path, 'w') as f:
-                    f.write(html)
-                with open(dest_path, 'w') as f:
                     f.write(html)
                 log(f"Generated: {output_path}")
 
@@ -5074,18 +5072,16 @@ def main():
                 (dest_name, None),
             ])
 
-            # Write both destination-{slug}.html and walking-area-{slug}.html
-            output_path = WEBSITE_DIR / f'destination-{slug}.html'
+            # Write walking-area-{slug}.html (canonical URL pattern)
+            # NOTE: destination-{slug} redirects to walking-area-{slug} via _redirects
             walking_area_path = WEBSITE_DIR / f'walking-area-{slug}.html'
 
             if DRY_RUN:
-                log(f"Would generate: {output_path}", 'debug')
+                log(f"Would generate: {walking_area_path}", 'debug')
             else:
-                with open(output_path, 'w') as f:
-                    f.write(html)
                 with open(walking_area_path, 'w') as f:
                     f.write(html)
-                log(f"Generated: {output_path} + walking-area-{slug}.html")
+                log(f"Generated: walking-area-{slug}.html")
 
             generated['destinations'].append(slug)
         else:
@@ -6345,7 +6341,11 @@ def main():
 
         # Static pages (clean URLs — no .html extensions)
         # Exclude noindex pages (legal/policy pages) from sitemap
-        for page in ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog']:
+        for page in ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog',
+                     'hiking-ireland', 'best-hiking-trails-ireland', 'wild-atlantic-way',
+                     'ancient-east', 'northern-ireland', 'mountains-of-mourne',
+                     'self-guided-walking-holidays-ireland', 'solo-walking-holidays-ireland',
+                     'walking-holidays-ireland-over-50s']:
             if page not in NOINDEX_PAGES and (WEBSITE_DIR / f'{page}.html').exists():
                 sitemap_urls.append((f'https://walkingholidayireland.com/{page}', '0.5', 'monthly'))
 
@@ -6402,7 +6402,11 @@ def main():
                 sm_urls.append((f'{sm_base}/{reviews_slug}', '0.7', 'monthly'))
 
             # Static pages — exclude noindex pages (legal/policy) from sitemap
-            static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog']
+            static_pages = ['about', 'contact', 'how-it-works', 'tailor-made', 'tour-grading', 'blog',
+                            'hiking-ireland', 'best-hiking-trails-ireland', 'wild-atlantic-way',
+                            'ancient-east', 'northern-ireland', 'mountains-of-mourne',
+                            'self-guided-walking-holidays-ireland', 'solo-walking-holidays-ireland',
+                            'walking-holidays-ireland-over-50s']
             for sp in static_pages:
                 sp_slug = translate_static_slug(sp, sm_lang)
                 if sp_slug not in NOINDEX_PAGES and (sm_dir / f'{sp_slug}.html').exists():
