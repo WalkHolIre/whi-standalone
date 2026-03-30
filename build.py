@@ -2389,7 +2389,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
                 best_months_data = month_names_full[start-1:] + month_names_full[:end]
     best_months_html = render_best_months(best_months_data)
     reviews_html = render_tour_review_section(reviews, tour, tours_by_id, prefix='../')
-    review_schema_html = render_tour_page_schema(tour, reviews, lang=lang)
+    review_schema_html = render_tour_page_schema(tour, reviews, lang=lang, destination=destination)
     # Use empty prefix for tour pages (already in tours/ subdirectory)
     related_html = render_dest_tour_cards_v3(related_tours, prefix='', reviews_by_tour=reviews_by_tour or {})
 
@@ -3198,7 +3198,9 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id, lang
 
     # Reviews
     reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
-    review_schema_html = render_destination_page_schema(destination, tours, reviews, lang=lang)
+    # NOTE: review schema is already included via {destination_schema} which contains AggregateRating
+    # Do NOT duplicate it here — Google flags duplicate review schemas as errors
+    review_schema_html = ''
 
     # FAQs
     dest_faq_html, dest_faq_list = render_destination_faq_section(destination.get('id'), faqs, destination.get('name', ''))
@@ -3416,7 +3418,7 @@ def render_tours_listing_json(tours, reviews_by_tour=None, all_dest_reviews=None
     return json.dumps(items, indent=2)
 
 
-def render_tours_listing_schema(tours, lang='en'):
+def render_tours_listing_schema(tours, lang='en', destinations_by_id=None):
     """Render ItemList JSON-LD schema for tours listing page."""
     tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
     items = []
@@ -3431,7 +3433,14 @@ def render_tours_listing_schema(tours, lang='en'):
         total_km, total_ascent = compute_tour_distances(tour)
 
         slug = tour.get('slug', '')
-        tour_image = tour.get('hero_image') or f"images/routes/{slug}/hero.jpg"
+        # Image fallback chain: tour hero → destination hero → site default
+        tour_image = tour.get('hero_image')
+        if not tour_image and destinations_by_id:
+            dest = destinations_by_id.get(tour.get('destination_id'))
+            if dest:
+                tour_image = dest.get('hero_image')
+        if not tour_image:
+            tour_image = 'https://walkingholidayireland.com/images/hero/kerry-hero.jpg'
         if not tour_image.startswith('http'):
             tour_image = f"https://walkingholidayireland.com/{tour_image}"
 
@@ -3784,7 +3793,7 @@ def render_destinations_listing_schema(destinations, tours, lang='en'):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
-def render_tour_page_schema(tour, reviews_list, lang='en'):
+def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
     """Render enhanced TouristTrip + Product schema for individual tour pages."""
     stats = compute_review_stats(reviews_list)
     total_km, total_ascent = compute_tour_distances(tour)
@@ -3796,7 +3805,12 @@ def render_tour_page_schema(tour, reviews_list, lang='en'):
         price_display = str(price)
 
     slug = tour.get('slug', '')
-    tour_image = tour.get('hero_image') or f"images/routes/{slug}/hero.jpg"
+    # Image fallback chain: tour hero → destination hero → site default
+    tour_image = tour.get('hero_image')
+    if not tour_image and destination:
+        tour_image = destination.get('hero_image')
+    if not tour_image:
+        tour_image = 'https://walkingholidayireland.com/images/hero/kerry-hero.jpg'
     if not tour_image.startswith('http'):
         tour_image = f"https://walkingholidayireland.com/{tour_image}"
 
@@ -3904,7 +3918,10 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
     stats = compute_review_stats(reviews_list)
 
     dest_slug = destination.get('slug', '')
-    dest_image = destination.get('hero_image') or f"images/destinations/{dest_slug}/hero.jpg"
+    # Image fallback: destination hero → site default
+    dest_image = destination.get('hero_image')
+    if not dest_image:
+        dest_image = 'https://walkingholidayireland.com/images/hero/kerry-hero.jpg'
     if not dest_image.startswith('http'):
         dest_image = f"https://walkingholidayireland.com/{dest_image}"
 
@@ -3913,11 +3930,18 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
 
     schema = {
         "@context": "https://schema.org",
-        "@type": "TouristDestination",
+        "@type": ["TouristDestination", "LocalBusiness"],
         "name": destination.get('name', ''),
         "description": strip_html_tags(destination.get('seo_description') or destination.get('short_description', '')),
         "image": dest_image,
         "url": dest_url,
+        "telephone": "+353429375983",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dundalk",
+            "addressRegion": "Co. Louth",
+            "addressCountry": "IE"
+        },
         "containedInPlace": {
             "@type": "Country",
             "name": destination.get('country', 'Ireland')
@@ -5325,7 +5349,7 @@ def main():
             tours_listing_template = f.read()
 
         tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour, all_dest_reviews=reviews)
-        tours_schema = render_tours_listing_schema(tours, lang='en')
+        tours_schema = render_tours_listing_schema(tours, lang='en', destinations_by_id=destinations_by_id)
         region_options = render_region_filter_options(tours)
         difficulty_options = render_difficulty_filter_options(tours)
 

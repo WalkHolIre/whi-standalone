@@ -101,6 +101,51 @@ const SLUG_MAP = {
   },
 };
 
+/**
+ * Deprecated short-slug destinations that must redirect to their full canonical slug.
+ * These apply AFTER prefix translation, so use the translated prefix per language.
+ * Format: { shortSlug: fullSlug } — these are the suffix after the walking-area/wandergebiet/wandelgebied prefix.
+ */
+const DEPRECATED_SHORT_SLUGS = {
+  'barrow':   'barrow-way',
+  'burren':   'burren-way',
+  'causeway': 'causeway-coast',
+  'cooley':   'cooley-mournes',
+  'dingle':   'dingle-way',
+  'kerry':    'kerry-way',
+  'wicklow':  'wicklow-way',
+};
+
+/**
+ * Walking area prefix per language (must match build.py WALKING_AREA_PREFIX).
+ */
+const WA_PREFIX_MAP = {
+  '':    'walking-area',    // English (no langPrefix)
+  '/de': 'wandergebiet',
+  '/nl': 'wandelgebied',
+};
+
+/**
+ * Check if a path is a deprecated short-slug walking area and return the
+ * canonical redirect target, or null if no redirect is needed.
+ * Works for all languages: /walking-area-wicklow → /walking-area-wicklow-way
+ *                          /wandergebiet-wicklow → /wandergebiet-wicklow-way
+ */
+function getDeprecatedSlugRedirect(cleanPath, langPrefix) {
+  const waPrefix = WA_PREFIX_MAP[langPrefix || ''];
+  if (!waPrefix) return null;
+
+  const prefix = '/' + waPrefix + '-';
+  if (!cleanPath.startsWith(prefix)) return null;
+
+  const suffix = cleanPath.slice(prefix.length);
+  const fullSlug = DEPRECATED_SHORT_SLUGS[suffix];
+  if (fullSlug) {
+    return prefix + fullSlug;
+  }
+  return null;
+}
+
 // Prefix translations: walking-area → wandergebiet/wandelgebied, etc.
 const PREFIX_MAP = {
   '/de': {
@@ -160,6 +205,16 @@ export default {
         });
       }
 
+      // Redirect deprecated short-slug walking areas (EN domain)
+      // e.g. /walking-area-wicklow → /walking-area-wicklow-way
+      const enDeprecatedRedirect = getDeprecatedSlugRedirect(url.pathname, '');
+      if (enDeprecatedRedirect) {
+        return new Response(null, {
+          status: 301,
+          headers: { 'Location': enDeprecatedRedirect + url.search + url.hash },
+        });
+      }
+
       const response = await env.ASSETS.fetch(request);
 
       // Serve custom 404 page for English site
@@ -212,9 +267,22 @@ export default {
     // Visitors may arrive via old links or search engines using EN URLs
     const translatedPath = translateSlug(cleanPath, langPrefix);
     if (translatedPath) {
+      // Before redirecting, also check if the translated path is a deprecated short slug
+      const deprecatedRedirect = getDeprecatedSlugRedirect(translatedPath, langPrefix);
       return new Response(null, {
         status: 301,
-        headers: { 'Location': translatedPath + url.search + url.hash },
+        headers: { 'Location': (deprecatedRedirect || translatedPath) + url.search + url.hash },
+      });
+    }
+
+    // Redirect deprecated short-slug walking areas to their full canonical slug
+    // e.g. /wandergebiet-wicklow → /wandergebiet-wicklow-way (DE)
+    //      /wandelgebied-dingle → /wandelgebied-dingle-way (NL)
+    const deprecatedRedirect = getDeprecatedSlugRedirect(cleanPath, langPrefix);
+    if (deprecatedRedirect) {
+      return new Response(null, {
+        status: 301,
+        headers: { 'Location': deprecatedRedirect + url.search + url.hash },
       });
     }
 
