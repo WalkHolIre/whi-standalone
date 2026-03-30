@@ -271,7 +271,19 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://wandelvakantieierland.nl/blog/antrim-coast</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wandelvakantieierland.nl/blog/antrim-kust-wandelen-causeway-coast-way</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/bosbaden-ierland-mindful-wandelen-welzijn</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -290,6 +302,12 @@
   </url>
   <url>
     <loc>https://wandelvakantieierland.nl/blog/de-famine-roads-van-ierland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/discover-galway-ireland</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -314,6 +332,12 @@
   </url>
   <url>
     <loc>https://wandelvakantieierland.nl/blog/het-ierse-weer</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/irish-national-anthem</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -374,6 +398,12 @@
   </url>
   <url>
     <loc>https://wandelvakantieierland.nl/blog/sterren-kijken-ierland-noorderlicht-dark-sky</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/the-best-time-visit-ireland</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
