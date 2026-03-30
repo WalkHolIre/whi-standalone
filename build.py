@@ -5140,6 +5140,24 @@ def main():
                 html = re.sub(r'<meta\s+name="description"\s+content="[^"]*"',
                               f'<meta name="description" content="{meta_desc}"', html, count=1)
 
+        # Fix BreadcrumbList schema for this language
+        # Strip existing EN BreadcrumbList and inject correct one
+        html = re.sub(
+            r'\s*<script type="application/ld\+json">\s*\{[\s\S]*?"BreadcrumbList"[\s\S]*?</script>',
+            '', html, count=1)
+        # Determine breadcrumb label for this page
+        listing_labels = {
+            'walking-tours': {'en': 'Walking Tours', 'de': 'Wandertouren', 'nl': 'Wandeltochten'},
+            'destinations': {'en': 'Destinations', 'de': 'Reiseziele', 'nl': 'Bestemmingen'},
+            'reviews': {'en': 'Reviews', 'de': 'Bewertungen', 'nl': 'Beoordelingen'},
+            'faq': {'en': 'FAQs', 'de': 'FAQs', 'nl': 'FAQs'},
+        }
+        label = listing_labels.get(en_slug, {}).get(lang, en_slug.replace('-', ' ').title())
+        html = inject_breadcrumb_schema(html, [
+            ('Home', lang_url(lang, '')),
+            (label, None),
+        ])
+
         # Write output
         output_path = lang_dir / f'{translated_slug}.html'
         if not DRY_RUN:
@@ -5173,6 +5191,12 @@ def main():
             en_url=lang_url('en', 'faq'),
             de_url=lang_url('de', f'{translate_static_slug("faq", "de")}'),
             nl_url=lang_url('nl', f'{translate_static_slug("faq", "nl")}'))
+
+        # BreadcrumbList schema: Home > FAQs
+        faq_html = inject_breadcrumb_schema(faq_html, [
+            ('Home', lang_url('en', '')),
+            ('FAQs', None),
+        ])
 
         output_path = WEBSITE_DIR / 'faq.html'
         if not DRY_RUN:
@@ -5246,6 +5270,12 @@ def main():
             de_url=lang_url('de', f'{translate_static_slug("reviews", "de")}'),
             nl_url=lang_url('nl', f'{translate_static_slug("reviews", "nl")}'))
 
+        # BreadcrumbList schema: Home > Reviews
+        reviews_page_html = inject_breadcrumb_schema(reviews_page_html, [
+            ('Home', lang_url('en', '')),
+            ('Reviews', None),
+        ])
+
         output_path = WEBSITE_DIR / 'reviews.html'
         if not DRY_RUN:
             with open(output_path, 'w') as f:
@@ -5298,8 +5328,14 @@ def main():
         # Fix hreflang for EN tours listing
         tours_listing_html = set_hreflang_tags(tours_listing_html,
             en_url=lang_url('en', 'walking-tours'),
-            de_url=lang_url('de', f'{translate_static_slug("walking-tours", "de")}'),
-            nl_url=lang_url('nl', f'{translate_static_slug("walking-tours", "nl")}'))
+            de_url=lang_url('de', TOUR_FOLDER['de']),
+            nl_url=lang_url('nl', TOUR_FOLDER['nl']))
+
+        # BreadcrumbList schema: Home > Walking Tours
+        tours_listing_html = inject_breadcrumb_schema(tours_listing_html, [
+            ('Home', lang_url('en', '')),
+            ('Walking Tours', None),
+        ])
 
         output_path = WEBSITE_DIR / 'walking-tours.html'
         if not DRY_RUN:
@@ -5353,8 +5389,14 @@ def main():
         # Fix hreflang for EN destinations listing
         dests_listing_html = set_hreflang_tags(dests_listing_html,
             en_url=lang_url('en', 'destinations'),
-            de_url=lang_url('de', f'{translate_static_slug("destinations", "de")}'),
-            nl_url=lang_url('nl', f'{translate_static_slug("destinations", "nl")}'))
+            de_url=lang_url('de', translate_static_slug('destinations', 'de')),
+            nl_url=lang_url('nl', translate_static_slug('destinations', 'nl')))
+
+        # BreadcrumbList schema: Home > Destinations
+        dests_listing_html = inject_breadcrumb_schema(dests_listing_html, [
+            ('Home', lang_url('en', '')),
+            ('Destinations', None),
+        ])
 
         output_path = WEBSITE_DIR / 'destinations.html'
         if not DRY_RUN:

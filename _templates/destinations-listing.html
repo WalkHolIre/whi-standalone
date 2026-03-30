@@ -35,17 +35,7 @@
         .dest-card { transition: opacity 0.3s ease, transform 0.3s ease; }
         .dest-card.filtered-out { display: none; }
     </style>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Areas", "item": "https://walkingholidayireland.com/destinations" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <!-- Destinations Schema -->
     {destinations_schema}
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
