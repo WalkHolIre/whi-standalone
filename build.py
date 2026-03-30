@@ -5027,13 +5027,12 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-            # Set hreflang tags — include language only if translated page exists
-            _d_has_de = dest_id in dest_has_translation.get('de', set())
-            _d_has_nl = dest_id in dest_has_translation.get('nl', set())
+            # Set hreflang tags — EN destinations always include all 3 languages
+            # (DE/NL will be conditionally set inside build_language_site())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if _d_has_de else None,
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if _d_has_nl else None)
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
 
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
@@ -5260,7 +5259,7 @@ def main():
             tours_listing_template = f.read()
 
         tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour, all_dest_reviews=reviews)
-        tours_schema = render_tours_listing_schema(tours, lang=lang)
+        tours_schema = render_tours_listing_schema(tours, lang='en')
         region_options = render_region_filter_options(tours)
         difficulty_options = render_difficulty_filter_options(tours)
 
@@ -5308,7 +5307,7 @@ def main():
         active_destinations = [d for d in destinations if d.get('id') in published_dest_ids]
 
         dests_json = render_destinations_listing_json(active_destinations, tours)
-        dests_schema = render_destinations_listing_schema(active_destinations, tours, lang=lang)
+        dests_schema = render_destinations_listing_schema(active_destinations, tours, lang='en')
         region_tabs = render_region_tabs(regions_by_id, active_destinations)
         dests_by_region_html = render_destinations_by_region(active_destinations, tours, regions_by_id, reviews_by_dest)
 
