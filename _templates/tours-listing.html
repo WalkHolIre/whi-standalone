@@ -39,17 +39,7 @@
         .ribbon-wrapper { position:absolute; top:-10px; left:-10px; width:150px; height:150px; overflow:hidden; z-index:30; pointer-events:none; }
         .ribbon { position:absolute; display:block; width:225px; padding:12px 0; background-color:#F17E00; box-shadow:0 5px 10px rgba(0,0,0,0.1); color:#fff; text-transform:uppercase; text-align:center; left:-53px; top:40px; transform:rotate(-45deg); font-weight:900; letter-spacing:0.05em; font-size:18px; line-height:1; }
     </style>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Tours", "item": "https://walkingholidayireland.com/tours" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <!-- ItemList Schema -->
     {tours_schema}
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
