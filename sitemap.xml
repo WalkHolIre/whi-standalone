@@ -961,12 +961,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/how-to-read-the-weather</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/donegal-hiking-experience</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -974,6 +968,12 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/how-to-choose-a-historically-rich-hiking-destination-in-ireland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/how-to-read-the-weather</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1129,6 +1129,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/what-if-you-get-lost-while-hiking</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/differences-between-rambling-and-hiking</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -1136,12 +1142,6 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/best-trails-in-ireland-for-solo-hikers</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://walkingholidayireland.com/blog/what-if-you-get-lost-while-hiking</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1207,13 +1207,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/ireland-solo-hiking-experience</loc>
+    <loc>https://walkingholidayireland.com/blog/travel-to-ireland</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/travel-to-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/ireland-solo-hiking-experience</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1249,13 +1249,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/womens-guide-to-solo-hiking-in-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/best-european-hiking-tours</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/best-european-hiking-tours</loc>
+    <loc>https://walkingholidayireland.com/blog/womens-guide-to-solo-hiking-in-ireland</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
