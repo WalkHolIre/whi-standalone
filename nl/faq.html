@@ -36,117 +36,32 @@
         details .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.2s ease; }
         details[open] .faq-answer { max-height: 2000px; }
     </style>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "FAQs", "item": "https://walkingholidayireland.com/faq" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <!-- FAQ Schema -->
-        <script type="application/ld+json">
-{
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-                {
-                        "@type": "Question",
-                        "name": "How do I book a walking holiday with Walking Holiday Ireland?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "You can book directly through our website by selecting your preferred tour and clicking Book Now, or use the Trip Enquiry form to contact us first. A deposit of 25% of the invoice is required at the time of booking to secure your place."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "When is the full balance due?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "The total balance is due 42 days (6 weeks) prior to your holiday start date. If payment is not received by this deadline, Walking Holiday Ireland reserves the right to cancel the booking and retain the deposit."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "Will I receive a booking confirmation?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes. An invoice will be sent once your booking is confirmed, which serves as your contract with Walking Holiday Ireland."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "How far in advance should I book?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "For summer departures (June-August), we recommend booking 9-11 months in advance, as popular trails fill quickly and accommodation books up fast. For spring and autumn departures, 3-6 months is generally sufficient."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "What is your cancellation policy?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "The following charges apply for customer cancellations: more than 6 weeks before the start date - loss of deposit only; 6 to 4 weeks before - 50% of the tour cost; 4 to 2 weeks before - 80% of the tour cost; less than 2 weeks before - 100% of the tour cost."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "Can I modify my booking after it is confirmed?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Yes, modifications are possible but subject to an administration fee of EUR50 per booking plus any additional costs. Modifications are not possible within 2 weeks of the tour start date. Please contact us as soon as possible to discuss changes."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "What happens if Walking Holiday Ireland cancels my tour?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "If we cancel your tour, you will receive a full refund of all monies paid. However, we will not be liable for additional costs you may have incurred, such as flights or other travel arrangements. We reserve the right to modify or cancel tours up to four weeks before the start date due to unforeseen circumstances or lack of minimum participants for guided tours."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "What happens in cases of force majeure (severe weather, natural disasters, etc.)?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "If cancellation or modifications are made due to force majeure events - such as severe weather, political unrest, or natural disasters - no compensation beyond the refund of tour payments will be offered."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "What are your contact details?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "You can reach Walking Holiday Ireland by phone at +353 42 932 3396, by email at info@walkingholidayireland.com, or via the contact form on our website. Our address is A91 NN24, Co. Louth, Ireland."
-                        }
-                },
-                {
-                        "@type": "Question",
-                        "name": "What is included in a self-guided walking holiday?",
-                        "acceptedAnswer": {
-                                "@type": "Answer",
-                                "text": "Our self-guided tours include: carefully selected family-run B&B accommodation, comfortable en-suite bedrooms (where available), a full Irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. Extra nights and local transport information can be arranged on request."
-                        }
-                }
-        ]
-}
-    </script>
-
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/faq" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/faq" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/faq" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/faq" />
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://wandelvakantieierland.nl/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQs"
+        }
+    ]
+}
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>

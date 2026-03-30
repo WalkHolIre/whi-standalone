@@ -34,160 +34,32 @@
         .dest-card { transition: opacity 0.3s ease, transform 0.3s ease; }
         .dest-card.filtered-out { display: none; }
     </style>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Areas", "item": "https://walkingholidayireland.com/destinations" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <!-- Destinations Schema -->
-        <script type="application/ld+json">
-{
-        "@context": "https://schema.org",
-        "@type": "ItemList",
-        "name": "Walking Holiday Destinations in Ireland",
-        "description": "8 walking holiday destinations across Ireland.",
-        "numberOfItems": 8,
-        "itemListElement": [
-                {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "The Dingle Way",
-                        "url": "https://walkingholidayireland.com/walking-area-dingle-way",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Dingle Way",
-                                "description": "The westernmost loop in Ireland \u2014 179km around the Dingle Peninsula where ancient stone churches meet Atlantic cliffs, the Blasket Islands float offshore and Dingle town offers the kind of evening you won't forget.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "The Kerry Way",
-                        "url": "https://walkingholidayireland.com/walking-area-kerry-way",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Kerry Way",
-                                "description": "Ireland's longest waymarked trail \u2014 215km around the Iveragh Peninsula, through Killarney National Park, over Atlantic headlands and past 2,000-year-old stone forts, with fresh seafood and traditional music waiting at the end of every stage.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 3,
-                        "name": "The Wicklow Mountains",
-                        "url": "https://walkingholidayireland.com/walking-area-wicklow-way",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Wicklow Mountains",
-                                "description": "Ireland's first long-distance trail: 127km through granite mountains, glacial valleys and ancient monasteries, crossing one of Europe's largest upland national parks before finishing in Dublin.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 4,
-                        "name": "The Barrow Way",
-                        "url": "https://walkingholidayireland.com/walking-area-barrow-way",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Barrow Way",
-                                "description": "Ireland's easiest long-distance trail \u2014 114km of riverside walking along towpaths and quiet roads from the Grand Canal to a 6th-century monastic site, through medieval abbeys, Georgian canal towns and the lush heartland of the Barrow Valley.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 5,
-                        "name": "The Burren and Cliffs of Moher",
-                        "url": "https://walkingholidayireland.com/walking-area-burren-way",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Burren and Cliffs of Moher",
-                                "description": "Europe's most unusual karst landscape \u2014 Arctic-Alpine and Mediterranean wildflowers blooming on 340-million-year-old limestone, with the Cliffs of Moher on the western edge and the Burren Way running 114km through one of the world's rarest ecosystems.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 6,
-                        "name": "The Causeway Coast",
-                        "url": "https://walkingholidayireland.com/walking-area-causeway-coast",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Causeway Coast",
-                                "description": "A volcanic landscape like nowhere else in Europe \u2014 53km of basalt cliffs, ancient legends and whiskey-making tradition along one of the world's most dramatic coastlines.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 7,
-                        "name": "The Cooley & Mourne Mountains",
-                        "url": "https://walkingholidayireland.com/walking-area-cooley-mournes",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Cooley & Mourne Mountains",
-                                "description": "Two granite mountain ranges separated by Carlingford Lough and connected by a ferry crossing \u2014 where the Cooley Mountains of County Louth meet the Mournes of County Down in a single, cross-border walking adventure.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                },
-                {
-                        "@type": "ListItem",
-                        "position": 8,
-                        "name": "The Causeway Coast & Glens of Antrim",
-                        "url": "https://walkingholidayireland.com/walking-area-causeway-glens",
-                        "item": {
-                                "@type": "TouristDestination",
-                                "name": "The Causeway Coast & Glens of Antrim",
-                                "description": "The complete Northern Ireland coastal experience \u2014 100km of basalt cliffs and UNESCO World Heritage coastline in the west, nine glacial glens and river valleys in the east, all in one multi-day walking tour.",
-                                "containedInPlace": {
-                                        "@type": "Country",
-                                        "name": "Ireland"
-                                }
-                        }
-                }
-        ]
-}
-    </script>
-
-    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-
-
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/destinations" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/wanderziele-irland" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/wandelbestemmingen" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/destinations" />
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://wandelvakantieierland.nl/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Bestemmingen"
+        }
+    ]
+}
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
 </head>
 <body class="bg-background-light">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
