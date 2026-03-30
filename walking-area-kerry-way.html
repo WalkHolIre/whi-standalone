@@ -55,11 +55,21 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": "TouristDestination",
+        "@type": [
+                "TouristDestination",
+                "LocalBusiness"
+        ],
         "name": "The Kerry Way",
         "description": "Walk the Kerry Way \u2014 215km around the Iveragh Peninsula through Killarney National Park, past Skellig Michael and along the Wild Atlantic Way. Self-guided.",
-        "image": "https://walkingholidayireland.com/images/destinations/kerry-way/hero.jpg",
+        "image": "https://walkingholidayireland.com/images/hero/kerry-hero.jpg",
         "url": "https://walkingholidayireland.com/walking-area-kerry-way",
+        "telephone": "+353429323396",
+        "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Dundalk",
+                "addressRegion": "Co. Louth",
+                "addressCountry": "IE"
+        },
         "containedInPlace": {
                 "@type": "Country",
                 "name": "Ireland"
@@ -588,29 +598,7 @@
                 </div>
             </section>
 
-                <script type="application/ld+json">
-{
-        "@context": "https://schema.org",
-        "@type": "TouristDestination",
-        "name": "The Kerry Way",
-        "description": "Walk the Kerry Way \u2014 215km around the Iveragh Peninsula through Killarney National Park, past Skellig Michael and along the Wild Atlantic Way. Self-guided.",
-        "image": "https://walkingholidayireland.com/images/destinations/kerry-way/hero.jpg",
-        "url": "https://walkingholidayireland.com/walking-area-kerry-way",
-        "containedInPlace": {
-                "@type": "Country",
-                "name": "Ireland"
-        },
-        "touristType": "Walker",
-        "aggregateRating": {
-                "@type": "AggregateRating",
-                "ratingValue": "5.0",
-                "bestRating": "5",
-                "worstRating": "1",
-                "reviewCount": "3"
-        }
-}
-    </script>
-
+            
 
             <!-- ═══════════ 12. TOUR CTA ═══════════ -->
             <section class="w-full py-12 px-6">
