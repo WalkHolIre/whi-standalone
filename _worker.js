@@ -146,6 +146,35 @@ function getDeprecatedSlugRedirect(cleanPath, langPrefix) {
   return null;
 }
 
+/**
+ * Legacy URL prefixes that must redirect to their current equivalents.
+ * These catch old /tours/ URLs that no longer exist but may still be
+ * linked from external sites, search engines, or cached pages.
+ * Maps: legacyPrefix → canonicalPrefix (per language)
+ */
+const LEGACY_PREFIX_MAP = {
+  '':    { 'tours/': 'walking-tours/' },
+  '/de': { 'tours/': 'wandertouren/' },
+  '/nl': { 'tours/': 'wandeltochten/' },
+};
+
+/**
+ * Check if a path uses a legacy prefix and return the redirect target.
+ * e.g. /tours/dingle-way → /walking-tours/dingle-way (EN)
+ *      /tours/dingle-way → /wandertouren/dingle-way (DE)
+ */
+function getLegacyPrefixRedirect(cleanPath, langPrefix) {
+  const map = LEGACY_PREFIX_MAP[langPrefix || ''];
+  if (!map) return null;
+  const pathNoSlash = cleanPath.slice(1);
+  for (const [legacy, current] of Object.entries(map)) {
+    if (pathNoSlash.startsWith(legacy)) {
+      return '/' + pathNoSlash.replace(legacy, current);
+    }
+  }
+  return null;
+}
+
 // Prefix translations: walking-area → wandergebiet/wandelgebied, etc.
 const PREFIX_MAP = {
   '/de': {
@@ -212,6 +241,15 @@ export default {
         return new Response(null, {
           status: 301,
           headers: { 'Location': enDeprecatedRedirect + url.search + url.hash },
+        });
+      }
+
+      // Redirect legacy /tours/ URLs to /walking-tours/ (EN domain)
+      const enLegacyRedirect = getLegacyPrefixRedirect(url.pathname, '');
+      if (enLegacyRedirect) {
+        return new Response(null, {
+          status: 301,
+          headers: { 'Location': enLegacyRedirect + url.search + url.hash },
         });
       }
 
@@ -283,6 +321,17 @@ export default {
       return new Response(null, {
         status: 301,
         headers: { 'Location': deprecatedRedirect + url.search + url.hash },
+      });
+    }
+
+    // Redirect legacy /tours/ URLs to the correct language tour folder
+    // e.g. /tours/dingle-way → /wandertouren/dingle-way (DE)
+    //      /tours/kerry-way → /wandeltochten/kerry-way (NL)
+    const legacyRedirect = getLegacyPrefixRedirect(cleanPath, langPrefix);
+    if (legacyRedirect) {
+      return new Response(null, {
+        status: 301,
+        headers: { 'Location': legacyRedirect + url.search + url.hash },
       });
     }
 
