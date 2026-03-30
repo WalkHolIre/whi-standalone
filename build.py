@@ -4672,13 +4672,12 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}') if _t_has_nl else None)
 
             # BreadcrumbList schema: Home > Walking Tours > Tour Name
-            tour_folder_local = TOUR_FOLDER.get(lang, 'walking-tours')
-            tours_listing_slug = translate_static_slug('walking-tours', lang)
+            tours_listing_path = TOUR_FOLDER.get(lang, 'walking-tours')
             tours_listing_label = {'en': 'Walking Tours', 'de': 'Wandertouren', 'nl': 'Wandeltochten'}.get(lang, 'Walking Tours')
             tour_name = translated_tour.get('name') or tour.get('name', slug)
             html = inject_breadcrumb_schema(html, [
                 ('Home', lang_url(lang, '')),
-                (tours_listing_label, lang_url(lang, tours_listing_slug)),
+                (tours_listing_label, lang_url(lang, tours_listing_path)),
                 (tour_name, None),
             ])
 
