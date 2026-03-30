@@ -979,12 +979,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/tips-for-hiking-in-ireland</loc>
-    <lastmod>2026-03-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/wild-atlantic-way-road-trip</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -1231,6 +1225,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog/a-checklist-for-pilgrims-hiking-religious-routes-in-ireland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/blog/seasonal-guide-when-see-ireland-s-blooms-migrations</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -1357,7 +1357,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/a-checklist-for-pilgrims-hiking-religious-routes-in-ireland</loc>
+    <loc>https://walkingholidayireland.com/blog/tips-for-hiking-in-ireland</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
