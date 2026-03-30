@@ -4989,6 +4989,14 @@ def main():
                 de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}') if tour_id in tours_with_de else None,
                 nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}') if tour_id in tours_with_nl else None)
 
+            # BreadcrumbList schema: Home > Walking Tours > Tour Name
+            tour_name = tour.get('name', slug)
+            html = inject_breadcrumb_schema(html, [
+                ('Home', lang_url('en', '')),
+                ('Walking Tours', lang_url('en', 'walking-tours')),
+                (tour_name, None),
+            ])
+
             tour_folder = TOUR_FOLDER.get('en', 'walking-tours')
             output_path = WEBSITE_DIR / tour_folder / f'{slug}.html'
 
@@ -5033,6 +5041,14 @@ def main():
                 en_url=lang_url('en', f'walking-area-{slug}'),
                 de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
                 nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
+
+            # BreadcrumbList schema: Home > Destinations > Destination Name
+            dest_name = destination.get('name', slug)
+            html = inject_breadcrumb_schema(html, [
+                ('Home', lang_url('en', '')),
+                ('Destinations', lang_url('en', 'destinations')),
+                (dest_name, None),
+            ])
 
             # Write both destination-{slug}.html and walking-area-{slug}.html
             output_path = WEBSITE_DIR / f'destination-{slug}.html'
