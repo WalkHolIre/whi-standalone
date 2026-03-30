@@ -215,222 +215,11 @@
 /walking-area-wicklow  /walking-area-wicklow-way  301
 /walking-area-wicklow.html  /walking-area-wicklow-way  301
 
-# ═══════════════════════════════════════════════════════════
-# 7. INTERNAL URL RENAMES: /tours/ → /walking-tours/
-# ═══════════════════════════════════════════════════════════
+# Section 7 removed — /tours/ URLs have zero backlinks, worker handles
+# legacy prefix redirect for EN domain. No /tours/ folder ever existed.
 
-# With .html extension
-/tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
-/tours/kerry-way.html  /walking-tours/kerry-way  301
-/tours/wicklow-way.html  /walking-tours/wicklow-way  301
-/tours/wicklow-way-5-days.html  /walking-tours/wicklow-way-5-days  301
-/tours/wicklow-way-7-days.html  /walking-tours/wicklow-way-7-days  301
-/tours/wicklow-way-10-days.html  /walking-tours/wicklow-way-10-days  301
-/tours/burren-5-days.html  /walking-tours/burren-5-days  301
-/tours/burren-6-days.html  /walking-tours/burren-6-days  301
-/tours/burren-7-days.html  /walking-tours/burren-7-days  301
-/tours/barrow-way-5-days-easy.html  /walking-tours/barrow-way-5-days-easy  301
-/tours/barrow-way-5-days.html  /walking-tours/barrow-way-5-days  301
-/tours/barrow-way.html  /walking-tours/barrow-way  301
-/tours/Full-Barrow-Way-Walking.html  /walking-tours/full-barrow-way-walking  301
-/tours/causeway-coast.html  /walking-tours/causeway-coast  301
-/tours/causeway-coast-5-days.html  /walking-tours/causeway-coast-5-days  301
-/tours/cooley-mournes.html  /walking-tours/cooley-mournes  301
-/tours/cooley-peninsula-5-days.html  /walking-tours/cooley-peninsula-5-days  301
-/tours/burren-way.html  /walking-tours/burren-way  301
-/tours.html  /walking-tours  301
-/tours/  /walking-tours  301
-
-# Without .html extension (Cloudflare Pages serves .html files at extensionless URLs)
-/tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
-/tours/dingle-way-walking-tour-8d  /walking-tours/dingle-way-walking-tour-8d  301
-/tours/kerry-way  /walking-tours/kerry-way  301
-/tours/wicklow-way  /walking-tours/wicklow-way  301
-/tours/wicklow-way-5-days  /walking-tours/wicklow-way-5-days  301
-/tours/wicklow-way-7-days  /walking-tours/wicklow-way-7-days  301
-/tours/wicklow-way-10-days  /walking-tours/wicklow-way-10-days  301
-/tours/burren-5-days  /walking-tours/burren-5-days  301
-/tours/burren-6-days  /walking-tours/burren-6-days  301
-/tours/burren-7-days  /walking-tours/burren-7-days  301
-/tours/barrow-way-5-days-easy  /walking-tours/barrow-way-5-days-easy  301
-/tours/barrow-way-5-days  /walking-tours/barrow-way-5-days  301
-/tours/barrow-way  /walking-tours/barrow-way  301
-/tours/full-barrow-way-walking  /walking-tours/full-barrow-way-walking  301
-/tours/Full-Barrow-Way-Walking  /walking-tours/full-barrow-way-walking  301
-/tours/causeway-coast  /walking-tours/causeway-coast  301
-/tours/causeway-coast-5-days  /walking-tours/causeway-coast-5-days  301
-/tours/cooley-mournes  /walking-tours/cooley-mournes  301
-/tours/cooley-peninsula-5-days  /walking-tours/cooley-peninsula-5-days  301
-/tours/burren-way  /walking-tours/burren-way  301
-
-# ═══════════════════════════════════════════════════════════
-# 8. DE INTERNAL REDIRECTS (old English URLs → translated)
-# ═══════════════════════════════════════════════════════════
-
-/de/tours/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
-/de/tours/kerry-way.html  /de/wandertouren/kerry-way  301
-/de/tours/wicklow-way.html  /de/wandertouren/wicklow-way  301
-/de/tours/wicklow-way-5-days.html  /de/wandertouren/wicklow-way-5-days  301
-/de/tours/wicklow-way-7-days.html  /de/wandertouren/wicklow-way-7-days  301
-/de/tours/wicklow-way-10-days.html  /de/wandertouren/wicklow-way-10-days  301
-/de/tours/burren-5-days.html  /de/wandertouren/burren-5-days  301
-/de/tours/burren-6-days.html  /de/wandertouren/burren-6-days  301
-/de/tours/burren-7-days.html  /de/wandertouren/burren-7-days  301
-/de/tours/barrow-way-5-days-easy.html  /de/wandertouren/barrow-way-5-days-easy  301
-/de/tours/Full-Barrow-Way-Walking.html  /de/wandertouren/full-barrow-way-walking  301
-/de/tours/causeway-coast.html  /de/wandertouren/causeway-coast  301
-/de/tours/causeway-coast-5-days.html  /de/wandertouren/causeway-coast-5-days  301
-/de/tours/cooley-mournes.html  /de/wandertouren/cooley-mournes  301
-/de/tours/cooley-peninsula-5-days.html  /de/wandertouren/cooley-peninsula-5-days  301
-/de/tours.html  /de/wandertouren  301
-/de/walking-tours.html  /de/wandertouren  301
-/de/walking-tours/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
-/de/walking-tours/kerry-way.html  /de/wandertouren/kerry-way  301
-/de/walking-tours/wicklow-way.html  /de/wandertouren/wicklow-way  301
-/de/walking-tours/wicklow-way-5-days.html  /de/wandertouren/wicklow-way-5-days  301
-/de/walking-tours/wicklow-way-7-days.html  /de/wandertouren/wicklow-way-7-days  301
-/de/walking-tours/wicklow-way-10-days.html  /de/wandertouren/wicklow-way-10-days  301
-/de/walking-tours/burren-5-days.html  /de/wandertouren/burren-5-days  301
-/de/walking-tours/burren-6-days.html  /de/wandertouren/burren-6-days  301
-/de/walking-tours/burren-7-days.html  /de/wandertouren/burren-7-days  301
-/de/walking-tours/barrow-way-5-days-easy.html  /de/wandertouren/barrow-way-5-days-easy  301
-/de/walking-tours/full-barrow-way-walking.html  /de/wandertouren/full-barrow-way-walking  301
-/de/walking-tours/causeway-coast.html  /de/wandertouren/causeway-coast  301
-/de/walking-tours/causeway-coast-5-days.html  /de/wandertouren/causeway-coast-5-days  301
-/de/walking-tours/cooley-mournes.html  /de/wandertouren/cooley-mournes  301
-/de/walking-tours/cooley-peninsula-5-days.html  /de/wandertouren/cooley-peninsula-5-days  301
-/de/destinations.html  /de/wanderziele-irland  301
-/de/about.html  /de/ueber-uns  301
-/de/contact.html  /de/kontakt  301
-/de/how-it-works.html  /de/so-funktioniert-es  301
-/de/tailor-made.html  /de/massgeschneidert  301
-/de/tour-grading.html  /de/tourbewertung  301
-/de/reviews.html  /de/bewertungen  301
-/de/self-guided-walking-holidays-ireland  /de/individuelle-wanderferien-irland  301
-/de/self-guided-walking-holidays-ireland/  /de/individuelle-wanderferien-irland  301
-/de/self-guided-walking-holidays-ireland.html  /de/individuelle-wanderferien-irland  301
-/de/solo-walking-holidays-ireland.html  /de/solo-wanderurlaub-irland  301
-/de/walking-holidays-ireland-over-50s.html  /de/wanderurlaub-irland-50-plus  301
-/de/northern-ireland.html  /de/nordirland  301
-/de/privacy-policy.html  /de/datenschutz  301
-/de/terms-and-conditions.html  /de/agb  301
-/de/walking-area-wicklow-way.html  /de/wandergebiet-wicklow-way  301
-/de/walking-area-dingle-way.html  /de/wandergebiet-dingle-way  301
-/de/walking-area-kerry-way.html  /de/wandergebiet-kerry-way  301
-/de/walking-area-burren-way.html  /de/wandergebiet-burren-way  301
-/de/walking-area-causeway-coast.html  /de/wandergebiet-causeway-coast  301
-/de/walking-area-cooley-mournes.html  /de/wandergebiet-cooley-mournes  301
-/de/walking-area-barrow-way.html  /de/wandergebiet-barrow-way  301
-/de/walking-area-beara-way.html  /de/wandergebiet-beara-way  301
-/de/walking-area-causeway-glens.html  /de/wandergebiet-causeway-glens  301
-/de/walking-area-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
-/de/destination-wicklow-way.html  /de/wandergebiet-wicklow-way  301
-/de/destination-dingle-way.html  /de/wandergebiet-dingle-way  301
-/de/destination-kerry-way.html  /de/wandergebiet-kerry-way  301
-/de/destination-burren-way.html  /de/wandergebiet-burren-way  301
-/de/destination-causeway-coast.html  /de/wandergebiet-causeway-coast  301
-/de/destination-cooley-mournes.html  /de/wandergebiet-cooley-mournes  301
-/de/destination-barrow-way.html  /de/wandergebiet-barrow-way  301
-/de/destination-beara-way.html  /de/wandergebiet-beara-way  301
-/de/destination-causeway-glens.html  /de/wandergebiet-causeway-glens  301
-/de/destination-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
-# DE wanderziel-* (old duplicate) → wandergebiet-* (canonical)
-/de/wanderziel-wicklow-way  /de/wandergebiet-wicklow-way  301
-/de/wanderziel-wicklow-way.html  /de/wandergebiet-wicklow-way  301
-/de/wanderziel-dingle-way  /de/wandergebiet-dingle-way  301
-/de/wanderziel-dingle-way.html  /de/wandergebiet-dingle-way  301
-/de/wanderziel-kerry-way  /de/wandergebiet-kerry-way  301
-/de/wanderziel-kerry-way.html  /de/wandergebiet-kerry-way  301
-/de/wanderziel-burren-way  /de/wandergebiet-burren-way  301
-/de/wanderziel-burren-way.html  /de/wandergebiet-burren-way  301
-/de/wanderziel-causeway-coast  /de/wandergebiet-causeway-coast  301
-/de/wanderziel-causeway-coast.html  /de/wandergebiet-causeway-coast  301
-/de/wanderziel-cooley-mournes  /de/wandergebiet-cooley-mournes  301
-/de/wanderziel-cooley-mournes.html  /de/wandergebiet-cooley-mournes  301
-/de/wanderziel-barrow-way  /de/wandergebiet-barrow-way  301
-/de/wanderziel-barrow-way.html  /de/wandergebiet-barrow-way  301
-/de/wanderziel-beara-way  /de/wandergebiet-beara-way  301
-/de/wanderziel-beara-way.html  /de/wandergebiet-beara-way  301
-/de/wanderziel-causeway-glens  /de/wandergebiet-causeway-glens  301
-/de/wanderziel-causeway-glens.html  /de/wandergebiet-causeway-glens  301
-/de/wanderziel-cooley-peninsula  /de/wandergebiet-cooley-peninsula  301
-/de/wanderziel-cooley-peninsula.html  /de/wandergebiet-cooley-peninsula  301
-
-# ═══════════════════════════════════════════════════════════
-# 9. NL INTERNAL REDIRECTS (old English URLs → translated)
-# ═══════════════════════════════════════════════════════════
-
-/nl/walking-tours.html  /nl/wandeltochten  301
-/nl/walking-tours/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301
-/nl/walking-tours/kerry-way.html  /nl/wandeltochten/kerry-way  301
-/nl/walking-tours/wicklow-way.html  /nl/wandeltochten/wicklow-way  301
-/nl/walking-tours/wicklow-way-5-days.html  /nl/wandeltochten/wicklow-way-5-days  301
-/nl/walking-tours/wicklow-way-7-days.html  /nl/wandeltochten/wicklow-way-7-days  301
-/nl/walking-tours/wicklow-way-10-days.html  /nl/wandeltochten/wicklow-way-10-days  301
-/nl/walking-tours/burren-5-days.html  /nl/wandeltochten/burren-5-days  301
-/nl/walking-tours/burren-6-days.html  /nl/wandeltochten/burren-6-days  301
-/nl/walking-tours/burren-7-days.html  /nl/wandeltochten/burren-7-days  301
-/nl/walking-tours/barrow-way-5-days-easy.html  /nl/wandeltochten/barrow-way-5-days-easy  301
-/nl/walking-tours/full-barrow-way-walking.html  /nl/wandeltochten/full-barrow-way-walking  301
-/nl/walking-tours/causeway-coast.html  /nl/wandeltochten/causeway-coast  301
-/nl/walking-tours/causeway-coast-5-days.html  /nl/wandeltochten/causeway-coast-5-days  301
-/nl/walking-tours/cooley-mournes.html  /nl/wandeltochten/cooley-mournes  301
-/nl/walking-tours/cooley-peninsula-5-days.html  /nl/wandeltochten/cooley-peninsula-5-days  301
-/nl/destinations.html  /nl/wandelbestemmingen  301
-/nl/about.html  /nl/over-ons  301
-/nl/how-it-works.html  /nl/hoe-het-werkt  301
-/nl/tailor-made.html  /nl/op-maat  301
-/nl/tour-grading.html  /nl/moeilijkheidsgraad  301
-/nl/reviews.html  /nl/beoordelingen  301
-/nl/self-guided-walking-holidays-ireland  /nl/wandelvakantie-ierland-op-eigen-houtje  301
-/nl/self-guided-walking-holidays-ireland/  /nl/wandelvakantie-ierland-op-eigen-houtje  301
-/nl/self-guided-walking-holidays-ireland.html  /nl/wandelvakantie-ierland-op-eigen-houtje  301
-/nl/solo-walking-holidays-ireland.html  /nl/solo-wandelvakantie-ierland  301
-/nl/walking-holidays-ireland-over-50s.html  /nl/wandelvakantie-ierland-50-plus  301
-/nl/northern-ireland.html  /nl/noord-ierland  301
-/nl/privacy-policy.html  /nl/privacybeleid  301
-/nl/terms-and-conditions.html  /nl/algemene-voorwaarden  301
-/nl/walking-area-wicklow-way.html  /nl/wandelgebied-wicklow-way  301
-/nl/walking-area-dingle-way.html  /nl/wandelgebied-dingle-way  301
-/nl/walking-area-kerry-way.html  /nl/wandelgebied-kerry-way  301
-/nl/walking-area-burren-way.html  /nl/wandelgebied-burren-way  301
-/nl/walking-area-causeway-coast.html  /nl/wandelgebied-causeway-coast  301
-/nl/walking-area-cooley-mournes.html  /nl/wandelgebied-cooley-mournes  301
-/nl/walking-area-barrow-way.html  /nl/wandelgebied-barrow-way  301
-/nl/walking-area-beara-way.html  /nl/wandelgebied-beara-way  301
-/nl/walking-area-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
-/nl/walking-area-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
-/nl/destination-wicklow-way.html  /nl/wandelgebied-wicklow-way  301
-/nl/destination-dingle-way.html  /nl/wandelgebied-dingle-way  301
-/nl/destination-kerry-way.html  /nl/wandelgebied-kerry-way  301
-/nl/destination-burren-way.html  /nl/wandelgebied-burren-way  301
-/nl/destination-causeway-coast.html  /nl/wandelgebied-causeway-coast  301
-/nl/destination-cooley-mournes.html  /nl/wandelgebied-cooley-mournes  301
-/nl/destination-barrow-way.html  /nl/wandelgebied-barrow-way  301
-/nl/destination-beara-way.html  /nl/wandelgebied-beara-way  301
-/nl/destination-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
-/nl/destination-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
-# NL wandelbestemming-* (old duplicate) → wandelgebied-* (canonical)
-/nl/wandelbestemming-wicklow-way  /nl/wandelgebied-wicklow-way  301
-/nl/wandelbestemming-wicklow-way.html  /nl/wandelgebied-wicklow-way  301
-/nl/wandelbestemming-dingle-way  /nl/wandelgebied-dingle-way  301
-/nl/wandelbestemming-dingle-way.html  /nl/wandelgebied-dingle-way  301
-/nl/wandelbestemming-kerry-way  /nl/wandelgebied-kerry-way  301
-/nl/wandelbestemming-kerry-way.html  /nl/wandelgebied-kerry-way  301
-/nl/wandelbestemming-burren-way  /nl/wandelgebied-burren-way  301
-/nl/wandelbestemming-burren-way.html  /nl/wandelgebied-burren-way  301
-/nl/wandelbestemming-causeway-coast  /nl/wandelgebied-causeway-coast  301
-/nl/wandelbestemming-causeway-coast.html  /nl/wandelgebied-causeway-coast  301
-/nl/wandelbestemming-cooley-mournes  /nl/wandelgebied-cooley-mournes  301
-/nl/wandelbestemming-cooley-mournes.html  /nl/wandelgebied-cooley-mournes  301
-/nl/wandelbestemming-barrow-way  /nl/wandelgebied-barrow-way  301
-/nl/wandelbestemming-barrow-way.html  /nl/wandelgebied-barrow-way  301
-/nl/wandelbestemming-beara-way  /nl/wandelgebied-beara-way  301
-/nl/wandelbestemming-beara-way.html  /nl/wandelgebied-beara-way  301
-/nl/wandelbestemming-causeway-glens  /nl/wandelgebied-causeway-glens  301
-/nl/wandelbestemming-causeway-glens.html  /nl/wandelgebied-causeway-glens  301
-/nl/wandelbestemming-cooley-peninsula  /nl/wandelgebied-cooley-peninsula  301
-/nl/wandelbestemming-cooley-peninsula.html  /nl/wandelgebied-cooley-peninsula  301
+# Sections 8 + 9 removed — all DE/NL redirects now handled by _worker.js
+# (slug translation, prefix translation, deprecated slugs, old prefix redirects)
 
 # ═══════════════════════════════════════════════════════════
 # 9a. OLD DUTCH WORDPRESS URLS → NEW NL PAGES
@@ -538,10 +327,107 @@
 
 # ── AUTO-GENERATED SLUG REDIRECTS (do not edit below) ──
 /walking-tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
-/de/wandertouren/dingle-way  /de/wandertouren/dingle-way-walking-tour-8d  301
-/nl/wandeltochten/dingle-way  /nl/wandeltochten/dingle-way-walking-tour-8d  301
 /walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
-/de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
-/nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301
-/tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
-/tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
+# DE/NL dingle-way slug redirects handled by _worker.js
+
+# ═══════════════════════════════════════════════════════════
+# 12. 404 FIXES — from Ahrefs crawl 30 Mar 2026
+# ═══════════════════════════════════════════════════════════
+
+# Old WordPress blog posts → matching new blog posts
+/6-tips-for-a-hike-in-winter/  /blog/winter-hiking-clothing-tips  301
+/8-top-tips-to-prepare-for-a-long-hike/  /blog/how-to-prepare-for-a-hike  301
+/a-guide-to-irelands-6-national-parks/  /blog/visit-killarney-national-park-in-ireland  301
+/ancient-traditions-irish-heritage-pilgrimage-ireland/  /blog/ancient-traditions-irish-heritage-pilgrimage-ireland  301
+/beginner-friendly-scenic-hiking-trails-ireland/  /blog/beginner-friendly-hiking-trails-ireland  301
+/best-gps-for-hiking-and-backpacking/  /blog/best-handheld-gps-for-hiking  301
+/best-hiking-ireland-tours-2024/  /blog/best-hiking-trails-ireland-2026  301
+/best-hiking-trails-in-europe/  /blog/best-european-hiking-tours  301
+/best-hillwalking-locations-ireland/  /blog/best-hillwalking-locations-in-ireland  301
+/best-trails-ireland-solo-hikers/  /blog/best-trails-in-ireland-for-solo-hikers  301
+/carlingford-and-the-cooley-peninsula/  /blog/carlingford-and-the-cooley-peninsula  301
+/challenging-yet-scenic-hiking-routes-ireland/  /blog/challenging-yet-scenic-hiking-routes-ireland  301
+/common-hiking-injuries-ireland-how-avoid-them/  /blog/how-to-prepare-for-a-hike  301
+/emergency-numbers-resources-hikers-ireland/  /blog/emergency-numbers-resources-hikers-ireland  301
+/essential-safety-tips-first-time-hikers-ireland/  /blog/safety-tips-hiking-alone-ireland  301
+/family-friendly-scenic-hiking-trails-ireland/  /blog/family-friendly-hiking-trails-ireland  301
+/glendalough-walks-guide//  /blog/glendalough-walks-guide  301
+/glendalough-walks-guide/  /blog/glendalough-walks-guide  301
+/guided-walking-holidays-in-ireland/  /blog/guided-vs-self-guided-walking-holidays  301
+/health-benefits-of-hiking/  /blog/benefits-of-hiking  301
+/hike-giant-causeway/  /blog/the-giants-causeway  301
+/hiking-history-joe-bidens-irish-connection/  /blog/the-cooley-peninsula-and-joe-bidens-irish-connection  301
+/hiking-the-kerry-way/  /blog/kerry-way-walking-guide  301
+/hiking-tour-grading/  /tour-grading  301
+/importance-group-safety-when-hiking-ireland/  /blog/safety-tips-hiking-alone-ireland  301
+/ireland-s-best-coastal-hiking-trails-with-scenic-views/  /blog/ireland-s-best-coastal-hiking-trails-with-scenic-views  301
+/ireland-s-hidden-gem-hiking-spots-with-stunning-views/  /blog/best-hiking-trails-ireland-2026  301
+/layering-your-clothes/  /blog/layering-for-hiking  301
+/national-parks-ireland/  /blog/visit-killarney-national-park-in-ireland  301
+/national-parks-wildlife/  /blog/wildlife-irish-hiking-trails  301
+/pilgrim-paths-of-ireland/  /blog/a-checklist-for-pilgrims-hiking-religious-routes-in-ireland  301
+/safe-water-consumption-tips-hiking-ireland/  /blog/safe-water-consumption-tips-hiking-ireland  301
+/saint-kevin-s-way-unveiling-enchanting-pilgrimage-through-wicklow-s-heart/  /blog/st-kevin-of-glendalough  301
+/seasonal-considerations-multi-day-hiking-ireland/  /blog/how-prepare-weather-related-risks-irish-trails  301
+/st-kevin-of-glendalough  /blog/st-kevin-of-glendalough  301
+/st-kevins-glendalough-wicklow/  /blog/st-kevin-of-glendalough  301
+/st-kevins-monastery-glendalough/  /blog/st-kevin-of-glendalough  301
+/st-kevins-way-pilgrim-path/  /blog/st-kevin-of-glendalough  301
+/the-5-best-hiking-trails-in-europe/  /blog/best-european-hiking-tours  301
+/the-barrow-way/  /walking-tours/barrow-way  301
+/the-best-time-to-visit-ireland/  /blog/the-best-time-visit-ireland  301
+/the-irish-hiking-weather/  /blog/hiking-in-the-rain-in-ireland  301
+/the-wicklow-way-trail-map/  /blog/wicklow-way-complete-guide  301
+/tips-for-hiking-in-ireland/  /blog/how-to-prepare-for-a-hike  301
+/tips-for-hiking-in-ireland//  /blog/how-to-prepare-for-a-hike  301
+/tips-girl-wants-hit-trail-winter/  /blog/winter-hiking-clothing-tips  301
+/top-solo-hiking-tips-to-hike-alone-in-ireland/  /blog/checklist-for-solo-hiking  301
+/visit-9-antrim-glens/  /blog/glens-of-antrim-walking  301
+/visit-national-parks-ireland  /blog/visit-killarney-national-park-in-ireland  301
+/visit-national-parks-ireland/  /blog/visit-killarney-national-park-in-ireland  301
+/wildlife-safety-during-irish-hiking-adventures/  /blog/wildlife-irish-hiking-trails  301
+/wicklow-way-complete-guide/  /blog/wicklow-way-complete-guide  301
+
+# Old tour URL patterns → new tours
+/self-guided-hiking-tours/barrow-way-hiking-tour/  /walking-tours/barrow-way  301
+/self-guided-hiking-tours/glendalough/  /walking-tours/wicklow-way  301
+/self-guided-hiking-tours/kerry-way-walk/  /walking-tours/kerry-way  301
+/self-guided-hiking-tours/wicklow-way-walking-tour/  /walking-tours/wicklow-way  301
+/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours/  /walking-tours/causeway-coast  301
+/self-guided-walking-tours/barrow-river-walking-tours/  /walking-tours/barrow-way  301
+/self-guided-walking-tours/cooley-mourne-mountains/  /walking-tours/cooley-mournes  301
+/self-guided-walking-tours/dingle-way/  /walking-tours/dingle-way-walking-tour-8d  301
+/self-guided-walking-tours/kerry-way/  /walking-tours/kerry-way  301
+/self-guided-walking-tours/the-barrow-way/  /walking-tours/barrow-way  301
+/self-guided-walking-tours/the-wicklow-way/  /walking-tours/wicklow-way  301
+/walking-holiday/hike-wicklow-way-walking-holiday/  /walking-tours/wicklow-way  301
+/walking-holiday/wicklow-way-hiking-tour  /walking-tours/wicklow-way  301
+/walking-holidays/barrow-way/  /walking-tours/barrow-way  301
+/walking-holidays/cooley-mourne-mountains/  /walking-tours/cooley-mournes  301
+/walking-holidays/the-wicklow-way/  /walking-tours/wicklow-way  301
+/burren-way/  /walking-tours/burren-way  301
+
+# Old category/section pages → best-fit landing pages
+/book-now/  /checkout  301
+/guided-tours/  /walking-tours  301
+/hiking-blog/  /blog  301
+/self-guided/  /self-guided-walking-holidays-ireland  301
+/price-promise  /how-it-works  301
+/privacy  /privacy-policy  301
+/terms  /terms-and-conditions  301
+/causeway-coast  /walking-tours/causeway-coast  301
+/wicklow-way  /walking-tours/wicklow-way  301
+/wicklow-way-walking-holiday  /walking-tours/wicklow-way  301
+/about-us  /about  301
+
+# Junk/spam URLs — redirect to homepage
+/tips-family-%3Ckeywordmarkbgy%3Ehiking%3C/keywordmarkbgy%3E/  /blog  301
+/tag/hill-walking//  /blog  301
+/solo-hiking/budget-friendly-tips-solo-hiking-ireland/  /blog/budget-friendly-scenic-hikes-ireland  301
+/solo-hiking/safety-tips-hiking-alone-ireland/  /blog/safety-tips-hiking-alone-ireland  301
+
+# Sections 13 + 14 removed — DE/NL deprecated slugs and old prefixes
+# now handled by _worker.js (getDeprecatedSlugRedirect + getOldPrefixRedirect)
+
+# Cloudflare email protection path — ignore (redirect to home)
+/cdn-cgi/l/email-protection  /  301
