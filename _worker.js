@@ -147,29 +147,30 @@ function getDeprecatedSlugRedirect(cleanPath, langPrefix) {
 }
 
 /**
- * Legacy URL prefixes that must redirect to their current equivalents.
- * These catch old /tours/ URLs that no longer exist but may still be
- * linked from external sites, search engines, or cached pages.
- * Maps: legacyPrefix → canonicalPrefix (per language)
+ * Old prefix redirects — maps retired URL prefixes to their canonical equivalents.
+ * Handles: destination- → walking-area- (EN), wanderziel- → wandergebiet- (DE),
+ *          wandelbestemming- → wandelgebied- (NL), tours/ → walking-tours/ (EN only)
  */
-const LEGACY_PREFIX_MAP = {
-  '':    { 'tours/': 'walking-tours/' },
-  '/de': { 'tours/': 'wandertouren/' },
-  '/nl': { 'tours/': 'wandeltochten/' },
+const OLD_PREFIX_MAP = {
+  '':    { 'destination-': 'walking-area-', 'tours/': 'walking-tours/' },
+  '/de': { 'wanderziel-': 'wandergebiet-' },
+  '/nl': { 'wandelbestemming-': 'wandelgebied-' },
 };
 
 /**
- * Check if a path uses a legacy prefix and return the redirect target.
- * e.g. /tours/dingle-way → /walking-tours/dingle-way (EN)
- *      /tours/dingle-way → /wandertouren/dingle-way (DE)
+ * Check if a path uses an old/retired prefix and return the redirect target.
+ * e.g. /destination-wicklow-way → /walking-area-wicklow-way (EN)
+ *      /wanderziel-wicklow-way → /wandergebiet-wicklow-way (DE)
+ *      /wandelbestemming-kerry-way → /wandelgebied-kerry-way (NL)
+ *      /tours/dingle-way → /walking-tours/dingle-way (EN only)
  */
-function getLegacyPrefixRedirect(cleanPath, langPrefix) {
-  const map = LEGACY_PREFIX_MAP[langPrefix || ''];
+function getOldPrefixRedirect(cleanPath, langPrefix) {
+  const map = OLD_PREFIX_MAP[langPrefix || ''];
   if (!map) return null;
   const pathNoSlash = cleanPath.slice(1);
-  for (const [legacy, current] of Object.entries(map)) {
-    if (pathNoSlash.startsWith(legacy)) {
-      return '/' + pathNoSlash.replace(legacy, current);
+  for (const [oldPfx, newPfx] of Object.entries(map)) {
+    if (pathNoSlash.startsWith(oldPfx)) {
+      return '/' + pathNoSlash.replace(oldPfx, newPfx);
     }
   }
   return null;
@@ -244,12 +245,14 @@ export default {
         });
       }
 
-      // Redirect legacy /tours/ URLs to /walking-tours/ (EN domain)
-      const enLegacyRedirect = getLegacyPrefixRedirect(url.pathname, '');
-      if (enLegacyRedirect) {
+      // Redirect old prefixes: /destination-* → /walking-area-*, /tours/* → /walking-tours/*
+      const enOldPrefixRedirect = getOldPrefixRedirect(url.pathname, '');
+      if (enOldPrefixRedirect) {
+        // Chain: destination-wicklow → walking-area-wicklow → walking-area-wicklow-way
+        const chainedDeprecated = getDeprecatedSlugRedirect(enOldPrefixRedirect, '');
         return new Response(null, {
           status: 301,
-          headers: { 'Location': enLegacyRedirect + url.search + url.hash },
+          headers: { 'Location': (chainedDeprecated || enOldPrefixRedirect) + url.search + url.hash },
         });
       }
 
@@ -324,14 +327,16 @@ export default {
       });
     }
 
-    // Redirect legacy /tours/ URLs to the correct language tour folder
-    // e.g. /tours/dingle-way → /wandertouren/dingle-way (DE)
-    //      /tours/kerry-way → /wandeltochten/kerry-way (NL)
-    const legacyRedirect = getLegacyPrefixRedirect(cleanPath, langPrefix);
-    if (legacyRedirect) {
+    // Redirect old/retired prefixes to canonical prefixes
+    // e.g. /wanderziel-wicklow-way → /wandergebiet-wicklow-way (DE)
+    //      /wandelbestemming-kerry-way → /wandelgebied-kerry-way (NL)
+    const oldPrefixRedirect = getOldPrefixRedirect(cleanPath, langPrefix);
+    if (oldPrefixRedirect) {
+      // Also check if the redirected path uses a deprecated short slug
+      const chainedDeprecated = getDeprecatedSlugRedirect(oldPrefixRedirect, langPrefix);
       return new Response(null, {
         status: 301,
-        headers: { 'Location': legacyRedirect + url.search + url.hash },
+        headers: { 'Location': (chainedDeprecated || oldPrefixRedirect) + url.search + url.hash },
       });
     }
 
