@@ -30,18 +30,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="De Kerry Way Wandeltocht — 8 Dagen"/>
     <meta name="twitter:description" content="Zelfgeleide 8-daagse wandeltocht op de Kerry Way. 214 km rond het Iveragh-schiereiland met bergpassen en kustzichten."/>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Tours", "item": "https://walkingholidayireland.com/tours" },
-            { "@type": "ListItem", "position": 3, "name": "De Kerry Way Wandeltocht — 8 Dagen", "item": "https://walkingholidayireland.com/walking-tours/kerry-way" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="/css/booking-modal.css"/>
     <link rel="preload" as="image" href="/images/routes/kerry-way/hero.jpg"/>
@@ -56,13 +45,13 @@
         "name": "De Kerry Way Wandeltocht \u2014 8 Dagen",
         "description": "Zelfgeleide 8-daagse wandeltocht op de Kerry Way. 214 km rond het Iveragh-schiereiland met bergpassen en kustzichten.",
         "image": "https://walkingholidayireland.com/images/routes/kerry-way/hero.jpg",
-        "url": "https://walkingholidayireland.com/walking-tours/kerry-way",
+        "url": "https://wandelvakantieierland.nl/wandeltochten/kerry-way",
         "touristType": "Walker",
         "duration": "P8D",
         "provider": {
                 "@type": "TourOperator",
                 "name": "Walking Holiday Ireland",
-                "url": "https://walkingholidayireland.com",
+                "url": "https://wandelvakantieierland.nl",
                 "telephone": "+353429323396",
                 "address": {
                         "@type": "PostalAddress",
@@ -77,7 +66,7 @@
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
-                "url": "https://walkingholidayireland.com/walking-tours/kerry-way",
+                "url": "https://wandelvakantieierland.nl/wandeltochten/kerry-way",
                 "shippingDetails": {
                         "@type": "OfferShippingDetails",
                         "deliveryTime": {
@@ -137,8 +126,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-tours/kerry-way" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/wandertouren/kerry-way" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/wandeltochten/kerry-way" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-tours/kerry-way" />
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://wandelvakantieierland.nl/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Wandeltochten",
+            "item": "https://wandelvakantieierland.nl/wandeltochten"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "De Kerry Way Wandeltocht — 8 Dagen"
+        }
+    ]
+}
+    </script>
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>

@@ -30,18 +30,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="Wicklow Way Walking Holiday"/>
     <meta name="twitter:description" content="Experience the Wicklow Way hiking tour across pristine mountain valleys, hidden lakes &amp; 6th-century monastic ruins. Small groups, B&amp;B stays, luggage transfers included."/>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Tours", "item": "https://walkingholidayireland.com/tours" },
-            { "@type": "ListItem", "position": 3, "name": "Wicklow Way Walking Holiday — 5 Days", "item": "https://walkingholidayireland.com/walking-tours/wicklow-way-5-days" }
-        ]
-    }
-    </script>
+    <!-- Breadcrumb schema injected dynamically by build.py -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="../css/booking-modal.css"/>
     <link rel="preload" as="image" href="../images/routes/wicklow-way-5-days/hero.jpg"/>
@@ -138,6 +127,31 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/walking-tours/wicklow-way-5-days" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/walking-tours/wicklow-way-5-days" />
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://walkingholidayireland.com/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Walking Tours",
+            "item": "https://walkingholidayireland.com/walking-tours"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Wicklow Way Walking Holiday — 5 Days"
+        }
+    ]
+}
+    </script>
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
