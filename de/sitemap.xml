@@ -337,6 +337,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.de/blog/irische-pilgerwege-irland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.de/blog/irish-national-anthem</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -350,6 +356,12 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.de/blog/mehrtagige-wanderungen-irland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/mountains-of-mourne-don-mclean</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -422,6 +434,18 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.de/blog/unterschied-wandern-spazierengehen</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/unterschiede-zwischen-spazierengehen-und-wandern</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/unterschiede-zwischen-wandern-und-trekking</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

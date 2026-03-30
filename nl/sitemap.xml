@@ -337,6 +337,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wandelvakantieierland.nl/blog/ierse-pelgrimspaden-ierland</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wandelvakantieierland.nl/blog/irish-national-anthem</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -350,6 +356,12 @@
   </url>
   <url>
     <loc>https://wandelvakantieierland.nl/blog/meerdaagse-wandeltochten-in-ierland-</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/mountains-of-mourne-don-mclean</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -416,6 +428,18 @@
   </url>
   <url>
     <loc>https://wandelvakantieierland.nl/blog/the-burren-national-park</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/verschil-tussen-wandelen-en-hiken</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/verschil-tussen-wandelen-en-trekking</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
