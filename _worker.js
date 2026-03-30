@@ -349,6 +349,7 @@ export default {
       new Request(rewrittenUrl.toString(), {
         method: request.method,
         headers: request.headers,
+        redirect: 'manual',  // Return _redirects 301s as-is; don't follow internally
       })
     );
 

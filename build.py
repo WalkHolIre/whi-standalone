@@ -6315,9 +6315,7 @@ def main():
                 auto_lines.append(f'/walking-tours/{prev}.html  /walking-tours/{curr}  301')
                 auto_lines.append(f'/de/wandertouren/{prev}.html  /de/wandertouren/{curr}  301')
                 auto_lines.append(f'/nl/wandeltochten/{prev}.html  /nl/wandeltochten/{curr}  301')
-                # Also from old /tours/ path
-                auto_lines.append(f'/tours/{prev}  /walking-tours/{curr}  301')
-                auto_lines.append(f'/tours/{prev}.html  /walking-tours/{curr}  301')
+                # Note: /tours/ → /walking-tours/ is handled by _worker.js OLD_PREFIX_MAP
 
         # Blog slug redirects (both with and without .html)
         for post in posts:
