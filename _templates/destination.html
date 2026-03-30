@@ -52,17 +52,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="{meta_title}"/>
     <meta name="twitter:description" content="{meta_description}"/>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Areas", "item": "https://walkingholidayireland.com/destinations" },
-            { "@type": "ListItem", "position": 3, "name": "{destination_name}", "item": "https://walkingholidayireland.com/walking-area-{destination_slug}" }
-        ]
-    }
-    </script>
+    <!-- BreadcrumbList schema injected dynamically by build.py -->
     {destination_schema}
     <link rel="preload" as="image" href="{hero_image}"/>
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>

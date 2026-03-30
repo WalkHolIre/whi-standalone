@@ -2384,7 +2384,7 @@ def render_tour_page(tour, destination, related_tours, reviews, faqs, tours_by_i
                 best_months_data = month_names_full[start-1:] + month_names_full[:end]
     best_months_html = render_best_months(best_months_data)
     reviews_html = render_tour_review_section(reviews, tour, tours_by_id, prefix='../')
-    review_schema_html = render_tour_page_schema(tour, reviews)
+    review_schema_html = render_tour_page_schema(tour, reviews, lang=lang)
     # Use empty prefix for tour pages (already in tours/ subdirectory)
     related_html = render_dest_tour_cards_v3(related_tours, prefix='', reviews_by_tour=reviews_by_tour or {})
 
@@ -3164,7 +3164,7 @@ def render_dest_accommodation_practical_section(destination):
             </section>'''
 
 
-def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
+def render_destination_page(destination, tours, reviews, faqs, tours_by_id, lang='en'):
     """Render a destination page from template."""
     template_path = WEBSITE_DIR / '_templates' / 'destination.html'
 
@@ -3193,7 +3193,7 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
 
     # Reviews
     reviews_section_html = render_dest_reviews_section(reviews, destination, tours_by_id)
-    review_schema_html = render_destination_page_schema(destination, tours, reviews)
+    review_schema_html = render_destination_page_schema(destination, tours, reviews, lang=lang)
 
     # FAQs
     dest_faq_html, dest_faq_list = render_destination_faq_section(destination.get('id'), faqs, destination.get('name', ''))
@@ -3288,7 +3288,7 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id):
         '{tourism_brand}': escape(tourism_brand),
         '{description}': get_safe_text(destination, 'description'),
         '{destination_slug}': dest_slug,
-        '{destination_schema}': render_destination_page_schema(destination, tours, reviews),
+        '{destination_schema}': render_destination_page_schema(destination, tours, reviews, lang=lang),
         '{walking_info_panel_html}': walking_info_html,
         '{tour_count_html}': tour_count_html,
         '{included_services_html}': included_services_html,
@@ -3411,8 +3411,9 @@ def render_tours_listing_json(tours, reviews_by_tour=None, all_dest_reviews=None
     return json.dumps(items, indent=2)
 
 
-def render_tours_listing_schema(tours):
+def render_tours_listing_schema(tours, lang='en'):
     """Render ItemList JSON-LD schema for tours listing page."""
+    tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
     items = []
     for idx, tour in enumerate(tours, 1):
         price = tour.get('price_per_person_eur', 0)
@@ -3433,7 +3434,7 @@ def render_tours_listing_schema(tours):
             "@type": "ListItem",
             "position": idx,
             "name": tour.get('name', ''),
-            "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
+            "url": lang_url(lang, f'{tour_folder}/{slug}'),
             "item": {
                 "@type": ["TouristTrip", "Product"],
                 "name": tour.get('name', ''),
@@ -3744,15 +3745,16 @@ def render_destinations_listing_json(destinations, tours):
     return json.dumps(items, indent=2)
 
 
-def render_destinations_listing_schema(destinations, tours):
+def render_destinations_listing_schema(destinations, tours, lang='en'):
     """Render ItemList JSON-LD schema for destinations listing page."""
+    wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
     items = []
     for idx, dest in enumerate(destinations, 1):
         item = {
             "@type": "ListItem",
             "position": idx,
             "name": dest.get('name', ''),
-            "url": f"https://walkingholidayireland.com/destination-{dest.get('slug', '')}",
+            "url": lang_url(lang, f'{wa_prefix}-{dest.get("slug", "")}'),
             "item": {
                 "@type": "TouristDestination",
                 "name": dest.get('name', ''),
@@ -3777,7 +3779,7 @@ def render_destinations_listing_schema(destinations, tours):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
-def render_tour_page_schema(tour, reviews_list):
+def render_tour_page_schema(tour, reviews_list, lang='en'):
     """Render enhanced TouristTrip + Product schema for individual tour pages."""
     stats = compute_review_stats(reviews_list)
     total_km, total_ascent = compute_tour_distances(tour)
@@ -3793,19 +3795,23 @@ def render_tour_page_schema(tour, reviews_list):
     if not tour_image.startswith('http'):
         tour_image = f"https://walkingholidayireland.com/{tour_image}"
 
+    tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
+    tour_url = lang_url(lang, f'{tour_folder}/{slug}')
+    site_url = LANG_DOMAINS.get(lang, 'https://walkingholidayireland.com')
+
     schema = {
         "@context": "https://schema.org",
         "@type": ["TouristTrip", "Product"],
         "name": tour.get('name', ''),
         "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
         "image": tour_image,
-        "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
+        "url": tour_url,
         "touristType": "Walker",
         "duration": f"P{tour.get('duration_days', 0)}D",
         "provider": {
             "@type": "TourOperator",
             "name": "Walking Holiday Ireland",
-            "url": "https://walkingholidayireland.com",
+            "url": site_url,
             "telephone": "+353429375983",
             "address": {
                 "@type": "PostalAddress",
@@ -3820,7 +3826,7 @@ def render_tour_page_schema(tour, reviews_list):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": f"https://walkingholidayireland.com/walking-tours/{slug}",
+            "url": tour_url,
             "shippingDetails": {
                 "@type": "OfferShippingDetails",
                 "deliveryTime": {
@@ -3888,7 +3894,7 @@ def render_tour_page_schema(tour, reviews_list):
     return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
 
 
-def render_destination_page_schema(destination, tours_for_dest, reviews_list):
+def render_destination_page_schema(destination, tours_for_dest, reviews_list, lang='en'):
     """Render enhanced TouristDestination schema for individual destination pages."""
     stats = compute_review_stats(reviews_list)
 
@@ -3897,13 +3903,16 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list):
     if not dest_image.startswith('http'):
         dest_image = f"https://walkingholidayireland.com/{dest_image}"
 
+    wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
+    dest_url = lang_url(lang, f'{wa_prefix}-{dest_slug}')
+
     schema = {
         "@context": "https://schema.org",
         "@type": "TouristDestination",
         "name": destination.get('name', ''),
         "description": strip_html_tags(destination.get('seo_description') or destination.get('short_description', '')),
         "image": dest_image,
-        "url": f"https://walkingholidayireland.com/destination-{dest_slug}",
+        "url": dest_url,
         "containedInPlace": {
             "@type": "Country",
             "name": destination.get('country', 'Ireland')
@@ -4549,6 +4558,42 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
 
     log(f"Found {len(dest_translations)} destination translations for {lang}")
 
+    # Build translation-exists lookup for ALL languages (needed for hreflang tags).
+    # When building DE, we need to know which tours also have NL translations (and vice versa).
+    tour_has_translation = {'en': set(t.get('id') for t in tours if t.get('id'))}  # EN always exists
+    dest_has_translation = {'en': set(d.get('id') for d in destinations if d.get('id'))}
+    for check_lang in ['de', 'nl']:
+        tour_ids_for_lang = set()
+        dest_ids_for_lang = set()
+        for tour in tours:
+            tid = tour.get('id')
+            if not tid:
+                continue
+            if check_lang == lang:
+                # Current language — we already computed tour_translations
+                if tid in tour_translations:
+                    tour_ids_for_lang.add(tid)
+            else:
+                inline = extract_inline_translation(tour, check_lang)
+                table = table_tour_translations.get(tid)
+                if merge_translations(inline, table):
+                    tour_ids_for_lang.add(tid)
+        for dest in destinations:
+            did = dest.get('id')
+            if not did:
+                continue
+            if check_lang == lang:
+                if did in dest_translations:
+                    dest_ids_for_lang.add(did)
+            else:
+                inline_d = extract_inline_dest_translation(dest, check_lang)
+                table_d = table_dest_translations.get(did)
+                if merge_translations(inline_d, table_d):
+                    dest_ids_for_lang.add(did)
+        tour_has_translation[check_lang] = tour_ids_for_lang
+        dest_has_translation[check_lang] = dest_ids_for_lang
+    log(f"Hreflang tour coverage: DE={len(tour_has_translation['de'])}, NL={len(tour_has_translation['nl'])}")
+
     # Build tour pages
     log(f"\nGenerating {lang} tour pages...")
     log(f"Total tours to check: {len(tours)}")
@@ -4616,11 +4661,11 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 title=tour_trans.get('name') or tour_trans.get('meta_title'),
                 description=tour_trans.get('seo_description') or tour_trans.get('subtitle'))
 
-            # Set hreflang tags — only include languages with actual translations
-            # When building DE/NL, current lang always has translation (otherwise we skipped it).
-            # For the OTHER non-EN language, check the inline columns on the tour.
-            _t_has_de = (lang == 'de') or bool((tour.get('name_de') or '').strip() or (tour.get('description_de') or '').strip())
-            _t_has_nl = (lang == 'nl') or bool((tour.get('name_nl') or '').strip() or (tour.get('description_nl') or '').strip())
+            # Set hreflang tags — only include languages where a translated page exists.
+            # Uses pre-computed tour_has_translation lookup (checks both inline columns
+            # AND tour_translations table) to avoid incomplete hreflang groups.
+            _t_has_de = tour.get('id') in tour_has_translation.get('de', set())
+            _t_has_nl = tour.get('id') in tour_has_translation.get('nl', set())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-tours/{slug}'),
                 de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}') if _t_has_de else None,
@@ -4682,7 +4727,7 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
         for dt in dest_tours:
             dest_reviews.extend(reviews_by_tour.get(dt.get('id'), []))
 
-        html = render_destination_page(translated_dest, translated_dest_tours, dest_reviews, faqs, tours_by_id)
+        html = render_destination_page(translated_dest, translated_dest_tours, dest_reviews, faqs, tours_by_id, lang=lang)
 
         if html:
             html = translate_html_ui(html, lang)
@@ -4718,12 +4763,13 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
                 title=dest_trans.get('name') or dest_trans.get('meta_title'),
                 description=dest_trans.get('seo_description') or dest_trans.get('short_description'))
 
-            # Set hreflang tags — always include all 3 languages for destinations
-            # (all destinations are generated in DE/NL via template translation)
+            # Set hreflang tags — include language only if translated page exists
+            _d_has_de = dest_id in dest_has_translation.get('de', set())
+            _d_has_nl = dest_id in dest_has_translation.get('nl', set())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
-                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
-                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}'))
+                de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}') if _d_has_de else None,
+                nl_url=lang_url('nl', f'{WALKING_AREA_PREFIX["nl"]}-{slug}') if _d_has_nl else None)
 
             # BreadcrumbList schema: Home > Destinations > Destination Name
             dest_listing_slug = translate_static_slug('destinations', lang)
@@ -4981,8 +5027,8 @@ def main():
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_url}"/>\n</head>')
 
-            # Set hreflang tags — always include all 3 languages for destinations
-            # (all destinations are generated in DE/NL via template translation)
+            # Set hreflang tags — EN destinations always include all 3 languages
+            # (DE/NL will be conditionally set inside build_language_site())
             html = set_hreflang_tags(html,
                 en_url=lang_url('en', f'walking-area-{slug}'),
                 de_url=lang_url('de', f'{WALKING_AREA_PREFIX["de"]}-{slug}'),
@@ -5213,7 +5259,7 @@ def main():
             tours_listing_template = f.read()
 
         tours_json = render_tours_listing_json(tours, reviews_by_tour=reviews_by_tour, all_dest_reviews=reviews)
-        tours_schema = render_tours_listing_schema(tours)
+        tours_schema = render_tours_listing_schema(tours, lang='en')
         region_options = render_region_filter_options(tours)
         difficulty_options = render_difficulty_filter_options(tours)
 
@@ -5261,7 +5307,7 @@ def main():
         active_destinations = [d for d in destinations if d.get('id') in published_dest_ids]
 
         dests_json = render_destinations_listing_json(active_destinations, tours)
-        dests_schema = render_destinations_listing_schema(active_destinations, tours)
+        dests_schema = render_destinations_listing_schema(active_destinations, tours, lang='en')
         region_tabs = render_region_tabs(regions_by_id, active_destinations)
         dests_by_region_html = render_destinations_by_region(active_destinations, tours, regions_by_id, reviews_by_dest)
 

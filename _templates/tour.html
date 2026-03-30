@@ -31,18 +31,7 @@
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:title" content="{meta_title}"/>
     <meta name="twitter:description" content="{meta_description}"/>
-    <!-- Breadcrumb Schema -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://walkingholidayireland.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Walking Tours", "item": "https://walkingholidayireland.com/tours" },
-            { "@type": "ListItem", "position": 3, "name": "{tour_name}", "item": "https://walkingholidayireland.com/walking-tours/{tour_slug}" }
-        ]
-    }
-    </script>
+    <!-- BreadcrumbList schema injected dynamically by build.py -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
     <link rel="stylesheet" href="../css/booking-modal.css"/>
     <link rel="preload" as="image" href="{hero_image_url}"/>
