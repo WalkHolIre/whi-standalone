@@ -361,6 +361,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wandelvakantieierland.nl/blog/newgrange</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wandelvakantieierland.nl/blog/onze-top-5-connemara-wandelingen</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
@@ -409,7 +415,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://wandelvakantieierland.nl/blog/the-burren-national-park</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://wandelvakantieierland.nl/blog/verschil-wandelen-en-lopen</loc>
+    <lastmod>2026-03-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://wandelvakantieierland.nl/blog/visit-the-nine-glens-of-antrim</loc>
     <lastmod>2026-03-30</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
