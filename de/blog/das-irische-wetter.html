@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Irisches Wetter verstehen — Reiseführer für Wanderer | Walking Holiday Ireland</title>
+    <meta name="description" content="Erfahren Sie alles über irisches Wetter. Monatliche Übersicht, Packliste und Tipps zum Wandern bei wechselhaftem Wetter. Von Cliff, Walking Holiday Ireland."/>
+    <link rel="canonical" href="https://walkingholidayireland.de/blog/das-irische-wetter"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Irisches Wetter verstehen — Reiseführer für Wanderer",
+        "description": "Erfahren Sie alles über irisches Wetter. Monatliche Übersicht, Packliste und Tipps zum Wandern bei wechselhaftem Wetter. Von Cliff, Walking Holiday Ireland.",
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/das-irische-wetter.html"
+        }
+    }
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/the-irish-weather" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog/das-irische-wetter" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog/het-ierse-weer" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/the-irish-weather" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.de/blog/das-irische-wetter"/>
+    <meta property="og:title" content="Irisches Wetter: Was Wanderer vor dem Besuch wissen müssen"/>
+    <meta property="og:description" content="Erfahren Sie alles über irisches Wetter. Monatliche Übersicht, Packliste und Tipps zum Wandern bei wechselhaftem Wetter. Von Cliff, Walking Holiday Ireland."/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Irisches Wetter: Was Wanderer vor dem Besuch wissen müssen"/>
+    <meta name="twitter:description" content="Erfahren Sie alles über irisches Wetter. Monatliche Übersicht, Packliste und Tipps zum Wandern bei wechselhaftem Wetter. Von Cliff, Walking Holiday Ireland."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a>
+                            <a href="../wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../wandergebiet-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a>
+                            <a href="../wandergebiet-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a>
+                            <a href="../wandergebiet-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../wandergebiet-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a>
+                            <a href="../wandergebiet-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../tailor-made" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../how-it-works" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
+                            <a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
+                            <a href="../self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about">About Us</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="../contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Get in Touch
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="../destinations" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
+                <a href="../how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+                <a href="../about" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">About Us</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Get in Touch</a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 pt-8 pb-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Irisches Wetter: Was Wanderer vor dem Besuch wissen müssen</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Safety &amp; Weather</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">March 28, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">9 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            Irisches Wetter: Was Wanderer vor dem Besuch wissen müssen
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774203851778-optimized-Connor_Pass__Dingle_Peninsula__Co_Kerry_Web_Size.webp');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800" id="inhaltsverzeichnis">Inhaltsverzeichnis</h3>
+                <ol class="space-y-2 text-sm">
+                    <li><a href="#warum-das-irische-wetter-so-wechselhaft-ist" class="text-primary hover:text-primary/80 hover:underline transition-colors">Warum das irische Wetter so wechselhaft ist</a></li><li><a href="#irisches-wetter-nach-monaten" class="text-primary hover:text-primary/80 hover:underline transition-colors">Irisches Wetter nach Monaten</a></li><li><a href="#was-sie-f-r-irisches-wetter-einpacken-sollten" class="text-primary hover:text-primary/80 hover:underline transition-colors">Was Sie für irisches Wetter einpacken sollten</a></li><li><a href="#wie-wetter-ihre-wanderungen-beeinflusst" class="text-primary hover:text-primary/80 hover:underline transition-colors">Wie Wetter Ihre Wanderungen beeinflusst</a></li><li><a href="#regionale-wetterunterschiede" class="text-primary hover:text-primary/80 hover:underline transition-colors">Regionale Wetterunterschiede</a></li><li><a href="#planung-rund-um-das-wetter" class="text-primary hover:text-primary/80 hover:underline transition-colors">Planung rund um das Wetter</a></li><li><a href="#nehmen-sie-das-irische-wetter-an" class="text-primary hover:text-primary/80 hover:underline transition-colors">Nehmen Sie das irische Wetter an</a></li><li><a href="#h-ufig-gestellte-fragen-zum-irischen-wetter" class="text-primary hover:text-primary/80 hover:underline transition-colors">Häufig gestellte Fragen zum irischen Wetter</a></li>
+                </ol>
+            </nav>
+
+<h1>Irisches Wetter: Was Wanderer vor dem Besuch wissen müssen</h1>
+
+<p>Mein Name ist Cliff, und ich leite Walking Holiday Ireland. Ich führe seit Jahren Wanderer durch Irland, und die Frage, die ich häufiger höre als jede andere, ist: Wie wird das Wetter sein?</p>
+
+<p>Die ehrliche Antwort? Niemand weiß es. Das irische Wetter ist wechselhaft. Sie können vier Jahreszeiten an einem einzigen Tag erleben — Sonnenschein am Morgen, Regen bis mittags, einen Regenbogen um 15 Uhr und einen klaren Sonnenuntergang zum Abschluss. Das ist keine Warnung; das ist das, was Wanderungen in Irland aufregend macht. Das Licht, der Himmel, die Art, wie die Landschaft jede Stunde anders aussieht — das ist das irische Wettererlebnis.</p>
+
+<p>Dieser Leitfaden unterteilt das Irland-Wetter nach Monaten, sagt Ihnen, was Sie einpacken sollten, und teilt, was ich aus Jahren des Wanderns unter allen Bedingungen gelernt habe.</p>
+
+<h2 id="warum-das-irische-wetter-so-wechselhaft-ist">Warum das irische Wetter so wechselhaft ist</h2>
+
+<p>Irland liegt im Nordatlantik, genau im Weg von Wetsystemen aus dem Ozean. Der Golfstrom hält die Temperatur mild — Irland wird selten sehr heiß oder sehr kalt. Aber dieselbe Atlantik-Position bedeutet, dass Wetterfronten regelmäßig eintreffen und sich die Bedingungen schnell ändern können.</p>
+
+<p>Das irische Klima ist maritim. Das bedeutet kühle Sommer, milde Winter und Regen über das ganze Jahr verteilt. Die Durchschnittstemperaturen liegen zwischen etwa 5 °C im Winter und 15–18 °C im Sommer. Sie werden keine Mittelmeer-Hitze bekommen, aber auch nicht die tiefe Kälte, die viel von Nordeuropa erfährt.</p>
+
+<p>Was Besucher überrascht, ist nicht der Regen selbst — es ist, wie schnell sich das Wetter in Irland ändert. Sie könnten einen Bergwanderweg in voller Sonnenschein beginnen und benötigen Ihre wasserdichte Jacke innerhalb einer Stunde. Das ist normal. Die Iren stellen ihre Pläne nicht ab, weil es regnet. Sie ziehen Schichten an und machen weiter. Als Wanderer ist das die Einstellung, die Ihnen am besten dient.</p>
+
+<p>Wind ist der andere Faktor. Die irische Westküste bekommt die volle Kraft der Atlantikwinde, besonders im Herbst und Winter. In den Bergen kann das Windchill die Temperaturen viel niedriger fühlen lassen, als sie sind. Die Ostküste und Landesinnenbereiche sind stärker windgeschützt, aber auch dort ist ein windiger Tag üblich.</p>
+
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774203851778-optimized-Connor_Pass__Dingle_Peninsula__Co_Kerry_Web_Size.webp" alt="Connor Pass auf der Dingle-Halbinsel in County Kerry — dramatisches irisches Wetter über Bergen und Küste" style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+<h2 id="irisches-wetter-nach-monaten">Irisches Wetter nach Monaten</h2>
+
+<p>Hier ist, was Sie das ganze Jahr über erwarten können, basierend auf dem, was ich beim Wandern in jedem Monat in Irland gesehen habe.</p>
+
+<p><strong>Januar und Februar</strong> sind die kältesten Monate. Die Temperaturen liegen zwischen 3 °C und 8 °C. Die Tage sind kurz — etwa 8 Stunden Tageslicht im Januar. Regen ist häufig, aber fällt eher als Schauer als als Dauerniederschlag. Schnee ist auf niedriger Höhe selten, obwohl die Berge möglicherweise eine Prise bekommen. Wanderungen sind möglich, aber Sie benötigen warme Schichten, gute Regenkleidung und eine Stirnlampe für kürzere Tage.</p>
+
+<p><strong>März und April</strong> bringen die ersten Zeichen des Frühlings. Die Temperaturen steigen auf 8–12 °C und das Tageslicht erstreckt sich bis nach 13 Uhr im April. Dies ist, wenn Irland grün wird — wirklich grün. Regen ist noch üblich, aber die Schauer werden leichter und kürzer. Der März kann windig sein, aber der April bringt oft ruhigere Tage. Es ist eine gute Zeit zum Wandern, wenn Ihnen die kühlen Morgen nichts ausmachen.</p>
+
+<p><strong>Mai und Juni</strong> sind meine liebsten Monate zum Wandern. Das Wetter in Irland im späten Frühling ist oft am besten — lange Tage mit 16–17 Stunden Tageslicht, Temperaturen von 12–17 °C und die trockensten Bedingungen des Jahres. Die Wildblumen sind draußen, die Heckenreihen sind voller Farbe, und die Wanderwege sind ruhiger als im Sommer. Mai kann besonders trockener sein als Juli. Wenn Sie Ihre Termine wählen können, zielen Sie auf Ende Mai oder Anfang Juni.</p>
+
+<p><strong>Juli und August</strong> sind die wärmsten Monate mit Temperaturen von 15–20 °C und gelegentlich höher. Dies sind auch die belebtesten Monate für den Tourismus. Irischer Regen passiert immer noch — Juli ist in vielen Bereichen tatsächlich nasser als Mai. Aber die Tage sind lang und warm, und ein Nachmittagsschauer passiert normalerweise schnell vorbei. Mücken können in geschützten Tälern, besonders abends, ein Problem sein.</p>
+
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191666845-optimized-Hiking__Wicklow_Mountain__National_Park__Co_Wicklow_TI7TND.webp" alt="Wanderer in den Wicklow Mountains bei Sommerwetter — eines der besten Wanderziele Irlands" style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+<p><strong>September und Oktober</strong> bringen Herbstfarben und ruhigere Wanderwege. Die Temperaturen sinken auf 10–15 °C und die Tage werden kürzer. September ist oft warm und stabil — ein verstecktes Juwel für Wanderferien. Oktober bringt mehr Regen und Wind, aber die Berge sehen spektakulär mit Herbstfarben aus. Ich wandere mehr im September als in jedem anderen Monat.</p>
+
+<p><strong>November und Dezember</strong> sind die nassesten und dunkelsten Monate. Das Tageslicht fällt bis Dezember unter 8 Stunden. Die Temperaturen liegen bei 4–8 °C mit häufigem Regen und starken Winden. Wandern ist immer noch gut auf Flachlandwegen, aber Bergwanderungen benötigen erfahrene Wanderer, die sich mit kurzen Tagen und schlechter Sicht wohlfühlen. Der Vorteil? Irland an Weihnachten hat eine Magie — Pubs mit offenen Kaminen, warmes Essen und keine Menschenmassen auf den Wanderwegen.</p>
+
+<h2 id="was-sie-f-r-irisches-wetter-einpacken-sollten">Was Sie für irisches Wetter einpacken sollten</h2>
+
+<p>Das richtige Einpacken ist der Unterschied zwischen einer großartigen Wanderung und einer elenden. Hier ist, was ich jedem Wanderer erzähle, der bei uns bucht.</p>
+
+<p><strong>Wasserdichte Jacke</strong> — Das ist Ihr wichtigstes Ausrüstungsstück. Nicht nur eine leichte Schale, sondern eine richtige atmungsaktive wasserdichte Jacke. Gore-Tex oder ähnliches. Sie werden sie häufiger tragen, als Sie denken, und Sie benötigen eine, die Regen und Wind stundenlang bewältigen kann, ohne durchzunässen.</p>
+
+<p><strong>Wasserdichte Hosen</strong> — Viele Wanderer vergessen diese. Wenn der Regen in den Bergen seitlich kommt, entleeren nasse Beine Ihre Wärme schnell. Packen Sie sie auch, wenn Sie nicht mit Regen rechnen.</p>
+
+<p><strong>Schichten</strong> — Das irische Wetter ändert sich schnell, daher müssen Sie während einer Wanderung Kleidung hinzufügen und entfernen. Eine Basisschicht, ein Fleece- oder Isolier-Mittellayer und Ihre wasserdichte Jacke oben geben Ihnen Optionen für jede Bedingung. Vermeiden Sie Baumwolle — sie hält Feuchtigkeit und macht Sie kalt. Merinowolle oder synthetische Stoffe trocknen viel schneller.</p>
+
+<p><strong>Gute Wanderstiefel</strong> — Wasserdicht, knöchelfest und mit rutschfester Sohle. Irische Wanderwege sind oft nass und schlammig. Trail-Schuhe funktionieren für Flachlandwanderungen, aber für Berge und Moore sind richtige Stiefel unerlässlich. Unser Leitfaden zu <a href="https://walkingholidayireland.de/choose-right-pair-hiking-boots/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">der Auswahl der richtigen Wanderstiefel</a> hat mehr Details.</p>
+
+<p><strong>Hut und Handschuhe</strong> — Sogar im Sommer können Bergspitzen kalt und windig sein. Ein warmer Hut und leichte Handschuhe wiegen nichts und können einen großen Unterschied machen.</p>
+
+<p><strong>Sonnenschutz</strong> — Ja, in Irland. Wenn die Sonne herauskommt, kann die UV-Strahlung stark sein, besonders in der Höhe. Sonnencreme und Sonnenbrille lohnen sich von April bis September.</p>
+
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191682495-optimized-Cliffs_of_Moher_TI72JD7.webp" alt="Cliffs of Moher am Wild Atlantic Way — wo atlantisches Wetter auf Irlands dramatische Küste trifft" style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+<p>Überprüfen Sie unsere vollständige <a href="https://walkingholidayireland.de/backpacking-checklist/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Packliste</a> vor Ihrer Reise. Sie deckt alles ab, von Kleidung bis zur Ersten Hilfe für einen Wanderurlaub in Irland.</p>
+
+<h2 id="wie-wetter-ihre-wanderungen-beeinflusst">Wie Wetter Ihre Wanderungen beeinflusst</h2>
+
+<p>Das irische Wetter prägt jede Wanderung, die Sie hier machen. Zu verstehen, dass das hilft Ihnen, es zu genießen, statt dagegen zu kämpfen.</p>
+
+<p>Regen bringt die Landschaft zum Leben. Die Grüns sind grüner, die Flüsse laufen voller, und die Wasserfälle sind nach einem nassen Zeitraum am besten. Einige der dramatischsten Tage, die ich auf dem Wanderweg hatte, waren, wenn das Wetter brach — dunkle Wolken über den Bergen, Lichtstrahlen hindurchschneidend, und eine Frische in der Luft, die Sie schmecken können.</p>
+
+<p>Wind auf den Kämmen erfordert Respekt. Bei exponierten Bergwanderungen kann starker Wind Ihr Gleichgewicht beeinflussen und den Fortschritt verlangsamen. Wenn die Bedingungen schwerwiegend sind, wählen Sie stattdessen einen geschützten Talwanderweg. Flexibilität ist Teil des Wanderns in Irland.</p>
+
+<p>Nebel und Tiefwolken in den Bergen reduzieren die Sicht. Dies ist wichtig auf unmarkierten Wanderwegen, wo Sie nach Sicht navigieren müssen. Wenn Sie sich nicht wohlfühlen mit Karte und Kompass bei schlechter Sicht, bleiben Sie auf gut markierten Wegen oder wandern Sie mit einem Führer.</p>
+
+<p>Klare Tage in Irland sind das Warten wert. Wenn sich der Himmel nach Regen klärt, kann die Sicht außergewöhnlich sein — Sie können manchmal 50 oder 100 Kilometer von einem Gipfel sehen. Diese Momente machen den Regen lohnenswert.</p>
+
+<h2 id="regionale-wetterunterschiede">Regionale Wetterunterschiede</h2>
+
+<p>Das irische Wetter unterscheidet sich im ganzen Land. Dies ist wichtig, wenn Sie entscheiden, wo Sie wandern möchten.</p>
+
+<p>Die <strong>Westküste</strong> — Galway, Kerry, Donegal — bekommt die meisten Regen und Wind. Die Atlantik-Systeme treffen hier zuerst auf. Aber die Landschaft ist am dramatischsten, und das Wetter schafft viel dieses Drama. Der <a href="https://walkingholidayireland.de/wild-atlantic-way-road-trip/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Wild Atlantic Way</a> ist einer der großartigen Fahrten in Irland, und das Wetter ist Teil des Erlebnisses.</p>
+
+<p>Die <strong>Ostküste</strong> — Dublin, Wicklow — ist trockener und stärker windgeschützt. Die <a href="https://walkingholidayireland.de/wicklow-national-park/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Wicklow Mountains</a> bekommen weniger Regen als der Westen, was sie zu einer guten Wahl macht, wenn Sie die beste Chance auf trockene Wanderungen in der Nähe von Dublin haben.</p>
+
+<p>Der <strong>Süden</strong> — Kerry, Cork — ist der mildeste Teil Irlands, dank des Golfstroms. Subtropische Pflanzen wachsen in Killarney, und Schnee ist selbst im Winter selten. Der Kerry Way führt durch einige der am stärksten windgeschützten Täler des Landes.</p>
+
+<p>Der <strong>Norden</strong> — Donegal — hat wildes, dramatisches Wetter. Es ist kühler als der Süden und bekommt starke Atlantikwinde. Aber die Landschaft belohnt die Anstrengung — Donegal ist einer der schönsten und am wenigsten besuchten Teile Irlands.</p>
+
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774195234017-optimized-Connemara-Wild_Atlantic_Way-Couchflucht-05.jpg_TI72XAE.webp" alt="Wild Atlantic Way Küste in Connemara — Irlands wechselhaftes Westküstenwetter schafft dramatische Landschaften" style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+<h2 id="planung-rund-um-das-wetter">Planung rund um das Wetter</h2>
+
+<p>Ich sage Wanderern nie, sie sollen Irland wegen des Wetters vermeiden. Ich sage ihnen, sie sollen sich darauf vorbereiten. Hier sind meine Tipps.</p>
+
+<p>Die <a href="https://walkingholidayireland.de/the-best-time-visit-ireland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">beste Zeit zum Besuch Irlands</a> zum Wandern ist April bis Oktober. In diesem Fenster tendieren Mai, Juni und September zu den trockensten und angenehmsten Monaten. Aber gutes Wetter kann jederzeit passieren — ich hatte herrliche Januar-Wanderungen und regenreiche Juli-Tage.</p>
+
+<p>Überprüfen Sie die Vorhersage am Tag vor jeder Wanderung, aber lassen Sie sich nicht durch eine „Regenwahrscheinlichkeit" davon abhalten, Ihre Pläne zu machen. Irische Vorhersagen zeigen oft Regen, der sich als kurzer Schauer herausstellt. Met Éireann ist der nationale Wetterdienst und gibt zuverlässige kurzfristige Vorhersagen.</p>
+
+<p>Bauen Sie Flexibilität in Ihre Reise ein. Wenn Sie einen <a href="https://walkingholidayireland.de/self-guided-walking-holidays-ireland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">selbstgeführten Wanderurlaub</a> machen, können Sie manchmal die Reihenfolge der Wanderungen ändern — den Bergwandertag machen, wenn die Vorhersage am besten ist, und den geschützten Talwanderweg für einen nasseren Tag sparen.</p>
+
+<p>Unsere <a href="https://walkingholidayireland.de/guided-vs-self-guided-walking-holidays/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">geführten Wanderferien</a> geben Ihnen den Vorteil eines lokalen Führers, der das Wetter liest und die Route in Echtzeit anpasst. Das ist einer der größten Vorteile des Wanderns mit jemandem, der das Gebiet kennt.</p>
+
+<p>Überprüfen Sie unsere <a href="https://walkingholidayireland.de/grading-of-hiking-tours/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Wanderwertung</a>, um Wanderungen zu finden, die Ihrem Komfortniveau bei verschiedenen Bedingungen entsprechen. Niedrigergestufte Wanderungen auf gut markierten Wegen sind bei den meisten Wetterbedingungen in Ordnung. Höhere Bergstrecken benötigen bessere Bedingungen und mehr Erfahrung.</p>
+
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190941599-optimized-Causeway_Coast___Co_Antrim_TI72HPF.webp" alt="Causeway Coast in County Antrim unter dramatischem Himmel — irisches Wetter in seiner fotogensten Form" style="max-width: 100%; height: auto; margin: 1rem 0;" />
+
+<h2 id="nehmen-sie-das-irische-wetter-an">Nehmen Sie das irische Wetter an</h2>
+
+<p>Das irische Wetter ist Teil dessen, was dieses Land schön macht. Der Regen nährt das Grün. Der Wind formt die Küstenlinie. Das wechselnde Licht schafft die Farben, die Fotografen und Maler seit Jahrhunderten versuchen zu erfassen.</p>
+
+<p>Als Wanderer hält Sie das Wetter demütig und präsent. Sie können eine Wanderung in Irland nicht schlafwandelnd bestreiten — der Himmel verlangt Ihre Aufmerksamkeit. Und wenn die Wolken brechen und die Sonne die Berge trifft, werden Sie verstehen, warum Wanderer immer wieder hierher zurückkommen.</p>
+
+<p>Packen Sie Ihre Regenkleidung, ziehen Sie sich in Schichten an, und haben Sie keine Angst vor ein wenig irischem Regen. Die besten Wanderungen Ihres Lebens könnten an Tagen passieren, die mit grauen Himmel anfingen. Kontaktieren Sie Walking Holiday Ireland und wir helfen Ihnen, eine Reise zu planen, die mit dem Wetter funktioniert, nicht gegen sie.</p>
+
+<h2 id="h-ufig-gestellte-fragen-zum-irischen-wetter">Häufig gestellte Fragen zum irischen Wetter</h2>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "@id": "https://walkingholidayireland.de/irish-weather#faq-1",
+      "name": "Wann ist die beste Zeit zum Wandern in Irland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die beste Zeit zum Wandern in Irland ist April bis Oktober. Mai, Juni und September sind typischerweise die trockensten und angenehmsten Monate. Mai kann besonders trocken sein, mit 16-17 Stunden Tageslicht und wildblumenbewachsenen Wanderwegen. Gutes Wetter kann jederzeit auftreten — ich hatte herrliche Wanderungen im Januar und leider regenreiche Tage im Juli."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://walkingholidayireland.de/irish-weather#faq-2",
+      "name": "Wie viel regnet es in Irland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Irland ist bekannt für Regen, aber es ist mehr das Muster als die Menge. Statt langer Dauerniederschläge bekommen Sie häufig Schauer, die schnell vorbeiziehen. Regen fällt das ganze Jahr über, ist aber am stärksten im November und Dezember. Die Westküste, insbesondere Kerry und Donegal, bekommt mehr Niederschlag als der Osten. Regen macht die irische Landschaft lebendig — die Grüns sind lebendiger, die Wasserfälle sind spektakulärer."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://walkingholidayireland.de/irish-weather#faq-3",
+      "name": "Welche Ausrüstung ist zum Wandern in Irland absolut notwendig?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Die unverzichtbare Ausrüstung umfasst: eine atmungsaktive wasserdichte Jacke (Gore-Tex oder ähnlich), wasserdichte Hosen, mehrschichtige Kleidung (vermeiden Sie Baumwolle), gute wasserdichte Wanderstiefel mit Knöckelstütze, einen warmen Hut und Handschuhe. Bringen Sie Sonnenschutz mit — wenn die Sonne herauskommt, kann die UV-Strahlung in der Höhe stark sein. Der Schlüssel ist, sich in Schichten anzuziehen und vorbereitet zu sein, schnell Kleidung hinzuzufügen oder zu entfernen, wenn sich das Wetter ändert."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://walkingholidayireland.de/irish-weather#faq-4",
+      "name": "Ist es möglich, in Irland im Winter zu wandern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ja, das Wandern im Winter in Irland ist möglich, aber mit Einschränkungen. November bis Februar sind die nassesten, dunkelsten und kältesten Monate. Die Tage sind kurz — etwa 8 Stunden Tageslicht im Januar. Wandern ist auf Flachlandwegen in Ordnung, aber Bergwanderungen benötigen erfahrene Wanderer, die mit kurzen Tagen, schlechter Sicht und starkem Wind komfortabel sind. Ein großer Vorteil? Irland an Weihnachten hat eine magische Qualität — warme Pubs, kein Gedränge auf den Wanderwegen, und oft spektakuläre klare Tage."
+      }
+    },
+    {
+      "@type": "Question",
+      "@id": "https://walkingholidayireland.de/irish-weather#faq-5",
+      "name": "Welche Regionen Irlands haben das beste Wetter zum Wandern?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Das beste Wetter zum Wandern hängt davon ab, was Sie bevorzugen. Die Ostküste (Dublin, Wicklow) ist trockener und windgeschützter. Der Süden (Kerry, Cork) ist dank des Golfstroms der mildeste und hat subtropische Pflanzen. Die Westküste (Galway, Kerry, Donegal) bekommt mehr Regen und Wind, aber hat die dramatischsten Landschaften und Himmel. Der Norden (Donegal) hat wildes, dramatisches Wetter, aber weniger Menschenmassen. Für die beste Chance auf Trockenheit wählen Sie Wicklow. Für dramatische Aussichten und Fotografie wählen Sie den Westen."
+      }
+    }
+  ]
+}
+</script>
+
+<div style="border: 1px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; background-color: #f9f9f9;">
+  <h3 style="margin-top: 0; color: #333;" id="wann-ist-die-beste-zeit-zum-wandern-in-irland">Wann ist die beste Zeit zum Wandern in Irland?</h3>
+  <p style="margin: 0.5rem 0; color: #555;">Die beste Zeit zum Wandern in Irland ist April bis Oktober. Mai, Juni und September sind typischerweise die trockensten und angenehmsten Monate. Mai kann besonders trocken sein, mit 16-17 Stunden Tageslicht und wildblumenbewachsenen Wanderwegen. Gutes Wetter kann jederzeit auftreten — ich hatte herrliche Wanderungen im Januar und leider regenreiche Tage im Juli.</p>
+</div>
+
+<div style="border: 1px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; background-color: #f9f9f9;">
+  <h3 style="margin-top: 0; color: #333;" id="wie-viel-regnet-es-in-irland">Wie viel regnet es in Irland?</h3>
+  <p style="margin: 0.5rem 0; color: #555;">Irland ist bekannt für Regen, aber es ist mehr das Muster als die Menge. Statt langer Dauerniederschläge bekommen Sie häufig Schauer, die schnell vorbeiziehen. Regen fällt das ganze Jahr über, ist aber am stärksten im November und Dezember. Die Westküste, insbesondere Kerry und Donegal, bekommt mehr Niederschlag als der Osten. Regen macht die irische Landschaft lebendig — die Grüns sind lebendiger, die Wasserfälle sind spektakulärer.</p>
+</div>
+
+<div style="border: 1px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; background-color: #f9f9f9;">
+  <h3 style="margin-top: 0; color: #333;" id="welche-ausr-stung-ist-zum-wandern-in-irland-absolut-notwendig">Welche Ausrüstung ist zum Wandern in Irland absolut notwendig?</h3>
+  <p style="margin: 0.5rem 0; color: #555;">Die unverzichtbare Ausrüstung umfasst: eine atmungsaktive wasserdichte Jacke (Gore-Tex oder ähnlich), wasserdichte Hosen, mehrschichtige Kleidung (vermeiden Sie Baumwolle), gute wasserdichte Wanderstiefel mit Knöckelstütze, einen warmen Hut und Handschuhe. Bringen Sie Sonnenschutz mit — wenn die Sonne herauskommt, kann die UV-Strahlung in der Höhe stark sein. Der Schlüssel ist, sich in Schichten anzuziehen und vorbereitet zu sein, schnell Kleidung hinzuzufügen oder zu entfernen, wenn sich das Wetter ändert.</p>
+</div>
+
+<div style="border: 1px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; background-color: #f9f9f9;">
+  <h3 style="margin-top: 0; color: #333;" id="ist-es-m-glich-in-irland-im-winter-zu-wandern">Ist es möglich, in Irland im Winter zu wandern?</h3>
+  <p style="margin: 0.5rem 0; color: #555;">Ja, das Wandern im Winter in Irland ist möglich, aber mit Einschränkungen. November bis Februar sind die nassesten, dunkelsten und kältesten Monate. Die Tage sind kurz — etwa 8 Stunden Tageslicht im Januar. Wandern ist auf Flachlandwegen in Ordnung, aber Bergwanderungen benötigen erfahrene Wanderer, die mit kurzen Tagen, schlechter Sicht und starkem Wind komfortabel sind. Ein großer Vorteil? Irland an Weihnachten hat eine magische Qualität — warme Pubs, kein Gedränge auf den Wanderwegen, und oft spektakuläre klare Tage.</p>
+</div>
+
+<div style="border: 1px solid #e0e0e0; padding: 1.5rem; margin: 2rem 0; border-radius: 0.5rem; background-color: #f9f9f9;">
+  <h3 style="margin-top: 0; color: #333;" id="welche-regionen-irlands-haben-das-beste-wetter-zum-wandern">Welche Regionen Irlands haben das beste Wetter zum Wandern?</h3>
+  <p style="margin: 0.5rem 0; color: #555;">Das beste Wetter zum Wandern hängt davon ab, was Sie bevorzugen. Die Ostküste (Dublin, Wicklow) ist trockener und windgeschützter. Der Süden (Kerry, Cork) ist dank des Golfstroms der mildeste und hat subtropische Pflanzen. Die Westküste (Galway, Kerry, Donegal) bekommt mehr Regen und Wind, aber hat die dramatischsten Landschaften und Himmel. Der Norden (Donegal) hat wildes, dramatisches Wetter, aber weniger Menschenmassen. Für die beste Chance auf Trockenheit wählen Sie Wicklow. Für dramatische Aussichten und Fotografie wählen Sie den Westen.</p>
+</div>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#irish-weather</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#ireland-climate</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#packing</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#hiking-gear</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#seasons</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#rain</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#walking-preparation</span>
+
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">183</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Trail Guides</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">67</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Planning Your Trip</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">34</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Irish Culture &amp; Heritage</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">20</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>National Parks &amp; Wildlife</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">18</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Safety &amp; Weather</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Gear &amp; Equipment</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">12</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Walking Holidays</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Health &amp; Wellness</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">5</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Travel Info</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="travels-to-ireland">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Travel to Ireland: A Practical Planning Guide for Walking Holidays</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="st-finbarrs-pilgrim-path">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">St Finbarr&#x27;s Way: Cork&#x27;s Sacred Forest Pilgrimage Walk</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wicklow-national-parks">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wicklow Mountains National Park Walks: A Complete Trail Guide</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="sheeps-head-way-walking-guide">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">The Sheep&#x27;s Head Way Walking Guide - Ireland&#x27;s Hidden Gem</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="ring-of-kerry-walks">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Ring of Kerry Walking Routes: Not Just a Drive</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../walking-tours/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="../destinations" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="couples-walking-holiday">Couples Walking Holiday in Ireland: Romantic Trails and Adventure Together</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="leave-no-trace-ireland">Leave No Trace in Ireland: A Hiker&#x27;s Guide to Responsible Walking</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="winter-hiking-clothing-tips">Winter Hiking Clothing: 7 Essential Cold-Weather Tips</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="../walking-tours/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s mountain trail, perfec...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.</p>
+                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Walking Holidays</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../walking-tours/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="../walking-tours/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="../walking-tours/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="../walking-tours/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="../walking-tours/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="../walking-tours/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="../walking-tours/cooley-mournes" class="hover:text-primary transition-colors">Cooley &amp; Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../about" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="../how-it-works" class="hover:text-primary transition-colors">How It Works</a></li>
+                    <li><a href="../tour-grading" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../tailor-made" class="hover:text-primary transition-colors">Tailor-Made Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="../privacy-policy" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="../terms-and-conditions" class="hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Get in Touch</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>
