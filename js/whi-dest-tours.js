@@ -10,6 +10,11 @@
     var grid = document.getElementById('destToursGrid');
     if (!dataEl || !grid) return;
 
+    /* Detect language from <html lang=""> and set correct tour folder prefix */
+    var lang = (document.documentElement.lang || 'en').toLowerCase().substring(0, 2);
+    var tourFolderMap = { 'en': 'walking-tours', 'de': 'wandertouren', 'nl': 'wandeltochten' };
+    var tourFolder = tourFolderMap[lang] || 'walking-tours';
+
     var tours;
     try {
         tours = JSON.parse(dataEl.textContent);
@@ -20,21 +25,30 @@
 
     if (!tours || !tours.length) return;
 
-    /* Region → walking area page mapping */
-    var regionPageMap = {
-        'Dingle Peninsula': 'walking-area-dingle-way.html',
-        'County Kerry': 'walking-area-kerry-way.html',
-        'Wicklow Mountains': 'walking-area-wicklow-way.html',
-        'South East Ireland': 'walking-area-barrow-way.html',
-        'The Burren': 'walking-area-burren-way.html',
-        'Causeway Coast': 'walking-area-causeway-coast.html',
-        'Cooley Peninsula': 'walking-area-cooley-mournes.html',
-        'Connemara': 'walking-area-connemara.html',
-        'Beara Peninsula': 'walking-area-beara-way.html',
-        'Glens of Antrim': 'walking-area-antrim-glens.html',
-        'Mourne Mountains': 'walking-area-mourne-mountains.html',
-        'The Sperrins': 'walking-area-the-sperrins.html'
+    /* Walking area URL prefix per language */
+    var waPrefix = { 'en': 'walking-area', 'de': 'wandergebiet', 'nl': 'wandelgebied' }[lang] || 'walking-area';
+
+    /* Region → walking area slug mapping */
+    var regionSlugMap = {
+        'Dingle Peninsula': 'dingle-way',
+        'County Kerry': 'kerry-way',
+        'Wicklow Mountains': 'wicklow-way',
+        'South East Ireland': 'barrow-way',
+        'The Burren': 'burren-way',
+        'Causeway Coast': 'causeway-coast',
+        'Cooley Peninsula': 'cooley-mournes',
+        'Connemara': 'connemara',
+        'Beara Peninsula': 'beara-way',
+        'Glens of Antrim': 'antrim-glens',
+        'Mourne Mountains': 'mourne-mountains',
+        'The Sperrins': 'the-sperrins'
     };
+
+    /* Build region → full URL map using language-aware prefix */
+    var regionPageMap = {};
+    Object.keys(regionSlugMap).forEach(function(region) {
+        regionPageMap[region] = '/' + waPrefix + '-' + regionSlugMap[region];
+    });
 
     var regionLabelMap = {
         'Dingle Peninsula': 'Wild Atlantic Way',
@@ -165,7 +179,7 @@
         return '<div style="width:100%;max-width:420px;margin:0 auto;">' +
             '<div style="position:relative;">' +
             ribbonHtml +
-            '<a href="tours/' + tour.slug + '.html" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;">' +
+            '<a href="/' + tourFolder + '/' + tour.slug + '" class="tour-card" style="display:flex;flex-direction:column;height:100%;background:#fff;border-radius:16px;overflow:hidden;text-decoration:none;color:inherit;">' +
                 /* Image area with gradient overlay and title */
                 '<div style="position:relative;aspect-ratio:4/3;overflow:hidden;">' +
                     '<img src="images/routes/' + tour.slug + '/card.jpg" srcset="images/routes/' + tour.slug + '/card-400w.jpg 400w, images/routes/' + tour.slug + '/card-800w.jpg 800w, images/routes/' + tour.slug + '/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="' + tour.name + '" style="width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease;" loading="lazy" onerror="this.style.display=\'none\'"/>' +
