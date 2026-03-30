@@ -75,6 +75,10 @@ STATIC_SLUG_MAP = {
     'checkout':         {'de': 'buchung',              'nl': 'boeken'},
 }
 
+# Short-slug destinations that have a longer canonical equivalent (e.g. "barrow" → "barrow-way").
+# These are skipped during build and redirected via _redirects.
+DEPRECATED_DEST_SLUGS = {'barrow', 'burren', 'causeway', 'cooley', 'dingle', 'kerry', 'wicklow'}
+
 def translate_static_slug(en_slug, lang):
     """Return the translated filename slug for a static page, or the English slug if no translation."""
     if lang == 'en':
@@ -4705,6 +4709,8 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
         slug = destination.get('slug')
         if not slug:
             continue
+        if slug in DEPRECATED_DEST_SLUGS:
+            continue
 
         dest_id = destination.get('id')
 
@@ -4933,13 +4939,15 @@ def main():
 
     # Pre-compute which tours/destinations have DE and NL translations
     # (used by EN pages to only emit hreflang when translation exists)
+    # Check BOTH inline columns (_de, _nl) AND the tour_translations table
+    # so EN hreflang matches what build_language_site() actually builds.
     tours_with_de = set()
     tours_with_nl = set()
     dests_with_de = set()
     dests_with_nl = set()
+    # 1. Inline columns on tours/destinations tables
     for t in tours:
         tid = t.get('id')
-        # Use strip() to treat empty strings as missing — Supabase may return '' not None
         if (t.get('name_de') or '').strip() or (t.get('description_de') or '').strip():
             tours_with_de.add(tid)
         if (t.get('name_nl') or '').strip() or (t.get('description_nl') or '').strip():
@@ -4950,7 +4958,21 @@ def main():
             dests_with_de.add(did)
         if (d.get('name_nl') or '').strip() or (d.get('description_nl') or '').strip():
             dests_with_nl.add(did)
-    log(f"Translation coverage: {len(tours_with_de)} tours DE, {len(tours_with_nl)} tours NL, {len(dests_with_de)} dests DE, {len(dests_with_nl)} dests NL")
+    # 2. Also check tour_translations / destination_translations tables
+    for check_lang in ['de', 'nl']:
+        tt_rows = fetch_supabase('tour_translations', f'&language_code=eq.{check_lang}&select=tour_id')
+        dt_rows = fetch_supabase('destination_translations', f'&language_code=eq.{check_lang}&select=destination_id')
+        target_tours = tours_with_de if check_lang == 'de' else tours_with_nl
+        target_dests = dests_with_de if check_lang == 'de' else dests_with_nl
+        for row in (tt_rows or []):
+            tid = row.get('tour_id')
+            if tid:
+                target_tours.add(tid)
+        for row in (dt_rows or []):
+            did = row.get('destination_id')
+            if did:
+                target_dests.add(did)
+    log(f"Translation coverage (inline+table): {len(tours_with_de)} tours DE, {len(tours_with_nl)} tours NL, {len(dests_with_de)} dests DE, {len(dests_with_nl)} dests NL")
 
     # Build tour pages
     log("\nGenerating tour pages...")
@@ -5017,6 +5039,9 @@ def main():
         slug = destination.get('slug')
         if not slug:
             log("Destination has no slug, skipping", 'warn')
+            continue
+        if slug in DEPRECATED_DEST_SLUGS:
+            log(f"Skipping deprecated short-slug destination: {slug} (redirected)", 'warn')
             continue
 
         dest_id = destination.get('id')
