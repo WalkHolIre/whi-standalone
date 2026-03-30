@@ -129,28 +129,28 @@
 /wicklow-national-park/  /blog/ireland-national-parks-walking  301
 
 # ═══════════════════════════════════════════════════════════
-# 5. OLD WP BLOG POSTS → BLOG HOME (NO MATCH)
-#    Content not migrated — send to blog listing
+# 5. OLD WP BLOG POSTS → CORRECT BLOG POSTS
+#    Previously sent to /blog — now mapped to actual posts
 # ═══════════════════════════════════════════════════════════
 
-/celtic-culture-and-history/  /blog  301
-/celtic-music-and-the-tin-whistle/  /blog  301
-/exploring-sli-cholmcille/  /blog  301
-/guide-to-hiking-clothes-for-summer-hiking/  /blog  301
-/guidelines-for-minimising-environmental-impact-while-hiking-in-ireland/  /blog  301
-/guinness/  /blog  301
-/how-prepare-weather-related-risks-irish-trails/  /blog  301
-/how-to-hike-with-someone-faster-slower/  /blog  301
-/ireland-birdwatchers-guide/  /blog  301
-/irish-hiking-tours-2026-complete-guide/  /blog  301
-/irish-national-anthem/  /blog  301
-/northern-ireland-uk-eta-guide/  /blog  301
-/power-adapter/  /blog  301
-/rare-flora-and-fauna-in-ireland/  /blog  301
-/saint-brigids-impact-on-irish-culture/  /blog  301
-/the-irish-weather/  /blog  301
-/weather-safety/  /blog  301
-/winter-hiking-clothing-tips/  /blog  301
+/celtic-culture-and-history/  /blog/celtic-culture-and-history  301
+/celtic-music-and-the-tin-whistle/  /blog/celtic-music-and-the-tin-whistle  301
+/exploring-sli-cholmcille/  /blog/exploring-sli-cholmcille  301
+/guide-to-hiking-clothes-for-summer-hiking/  /blog/guide-to-hiking-clothes-for-summer-hiking  301
+/guidelines-for-minimising-environmental-impact-while-hiking-in-ireland/  /blog/guidelines-for-minimising-environmental-impact-while-hiking-in-ireland  301
+/guinness/  /blog/guinness  301
+/how-prepare-weather-related-risks-irish-trails/  /blog/how-prepare-weather-related-risks-irish-trails  301
+/how-to-hike-with-someone-faster-slower/  /blog/how-to-hike-with-someone-faster-slower  301
+/ireland-birdwatchers-guide/  /blog/ireland-birdwatchers-guide  301
+/irish-hiking-tours-2026-complete-guide/  /blog/irish-hiking-tours-2026-complete-guide  301
+/irish-national-anthem/  /blog/irish-national-anthem  301
+/northern-ireland-uk-eta-guide/  /blog/northern-ireland-uk-eta-guide  301
+/power-adapter/  /blog/power-adapter  301
+/rare-flora-and-fauna-in-ireland/  /blog/rare-flora-and-fauna-in-ireland  301
+/saint-brigids-impact-on-irish-culture/  /blog/saint-brigids-impact-on-irish-culture  301
+/the-irish-weather/  /blog/the-irish-weather  301
+/weather-safety/  /blog/weather-safety  301
+/winter-hiking-clothing-tips/  /blog/winter-hiking-clothing-tips  301
 
 # ═══════════════════════════════════════════════════════════
 # 6. INTERNAL URL RENAMES: destination-* → walking-area-*
@@ -377,7 +377,90 @@
 /nl/destination-cooley-peninsula.html  /nl/wandelbestemming-cooley-peninsula  301
 
 # ═══════════════════════════════════════════════════════════
-# 10. WORDPRESS SYSTEM URLS (catch common WP paths)
+# 9a. OLD DUTCH WORDPRESS URLS → NEW NL PAGES
+#     These are old wandelvakantieierland.nl URLs still ranking
+#     in Google. Redirects fire before _worker.js, so targets
+#     use the Dutch slugs that the worker then serves from /nl/.
+# ═══════════════════════════════════════════════════════════
+
+# High-traffic old blog posts (Dutch slugs at root level)
+/stekker-voor-ierland/  /faq  301
+/stekker-voor-ierland  /faq  301
+/the-burren-ierland/  /wandelgebied-burren-way  301
+/the-burren-ierland  /wandelgebied-burren-way  301
+/wandelen-dublin/  /beste-wandelpaden-ierland  301
+/wandelen-dublin  /beste-wandelpaden-ierland  301
+/kustplaatsen-aan-de-antrim-coast/  /wandelgebied-causeway-coast  301
+/kustplaatsen-aan-de-antrim-coast  /wandelgebied-causeway-coast  301
+/giants-causeway-noord-ierland/  /wandelgebied-causeway-coast  301
+/giants-causeway-noord-ierland  /wandelgebied-causeway-coast  301
+/wicklow-mountains-national-park/  /wandelgebied-wicklow-way  301
+/wicklow-mountains-national-park  /wandelgebied-wicklow-way  301
+/carlingford/  /wandelgebied-cooley-mournes  301
+/carlingford  /wandelgebied-cooley-mournes  301
+
+# Old Dutch tour listing pages
+/individuele-wandelvakanties/wicklow-way/  /wandeltochten/wicklow-way  301
+/individuele-wandelvakanties/wicklow-way  /wandeltochten/wicklow-way  301
+/individuele-wandelvakanties/kerry-way/  /wandeltochten/kerry-way  301
+/individuele-wandelvakanties/kerry-way  /wandeltochten/kerry-way  301
+/individuele-wandelvakanties/dingle-way/  /wandeltochten/dingle-way-walking-tour-8d  301
+/individuele-wandelvakanties/dingle-way  /wandeltochten/dingle-way-walking-tour-8d  301
+/individuele-wandelvakanties/  /wandeltochten  301
+/individuele-wandelvakanties  /wandeltochten  301
+/individuele-wandelvakanties/*  /wandeltochten  301
+
+# ═══════════════════════════════════════════════════════════
+# 10a. OLD WORDPRESS TOUR & LOCATION URLS (404s with backlinks)
+#      Patterns: /Walking-Tour/*, /Hiking-location/*, /author/*
+#      These have external backlinks from high-DR domains
+# ═══════════════════════════════════════════════════════════
+
+/Walking-Tour/cooley-and-mournes-hiking-tour/  /walking-tours/cooley-mournes  301
+/Walking-Tour/cooley-and-mournes-hiking-tour  /walking-tours/cooley-mournes  301
+/Walking-Tour/wicklow-way-8-days/  /walking-tours/wicklow-way  301
+/Walking-Tour/wicklow-way-8-days  /walking-tours/wicklow-way  301
+/Walking-Tour/kerry-way-8-days/  /walking-tours/kerry-way  301
+/Walking-Tour/kerry-way-8-days  /walking-tours/kerry-way  301
+/Walking-Tour/the-dingle-way-8-days/  /walking-tours/dingle-way-walking-tour-8d  301
+/Walking-Tour/the-dingle-way-8-days  /walking-tours/dingle-way-walking-tour-8d  301
+/Walking-Tour/barrow-way-8-day-hiking-tour/  /walking-tours/full-barrow-way-walking  301
+/Walking-Tour/barrow-way-8-day-hiking-tour  /walking-tours/full-barrow-way-walking  301
+/Walking-Tour/antrim-glens-and-causeway-coast-8-days/  /walking-tours/causeway-coast  301
+/Walking-Tour/antrim-glens-and-causeway-coast-8-days  /walking-tours/causeway-coast  301
+/Walking-Tour/wicklow-way-10-days/  /walking-tours/wicklow-way-10-days  301
+/Walking-Tour/wicklow-way-10-days  /walking-tours/wicklow-way-10-days  301
+/Walking-Tour/*  /walking-tours  301
+
+/Hiking-location/irelands-ancient-east/  /walking-area-barrow-way  301
+/Hiking-location/irelands-ancient-east  /walking-area-barrow-way  301
+/Hiking-location/wicklow-way/  /walking-area-wicklow-way  301
+/Hiking-location/wicklow-way  /walking-area-wicklow-way  301
+/Hiking-location/wild-atlantic-way/  /walking-area-dingle-way  301
+/Hiking-location/wild-atlantic-way  /walking-area-dingle-way  301
+/Hiking-location/northern-ireland/  /walking-area-causeway-coast  301
+/Hiking-location/northern-ireland  /walking-area-causeway-coast  301
+/Hiking-location/*  /destinations  301
+
+/author/whi/  /about  301
+/author/whi  /about  301
+/author/*  /about  301
+
+/tag/*  /blog  301
+/Tag/*  /blog  301
+/category/*  /blog  301
+
+# Old URL patterns with trailing slash but no /blog prefix (additional catches)
+/self-guided-walking-tours/giant-causeway-glens-of-antrim/  /walking-tours/causeway-coast  301
+/self-guided-walking-tours/giant-causeway-glens-of-antrim  /walking-tours/causeway-coast  301
+/choose-right-pair-hiking-boots/  /blog/choose-right-pair-hiking-boots  301
+/ring-of-kerry-walks/  /blog/ring-of-kerry-walks  301
+/home/about-walking-holiday-ireland/  /about  301
+/home/about-walking-holiday-ireland  /about  301
+/mountains-o-mourne-don-mclean/  /blog/mountains-o-mourne-don-mclean  301
+
+# ═══════════════════════════════════════════════════════════
+# 10b. WORDPRESS SYSTEM URLS (catch common WP paths)
 # ═══════════════════════════════════════════════════════════
 
 /wp-login.php  /  301
