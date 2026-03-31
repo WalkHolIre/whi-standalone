@@ -6408,6 +6408,37 @@ def main():
                 </div>
             </a>'''
 
+        # Build recommended walking areas (pick 4 destinations that have walking-area pages)
+        recommended_areas_html = ''
+        _wa_slugs_with_pages = set()
+        for _waf in (WEBSITE_DIR).glob('walking-area-*.html'):
+            _wa_slugs_with_pages.add(_waf.stem.replace('walking-area-', ''))
+        featured_dests = [d for d in sorted(destinations, key=lambda d: d.get('sort_order', 999))
+                          if d.get('slug', '') in _wa_slugs_with_pages][:4]
+        for dest in featured_dests:
+            d_slug = dest.get('slug', '')
+            d_name = escape(dest.get('name', ''))
+            d_short = escape(dest.get('short_description', '') or '')
+            if len(d_short) > 60:
+                d_short = d_short[:57] + '...'
+            d_hero = dest.get('hero_image', '') or ''
+            if not d_hero:
+                d_hero = f'images/routes/{d_slug}/card.jpg'
+
+            recommended_areas_html += f'''
+            <a href="walking-area-{escape(d_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="{d_hero}" alt="{d_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">{d_name}</h4>
+                    <p class="text-xs text-slate-500 mb-3">{d_short}</p>
+                    <div class="flex justify-end items-center">
+                        <span class="text-xs font-bold underline underline-offset-4">Explore</span>
+                    </div>
+                </div>
+            </a>'''
+
         # Build dynamic category filter buttons from actual post categories
         from collections import Counter as _Counter
         cat_counter = _Counter()
@@ -6446,10 +6477,34 @@ def main():
             cat_filter_replacement = r'\g<1>\n' + cat_buttons_html
             blog_listing_new = _re.sub(cat_filter_pattern, cat_filter_replacement, blog_listing_new, flags=_re.DOTALL)
 
-            # Inject recommended tours
-            rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)\s*<!-- Populated by build\.py -->\s*(</div>)'
-            rec_replacement = r'\g<1>' + recommended_html + '\n        ' + r'\g<2>'
-            blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new, flags=_re.DOTALL)
+            # Inject recommended tours (replace everything between open/close of recommended-tours div)
+            rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas|Newsletter))'
+            rec_replacement = r'\g<1>' + recommended_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas'
+            blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new)
+
+            # Inject recommended walking areas section (replace or insert before Newsletter)
+            walking_areas_section = f'''<!-- Walking Areas Section -->
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-10 gap-4">
+            <div class="max-w-xl">
+                <h2 class="text-3xl font-black mb-4">Popular Walking Areas</h2>
+                <p class="text-slate-600">Explore Ireland\'s most stunning landscapes and find the perfect region for your next adventure.</p>
+            </div>
+            <a class="text-primary font-bold flex items-center gap-2 group" href="hiking-ireland">
+                View All Areas <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="recommended-areas">
+{recommended_areas_html}
+        </div>
+    </div>
+</section>
+
+'''
+            # Remove old walking areas section if present, then insert before Newsletter
+            blog_listing_new = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Newsletter', '<!-- Newsletter', blog_listing_new)
+            blog_listing_new = blog_listing_new.replace('<!-- Newsletter', walking_areas_section + '<!-- Newsletter')
 
             # Canonical and hreflang for blog listing
             blog_list_canonical = lang_url('en', 'blog')
@@ -6694,9 +6749,67 @@ def main():
             grid_pattern = r'<!-- Content Area -->.*?</div>\s*\n\s*\n\s*<!-- Pagination -->'
             lang_blog = _re.sub(grid_pattern, new_grid + '\n\n    <!-- Pagination -->', lang_blog, flags=_re.DOTALL)
 
-            # Replace recommended tours cards
-            rec_pattern2 = r'(<div[^>]*id="recommended-tours"[^>]*>).*?(</div>)'
-            lang_blog = _re.sub(rec_pattern2, r'\g<1>' + lang_rec_html + '\n        ' + r'\g<2>', lang_blog, flags=_re.DOTALL)
+            # Replace recommended tours cards (match from recommended-tours div to Walking Areas section)
+            rec_pattern2 = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas|Newsletter))'
+            lang_blog = _re.sub(rec_pattern2, r'\g<1>' + lang_rec_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas', lang_blog)
+
+            # Build translated walking areas
+            blang_dest_trans = blang_translations.get('destinations', {})
+            wa_prefix = WALKING_AREA_PREFIX.get(blang, 'walking-area')
+            wa_titles = {'de': 'Beliebte Wandergebiete', 'nl': 'Populaire wandelgebieden'}
+            wa_subtitles = {'de': 'Entdecken Sie Irlands atemberaubendste Landschaften und finden Sie die perfekte Region für Ihr nächstes Abenteuer.', 'nl': 'Ontdek de mooiste landschappen van Ierland en vind de perfecte regio voor je volgende avontuur.'}
+            wa_cta = {'de': 'Alle Gebiete ansehen', 'nl': 'Alle gebieden bekijken'}
+            wa_explore = {'de': 'Entdecken', 'nl': 'Ontdekken'}
+            wa_all_href = {'de': 'wandern-irland', 'nl': 'wandelen-ierland'}
+            lang_areas_html = ''
+            for dest in featured_dests:
+                d_slug = dest.get('slug', '')
+                d_id = dest.get('id', '')
+                # Get translated name/description
+                d_trans = blang_dest_trans.get(d_id, {}) if d_id else {}
+                d_name = escape(d_trans.get('name', '') or dest.get('name', ''))
+                d_short = escape(d_trans.get('short_description', '') or dest.get('short_description', '') or '')
+                # Strip HTML from short_description
+                d_short = _re.sub(r'<[^>]+>', '', d_short)
+                if len(d_short) > 60:
+                    d_short = d_short[:57] + '...'
+                d_hero = dest.get('hero_image', '') or f'images/routes/{d_slug}/card.jpg'
+                lang_areas_html += f'''
+            <a href="{wa_prefix}-{escape(d_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="{d_hero}" alt="{d_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">{d_name}</h4>
+                    <p class="text-xs text-slate-500 mb-3">{d_short}</p>
+                    <div class="flex justify-end items-center">
+                        <span class="text-xs font-bold underline underline-offset-4">{wa_explore.get(blang, "Explore")}</span>
+                    </div>
+                </div>
+            </a>'''
+
+            lang_wa_section = f'''<!-- Walking Areas Section -->
+<section class="py-20 px-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row items-end justify-between mb-10 gap-4">
+            <div class="max-w-xl">
+                <h2 class="text-3xl font-black mb-4">{wa_titles.get(blang, "Popular Walking Areas")}</h2>
+                <p class="text-slate-600">{wa_subtitles.get(blang, "")}</p>
+            </div>
+            <a class="text-primary font-bold flex items-center gap-2 group" href="{wa_all_href.get(blang, 'hiking-ireland')}">
+                {wa_cta.get(blang, "View All Areas")} <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="recommended-areas">
+{lang_areas_html}
+        </div>
+    </div>
+</section>
+
+'''
+            # Remove old walking areas section if present, then insert before Newsletter
+            lang_blog = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Newsletter', '<!-- Newsletter', lang_blog)
+            lang_blog = lang_blog.replace('<!-- Newsletter', lang_wa_section + '<!-- Newsletter')
 
             # Translate common UI via translate_html_ui
             lang_blog = translate_html_ui(lang_blog, blang)
