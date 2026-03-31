@@ -820,6 +820,15 @@
     <meta property="og:site_name" content="Walking Holiday Ireland"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+
+
+
+<meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.de/blog"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog" />
@@ -832,6 +841,7 @@
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
 </head>
 <body class="flex flex-col min-h-screen bg-background-light text-slate-900">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
@@ -1026,6 +1036,7 @@
     <div class="flex flex-wrap items-center gap-3 mb-12 border-b border-primary/10 pb-6" id="blog-filters">
         
         
+        
         <button class="blog-filter-btn active px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold transition-colors" data-category="all">Alle Beiträge</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="wegführer">Wegführer</button>
         <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="reiseplanung">Reiseplanung</button>
@@ -1045,6 +1056,22 @@
     <!-- Content Area -->
     <div id="blog-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
 
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="nationalparks-&-tierwelt">
+            <a href="blog/irlands-nationalparks" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875710006-optimized-Aerial_view__Ross_castle__Killarney_National_Park__Co_Kerry_Web_Size.webp" alt="Irlands Nationalparks: 6 wilde Orte zum Wandern" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Nationalparks &amp; Tierwelt</span>
+                    <span class="text-xs text-slate-500">March 28, 2026</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Irlands Nationalparks: 6 wilde Orte zum Wandern</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Irland hat sechs Nationalparks, jeder mit wunderschönen Wanderwegen. Von Killarneys Seen bis zu Ballycroys wilden Mooren — Ihr Wanderführer durch alle sechs ...</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>
         <article class="blog-card flex flex-col group cursor-pointer" data-category="reiseplanung">
             <a href="blog/dingle-way-vs-kerry-way-irland" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
@@ -1285,33 +1312,65 @@
                 </span>
             </a>
         </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="nationalparks-&-tierwelt">
-            <a href="blog/irlands-nationalparks" class="flex flex-col h-full">
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
+            <a href="blog/sheeps-head-way-wanderfuehrer-west-cork" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875710006-optimized-Aerial_view__Ross_castle__Killarney_National_Park__Co_Kerry_Web_Size.webp" alt="Irlands Nationalparks: 6 wilde Orte zum Wandern" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875579624-optimized-2048px-Gougane_Barra_2016.webp" alt="Sheep&#x27;s Head Way: Wanderführer für West Corks Vergessene Halbinsel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Nationalparks &amp; Tierwelt</span>
-                    <span class="text-xs text-slate-500">March 28, 2026</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
+                    <span class="text-xs text-slate-500">March 30, 2026</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Irlands Nationalparks: 6 wilde Orte zum Wandern</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Irland hat sechs Nationalparks, jeder mit wunderschönen Wanderwegen. Von Killarneys Seen bis zu Ballycroys wilden Mooren — Ihr Wanderführer durch alle sechs ...</p>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Sheep&#x27;s Head Way: Wanderführer für West Corks Vergessene Halbinsel</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Learn about the sheep&#x27;s head way walking guide - ireland&#x27;s hidden gem. Comprehensive guide with practical advice and expert insights for Irish walking...</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
             </a>
         </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="nationalparks-&-tierwelt">
-            <a href="blog/the-burren-national-park" class="flex flex-col h-full">
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
+            <a href="blog/st-finbarrs-weg-pilgerpfad-cork" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875364999-optimized-Burren_landscape_photo_3_Web_Size.webp" alt="Burren National Park: Wanderführer durch Irlands Kalksteinlandschaft" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875580268-optimized-Cork_August_2013_Web_Size.webp" alt="St. Finbarrs Weg: Pilgerpfad von Cork nach Gougane Barra" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Nationalparks &amp; Tierwelt</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
                     <span class="text-xs text-slate-500">March 30, 2026</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Burren National Park: Wanderführer durch Irlands Kalksteinlandschaft</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Der Burren National Park in County Clare bietet Wanderungen durch eine Kalksteinlandschaft, die einzigartig in Irland ist. Wildblumen wachsen aus nacktem Fel...</p>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">St. Finbarrs Weg: Pilgerpfad von Cork nach Gougane Barra</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Journey through Cork&#x27;s breathtaking landscape on St Finbarr&#x27;s Way, a gentle pilgrimage connecting ancient monasteries. Perfect for hikers seeking spiritual e...</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
+            <a href="blog/wandern-pub-irland-beste-pubs-wanderwege" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774188282260-optimized-IMG_2027.webp" alt="Wandern &amp; Pub in Irland: Was am Abend auf Sie wartet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
+                    <span class="text-xs text-slate-500">March 30, 2026</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Wandern &amp; Pub in Irland: Was am Abend auf Sie wartet</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Discover Ireland&#x27;s best pub walks—carefully curated trails that lead to exceptional pubs. From craft beer to trad music to fresh seafood, the pint at the end...</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="gesundheit-&-wohlbefinden">
+            <a href="blog/waldbaden-irland-achtsamkeit-wandern-wohlbefinden" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875985721-optimized-29452072857_2caa3a5d7b_k.webp" alt="Waldbaden in Irland: Achtsamkeit auf Irlands Wanderwege" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Gesundheit &amp; Wohlbefinden</span>
+                    <span class="text-xs text-slate-500">March 30, 2026</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Waldbaden in Irland: Achtsamkeit auf Irlands Wanderwege</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Discover how mindfulness walking on Ireland&#x27;s serene trails can transform your wellbeing. Sensory-rich journeys through green landscapes with practical...</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
@@ -1334,32 +1393,16 @@
             </a>
         </article>
         <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
-            <a href="blog/sheeps-head-way-wanderfuehrer-west-cork" class="flex flex-col h-full">
+            <a href="blog/ring-of-kerry-wandern-iveragh-halbinsel" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875579624-optimized-2048px-Gougane_Barra_2016.webp" alt="Sheep&#x27;s Head Way: Wanderführer für West Corks Vergessene Halbinsel" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875764929-optimized-View_from_Ross_Castle__Killarney_National_Park__Co_Kerry_master.webp" alt="Ring of Kerry Wandern: Die Iveragh-Halbinsel zu Fuß" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
                     <span class="text-xs text-slate-500">March 30, 2026</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Sheep&#x27;s Head Way: Wanderführer für West Corks Vergessene Halbinsel</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Learn about the sheep&#x27;s head way walking guide - ireland&#x27;s hidden gem. Comprehensive guide with practical advice and expert insights for Irish walking...</p>
-                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
-                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-            </a>
-        </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="gesundheit-&-wohlbefinden">
-            <a href="blog/waldbaden-irland-achtsamkeit-wandern-wohlbefinden" class="flex flex-col h-full">
-                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875985721-optimized-29452072857_2caa3a5d7b_k.webp" alt="Waldbaden in Irland: Achtsamkeit auf Irlands Wanderwege" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Gesundheit &amp; Wohlbefinden</span>
-                    <span class="text-xs text-slate-500">March 30, 2026</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Waldbaden in Irland: Achtsamkeit auf Irlands Wanderwege</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Discover how mindfulness walking on Ireland&#x27;s serene trails can transform your wellbeing. Sensory-rich journeys through green landscapes with practical...</p>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Ring of Kerry Wandern: Die Iveragh-Halbinsel zu Fuß</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Explore ring of kerry walking routes: not just a drive. Expert guides, detailed trail information, and insider tips for the best walking experiences in...</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
@@ -1381,22 +1424,6 @@
                 </span>
             </a>
         </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="reiseplanung">
-            <a href="blog/einreise-irland-wanderurlaub-planen" class="flex flex-col h-full">
-                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774974573728-optimized-Travel_to_Ireland_feature_image.webp" alt="Einreise nach Irland: Praktischer Reiseführer für Ihren Wanderurlaub" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Reiseplanung</span>
-                    <span class="text-xs text-slate-500">March 30, 2026</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Einreise nach Irland: Praktischer Reiseführer für Ihren Wanderurlaub</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Die Einreise nach Irland ist unkompliziert — aber je nachdem, woher Sie reisen, welche Route Sie nehmen und ob Ihr Wanderurlaub auch Nordirland umfasst, gibt...</p>
-                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
-                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-            </a>
-        </article>
         <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
             <a href="blog/wicklow-mountains-nationalpark-wandern" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
@@ -1413,17 +1440,17 @@
                 </span>
             </a>
         </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
-            <a href="blog/st-finbarrs-weg-pilgerpfad-cork" class="flex flex-col h-full">
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="reiseplanung">
+            <a href="blog/einreise-irland-wanderurlaub-planen" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875580268-optimized-Cork_August_2013_Web_Size.webp" alt="St. Finbarrs Weg: Pilgerpfad von Cork nach Gougane Barra" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774974573728-optimized-Travel_to_Ireland_feature_image.webp" alt="Einreise nach Irland: Praktischer Reiseführer für Ihren Wanderurlaub" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Reiseplanung</span>
                     <span class="text-xs text-slate-500">March 30, 2026</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">St. Finbarrs Weg: Pilgerpfad von Cork nach Gougane Barra</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Journey through Cork&#x27;s breathtaking landscape on St Finbarr&#x27;s Way, a gentle pilgrimage connecting ancient monasteries. Perfect for hikers seeking spiritual e...</p>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Einreise nach Irland: Praktischer Reiseführer für Ihren Wanderurlaub</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Die Einreise nach Irland ist unkompliziert — aber je nachdem, woher Sie reisen, welche Route Sie nehmen und ob Ihr Wanderurlaub auch Nordirland umfasst, gibt...</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
@@ -1445,33 +1472,17 @@
                 </span>
             </a>
         </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
-            <a href="blog/wandern-pub-irland-beste-pubs-wanderwege" class="flex flex-col h-full">
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="nationalparks-&-tierwelt">
+            <a href="blog/the-burren-national-park" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774188282260-optimized-IMG_2027.webp" alt="Wandern &amp; Pub in Irland: Was am Abend auf Sie wartet" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875364999-optimized-Burren_landscape_photo_3_Web_Size.webp" alt="Burren National Park: Wanderführer durch Irlands Kalksteinlandschaft" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Nationalparks &amp; Tierwelt</span>
                     <span class="text-xs text-slate-500">March 30, 2026</span>
                 </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Wandern &amp; Pub in Irland: Was am Abend auf Sie wartet</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Discover Ireland&#x27;s best pub walks—carefully curated trails that lead to exceptional pubs. From craft beer to trad music to fresh seafood, the pint at the end...</p>
-                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
-                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-            </a>
-        </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
-            <a href="blog/ring-of-kerry-wandern-iveragh-halbinsel" class="flex flex-col h-full">
-                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875764929-optimized-View_from_Ross_Castle__Killarney_National_Park__Co_Kerry_master.webp" alt="Ring of Kerry Wandern: Die Iveragh-Halbinsel zu Fuß" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Wegführer</span>
-                    <span class="text-xs text-slate-500">March 30, 2026</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Ring of Kerry Wandern: Die Iveragh-Halbinsel zu Fuß</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Explore ring of kerry walking routes: not just a drive. Expert guides, detailed trail information, and insider tips for the best walking experiences in...</p>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Burren National Park: Wanderführer durch Irlands Kalksteinlandschaft</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Der Burren National Park in County Clare bietet Wanderungen durch eine Kalksteinlandschaft, die einzigartig in Irland ist. Wildblumen wachsen aus nacktem Fel...</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
@@ -1525,6 +1536,22 @@
                 </span>
             </a>
         </article>
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="irische-kultur-&-geschichte">
+            <a href="blog/die-famine-roads-irlands" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774195234017-optimized-Connemara-Wild_Atlantic_Way-Couchflucht-05.jpg_TI72XAE.webp" alt="Die Famine Roads Irlands: Wege, gebaut von hungernden Händen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Irische Kultur &amp; Geschichte</span>
+                    <span class="text-xs text-slate-500">February 16, 2026</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Die Famine Roads Irlands: Wege, gebaut von hungernden Händen</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Wandern Sie auf Irlands Famine Roads — Steinpfade, die während der Großen Hungersnot von 1845-1852 von hungernden Menschen gebaut wurden.</p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>
         <article class="blog-card flex flex-col group cursor-pointer" data-category="wegführer">
             <a href="blog/unsere-top-5-connemara-wanderungen" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
@@ -1568,22 +1595,6 @@
                 </div>
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Die 6 besten Wanderwege Irlands 2026 | WHI Guide</h3>
                 <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Entdecken Sie Irlands spektakulärste Wanderwege von Wicklow bis Donegal. Unser Guide umfasst 50+ Wanderungen mit Distanz, Schwierigkeit und WHI-Touren...</p>
-                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
-                    Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
-                </span>
-            </a>
-        </article>
-        <article class="blog-card flex flex-col group cursor-pointer" data-category="irische-kultur-&-geschichte">
-            <a href="blog/die-famine-roads-irlands" class="flex flex-col h-full">
-                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774195234017-optimized-Connemara-Wild_Atlantic_Way-Couchflucht-05.jpg_TI72XAE.webp" alt="Die Famine Roads Irlands: Wege, gebaut von hungernden Händen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
-                </div>
-                <div class="flex items-center gap-3 mb-3">
-                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Irische Kultur &amp; Geschichte</span>
-                    <span class="text-xs text-slate-500">February 16, 2026</span>
-                </div>
-                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Die Famine Roads Irlands: Wege, gebaut von hungernden Händen</h3>
-                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow">Wandern Sie auf Irlands Famine Roads — Steinpfade, die während der Großen Hungersnot von 1845-1852 von hungernden Menschen gebaut wurden.</p>
                 <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
                     Artikel Lesen <span class="material-symbols-outlined text-sm">arrow_forward</span>
                 </span>
@@ -2207,6 +2218,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
