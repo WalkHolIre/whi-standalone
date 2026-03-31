@@ -121,7 +121,7 @@ UI_STRINGS = {
         'how_it_works': 'How It Works',
         'about_us': 'About Us',
         'blog': 'Blog',
-        'get_in_touch': 'Get in Touch',
+        'get_in_touch': 'Book Now',
         'home': 'Home',
         'overview': 'Overview',
         'get_free_quote': 'Get a Free Quote',
@@ -268,7 +268,7 @@ UI_STRINGS = {
         'how_it_works': 'Wie funktioniert es?',
         'about_us': 'Über Uns',
         'blog': 'Blog',
-        'get_in_touch': 'Kontaktieren Sie uns!',
+        'get_in_touch': 'Jetzt buchen',
         'home': 'Startseite',
         'overview': 'Überblick',
         'get_free_quote': 'Kostenloses Angebot',
@@ -496,7 +496,7 @@ UI_STRINGS = {
         'how_it_works': 'Hoe werkt het?',
         'about_us': 'Over Ons',
         'blog': 'Blog',
-        'get_in_touch': 'Neem contact op',
+        'get_in_touch': 'Nu boeken',
         'home': 'Home',
         'overview': 'Overzicht',
         'get_free_quote': 'Gratis Offerte',
@@ -1216,10 +1216,17 @@ def translate_html_ui(html, lang):
     # Tour count: "of 15 tours" → translated
     html = re.sub(r'of (\d+) tours', lambda m: f'{t("of_x_tours", lang).replace("15", m.group(1))}', html)
 
-    # Desktop nav: "Get in Touch" on its own line with whitespace
+    # Desktop nav: "Get in Touch" / "Book Now" CTA — update text AND href to checkout
+    checkout_slug = translate_static_slug('checkout', lang)
     html = re.sub(
-        r'(class="[^"]*bg-primary[^"]*"[^>]*>)\s*Get in Touch\s*(</a>)',
-        lambda m: f'{m.group(1)}\n                        {t("get_in_touch", lang)}\n                    {m.group(2)}',
+        r'(href="[^"]*(?:contact|kontakt|contact)[^"]*")(.*?class="[^"]*bg-primary[^"]*"[^>]*>)\s*(?:Get in Touch|Book Now)\s*(</a>)',
+        lambda m: f'href="../{checkout_slug}"{m.group(2)}\n                        {t("get_in_touch", lang)}\n                    {m.group(3)}',
+        html
+    )
+    # Also fix mobile menu CTA button
+    html = re.sub(
+        r'(href="[^"]*(?:contact|kontakt|contact)[^"]*")(.*?class="[^"]*bg-primary[^"]*font-bold[^"]*">)\s*(?:Get in Touch|Book Now|Kontaktieren Sie uns!|Neem contact op)\s*(</a>)',
+        lambda m: f'href="../{checkout_slug}"{m.group(2)}{t("get_in_touch", lang)}{m.group(3)}',
         html
     )
 
@@ -4352,6 +4359,49 @@ def post_process_html(html):
     # Inject subscribe.js before </body>
     if 'subscribe.js' not in html and '</body>' in html:
         html = html.replace('</body>', '<script src="/js/subscribe.js" defer></script>\n</body>')
+
+    # 9. Add "Book Now" link to footer Quick Links (after Contact, before Privacy Policy)
+    # Detect language from <html lang="...">
+    lang_match = re.search(r'<html[^>]+lang="(\w+)"', html)
+    page_lang = lang_match.group(1) if lang_match else 'en'
+    book_now_labels = {'en': 'Book Now', 'de': 'Jetzt buchen', 'nl': 'Nu boeken'}
+    book_now_slugs = {'en': '/checkout', 'de': '/buchung', 'nl': '/boeken'}
+    book_now_label = book_now_labels.get(page_lang, 'Book Now')
+    book_now_slug = book_now_slugs.get(page_lang, '/checkout')
+    if book_now_label not in html:
+        # Insert after the Contact link in Quick Links section
+        contact_patterns = [
+            'transition-colors">Contact</a></li>',
+            'transition-colors">Kontakt</a></li>',
+        ]
+        for cp in contact_patterns:
+            if cp in html:
+                html = html.replace(cp,
+                    f'{cp}\n                    <li><a href="{book_now_slug}" class="hover:text-primary transition-colors font-bold">{book_now_label}</a></li>',
+                    1)
+                break
+
+    # 10. Change header CTA from "Get in Touch" / "Contact" to "Book Now" / "Checkout"
+    # This covers pages that haven't been through the translate_ui step
+    cta_replacements = {
+        'en': ('Get in Touch', 'Book Now', '/checkout'),
+        'de': ('Kontaktieren Sie uns!', 'Jetzt buchen', '/buchung'),
+        'nl': ('Neem contact op', 'Nu boeken', '/boeken'),
+    }
+    if page_lang in cta_replacements:
+        old_text, new_text, new_href = cta_replacements[page_lang]
+        # Desktop nav CTA
+        html = re.sub(
+            rf'(href="[^"]*(?:contact|kontakt)[^"]*")(.*?class="[^"]*bg-primary[^"]*"[^>]*>)\s*{re.escape(old_text)}\s*(</a>)',
+            lambda m: f'href="{new_href}"{m.group(2)}\n                        {new_text}\n                    {m.group(3)}',
+            html
+        )
+        # Mobile menu CTA
+        html = re.sub(
+            rf'(href="[^"]*(?:contact|kontakt)[^"]*")(.*?class="[^"]*bg-primary[^"]*font-bold[^"]*">){re.escape(old_text)}(</a>)',
+            lambda m: f'href="{new_href}"{m.group(2)}{new_text}{m.group(3)}',
+            html
+        )
 
     # Strip .html extensions from all internal links (clean URLs)
     html = strip_html_extensions(html)
