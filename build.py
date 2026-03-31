@@ -3374,8 +3374,8 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id, lang
 
     # Region name
     region_name = ''
-    for t in (tours or []):
-        rn = t.get('region_name', '')
+    for tour in (tours or []):
+        rn = tour.get('region_name', '')
         if rn:
             region_name = rn
             break
