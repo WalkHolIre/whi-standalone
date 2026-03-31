@@ -368,51 +368,8 @@
                                 Optional Extras
                             </h3>
 
-                            <div class="space-y-3">
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="airportTransfer" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Airport transfer</span>
-                                        <span class="text-sm text-gray-500">Price on application</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="dailyLunch" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Daily lunch packs</span>
-                                        <span class="text-sm text-gray-500">€15 per person per walking day</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary" id="lunchPriceLabel">€0</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="extraRestDay" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Extra rest day</span>
-                                        <span class="text-sm text-gray-500">Price on application</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="polehire" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Walking pole hire</span>
-                                        <span class="text-sm text-gray-500">€20 per pair</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">€20</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="singleSupplement">
-                                    <div class="flex-1 mt-[-2px]">
-                                        <span class="font-medium text-slate-800 block">Single supplement</span>
-                                        <span class="text-sm text-gray-500" id="singleSupplementText">Solo occupancy surcharge per room per night</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
+                            <div id="extrasContainer" class="space-y-3">
+                                <p class="text-sm text-gray-400 italic" id="extrasLoading">Select a tour above to see available extras.</p>
                             </div>
                         </div>
 
@@ -726,6 +683,124 @@
     let currentTour = null;
     let travellers = [];
     let selectedPayment = 'stripe';
+    let currentExtras = []; // loaded dynamically per tour
+
+    // ─────────── Supabase Extras ───────────
+    const SB_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
+    const SB_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRmZ3VxZWNiY2JiZ3J0dGZrd2ZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI3ODY1OTEsImV4cCI6MjA4ODM2MjU5MX0.ckTn_XP0wKdxTK_KELaEq-02gcmSyaBGdA2iAfBuVIk';
+    const SB_HEADERS = { 'apikey': SB_ANON, 'Authorization': `Bearer ${SB_ANON}` };
+
+    async function loadExtrasForTour(tourSlug) {
+        try {
+            // 1. Get tour UUID from slug
+            const tourRes = await fetch(
+                `${SB_URL}/rest/v1/tours?slug=eq.${encodeURIComponent(tourSlug)}&select=id`,
+                { headers: SB_HEADERS }
+            );
+            const tours = await tourRes.json();
+            if (!tours.length) return [];
+            const tourId = tours[0].id;
+
+            // 2. Get extras assigned to this tour with price overrides
+            const extrasRes = await fetch(
+                `${SB_URL}/rest/v1/tour_extras_tours?tour_id=eq.${tourId}&select=price_override_eur,tour_extras(id,name,name_de,name_nl,description,description_de,description_nl,price_eur,price_type,category,icon_name)`,
+                { headers: SB_HEADERS }
+            );
+            const assignments = await extrasRes.json();
+
+            // 3. Merge: use price_override if set, otherwise default price
+            return assignments.map(a => ({
+                ...a.tour_extras,
+                effective_price: a.price_override_eur ?? a.tour_extras.price_eur
+            }));
+        } catch (e) {
+            console.warn('Failed to load extras:', e);
+            return [];
+        }
+    }
+
+    function renderExtras(extras, lang) {
+        lang = lang || 'en';
+        const container = document.getElementById('extrasContainer');
+        if (!extras.length) {
+            container.innerHTML = '<p class="text-sm text-gray-400 italic">No optional extras available for this tour.</p>';
+            return;
+        }
+        container.innerHTML = extras.map(extra => {
+            const name = lang === 'de' ? (extra.name_de || extra.name)
+                       : lang === 'nl' ? (extra.name_nl || extra.name)
+                       : extra.name;
+            const desc = lang === 'de' ? (extra.description_de || extra.description || '')
+                       : lang === 'nl' ? (extra.description_nl || extra.description || '')
+                       : (extra.description || '');
+
+            let priceLabel;
+            if (extra.price_type === 'on_request' || extra.effective_price == null) {
+                priceLabel = lang === 'de' ? 'Auf Anfrage' : lang === 'nl' ? 'Op aanvraag' : 'POA';
+            } else {
+                const p = parseFloat(extra.effective_price);
+                const suffix = extra.price_type === 'per_person' ? '/pp'
+                             : extra.price_type === 'per_night' ? '/night'
+                             : extra.price_type === 'per_day' ? '/day'
+                             : '';
+                priceLabel = `€${p}${suffix}`;
+            }
+
+            return `
+            <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-100 transition group">
+                <input type="checkbox"
+                       class="tour-extra-checkbox mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                       data-extra-id="${extra.id}"
+                       data-price="${extra.effective_price || 0}"
+                       data-price-type="${extra.price_type || 'on_request'}"
+                       data-name="${name.replace(/"/g, '&quot;')}">
+                <div class="flex-1">
+                    <span class="font-medium text-slate-800 block">${name}</span>
+                    ${desc ? `<span class="text-sm text-gray-500">${desc}</span>` : ''}
+                </div>
+                <span class="text-sm font-semibold text-primary">${priceLabel}</span>
+            </label>`;
+        }).join('');
+
+        // Attach change listeners for pricing updates
+        container.querySelectorAll('.tour-extra-checkbox').forEach(cb => {
+            cb.addEventListener('change', updatePricing);
+        });
+    }
+
+    function calcExtras() {
+        let extrasTotal = 0;
+        const extras = [];
+        const walkerCount = travellers.length || 1;
+        const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 1;
+
+        document.querySelectorAll('.tour-extra-checkbox:checked').forEach(cb => {
+            const name = cb.dataset.name;
+            const price = parseFloat(cb.dataset.price) || 0;
+            const priceType = cb.dataset.priceType;
+            let cost = 0;
+
+            if (priceType === 'per_person') {
+                cost = price * walkerCount;
+            } else if (priceType === 'per_night') {
+                cost = price * walkerCount * (currentTour ? currentTour.days - 1 : 1);
+            } else if (priceType === 'per_day') {
+                cost = price * walkerCount * walkingDays;
+            } else if (priceType === 'per_service' || priceType === 'flat') {
+                cost = price;
+            }
+            // on_request items add €0
+
+            extrasTotal += cost;
+            if (cost > 0) {
+                extras.push(`${name} (€${cost})`);
+            } else {
+                extras.push(`${name} (POA)`);
+            }
+        });
+
+        return { extrasTotal, extras };
+    }
 
     // ─────────── Stripe Init ───────────
     let stripe, cardElement;
@@ -756,7 +831,7 @@
         initTravellers(walkerCount);
 
         // Tour selection
-        document.getElementById('tourSelect').addEventListener('change', function() {
+        document.getElementById('tourSelect').addEventListener('change', async function() {
             currentTour = TOURS.find(t => t.slug === this.value) || null;
             if (currentTour) {
                 document.getElementById('tourInfo').classList.remove('hidden');
@@ -770,10 +845,16 @@
                 const mobImg = document.getElementById('mobileBannerImg');
                 mobImg.src = imgPath;
                 mobImg.classList.remove('hidden');
+                // Load dynamic extras for this tour
+                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Loading extras for this tour...</p>';
+                currentExtras = await loadExtrasForTour(currentTour.slug);
+                renderExtras(currentExtras, 'en');
             } else {
                 document.getElementById('tourInfo').classList.add('hidden');
                 document.getElementById('sidebarImage').style.display = 'none';
                 document.getElementById('mobileBannerImg').classList.add('hidden');
+                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Select a tour above to see available extras.</p>';
+                currentExtras = [];
             }
             updatePricing();
         });
@@ -789,10 +870,7 @@
         // Date change
         document.getElementById('startDate').addEventListener('change', updatePricing);
 
-        // Extras
-        ['airportTransfer','dailyLunch','extraRestDay','polehire','singleSupplement'].forEach(id => {
-            document.getElementById(id).addEventListener('change', updatePricing);
-        });
+        // Extras listeners are attached dynamically in renderExtras()
 
         // Init PayPal buttons
         initPayPal();
@@ -969,25 +1047,8 @@
             datesDisplay = `${fmt(start)} – ${fmt(end)}, ${start.getFullYear()}`;
         }
 
-        // Extras
-        let extrasTotal = 0;
-        const extras = [];
-        const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
-
-        if (document.getElementById('dailyLunch').checked) {
-            const cost = 15 * walkerCount * walkingDays;
-            extrasTotal += cost;
-            extras.push(`Lunch packs (€${cost})`);
-            document.getElementById('lunchPriceLabel').textContent = `€${cost}`;
-        } else {
-            document.getElementById('lunchPriceLabel').textContent = `€${15 * walkerCount * walkingDays}`;
-        }
-        if (document.getElementById('polehire').checked) {
-            extrasTotal += 20;
-            extras.push('Pole hire (€20)');
-        }
-        if (document.getElementById('airportTransfer').checked) extras.push('Airport transfer (POA)');
-        if (document.getElementById('extraRestDay').checked) extras.push('Rest day (POA)');
+        // Extras (dynamic from Supabase)
+        const { extrasTotal, extras } = calcExtras();
 
         const basePrice = currentTour.price * walkerCount;
         const total = basePrice + extrasTotal;
@@ -1046,10 +1107,7 @@
             datesDisplay = `${fmt(start)} – ${fmt(end)}`;
         }
 
-        const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
-        let extrasTotal = 0;
-        if (document.getElementById('dailyLunch').checked) extrasTotal += 15 * walkerCount * walkingDays;
-        if (document.getElementById('polehire').checked) extrasTotal += 20;
+        const { extrasTotal } = calcExtras();
 
         const basePrice = currentTour.price * walkerCount;
         const total = basePrice + extrasTotal;
@@ -1098,14 +1156,18 @@
     function getBookingPayload(paymentMethod) {
         saveTravellerFields();
         const walkerCount = travellers.length;
-        const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 0;
-        let extrasTotal = 0;
-        const extras = [];
-        if (document.getElementById('dailyLunch').checked) { const c = 15*walkerCount*walkingDays; extrasTotal+=c; extras.push(`Lunch (€${c})`); }
-        if (document.getElementById('polehire').checked) { extrasTotal+=20; extras.push('Poles (€20)'); }
-        if (document.getElementById('airportTransfer').checked) extras.push('Airport transfer (POA)');
-        if (document.getElementById('extraRestDay').checked) extras.push('Extra rest day (POA)');
-        if (document.getElementById('singleSupplement').checked) extras.push('Single supplement');
+        const { extrasTotal, extras } = calcExtras();
+
+        // Build structured extras payload with IDs for Supabase
+        const extrasPayload = [];
+        document.querySelectorAll('.tour-extra-checkbox:checked').forEach(cb => {
+            extrasPayload.push({
+                tour_extra_id: cb.dataset.extraId,
+                name: cb.dataset.name,
+                price: parseFloat(cb.dataset.price) || 0,
+                price_type: cb.dataset.priceType
+            });
+        });
 
         const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
         const deposit = Math.round(total * 0.25 * 100) / 100;
@@ -1119,7 +1181,6 @@
             start_date: startDate,
             end_date: endDate,
             number_of_walkers: walkerCount,
-            single_occupancy: document.getElementById('singleSupplement')?.checked || false,
             lead_traveller: {
                 firstName: travellers[0]?.firstName || '',
                 lastName: travellers[0]?.lastName || '',
@@ -1132,7 +1193,8 @@
                 firstName: t.firstName, lastName: t.lastName, room: t.room || 'double',
             })),
             special_requirements: document.getElementById('specialRequirements').value || '',
-            extras,
+            extras: extrasPayload,
+            extras_display: extras,
             pricing: { total, deposit, balance: total - deposit },
             payment_method: paymentMethod,
             pay_full: false,
