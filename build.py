@@ -1294,6 +1294,295 @@ def translate_html_ui(html, lang):
     return html
 
 
+def translate_checkout_form(html, lang):
+    """Translate checkout page form labels, buttons, JS strings for DE/NL."""
+    if lang == 'en':
+        return html
+
+    CHECKOUT_TRANSLATIONS = {
+        'de': {
+            # Page hero
+            'Secure your dates with a 25% deposit. Balance due 42 days before departure.':
+                'Sichern Sie sich Ihre Termine mit einer Anzahlung von 25%. Restzahlung 42 Tage vor Abreise.',
+            # Step indicators
+            '>Tour<': '>Tour<',
+            'id="stepLabel2">Travellers<': 'id="stepLabel2">Reisende<',
+            'id="stepLabel3">Extras<': 'id="stepLabel3">Extras<',
+            'id="stepLabel4">Payment<': 'id="stepLabel4">Zahlung<',
+            # Step 1: Tour & Dates
+            'Select Your Tour': 'Wählen Sie Ihre Tour',
+            'Which tour interests you?': 'Welche Tour interessiert Sie?',
+            '-- Select a walking tour --': '-- Wandertour auswählen --',
+            'Choose Your Dates': 'Wählen Sie Ihre Reisedaten',
+            '>Start date<': '>Startdatum<',
+            '>Number of walkers<': '>Anzahl der Wanderer<',
+            '>Duration:<': '>Dauer:<',
+            '>Price per person:<': '>Preis pro Person:<',
+            '>Difficulty:<': '>Schwierigkeit:<',
+            'days</': 'Tage</',
+            'Next: Traveller Details': 'Weiter: Reisende',
+            # Step 2: Travellers
+            'Traveller Details': 'Angaben der Reisenden',
+            'Add Another Traveller': 'Weiteren Reisenden hinzufügen',
+            'Lead Traveller Contact': 'Kontaktdaten des Hauptreisenden',
+            '>Email<': '>E-Mail<',
+            '>Phone<': '>Telefon<',
+            '>Country<': '>Land<',
+            '-- Select --': '-- Auswählen --',
+            '>Ireland<': '>Irland<',
+            '>United Kingdom<': '>Großbritannien<',
+            '>Germany<': '>Deutschland<',
+            '>Netherlands<': '>Niederlande<',
+            '>France<': '>Frankreich<',
+            '>United States<': '>Vereinigte Staaten<',
+            '>Canada<': '>Kanada<',
+            '>Australia<': '>Australien<',
+            '>Special requirements<': '>Besondere Anforderungen<',
+            'Dietary, accessibility...': 'Ernährung, Barrierefreiheit...',
+            'Next: Extras': 'Weiter: Extras',
+            # Step 3: Extras
+            'Optional Extras': 'Optionale Extras',
+            '>Airport transfer<': '>Flughafentransfer<',
+            '>Price on application<': '>Preis auf Anfrage<',
+            '>Daily lunch packs<': '>Tägliche Lunchpakete<',
+            '€15 per person per walking day': '€15 pro Person pro Wandertag',
+            '>Extra rest day<': '>Zusätzlicher Ruhetag<',
+            '>Walking pole hire<': '>Wanderstöcke leihen<',
+            '€20 per pair': '€20 pro Paar',
+            '>Single supplement<': '>Einzelzimmerzuschlag<',
+            'Solo occupancy surcharge per room per night': 'Zuschlag für Einzelbelegung pro Zimmer pro Nacht',
+            'Next: Payment': 'Weiter: Zahlung',
+            # Step 4: Payment / Order summary
+            'Order Summary': 'Bestellübersicht',
+            '>Dates<': '>Reisedaten<',
+            '>Travellers<': '>Reisende<',
+            '>Price per person<': '>Preis pro Person<',
+            '>Subtotal<': '>Zwischensumme<',
+            '>Extras<': '>Extras<',
+            '>Total<': '>Gesamt<',
+            'Deposit (25%)': 'Anzahlung (25%)',
+            'Balance due 42 days before departure.': 'Restzahlung 42 Tage vor Abreise.',
+            # T&Cs
+            'I accept the': 'Ich akzeptiere die',
+            'Terms &amp; Conditions': 'Allgemeinen Geschäftsbedingungen',
+            'Privacy Policy': 'Datenschutzrichtlinie',
+            'Keep me updated with walking tips, new routes &amp; special offers':
+                'Halten Sie mich mit Wandertipps, neuen Routen &amp; Sonderangeboten auf dem Laufenden',
+            'Please accept the Terms & Conditions to continue.': 'Bitte akzeptieren Sie die AGB, um fortzufahren.',
+            # Payment method
+            'Payment Method': 'Zahlungsmethode',
+            '>DEFAULT<': '>STANDARD<',
+            '>Card Payment<': '>Kartenzahlung<',
+            'Pay with your PayPal account': 'Bezahlen Sie mit Ihrem PayPal-Konto',
+            '>Card details<': '>Kartendetails<',
+            'Pay Deposit': 'Anzahlung bezahlen',
+            'Your payment is securely processed. You\'ll only be charged the 25% deposit today.':
+                'Ihre Zahlung wird sicher verarbeitet. Ihnen wird heute nur die 25% Anzahlung berechnet.',
+            '>Secure payment<': '>Sichere Zahlung<',
+            '>SSL encrypted<': '>SSL-verschlüsselt<',
+            '>24hr support<': '>24h Support<',
+            'You\'ll be redirected to PayPal to complete payment.':
+                'Sie werden zu PayPal weitergeleitet, um die Zahlung abzuschließen.',
+            # Success message
+            'Booking Confirmed!': 'Buchung bestätigt!',
+            'Thank you! We\'ve received your booking and deposit.':
+                'Vielen Dank! Wir haben Ihre Buchung und Anzahlung erhalten.',
+            'Your booking reference:': 'Ihre Buchungsreferenz:',
+            'You\'ll receive a confirmation email shortly. Our team will be in touch within 24 hours with your full trip details.':
+                'Sie erhalten in Kürze eine Bestätigungs-E-Mail. Unser Team wird sich innerhalb von 24 Stunden mit Ihren vollständigen Reisedaten bei Ihnen melden.',
+            'Back to Homepage': 'Zurück zur Startseite',
+            # Back button
+            '> Back': '> Zurück',
+            # Sidebar
+            'Your Booking': 'Ihre Buchung',
+            '>Price/person<': '>Preis/Person<',
+            'Questions? Call': 'Fragen? Rufen Sie an',
+            # JS: Room types
+            "label: 'Single'": "label: 'Einzelzimmer'",
+            "desc: 'Single bed'": "desc: 'Einzelbett'",
+            "label: 'Double'": "label: 'Doppelzimmer'",
+            "desc: 'Double/twin bed'": "desc: 'Doppel-/Zweibettzimmer'",
+            "label: 'Triple'": "label: 'Dreibettzimmer'",
+            "desc: '2 single beds'": "desc: '2 Einzelbetten'",
+            "label: 'Family'": "label: 'Familienzimmer'",
+            "desc: 'Double + single'": "desc: 'Doppel + Einzelbett'",
+            # JS: traveller labels
+            "Lead Traveller'": "Hauptreisender'",
+            "Traveller ${i + 1}": "Reisender ${i + 1}",
+            "'First name'": "'Vorname'",
+            "'Last name'": "'Nachname'",
+            "'>First name<": "'>Vorname<",
+            "'>Last name<": "'>Nachname<",
+            ">First name<": ">Vorname<",
+            ">Last name<": ">Nachname<",
+            "placeholder=\"First name\"": "placeholder=\"Vorname\"",
+            "placeholder=\"Last name\"": "placeholder=\"Nachname\"",
+            # JS: traveller count
+            "traveller${travellers.length !== 1 ? 's' : ''}": "Reisende",
+            # JS: alert messages
+            "alert('Please select a tour.')": "alert('Bitte wählen Sie eine Tour.')",
+            "alert('Please choose a start date.')": "alert('Bitte wählen Sie ein Startdatum.')",
+            "alert('Please fill in all traveller names.')": "alert('Bitte füllen Sie alle Reisenamen aus.')",
+            "alert('Please enter your email.')": "alert('Bitte geben Sie Ihre E-Mail-Adresse ein.')",
+            # JS: payment errors
+            "showBookingError('Payment processing failed: '": "showBookingError('Zahlungsverarbeitung fehlgeschlagen: '",
+            "'Something went wrong. Please try again or contact us at info@walkingholidayireland.com'":
+                "'Etwas ist schiefgelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns unter info@walkingholidayireland.com'",
+            "'PayPal payment failed. Please try again or use card payment.'":
+                "'PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut oder nutzen Sie die Kartenzahlung.'",
+            # JS: Pay button text rebuild
+            "Pay Deposit — €": "Anzahlung — €",
+            # Region group labels
+            "Wild Atlantic Way": "Wild Atlantic Way",
+            "Ireland's Ancient East": "Irlands Historischer Osten",
+            "Northern Ireland": "Nordirland",
+        },
+        'nl': {
+            # Page hero
+            'Secure your dates with a 25% deposit. Balance due 42 days before departure.':
+                'Reserveer uw data met een aanbetaling van 25%. Restbetaling 42 dagen voor vertrek.',
+            # Step indicators
+            '>Tour<': '>Tour<',
+            'id="stepLabel2">Travellers<': 'id="stepLabel2">Reizigers<',
+            'id="stepLabel3">Extras<': 'id="stepLabel3">Extra\'s<',
+            'id="stepLabel4">Payment<': 'id="stepLabel4">Betaling<',
+            # Step 1: Tour & Dates
+            'Select Your Tour': 'Kies uw tour',
+            'Which tour interests you?': 'Welke tour heeft uw interesse?',
+            '-- Select a walking tour --': '-- Selecteer een wandeltour --',
+            'Choose Your Dates': 'Kies uw reisdata',
+            '>Start date<': '>Startdatum<',
+            '>Number of walkers<': '>Aantal wandelaars<',
+            '>Duration:<': '>Duur:<',
+            '>Price per person:<': '>Prijs per persoon:<',
+            '>Difficulty:<': '>Moeilijkheidsgraad:<',
+            'days</': 'dagen</',
+            'Next: Traveller Details': 'Volgende: Reizigers',
+            # Step 2: Travellers
+            'Traveller Details': 'Gegevens reizigers',
+            'Add Another Traveller': 'Nog een reiziger toevoegen',
+            'Lead Traveller Contact': 'Contactgegevens hoofdreiziger',
+            '>Email<': '>E-mail<',
+            '>Phone<': '>Telefoon<',
+            '>Country<': '>Land<',
+            '-- Select --': '-- Selecteer --',
+            '>Ireland<': '>Ierland<',
+            '>United Kingdom<': '>Verenigd Koninkrijk<',
+            '>Germany<': '>Duitsland<',
+            '>Netherlands<': '>Nederland<',
+            '>France<': '>Frankrijk<',
+            '>United States<': '>Verenigde Staten<',
+            '>Canada<': '>Canada<',
+            '>Australia<': '>Australië<',
+            '>Special requirements<': '>Speciale wensen<',
+            'Dietary, accessibility...': 'Dieet, toegankelijkheid...',
+            'Next: Extras': 'Volgende: Extra\'s',
+            # Step 3: Extras
+            'Optional Extras': 'Optionele extra\'s',
+            '>Airport transfer<': '>Luchthaventransfer<',
+            '>Price on application<': '>Prijs op aanvraag<',
+            '>Daily lunch packs<': '>Dagelijkse lunchpakketten<',
+            '€15 per person per walking day': '€15 per persoon per wandeldag',
+            '>Extra rest day<': '>Extra rustdag<',
+            '>Walking pole hire<': '>Wandelstokken huren<',
+            '€20 per pair': '€20 per paar',
+            '>Single supplement<': '>Eenpersoonskamertoeslag<',
+            'Solo occupancy surcharge per room per night': 'Toeslag eenpersoonskamer per kamer per nacht',
+            'Next: Payment': 'Volgende: Betaling',
+            # Step 4: Payment / Order summary
+            'Order Summary': 'Besteloverzicht',
+            '>Dates<': '>Reisdata<',
+            '>Travellers<': '>Reizigers<',
+            '>Price per person<': '>Prijs per persoon<',
+            '>Subtotal<': '>Subtotaal<',
+            '>Extras<': '>Extra\'s<',
+            '>Total<': '>Totaal<',
+            'Deposit (25%)': 'Aanbetaling (25%)',
+            'Balance due 42 days before departure.': 'Restbetaling 42 dagen voor vertrek.',
+            # T&Cs
+            'I accept the': 'Ik accepteer de',
+            'Terms &amp; Conditions': 'Algemene voorwaarden',
+            'Privacy Policy': 'Privacybeleid',
+            'Keep me updated with walking tips, new routes &amp; special offers':
+                'Houd mij op de hoogte van wandeltips, nieuwe routes &amp; speciale aanbiedingen',
+            'Please accept the Terms & Conditions to continue.': 'Accepteer de algemene voorwaarden om door te gaan.',
+            # Payment method
+            'Payment Method': 'Betaalmethode',
+            '>DEFAULT<': '>STANDAARD<',
+            '>Card Payment<': '>Kaartbetaling<',
+            'Pay with your PayPal account': 'Betaal met uw PayPal-account',
+            '>Card details<': '>Kaartgegevens<',
+            'Pay Deposit': 'Aanbetaling',
+            'Your payment is securely processed. You\'ll only be charged the 25% deposit today.':
+                'Uw betaling wordt veilig verwerkt. U betaalt vandaag alleen de aanbetaling van 25%.',
+            '>Secure payment<': '>Veilige betaling<',
+            '>SSL encrypted<': '>SSL-versleuteld<',
+            '>24hr support<': '>24u ondersteuning<',
+            'You\'ll be redirected to PayPal to complete payment.':
+                'U wordt doorgestuurd naar PayPal om de betaling te voltooien.',
+            # Success message
+            'Booking Confirmed!': 'Boeking bevestigd!',
+            'Thank you! We\'ve received your booking and deposit.':
+                'Bedankt! Wij hebben uw boeking en aanbetaling ontvangen.',
+            'Your booking reference:': 'Uw boekingsreferentie:',
+            'You\'ll receive a confirmation email shortly. Our team will be in touch within 24 hours with your full trip details.':
+                'U ontvangt binnenkort een bevestigingsmail. Ons team neemt binnen 24 uur contact met u op met uw volledige reisgegevens.',
+            'Back to Homepage': 'Terug naar de startpagina',
+            # Back button
+            '> Back': '> Terug',
+            # Sidebar
+            'Your Booking': 'Uw boeking',
+            '>Price/person<': '>Prijs/persoon<',
+            'Questions? Call': 'Vragen? Bel',
+            # JS: Room types
+            "label: 'Single'": "label: 'Eenpersoons'",
+            "desc: 'Single bed'": "desc: 'Eenpersoonsbed'",
+            "label: 'Double'": "label: 'Tweepersoons'",
+            "desc: 'Double/twin bed'": "desc: 'Tweepersoons-/twinbed'",
+            "label: 'Triple'": "label: 'Driepersoons'",
+            "desc: '2 single beds'": "desc: '2 eenpersoonsbedden'",
+            "label: 'Family'": "label: 'Familie'",
+            "desc: 'Double + single'": "desc: 'Dubbel + enkel'",
+            # JS: traveller labels
+            "Lead Traveller'": "Hoofdreiziger'",
+            "Traveller ${i + 1}": "Reiziger ${i + 1}",
+            "'First name'": "'Voornaam'",
+            "'Last name'": "'Achternaam'",
+            "'>First name<": "'>Voornaam<",
+            "'>Last name<": "'>Achternaam<",
+            ">First name<": ">Voornaam<",
+            ">Last name<": ">Achternaam<",
+            "placeholder=\"First name\"": "placeholder=\"Voornaam\"",
+            "placeholder=\"Last name\"": "placeholder=\"Achternaam\"",
+            # JS: traveller count
+            "traveller${travellers.length !== 1 ? 's' : ''}": "reizigers",
+            # JS: alert messages
+            "alert('Please select a tour.')": "alert('Selecteer een tour.')",
+            "alert('Please choose a start date.')": "alert('Kies een startdatum.')",
+            "alert('Please fill in all traveller names.')": "alert('Vul alle namen van reizigers in.')",
+            "alert('Please enter your email.')": "alert('Voer uw e-mailadres in.')",
+            # JS: payment errors
+            "showBookingError('Payment processing failed: '": "showBookingError('Betaling mislukt: '",
+            "'Something went wrong. Please try again or contact us at info@walkingholidayireland.com'":
+                "'Er is iets misgegaan. Probeer het opnieuw of neem contact met ons op via info@walkingholidayireland.com'",
+            "'PayPal payment failed. Please try again or use card payment.'":
+                "'PayPal-betaling mislukt. Probeer het opnieuw of gebruik kaartbetaling.'",
+            # JS: Pay button text rebuild
+            "Pay Deposit — €": "Aanbetaling — €",
+            # Region group labels
+            "Wild Atlantic Way": "Wild Atlantic Way",
+            "Ireland's Ancient East": "Het oude oosten van Ierland",
+            "Northern Ireland": "Noord-Ierland",
+        }
+    }
+
+    replacements = CHECKOUT_TRANSLATIONS.get(lang, {})
+    for find_text, replace_text in replacements.items():
+        if find_text != replace_text:
+            html = html.replace(find_text, replace_text)
+    return html
+
+
 def render_accommodation_type_badges(accommodation_type):
     """Render accommodation type badges from a Postgres text array."""
     if not accommodation_type:
@@ -4566,7 +4855,7 @@ def build_static_pages(lang, translations):
         'northern-ireland',
         'ancient-east',
         'mountains-of-mourne',
-        # 'checkout' — manually maintained with full translations (de/buchung.html, nl/boeken.html)
+        'checkout',
         'privacy-policy',
         'terms-and-conditions',
         'best-hiking-trails-ireland',
@@ -4630,6 +4919,10 @@ def build_static_pages(lang, translations):
 
         # Apply the standard UI translations (header, footer, nav, buttons)
         html = translate_html_ui(html, lang)
+
+        # Apply checkout-specific form translations (labels, JS, room types, alerts)
+        if page_slug == 'checkout':
+            html = translate_checkout_form(html, lang)
 
         # Update page title if provided
         page_title = pt.get('page_title')
