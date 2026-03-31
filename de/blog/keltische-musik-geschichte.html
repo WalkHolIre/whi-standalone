@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur | Walking Holiday Ireland</title>
+    <meta name="description" content="Erleben Sie die faszinierenden Klänge der keltischen Musik in irischen Tälern. Entdecken Sie die Rolle der Blechflöte in Irlands Volkstraditionen und wie dieses alte musikalische Erbe Ihren Wanderurlaub bereichert."/>
+    <link rel="canonical" href="https://walkingholidayireland.de/blog/keltische-musik-geschichte"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur",
+        "description": "Erleben Sie die faszinierenden Klänge der keltischen Musik in irischen Tälern. Entdecken Sie die Rolle der Blechflöte in Irlands Volkstraditionen und wie dieses alte musikalische Erbe Ihren Wanderurlaub bereichert.",
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/keltische-musik-geschichte.html"
+        }
+    }
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/celtic-music-and-the-tin-whistle" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog/keltische-musik-geschichte" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog/keltische-muziek-geschiedenis" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/celtic-music-and-the-tin-whistle" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.de/blog/keltische-musik-geschichte"/>
+    <meta property="og:title" content="Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur"/>
+    <meta property="og:description" content="Erleben Sie die faszinierenden Klänge der keltischen Musik in irischen Tälern. Entdecken Sie die Rolle der Blechflöte in Irlands Volkstraditionen und wie dieses alte musikalische Erbe Ihren Wanderurlaub bereichert."/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur"/>
+    <meta name="twitter:description" content="Erleben Sie die faszinierenden Klänge der keltischen Musik in irischen Tälern. Entdecken Sie die Rolle der Blechflöte in Irlands Volkstraditionen und wie dieses alte musikalische Erbe Ihren Wanderurlaub bereichert."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a>
+                            <a href="../wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../wandergebiet-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a>
+                            <a href="../wandergebiet-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a>
+                            <a href="../wandergebiet-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../wandergebiet-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a>
+                            <a href="../wandergebiet-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../tailor-made" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../how-it-works" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
+                            <a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
+                            <a href="../self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about">About Us</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="../contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Get in Touch
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="../destinations" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
+                <a href="../how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+                <a href="../about" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">About Us</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Get in Touch</a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 pt-8 pb-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Irish Culture &amp; Heritage</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">March 28, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">7 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            Keltische Musik Geschichte: Traditionelle Irische Musik und die Wanderkultur
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-gradient-to-br from-primary/20 to-brand-purple/20"></div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <div class="toc-block">
+  <h2>Inhaltsverzeichnis</h2>
+  <ul>
+    <li><a href="#geschichte" class="toc-link">Ein kurzer Überblick über irische Volksmusik</a></li>
+    <li><a href="#instrumente" class="toc-link">Keltische Musikinstrumente</a></li>
+    <li><a href="#session" class="toc-link">Die Pub-Session</a></li>
+    <li><a href="#standorte" class="toc-link">Wo Sie traditionelle Musik auf Ihrem Wanderurlaub finden</a></li>
+    <li><a href="#verbindung" class="toc-link">Musik und Wandern: Die Verbindung</a></li>
+    <li><a href="#planung" class="toc-link">Planung Ihres musikalischen Wanderurlaubs</a></li>
+    <li><a href="#faq" class="toc-link">Häufig gestellte Fragen</a></li>
+  </ul>
+</div>
+
+<p>Mein Name ist Cliff, und ich leite Walking Holiday Ireland. Eines der Dinge, das Wanderer in Irland am meisten überrascht, ist nicht die Landschaft – es ist die Musik. Sie beenden einen Tag zum Wandern durch Berge oder entlang der Küste, gehen in eine Dorfkneipe und finden eine Gruppe von Musikern, die traditionelle Melodien in der Ecke spielen. Keine Bühne, keine Eintrittskarten, keine Verstärkung. Nur Geigen, Blechflöten, Gitarren und ein Bodhrán, das den Takt hält, während die Biere auf dem Tresen abgesetzt werden. Das ist irische traditionelle Musik, wie sie gehört werden sollte, und es ist einer der großen Höhepunkte eines Wanderurlaubs in Irland.</p>
+
+<p>Die Geschichte der keltischen Musik erstreckt sich über Jahrhunderte, aber die Tradition ist sehr lebendig. Wenn Sie verstehen, woher diese Musik kommt und wie sie heute lebt, fügt dies jeder Reise nach Irland eine ganz neue Dimension hinzu. Dieser Leitfaden behandelt die Geschichte, die Instrumente, die Orte und die Verbindung zwischen Wandern und Musik, die Irland so einzigartig macht.</p>
+
+<h2 id="geschichte">Ein kurzer Überblick über irische Volksmusik</h2>
+
+<p>Die Wurzeln der irischen Volksmusik gehen tief. Die frühesten Aufzeichnungen über organisierte Musik in Irland stammen aus dem Mittelalter, als Harfenspieler in der gälischen Gesellschaft einen hohen Status hatten. Die Harfe war das Instrument der Häuptlinge – professionelle Harfenspieler komponierten Musik für ihre Gönner, und die Tradition wurde über Generationen hinweg mündlich von Meister zu Schüler weitergegeben.</p>
+
+<p>Das 17. und 18. Jahrhundert waren schwierig für die irische Kultur. Die Strafgesetze unterdrückten die katholische Bildung und gälische Bräuche, aber die Musik überlebte. Wandernde Musiker trugen Melodien von Pfarrei zu Pfarrei, und Hausdansen hielten die Tradition in ländlichen Gemeinschaften lebendig. Die Uilleann Pipes – Irlands einzigartige Form des Dudelsacks – entwickelten sich während dieser Zeit, ebenso wie die Sean-nós-Singtradition, ein unbegleiteter Gesangsstil, der heute eine der einflussreichsten Formen des musikalischen Ausdrucks des Landes ist.</p>
+
+<p>Die Große Hungersnot der 1840er Jahre verwüstete das ländliche Irland und zerstreute Millionen von Menschen in die ganze Welt. Sie nahmen ihre Musik mit sich. Irische Auswanderergemeinden in Amerika, Großbritannien und Australien bewahrten und entwickelten die Tradition, und der Einfluss der irischen Volksmusik ist in der amerikanischen Country-Musik, den Appalachischen Geigentönen und der Folkrevolution des 20. Jahrhunderts zu hören.</p>
+
+<p>Zurück in Irland begann eine Wiederbelebung in den 1890er Jahren mit der Gaelic League und setzte sich während des 20. Jahrhunderts fort. Comhaltas Ceoltóirí Éireann, gegründet 1951, wurde die Hauptorganisation zur Förderung traditioneller Musik. Das jährliche Fleadh Cheoil na hÉireann – das All-Ireland-Musikfestival – zieht Hunderttausende Menschen an und bleibt die größte Feier der traditionellen Musik in der Welt.</p>
+
+<h2 id="instrumente">Keltische Musikinstrumente</h2>
+
+<p>Die keltischen Musikinstrumente, die Sie in einer irischen Pub-Session hören, haben sich über Jahrhunderte entwickelt, jedes mit seinem eigenen Charakter und seiner Rolle in der Musik.</p>
+
+<p>Die Blechflöte ist das Instrument, das die meisten Menschen mit irischer Musik verbinden. Es ist eine einfache sechslöchrige Metallflöte, die einen hellen, klaren Ton erzeugt. Trotz ihrer Einfachheit kann ein geschickter Spieler außergewöhnliche Geschwindigkeit und Verzierungen erzeugen. Die Verbindung zwischen Blechflöte und Irland ist stark – sie ist oft das erste Instrument, das Kinder lernen, und viele der besten Musiker des Landes begannen mit einer Flöte, bevor sie zu anderen Instrumenten übergingen.</p>
+
+<p>Die Geige ist das Rückgrat der meisten Sessions. Das irische Geigenspiel hat einen unverwechselbaren Stil – schnelles Bogenstrich, schwere Verzierungen und regionale Unterschiede, die ein trainiertes Ohr erkennen kann. Ein Geiger aus Clare klingt anders als ein Spieler aus Donegal, und diese regionalen Stile sind einer der reichsten Aspekte der Tradition.</p>
+
+<p>Das Bodhrán ist die Rahmentrommel, die den Rhythmus liefert. Mit einem kleinen Holzstöckchen namens Tipper gespielt, treibt es die Musik mit einem tiefen, pulsierenden Schlag voran. Ein guter Bodhrán-Spieler wird mehr gefühlt als gehört – die Trommel unterstützt die Melodieinstrumente, ohne sie zu überlagern.</p>
+
+<p>Die Uilleann Pipes sind Irlands komplexestes Instrument. Im Gegensatz zu schottischen Dudelsäcken werden sie im Sitzen gespielt und durch einen Balg unter dem Ellbogen angetrieben, nicht durch den Atem. Der Klang ist ruhiger und ausdrucksstärker und kann eine außergewöhnliche Bandbreite und Emotion erreichen. Die Uilleann Pipes gut gespielt zu hören, ist eine der ergreifendsten Musikerfahrungen, die Sie in Irland machen können.</p>
+
+<p>Weitere Instrumente in einer typischen Session sind die Concertina, das Akkordeon, die Querflöte, das Banjo und die Gitarre. Die Gitarre ist eine relativ neue Ergänzung – sie kam in den 1960er Jahren an und ist heute ein Standard-Begleitinstrument. Jede Session hat ihre eigene Mischung, und keine zwei klingen genau gleich.</p>
+
+<h2 id="session">Die Pub-Session</h2>
+
+<p>Die Pub-Session ist, wo irische traditionelle Musik lebendig wird. Eine Session ist ein informelles Treffen von Musikern, die zusammen Melodien spielen, normalerweise in einer Kneipe und normalerweise ohne Bezahlung. Es ist keine Aufführung – es ist ein gesellschaftliches Ereignis, bei dem Musik geteilt wird, Melodien ausgetauscht werden und das Publikum Teil der Atmosphäre ist, anstatt davon getrennt zu sein.</p>
+
+<p>Sessions folgen einer ungeschriebenen Etikette. Normalerweise führt ein Musiker eine Melodie an, indem er eine Weise startet, und andere schließen sich an. Die Melodien kommen in Sets von zwei oder drei, normalerweise Reels, Jigs oder Hornpipes. Zwischen den Sets gibt es Gespräche, Gelächter und das Geräusch von bestellten Bieren. Eine gute Session baut sich über den Abend auf, beginnt leise und wächst in Energie und Intensität, wenn die Nacht fortschreitet.</p>
+
+<p>Für Wanderer ist die Pub-Session der perfekte Abschluss eines Tages auf dem Wanderweg. Sie haben Stunden in Stille auf den Bergen oder an der Küste verbracht, und die Wärme und Energie von Live-Musik in einer kleinen Kneipe ist der ideale Kontrast. Die Musik verbindet Sie mit dem Ort auf eine Weise, wie es die Landschaft allein nicht kann – sie sagt Ihnen etwas über die Menschen, die Geschichte und den Geist der Gemeinschaft, durch die Sie wandern.</p>
+
+<h2 id="standorte">Wo Sie traditionelle Musik auf Ihrem Wanderurlaub finden</h2>
+
+<p>Einige der besten Orte für traditionelle irische Musik sind auch einige der besten Wanderziele. Das ist kein Zufall – die Gebiete, die ihre musikalischen Traditionen bewahrt haben, sind tendenziell dieselben ländlichen, irischsprachigen und kulturell reichen Regionen, in denen die schönsten Wanderwege laufen.</p>
+
+<p>Dingle in County Kerry ist eine der großartigen Musikstädte. Die Kneipen in der Hauptstraße haben an den meisten Tagen der Woche Sessions, und die Qualität ist durchgehend hoch. Der <a href="https://walkingholidayireland.de/dingle-way-wanderfuhrer/" class="link-default">Dingle Way</a> führt direkt durch die Stadt und macht es einfach, weltklasse Wandern mit weltklasse Musik zu verbinden.</p>
+
+<p>Doolin in County Clare nennt sich die traditionelle Musikhauptstadt Irlands, und der Anspruch hat Verdienste. Das Dorf hat drei Kneipen, die das ganze Jahr über Sessions veranstalten, und der Standard ist bemerkenswert für einen so kleinen Ort. Der <a href="https://walkingholidayireland.de/burren-way-wanderfuhrer/" class="link-default">Burren Way</a> ist in der Nähe, und die Kombination der Kalksteinlandschaft des Burren mit der Musikszene von Doolin ist eines der besten kulturellen Wandererlebnisse in Europa.</p>
+
+<p>Galway City hat eine lebendige Musikszene mit Sessions in Kneipen in der Innenstadt an den meisten Abenden. Es ist ein großartiger Ausgangspunkt für Wanderungen in Connemara, wo die Sean-nós-Singtradition und die irische Sprache noch Teil des täglichen Lebens sind.</p>
+
+<p>Killarney, Kenmare und die Dörfer entlang des <a href="https://walkingholidayireland.de/kerry-way-komplett-guide/" class="link-default">Kerry Way</a> haben regelmäßige Sessions, besonders im Sommer. Selbst kleinere Dörfer auf unseren Wanderrouten haben oft eine Kneipe, in der Musik mindestens einmal pro Woche gespielt wird.</p>
+
+<h2 id="verbindung">Musik und Wandern: Die Verbindung</h2>
+
+<p>Es gibt eine natürliche Verbindung zwischen Wandern und traditioneller Musik in Irland. Beide sind soziale Aktivitäten, die Menschen zusammenbringen. Beide folgen Rhythmen – der Rhythmus Ihrer Füße auf dem Weg, der Rhythmus eines Reel oder Jig in einer Kneipe. Und beide sind Wege, um die irische Landschaft und Kultur zu erleben, die über die Oberfläche hinausgehen.</p>
+
+<p>Viele der Melodien in der Tradition sind nach Orten benannt – Hügeln, Flüssen, Städten und Straßen. Durch diese Orte zu wandern und die Melodie dann, die nach ihnen benannt ist, an diesem Abend in einer Session zu hören, schafft eine Verbindung zwischen der Musik und der Landschaft, die lange nach der Heimreise bei Ihnen bleibt.</p>
+
+<p>Unsere <a href="https://walkingholidayireland.de/individuelle-wanderurlaube-irland/" class="link-default">individuellen Wanderurlaube</a> führen Sie durch die Herzstücke der irischen Musik. Die Unterkunft, die wir buchen, ist in Dörfern, in denen die Tradition lebendig ist, und unsere Routennotizen enthalten Empfehlungen für die besten Kneipen und Session-Nächte entlang jedes Pfades. Für Wanderer, die die volle Tiefe der irischen Kultur erleben möchten, ist Musik genauso wichtig wie Landschaft.</p>
+
+<h2 id="planung">Planung Ihres musikalischen Wanderurlaubs</h2>
+
+<p>Die <a href="https://walkingholidayireland.de/die-beste-zeit-irland-zu-besuchen/" class="link-default">beste Zeit, um Irland zu besuchen</a> für die Verbindung von Wandern und Musik ist Mai bis September. Der Sommer bringt die häufigsten Sessions, und Festivals wie Fleadh und die Willie Clancy Week in Miltown Malbay füllen ganze Städte mit Musik. Das <a href="https://walkingholidayireland.de/das-irische-wetter/" class="link-default">irische Wetter</a> ist mild im Sommer und perfekt für lange Tage auf dem Weg gefolgt von langen Abenden in der Kneipe.</p>
+
+<p>Schauen Sie sich unsere <a href="https://walkingholidayireland.de/gefuhrte-vs-individuelle-wanderurlaube/" class="link-default">geführten Wanderurlaube</a> an, wenn Sie einen lokalen Führer möchten, der Sie zu den besten Sessions hinweisen kann. Unsere <a href="https://walkingholidayireland.de/bewertung-von-wandertouren/" class="link-default">Tour-Bewertung</a> hilft Ihnen, das richtige Wanderniveau zu wählen, und unsere <a href="https://walkingholidayireland.de/rucksack-checkliste/" class="link-default">Packungsliste</a> deckt alles ab, was Sie mitbringen müssen – obwohl ein gutes Ohr für Musik und die Bereitschaft, ruhig in der Ecke einer Kneipe zu sitzen, die einzigen Anforderungen für das Abendprogramm sind.</p>
+
+<p>Die Geschichte der keltischen Musik ist nicht etwas, das Sie in einem Museum in Irland lesen. Es ist etwas, das Sie in einer Kneipe nach einem Tag Wandern hören, gespielt von Menschen, die es von ihren Eltern gelernt haben, die es von ihren Eltern gelernt haben. Diese lebende Überlieferungskette ist eines der Dinge, das Wandern in Irland von Wandern irgendwo sonst auf der Welt unterscheidet.</p>
+
+<h2 id="faq">Häufig gestellte Fragen</h2>
+
+<h3>Kann ich ohne Musikerfahrung an einer Pub-Session teilnehmen?</h3>
+<p>Ja, absolut! Pub-Sessions sind offen für alle. Sie müssen nicht spielen – viele Besucher sitzen einfach, hören zu und genießen die Atmosphäre. Die Musiker freuen sich über das Publikum und die Unterstützung. Nehmen Sie einfach ein Getränk, finden Sie einen ruhigen Fleck in der Nähe und lassen Sie die Musik Sie aufnehmen.</p>
+
+<h3>Welche ist die beste Jahreszeit für Sessions?</h3>
+<p>Mai bis September bietet die häufigsten und hochwertigsten Sessions. Im Sommer gibt es mehr Touristen und Musiker sind aktiver. Allerdings finden Sie das ganze Jahr über Sessions – sogar an ruhigen Winternächten in ländlichen Kneipen hat oft ein lokaler Musiker Zeit zu spielen.</p>
+
+<h3>Wie lange dauert eine typische Session?</h3>
+<p>Sessions beginnen normalerweise gegen 21:00 oder 21:30 Uhr und können bis Mitternacht oder später andauern. Es ist völlig normal, jederzeit anzukommen und zu gehen – Sie müssen nicht die ganze Zeit bleiben. Manche Menschen kommen für eine Stunde, andere bleiben den ganzen Abend.</p>
+
+<h3>Muss ich etwas Bestimmtes in einer Session bestellen?</h3>
+<p>Es ist höflich, etwas zu bestellen, wenn Sie längere Zeit bleiben – ein Bier, ein Wein, ein Tee. Aber es gibt keine strikten Regeln. Manche Kneipen haben ein Minimum, manche nicht. Fragen Sie, wenn Sie unsicher sind.</p>
+
+<h3>Wo kann ich die irische Musik online anhören?</h3>
+<p>Spotify, Apple Music und YouTube haben ausgezeichnete Sammlungen der klassischen Sessions. Suchen Sie nach „Irish Traditional Music" oder „Fleadh Cheoil" für die besten Sammlungen. Künstler wie De Danann, The Chieftains und Planxty sind großartige Startpunkte, um zu verstehen, wie professionelle traditionelle Musik klingt.</p>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190405894-optimized-O_Shea_s_Pub__Borris__Co_Carlow_Web_Size.webp" alt="O'Shea's Pub in Borris, County Carlow – ein traditioneller irischer Pub mit Holzbalken und warmer Beleuchtung" class="img-default" />
+</figure>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190411098-optimized-Joyces_Pub__Borris__Carlow_TI7T5C.webp" alt="Joyce's Pub in Borris, Carlow – eine beliebte Session-Kneipe mit authentischem Charakter" class="img-default" />
+</figure>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774195232308-optimized-Clonbur__Village__Connemara__Co_Galway_TI7124W.webp" alt="Dorfstraße von Clonbur in Connemara, County Galway – traditionelle irische Architektur und Pub-Szene" class="img-default" />
+</figure>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191708234-optimized-Aerial_view__Dingle_Peninsula__Co_Kerry_TI713UP.webp" alt="Luftaufnahme der Dingle Peninsula in County Kerry – dramatische Küstenlandschaft mit grünen Hügeln und blauen Gewässern" class="img-default" />
+</figure>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#IrishCulture&amp;Heritage</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">183</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Trail Guides</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">68</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Planning Your Trip</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">34</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Irish Culture &amp; Heritage</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">20</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>National Parks &amp; Wildlife</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">17</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Safety &amp; Weather</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Gear &amp; Equipment</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">12</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Walking Holidays</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Health &amp; Wellness</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">5</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Travel Info</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="st-finbarrs-weg-pilgerpfad-cork">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">St. Finbarrs Weg: Pilgerpfad von Cork nach Gougane Barra</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="the-burren-national-park">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Burren National Park: Wanderführer durch Irlands Kalksteinlandschaft</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wandern-pub-irland-beste-pubs-wanderwege">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wandern &amp; Pub in Irland: Was am Abend auf Sie wartet</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wann-wurde-das-gehen-erfunden">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wann wurde das Gehen erfunden? Eine 6 Millionen Jahre alte Geschichte auf irischen Pfaden</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wicklow-mountains-nationalpark-wandern">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wicklow Mountains Nationalpark: Wanderführer für Irlands Garden of Ireland</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../walking-tours/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="../destinations" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="glenveagh-nationalpark">Glenveagh Nationalpark: Wanderführer durch Donegals wildesten Park</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="unterschiede-zwischen-spazierengehen-und-wandern">Wandern vs. Spazierengehen: Was ist der Unterschied?</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="solo-wandern-von-gasthaus-zu-gasthaus-irland">Von Gasthaus zu Gasthaus Wandern in Irland: Ihr Guide zum Solo-Wandern</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="../walking-tours/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s mountain trail, perfec...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.</p>
+                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Walking Holidays</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../walking-tours/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="../walking-tours/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="../walking-tours/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="../walking-tours/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="../walking-tours/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="../walking-tours/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="../walking-tours/cooley-mournes" class="hover:text-primary transition-colors">Cooley &amp; Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../about" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="../how-it-works" class="hover:text-primary transition-colors">How It Works</a></li>
+                    <li><a href="../tour-grading" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../tailor-made" class="hover:text-primary transition-colors">Tailor-Made Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="/buchung" class="hover:text-primary transition-colors font-bold">Jetzt buchen</a></li>
+                    <li><a href="../privacy-policy" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="../terms-and-conditions" class="hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Get in Touch</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>

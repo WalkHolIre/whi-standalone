@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>De beste wandelingen in Ierland: Een gids naar spectaculaire routes | Walking Holiday Ireland</title>
+    <meta name="description" content="Ontdek de beste wandelingen in Ierland. Gids naar de Kerry Way, Wicklow Way, Dingle Way, Burren Way en meer prachtige routes in Ierland."/>
+    <link rel="canonical" href="https://wandelvakantieierland.nl/blog/beste-wandelingen-ierland"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "De beste wandelingen in Ierland: Een gids naar spectaculaire routes",
+        "description": "Ontdek de beste wandelingen in Ierland. Gids naar de Kerry Way, Wicklow Way, Dingle Way, Burren Way en meer prachtige routes in Ierland.",
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/beste-wandelingen-ierland.html"
+        }
+    }
+    </script>
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/top-rated-scenic-walks-ireland" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog/beste-wanderungen-irland" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog/beste-wandelingen-ierland" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/top-rated-scenic-walks-ireland" />
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://wandelvakantieierland.nl/blog/beste-wandelingen-ierland"/>
+    <meta property="og:title" content="De beste wandelingen in Ierland: Een gids naar spectaculaire routes"/>
+    <meta property="og:description" content="Ontdek de beste wandelingen in Ierland. Gids naar de Kerry Way, Wicklow Way, Dingle Way, Burren Way en meer prachtige routes in Ierland."/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="De beste wandelingen in Ierland: Een gids naar spectaculaire routes"/>
+    <meta name="twitter:description" content="Ontdek de beste wandelingen in Ierland. Gids naar de Kerry Way, Wicklow Way, Dingle Way, Burren Way en meer prachtige routes in Ierland."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../wandelgebied-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a>
+                            <a href="../wandelgebied-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../wandelgebied-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a>
+                            <a href="../wandelgebied-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a>
+                            <a href="../wandelgebied-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../wandelgebied-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a>
+                            <a href="../wandelgebied-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../tailor-made" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../how-it-works" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
+                            <a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
+                            <a href="../self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about">About Us</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="../contact" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Get in Touch
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="../destinations" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
+                <a href="../how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+                <a href="../about" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">About Us</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Get in Touch</a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 pt-8 pb-6">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">De beste wandelingen in Ierland: Een gids naar spectaculaire routes</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Trail Guides</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">March 28, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">12 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            De beste wandelingen in Ierland: Een gids naar spectaculaire routes
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-gradient-to-br from-primary/20 to-brand-purple/20"></div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800" id="inhoudsopgave">Inhoudsopgave</h3>
+                <ol class="space-y-2 text-sm">
+                    <li><a href="#inhoudsopgave" class="text-primary hover:text-primary/80 hover:underline transition-colors">Inhoudsopgave</a></li><li><a href="#de-kerry-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Kerry Way</a></li><li><a href="#de-wicklow-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Wicklow Way</a></li><li><a href="#de-dingle-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Dingle Way</a></li><li><a href="#de-burren-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Burren Way</a></li><li><a href="#de-beara-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Beara Way</a></li><li><a href="#wandeling-langs-de-cliffs-of-moher" class="text-primary hover:text-primary/80 hover:underline transition-colors">Wandeling langs de Cliffs of Moher</a></li><li><a href="#wandeling-door-de-glendalough-valley" class="text-primary hover:text-primary/80 hover:underline transition-colors">Wandeling door de Glendalough Valley</a></li><li><a href="#torc-mountain-killarney" class="text-primary hover:text-primary/80 hover:underline transition-colors">Torc Mountain, Killarney</a></li><li><a href="#de-sheep-s-head-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">De Sheep&#x27;s Head Way</a></li><li><a href="#causeway-coast-way" class="text-primary hover:text-primary/80 hover:underline transition-colors">Causeway Coast Way</a></li><li><a href="#je-wandelvakantie-plannen" class="text-primary hover:text-primary/80 hover:underline transition-colors">Je wandelvakantie plannen</a></li><li><a href="#veelgestelde-vragen-over-wandelen-in-ierland" class="text-primary hover:text-primary/80 hover:underline transition-colors">Veelgestelde vragen over wandelen in Ierland</a></li>
+                </ol>
+            </nav>
+<h2 id="inhoudsopgave">Inhoudsopgave</h2>
+<ul>
+<li><a href="#the-kerry-way">De Kerry Way</a></li>
+<li><a href="#the-wicklow-way">De Wicklow Way</a></li>
+<li><a href="#the-dingle-way">De Dingle Way</a></li>
+<li><a href="#the-burren-way">De Burren Way</a></li>
+<li><a href="#the-beara-way">De Beara Way</a></li>
+<li><a href="#cliffs-of-moher-coastal-walk">Wandeling langs de Cliffs of Moher</a></li>
+<li><a href="#glendalough-valley-walk">Wandeling door de Glendalough Valley</a></li>
+<li><a href="#torc-mountain-killarney">Torc Mountain, Killarney</a></li>
+<li><a href="#the-sheeps-head-way">De Sheep's Head Way</a></li>
+<li><a href="#causeway-coast-way">Causeway Coast Way</a></li>
+<li><a href="#planning-your-walking-holiday">Je wandelvakantie plannen</a></li>
+</ul>
+</div>
+
+<p>Mijn naam is Cliff, en ik ben de eigenaar van Wandelvakantie Ierland. Na twintig jaar wandelaars door elk hoekje van dit land te begeleiden, krijg ik steeds dezelfde vraag: wat zijn de beste wandelingen in Ierland? Het is een moeilijke vraag omdat Ierland zoveel geweldige wandelroutes heeft, elk met zijn eigen karakter. Een kliffenpad langs de kust in Kerry voelt heel anders dan een bergrugwandeling in Wicklow of een kalksteenlandschap in de Burren. Maar precies die verscheidenheid maakt wandelen hier zo bevredigend.</p>
+
+<p>Ierland stopt veel verschillende landschappen in een klein eiland. Bergen rijzen op uit de Atlantische Oceaan. Oude bossen vullen diepe valleien. Veenboggen strekken zich kilometers uit. En de kustlijn is zo wild en gevarieerd dat deze wandelaars van over de hele wereld aantrekt. De wandelroutes die hier worden genoemd, vertegenwoordigen het beste wandelen dat dit land te bieden heeft — van meerlaagse langeafstandsroutes tot kortere dagtochten met vergezichten die je niet snel vergeet. Of je je eerste of tiende reis plant, dit zijn de Ierse wandelroutes die op je lijstje moeten staan.</p>
+
+<h2 id="the-kerry-way">De Kerry Way</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/kerry-way-complete-gids/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Kerry Way</a> is Ierlands langste en meest populaire gemarkeerde wandelroute, die in ongeveer 215 km rond het Iveragh Peninsula in County Kerry loopt. De route voert door Killarney National Park, de Black Valley, Cahersiveen, Waterville, Sneem en Kenmare voordat je terug in Killarney aankomt. Je loopt door eeuwenoude eikenbossen, over bergpassen, langs afgelegen Atlantische kustlijnen en door kleine dorpjes waar 's avonds traditionele muziek uit de pubs naar buiten klinkt.</p>
+
+<p>Wat de Kerry Way tot een van de beste wandelingen in Ierland maakt, is de pure verscheidenheid van het terrein. Op één dag kun je door venen lopen, naar een bergpas klimmen met uitzicht over de Atlantische Oceaan, afdalen door landbouwen naar een vissersdorp en eindigen met een drankje met uitzicht op zee. De meeste wandelaars doen er vijf tot acht dagen over, en onze <a href="https://wandelvakantieierland.nl/zelgeleide-wandelvakanties-ierland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">zelfgeleide wandelvakanties</a> regelen alles — accommodatie, bagagetransfers en gedetailleerde routebeschrijvingen.</p>
+
+<h2 id="the-wicklow-way">De Wicklow Way</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/wicklow-way-complete-gids/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Wicklow Way</a> was Ierlands eerste gemarkeerde wandelroute, aangelegd in 1980, en het blijft een van de fraaiste. Over 127 km loopt het van de zuidelijke voorsteden van Dublin door de Wicklow Mountains naar Clonegal in County Carlow. Het voert wandelaars door gletsjervallen, heidebedekte bergkammen, dennenbossen en langs de kloosterruïnes van Glendalough.</p>
+
+<p>De eerste etappes boven Dublin bieden panoramische vergezichten over de stad en kust, terwijl de middelste secties rond Glendalough en Glenmalure tot de mooiste bergwandelingen in heel Ierland behoren. De laatste etappes dalen af door zacht landbouwen en paden langs rivieren. De Wicklow Way is een prima keuze voor wandelaars die berglandschappen willen combineren met het gemak van een start dicht bij Dublin.</p>
+
+<h2 id="the-dingle-way">De Dingle Way</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/dingle-way-wandelgids/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Dingle Way</a> loopt in 179 km langs kust- en bergpaden rond het Dingle Peninsula in County Kerry. Het schiereiland is een van de meest spectaculaire landvormen in Ierland — een vinger van berg en heide die in de Atlantische Oceaan steekt, met stranden, zeerotsen en archeologische locaties op elke hoek.</p>
+
+<p>Hoogtepunten zijn de Connor Pass-oversteek, de wandeling langs Slea Head met uitzicht op de Blasket Islands en het traject van Dunquin naar Dingle town door enkele van de fraaiste kustlandschappen in Europa. Het Dingle Peninsula is ook een Iers sprekend gebied met een sterke muzikale traditie, dus je avonden zijn net zo gedenkwaardig als je dagen op de route.</p>
+
+<h2 id="the-burren-way">De Burren Way</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/burren-way-wandelgids/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Burren Way</a> voert je door een van de meest ongebruikelijke landschappen in Europa — de Burren in County Clare. Deze 114 km lange route loopt over open kalksteenkast, passeert oude dolmens en ringforten en loopt langs de Cliffs of Moher. De Burren ziet er van afstand kaal uit, maar van dichtbij is het vol met wilde bloemen — Arctische, Alpiene en Middellandse-Zeesoorten groeien naast elkaar in een botanisch raadsel dat wetenschappers nog steeds niet helemaal kunnen verklaren.</p>
+
+<p>Mei en juni zijn de beste maanden voor bloemen, wanneer voorjaarskardinaalsbloemen, orchideeën en bloedige kranesbil het grijze kalkteen met kleur schilderen. De wandeling is over het algemeen gemiddeld, met goed gemarkeerde paden over open terrein. Het nabijgelegen dorp Doolin is een van de grote traditionele muziekcentra van Ierland, waardoor de Burren Way een perfecte combinatie van natuurwonder en culturele ervaring is.</p>
+
+<h2 id="the-beara-way">De Beara Way</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/beara-way-complete-gids/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Beara Way</a> is het verborgen juweel onder Ierlands langeafstandsroutes. Over 196 km loopt het rond het Beara Peninsula op de grens tussen Cork en Kerry, door een van de wildste en minst bezochte kustlandschappen van het land. De route volgt oude wegen en bergpaden tussen vissersdorpen, met uitzichten over Bantry Bay en Kenmare Bay die alles op de bekendere Ring of Kerry overtreffen.</p>
+
+<p>Het Beara Peninsula heeft een ruw, ongerepte kwaliteit die het onderscheidt. De Healy Pass-oversteek, de wandeling rond Dursey Island verbonden door Ierlands enige kabelbaan, en het traject langs de Caha Mountains behoren tot de meest memorabele secties. Omdat minder wandelaars voor de Beara kiezen, heb je de paden vaak helemaal voor jezelf — iets wat steeds zeldzamer wordt op Ierlands bekendere routes.</p>
+
+<h2 id="cliffs-of-moher-coastal-walk">Wandeling langs de Cliffs of Moher</h2>
+
+<p>De Cliffs of Moher in County Clare zijn een van Ierlands bekendste natuurlijke monumenten, en wandelen langs de klifrand is een ervaring die je de adem beneemt. De kliffen rijzen tot 214 meter boven de Atlantische Oceaan uit, met zeevogels die beneden je kronkelen en uitzichten die zich uitstrekken naar de Aran Islands en de bergen van Connemara.</p>
+
+<p>De officiële clifftocht loopt ongeveer 18 km van Doolin naar het zuiden naar Hag's Head en volgt de klifrand langs grasachtige paden met de oceaan ver beneden je. De noordelijke sectie in de buurt van Doolin is het meest dramatisch, met de kliffen op hun hoogst en meest verticaal. Op een heldere dag maakt de combinatie van brullende golven, oprijzende kliffen en uitgestrekte Atlantische uitzichten dit tot een van de meest onvergetelijke korte wandelingen in heel Ierland.</p>
+
+<h2 id="glendalough-valley-walk">Wandeling door de Glendalough Valley</h2>
+
+<p>Glendalough — wat betekent "vallei van de twee meren" — is een gletsjervallei in de Wicklow Mountains die adembenemende natuurlijke schoonheid combineert met meer dan duizend jaar menselijke geschiedenis. De kloostervestiging gesticht door Sint Kevin in de 6e eeuw ligt tussen twee donkere meren omgeven door steile, beboste hellingen.</p>
+
+<p>Verschillende wandelroutes verkennen de vallei, van gemakkelijke lussen rond het meer tot steilere klim langs de valleizijden. De Spinc Walk brengt je naar een uitzichtpunt 300 meter boven het bovenste meer, met een van de meest gefotografeerde vergezichten in Ierland. Glendalough is slechts een uur uit Dublin, waardoor het een van de meest toegankelijke van de beste wandelingen in Ierland is voor bezoekers met beperkte tijd.</p>
+
+<h2 id="torc-mountain-killarney">Torc Mountain, Killarney</h2>
+
+<p>Torc Mountain in Killarney National Park is een compacte maar lonende beklimming die je uitzicht geeft over alle drie de beroemde meren van Killarney, het MacGillycuddy's Reeks-bergketen en de eiken- en taxusbossen van de vallei eronder. Op 535 meter is het niet de hoogste piek in de buurt, maar het panorama vanaf de top is een van de fraaiste in Kerry.</p>
+
+<p>De wandeling begint bij de Torc Waterfall parkeerplaats, waar je de 20 meter hoge waterval kunt bezoeken voordat je begint te klimmen. De klim duurt ongeveer 1,5 uur en volgt een combinatie van bospadenen open berg. Het is een perfecte dagtocht voor iedereen die in Killarney overnacht en bergvergezichten wil zonder zich aan een volledige expeditie vast te leggen.</p><h2 id="the-sheeps-head-way">De Sheep's Head Way</h2>
+
+<p>De Sheep's Head Way is een 93 km lange lus rond het kleinste van de vijf grote schiereilanden van zuidwest-Ierland. Het is een rustiger, intiemer alternatief voor de Kerry Way of Dingle Way, met zacht terrein, prachtige kustuitzichten en een wonderlijk afgelegen sfeer. Het schiereiland is op sommige plaatsen slechts enkele kilometers breed, dus je bent nooit ver van zee aan beide zijden.</p>
+
+<p>De wandeling naar de Sheep's Head-vuurtoren aan de punt van het schiereiland is een hoogtepunt — een pad over open heide met de Atlantische Oceaan die zich in alle richtingen uitstrekt. De Sheep's Head heeft prijzen gewonnen voor zijn wandelroutes en comfortoemuurisme, en de kleine dorpjes langs de route bieden warme gastvrijheid zonder de drukte van populairdere bestemmingen.</p>
+
+<h2 id="causeway-coast-way">Causeway Coast Way</h2>
+
+<p>De Causeway Coast Way in Noord-Ierland loopt 53 km langs een van de meest opvallende kustlijnen in de Britse Eilanden. De route passeert de Giant's Causeway — een UNESCO Werelderfgoedlocatie bestaande uit 40.000 basaltzuilen gevormd door oude lavastromen. Je ziet ook de Carrick-a-Rede touwbrug, vervallen kastelen en gouden zandstranden.</p>
+
+<p>Het kustlandschap is buitengewoon, met torenhoge kliffen, verborgen baaien en rotsformaties die eruitzien alsof ze van een ander planeet komen. De sectie tussen de Giant's Causeway en de touwbrug is het fraaiste gedeelte, met constant uitzicht langs de Antrim-kust en uitzicht op Schotland op heldere dagen.</p>
+
+<h2 id="planning-your-walking-holiday">Je wandelvakantie plannen</h2>
+
+<p>De <a href="https://wandelvakantieierland.nl/de-beste-tijd-om-ierland-te-bezoeken/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">beste tijd om Ierland te bezoeken</a> voor wandelen is april tot oktober. Mei en september zijn bijzonder goed — warm genoeg voor comfortabel wandelen, met minder bezoekers dan piekzomer. Het <a href="https://wandelvakantieierland.nl/het-ierse-weer/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Ierse weer</a> is mild maar wisselvallig, dus een waterdichte jas is ongeacht het seizoen essentieel.</p>
+
+<p>Goede <a href="https://wandelvakantieierland.nl/de-juiste-wandelschoenen-kiezen/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">wandelschoenen</a> zijn het belangrijkste stuk uitrusting dat je meeneemt. Controleer onze <a href="https://wandelvakantieierland.nl/backpack-checklist/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">pakkingslijst</a> voor alles wat je verder nodig hebt, en gebruik onze <a href="https://wandelvakantieierland.nl/beoordeling-van-wandeltochten/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">routebeoordeling</a> om wandelroutes op je fitnessniveau af te stemmen.</p>
+
+<p>Onze <a href="https://wandelvakantieierland.nl/zelgeleide-wandelvakanties-ierland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">zelfgeleide wandelvakanties</a> zijn inclusief accommodatie, bagagetransfers, routebeschrijvingen en lokale ondersteuning voor alle hier genoemde belangrijkste routes. Als je liever deskundig gezelschap op de route hebt, combineren onze <a href="https://wandelvakantieierland.nl/begeleide-vs-zelfgeleide-wandelvakanties/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">begeleide wandelvakanties</a> je met lokale gidsen die elk pad, uitzichtpunt en verhaal langs de weg kennen. Welke route je ook kiest, wandelen in Ierland is een van de fraaiste manieren om dit land te ervaren — in je eigen tempo, in je eigen tijd, met het landschap dat zich met elke stap rond je ontvouwt.</p>
+
+<div itemscope itemtype="https://schema.org/FAQPage">
+<h2 id="veelgestelde-vragen-over-wandelen-in-ierland">Veelgestelde vragen over wandelen in Ierland</h2>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name" id="wat-is-het-moeilijkheidsniveau-van-de-beste-wandelingen-in-ierland">Wat is het moeilijkheidsniveau van de beste wandelingen in Ierland?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">De beste wandelingen in Ierland variëren van gemakkelijke dagtochten tot uitdagende meerlaagse routes. Gemakkelijke wandelingen zijn onder meer de Glendalough Valley Walk en secties van de Cliffs of Moher Coastal Walk, die door wandelaars van alle fitnessniveaus kunnen worden voltooid. Gematigde tot uitdagende opties zijn onder meer de Kerry Way, Wicklow Way, Dingle Way, Burren Way en Beara Way, die goed uithoudingsvermogen vereisen en doorgaans 5-8 dagen duren. Voor gedetailleerde informatie over je fitnessniveau en geschiktheid voor wandelroutes, controleer ons beoordingssysteem.</p>
+</div>
+</div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name" id="wat-is-het-beste-moment-van-het-jaar-om-in-ierland-te-wandelen">Wat is het beste moment van het jaar om in Ierland te wandelen?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Het beste moment om Ierland voor wandelen te bezoeken is april tot oktober. Mei en september bieden ideale omstandigheden — warm genoeg voor comfortabel wandelen met minder bezoekers dan piekzomer. Juni is uitstekend voor het kijken naar wilde bloemen op de Burren Way. Oktober biedt herfstkleuren en heldere lucht. Lente (maart-april) en herfst (september-oktober) zijn over het algemeen minder druk dan juli en augustus, waardoor ze ideaal zijn voor een rustiger wandelervaring.</p>
+</div>
+</div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name" id="welke-uitrusting-en-apparatuur-heb-ik-nodig-voor-wandelen-in-ierland">Welke uitrusting en apparatuur heb ik nodig voor wandelen in Ierland?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Het meest essentiële item is een goed paar wandelschoenen met enkelondersteuning en waterdichte bescherming. Het Ierse weer is mild maar wisselvallig, dus breng altijd een waterdichte jas mee, ongeacht het seizoen. Andere essentiële items zijn weergeschikte lagen kleding, een warme muts en handschoenen, sokken ontworpen voor wandelen, een rugzak (20-30 liter), een waterfles, zonnebescherming en een kaart of gps-apparaat. Voor langere routes voeg je blaarbehandeling, energiesnacks en een basis eerstehulpkit toe. Zie onze complete pakkingslijst voor meer details.</p>
+</div>
+</div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name" id="moet-ik-een-begeleide-wandelvakantie-of-zelfgeleide-wandeling-doen">Moet ik een begeleide wandelvakantie of zelfgeleide wandeling doen?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">De keuze hangt af van je voorkeur en ervaring. Zelfgeleide wandelingen bieden flexibiliteit, onafhankelijkheid en de vrijheid om in je eigen tempo te wandelen. Wij regelen de logistiek, inclusief accommodatie, bagagetransfers en gedetailleerde routebeschrijvingen. Begeleide wandelvakanties bieden deskundig gezelschap op de route, lokale kennis, historische en culturele inzichten en de sociale ervaring van wandelen met anderen. Veel wandelaars kiezen voor begeleide wandelingen bij hun eerste bezoek om vertrouwen en kennis op te doen, en keren later terug voor zelfgeleide opties. Beide benaderingen omvatten volledige ondersteuning en zijn uitstekende manieren om Ierlands wandelroutes te ervaren.</p>
+</div>
+</div>
+
+<div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+<h3 itemprop="name" id="moet-ik-erg-fit-zijn-om-deze-routes-te-wandelen">Moet ik erg fit zijn om deze routes te wandelen?</h3>
+<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+<p itemprop="text">Wandelfitness is anders dan algemene fitness — consistentie is belangrijker dan intensiteit. Als je regelmatig 10-15 km op vlak terrein zonder moeite loopt, ben je klaar voor de meeste Ierse routes. Kortere wandelingen zoals de Glendalough Valley Walk en Torc Mountain vereisen gemiddelde fitness. Langeafstandsroutes (Kerry Way, Wicklow Way, enz.) vereisen goed uithoudingsvermogen en het vermogen om dagelijks 15-20 km over meerdere dagen te wandelen. Begin met kortere routes om vertrouwen en kracht op te bouwen en gebruik ons beoordingssysteem om routes op je fitnessniveau af te stemmen. Regelmatige wandeltraining gedurende 6-8 weken vóór je vakantie is ideaal.</p>
+</div>
+</div>
+</div>
+
+<div class="featured-images">
+<figure>
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875951330-optimized-Wicklow-Mountains-National-Park-Co-Wicklow_Web-Size.webp" alt="Golvende beboste bergen van Wicklow Mountains National Park met mistige valleien">
+</figure>
+<figure>
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875698355-optimized-Gap_of_Dunloe__Killarney_National_Park__Co_Kerry_Web_Size.webp" alt="Gap of Dunloe bergpas in Killarney National Park met dramatisch rotsachtig terrein">
+</figure>
+<figure>
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875644672-optimized-the_dingle_peninsula_the_most_beautiful_place_on_earth16_july_2013_064.webp" alt="Kustlandschap van Dingle Peninsula met bergen die de Atlantische Oceaan ontmoeten">
+</figure>
+<figure>
+<img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774877287432-optimized-Gregan_s_Castle_hotel__The_Burren__Co_Clare_master.webp" alt="Het Burren kalksteenkastlandschap met wilde bloemen en stenen muren in County Clare">
+</figure>
+</div>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#TrailGuides</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#WalkingHoliday</span>
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ireland</span>
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">183</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Trail Guides</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">68</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Planning Your Trip</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">34</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Irish Culture &amp; Heritage</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">20</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>National Parks &amp; Wildlife</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">17</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Safety &amp; Weather</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Gear &amp; Equipment</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">12</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Walking Holidays</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Health &amp; Wellness</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">5</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Travel Info</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="st-finbarrs-pelgrimspad-cork">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">St. Finbarr&#x27;s Way: Het Pelgrimspad van Cork naar Gougane Barra</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="the-burren-national-park">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Burren National Park: Wandelgids door Ierlands Kalksteenlandschap</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wandelen-pub-ierland-beste-pubs-wandelroutes">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wandelen &amp; Pub in Ierland: Wat Je &#x27;s Avonds Te Wachten Staat</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wanneer-is-wandelen-uitgevonden">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wanneer is wandelen uitgevonden? Een verhaal van 6 miljoen jaar op Ierse paden</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+<li><a class="group block" href="wicklow-mountains-national-park-wandelen">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Wicklow Mountains National Park: Een Wandelgids</p>
+                    <p class="text-xs text-slate-400 mt-1">Mar 30, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="bg-primary p-8 rounded-xl text-white shadow-xl">
+            <h3 class="text-xl font-bold mb-4">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-primary font-bold py-3 rounded-lg hover:bg-slate-100 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../walking-tours/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way Walking Holiday — 5 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="../destinations" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="glenveagh-national-park">Glenveagh National Park: Wandelgids voor Donegals Wildste Park</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="verschil-tussen-wandelen-en-hiken">Wandelen vs. Hiken: Wat is het verschil?</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="solo-wandelen-van-herberg-naar-herberg-ierland">Van herberg naar herberg wandelen in Ierland: Jouw gids voor solo wandelen</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="../walking-tours/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s mountain trail, perfec...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.</p>
+                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Walking Holidays</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../walking-tours/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="../walking-tours/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="../walking-tours/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="../walking-tours/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="../walking-tours/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="../walking-tours/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="../walking-tours/cooley-mournes" class="hover:text-primary transition-colors">Cooley &amp; Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../about" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="../how-it-works" class="hover:text-primary transition-colors">How It Works</a></li>
+                    <li><a href="../tour-grading" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../tailor-made" class="hover:text-primary transition-colors">Tailor-Made Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="/boeken" class="hover:text-primary transition-colors font-bold">Nu boeken</a></li>
+                    <li><a href="../privacy-policy" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="../terms-and-conditions" class="hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Get in Touch</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>

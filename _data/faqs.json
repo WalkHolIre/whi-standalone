@@ -899,6 +899,26 @@
     "source_url": "https://walkingholidayireland.com/home/about-walking-holiday-ireland/"
   },
   {
+    "id": "77a98866-05fd-4595-a8e6-d0adac13af9a",
+    "question": "Will my power bank work?",
+    "answer": "<p>All modern power banks auto-convert voltage. Just bring a Type G adapter to charge the power bank in your accommodation. Once charged, the power bank works anywhere globally.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:59:22.66522+00:00",
+    "updated_at": "2026-03-31T15:59:22.66522+00:00",
+    "section": "equipment",
+    "tags": [
+      "power banks",
+      "voltage"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
     "id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e",
     "question": "Are there any specific gear or clothing recommendations for multi-day hiking in Ireland?",
     "answer": "<p>It is important to have <strong>waterproof</strong> and <strong>breathable</strong> clothing, sturdy hiking boots with excellent traction, a 20L-30L backpack with proper support, and <strong>layers of clothing</strong> to adapt to changing weather conditions on the trail.</p>",
@@ -913,6 +933,71 @@
       "breathable clothing",
       "Hiking boots",
       "layers of clothing"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f",
+    "question": "Can I use the same adapter in Northern Ireland?",
+    "answer": "<p>Yes! Northern Ireland (UK) uses the same Type G outlets and 230V electricity. Your Irish adapter works perfectly in Northern Ireland.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:55:44.603585+00:00",
+    "updated_at": "2026-03-31T15:55:44.603585+00:00",
+    "section": "equipment",
+    "tags": [
+      "Northern Ireland",
+      "UK",
+      "Type G",
+      "electricity"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "272d6297-ea02-4863-9061-48b3d632ade2",
+    "question": "What's the best power adapter to buy?",
+    "answer": "<p><strong>Look for:</strong></p><ul><li><p>Type G socket (Ireland/UK compatible)</p></li><li><p>CE certification</p></li><li><p>Multiple USB ports</p></li><li><p>Surge protection</p></li><li><p>Quality brand (reputable electronics manufacturers)</p></li></ul><p><strong>Recommended brands:</strong> Belkin, Anker, Samsonite, or similar quality manufacturers</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:57:46.156104+00:00",
+    "updated_at": "2026-03-31T15:57:46.156104+00:00",
+    "section": "equipment",
+    "tags": [
+      "Surge protection",
+      "power adapter",
+      "USB ports",
+      "CE certification",
+      "Type G socket"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692",
+    "question": "Can I charge my device in my Irish accommodation?",
+    "answer": "<p>Yes, all guesthouses, hotels, and B&amp;Bs provide electrical outlets. Outlets are typically near desks, nightstands, or bathroom mirrors. Please ask the staff for assistance if you are unable to locate an outlet.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:58:25.473352+00:00",
+    "updated_at": "2026-03-31T15:58:25.473352+00:00",
+    "section": "equipment",
+    "tags": [
+      "electrical",
+      "charge my device"
     ],
     "destination_ids": [],
     "tour_ids": [],
@@ -1871,6 +1956,67 @@
     "source_url": "https://walkingholidayireland.com/how-to-plan-your-hiking-trip-in-ireland/"
   },
   {
+    "id": "fed44422-ec8c-4b5a-9bdd-8481ce8ee671",
+    "question": "How much cash should I bring? ",
+    "answer": "<p>Most places accept cards. Bring a modest amount of cash (\u20ac50\u2013100) for small village stops, tips, and the occasional place that prefers it.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:31:10.33169+00:00",
+    "updated_at": "2026-03-31T15:31:10.33169+00:00",
+    "section": "payment",
+    "tags": [
+      "cards"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "baf97381-a2cd-4a56-89c8-229daf247ab6",
+    "question": "Is tap water safe to drink?",
+    "answer": "<p>Yes. Irish tap water is among the safest in Europe. There's no need for bottled water.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:28:46.341158+00:00",
+    "updated_at": "2026-03-31T15:28:46.341158+00:00",
+    "section": "safety",
+    "tags": [
+      "tap water",
+      "bottled water"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "05c494ef-7a85-4ad9-9ef9-abdd57e4463f",
+    "question": "Do I need a voltage converter?",
+    "answer": "<p>Probably not. Check your device chargers\u2014if they say \"Input: 100-240V\", they auto-convert and need only the adapter. If any device says \"110V only\", bring a voltage converter for that specific device.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:56:44.085338+00:00",
+    "updated_at": "2026-03-31T15:56:44.085338+00:00",
+    "section": "safety",
+    "tags": [
+      "chargers",
+      "240V",
+      "110V",
+      "voltage"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
     "id": "b43d2ab1-9a15-4b33-954a-6c4c0cf15125",
     "question": "Are insects a problem while multi-day hiking in Ireland?",
     "answer": "<p>Not really. Ireland's Atlantic climate keeps most biting insects at bay. <strong>Midges</strong> exist but are far less aggressive than in Scotland \u2014 coastal routes like the Dingle Way and Kerry Way rarely have issues thanks to the sea breeze. <strong>Ticks</strong> are present in long grass and heather, so a quick check after boggy sections is sensible. A small tube of <strong>insect repellent</strong> is worth packing for summer trips, but insects won't define your experience. Ireland's weather is a far bigger consideration than its wildlife.</p>",
@@ -1884,6 +2030,28 @@
       "midges",
       "tics",
       "insect repellent"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "608bb882-244b-48cd-aa66-4fb44e0d385f",
+    "question": "What should I do if something goes wrong on the trail?",
+    "answer": "<p>All our self-guided guests have a 24-hour support contact number. For emergencies in Ireland, call 999 or 112. Mountain Rescue Ireland covers the major walking areas.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:31:47.07445+00:00",
+    "updated_at": "2026-03-31T15:31:47.07445+00:00",
+    "section": "safety",
+    "tags": [
+      "24-hour support",
+      "emergencies",
+      "999",
+      "112"
     ],
     "destination_ids": [],
     "tour_ids": [],
@@ -2662,6 +2830,76 @@
     "page_ids": [],
     "language": "en",
     "source_url": "https://walkingholidayireland.com/terms-and-conditions/"
+  },
+  {
+    "id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227",
+    "question": "Do I need a visa to travel to Ireland? ",
+    "answer": "<p>Citizens of EU/EEA countries, the USA, Canada, Australia, and New Zealand don't need a visa for the Republic of Ireland. Check <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer\" href=\"http://inis.gov.ie\">inis.gov.ie</a> for your specific nationality. Northern Ireland (UK) has separate entry requirements \u2014 see our <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://walkingholidayireland.com/blog/northern-ireland-uk-eta-guide\">Northern Ireland ETA guide</a>.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:28:07.83213+00:00",
+    "updated_at": "2026-03-31T15:28:07.83213+00:00",
+    "section": "transport",
+    "tags": [
+      "Citizens",
+      "EU/EEA",
+      "USA",
+      "Canada",
+      "Australia",
+      "New Zealand",
+      "visa"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "f3e7d319-3b91-4a74-8a32-a1aa3f256204",
+    "question": "What's the best way to get around for a walking holiday?",
+    "answer": "<p>Car rental gives the most flexibility for reaching trailheads and airports. For the walking days themselves, luggage transfers mean you travel with just a daypack \u2014 your bags move between accommodation stops without you. Our tours handle all of the logistics.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:29:45.635435+00:00",
+    "updated_at": "2026-03-31T15:29:45.635435+00:00",
+    "section": "transport",
+    "tags": [
+      "Car rental",
+      "trailheads",
+      "airports",
+      "luggage transfers",
+      "logistics"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
+  },
+  {
+    "id": "9629a81d-341a-454b-a7d2-c45057198025",
+    "question": "Can I use my UK or EU driving licence in Ireland? ",
+    "answer": "<p>Yes. UK and EU driving licences are fully valid in Ireland. Non-EU licence holders should carry an International Driving Permit.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:30:27.899336+00:00",
+    "updated_at": "2026-03-31T15:30:27.899336+00:00",
+    "section": "transport",
+    "tags": [
+      "UK",
+      "EU",
+      "driving licences",
+      "Non-EU licence"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null
   },
   {
     "id": "6b1419b1-70de-400a-b9b2-0f6c7482a571",
