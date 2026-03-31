@@ -4985,10 +4985,12 @@ def build_static_pages(lang, translations):
         # Fix tour/destination links with translated folder names
         tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
         html = html.replace('href="walking-tours/', f'href="/{tour_folder}/')
+        html = html.replace('href="../walking-tours/', f'href="/{tour_folder}/')
         html = html.replace('href="walking-tours"', f'href="/{translate_static_slug("walking-tours", lang)}"')
         html = html.replace('action="walking-tours"', f'action="/{translate_static_slug("walking-tours", lang)}"')
         html = html.replace("window.location.href = 'walking-tours'", f"window.location.href = '/{translate_static_slug('walking-tours', lang)}'")
         html = html.replace('href="destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
+        html = html.replace('href="../destinations"', f'href="/{translate_static_slug("destinations", lang)}"')
         # Translate walking-area-* nav links to localized prefix
         wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
         if wa_prefix != 'walking-area':
