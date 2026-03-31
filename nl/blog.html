@@ -748,6 +748,15 @@
     <meta property="og:site_name" content="Walking Holiday Ireland"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+
+
+
+<meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://wandelvakantieierland.nl/blog"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog" />
@@ -760,6 +769,7 @@
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
 </head>
 <body class="flex flex-col min-h-screen bg-background-light text-slate-900">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
@@ -1470,6 +1480,22 @@
                 </span>
             </a>
         </article>
+        <article class="blog-card flex flex-col group cursor-pointer" data-category="gezondheid-&-welzijn">
+            <a href="blog/nordic-walking-leren" class="flex flex-col h-full">
+                <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="https://walkingholidayireland.com/wp-content/uploads/IMG_4710.jpg" alt="Nordic Walking: Een complete gids over techniek, voordelen en beginnen" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">Gezondheid &amp; Welzijn</span>
+                    <span class="text-xs text-slate-500">July 28, 2023</span>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary transition-colors">Nordic Walking: Een complete gids over techniek, voordelen en beginnen</h3>
+                <p class="text-slate-600 text-sm leading-relaxed mb-4 line-clamp-3 flex-grow"></p>
+                <span class="mt-auto flex items-center gap-2 text-primary font-bold text-sm">
+                    Lees Artikel <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </span>
+            </a>
+        </article>
         <article class="blog-card flex flex-col group cursor-pointer" data-category="nationale-parken-&-natuur">
             <a href="blog/discover-galway-ireland" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
@@ -1976,6 +2002,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
