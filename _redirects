@@ -275,6 +275,10 @@
 /Walking-Tour/antrim-glens-and-causeway-coast-8-days  /walking-tours/causeway-coast  301
 /Walking-Tour/wicklow-way-10-days/  /walking-tours/wicklow-way-10-days  301
 /Walking-Tour/wicklow-way-10-days  /walking-tours/wicklow-way-10-days  301
+/Walking-Tour/causeway-coast-5-days/  /walking-tours/causeway-coast-5-days  301
+/Walking-Tour/causeway-coast-5-days  /walking-tours/causeway-coast-5-days  301
+/Walking-Tour/barrow-way-5-days/  /walking-tours/barrow-way-5-days  301
+/Walking-Tour/barrow-way-5-days  /walking-tours/barrow-way-5-days  301
 /Walking-Tour/*  /walking-tours  301
 
 /Hiking-location/irelands-ancient-east/  /walking-area-barrow-way  301
@@ -303,6 +307,32 @@
 /home/about-walking-holiday-ireland/  /about  301
 /home/about-walking-holiday-ireland  /about  301
 /mountains-o-mourne-don-mclean/  /blog/mountains-o-mourne-don-mclean  301
+
+# Broken backlink recovery (added 2026-03-31)
+/hiking-the-kerry-way/  /blog/kerry-way-walking-guide  301
+/hiking-the-kerry-way  /blog/kerry-way-walking-guide  301
+/walking-holiday/wicklow-way-hiking-tour/  /walking-tours/wicklow-way  301
+/walking-holiday/wicklow-way-hiking-tour  /walking-tours/wicklow-way  301
+/the-best-time-to-visit-ireland/  /blog/the-best-time-visit-ireland  301
+/the-best-time-to-visit-ireland  /blog/the-best-time-visit-ireland  301
+/tips-for-hiking-in-ireland/  /blog/tips-for-hiking-in-ireland  301
+/tips-for-hiking-in-ireland  /blog/tips-for-hiking-in-ireland  301
+/the-wicklow-way-map/  /walking-area-wicklow-way  301
+/the-wicklow-way-map  /walking-area-wicklow-way  301
+/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children/  /blog/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children  301
+/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children  /blog/child-safety-irish-hiking-trails-focuses-specific-needs-families-hiking-with-children  301
+/self-guided-walking-tours/cooley-mourne-mountains/  /walking-tours/cooley-mournes  301
+/self-guided-walking-tours/cooley-mourne-mountains  /walking-tours/cooley-mournes  301
+/self-guided-walking-tours/cooley-and-mourne-mountains/  /walking-tours/cooley-mournes  301
+/self-guided-walking-tours/cooley-and-mourne-mountains  /walking-tours/cooley-mournes  301
+/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains/  /walking-tours/cooley-mournes  301
+/self-guided-walking-holidays-ireland/cooley-and-mourne-mountains  /walking-tours/cooley-mournes  301
+/self-guided-hiking-tours/wicklow-way-walking-tour/  /walking-tours/wicklow-way  301
+/self-guided-hiking-tours/wicklow-way-walking-tour  /walking-tours/wicklow-way  301
+
+# NL broken backlink recovery
+/nl/uw-reis/  /nl/hoe-het-werkt  301
+/nl/uw-reis  /nl/hoe-het-werkt  301
 
 # ═══════════════════════════════════════════════════════════
 # 10b. WORDPRESS SYSTEM URLS (catch common WP paths)
