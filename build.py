@@ -6177,10 +6177,13 @@ def main():
                 continue
 
             # Build translated recommended tours
+            # Fetch tour translations for this blog language so tour names render correctly
+            blang_translations = fetch_translations(blang)
+            blang_tour_trans = blang_translations.get('tours', {})
             lang_rec_html = ''
             for tour in featured_tours:
                 # Apply tour translation for DE/NL so names/subtitles render in correct language
-                t_tour = apply_tour_translation(tour, tour_translations.get(tour.get('id')))
+                t_tour = apply_tour_translation(tour, blang_tour_trans.get(tour.get('id')))
                 t_slug = tour.get('slug', '')
                 t_name = escape(t_tour.get('name', ''))
                 t_days = t_tour.get('duration_days', 0) or 0
