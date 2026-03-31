@@ -64,7 +64,9 @@ STATIC_SLUG_MAP = {
     'walking-holidays-ireland-over-50s':    {'de': 'wanderurlaub-irland-50-plus',      'nl': 'wandelvakantie-ierland-50-plus'},
     'northern-ireland': {'de': 'nordirland',           'nl': 'noord-ierland'},
     'privacy-policy':   {'de': 'datenschutz',          'nl': 'privacybeleid'},
+    'privacy':          {'de': 'datenschutz',          'nl': 'privacybeleid'},
     'terms-and-conditions': {'de': 'agb',              'nl': 'algemene-voorwaarden'},
+    'terms':            {'de': 'agb',                  'nl': 'algemene-voorwaarden'},
     'destinations':     {'de': 'wanderziele-irland',   'nl': 'wandelbestemmingen'},
     'walking-tours':    {'de': 'wandertouren',         'nl': 'wandeltochten'},
     'wild-atlantic-way':{'de': 'wild-atlantic-way',    'nl': 'wild-atlantic-way'},
@@ -127,7 +129,7 @@ UI_STRINGS = {
         'ask_question': 'Ask a Question',
         'or_call': 'or call',
         'preferred_start_date': 'Preferred Start Date',
-        'book_advance': 'Book at least 28 days in advance',
+        'book_advance': 'Book at least 20 days in advance',
         'num_walkers': 'Number of Walkers',
         'person_1': '1 Person',
         'people_2': '2 People',
@@ -189,6 +191,22 @@ UI_STRINGS = {
         'difficulty': 'Difficulty',
         'duration': 'Duration',
         'best_months': 'Best Months',
+        'season': 'Season',
+        'season_from_to': 'From {first} to {last}',
+        'accommodation_short': 'B&B & Guesthouses',
+        'tours_available': '{n} tour{s} available',
+        'walking_tours_label': 'Walking Tours',
+        'included_in_every_tour': 'Included in Every Tour',
+        'not_included_label': 'Not Included',
+        'svc_accommodation': 'Accommodation: Welcoming en-suite B&B rooms',
+        'svc_breakfast': 'Breakfast: Full Irish breakfast every morning',
+        'svc_luggage': 'Luggage Transfer: Daily transfer of your main bag between accommodations',
+        'svc_itinerary': 'Personalised itinerary and route app for your smartphone',
+        'svc_support': 'Support: 24/7 emergency support throughout your holiday',
+        'svc_pretrip': 'Pre-Departure Pack: Information pack sent before you travel',
+        'svc_no_flights': 'Flights: Travel to Ireland is not included',
+        'svc_no_insurance': 'Insurance: You\'ll need travel and walking holiday insurance',
+        'svc_no_meals': 'Meals: Lunches and dinners are not included',
         'from_price': 'From',
         'walking_tour_s': 'Walking Tour(s)',
         'day': 'Day',
@@ -258,7 +276,7 @@ UI_STRINGS = {
         'ask_question': 'Frage Stellen',
         'or_call': 'oder anrufen',
         'preferred_start_date': 'Gewünschtes Startdatum',
-        'book_advance': 'Buchung mindestens 28 Tage im Voraus',
+        'book_advance': 'Buchung mindestens 20 Tage im Voraus',
         'num_walkers': 'Anzahl der Wanderer',
         'person_1': '1 Person',
         'people_2': '2 Personen',
@@ -320,6 +338,22 @@ UI_STRINGS = {
         'difficulty': 'Schwierigkeitsgrad',
         'duration': 'Dauer',
         'best_months': 'Beste Monate',
+        'season': 'Saison',
+        'season_from_to': 'Von {first} bis {last}',
+        'accommodation_short': 'B&B & Pensionen',
+        'tours_available': '{n} Tour{s} verfügbar',
+        'walking_tours_label': 'Wandertouren',
+        'included_in_every_tour': 'Bei jeder Tour inklusive',
+        'not_included_label': 'Nicht Enthalten',
+        'svc_accommodation': 'Unterkunft: Gemütliche B&B-Zimmer mit eigenem Bad',
+        'svc_breakfast': 'Frühstück: Vollständiges irisches Frühstück jeden Morgen',
+        'svc_luggage': 'Gepäcktransfer: Täglicher Transport Ihres Hauptgepäcks',
+        'svc_itinerary': 'Persönliche Reiseroute und Routen-App für Ihr Smartphone',
+        'svc_support': 'Betreuung: 24/7 Notfall-Unterstützung während Ihres Urlaubs',
+        'svc_pretrip': 'Reiseunterlagen: Informationspaket vor Ihrer Abreise',
+        'svc_no_flights': 'Flüge: Anreise nach Irland ist nicht enthalten',
+        'svc_no_insurance': 'Versicherung: Reise- und Wanderversicherung erforderlich',
+        'svc_no_meals': 'Mahlzeiten: Mittag- und Abendessen sind nicht enthalten',
         'from_price': 'Ab',
         'walking_tour_s': 'Wandertour(en)',
         'day': 'Tag',
@@ -470,7 +504,7 @@ UI_STRINGS = {
         'ask_question': 'Stel een Vraag',
         'or_call': 'of bel',
         'preferred_start_date': 'Gewenste Startdatum',
-        'book_advance': 'Boek minstens 28 dagen van tevoren',
+        'book_advance': 'Boek minstens 20 dagen van tevoren',
         'num_walkers': 'Aantal Wandelaars',
         'person_1': '1 Persoon',
         'people_2': '2 Personen',
@@ -532,6 +566,22 @@ UI_STRINGS = {
         'difficulty': 'Moeilijkheidsgraad',
         'duration': 'Duur',
         'best_months': 'Beste Maanden',
+        'season': 'Seizoen',
+        'season_from_to': 'Van {first} tot {last}',
+        'accommodation_short': 'B&B & Pensions',
+        'tours_available': '{n} wandeltocht{s} beschikbaar',
+        'walking_tours_label': 'Wandeltochten',
+        'included_in_every_tour': 'Bij elke tour inbegrepen',
+        'not_included_label': 'Niet Inbegrepen',
+        'svc_accommodation': 'Accommodatie: Gezellige B&B-kamers met eigen badkamer',
+        'svc_breakfast': 'Ontbijt: Volledig Iers ontbijt elke ochtend',
+        'svc_luggage': 'Bagagetransfer: Dagelijks vervoer van uw hoofdbagage',
+        'svc_itinerary': 'Persoonlijk reisschema en route-app voor uw smartphone',
+        'svc_support': 'Ondersteuning: 24/7 noodondersteuning tijdens uw vakantie',
+        'svc_pretrip': 'Reispakket: Informatiepakket vóór uw vertrek',
+        'svc_no_flights': 'Vluchten: Reis naar Ierland is niet inbegrepen',
+        'svc_no_insurance': 'Verzekering: Reis- en wandelverzekering vereist',
+        'svc_no_meals': 'Maaltijden: Lunch en diner zijn niet inbegrepen',
         'from_price': 'Vanaf',
         'walking_tour_s': 'Wandeltocht(en)',
         'day': 'Dag',
@@ -965,7 +1015,7 @@ def translate_html_ui(html, lang):
         '>Ask a Question<': f'>{t("ask_question", lang)}<',
         '>or call<': f'>{t("or_call", lang)}<',
         '>Preferred Start Date<': f'>{t("preferred_start_date", lang)}<',
-        '>Book at least 28 days in advance<': f'>{t("book_advance", lang)}<',
+        '>Book at least 20 days in advance<': f'>{t("book_advance", lang)}<',
         '>Number of Walkers<': f'>{t("num_walkers", lang)}<',
         '>1 Person<': f'>{t("person_1", lang)}<',
         '>2 People<': f'>{t("people_2", lang)}<',
@@ -1231,6 +1281,8 @@ def translate_html_ui(html, lang):
             html = html.replace(f'href="{en_slug}"', f'href="{translated_slug}"')
             # href="../english-slug" → href="../translated-slug" (subfolder links)
             html = html.replace(f'href="../{en_slug}"', f'href="../{translated_slug}"')
+            # href="/english-slug" → href="/translated-slug" (absolute path links)
+            html = html.replace(f'href="/{en_slug}"', f'href="/{translated_slug}"')
 
     return html
 
@@ -2254,6 +2306,7 @@ def generate_booking_data_script(tour, tour_extras_by_tour, payment_settings, la
         'min_walkers': int(tour.get('min_walkers', 1) or 1),
         'max_walkers': int(tour.get('max_walkers', 10) or 10),
         'max_extra_days': int(tour.get('max_extra_days', 3) or 3),
+        'best_months': tour.get('best_months') or [],
     }
 
     # Get extras for this tour
@@ -2502,61 +2555,117 @@ def render_dest_quick_stats(destination, tours):
         diff_text = ' &middot; '.join(sorted(difficulties, key=lambda d: ['Easy', 'Moderate', 'Intermediate', 'Challenging'].index(d) if d in ['Easy', 'Moderate', 'Intermediate', 'Challenging'] else 99))
         items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">speed</span><span class="text-sm font-bold text-slate-700">{diff_text}</span></div>')
 
-    # Best months
+    # Season (quick stats bar — EN only, translated versions use render_walking_info_panel)
     best = destination.get('best_months')
     if best and isinstance(best, list) and len(best) > 0:
-        months_text = ', '.join(best[:3])
-        if len(best) > 3:
-            months_text += f' +{len(best) - 3}'
-        items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">wb_sunny</span><span class="text-sm font-bold text-slate-700">Best: {months_text}</span></div>')
+        season_text = _best_months_to_season(best, 'en')
+        if season_text:
+            items.append(f'<div class="flex items-center gap-2"><span class="material-symbols-outlined text-primary">wb_sunny</span><span class="text-sm font-bold text-slate-700">{season_text}</span></div>')
 
     return '\n                        '.join(items)
 
 
-def render_walking_info_panel(destination, tours):
-    """Render the sticky walking info panel in the overview sidebar (purple/mauve theme)."""
+def _translate_month(month_name, lang):
+    """Translate an English month name to DE or NL."""
+    month_translations = {
+        'de': {
+            'January': 'Januar', 'February': 'Februar', 'March': 'März',
+            'April': 'April', 'May': 'Mai', 'June': 'Juni',
+            'July': 'Juli', 'August': 'August', 'September': 'September',
+            'October': 'Oktober', 'November': 'November', 'December': 'Dezember',
+        },
+        'nl': {
+            'January': 'januari', 'February': 'februari', 'March': 'maart',
+            'April': 'april', 'May': 'mei', 'June': 'juni',
+            'July': 'juli', 'August': 'augustus', 'September': 'september',
+            'October': 'oktober', 'November': 'november', 'December': 'december',
+        },
+    }
+    if lang in month_translations:
+        return month_translations[lang].get(month_name, month_name)
+    return month_name
+
+
+def _best_months_to_season(best_months, lang):
+    """Convert a best_months list to 'From April to October' format in the right language."""
+    month_order = ['January', 'February', 'March', 'April', 'May', 'June',
+                   'July', 'August', 'September', 'October', 'November', 'December']
+    # Normalise month names (they may be abbreviated)
+    normalised = []
+    for m in best_months:
+        m_clean = m.strip().strip('"')
+        for full in month_order:
+            if full.lower().startswith(m_clean[:3].lower()):
+                normalised.append(full)
+                break
+    if not normalised:
+        return ''
+    # Find first and last month in calendar order
+    indices = sorted(set(month_order.index(m) for m in normalised))
+    first = month_order[indices[0]]
+    last = month_order[indices[-1]]
+    first_t = _translate_month(first, lang)
+    last_t = _translate_month(last, lang)
+    template = t('season_from_to', lang)
+    return template.replace('{first}', first_t).replace('{last}', last_t)
+
+
+def _translate_difficulty(level, lang):
+    """Translate difficulty level to DE or NL."""
+    diff_translations = {
+        'de': {'Easy': 'Leicht', 'Moderate': 'Mittelschwer', 'Intermediate': 'Fortgeschritten', 'Challenging': 'Anspruchsvoll'},
+        'nl': {'Easy': 'Gemakkelijk', 'Moderate': 'Matig', 'Intermediate': 'Gevorderd', 'Challenging': 'Veeleisend'},
+    }
+    if lang in diff_translations:
+        return diff_translations[lang].get(level, level)
+    return level
+
+
+def render_walking_info_panel(destination, tours, lang='en'):
+    """Render the sticky walking info panel in the overview sidebar (purple/mauve theme).
+    Now fully translated for DE/NL with season format and short accommodation text."""
     items = []
 
     # Difficulty
-    diff = destination.get('difficulty_overview', '')
-    difficulties = list(set(t.get('difficulty_level', '') for t in (tours or []) if t.get('difficulty_level')))
+    difficulties = list(set(t_item.get('difficulty_level', '') for t_item in (tours or []) if t_item.get('difficulty_level')))
     if difficulties:
         diff_badges = ''
         for d in sorted(difficulties, key=lambda x: ['Easy', 'Moderate', 'Intermediate', 'Challenging'].index(x) if x in ['Easy', 'Moderate', 'Intermediate', 'Challenging'] else 99):
             badge_class = 'badge-easy' if d == 'Easy' else ('badge-moderate' if d in ('Moderate', 'Intermediate') else 'badge-challenging')
-            diff_badges += f'<span class="inline-block px-3 py-1 rounded-full text-xs font-bold {badge_class}">{escape(d)}</span> '
+            d_label = _translate_difficulty(d, lang)
+            diff_badges += f'<span class="inline-block px-3 py-1 rounded-full text-xs font-bold {badge_class}">{escape(d_label)}</span> '
         items.append(f'''<div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">speed</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Difficulty</p><div class="flex flex-wrap gap-1">{diff_badges}</div></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">{t("difficulty", lang)}</p><div class="flex flex-wrap gap-1">{diff_badges}</div></div>
                                     </div>''')
 
     # Duration
-    durations = [t.get('duration_days', 0) for t in (tours or []) if t.get('duration_days')]
+    durations = [t_item.get('duration_days', 0) for t_item in (tours or []) if t_item.get('duration_days')]
     if durations:
         min_d, max_d = min(durations), max(durations)
-        dur_text = f"{min_d}&ndash;{max_d} days" if min_d != max_d else f"{min_d} days"
+        days_word = t('days', lang).lower()
+        dur_text = f"{min_d}&ndash;{max_d} {days_word}" if min_d != max_d else f"{min_d} {days_word}"
         items.append(f'''<div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">calendar_month</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Duration</p><p class="text-sm font-bold" style="color:#210747;">{dur_text}</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">{t("duration", lang)}</p><p class="text-sm font-bold" style="color:#210747;">{dur_text}</p></div>
                                     </div>''')
 
-    # Best months
+    # Season (was "Best Months") — now shows "From April to October"
     best = destination.get('best_months')
     if best and isinstance(best, list) and len(best) > 0:
-        items.append(f'''<div class="flex items-start gap-3">
+        season_text = _best_months_to_season(best, lang)
+        if season_text:
+            items.append(f'''<div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">wb_sunny</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Best Months</p><p class="text-sm font-bold" style="color:#210747;">{', '.join(best)}</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">{t("season", lang)}</p><p class="text-sm font-bold" style="color:#210747;">{season_text}</p></div>
                                     </div>''')
 
-    # Accommodation
+    # Accommodation — short label "B&B & Guesthouses" instead of long text
     acc = destination.get('accommodation_style', '')
     if acc:
-        acc_short = strip_html_tags(acc)[:80]
-        if len(strip_html_tags(acc)) > 80:
-            acc_short += '...'
         items.append(f'''<div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">hotel</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Accommodation</p><p class="text-sm font-bold" style="color:#210747;">{escape(acc_short)}</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">{t("accommodation", lang)}</p><p class="text-sm font-bold" style="color:#210747;">{t("accommodation_short", lang)}</p></div>
                                     </div>''')
 
     return '\n                                '.join(items)
@@ -3207,46 +3316,50 @@ def render_destination_page(destination, tours, reviews, faqs, tours_by_id, lang
     dest_faq_schema = render_faq_schema(dest_faq_list, max_items=8)
 
     # Walking info panel
-    walking_info_html = render_walking_info_panel(destination, tours)
+    walking_info_html = render_walking_info_panel(destination, tours, lang=lang)
 
     # Tour count
     tour_count = len(tours) if tours else 0
     tour_count_html = ''
     if tour_count > 0:
+        plural_s = 's' if (lang == 'en' and tour_count != 1) else ('en' if (lang in ('de', 'nl') and tour_count != 1) else '')
+        tours_avail = t('tours_available', lang).replace('{n}', str(tour_count)).replace('{s}', plural_s)
         tour_count_html = f'''<div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
                                     <div class="flex items-center gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">hiking</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Walking Tours</p><p class="text-sm font-bold" style="color:#210747;">{tour_count} tour{"s" if tour_count != 1 else ""} available</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">{t("walking_tours_label", lang)}</p><p class="text-sm font-bold" style="color:#210747;">{tours_avail}</p></div>
                                     </div>
                                 </div>'''
 
-    # Included services from global settings
+    # Included & Excluded services — translated, with green checkmarks and red X's
     included_services_html = ''
-    try:
-        gs_path = WEBSITE_DIR / '_data' / 'global_settings.json'
-        if gs_path.exists():
-            with open(gs_path) as f:
-                global_settings = json.load(f)
-        else:
-            global_settings = []
-        included_items = []
-        for gs in global_settings:
-            if gs.get('setting_key') == 'included_services':
-                included_items = gs.get('setting_json', [])
-                break
-        if included_items:
-            li_html = ''
-            for svc in included_items:
-                svc_text = escape(str(svc))
-                li_html += f'<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>{svc_text}</span></li>\n'
-            included_services_html = f'''<div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
-                                    <p class="text-xs font-semibold mb-3" style="color:#B58DB6;">Included in Every Tour</p>
-                                    <ul class="space-y-2">
-                                        {li_html}
+    included_keys = ['svc_accommodation', 'svc_breakfast', 'svc_luggage', 'svc_itinerary', 'svc_support', 'svc_pretrip']
+    excluded_keys = ['svc_no_flights', 'svc_no_insurance', 'svc_no_meals']
+
+    # Included items — green checkmarks, bigger text
+    inc_html = ''
+    for key in included_keys:
+        svc_text = t(key, lang)
+        inc_html += f'<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">{escape(svc_text)}</span></li>\n'
+
+    # Excluded items — red X's, bigger text
+    exc_html = ''
+    for key in excluded_keys:
+        svc_text = t(key, lang)
+        exc_html += f'<li class="flex items-start gap-2" style="color:#64748b;"><span class="text-red-400 flex-shrink-0 mt-0.5 text-base font-bold">&#10007;</span><span class="text-sm font-medium">{escape(svc_text)}</span></li>\n'
+
+    included_services_html = f'''<div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
+                                    <p class="text-sm font-bold mb-3" style="color:#3F0F87;">{t("included_in_every_tour", lang)}</p>
+                                    <ul class="space-y-2.5">
+                                        {inc_html}
+                                    </ul>
+                                </div>
+                                <div class="mt-4 pt-3" style="border-top:1px solid rgba(181,141,182,0.2);">
+                                    <p class="text-sm font-bold mb-3" style="color:#64748b;">{t("not_included_label", lang)}</p>
+                                    <ul class="space-y-2.5">
+                                        {exc_html}
                                     </ul>
                                 </div>'''
-    except Exception:
-        pass
 
     # Combined 2-column sections
     landscape_culture_section = render_dest_landscape_culture_section(destination)
@@ -3450,44 +3563,19 @@ def render_tours_listing_schema(tours, lang='en', destinations_by_id=None):
             "name": tour.get('name', ''),
             "url": lang_url(lang, f'{tour_folder}/{slug}'),
             "item": {
-                "@type": ["TouristTrip", "Product"],
+                "@type": "Product",
                 "name": tour.get('name', ''),
                 "description": tour.get('subtitle') or tour.get('short_description', ''),
                 "image": tour_image,
-                "duration": f"P{tour.get('duration_days', 0)}D",
-                "touristType": "Walker",
+                "additionalProperty": [
+                    {"@type": "PropertyValue", "name": "Duration", "value": f"{tour.get('duration_days', 0)} days"},
+                    {"@type": "PropertyValue", "name": "Type", "value": "Self-guided walking tour"}
+                ],
                 "offers": {
                     "@type": "Offer",
                     "price": price_display,
                     "priceCurrency": "EUR",
-                    "availability": "https://schema.org/InStock",
-                    "shippingDetails": {
-                        "@type": "OfferShippingDetails",
-                        "deliveryTime": {
-                            "@type": "ShippingDeliveryTime",
-                            "handlingTime": {
-                                "@type": "QuantitativeValue",
-                                "minValue": 0,
-                                "maxValue": 0,
-                                "unitCode": "DAY"
-                            }
-                        },
-                        "shippingRate": {
-                            "@type": "MonetaryAmount",
-                            "value": "0",
-                            "currency": "EUR"
-                        },
-                        "shippingDestination": {
-                            "@type": "DefinedRegion",
-                            "addressCountry": "IE"
-                        }
-                    },
-                    "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "IE",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                        "merchantReturnDays": 0
-                    }
+                    "availability": "https://schema.org/InStock"
                 }
             }
         }
@@ -3794,7 +3882,11 @@ def render_destinations_listing_schema(destinations, tours, lang='en'):
 
 
 def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
-    """Render enhanced TouristTrip + Product schema for individual tour pages."""
+    """Render separate Product and TouristTrip schema blocks for tour pages.
+
+    Split into two clean JSON-LD blocks so that each type only contains
+    properties valid for that type, eliminating schema.org validation errors.
+    """
     stats = compute_review_stats(reviews_list)
     total_km, total_ascent = compute_tour_distances(tour)
     price = tour.get('price_per_person_eur', 0)
@@ -3817,27 +3909,20 @@ def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
     tour_folder = TOUR_FOLDER.get(lang, 'walking-tours')
     tour_url = lang_url(lang, f'{tour_folder}/{slug}')
     site_url = LANG_DOMAINS.get(lang, 'https://walkingholidayireland.com')
+    tour_name = tour.get('name', '')
+    tour_desc = strip_html_tags(tour.get('seo_description') or tour.get('short_description', ''))
 
-    schema = {
+    # --- Block 1: Product schema (for Google rich results) ---
+    product_schema = {
         "@context": "https://schema.org",
-        "@type": ["TouristTrip", "Product"],
-        "name": tour.get('name', ''),
-        "description": strip_html_tags(tour.get('seo_description') or tour.get('short_description', '')),
+        "@type": "Product",
+        "name": tour_name,
+        "description": tour_desc,
         "image": tour_image,
         "url": tour_url,
-        "touristType": "Walker",
-        "duration": f"P{tour.get('duration_days', 0)}D",
-        "provider": {
-            "@type": "TourOperator",
-            "name": "Walking Holiday Ireland",
-            "url": site_url,
-            "telephone": "+353429375983",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Dundalk",
-                "addressRegion": "Co. Louth",
-                "addressCountry": "IE"
-            }
+        "brand": {
+            "@type": "Brand",
+            "name": "Walking Holiday Ireland"
         },
         "offers": {
             "@type": "Offer",
@@ -3845,64 +3930,37 @@ def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
             "priceCurrency": "EUR",
             "availability": "https://schema.org/InStock",
             "validFrom": "2026-01-01",
-            "url": tour_url,
-            "shippingDetails": {
-                "@type": "OfferShippingDetails",
-                "deliveryTime": {
-                    "@type": "ShippingDeliveryTime",
-                    "handlingTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 0,
-                        "maxValue": 0,
-                        "unitCode": "DAY"
-                    },
-                    "transitTime": {
-                        "@type": "QuantitativeValue",
-                        "minValue": 0,
-                        "maxValue": 0,
-                        "unitCode": "DAY"
-                    }
-                },
-                "shippingRate": {
-                    "@type": "MonetaryAmount",
-                    "value": "0",
-                    "currency": "EUR"
-                },
-                "shippingDestination": {
-                    "@type": "DefinedRegion",
-                    "addressCountry": "IE"
-                }
-            },
-            "hasMerchantReturnPolicy": {
-                "@type": "MerchantReturnPolicy",
-                "applicableCountry": "IE",
-                "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                "merchantReturnDays": 0
-            }
-        },
-        "brand": {
-            "@type": "Brand",
-            "name": "Walking Holiday Ireland"
+            "priceValidUntil": "2026-12-31",
+            "url": tour_url
         }
     }
 
+    # additionalProperty — valid for Product
+    additional_props = []
+    duration_days = tour.get('duration_days', 0)
+    if duration_days:
+        additional_props.append({
+            "@type": "PropertyValue",
+            "name": "Duration",
+            "value": f"{duration_days} days"
+        })
     if total_km:
-        schema["distance"] = {
-            "@type": "QuantitativeValue",
-            "value": total_km,
-            "unitCode": "KMT",
-            "unitText": "km"
-        }
-
+        additional_props.append({
+            "@type": "PropertyValue",
+            "name": "Distance",
+            "value": f"{total_km} km"
+        })
     if tour.get('difficulty_level'):
-        schema["additionalProperty"] = [{
+        additional_props.append({
             "@type": "PropertyValue",
             "name": "Difficulty",
             "value": tour.get('difficulty_level')
-        }]
+        })
+    if additional_props:
+        product_schema["additionalProperty"] = additional_props
 
     if stats['total'] > 0:
-        schema["aggregateRating"] = {
+        product_schema["aggregateRating"] = {
             "@type": "AggregateRating",
             "ratingValue": str(stats['avg']),
             "bestRating": "5",
@@ -3910,11 +3968,67 @@ def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
             "reviewCount": str(stats['total'])
         }
 
-    return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
+    # --- Block 2: TouristTrip schema (for general structured data) ---
+    trip_schema = {
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": tour_name,
+        "description": tour_desc,
+        "image": tour_image,
+        "url": tour_url,
+        "touristType": "Walker",
+        "provider": {
+            "@type": "TravelAgency",
+            "name": "Walking Holiday Ireland",
+            "url": site_url,
+            "telephone": "+353429323396",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Dundalk",
+                "addressRegion": "Co. Louth",
+                "addressCountry": "IE"
+            }
+        }
+    }
+
+    # Duration in ISO 8601 format (valid for TouristTrip)
+    if duration_days:
+        trip_schema["duration"] = f"P{duration_days}D"
+
+    # Build itinerary with individual day items if available
+    itinerary_data = tour.get('itinerary') or []
+    if isinstance(itinerary_data, list) and itinerary_data:
+        list_items = []
+        for idx, day in enumerate(itinerary_data, 1):
+            day_title = day.get('title') or day.get('name') or f"Day {idx}"
+            list_items.append({
+                "@type": "ListItem",
+                "position": idx,
+                "name": day_title
+            })
+        trip_schema["itinerary"] = {
+            "@type": "ItemList",
+            "numberOfItems": len(list_items),
+            "itemListElement": list_items
+        }
+    elif duration_days:
+        trip_schema["itinerary"] = {
+            "@type": "ItemList",
+            "numberOfItems": duration_days,
+            "description": f"{duration_days}-day self-guided walking tour"
+        }
+
+    output = f'    <script type="application/ld+json">\n{json.dumps(product_schema, indent=8)}\n    </script>\n'
+    output += f'    <script type="application/ld+json">\n{json.dumps(trip_schema, indent=8)}\n    </script>\n'
+    return output
 
 
 def render_destination_page_schema(destination, tours_for_dest, reviews_list, lang='en'):
-    """Render enhanced TouristDestination schema for individual destination pages."""
+    """Render separate TouristDestination and LocalBusiness schema blocks.
+
+    Split into two clean JSON-LD blocks so that each type only contains
+    properties valid for that type, eliminating schema.org validation errors.
+    """
     stats = compute_review_stats(reviews_list)
 
     dest_slug = destination.get('slug', '')
@@ -3927,38 +4041,35 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
 
     wa_prefix = WALKING_AREA_PREFIX.get(lang, 'walking-area')
     dest_url = lang_url(lang, f'{wa_prefix}-{dest_slug}')
+    site_url = LANG_DOMAINS.get(lang, 'https://walkingholidayireland.com')
+    dest_name = destination.get('name', '')
+    dest_desc = strip_html_tags(destination.get('seo_description') or destination.get('short_description', ''))
 
-    schema = {
+    # --- Block 1: TouristDestination schema (place info) ---
+    place_schema = {
         "@context": "https://schema.org",
-        "@type": ["TouristDestination", "LocalBusiness"],
-        "name": destination.get('name', ''),
-        "description": strip_html_tags(destination.get('seo_description') or destination.get('short_description', '')),
+        "@type": "TouristDestination",
+        "name": dest_name,
+        "description": dest_desc,
         "image": dest_image,
         "url": dest_url,
-        "telephone": "+353429375983",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Dundalk",
-            "addressRegion": "Co. Louth",
-            "addressCountry": "IE"
-        },
         "containedInPlace": {
             "@type": "Country",
             "name": destination.get('country', 'Ireland')
         }
     }
 
-    # Add geo if available
+    # Add geo if available (valid for Place, parent of TouristDestination)
     lat = destination.get('map_center_lat')
     lng = destination.get('map_center_lng')
     if lat and lng:
-        schema["geo"] = {
+        place_schema["geo"] = {
             "@type": "GeoCoordinates",
             "latitude": lat,
             "longitude": lng
         }
 
-    # Add tours as offers
+    # touristType is valid for TouristDestination
     if tours_for_dest:
         prices = []
         for t in tours_for_dest:
@@ -3968,10 +4079,27 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
             except (ValueError, TypeError):
                 pass
         if prices:
-            schema["touristType"] = "Walker"
+            place_schema["touristType"] = "Walker"
+
+    # --- Block 2: LocalBusiness schema (business info) ---
+    biz_schema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Walking Holiday Ireland",
+        "description": dest_desc,
+        "image": dest_image,
+        "url": site_url,
+        "telephone": "+353429323396",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Dundalk",
+            "addressRegion": "Co. Louth",
+            "addressCountry": "IE"
+        }
+    }
 
     if stats['total'] > 0:
-        schema["aggregateRating"] = {
+        biz_schema["aggregateRating"] = {
             "@type": "AggregateRating",
             "ratingValue": str(stats['avg']),
             "bestRating": "5",
@@ -3979,7 +4107,9 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
             "reviewCount": str(stats['total'])
         }
 
-    return f'    <script type="application/ld+json">\n{json.dumps(schema, indent=8)}\n    </script>\n'
+    output = f'    <script type="application/ld+json">\n{json.dumps(place_schema, indent=8)}\n    </script>\n'
+    output += f'    <script type="application/ld+json">\n{json.dumps(biz_schema, indent=8)}\n    </script>\n'
+    return output
 
 
 def set_hreflang_tags(html, en_url, de_url=None, nl_url=None):
@@ -4225,6 +4355,11 @@ def post_process_html(html):
 
     # Strip .html extensions from all internal links (clean URLs)
     html = strip_html_extensions(html)
+
+    # Fix double-slash URLs in blog content (WordPress/Gutenberg editor artefact)
+    # e.g. href="/blog/some-post//" → href="/blog/some-post/"
+    html = re.sub(r'(href="[^"]*?)/{2,}(")', r'\1/\2', html)
+    html = re.sub(r"(href='[^']*?)/{2,}(')", r"\1/\2", html)
 
     return html
 
@@ -4872,6 +5007,9 @@ def main():
 
         log("Fetching FAQs from Supabase...")
         faqs = fetch_supabase('faqs', '&status=eq.published&language=eq.en&order=section,sort_order')
+        faqs_de = fetch_supabase('faqs', '&status=eq.published&language=eq.de&order=section,sort_order')
+        faqs_nl = fetch_supabase('faqs', '&status=eq.published&language=eq.nl&order=section,sort_order')
+        faqs_by_lang = {'en': faqs, 'de': faqs_de, 'nl': faqs_nl}
 
         log("Fetching regions from Supabase...")
         regions = fetch_supabase('regions', '&order=sort_order')
@@ -5572,27 +5710,50 @@ def main():
             sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category={escape(cat_s)}"><span>{escape(cat_name)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
 
         # Build sidebar recent posts (5 most recent by published_date)
-        sorted_posts = sorted(
-            [p for p in posts if p.get('slug')],
-            key=lambda p: p.get('published_date') or p.get('published_at', '')[:10] if p.get('published_at') else '',
-            reverse=True
-        )[:5]
-        sidebar_recent_posts_html = ''
-        for rp in sorted_posts:
-            rp_slug = rp.get('slug', '')
-            rp_title = rp.get('title', '')
-            rp_date = rp.get('published_date') or (rp.get('published_at', '')[:10] if rp.get('published_at') else '')
-            rp_date_display = rp_date
-            try:
-                from datetime import datetime as _dt
-                rp_dt = _dt.strptime(rp_date[:10], '%Y-%m-%d')
-                rp_date_display = rp_dt.strftime('%b %d, %Y')
-            except (ValueError, TypeError):
-                pass
-            sidebar_recent_posts_html += f'''<li><a class="group block" href="{escape(rp_slug)}">
+        # Helper to generate sidebar recent posts HTML for a given language
+        def _build_sidebar_recent(posts_list, lang='en'):
+            """Build 'Recent Posts' sidebar HTML for a specific language."""
+            if lang == 'en':
+                filtered = [p for p in posts_list if p.get('slug')]
+            elif lang == 'de':
+                filtered = [p for p in posts_list if p.get('slug_de') and p.get('content_de')]
+            elif lang == 'nl':
+                filtered = [p for p in posts_list if p.get('slug_nl') and p.get('content_nl')]
+            else:
+                filtered = [p for p in posts_list if p.get('slug')]
+            sorted_p = sorted(
+                filtered,
+                key=lambda p: p.get('published_date') or p.get('published_at', '')[:10] if p.get('published_at') else '',
+                reverse=True
+            )[:5]
+            html_out = ''
+            for rp in sorted_p:
+                if lang == 'de':
+                    rp_slug = rp.get('slug_de', '')
+                    rp_title = rp.get('title_de') or rp.get('title', '')
+                elif lang == 'nl':
+                    rp_slug = rp.get('slug_nl', '')
+                    rp_title = rp.get('title_nl') or rp.get('title', '')
+                else:
+                    rp_slug = rp.get('slug', '')
+                    rp_title = rp.get('title', '')
+                rp_date = rp.get('published_date') or (rp.get('published_at', '')[:10] if rp.get('published_at') else '')
+                rp_date_display = rp_date
+                try:
+                    from datetime import datetime as _dt
+                    rp_dt = _dt.strptime(rp_date[:10], '%Y-%m-%d')
+                    rp_date_display = rp_dt.strftime('%b %d, %Y')
+                except (ValueError, TypeError):
+                    pass
+                html_out += f'''<li><a class="group block" href="{escape(rp_slug)}">
                     <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">{escape(rp_title)}</p>
                     <p class="text-xs text-slate-400 mt-1">{rp_date_display}</p>
                 </a></li>\n'''
+            return html_out
+
+        sidebar_recent_posts_html = _build_sidebar_recent(posts, 'en')
+        sidebar_recent_posts_html_de = _build_sidebar_recent(posts, 'de')
+        sidebar_recent_posts_html_nl = _build_sidebar_recent(posts, 'nl')
 
         for post in posts:
             slug = post.get('slug', '')
@@ -5712,6 +5873,13 @@ def main():
                 de_replacements['{meta_title}'] = escape(post.get('meta_title_de') or post.get('title_de') or title)
                 de_replacements['{meta_description}'] = escape(post.get('meta_description_de') or post.get('excerpt_de') or excerpt)
                 de_replacements['{slug}'] = slug_de
+                de_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_de
+                # Build DE-specific related posts (only posts with DE translations)
+                de_related = [p for p in posts if p.get('slug_de') and p.get('content_de') and p.get('slug') != slug][:3]
+                de_related_html = ''
+                for rp in de_related:
+                    de_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp.get("slug_de", ""))}">{escape(rp.get("title_de") or rp.get("title", ""))}</a></li>\n'
+                de_replacements['{sidebar_related_html}'] = de_related_html
                 for key, value in de_replacements.items():
                     de_html = de_html.replace(key, str(value))
                 de_html = de_html.replace('<html lang="en"', '<html lang="de"')
@@ -5739,6 +5907,13 @@ def main():
                 nl_replacements['{meta_title}'] = escape(post.get('meta_title_nl') or post.get('title_nl') or title)
                 nl_replacements['{meta_description}'] = escape(post.get('meta_description_nl') or post.get('excerpt_nl') or excerpt)
                 nl_replacements['{slug}'] = slug_nl
+                nl_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_nl
+                # Build NL-specific related posts (only posts with NL translations)
+                nl_related = [p for p in posts if p.get('slug_nl') and p.get('content_nl') and p.get('slug') != slug][:3]
+                nl_related_html = ''
+                for rp in nl_related:
+                    nl_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp.get("slug_nl", ""))}">{escape(rp.get("title_nl") or rp.get("title", ""))}</a></li>\n'
+                nl_replacements['{sidebar_related_html}'] = nl_related_html
                 for key, value in nl_replacements.items():
                     nl_html = nl_html.replace(key, str(value))
                 nl_html = nl_html.replace('<html lang="en"', '<html lang="nl"')
@@ -5894,6 +6069,7 @@ def main():
                 'rec_subtitle': 'Bereit zu wandern? Entdecken Sie unsere beliebtesten Wandertouren in Irland.',
                 'days': 'Tage',
                 'details': 'Details',
+                'view_all_tours': 'Alle Touren Ansehen',
                 'slug_field': 'slug_de',
                 'title_field': 'title_de',
                 'excerpt_field': 'excerpt_de',
@@ -5926,6 +6102,7 @@ def main():
                 'rec_subtitle': 'Klaar om te wandelen? Ontdek onze populairste wandeltochten in Ierland.',
                 'days': 'Dagen',
                 'details': 'Details',
+                'view_all_tours': 'Bekijk Alle Tours',
                 'slug_field': 'slug_nl',
                 'title_field': 'title_nl',
                 'excerpt_field': 'excerpt_nl',
@@ -6002,11 +6179,13 @@ def main():
             # Build translated recommended tours
             lang_rec_html = ''
             for tour in featured_tours:
+                # Apply tour translation for DE/NL so names/subtitles render in correct language
+                t_tour = apply_tour_translation(tour, tour_translations.get(tour.get('id')))
                 t_slug = tour.get('slug', '')
-                t_name = escape(tour.get('name', ''))
-                t_days = tour.get('duration_days', 0) or 0
-                t_price = tour.get('price_per_person_eur', 0)
-                t_subtitle = escape(tour.get('subtitle', '') or tour.get('short_description', '') or '')
+                t_name = escape(t_tour.get('name', ''))
+                t_days = t_tour.get('duration_days', 0) or 0
+                t_price = t_tour.get('price_per_person_eur', 0)
+                t_subtitle = escape(t_tour.get('subtitle', '') or t_tour.get('short_description', '') or '')
                 if len(t_subtitle) > 40:
                     t_subtitle = t_subtitle[:37] + '...'
                 try:
@@ -6058,9 +6237,17 @@ def main():
             lang_blog = lang_blog.replace('>Recommended Tours<', f'>{bcfg["recommended_tours"]}<')
             # Replace recommended tours subtitle
             lang_blog = _re.sub(
-                r'Ready to walk\?.*?Ireland\.',
+                r'Ready to write your own trail story\?[^<]*',
                 bcfg['rec_subtitle'],
                 lang_blog)
+
+            # Replace "View All Tours" link text and href
+            lang_blog = lang_blog.replace(
+                'View All Tours <span',
+                f'{bcfg["view_all_tours"]} <span')
+            lang_blog = lang_blog.replace(
+                'href="walking-tours"',
+                f'href="{bcfg["tour_folder"]}"')
 
             # Replace blog cards
             new_grid = f'''<!-- Content Area -->
@@ -6125,12 +6312,13 @@ def main():
         log(f"\nFetching {lang} translations from Supabase...")
         translations = fetch_translations(lang)
 
+        lang_faqs = faqs_by_lang.get(lang, faqs)
         lang_tours, lang_dests = build_language_site(
             lang=lang,
             tours=tours,
             destinations=destinations,
             reviews=reviews,
-            faqs=faqs,
+            faqs=lang_faqs,
             regions=regions,
             posts=posts,
             translations=translations,

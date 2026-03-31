@@ -341,7 +341,11 @@ export default {
     }
 
     // Rewrite URL: prepend language directory
-    const rewrittenPath = langPrefix + (cleanPath === '/' ? '/index.html' : cleanPath);
+    // Note: Do NOT append /index.html explicitly — Cloudflare Pages resolves
+    // directory indexes automatically. Appending it triggers Pages' pretty-URL
+    // redirect (/de/index.html → /de/) which the Location-stripping logic below
+    // turns into / → creating an infinite redirect loop on language domains.
+    const rewrittenPath = langPrefix + cleanPath;
     const rewrittenUrl = new URL(url);
     rewrittenUrl.pathname = rewrittenPath;
 
@@ -361,7 +365,21 @@ export default {
         try {
           const locUrl = new URL(location, url.origin);
           if (locUrl.pathname.startsWith(langPrefix + '/')) {
-            locUrl.pathname = locUrl.pathname.slice(langPrefix.length);
+            const strippedPath = locUrl.pathname.slice(langPrefix.length);
+            // Safety: if stripping would redirect back to the same cleanPath,
+            // serve the content instead of redirecting (prevents redirect loops,
+            // e.g. /de/ → / on the homepage).
+            if (strippedPath === cleanPath || strippedPath === cleanPath + '/') {
+              // Re-fetch without redirect: 'manual' to get actual content
+              const retryResp = await env.ASSETS.fetch(
+                new Request(rewrittenUrl.toString(), {
+                  method: request.method,
+                  headers: request.headers,
+                })
+              );
+              return retryResp;
+            }
+            locUrl.pathname = strippedPath;
             const newHeaders = new Headers(response.headers);
             newHeaders.set('Location', locUrl.pathname + locUrl.search + locUrl.hash);
             return new Response(null, {

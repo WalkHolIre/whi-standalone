@@ -6,7 +6,7 @@
 
 const SUPABASE_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
 const BALANCE_DUE_DAYS = 42;
-const MIN_ADVANCE_DAYS = 21;
+const MIN_ADVANCE_DAYS = 20;
 
 // ============================================================================
 // I18N - TRANSLATIONS
@@ -91,9 +91,9 @@ const I18N = {
     weReceivedRequest: 'We\'ve received your booking request. Our team will contact you within 24 hours to confirm availability.',
     paymentProcessing: 'Your payment is being processed. You\'ll receive a confirmation email shortly.',
     contactUs: 'Get in touch',
-    email: 'Email: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 932 3396',
-    phone: 'Phone: +353 42 932 3396',
+    contactEmail: 'Email: info@walkingholidayireland.com',
+    contactWhatsapp: 'WhatsApp: +353 42 932 3396',
+    contactPhone: 'Phone: +353 42 932 3396',
 
     // Room assignment
     bedroomAssignment: 'Bedroom Assignment',
@@ -102,8 +102,8 @@ const I18N = {
     roomType: 'Room Type',
     roomSingle: 'Single',
     roomDouble: 'Double',
-    roomTriple: 'Triple',
-    roomFamily: 'Family',
+    roomTwin: 'Twin (2 single beds)',
+    roomFamily: 'Double + Single',
 
     // T&Cs and mailing
     termsAccept: 'I accept the',
@@ -117,18 +117,23 @@ const I18N = {
     payFullOption: 'Pay in Full',
     requestBookingOption: 'Request Booking',
     noPaymentNow: 'No payment now — we confirm availability first',
-    bankTransfer: 'Bank Transfer',
-    comingSoon: 'Coming Soon',
+    bankTransfer: 'Bank Transfer (SEPA/Swift)',
+    bankTransferHint: 'We\'ll email you our bank details',
     payWith: 'Pay with',
 
     // Errors
     selectStartDate: 'Please select a start date',
+    dateOutOfSeason: 'This tour runs from {first} to {last}. Please choose a date within that season.',
+    dateTooSoon: 'Please select a date at least 20 days from today.',
     enterDetails: 'Please enter your details',
     selectTour: 'Please select a tour',
     enterFirstName: 'Please enter your first name',
     enterLastName: 'Please enter your last name',
     enterValidEmail: 'Please enter a valid email',
     selectCountry: 'Please select a country',
+
+    // Season
+    seasonInfo: 'Season: {first} – {last}',
 
     // Navigation
     next: 'Next',
@@ -220,9 +225,9 @@ const I18N = {
     weReceivedRequest: 'Wir haben Ihre Buchungsanfrage erhalten. Unser Team wird sich innerhalb von 24 Stunden bei Ihnen melden, um die Verfügbarkeit zu bestätigen.',
     paymentProcessing: 'Ihre Zahlung wird verarbeitet. Sie erhalten bald eine Bestätigungsemail.',
     contactUs: 'Kontaktieren Sie uns',
-    email: 'E-Mail: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 932 3396',
-    phone: 'Telefon: +353 42 932 3396',
+    contactEmail: 'E-Mail: info@walkingholidayireland.com',
+    contactWhatsapp: 'WhatsApp: +353 42 932 3396',
+    contactPhone: 'Telefon: +353 42 932 3396',
 
     // Room assignment
     bedroomAssignment: 'Zimmerzuweisung',
@@ -231,8 +236,8 @@ const I18N = {
     roomType: 'Zimmertyp',
     roomSingle: 'Einzel',
     roomDouble: 'Doppel',
-    roomTriple: 'Dreibett',
-    roomFamily: 'Familie',
+    roomTwin: 'Twin (2 Einzelbetten)',
+    roomFamily: 'Doppel + Einzel',
 
     // T&Cs and mailing
     termsAccept: 'Ich akzeptiere die',
@@ -246,18 +251,23 @@ const I18N = {
     payFullOption: 'Vollständig bezahlen',
     requestBookingOption: 'Buchung anfragen',
     noPaymentNow: 'Jetzt keine Zahlung — wir bestätigen die Verfügbarkeit zuerst',
-    bankTransfer: 'Banküberweisung',
-    comingSoon: 'Kommt bald',
+    bankTransfer: 'Banküberweisung (SEPA/Swift)',
+    bankTransferHint: 'Wir senden Ihnen unsere Bankdaten per E-Mail',
     payWith: 'Bezahlen mit',
 
     // Errors
     selectStartDate: 'Bitte wählen Sie ein Startdatum',
+    dateOutOfSeason: 'Diese Tour ist von {first} bis {last} verfügbar. Bitte wählen Sie ein Datum in dieser Saison.',
+    dateTooSoon: 'Bitte wählen Sie ein Datum mindestens 20 Tage im Voraus.',
     enterDetails: 'Bitte geben Sie Ihre Daten ein',
     selectTour: 'Bitte wählen Sie eine Tour',
     enterFirstName: 'Bitte geben Sie Ihren Vornamen ein',
     enterLastName: 'Bitte geben Sie Ihren Nachname ein',
     enterValidEmail: 'Bitte geben Sie eine gültige E-Mail ein',
     selectCountry: 'Bitte wählen Sie ein Land',
+
+    // Season
+    seasonInfo: 'Saison: {first} – {last}',
 
     // Navigation
     next: 'Weiter',
@@ -349,9 +359,9 @@ const I18N = {
     weReceivedRequest: 'We hebben uw boekingsaanvraag ontvangen. Ons team zal u binnen 24 uur contacteren om de beschikbaarheid te bevestigen.',
     paymentProcessing: 'Uw betaling wordt verwerkt. U ontvangt binnenkort een bevestigingse-mail.',
     contactUs: 'Neem contact op',
-    email: 'E-mail: info@walkingholidayireland.com',
-    whatsapp: 'WhatsApp: +353 42 932 3396',
-    phone: 'Telefoon: +353 42 932 3396',
+    contactEmail: 'E-mail: info@walkingholidayireland.com',
+    contactWhatsapp: 'WhatsApp: +353 42 932 3396',
+    contactPhone: 'Telefoon: +353 42 932 3396',
 
     // Room assignment
     bedroomAssignment: 'Kamertoewijzing',
@@ -360,8 +370,8 @@ const I18N = {
     roomType: 'Kamertype',
     roomSingle: 'Enkel',
     roomDouble: 'Dubbel',
-    roomTriple: 'Driepersoons',
-    roomFamily: 'Familie',
+    roomTwin: 'Twin (2 eenpersoonsbedden)',
+    roomFamily: 'Dubbel + Enkel',
 
     // T&Cs and mailing
     termsAccept: 'Ik accepteer de',
@@ -375,18 +385,23 @@ const I18N = {
     payFullOption: 'Volledig betalen',
     requestBookingOption: 'Boeking aanvragen',
     noPaymentNow: 'Nu geen betaling — we bevestigen eerst de beschikbaarheid',
-    bankTransfer: 'Bankoverschrijving',
-    comingSoon: 'Binnenkort beschikbaar',
+    bankTransfer: 'Bankoverschrijving (SEPA/Swift)',
+    bankTransferHint: 'We sturen u onze bankgegevens per e-mail',
     payWith: 'Betaal met',
 
     // Errors
     selectStartDate: 'Selecteer een startdatum',
+    dateOutOfSeason: 'Deze tour is beschikbaar van {first} tot {last}. Kies een datum binnen dat seizoen.',
+    dateTooSoon: 'Selecteer een datum minstens 20 dagen van vandaag.',
     enterDetails: 'Vul uw gegevens in',
     selectTour: 'Selecteer een tour',
     enterFirstName: 'Vul uw voornaam in',
     enterLastName: 'Vul uw achternaam in',
     enterValidEmail: 'Vul een geldig e-mailadres in',
     selectCountry: 'Selecteer een land',
+
+    // Season
+    seasonInfo: 'Seizoen: {first} – {last}',
 
     // Navigation
     next: 'Volgende',
@@ -479,6 +494,100 @@ function getMinDate() {
   const minDate = new Date(today);
   minDate.setDate(minDate.getDate() + MIN_ADVANCE_DAYS);
   return minDate.toISOString().split('T')[0];
+}
+
+/**
+ * Get the season month range from a tour's best_months array.
+ * Returns { firstMonth: 0-11, lastMonth: 0-11, firstName: 'April', lastName: 'October' }
+ * or null if no best_months data.
+ */
+function getSeasonRange(tour) {
+  const months = tour && tour.best_months;
+  if (!months || !Array.isArray(months) || months.length === 0) return null;
+
+  const monthOrder = ['january','february','march','april','may','june',
+                      'july','august','september','october','november','december'];
+  const monthNames = ['January','February','March','April','May','June',
+                      'July','August','September','October','November','December'];
+
+  const indices = [];
+  for (const m of months) {
+    const cleaned = m.trim().replace(/"/g, '').toLowerCase().slice(0, 3);
+    for (let i = 0; i < monthOrder.length; i++) {
+      if (monthOrder[i].startsWith(cleaned)) {
+        indices.push(i);
+        break;
+      }
+    }
+  }
+  if (indices.length === 0) return null;
+
+  indices.sort((a, b) => a - b);
+  return {
+    firstMonth: indices[0],
+    lastMonth: indices[indices.length - 1],
+    firstName: monthNames[indices[0]],
+    lastName: monthNames[indices[indices.length - 1]],
+  };
+}
+
+/**
+ * Translate a month name for display in season hints.
+ */
+function translateMonth(monthName, lang) {
+  const translations = {
+    de: { January:'Januar', February:'Februar', March:'März', April:'April',
+          May:'Mai', June:'Juni', July:'Juli', August:'August',
+          September:'September', October:'Oktober', November:'November', December:'Dezember' },
+    nl: { January:'januari', February:'februari', March:'maart', April:'april',
+          May:'mei', June:'juni', July:'juli', August:'augustus',
+          September:'september', October:'oktober', November:'november', December:'december' },
+  };
+  if (translations[lang]) return translations[lang][monthName] || monthName;
+  return monthName;
+}
+
+/**
+ * Check whether a date string (YYYY-MM-DD) falls within the tour's season months.
+ * Returns true if in season, false if out of season, true if no season data.
+ */
+function isDateInSeason(dateStr, tour) {
+  const season = getSeasonRange(tour);
+  if (!season) return true; // no season data = all months OK
+  const date = new Date(dateStr + 'T00:00:00');
+  const month = date.getMonth(); // 0-11
+  return month >= season.firstMonth && month <= season.lastMonth;
+}
+
+/**
+ * Validate a selected date: must be in season AND >= minDate.
+ * Returns { valid: true } or { valid: false, message: '...' }
+ */
+function validateStartDate(dateStr, tour) {
+  if (!dateStr) return { valid: false, message: t('selectStartDate') };
+
+  const lang = bookingState.lang || 'en';
+  const minDate = getMinDate();
+
+  // Check minimum advance days
+  if (dateStr < minDate) {
+    return { valid: false, message: t('dateTooSoon') };
+  }
+
+  // Check season
+  const season = getSeasonRange(tour);
+  if (season) {
+    const date = new Date(dateStr + 'T00:00:00');
+    const month = date.getMonth();
+    if (month < season.firstMonth || month > season.lastMonth) {
+      const first = translateMonth(season.firstName, lang);
+      const last = translateMonth(season.lastName, lang);
+      const msg = t('dateOutOfSeason').replace('{first}', first).replace('{last}', last);
+      return { valid: false, message: msg };
+    }
+  }
+
+  return { valid: true };
 }
 
 function calculateEndDate(startDateStr, extraDaysCount) {
@@ -745,9 +854,49 @@ function renderStep1() {
 
     <div class="bm-form-group">
       <label class="bm-label" for="bm-start-date">${t('startDate')}</label>
-      <input type="date" id="bm-start-date" class="bm-input" min="${minDate}"
-             value="${bookingState.startDate || ''}"
-             onchange="window.setStartDate(this.value)">
+      ${(() => {
+        const season = getSeasonRange(tour);
+        const lang = bookingState.lang || 'en';
+        let seasonMin = minDate;
+        let seasonMax = '';
+        if (season) {
+          // Calculate the earliest valid season start from minDate
+          const minD = new Date(minDate + 'T00:00:00');
+          const minYear = minD.getFullYear();
+          const minMonth = minD.getMonth();
+          // If we're past the season end this year, use next year's season start
+          let startYear = minYear;
+          if (minMonth > season.lastMonth) {
+            startYear = minYear + 1;
+          }
+          // Season start: first day of firstMonth in startYear
+          const sStart = new Date(startYear, season.firstMonth, 1);
+          // If minDate is already inside or before season, use minDate; otherwise use season start
+          if (sStart > minD) {
+            seasonMin = sStart.toISOString().split('T')[0];
+          }
+          // Season end: last day of lastMonth — allow booking into next year too
+          const endYear = startYear + 1;
+          const sEnd = new Date(endYear, season.lastMonth + 1, 0);
+          seasonMax = sEnd.toISOString().split('T')[0];
+        }
+        return '<input type="date" id="bm-start-date" class="bm-input" min="' + seasonMin + '"'
+          + (seasonMax ? ' max="' + seasonMax + '"' : '')
+          + ' value="' + (bookingState.startDate || '') + '"'
+          + ' onchange="window.setStartDate(this.value)">';
+      })()}
+      ${(() => {
+        const season = getSeasonRange(tour);
+        if (season) {
+          const lang = bookingState.lang || 'en';
+          const first = translateMonth(season.firstName, lang);
+          const last = translateMonth(season.lastName, lang);
+          const hint = t('seasonInfo').replace('{first}', first).replace('{last}', last);
+          return '<p style="margin:4px 0 0;font-size:0.8rem;color:#6b7280;">' + escapeHtml(hint) + '</p>';
+        }
+        return '';
+      })()}
+      <p id="bm-date-error" style="display:none;margin:6px 0 0;font-size:0.85rem;color:#ef4444;font-weight:500;"></p>
     </div>
 
     <div class="bm-form-group">
@@ -762,17 +911,6 @@ function renderStep1() {
     </div>
 
     ${singleRoomHtml}
-
-    <div class="bm-form-group">
-      <label class="bm-label">${t('extraRestDays')}</label>
-      <div class="bm-stepper">
-        <button class="bm-stepper-btn" onclick="window.decrementExtraDays()"
-                ${bookingState.extraDays === 0 ? 'disabled' : ''}>−</button>
-        <div class="bm-stepper-value">${bookingState.extraDays}</div>
-        <button class="bm-stepper-btn" onclick="window.incrementExtraDays()"
-                ${bookingState.extraDays >= tour.max_extra_days ? 'disabled' : ''}>+</button>
-      </div>
-    </div>
 
     ${extrasHtml}
 
@@ -809,13 +947,13 @@ function renderStep2() {
   // Line-art bed SVG icons
   const bedSvgSingle = '<svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:28px;"><rect x="4" y="6" width="40" height="24" rx="3"/><path d="M8 16h32v8H8z"/><rect x="16" y="10" width="16" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="44" y1="30" x2="44" y2="34"/></svg>';
   const bedSvgDouble = '<svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:28px;"><rect x="4" y="6" width="40" height="24" rx="3"/><path d="M8 16h32v8H8z"/><rect x="10" y="10" width="12" height="6" rx="2"/><rect x="26" y="10" width="12" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="44" y1="30" x2="44" y2="34"/></svg>';
-  const bedSvgTriple = '<svg viewBox="0 0 64 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:46px;height:28px;"><rect x="4" y="6" width="56" height="24" rx="3"/><path d="M8 16h48v8H8z"/><rect x="8" y="10" width="14" height="6" rx="2"/><rect x="25" y="10" width="14" height="6" rx="2"/><rect x="42" y="10" width="14" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="60" y1="30" x2="60" y2="34"/></svg>';
-  const bedSvgFamily = '<svg viewBox="0 0 58 44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:32px;"><rect x="4" y="6" width="50" height="24" rx="3"/><path d="M8 16h42v8H8z"/><rect x="10" y="10" width="16" height="6" rx="2"/><rect x="30" y="10" width="16" height="6" rx="2"/><line x1="4" y1="30" x2="4" y2="34"/><line x1="54" y1="30" x2="54" y2="34"/><rect x="14" y="32" width="30" height="10" rx="2"/><path d="M20 38h18v4H20z"/><rect x="22" y="34" width="6" height="4" rx="1.5"/><rect x="30" y="34" width="6" height="4" rx="1.5"/></svg>';
+  const bedSvgTwin = '<svg viewBox="0 0 48 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:36px;height:28px;"><rect x="2" y="6" width="19" height="24" rx="3"/><path d="M5 16h13v8H5z"/><rect x="7" y="10" width="9" height="6" rx="2"/><line x1="2" y1="30" x2="2" y2="34"/><line x1="21" y1="30" x2="21" y2="34"/><rect x="27" y="6" width="19" height="24" rx="3"/><path d="M30 16h13v8H30z"/><rect x="32" y="10" width="9" height="6" rx="2"/><line x1="27" y1="30" x2="27" y2="34"/><line x1="46" y1="30" x2="46" y2="34"/></svg>';
+  const bedSvgFamily = '<svg viewBox="0 0 58 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:28px;"><rect x="2" y="6" width="32" height="24" rx="3"/><path d="M5 16h26v8H5z"/><rect x="8" y="10" width="9" height="6" rx="2"/><rect x="20" y="10" width="9" height="6" rx="2"/><line x1="2" y1="30" x2="2" y2="34"/><line x1="34" y1="30" x2="34" y2="34"/><rect x="39" y="10" width="16" height="20" rx="3"/><path d="M42 16h10v8H42z"/><rect x="43" y="12" width="8" height="4" rx="1.5"/><line x1="39" y1="30" x2="39" y2="34"/><line x1="55" y1="30" x2="55" y2="34"/></svg>';
 
   const roomTypes = [
     { id: 'single', icon: bedSvgSingle, label: t('roomSingle') },
     { id: 'double', icon: bedSvgDouble, label: t('roomDouble') },
-    { id: 'triple', icon: bedSvgTriple, label: t('roomTriple') },
+    { id: 'twin', icon: bedSvgTwin, label: t('roomTwin') },
     { id: 'family', icon: bedSvgFamily, label: t('roomFamily') },
   ];
 
@@ -1040,25 +1178,28 @@ function renderStep3() {
   } else {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer;">
-          <div style="display: flex; align-items: center; justify-content: space-between; width: 100%;">
-            <div style="display: flex; align-items: center; gap: 10px;">
-              <svg viewBox="0 0 60 25" style="height:22px;" fill="none"><path d="M5 0h50a5 5 0 015 5v15a5 5 0 01-5 5H5a5 5 0 01-5-5V5a5 5 0 015-5z" fill="#635BFF"/><path d="M28.3 10.1c0-1.6 1.3-2.2 2.3-2.2 1.1 0 2 .4 2.7.9l.8-1.8c-.8-.5-2-1-3.4-1-2.8 0-4.7 1.5-4.7 3.9 0 3.8 5.2 3.2 5.2 4.8 0 .7-.6 1.1-1.5 1.1-1.3 0-2.5-.5-3.2-1.2l-.8 1.9c.9.7 2.3 1.2 3.8 1.2 2.9 0 4.9-1.4 4.9-4 0-4.1-5.1-3.4-5.1-4.6zm-9.5-3l-1.5 0 .1-.5c.1-.7.6-1.1 1.3-1.1.4 0 .6.1.8.2l.5-1.8c-.3-.1-.7-.2-1.3-.2-2.1 0-3.5 1.2-3.8 3.4h-1l-.3 1.6h1l-1.2 7.1h2.2l1.2-7.1h1.5l.3-1.6zm7.9 0h-2l-2.7 8.7h2.1l.6-2h2.9l.3 2h2l-1.7-8.7h-1.5zm-.4 5.1l1-3.3.6 3.3h-1.6zm17.1-5.1h-2.2l-3.9 8.7h2.2l.7-1.7h3.5l.4 1.7h2.1l-2.8-8.7zm-2.5 5.5l1.5-3.8.8 3.8h-2.3z" fill="white" opacity=".9"/></svg>
-              <span style="font-size: 16px; font-weight: 600;">${t('payByCard')}</span>
-            </div>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); color: white; cursor: pointer; text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span style="font-size: 16px; font-weight: 600;">${t('payByCard')}</span>
           </div>
-          <div style="display: flex; align-items: center; gap: 6px; margin-top: 10px; flex-wrap: wrap;">
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#1A1F71;border-radius:4px;padding:2px 6px;height:22px;"><svg viewBox="0 0 48 16" style="height:12px;" fill="none"><path d="M17.5 13.5l2.1-11h2.8l-2.1 11h-2.8zm11.5-11l-2.6 7.5-1.1-5.5-.3-1.6c-.2-.4-.6-.4-1.1-.4H20l-.1.2c1.1.2 2.2.7 2.9 1.1l2.5 9.7h2.9l4.4-11h-3.1zm-16.9 0L9.3 10l-.3-1.6C8.3 6.3 6.6 4.2 4.6 3l2.5 9.3h2.9l4.4-11h-2.3z" fill="white"/><path d="M8.5 2.5c-.2-.9-1-1.2-1.9-1.2H1.8L1.7 1.5c3.3.8 5.5 2.9 6.4 5.3l-.9-4.3c-.2-.7-.7-.9-1.1-.8z" fill="#F7B600"/></svg></span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#252525;border-radius:4px;padding:2px 6px;height:22px;"><svg viewBox="0 0 36 16" style="height:12px;" fill="none"><circle cx="14" cy="8" r="7" fill="#EB001B"/><circle cx="22" cy="8" r="7" fill="#F79E1B"/><path d="M18 2.5a7 7 0 000 11 7 7 0 000-11z" fill="#FF5F00"/></svg></span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#cc2277;letter-spacing:-0.3px;">iDEAL</span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#005B99;">Bancontact</span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#FFB3C7;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:700;color:#17120F;">Klarna</span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#fff;border:1px solid #ccc;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:600;color:#333;">SEPA</span>
-            <span style="display:inline-flex;align-items:center;justify-content:center;background:#000;border-radius:4px;padding:2px 6px;height:22px;font-size:10px;font-weight:600;color:#fff;letter-spacing:-0.3px;"> Pay</span>
+          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
+            <span style="display:inline-block;background:#1A1F71;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">VISA</span>
+            <span style="display:inline-block;background:#EB001B;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">MC</span>
+            <span style="display:inline-block;background:#fff;color:#cc2277;border:1px solid #ddd;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">iDEAL</span>
+            <span style="display:inline-block;background:#fff;color:#005B99;border:1px solid #ddd;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">Bancontact</span>
+            <span style="display:inline-block;background:#FFB3C7;color:#17120F;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">Klarna</span>
           </div>
         </button>
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px;">
-          <svg viewBox="0 0 100 26" style="height:24px;" fill="none"><path d="M37.8 5.1h-4.5c-.3 0-.6.2-.6.5l-1.8 11.6c0 .3.2.5.4.5h2.2c.3 0 .6-.2.6-.5l.5-3.3c0-.3.3-.5.6-.5h1.5c3 0 4.8-1.5 5.2-4.4.2-1.3 0-2.3-.5-3-.6-.8-1.7-1.2-3.3-1.2zm.5 4.3c-.3 1.6-1.5 1.6-2.7 1.6h-.7l.5-3.1c0-.2.2-.3.4-.3h.3c.8 0 1.6 0 2 .5.2.3.3.7.2 1.3z" fill="#253B80"/><path d="M55.6 9.3h-2.2c-.2 0-.3.1-.4.3l-.1.6-.1-.2c-.4-.6-1.3-.8-2.2-.8-2.1 0-3.8 1.6-4.2 3.8-.2 1.1.1 2.2.7 2.9.6.7 1.4 1 2.3 1 1.7 0 2.6-1.1 2.6-1.1l-.1.5c0 .3.2.5.4.5h2c.3 0 .6-.2.6-.5l1.2-7.5c0-.2-.2-.5-.5-.5zm-2.6 3.7c-.2 1.1-1 1.8-2.1 1.8-.6 0-1-.2-1.3-.5-.3-.3-.4-.8-.3-1.3.2-1.1 1-1.9 2.1-1.9.5 0 1 .2 1.3.5.3.4.4.8.3 1.4z" fill="#253B80"/><path d="M67.5 9.3h-2.2c-.2 0-.4.1-.5.3l-2.9 4.3-1.2-4.1c-.1-.3-.4-.5-.7-.5H58c-.3 0-.5.3-.4.6l2.3 6.8-2.2 3.1c-.2.3 0 .7.4.7h2.2c.2 0 .4-.1.5-.3l7-10.2c.2-.3 0-.7-.3-.7z" fill="#253B80"/><path d="M74.4 5.1h-4.5c-.3 0-.6.2-.6.5l-1.8 11.6c0 .3.2.5.4.5h2.3c.2 0 .4-.2.5-.4l.5-3.3c0-.3.3-.5.6-.5h1.5c3 0 4.8-1.5 5.2-4.4.2-1.3 0-2.3-.5-3-.7-.8-1.7-1.2-3.3-1.2zm.5 4.3c-.3 1.6-1.5 1.6-2.7 1.6H72l.5-3.1c0-.2.2-.3.4-.3h.3c.8 0 1.6 0 2 .5.3.3.3.7.2 1.3z" fill="#179BD7"/><path d="M92.2 9.3H90c-.2 0-.3.1-.4.3l-.1.6-.1-.2c-.4-.6-1.3-.8-2.2-.8-2.1 0-3.8 1.6-4.2 3.8-.2 1.1.1 2.2.7 2.9.6.7 1.4 1 2.3 1 1.7 0 2.6-1.1 2.6-1.1l-.1.5c0 .3.2.5.4.5h2c.3 0 .6-.2.6-.5l1.2-7.5c0-.2-.2-.5-.5-.5zm-2.6 3.7c-.2 1.1-1 1.8-2.1 1.8-.6 0-1-.2-1.3-.5-.3-.3-.4-.8-.3-1.3.2-1.1 1-1.9 2.1-1.9.5 0 1 .2 1.3.5.3.4.4.8.3 1.4z" fill="#179BD7"/><path d="M94 5.4l-1.9 11.8c0 .3.2.5.4.5h1.9c.3 0 .6-.2.6-.5L97 5.6c0-.3-.2-.5-.4-.5H95c-.4 0-.8.1-1 .3z" fill="#179BD7"/></svg>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 12px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: #FFC439; color: #253B80; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700;">
+          <span style="font-size:14px;font-weight:700;color:#253B80;">Pay</span><span style="font-size:14px;font-weight:700;color:#179BD7;">Pal</span>
+        </button>
+        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('bank_transfer')" style="width: 100%; padding: 14px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'bank_transfer' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer; text-align: center;">
+          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <svg viewBox="0 0 24 24" style="width:20px;height:20px;" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+            <span style="font-size: 15px; font-weight: 600;">${t('bankTransfer')}</span>
+          </div>
+          <p style="margin:4px 0 0;font-size:12px;color:#6b7280;">${t('bankTransferHint')}</p>
         </button>
       </div>
     `;
@@ -1076,15 +1217,25 @@ function renderStep3() {
 
       <div class="bm-summary-section">
         <h4 class="bm-summary-title">${t('stepTravellerDetails')}</h4>
-        <p class="bm-summary-text">
-          ${escapeHtml(bookingState.leadTraveller.firstName)} ${escapeHtml(bookingState.leadTraveller.lastName)}
-          ${
-            bookingState.additionalTravellers.length > 0
-              ? `<br>+ ${bookingState.additionalTravellers.length} ${t('traveller')}${bookingState.additionalTravellers.length > 1 ? 's' : ''}`
-              : ''
-          }
-        </p>
+        <div style="font-size:14px;color:#374151;">
+          <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f3f4f6;">
+            <span><strong>1.</strong> ${escapeHtml(bookingState.leadTraveller.firstName)} ${escapeHtml(bookingState.leadTraveller.lastName)} <span style="color:#6b7280;font-size:12px;">(${t('leadTraveller')})</span></span>
+            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${(() => { const r = bookingState.leadTraveller.room || 'double'; return r === 'single' ? t('roomSingle') : r === 'double' ? t('roomDouble') : r === 'twin' ? t('roomTwin') : t('roomFamily'); })()}</span>
+          </div>
+          ${bookingState.additionalTravellers.map((tr, i) => `
+          <div style="display:flex;justify-content:space-between;padding:4px 0;${i < bookingState.additionalTravellers.length - 1 ? 'border-bottom:1px solid #f3f4f6;' : ''}">
+            <span><strong>${i + 2}.</strong> ${escapeHtml(tr.firstName || '—')} ${escapeHtml(tr.lastName || '—')}</span>
+            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${(() => { const r = tr.room || 'double'; return r === 'single' ? t('roomSingle') : r === 'double' ? t('roomDouble') : r === 'twin' ? t('roomTwin') : t('roomFamily'); })()}</span>
+          </div>`).join('')}
+        </div>
       </div>
+      ${bookingState.selectedExtras.length > 0 ? `
+      <div class="bm-summary-section">
+        <h4 class="bm-summary-title">${t('extras')}</h4>
+        <div style="font-size:14px;color:#374151;">
+          ${bookingState.selectedExtras.map(ex => `<div style="padding:3px 0;">• ${escapeHtml(ex.name)} — ${ex.price_type === 'poa' ? t('priceOnRequest') : formatCurrency(ex.price_eur) + ' ' + getPriceTypeLabel(ex.price_type)}</div>`).join('')}
+        </div>
+      </div>` : ''}
     </div>
 
     <div class="bm-price-summary">
@@ -1108,15 +1259,13 @@ function renderConfirmation(bookingRef, paymentMethod) {
 
   content.innerHTML = `
     <div class="bm-confirmation">
-      <div class="bm-checkmark">
-        <svg viewBox="0 0 24 24">
-          <path d="M9 16.2L4.8 12m-0 0a6 6 0 1 1 8.485-8.485M9 16.2l5.4-5.4"></path>
-        </svg>
+      <div style="text-align:center;margin-bottom:16px;">
+        <img src="/images/logo/WHI_Logo.webp" alt="Walking Holiday Ireland" style="height:60px;margin:0 auto;" onerror="this.src='/images/logo/walking_holiday_ireland_logo.jpg';this.onerror=null;">
       </div>
       <h2 class="bm-confirmation-title">
         ${t('bookingConfirmed')}
       </h2>
-      <div class="bm-confirmation-ref">${escapeHtml(bookingRef)}</div>
+      <div class="bm-confirmation-ref" style="font-size:18px;padding:8px 16px;">${escapeHtml(bookingRef)}</div>
       <p class="bm-confirmation-message">
         ${isEnquiry ? t('weReceivedRequest') : t('paymentProcessing')}
       </p>
@@ -1135,13 +1284,13 @@ function renderConfirmation(bookingRef, paymentMethod) {
       <div class="bm-contact-links">
         <p style="margin: 0; font-weight: 600; color: #1f2937;">${t('contactUs')}</p>
         <a href="mailto:info@walkingholidayireland.com" class="bm-contact-link">
-          ${t('email')}
+          ${t('contactEmail')}
         </a>
         <a href="https://wa.me/353879573856" target="_blank" class="bm-contact-link">
-          ${t('whatsapp')}
+          ${t('contactWhatsapp')}
         </a>
         <a href="tel:+353429323396" class="bm-contact-link">
-          ${t('phone')}
+          ${t('contactPhone')}
         </a>
       </div>
     </div>
@@ -1203,13 +1352,24 @@ function renderPricingSummary(pricing) {
     `;
   }
 
-  if (pricing.extrasTotal > 0) {
-    html += `
-      <div class="bm-price-row">
-        <span>${t('extras')}</span>
-        <span class="bm-price-amount">${formatCurrency(pricing.extrasTotal)}</span>
-      </div>
-    `;
+  if (pricing.extrasTotal > 0 && bookingState.selectedExtras && bookingState.selectedExtras.length > 0) {
+    const walkers = bookingState.walkers;
+    const walkingDays = bookingState.tour.walking_days || (bookingState.tour.duration_days - 1);
+    bookingState.selectedExtras.forEach((extra) => {
+      let extraCost = 0;
+      if (extra.price_type === 'per_person') extraCost = extra.price_eur * walkers;
+      else if (extra.price_type === 'per_group') extraCost = extra.price_eur;
+      else if (extra.price_type === 'per_day') extraCost = extra.price_eur * walkingDays;
+      else if (extra.price_type === 'per_person_per_day') extraCost = extra.price_eur * walkers * walkingDays;
+      if (extraCost > 0) {
+        html += `
+          <div class="bm-price-row">
+            <span>${escapeHtml(extra.name)}</span>
+            <span class="bm-price-amount">${formatCurrency(extraCost)}</span>
+          </div>
+        `;
+      }
+    });
   }
 
   html += `
@@ -1267,9 +1427,12 @@ function escapeHtml(text) {
 }
 
 function goToStep(step) {
-  if (step === 2 && !bookingState.startDate) {
-    alert(t('selectStartDate'));
-    return;
+  if (step === 2) {
+    const dateCheck = validateStartDate(bookingState.startDate, bookingState.tour);
+    if (!dateCheck.valid) {
+      alert(dateCheck.message);
+      return;
+    }
   }
   if (step === 3 && (!bookingState.leadTraveller.firstName || !bookingState.leadTraveller.lastName || !bookingState.leadTraveller.email || !bookingState.leadTraveller.country)) {
     alert(t('enterDetails'));
@@ -1288,6 +1451,25 @@ function goToStep(step) {
 
 window.setStartDate = function (value) {
   bookingState.startDate = value;
+
+  // Validate the selected date
+  const errorEl = document.getElementById('bm-date-error');
+  if (value) {
+    const check = validateStartDate(value, bookingState.tour);
+    if (!check.valid) {
+      if (errorEl) {
+        errorEl.textContent = check.message;
+        errorEl.style.display = 'block';
+      }
+      bookingState.startDate = null;
+      return;
+    }
+  }
+  if (errorEl) {
+    errorEl.style.display = 'none';
+    errorEl.textContent = '';
+  }
+
   // Only update price summary, don't re-render entire step
   const priceSummary = document.querySelector('.bm-price-summary');
   if (priceSummary) {
@@ -1423,6 +1605,10 @@ window.setPaymentMethodAndSubmit = function (method) {
     return;
   }
   bookingState.paymentMethod = method;
+  // Bank transfer submits like an enquiry (no online payment)
+  if (method === 'bank_transfer') {
+    bookingState.paymentOption = 'bank_transfer';
+  }
   bookingState.isSubmitting = true;
   renderStep3(); // re-render shows spinner/disabled state
   window.submitBooking();
@@ -1439,8 +1625,9 @@ window.submitBooking = async function () {
     return;
   }
 
-  if (!bookingState.startDate) {
-    alert(t('selectStartDate'));
+  const dateCheck = validateStartDate(bookingState.startDate, bookingState.tour);
+  if (!dateCheck.valid) {
+    alert(dateCheck.message);
     return;
   }
 
