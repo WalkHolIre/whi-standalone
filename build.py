@@ -4157,6 +4157,11 @@ def render_destinations_listing_schema(destinations, tours, lang='en'):
                 "@type": "TouristDestination",
                 "name": dest.get('name', ''),
                 "description": dest.get('short_description', ''),
+                "geo": {
+                    "@type": "GeoCoordinates",
+                    "latitude": dest.get('map_center_lat', 53.4129),
+                    "longitude": dest.get('map_center_lng', -8.2439)
+                },
                 "containedInPlace": {
                     "@type": "Country",
                     "name": "Ireland"
@@ -4699,6 +4704,29 @@ def post_process_html(html):
     # e.g. href="/blog/some-post//" → href="/blog/some-post/"
     html = re.sub(r'(href="[^"]*?)/{2,}(")', r'\1/\2', html)
     html = re.sub(r"(href='[^']*?)/{2,}(')", r"\1/\2", html)
+
+    # 11. Fix schema.org TouristDestination missing "geo" property
+    # Ahrefs flags TouristDestination without geo as a validation error.
+    # Inject Ireland-level GeoCoordinates into any TouristDestination that lacks "geo".
+    def _inject_geo_into_tourist_dest(match):
+        block = match.group(0)
+        try:
+            schema = json.loads(block.split('application/ld+json">')[1].rsplit('</script>', 1)[0])
+            if schema.get('@type') == 'TouristDestination' and 'geo' not in schema:
+                schema['geo'] = {
+                    "@type": "GeoCoordinates",
+                    "latitude": 53.4129,
+                    "longitude": -8.2439
+                }
+                indent = 8 if '        "@context"' in block else 4
+                new_json = json.dumps(schema, indent=indent)
+                return f'<script type="application/ld+json">\n{new_json}\n    </script>'
+        except Exception:
+            pass
+        return block
+    html = re.sub(
+        r'<script type="application/ld\+json">\s*\{[^<]*?"@type":\s*"TouristDestination"[^<]*?</script>',
+        _inject_geo_into_tourist_dest, html, flags=re.DOTALL)
 
     return html
 

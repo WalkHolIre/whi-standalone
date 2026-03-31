@@ -331,6 +331,10 @@
 /nl/blog/when-was-walking-invented  /nl/blog/wanneer-is-wandelen-uitgevonden  301
 /de/blog/wicklow-national-parks  /de/blog/wicklow-mountains-nationalpark-wandern  301
 /nl/blog/wicklow-national-parks  /nl/blog/wicklow-mountains-national-park-wandelen  301
+# NL old WordPress slug → NL translated blog article
+/nl/travel-to-ireland/  /nl/blog/reizen-naar-ierland-wandelvakantie  301
+/nl/travel-to-ireland  /nl/blog/reizen-naar-ierland-wandelvakantie  301
+
 # 2 posts with NO translations — redirect to EN version
 /de/blog/winter-hiking-clothing-tips  /blog/winter-hiking-clothing-tips  301
 /nl/blog/winter-hiking-clothing-tips  /blog/winter-hiking-clothing-tips  301
