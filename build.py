@@ -1443,6 +1443,20 @@ def translate_checkout_form(html, lang):
                 "'PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut oder nutzen Sie die Kartenzahlung.'",
             # JS: Pay button text rebuild
             "Pay Deposit — €": "Anzahlung — €",
+            # Voucher / Discount code section
+            'Have a voucher or discount code?': 'Haben Sie einen Gutschein oder Rabattcode?',
+            'placeholder="Enter code, e.g. GFT-AB3K-9QWR"': 'placeholder="Code eingeben, z.B. GFT-AB3K-9QWR"',
+            '>Apply<': '>Einlösen<',
+            '>Voucher discount<': '>Gutschein-Rabatt<',
+            'title="Remove voucher"': 'title="Entfernen"',
+            # JS voucher strings
+            "btn.textContent = 'Checking...'": "btn.textContent = 'Wird geprüft...'",
+            "btn.textContent = 'Apply'": "btn.textContent = 'Einlösen'",
+            "showVoucherError('Could not validate voucher. Please try again.')": "showVoucherError('Gutschein konnte nicht überprüft werden. Bitte versuchen Sie es erneut.')",
+            "showVoucherError(result.error || 'This code is not valid.')": "showVoucherError(result.error || 'Dieser Code ist nicht gültig.')",
+            "locale: 'en'": "locale: 'de'",
+            "source: 'website'": "source: 'website-de'",
+            "language: 'en'": "language: 'de'",
             # Region group labels
             "Wild Atlantic Way": "Wild Atlantic Way",
             "Ireland's Ancient East": "Irlands Historischer Osten",
@@ -1580,6 +1594,20 @@ def translate_checkout_form(html, lang):
                 "'PayPal-betaling mislukt. Probeer het opnieuw of gebruik kaartbetaling.'",
             # JS: Pay button text rebuild
             "Pay Deposit — €": "Aanbetaling — €",
+            # Voucher / Discount code section
+            'Have a voucher or discount code?': 'Heeft u een voucher of kortingscode?',
+            'placeholder="Enter code, e.g. GFT-AB3K-9QWR"': 'placeholder="Voer code in, bijv. GFT-AB3K-9QWR"',
+            '>Apply<': '>Toepassen<',
+            '>Voucher discount<': '>Voucherkorting<',
+            'title="Remove voucher"': 'title="Verwijderen"',
+            # JS voucher strings
+            "btn.textContent = 'Checking...'": "btn.textContent = 'Controleren...'",
+            "btn.textContent = 'Apply'": "btn.textContent = 'Toepassen'",
+            "showVoucherError('Could not validate voucher. Please try again.')": "showVoucherError('Voucher kon niet worden gevalideerd. Probeer het opnieuw.')",
+            "showVoucherError(result.error || 'This code is not valid.')": "showVoucherError(result.error || 'Deze code is niet geldig.')",
+            "locale: 'en'": "locale: 'nl'",
+            "source: 'website'": "source: 'website-nl'",
+            "language: 'en'": "language: 'nl'",
             # Region group labels
             "Wild Atlantic Way": "Wild Atlantic Way",
             "Ireland's Ancient East": "Het oude oosten van Ierland",
