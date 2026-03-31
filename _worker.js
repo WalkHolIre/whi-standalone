@@ -29,7 +29,7 @@ const SHARED_PREFIXES = [
 
 function isSharedAsset(pathname) {
   // Known shared files at root
-  if (pathname === '/robots.txt' || pathname === '/favicon.ico') return true;
+  if (pathname === '/robots.txt' || pathname === '/favicon.ico' || pathname.endsWith('.txt')) return true;
   return SHARED_PREFIXES.some(prefix => pathname.startsWith(prefix));
 }
 

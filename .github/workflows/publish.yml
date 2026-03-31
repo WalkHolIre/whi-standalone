@@ -44,3 +44,6 @@ jobs:
           Run: ${{ github.run_id }}"
             git push
           fi
+
+      - name: Submit URLs to IndexNow
+        run: bash submit-indexnow.sh
