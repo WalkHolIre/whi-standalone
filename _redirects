@@ -318,7 +318,27 @@
 /comments/feed/  /  301
 
 # ═══════════════════════════════════════════════════════════
-# 11. PAGE CONSOLIDATION REDIRECTS
+# 11. DE/NL BLOG SLUG REDIRECTS — EN slugs → translated slugs
+# ═══════════════════════════════════════════════════════════
+# 5 posts that have DE/NL translations but get linked by EN slug
+/de/blog/stargazing-walks-ireland-dark-sky-trails  /de/blog/sternenhimmel-irland-nordlichter-dark-sky  301
+/nl/blog/stargazing-walks-ireland-dark-sky-trails  /nl/blog/sterren-kijken-ierland-noorderlicht-dark-sky  301
+/de/blog/slieve-league-walk-donegal  /de/blog/slieve-league-wanderung-donegal  301
+/nl/blog/slieve-league-walk-donegal  /nl/blog/lieve-league-kliffen-wandelen-donegal  301
+/de/blog/best-pub-walks-ireland-pints  /de/blog/wandern-pub-irland-beste-pubs-wanderwege  301
+/nl/blog/best-pub-walks-ireland-pints  /nl/blog/wandelen-pub-ierland-beste-pubs-wandelroutes  301
+/de/blog/when-was-walking-invented  /de/blog/wann-wurde-das-gehen-erfunden  301
+/nl/blog/when-was-walking-invented  /nl/blog/wanneer-is-wandelen-uitgevonden  301
+/de/blog/wicklow-national-parks  /de/blog/wicklow-mountains-nationalpark-wandern  301
+/nl/blog/wicklow-national-parks  /nl/blog/wicklow-mountains-national-park-wandelen  301
+# 2 posts with NO translations — redirect to EN version
+/de/blog/winter-hiking-clothing-tips  /blog/winter-hiking-clothing-tips  301
+/nl/blog/winter-hiking-clothing-tips  /blog/winter-hiking-clothing-tips  301
+/de/blog/travel-planning-ireland-hiking  /blog/travel-planning-ireland-hiking  301
+/nl/blog/travel-planning-ireland-hiking  /blog/travel-planning-ireland-hiking  301
+
+# ═══════════════════════════════════════════════════════════
+# 12. PAGE CONSOLIDATION REDIRECTS
 # ═══════════════════════════════════════════════════════════
 
 /self-guided-walking-tours  /self-guided-walking-holidays-ireland  301
@@ -332,3 +352,5 @@
 /walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
 /de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
 /nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301
+/tours/dingle-way  /walking-tours/dingle-way-walking-tour-8d  301
+/tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
