@@ -338,7 +338,26 @@
 /nl/blog/travel-planning-ireland-hiking  /blog/travel-planning-ireland-hiking  301
 
 # ═══════════════════════════════════════════════════════════
-# 12. PAGE CONSOLIDATION REDIRECTS
+# 12. DELETED DESTINATION REDIRECTS
+# ═══════════════════════════════════════════════════════════
+# EN
+/walking-area-antrim-glens  /walking-area-causeway-glens  301
+/walking-area-mourne-mountains  /walking-area-cooley-mournes  301
+/walking-area-connemara  /destinations  301
+/walking-area-the-sperrins  /destinations  301
+# DE
+/de/wandergebiet-antrim-glens  /de/wandergebiet-causeway-glens  301
+/de/wandergebiet-mourne-mountains  /de/wandergebiet-cooley-mournes  301
+/de/wandergebiet-connemara  /de/wanderziele-irland  301
+/de/wandergebiet-the-sperrins  /de/wanderziele-irland  301
+# NL
+/nl/wandelgebied-antrim-glens  /nl/wandelgebied-causeway-glens  301
+/nl/wandelgebied-mourne-mountains  /nl/wandelgebied-cooley-mournes  301
+/nl/wandelgebied-connemara  /nl/wandelbestemmingen  301
+/nl/wandelgebied-the-sperrins  /nl/wandelbestemmingen  301
+
+# ═══════════════════════════════════════════════════════════
+# 13. PAGE CONSOLIDATION REDIRECTS
 # ═══════════════════════════════════════════════════════════
 
 /self-guided-walking-tours  /self-guided-walking-holidays-ireland  301
