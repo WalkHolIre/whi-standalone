@@ -6478,8 +6478,8 @@ def main():
             blog_listing_new = _re.sub(cat_filter_pattern, cat_filter_replacement, blog_listing_new, flags=_re.DOTALL)
 
             # Inject recommended tours (replace everything between open/close of recommended-tours div)
-            rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas|Newsletter))'
-            rec_replacement = r'\g<1>' + recommended_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas'
+            rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas CTA|Newsletter))'
+            rec_replacement = r'\g<1>' + recommended_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas CTA'
             blog_listing_new = _re.sub(rec_pattern, rec_replacement, blog_listing_new)
 
             # Inject recommended walking areas section (replace or insert before Newsletter)
@@ -6502,9 +6502,9 @@ def main():
 </section>
 
 '''
-            # Remove old walking areas section if present, then insert before Newsletter
-            blog_listing_new = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Newsletter', '<!-- Newsletter', blog_listing_new)
-            blog_listing_new = blog_listing_new.replace('<!-- Newsletter', walking_areas_section + '<!-- Newsletter')
+            # Remove old walking areas section if present, then insert before CTA
+            blog_listing_new = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Walking Areas CTA', '<!-- Walking Areas CTA', blog_listing_new)
+            blog_listing_new = blog_listing_new.replace('<!-- Walking Areas CTA -->', walking_areas_section + '<!-- Walking Areas CTA -->')
 
             # Canonical and hreflang for blog listing
             blog_list_canonical = lang_url('en', 'blog')
@@ -6749,9 +6749,9 @@ def main():
             grid_pattern = r'<!-- Content Area -->.*?</div>\s*\n\s*\n\s*<!-- Pagination -->'
             lang_blog = _re.sub(grid_pattern, new_grid + '\n\n    <!-- Pagination -->', lang_blog, flags=_re.DOTALL)
 
-            # Replace recommended tours cards (match from recommended-tours div to Walking Areas section)
-            rec_pattern2 = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas|Newsletter))'
-            lang_blog = _re.sub(rec_pattern2, r'\g<1>' + lang_rec_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas', lang_blog)
+            # Replace recommended tours cards (match from recommended-tours div to Walking Areas CTA section)
+            rec_pattern2 = r'(<div[^>]*id="recommended-tours"[^>]*>)[\s\S]*?(</div>\s*</div>\s*</section>\s*\n\s*<!-- (?:Walking Areas CTA|Newsletter))'
+            lang_blog = _re.sub(rec_pattern2, r'\g<1>' + lang_rec_html + '\n        </div>\n    </div>\n</section>\n\n<!-- Walking Areas CTA', lang_blog)
 
             # Build translated walking areas
             blang_dest_trans = blang_translations.get('destinations', {})
@@ -6807,9 +6807,9 @@ def main():
 </section>
 
 '''
-            # Remove old walking areas section if present, then insert before Newsletter
-            lang_blog = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Newsletter', '<!-- Newsletter', lang_blog)
-            lang_blog = lang_blog.replace('<!-- Newsletter', lang_wa_section + '<!-- Newsletter')
+            # Remove old walking areas section if present, then insert before CTA
+            lang_blog = _re.sub(r'<!-- Walking Areas Section -->[\s\S]*?</section>\s*\n*\s*<!-- Walking Areas CTA', '<!-- Walking Areas CTA', lang_blog)
+            lang_blog = lang_blog.replace('<!-- Walking Areas CTA -->', lang_wa_section + '<!-- Walking Areas CTA -->')
 
             # Translate common UI via translate_html_ui
             lang_blog = translate_html_ui(lang_blog, blang)
