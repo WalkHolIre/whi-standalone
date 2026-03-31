@@ -4,8 +4,8 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <meta name="robots" content="noindex, nofollow"/>
-    <title>Buchung | Walking Holiday Ireland</title>
-    <meta name="description" content="Buchen Sie Ihren selbstgeführten Wanderurlaub in Irland."/>
+    <title>Buchen Sie Ihren Wanderurlaub | Walking Holiday Ireland</title>
+    <meta name="description" content="Buchen Sie Ihren Wanderurlaub in Irland. Wählen Sie Ihre Tour, Reisedaten und Extras. Sichern Sie sich mit einer Anzahlung von 25%. Gepäcktransport und GPS-App inbegriffen."/>
     <link rel="stylesheet" href="/css/styles.min.css"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
@@ -14,10 +14,7 @@
         body { font-family: 'Inter', sans-serif; }
         header.site-header { top:0; }
         @media(min-width:768px){ header.site-header{ top:44px; } }
-
         .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
-
-        /* Step indicator */
         .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
         .step-dot.active { background-color: #F17E00; color: white; }
         .step-dot.completed { background-color: #16a34a; color: white; }
@@ -25,32 +22,16 @@
         .step-connector { height: 2px; flex: 1; transition: background-color 0.3s; }
         .step-connector.active { background-color: #F17E00; }
         .step-connector.inactive { background-color: #e5e7eb; }
-
         .step-panel { display: none; }
         .step-panel.active { display: block; }
-
-        /* Room type cards */
-        .room-option { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 8px; padding: 10px 14px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
-        .room-option:hover { border-color: #F17E00; background-color: #fff7ed; }
-        .room-option.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
-        .room-option .bed-icons { font-size: 20px; line-height: 1; }
-
-        /* Sidebar feature image */
-        .sidebar-feature-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
-
-        /* Mobile summary banner */
-        .mobile-summary-banner { display: none; }
-        @media (max-width: 1023px) {
-            .mobile-summary-banner { display: flex; position: sticky; top: 0; z-index: 40; }
-            .desktop-sidebar { display: none; }
-        }
-
-        /* Payment method cards */
-        .payment-method { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 10px; padding: 16px 20px; transition: all 0.2s; }
+        .room-card { border: 2px solid #e5e7eb; border-radius: 10px; padding: 16px; cursor: pointer; transition: all 0.2s; }
+        .room-card.selected { border-color: #F17E00; background-color: #fff7ed; }
+        .room-card:hover { border-color: #F17E00; }
+        .mobile-summary-banner { display: flex; }
+        @media(min-width:768px) { .mobile-summary-banner { display: none; } }
+        .payment-method { border: 2px solid #d1d5db; border-radius: 10px; padding: 16px; cursor: pointer; transition: all 0.2s; }
         .payment-method:hover { border-color: #F17E00; }
         .payment-method.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
-
-        /* Stripe element styling */
         #card-element { border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; background: white; }
         #card-element.StripeElement--focus { border-color: #F17E00; box-shadow: 0 0 0 3px rgba(241,126,0,0.1); }
         #card-element.StripeElement--invalid { border-color: #ef4444; }
@@ -58,33 +39,26 @@
     <link rel="canonical" href="https://walkingholidayireland.de/buchung"/>
     <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="Book Your Walking Holiday | Walking Holiday Ireland"/>
+    <meta property="og:title" content="Buchen Sie Ihren Wanderurlaub | Walking Holiday Ireland"/>
     <meta property="og:url" content="https://walkingholidayireland.de/buchung"/>
     <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
     <meta property="og:site_name" content="Walking Holiday Ireland"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Book Your Walking Holiday | Walking Holiday Ireland"/>
+    <meta name="twitter:title" content="Buchen Sie Ihren Wanderurlaub | Walking Holiday Ireland"/>
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
-
-
-
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
-    <!-- PayPal -->
-    <script src="https://www.paypal.com/sdk/js?client-id=AYZaH3LKhhhyx3sPgHovsGJXKEOyF_rHZ22ZstweM8iSOPKzOxICQ_I9yEHBATbTAlKMice6T32hFwKK&currency=EUR&intent=capture&disable-funding=credit,card" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/checkout" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/buchung" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/boeken" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/checkout" />
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=AYZaH3LKhhhyx3sPgHovsGJXKEOyF_rHZ22ZstweM8iSOPKzOxICQ_I9yEHBATbTAlKMice6T32hFwKK&currency=EUR&intent=capture&disable-funding=credit,card" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Zum Inhalt springen</a>
 
-<!-- Top Utility Bar -->
 <div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
     <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
         <div style="display:flex;align-items:center;gap:16px;">
@@ -94,13 +68,13 @@
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
             <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-            <a href="https://www.instagram.com/walkingholidayireland//" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
             <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="E-Mail" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
-            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
-            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('en')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
             <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
         </div>
     </div>
@@ -108,20 +82,20 @@
 
 <header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
     <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
-        <a href="/" class="flex items-center gap-3">
+        <a href="./" class="flex items-center gap-3">
             <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
         </a>
         <nav class="hidden md:flex items-center gap-8">
             <div class="relative group">
                 <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="wanderziele-irland">Wanderurlaub <span class="material-symbols-outlined text-base">expand_more</span></a>
                 <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                    <a href="/wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-Halbinsel</a>
-                    <a href="/wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
-                    <a href="/wandergebiet-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
-                    <a href="/wandergebiet-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
-                    <a href="/wandergebiet-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
-                    <a href="/wandergebiet-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
-                    <a href="/wandergebiet-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
+                    <a href="wandergebiet-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-Halbinsel</a>
+                    <a href="wandergebiet-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                    <a href="wandergebiet-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
+                    <a href="wandergebiet-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
+                    <a href="wandergebiet-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                    <a href="wandergebiet-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
+                    <a href="wandergebiet-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
                     <div class="border-t border-slate-100 mt-2 pt-2">
                         <a href="massgeschneidert" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Maßgeschneiderte Touren</a>
                     </div>
@@ -138,7 +112,7 @@
             <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="ueber-uns">Über Uns</a>
             <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="blog">Blog</a>
             <a href="buchung" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
-                Book Now
+                Kontaktieren Sie uns!
             </a>
         </nav>
         <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
@@ -150,35 +124,32 @@
         <a href="so-funktioniert-es" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wie funktioniert es?</a>
         <a href="ueber-uns" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Über Uns</a>
         <a href="blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
-        <a href="buchung" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Jetzt Buchen</a>
+        <a href="kontakt" href="buchung" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Jetzt buchen</a>
     </div>
 </header>
 
 <main id="main-content" class="flex-grow flex flex-col items-center w-full">
-    <!-- Hero Section -->
     <div class="hero-band text-white py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2">Book Your Walking Holiday</h1>
-            <p class="text-base md:text-lg opacity-90">Secure your dates with a 25% deposit. Balance due 42 days before departure.</p>
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Buchen Sie Ihren Wanderurlaub</h1>
+            <p class="text-base md:text-lg opacity-90">Sichern Sie sich Ihre Termine mit einer Anzahlung von 25%. Restzahlung 42 Tage vor Abreise.</p>
         </div>
     </div>
 
-    <!-- Mobile Summary Banner (sticky on mobile) -->
     <div class="mobile-summary-banner bg-white border-b border-gray-200 px-4 py-3 items-center justify-between gap-4 shadow-sm">
         <div class="flex items-center gap-3 flex-1 min-w-0">
             <img id="mobileBannerImg" src="/images/logo/whi_fc.png" alt="" class="w-12 h-12 rounded-lg object-cover hidden">
             <div class="min-w-0">
-                <p id="mobileBannerTour" class="text-sm font-semibold text-slate-800 truncate">Select a walking tour</p>
+                <p id="mobileBannerTour" class="text-sm font-semibold text-slate-800 truncate">Tour auswählen</p>
                 <p id="mobileBannerDates" class="text-xs text-gray-500 truncate">-</p>
             </div>
         </div>
         <div class="text-right flex-shrink-0">
-            <p class="text-xs text-gray-500">Total</p>
+            <p class="text-xs text-gray-500">Gesamt</p>
             <p id="mobileBannerTotal" class="text-lg font-bold text-primary">€0</p>
         </div>
     </div>
 
-    <!-- Step Indicator -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4">
         <div class="flex items-center justify-center gap-0 max-w-xl mx-auto">
             <div class="flex flex-col items-center gap-1">
@@ -188,7 +159,7 @@
             <div class="step-connector active flex-1 mx-2 mt-[-18px]"></div>
             <div class="flex flex-col items-center gap-1">
                 <div class="step-dot inactive" data-step="2">2</div>
-                <span class="text-xs font-medium text-gray-400" id="stepLabel2">Travellers</span>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel2">Reisende</span>
             </div>
             <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
             <div class="flex flex-col items-center gap-1">
@@ -198,421 +169,321 @@
             <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
             <div class="flex flex-col items-center gap-1">
                 <div class="step-dot inactive" data-step="4">4</div>
-                <span class="text-xs font-medium text-gray-400" id="stepLabel4">Payment</span>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel4">Zahlung</span>
             </div>
         </div>
     </div>
 
-    <!-- Main Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+    <div class="w-full max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-12">
+        <form id="checkoutForm">
+            <div class="step-panel active" id="step1">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">hiking</span>
+                        Wählen Sie Ihre Tour
+                    </h3>
+                    <label class="block text-sm font-medium text-slate-800 mb-2">Welche Tour interessiert Sie?</label>
+                    <select id="tourSelect" onchange="handleTourChange()" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                        <option value="">-- Tour auswählen --</option>
+                    </select>
+                    <p class="text-xs text-gray-500 mt-2 hidden" id="tourError">Bitte wählen Sie eine Tour.</p>
 
-            <!-- Left Column: Step Panels -->
-            <div class="lg:col-span-2">
-                <form id="checkoutForm" novalidate>
-
-                    <!-- ==================== STEP 1: Tour & Dates ==================== -->
-                    <div class="step-panel active" id="step1">
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">hiking</span>
-                                Select Your Tour
-                            </h3>
-                            <div class="mb-4">
-                                <label for="tourSelect" class="block text-sm font-medium text-slate-800 mb-1">Which tour interests you?</label>
-                                <select id="tourSelect" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                    <option value="">-- Select a walking tour --</option>
-                                    <optgroup label="Wild Atlantic Way">
-                                        <option value="dingle-way">The Dingle Way — 8 Days (€899)</option>
-                                        <option value="kerry-way">The Kerry Way — 8 Days (€899)</option>
-                                        <option value="burren-5-days">Burren Way — 5 Days (€599)</option>
-                                        <option value="burren-6-days">Burren Way — 6 Days (€695)</option>
-                                        <option value="burren-7-days">Burren Way — 7 Days (€795)</option>
-                                        <option value="burren-way">Burren Way — 8 Days (€890)</option>
-                                    </optgroup>
-                                    <optgroup label="Ireland's Ancient East">
-                                        <option value="wicklow-way-5-days">Wicklow Way — 5 Days (€699)</option>
-                                        <option value="wicklow-way-7-days">Wicklow Way — 7 Days (€929)</option>
-                                        <option value="wicklow-way">Wicklow Way — 8 Days (€1,029)</option>
-                                        <option value="wicklow-way-10-days">Wicklow Way — 10 Days (€1,249)</option>
-                                        <option value="barrow-way-5-days">Barrow Way — 5 Days (€919)</option>
-                                        <option value="barrow-way">Barrow Way — 8 Days (€859)</option>
-                                    </optgroup>
-                                    <optgroup label="Northern Ireland">
-                                        <option value="causeway-coast-5-days">Causeway Coast — 5 Days (€599)</option>
-                                        <option value="causeway-coast">Giant's Causeway — 8 Days (€959)</option>
-                                        <option value="cooley-mournes">Cooley &amp; Mournes — 8 Days (€879)</option>
-                                        <option value="cooley-peninsula-5-days">Cooley Peninsula — 5 Days (€539)</option>
-                                    </optgroup>
-                                </select>
+                    <div id="tourSummaryCard" class="mt-6 p-4 bg-slate-50 rounded-lg hidden">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <p class="text-xs text-gray-500">Dauer</p>
+                                <p class="text-lg font-bold text-slate-800" id="tourDays">-</p>
                             </div>
-                            <div id="tourInfo" class="bg-orange-50 p-4 rounded-lg text-sm hidden">
-                                <p class="mb-1"><strong class="text-slate-800">Duration:</strong> <span id="tourDays">-</span> days</p>
-                                <p class="mb-1"><strong class="text-slate-800">Price per person:</strong> €<span id="tourPrice">0</span></p>
-                                <p><strong class="text-slate-800">Difficulty:</strong> <span id="tourDifficulty">-</span></p>
+                            <div>
+                                <p class="text-xs text-gray-500">Schwierigkeit</p>
+                                <p class="text-lg font-bold text-slate-800" id="tourDifficulty">-</p>
                             </div>
-                        </div>
-
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">calendar_month</span>
-                                Choose Your Dates
-                            </h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="startDate" class="block text-sm font-medium text-slate-800 mb-1">Start date</label>
-                                    <input type="date" id="startDate" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                </div>
-                                <div>
-                                    <label for="numWalkers" class="block text-sm font-medium text-slate-800 mb-1">Number of walkers</label>
-                                    <input type="number" id="numWalkers" min="1" max="12" value="2" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                </div>
+                            <div>
+                                <p class="text-xs text-gray-500">Preis pro Person</p>
+                                <p class="text-lg font-bold text-primary" id="tourPrice">-</p>
                             </div>
-                        </div>
-
-                        <div class="flex justify-end">
-                            <button type="button" onclick="goToStep(2)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
-                                Next: Traveller Details <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
-                            </button>
                         </div>
                     </div>
 
-                    <!-- ==================== STEP 2: Travellers & Rooms ==================== -->
-                    <div class="step-panel" id="step2">
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <div class="flex items-center justify-between mb-4">
-                                <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
-                                    <span class="material-symbols-outlined text-primary">group</span>
-                                    Traveller Details
-                                </h3>
-                                <span class="text-sm text-gray-500" id="travellerCount">2 travellers</span>
-                            </div>
-
-                            <div id="travellersContainer">
-                                <!-- Traveller cards rendered by JS -->
-                            </div>
-
-                            <button type="button" id="addTravellerBtn" onclick="addTraveller()" class="mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm font-medium text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center gap-2">
-                                <span class="material-symbols-outlined text-sm">person_add</span>
-                                Add Another Traveller
-                            </button>
+                    <h4 class="text-base font-semibold text-slate-800 mt-6 mb-3 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-lg">calendar_today</span>
+                        Wählen Sie Ihre Reisedaten
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="startDate" class="block text-sm font-medium text-slate-800 mb-1">Startdatum</label>
+                            <input type="date" id="startDate" onchange="handleDateChange()" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                            <p class="text-xs text-gray-500 mt-1" id="dateError" style="display:none;">Bitte wählen Sie ein Startdatum.</p>
                         </div>
-
-                        <!-- Lead Traveller Contact -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">contact_mail</span>
-                                Lead Traveller Contact
-                            </h3>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-slate-800 mb-1">E-Mail</label>
-                                    <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                </div>
-                                <div>
-                                    <label for="phone" class="block text-sm font-medium text-slate-800 mb-1">Telefon</label>
-                                    <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div>
-                                    <label for="country" class="block text-sm font-medium text-slate-800 mb-1">Country</label>
-                                    <select id="country" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                        <option value="">-- Select --</option>
-                                        <option value="Ireland">Ireland</option>
-                                        <option value="UK">Vereinigtes Königreich</option>
-                                        <option value="Germany">Deutschland</option>
-                                        <option value="Netherlands">Netherlands</option>
-                                        <option value="France">France</option>
-                                        <option value="USA">United States</option>
-                                        <option value="Canada">Kanada</option>
-                                        <option value="Australia">Australien</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="specialRequirements" class="block text-sm font-medium text-slate-800 mb-1">Special requirements</label>
-                                    <input type="text" id="specialRequirements" placeholder="Dietary, accessibility..." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <button type="button" onclick="goToStep(1)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
-                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Back
-                            </button>
-                            <button type="button" onclick="goToStep(3)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
-                                Next: Extras <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- ==================== STEP 3: Extras ==================== -->
-                    <div class="step-panel" id="step3">
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">add_circle</span>
-                                Optional Extras
-                            </h3>
-
-                            <div class="space-y-3">
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="airportTransfer" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Airport transfer</span>
-                                        <span class="text-sm text-gray-500">Price on application</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="dailyLunch" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Daily lunch packs</span>
-                                        <span class="text-sm text-gray-500">€15 per person per walking day</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary" id="lunchPriceLabel">€0</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="extraRestDay" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Extra rest day</span>
-                                        <span class="text-sm text-gray-500">Price on application</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="polehire" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <div class="flex-1">
-                                        <span class="font-medium text-slate-800 block">Walking pole hire</span>
-                                        <span class="text-sm text-gray-500">€20 per pair</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">€20</span>
-                                </label>
-
-                                <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
-                                    <input type="checkbox" id="singleSupplement">
-                                    <div class="flex-1 mt-[-2px]">
-                                        <span class="font-medium text-slate-800 block">Single supplement</span>
-                                        <span class="text-sm text-gray-500" id="singleSupplementText">Solo occupancy surcharge per room per night</span>
-                                    </div>
-                                    <span class="text-sm font-semibold text-primary">POA</span>
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between">
-                            <button type="button" onclick="goToStep(2)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
-                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Back
-                            </button>
-                            <button type="button" onclick="goToStep(4)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
-                                Next: Payment <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- ==================== STEP 4: Payment ==================== -->
-                    <div class="step-panel" id="step4">
-                        <!-- Order Review -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">receipt_long</span>
-                                Order Summary
-                            </h3>
-                            <div class="space-y-2 text-sm">
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900" id="reviewTour">-</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Dates</span><span class="font-medium text-gray-900" id="reviewDates">-</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Travellers</span><span class="font-medium text-gray-900" id="reviewWalkers">2</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Price per person</span><span class="font-medium text-gray-900">€<span id="reviewPpp">0</span></span></div>
-                                <div class="border-t border-gray-200 my-1"></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Subtotal</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
-                                <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
-                                <div class="border-t-2 border-primary my-1"></div>
-                                <div class="flex justify-between py-2 text-lg font-bold"><span class="text-slate-800">Total</span><span class="text-primary" id="reviewTotal">€0</span></div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
-                                    <span class="font-semibold text-orange-900">Deposit (25%)</span>
-                                    <span class="font-bold text-orange-700 text-lg" id="reviewDeposit">€0</span>
-                                </div>
-                                <p class="text-xs text-gray-500 mt-2" id="paymentText">Balance due 42 days before departure.</p>
-                            </div>
-                        </div>
-
-                        <!-- T&Cs and Mailing List -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <div class="space-y-4">
-                                <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" id="acceptTerms" required class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <span class="text-sm text-gray-700">I accept the <a href="/agb" target="_blank" class="text-primary font-medium underline hover:text-whi-dark">AGB</a> and <a href="/datenschutz" target="_blank" class="text-primary font-medium underline hover:text-whi-dark">Datenschutzrichtlinie</a> <span class="text-red-500">*</span></span>
-                                </label>
-                                <label class="flex items-start gap-3 cursor-pointer">
-                                    <input type="checkbox" id="mailingList" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
-                                    <span class="text-sm text-gray-700">Keep me updated with walking tips, new routes &amp; special offers</span>
-                                </label>
-                            </div>
-                            <p id="termsError" class="text-red-500 text-sm mt-2 hidden">Please accept the Terms & Conditions to continue.</p>
-                        </div>
-
-                        <!-- Payment Method -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">credit_card</span>
-                                Payment Method
-                            </h3>
-
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                                <!-- Stripe / Card Payment (Default) -->
-                                <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
-                                    <div class="flex items-center gap-3 mb-2">
-                                        <!-- Stripe logo -->
-                                        <svg viewBox="0 0 60 25" class="h-7 flex-shrink-0" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M5 10.2c0-.7.6-1 1.5-1 1.4 0 3.1.4 4.5 1.2V6.7C9.5 6.1 8 5.8 6.5 5.8 2.6 5.8 0 7.8 0 11c0 5 6.8 4.2 6.8 6.3 0 .8-.7 1.1-1.7 1.1-1.5 0-3.4-.6-4.9-1.4v3.7c1.7.7 3.3 1 4.9 1 4 0 6.8-2 6.8-5.2C12 11 5 11.9 5 10.2zM16 3.3l-4.5 1V7l4.5-1V3.3zm0 3.4h-4.5v14h4.5v-14zm5.3 1.3l-.3-1.3H17v14h4.5v-9.5c1.1-1.4 2.9-1.1 3.4-1v-4.1c-.6-.2-2.7-.6-3.6 1.9zm7.5-1.9c-1.8 0-2.9.8-3.5 1.4l-.2-1.1h-4v18.7l4.5-1v-4.5c.7.5 1.6 1.2 3.2 1.2 3.2 0 6.2-2.6 6.2-8.3 0-5.2-3-8.4-6.2-8.4zm-1.1 12.8c-1.1 0-1.7-.4-2.1-.9v-7.2c.5-.5 1.1-1 2.2-1 1.7 0 2.8 1.9 2.8 4.5 0 2.7-1.1 4.6-2.9 4.6zm14.7-12.6c-4.5 0-7.3 3.4-7.3 8.3 0 5.5 3.3 8.2 7.9 8.2 2.3 0 4-.5 5.3-1.2v-3.4c-1.3.7-2.8 1.1-4.7 1.1-1.9 0-3.5-.7-3.7-2.9h9.3c0-.2 0-1.3 0-1.7 0-5-2.4-8.4-6.8-8.4zm-2.7 6.6c0-2.2 1.3-3.1 2.5-3.1 1.2 0 2.4.9 2.4 3.1h-4.9z"/></svg>
-                                        <span class="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded">DEFAULT</span>
-                                    </div>
-                                    <p class="font-semibold text-slate-800 text-sm">Card Payment</p>
-                                    <div class="flex items-center gap-1.5 mt-1.5">
-                                        <!-- Visa -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.5 0 1.5 1.4 2.3 2.4 2.8 1 .5 1.4.9 1.4 1.3 0 .7-.8 1-1.6 1-1.1 0-1.6-.2-2.5-.5l-.3-.2-.4 2.2c.6.3 1.8.5 3 .5 2.8 0 4.7-1.4 4.7-3.6 0-1.2-.7-2.1-2.3-2.9-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.9 0 1.5.2 2 .4l.2.1.4-2zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.8l-4 9.7h2.8l.6-1.5h3.5l.3 1.5h2.5l-2.2-10.5zm-3.4 6.8l1.1-3c0-.1.2-.6.4-1l.2.9.6 3.1h-2.3zM16 10.5l-2.5 7.2-.3-1.3c-.5-1.6-2-3.4-3.7-4.3l2.4 9h2.8l4.2-10.5H16z" fill="#1A1F71"/><path d="M11 10.5H6.8l-.1.3c3.4.9 5.6 2.9 6.5 5.4l-.9-4.7c-.2-.6-.7-.9-1.3-1z" fill="#F9A533"/></svg>
-                                        <!-- Mastercard -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 0 1 0 11.4 8 8 0 0 1 0-11.4z" fill="#FF5F00"/></svg>
-                                        <!-- Amex -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="18" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">AMEX</text></svg>
-                                    </div>
-                                </div>
-                                <!-- PayPal -->
-                                <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
-                                    <div class="mb-2">
-                                        <!-- PayPal logo -->
-                                        <svg viewBox="0 0 100 26" class="h-7" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.4h-7c-.5 0-.9.3-1 .8L1.7 22c-.1.4.2.7.6.7h3.3c.5 0 .9-.3 1-.8l.9-5.5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.4-1.9zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#003087"/><path d="M35.4 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8l1.8-11.1c.1-.3-.3-.6-.7-.6zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#003087"/><path d="M55.4 10h-3.4c-.3 0-.6.2-.8.4l-4.4 6.5-1.9-6.3c-.1-.4-.5-.6-.9-.6h-3.3c-.4 0-.7.4-.6.8l3.5 10.3-3.3 4.7c-.3.4 0 1 .5 1h3.4c.3 0 .6-.2.8-.4l10.7-15.5c.3-.4 0-.9-.3-.9z" fill="#003087"/><path d="M67 3.4h-7c-.5 0-.9.3-1 .8l-2.8 17.8c-.1.4.2.7.6.7h3.6c.3 0 .6-.3.7-.6l.8-5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.3-1.6zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#0070BA"/><path d="M89.9 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8L90.6 11c0-.5-.3-.8-.7-1zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#0070BA"/><path d="M92.6 3.9l-2.9 18c-.1.4.2.7.6.7h2.9c.5 0 .9-.3 1-.8l2.8-17.8c.1-.4-.2-.7-.6-.7h-3.2c-.3 0-.5.2-.6.6z" fill="#0070BA"/></svg>
-                                    </div>
-                                    <p class="font-semibold text-slate-800 text-sm">PayPal</p>
-                                    <p class="text-xs text-gray-500 mt-0.5">Pay with your PayPal account</p>
-                                </div>
-                            </div>
-
-                            <!-- Stripe Card Element -->
-                            <div id="stripePanel">
-                                <div class="mb-3">
-                                    <label class="block text-sm font-medium text-slate-800 mb-2">Card details</label>
-                                    <div id="card-element"></div>
-                                    <p id="card-errors" class="text-red-500 text-sm mt-2 hidden"></p>
-                                </div>
-                                <button type="button" id="stripePayBtn" onclick="handleStripePayment()" class="w-full bg-primary hover:bg-primary/80 text-white py-3.5 rounded-lg font-semibold text-lg transition hover:shadow-lg disabled:bg-gray-300 disabled:cursor-not-allowed">
-                                    <span class="material-symbols-outlined text-sm align-middle mr-1">lock</span>
-                                    Pay Deposit — €<span id="payBtnAmount">0</span>
-                                </button>
-                            </div>
-
-                            <!-- PayPal Button Container -->
-                            <div id="paypalPanel" class="hidden">
-                                <div id="paypal-button-container" class="mb-3"></div>
-                                <p class="text-xs text-center text-gray-500">You'll be redirected to PayPal to complete payment.</p>
-                            </div>
-
-                            <!-- Payment Info -->
-                            <div class="bg-green-50 border border-green-200 rounded-lg p-3 mt-4 text-sm text-green-800 flex items-start gap-2">
-                                <span class="material-symbols-outlined text-green-600 text-base mt-0.5">shield</span>
-                                <span>Your payment is securely processed. You'll only be charged the 25% deposit today.</span>
-                            </div>
-
-                            <!-- Trust Badges -->
-                            <div class="flex items-center justify-center gap-6 mt-4 pt-4 border-t border-gray-100">
-                                <div class="flex items-center gap-1 text-xs text-gray-500">
-                                    <span class="material-symbols-outlined text-sm">lock</span> Secure payment
-                                </div>
-                                <div class="flex items-center gap-1 text-xs text-gray-500">
-                                    <span class="material-symbols-outlined text-sm">verified_user</span> SSL encrypted
-                                </div>
-                                <div class="flex items-center gap-1 text-xs text-gray-500">
-                                    <span class="material-symbols-outlined text-sm">support_agent</span> 24hr support
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Success Message -->
-                        <div id="successMessage" class="bg-white border border-green-300 rounded-xl overflow-hidden hidden shadow-md">
-                            <div class="bg-green-50 px-6 py-5 flex items-center justify-center border-b border-green-200">
-                                <a href="/"><img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="h-12"></a>
-                            </div>
-                            <div class="p-6">
-                                <div class="flex items-center gap-3 mb-3">
-                                    <span class="material-symbols-outlined text-green-600 text-3xl">check_circle</span>
-                                    <h4 class="font-bold text-xl text-green-800">Booking Confirmed!</h4>
-                                </div>
-                                <p class="text-green-800 mb-2">Thank you! We've received your booking and deposit.</p>
-                                <p class="text-green-700 text-sm mb-4">Your booking reference: <strong class="booking-ref text-green-900 font-mono"></strong></p>
-                                <p class="text-green-800 mb-5">You'll receive a confirmation email shortly. Our team will be in touch within 24 hours with your full trip details.</p>
-                                <a href="/" class="inline-flex items-center gap-2 bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-semibold transition hover:shadow-lg">
-                                    <span class="material-symbols-outlined text-sm">home</span>
-                                    Back to Homepage
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-between mt-4">
-                            <button type="button" onclick="goToStep(3)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
-                                <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Back
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Right Column: Persistent Booking Summary Sidebar (desktop only) -->
-            <div class="lg:col-span-1 desktop-sidebar">
-                <div class="bg-white border border-gray-200 rounded-xl shadow-sm sticky top-4">
-                    <!-- Feature Image -->
-                    <img id="sidebarImage" src="/images/routes/dingle-way/card.jpg" alt="Tour" class="sidebar-feature-img rounded-t-xl" onerror="this.style.display='none'" width="1200" height="800">
-
-                    <div class="p-5">
-                        <h3 class="text-lg font-semibold text-slate-800 mb-3">Your Booking</h3>
-
-                        <div class="space-y-2 text-sm">
-                            <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                <span class="text-gray-500">Tour</span>
-                                <span class="font-medium text-gray-900 text-right max-w-[55%] truncate" id="sidebarTour">-</span>
-                            </div>
-                            <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                <span class="text-gray-500">Dates</span>
-                                <span class="font-medium text-gray-900 text-right" id="sidebarDates">-</span>
-                            </div>
-                            <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                <span class="text-gray-500">Travellers</span>
-                                <span class="font-medium text-gray-900" id="sidebarWalkers">2</span>
-                            </div>
-                            <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                <span class="text-gray-500">Price/person</span>
-                                <span class="font-medium text-gray-900">€<span id="sidebarPrice">0</span></span>
-                            </div>
-                            <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                <span class="text-gray-500">Subtotal</span>
-                                <span class="font-medium text-gray-900">€<span id="sidebarSubtotal">0</span></span>
-                            </div>
-                            <div id="sidebarExtras" class="hidden">
-                                <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                    <span class="text-gray-500">Extras</span>
-                                    <span class="font-medium text-gray-900" id="sidebarExtrasPrice">€0</span>
-                                </div>
-                            </div>
-                            <div class="flex justify-between py-2 text-base font-bold border-t-2 border-primary mt-1">
-                                <span class="text-slate-800">Total</span>
-                                <span class="text-primary" id="sidebarTotal">€0</span>
-                            </div>
-                            <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
-                                <span class="font-semibold text-orange-900 text-sm">Deposit (25%)</span>
-                                <span class="font-bold text-orange-700" id="sidebarDeposit">€0</span>
-                            </div>
-                        </div>
-
-                        <div class="bg-orange-50 rounded-lg p-3 mt-4 text-center">
-                            <p class="text-xs text-gray-500 mb-1">Questions? Call</p>
-                            <a href="tel:+353879573856" class="text-base font-bold text-primary hover:text-whi-dark transition">+353 87 957 3856</a>
+                        <div>
+                            <label for="numWalkers" class="block text-sm font-medium text-slate-800 mb-1">Anzahl der Wanderer</label>
+                            <select id="numWalkers" onchange="handleWalkerChange()" class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                                <option value="1">1 Wanderer</option>
+                                <option value="2" selected>2 Wanderer</option>
+                                <option value="3">3 Wanderer</option>
+                                <option value="4">4 Wanderer</option>
+                                <option value="5">5 Wanderer</option>
+                                <option value="6">6 Wanderer</option>
+                                <option value="7">7 Wanderer</option>
+                                <option value="8">8 Wanderer</option>
+                            </select>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
+                <button type="button" onclick="goToStep(2)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5 w-full">
+                    Weiter: Reisende <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                </button>
+            </div>
+
+            <div class="step-panel" id="step2">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-semibold text-slate-800 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">group</span>
+                            Reisende
+                        </h3>
+                        <span class="text-sm text-gray-500" id="travellerCount">2 Reisende</span>
+                    </div>
+
+                    <div id="travellersContainer"></div>
+
+                    <button type="button" id="addTravellerBtn" onclick="addTraveller()" class="mt-4 w-full border-2 border-dashed border-gray-300 rounded-xl py-3 text-sm font-medium text-gray-500 hover:border-primary hover:text-primary transition flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-sm">person_add</span>
+                        Weitere(n) Reisende(n) hinzufügen
+                    </button>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">contact_mail</span>
+                        Kontaktdaten Hauptreisende(r)
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-slate-800 mb-1">E-Mail</label>
+                            <input type="email" id="email" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium text-slate-800 mb-1">Telefon</label>
+                            <input type="tel" id="phone" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="country" class="block text-sm font-medium text-slate-800 mb-1">Land</label>
+                            <select id="country" required class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                                <option value="">-- Auswählen --</option>
+                                <option value="Ireland">Irland</option>
+                                <option value="UK">Vereinigtes Königreich</option>
+                                <option value="Germany">Deutschland</option>
+                                <option value="Netherlands">Niederlande</option>
+                                <option value="France">Frankreich</option>
+                                <option value="USA">Vereinigte Staaten</option>
+                                <option value="Canada">Kanada</option>
+                                <option value="Australia">Australien</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="specialRequirements" class="block text-sm font-medium text-slate-800 mb-1">Besondere Wünsche</label>
+                            <input type="text" id="specialRequirements" placeholder="Ernährung, Barrierefreiheit..." class="w-full border border-gray-300 rounded-lg px-3 py-2.5 text-sm focus:border-primary focus:ring-primary">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" onclick="goToStep(1)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                        <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                    </button>
+                    <button type="button" onclick="goToStep(3)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                        Weiter: Extras <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="step-panel" id="step3">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">add_circle</span>
+                        Optionale Extras
+                    </h3>
+
+                    <div class="space-y-3">
+                        <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                            <input type="checkbox" id="airportTransfer" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <div class="flex-1">
+                                <span class="font-medium text-slate-800 block">Flughafentransfer</span>
+                                <span class="text-sm text-gray-500">Preis auf Anfrage</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">POA</span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                            <input type="checkbox" id="dailyLunch" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <div class="flex-1">
+                                <span class="font-medium text-slate-800 block">Tägliche Lunchpakete</span>
+                                <span class="text-sm text-gray-500">€15 pro Person pro Wandertag</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary" id="lunchPriceLabel">€0</span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                            <input type="checkbox" id="extraRestDay" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <div class="flex-1">
+                                <span class="font-medium text-slate-800 block">Zusätzlicher Ruhetag</span>
+                                <span class="text-sm text-gray-500">Preis auf Anfrage</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">POA</span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                            <input type="checkbox" id="polehire" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <div class="flex-1">
+                                <span class="font-medium text-slate-800 block">Wanderstöcke leihen</span>
+                                <span class="text-sm text-gray-500">€20 pro Paar</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">€20</span>
+                        </label>
+
+                        <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-50 transition group">
+                            <input type="checkbox" id="singleSupplement">
+                            <div class="flex-1 mt-[-2px]">
+                                <span class="font-medium text-slate-800 block">Einzelzimmerzuschlag</span>
+                                <span class="text-sm text-gray-500" id="singleSupplementText">Einzelbelegung pro Zimmer pro Nacht</span>
+                            </div>
+                            <span class="text-sm font-semibold text-primary">POA</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" onclick="goToStep(2)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                        <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                    </button>
+                    <button type="button" onclick="goToStep(4)" class="bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition hover:shadow-lg hover:-translate-y-0.5">
+                        Weiter: Zahlung <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="step-panel" id="step4">
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">receipt_long</span>
+                        Bestellübersicht
+                    </h3>
+                    <div class="space-y-2 text-sm">
+                        <div class="flex justify-between py-1"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900" id="reviewTour">-</span></div>
+                        <div class="flex justify-between py-1"><span class="text-gray-500">Reisedaten</span><span class="font-medium text-gray-900" id="reviewDates">-</span></div>
+                        <div class="flex justify-between py-1"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="reviewWalkers">2</span></div>
+                        <div class="flex justify-between py-1"><span class="text-gray-500">Preis pro Person</span><span class="font-medium text-gray-900">€<span id="reviewPpp">0</span></span></div>
+                        <div class="border-t border-gray-200 my-1"></div>
+                        <div class="flex justify-between py-1"><span class="text-gray-500">Zwischensumme</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
+                        <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
+                        <div class="border-t-2 border-primary my-1"></div>
+                        <div class="flex justify-between py-2 text-lg font-bold"><span class="text-slate-800">Gesamt</span><span class="text-primary" id="reviewTotal">€0</span></div>
+                        <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
+                            <span class="font-semibold text-orange-900">Anzahlung (25%)</span>
+                            <span class="font-bold text-orange-700 text-lg" id="reviewDeposit">€0</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-2" id="paymentText">Restzahlung 42 Tage vor Abreise.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <div class="space-y-4">
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="acceptTerms" required class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <span class="text-sm text-gray-700">Ich akzeptiere die <a href="agb" target="_blank" class="text-primary font-medium underline hover:text-whi-dark">AGB</a> und <a href="datenschutz" target="_blank" class="text-primary font-medium underline hover:text-whi-dark">Datenschutzrichtlinie</a> <span class="text-red-500">*</span></span>
+                        </label>
+                        <label class="flex items-start gap-3 cursor-pointer">
+                            <input type="checkbox" id="mailingList" class="mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary">
+                            <span class="text-sm text-gray-700">Halten Sie mich über Wandertipps, neue Routen und Sonderangebote auf dem Laufenden</span>
+                        </label>
+                    </div>
+                    <p id="termsError" class="text-red-500 text-sm mt-2 hidden">Bitte akzeptieren Sie die AGB, um fortzufahren.</p>
+                </div>
+
+                <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                    <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">credit_card</span>
+                        Zahlungsmethode
+                    </h3>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                        <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
+                            <div class="flex items-center gap-3 mb-2">
+                                <svg viewBox="0 0 60 25" class="h-7 flex-shrink-0" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M5 10.2c0-.7.6-1 1.5-1 1.4 0 3.1.4 4.5 1.2V6.7C9.5 6.1 8 5.8 6.5 5.8 2.6 5.8 0 7.8 0 11c0 5 6.8 4.2 6.8 6.3 0 .8-.7 1.1-1.7 1.1-1.5 0-3.4-.6-4.9-1.4v3.7c1.7.7 3.3 1 4.9 1 4 0 6.8-2 6.8-5.2C12 11 5 11.9 5 10.2zM16 3.3l-4.5 1V7l4.5-1V3.3zm0 3.4h-4.5v14h4.5v-14zm5.3 1.3l-.3-1.3H17v14h4.5v-9.5c1.1-1.4 2.9-1.1 3.4-1v-4.1c-.6-.2-2.7-.6-3.6 1.9zm7.5-1.9c-1.8 0-2.9.8-3.5 1.4l-.2-1.1h-4v18.7l4.5-1v-4.5c.7.5 1.6 1.2 3.2 1.2 3.2 0 6.2-2.6 6.2-8.3 0-5.2-3-8.4-6.2-8.4zm-1.1 12.8c-1.1 0-1.7-.4-2.1-.9v-7.2c.5-.5 1.1-1 2.2-1 1.7 0 2.8 1.9 2.8 4.5 0 2.7-1.1 4.6-2.9 4.6zm14.7-12.6c-4.5 0-7.3 3.4-7.3 8.3 0 5.5 3.3 8.2 7.9 8.2 2.3 0 4-.5 5.3-1.2v-3.4c-1.3.7-2.8 1.1-4.7 1.1-1.9 0-3.5-.7-3.7-2.9h9.3c0-.2 0-1.3 0-1.7 0-5-2.4-8.4-6.8-8.4zm-2.7 6.6c0-2.2 1.3-3.1 2.5-3.1 1.2 0 2.4.9 2.4 3.1h-4.9z"/></svg>
+                                <span class="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded">DEFAULT</span>
+                            </div>
+                            <p class="font-semibold text-slate-800 text-sm">Kartenzahlung</p>
+                            <div class="flex items-center gap-1.5 mt-1.5">
+                                <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.5 0 1.5 1.4 2.3 2.4 2.8 1 .5 1.4.9 1.4 1.3 0 .7-.8 1-1.6 1-1.1 0-1.6-.2-2.5-.5l-.3-.2-.4 2.2c.6.3 1.8.5 3 .5 2.8 0 4.7-1.4 4.7-3.6 0-1.2-.7-2.1-2.3-2.9-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.9 0 1.5.2 2 .4l.2.1.4-2zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.8l-4 9.7h2.8l.6-1.5h3.5l.3 1.5h2.5l-2.2-10.5zm-3.4 6.8l1.1-3c0-.1.2-.6.4-1l.2.9.6 3.1h-2.3zM16 10.5l-2.5 7.2-.3-1.3c-.5-1.6-2-3.4-3.7-4.3l2.4 9h2.8l4.2-10.5H16z" fill="#1A1F71"/><path d="M11 10.5H6.8l-.1.3c3.4.9 5.6 2.9 6.5 5.4l-.9-4.7c-.2-.6-.7-.9-1.3-1z" fill="#F9A533"/></svg>
+                                <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 0 1 0 11.4 8 8 0 0 1 0-11.4z" fill="#FF5F00"/></svg>
+                                <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="18" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">AMEX</text></svg>
+                            </div>
+                        </div>
+                        <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
+                            <div class="mb-2">
+                                <svg viewBox="0 0 100 26" class="h-7" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.4h-7c-.5 0-.9.3-1 .8L1.7 22c-.1.4.2.7.6.7h3.3c.5 0 .9-.3 1-.8l.9-5.5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.4-1.9zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#003087"/><path d="M35.4 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8l1.8-11.1c.1-.3-.3-.6-.7-.6zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#003087"/><path d="M55.4 10h-3.4c-.3 0-.6.2-.8.4l-4.4 6.5-1.9-6.3c-.1-.4-.5-.6-.9-.6h-3.3c-.4 0-.7.4-.6.8l3.5 10.3-3.3 4.7c-.3.4 0 1 .5 1h3.4c.3 0 .6-.2.8-.4l10.7-15.5c.3-.4 0-.9-.3-.9z" fill="#003087"/><path d="M67 3.4h-7c-.5 0-.9.3-1 .8l-2.8 17.8c-.1.4.2.7.6.7h3.6c.3 0 .6-.3.7-.6l.8-5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.3-1.6zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#0070BA"/><path d="M89.9 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8L90.6 11c0-.5-.3-.8-.7-1zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#0070BA"/><path d="M92.6 3.9l-2.9 18c-.1.4.2.7.6.7h2.9c.5 0 .9-.3 1-.8l2.8-17.8c.1-.4-.2-.7-.6-.7h-3.2c-.3 0-.5.2-.6.6z" fill="#0070BA"/></svg>
+                            </div>
+                            <p class="font-semibold text-slate-800 text-sm">PayPal</p>
+                            <p class="text-xs text-gray-500 mt-0.5">Mit Ihrem PayPal-Konto bezahlen</p>
+                        </div>
+                    </div>
+
+                    <div id="stripePanel">
+                        <div class="mb-3">
+                            <label class="block text-sm font-medium text-slate-800 mb-2">Kartendaten</label>
+                            <div id="card-element"></div>
+                            <p id="card-errors" class="text-red-500 text-sm mt-2 hidden"></p>
+                        </div>
+                        <button type="button" id="stripePayBtn" onclick="handleStripePayment()" class="w-full bg-primary hover:bg-primary/80 text-white py-3.5 rounded-lg font-semibold text-lg transition hover:shadow-lg disabled:bg-gray-300 disabled:cursor-not-allowed">
+                            <span class="material-symbols-outlined text-sm align-middle mr-1">lock</span>
+                            Anzahlung bezahlen — €<span id="payBtnAmount">0</span>
+                        </button>
+                    </div>
+
+                    <div id="paypalPanel" class="hidden">
+                        <p class="text-sm text-gray-600 mb-4">Sie werden zu PayPal weitergeleitet, um die Zahlung abzuschließen.</p>
+                        <div id="paypal-button-container"></div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 flex gap-3 items-start">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5">verified_user</span>
+                    <div class="text-sm text-gray-700">
+                        <p class="font-semibold text-gray-900 mb-1">Sichere Zahlung</p>
+                        <p class="flex gap-4">
+                            <span><span class="material-symbols-outlined text-sm align-middle mr-0.5">shield</span> SSL-verschlüsselt</span>
+                            <span><span class="material-symbols-outlined text-sm align-middle mr-0.5">headset</span> 24-Stunden-Support</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div id="successMessage" class="hidden">
+                    <div class="bg-white border border-gray-200 rounded-xl p-8 text-center">
+                        <div class="mb-4 text-5xl">✓</div>
+                        <h3 class="text-2xl font-bold text-slate-800 mb-2">Buchung bestätigt!</h3>
+                        <p class="text-gray-600 mb-6">Vielen Dank! Wir haben Ihre Buchung und Anzahlung erhalten.</p>
+                        <p class="text-sm text-gray-500 mb-2">Ihre Buchungsreferenz:</p>
+                        <p class="text-lg font-bold text-slate-800 mb-6 booking-ref">-</p>
+                        <p class="text-gray-600 leading-relaxed mb-6">Sie erhalten in Kürze eine Bestätigungs-E-Mail. Unser Team wird sich innerhalb von 24 Stunden mit allen Reisedetails bei Ihnen melden.</p>
+                        <a href="./" class="inline-block bg-primary hover:bg-primary/80 text-white px-8 py-3 rounded-lg font-semibold transition">
+                            <span class="material-symbols-outlined text-sm align-middle mr-1">home</span>
+                            Zurück zur Startseite
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex justify-between">
+                    <button type="button" onclick="goToStep(3)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
+                        <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Zurück
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </main>
 
 <footer class="bg-brand-purple text-white pt-16 pb-8">
@@ -620,19 +491,18 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div>
                 <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
-                <p class="text-slate-300 text-base italic leading-relaxed">Individuelle Wanderurlaube durch Irlands schönste Landschaften seit 2012. Familiengeführt von Cliff & Louise.</p>
-                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
+                <p class="text-slate-300 text-sm leading-relaxed">Individuelle Wanderurlaube durch Irlands schönste Landschaften seit 2012. Familiengeführt von Cliff & Louise.</p>
             </div>
             <div>
                 <h4 class="font-bold mb-4 text-primary">Wanderurlaub</h4>
                 <ul class="space-y-2 text-sm text-slate-300">
-                    <li><a href="/wandertouren/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
-                    <li><a href="/wandertouren/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
-                    <li><a href="/wandertouren/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
-                    <li><a href="/wandertouren/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
-                    <li><a href="/wandertouren/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
-                    <li><a href="/wandertouren/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast Way</a></li>
-                    <li><a href="/wandertouren/cooley-mournes" class="hover:text-primary transition-colors">Cooley & Mournes</a></li>
+                    <li><a href="wandertouren/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="wandertouren/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="wandertouren/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="wandertouren/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="wandertouren/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="wandertouren/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast Way</a></li>
+                    <li><a href="wandertouren/cooley-mournes" class="hover:text-primary transition-colors">Cooley & Mournes</a></li>
                 </ul>
             </div>
             <div>
@@ -645,26 +515,26 @@
                     <li><a href="massgeschneidert" class="hover:text-primary transition-colors">Maßgeschneiderte Touren</a></li>
                     <li><a href="blog" class="hover:text-primary transition-colors">Blog</a></li>
                     <li><a href="kontakt" class="hover:text-primary transition-colors">Kontakt</a></li>
-                    <li><a href="buchung" class="hover:text-primary transition-colors font-bold">Jetzt Buchen</a></li>
+                    <li><a href="buchung" class="hover:text-primary transition-colors font-bold">Jetzt buchen</a></li>
                     <li><a href="datenschutz" class="hover:text-primary transition-colors">Datenschutzrichtlinie</a></li>
                     <li><a href="agb" class="hover:text-primary transition-colors">AGB</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold mb-4 text-primary">Jetzt buchen</h4>
+                <h4 class="font-bold mb-4 text-primary">Kontaktieren Sie uns!</h4>
                 <ul class="space-y-3 text-sm text-slate-300">
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 42 932 3396</li>
                     <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
                 </ul>
                 <div class="flex gap-3 mt-6">
-                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
-                        <span class="text-xs font-bold text-primary">EN</span>
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="de">
+                        <span class="text-xs font-bold text-primary">DE</span>
                     </div>
-                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="de">
-                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    <a href="https://walkingholidayireland.com/checkout" onclick="event.preventDefault();switchLang('en')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="en">
+                        <span class="text-xs font-bold text-slate-400">EN</span>
                     </a>
-                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="nl">
+                    <a href="https://wandelvakantieierland.nl/boeken" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="nl">
                         <span class="text-xs font-bold text-slate-400">NL</span>
                     </a>
                     <a href="https://senderismoenirlanda.es" onclick="event.preventDefault();window.location.href='https://senderismoenirlanda.es'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
@@ -679,376 +549,191 @@
     </div>
 </footer>
 
-    <script>
-    // ─────────── Tour Data ───────────
-    const TOURS = [
-        {slug:'dingle-way',name:'The Dingle Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Intermediate',img:'dingle-way'},
-        {slug:'kerry-way',name:'The Kerry Way',days:8,price:899,region:'Wild Atlantic Way',difficulty:'Challenging',img:'kerry-way'},
-        {slug:'burren-5-days',name:'Burren Way — 5 Days',days:5,price:599,region:'Wild Atlantic Way',difficulty:'Moderate',img:'burren-way'},
-        {slug:'burren-6-days',name:'Burren Way — 6 Days',days:6,price:695,region:'Wild Atlantic Way',difficulty:'Moderate',img:'burren-way'},
-        {slug:'burren-7-days',name:'Burren Way — 7 Days',days:7,price:795,region:'Wild Atlantic Way',difficulty:'Moderate',img:'burren-way'},
-        {slug:'burren-way',name:'Burren Way — 8 Days',days:8,price:890,region:'Wild Atlantic Way',difficulty:'Moderate',img:'burren-way'},
-        {slug:'wicklow-way-5-days',name:'Wicklow Way — 5 Days',days:5,price:699,region:"Ireland's Ancient East",difficulty:'Moderate',img:'wicklow-way'},
-        {slug:'wicklow-way-7-days',name:'Wicklow Way — 7 Days',days:7,price:929,region:"Ireland's Ancient East",difficulty:'Challenging',img:'wicklow-way'},
-        {slug:'wicklow-way',name:'Wicklow Way — 8 Days',days:8,price:1029,region:"Ireland's Ancient East",difficulty:'Moderate',img:'wicklow-way'},
-        {slug:'wicklow-way-10-days',name:'Wicklow Way — 10 Days',days:10,price:1249,region:"Ireland's Ancient East",difficulty:'Moderate',img:'wicklow-way'},
-        {slug:'barrow-way-5-days',name:'Barrow Way — 5 Days',days:5,price:919,region:"Ireland's Ancient East",difficulty:'Easy',img:'barrow-way'},
-        {slug:'barrow-way',name:'Barrow Way — 8 Days',days:8,price:859,region:"Ireland's Ancient East",difficulty:'Easy',img:'barrow-way'},
-        {slug:'causeway-coast-5-days',name:'Causeway Coast — 5 Days',days:5,price:599,region:'Northern Ireland',difficulty:'Moderate',img:'causeway-coast'},
-        {slug:'causeway-coast',name:"Giant's Causeway — 8 Days",days:8,price:959,region:'Northern Ireland',difficulty:'Moderate',img:'causeway-coast'},
-        {slug:'cooley-mournes',name:'Cooley & Mournes — 8 Days',days:8,price:879,region:'Northern Ireland',difficulty:'Challenging',img:'cooley-mournes'},
-        {slug:'cooley-peninsula-5-days',name:'Cooley Peninsula — 5 Days',days:5,price:539,region:'Northern Ireland',difficulty:'Moderate',img:'cooley-peninsula-5-days'}
+<script>
+    const tours = [
+        { id: 'kerry', name: 'The Kerry Way', slug: 'kerry-way', days: 8, walking_days: 7, difficulty: 'Anspruchsvoll', price: 935 },
+        { id: 'dingle', name: 'The Dingle Way', slug: 'dingle-way', days: 8, walking_days: 7, difficulty: 'Moderat', price: 895 },
+        { id: 'wicklow', name: 'The Wicklow Way', slug: 'wicklow-way', days: 8, walking_days: 7, difficulty: 'Gemäßigt', price: 845 },
+        { id: 'burren', name: 'The Burren Way', slug: 'burren-way', days: 6, walking_days: 5, difficulty: 'Gemäßigt', price: 765 },
+        { id: 'barrow', name: 'The Barrow Way', slug: 'barrow-way', days: 7, walking_days: 6, difficulty: 'Leicht', price: 725 },
+        { id: 'cooley', name: 'Cooley & Mournes', slug: 'cooley-mournes', days: 7, walking_days: 6, difficulty: 'Anspruchsvoll', price: 815 },
+        { id: 'causeway', name: 'Causeway Coast Way', slug: 'causeway-coast', days: 7, walking_days: 6, difficulty: 'Moderat', price: 835 },
     ];
 
-    const ROOM_TYPES = [
-        { id: 'single', label: 'Single', icon: '🛏️', desc: 'Single bed' },
-        { id: 'double', label: 'Double', icon: '🛏️🛏️', desc: 'Double/twin bed' },
-        { id: 'triple', label: 'Triple', icon: '🛏️+🛏️', desc: '2 single beds' },
-        { id: 'family', label: 'Family', icon: '🛏️🛏️+🛏️', desc: 'Double + single' },
-    ];
-
-    // ─────────── State ───────────
-    let currentStep = 1;
     let currentTour = null;
-    let travellers = [];
     let selectedPayment = 'stripe';
+    let travellers = [
+        { firstName: '', lastName: '', room: 'double' },
+        { firstName: '', lastName: '', room: 'double' },
+    ];
 
-    // ─────────── Stripe Init ───────────
-    let stripe, cardElement;
-    try {
-        stripe = Stripe('pk_test_F8HhLlFCLRhK8P8vpR0m3Ey1');
-        const elements = stripe.elements();
-        cardElement = elements.create('card', {
-            style: {
-                base: { fontSize: '16px', fontFamily: 'Inter, sans-serif', color: '#210747', '::placeholder': { color: '#9ca3af' } },
-                invalid: { color: '#ef4444' }
-            }
-        });
-        // Mount after DOM ready
-        window.addEventListener('DOMContentLoaded', () => {
-            const el = document.getElementById('card-element');
-            if (el) cardElement.mount('#card-element');
-            cardElement.on('change', (event) => {
-                const errEl = document.getElementById('card-errors');
-                if (event.error) { errEl.textContent = event.error.message; errEl.classList.remove('hidden'); }
-                else { errEl.classList.add('hidden'); }
-            });
-        });
-    } catch(e) { console.warn('Stripe not loaded:', e); }
-
-    // ─────────── DOM Ready ───────────
-    document.addEventListener('DOMContentLoaded', () => {
-        const walkerCount = parseInt(document.getElementById('numWalkers').value) || 2;
-        initTravellers(walkerCount);
-
-        // Tour selection
-        document.getElementById('tourSelect').addEventListener('change', function() {
-            currentTour = TOURS.find(t => t.slug === this.value) || null;
-            if (currentTour) {
-                document.getElementById('tourInfo').classList.remove('hidden');
-                document.getElementById('tourDays').textContent = currentTour.days;
-                document.getElementById('tourPrice').textContent = currentTour.price.toLocaleString();
-                document.getElementById('tourDifficulty').textContent = currentTour.difficulty;
-                // Update feature images
-                const imgPath = `images/routes/${currentTour.img}/card.jpg`;
-                document.getElementById('sidebarImage').src = imgPath;
-                document.getElementById('sidebarImage').style.display = 'block';
-                const mobImg = document.getElementById('mobileBannerImg');
-                mobImg.src = imgPath;
-                mobImg.classList.remove('hidden');
-            } else {
-                document.getElementById('tourInfo').classList.add('hidden');
-                document.getElementById('sidebarImage').style.display = 'none';
-                document.getElementById('mobileBannerImg').classList.add('hidden');
-            }
-            updatePricing();
-        });
-
-        // Walker count change → sync travellers
-        document.getElementById('numWalkers').addEventListener('change', function() {
-            const count = Math.max(1, Math.min(12, parseInt(this.value) || 1));
-            this.value = count;
-            syncTravellers(count);
-            updatePricing();
-        });
-
-        // Date change
-        document.getElementById('startDate').addEventListener('change', updatePricing);
-
-        // Extras
-        ['airportTransfer','dailyLunch','extraRestDay','polehire','singleSupplement'].forEach(id => {
-            document.getElementById(id).addEventListener('change', updatePricing);
-        });
-
-        // Init PayPal buttons
+    document.addEventListener('DOMContentLoaded', function() {
+        populateTours();
+        renderTravellers();
+        updateTotalPrice();
         initPayPal();
     });
 
-    // ─────────── Traveller Management ───────────
-    function initTravellers(count) {
-        travellers = [];
-        for (let i = 0; i < count; i++) {
-            travellers.push({ firstName: '', lastName: '', room: i === 0 ? 'double' : 'double' });
-        }
-        renderTravellers();
-    }
-
-    function syncTravellers(count) {
-        while (travellers.length < count) {
-            travellers.push({ firstName: '', lastName: '', room: 'double' });
-        }
-        while (travellers.length > count) {
-            travellers.pop();
-        }
-        renderTravellers();
-    }
-
-    function addTraveller() {
-        if (travellers.length >= 12) return;
-        travellers.push({ firstName: '', lastName: '', room: 'double' });
-        document.getElementById('numWalkers').value = travellers.length;
-        renderTravellers();
-        updatePricing();
-    }
-
-    function removeTraveller(index) {
-        if (travellers.length <= 1) return;
-        // Save current field values before removing
-        saveTravellerFields();
-        travellers.splice(index, 1);
-        document.getElementById('numWalkers').value = travellers.length;
-        renderTravellers();
-        updatePricing();
-    }
-
-    function saveTravellerFields() {
-        travellers.forEach((t, i) => {
-            const fn = document.getElementById(`travFirstName_${i}`);
-            const ln = document.getElementById(`travLastName_${i}`);
-            if (fn) t.firstName = fn.value;
-            if (ln) t.lastName = ln.value;
+    function populateTours() {
+        const select = document.getElementById('tourSelect');
+        tours.forEach(tour => {
+            const opt = document.createElement('option');
+            opt.value = tour.id;
+            opt.textContent = tour.name;
+            select.appendChild(opt);
         });
     }
 
-    function selectRoom(travellerIdx, roomId) {
-        saveTravellerFields();
-        travellers[travellerIdx].room = roomId;
-        renderTravellers();
-    }
-
-    function renderTravellers() {
-        const container = document.getElementById('travellersContainer');
-        document.getElementById('travellerCount').textContent = `${travellers.length} traveller${travellers.length !== 1 ? 's' : ''}`;
-
-        container.innerHTML = travellers.map((t, i) => `
-            <div class="border border-gray-200 rounded-xl p-4 mb-3 ${i === 0 ? 'bg-orange-50/40 border-orange-200' : ''}">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-sm font-semibold text-slate-800">
-                        ${i === 0 ? '<span class="material-symbols-outlined text-primary text-base align-middle mr-1">star</span> Lead Traveller' : `Traveller ${i + 1}`}
-                    </span>
-                    ${i > 0 ? `<button type="button" onclick="removeTraveller(${i})" class="text-gray-400 hover:text-red-500 transition" title="Remove"><span class="material-symbols-outlined text-sm">close</span></button>` : ''}
-                </div>
-                <div class="grid grid-cols-2 gap-3 mb-3">
-                    <div>
-                        <label class="block text-xs font-medium text-gray-500 mb-1">First name</label>
-                        <input type="text" id="travFirstName_${i}" value="${escapeHtml(t.firstName)}" placeholder="First name" required
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                            onchange="travellers[${i}].firstName=this.value">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-medium text-gray-500 mb-1">Last name</label>
-                        <input type="text" id="travLastName_${i}" value="${escapeHtml(t.lastName)}" placeholder="Last name" required
-                            class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-primary"
-                            onchange="travellers[${i}].lastName=this.value">
-                    </div>
-                </div>
-                <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-2">Room type</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        ${ROOM_TYPES.map(r => `
-                            <div class="room-option ${t.room === r.id ? 'selected' : ''}" onclick="selectRoom(${i}, '${r.id}')">
-                                <span class="bed-icons">${r.icon}</span>
-                                <div>
-                                    <div class="text-xs font-semibold text-slate-800">${r.label}</div>
-                                    <div class="text-[10px] text-gray-400">${r.desc}</div>
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    function escapeHtml(str) {
-        const div = document.createElement('div');
-        div.textContent = str || '';
-        return div.innerHTML;
-    }
-
-    // ─────────── Step Navigation ───────────
     function goToStep(step) {
-        // Validate before advancing
-        if (step > currentStep) {
-            if (currentStep === 1) {
-                if (!currentTour) { alert('Please select a tour.'); return; }
-                if (!document.getElementById('startDate').value) { alert('Please choose a start date.'); return; }
-            }
-            if (currentStep === 2) {
-                saveTravellerFields();
-                const missing = travellers.some(t => !t.firstName.trim() || !t.lastName.trim());
-                if (missing) { alert('Please fill in all traveller names.'); return; }
-                if (!document.getElementById('email').value) { alert('Please enter your email.'); return; }
-            }
-        }
+        if (step === 2 && !validateStep1()) return;
+        if (step === 3 && !validateStep2()) return;
 
-        // Save traveller fields when leaving step 2
-        if (currentStep === 2) saveTravellerFields();
-
-        currentStep = step;
-
-        // Show/hide panels
         document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById(`step${step}`).classList.add('active');
+        document.getElementById('step' + step).classList.add('active');
 
-        // Update step dots
-        document.querySelectorAll('.step-dot').forEach(dot => {
-            const s = parseInt(dot.dataset.step);
-            dot.className = 'step-dot ' + (s < step ? 'completed' : s === step ? 'active' : 'inactive');
-            if (s < step) dot.innerHTML = '<span class="material-symbols-outlined text-sm">check</span>';
-            else dot.textContent = s;
+        document.querySelectorAll('.step-dot').forEach((d, i) => {
+            d.classList.remove('active', 'completed', 'inactive');
+            if (i + 1 < step) d.classList.add('completed');
+            else if (i + 1 === step) d.classList.add('active');
+            else d.classList.add('inactive');
         });
-
-        // Update connectors
-        document.querySelectorAll('.step-connector').forEach((conn, idx) => {
-            conn.className = 'step-connector flex-1 mx-2 mt-[-18px] ' + (idx < step - 1 ? 'active' : 'inactive');
+        document.querySelectorAll('.step-connector').forEach((c, i) => {
+            c.classList.toggle('active', i < step - 1);
         });
-
-        // Update step labels
-        ['stepLabel2','stepLabel3','stepLabel4'].forEach((id, idx) => {
-            const labelStep = idx + 2;
-            document.getElementById(id).className = 'text-xs font-medium ' + (labelStep <= step ? 'text-slate-800' : 'text-gray-400');
-        });
-
-        // If going to step 4, update review panel
-        if (step === 4) updateReviewPanel();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // ─────────── Pricing ───────────
-    function updatePricing() {
-        if (!currentTour) {
-            resetPricing();
-            return;
-        }
-
-        const walkerCount = travellers.length;
-        const startDateVal = document.getElementById('startDate').value;
-
-        // Dates
-        let datesDisplay = '-';
-        if (startDateVal) {
-            const start = new Date(startDateVal);
-            const end = new Date(start.getTime() + currentTour.days * 86400000);
-            const fmt = (d) => d.toLocaleDateString('en-IE', { month: 'short', day: 'numeric' });
-            datesDisplay = `${fmt(start)} – ${fmt(end)}, ${start.getFullYear()}`;
-        }
-
-        // Extras
-        let extrasTotal = 0;
-        const extras = [];
-        const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
-
-        if (document.getElementById('dailyLunch').checked) {
-            const cost = 15 * walkerCount * walkingDays;
-            extrasTotal += cost;
-            extras.push(`Lunch packs (€${cost})`);
-            document.getElementById('lunchPriceLabel').textContent = `€${cost}`;
-        } else {
-            document.getElementById('lunchPriceLabel').textContent = `€${15 * walkerCount * walkingDays}`;
-        }
-        if (document.getElementById('polehire').checked) {
-            extrasTotal += 20;
-            extras.push('Pole hire (€20)');
-        }
-        if (document.getElementById('airportTransfer').checked) extras.push('Airport transfer (POA)');
-        if (document.getElementById('extraRestDay').checked) extras.push('Rest day (POA)');
-
-        const basePrice = currentTour.price * walkerCount;
-        const total = basePrice + extrasTotal;
-        const deposit = Math.round(total * 0.25 * 100) / 100;
-        const balance = total - deposit;
-
-        // Sidebar
-        document.getElementById('sidebarTour').textContent = currentTour.name;
-        document.getElementById('sidebarDates').textContent = datesDisplay;
-        document.getElementById('sidebarWalkers').textContent = walkerCount;
-        document.getElementById('sidebarPrice').textContent = currentTour.price.toLocaleString();
-        document.getElementById('sidebarSubtotal').textContent = basePrice.toLocaleString();
-        document.getElementById('sidebarTotal').textContent = `€${total.toLocaleString()}`;
-        document.getElementById('sidebarDeposit').textContent = `€${deposit.toLocaleString()}`;
-
-        if (extrasTotal > 0) {
-            document.getElementById('sidebarExtras').classList.remove('hidden');
-            document.getElementById('sidebarExtrasPrice').textContent = `€${extrasTotal.toLocaleString()}`;
-        } else {
-            document.getElementById('sidebarExtras').classList.add('hidden');
-        }
-
-        // Mobile banner
-        document.getElementById('mobileBannerTour').textContent = currentTour.name;
-        document.getElementById('mobileBannerDates').textContent = datesDisplay;
-        document.getElementById('mobileBannerTotal').textContent = `€${total.toLocaleString()}`;
-
-        // Pay button
-        document.getElementById('payBtnAmount').textContent = deposit.toLocaleString();
-        document.getElementById('paymentText').textContent = `You'll be charged €${deposit.toLocaleString()} (25% deposit). Balance of €${balance.toLocaleString()} due 42 days before departure.`;
+    function validateStep1() {
+        if (!currentTour) { alert('Bitte wählen Sie eine Tour.'); return false; }
+        if (!document.getElementById('startDate').value) { alert('Bitte wählen Sie ein Startdatum.'); return false; }
+        return true;
     }
 
-    function resetPricing() {
-        ['sidebarTour'].forEach(id => document.getElementById(id).textContent = '-');
-        ['sidebarDates'].forEach(id => document.getElementById(id).textContent = '-');
-        ['sidebarPrice','sidebarSubtotal'].forEach(id => document.getElementById(id).textContent = '0');
-        document.getElementById('sidebarTotal').textContent = '€0';
-        document.getElementById('sidebarDeposit').textContent = '€0';
-        document.getElementById('sidebarExtras').classList.add('hidden');
-        document.getElementById('mobileBannerTour').textContent = 'Select a tour';
-        document.getElementById('mobileBannerDates').textContent = '-';
-        document.getElementById('mobileBannerTotal').textContent = '€0';
-        document.getElementById('payBtnAmount').textContent = '0';
+    function validateStep2() {
+        for (let t of travellers) if (!t.firstName || !t.lastName) { alert('Bitte füllen Sie alle Reisenamen aus.'); return false; }
+        if (!document.getElementById('email').value) { alert('Bitte geben Sie Ihre E-Mail-Adresse ein.'); return false; }
+        return true;
     }
 
-    function updateReviewPanel() {
+    function handleTourChange() {
+        const id = document.getElementById('tourSelect').value;
+        currentTour = tours.find(t => t.id === id) || null;
+        if (currentTour) {
+            document.getElementById('tourDays').textContent = currentTour.days + ' Tage';
+            document.getElementById('tourDifficulty').textContent = currentTour.difficulty;
+            document.getElementById('tourPrice').textContent = '€' + currentTour.price;
+            document.getElementById('tourSummaryCard').classList.remove('hidden');
+            document.getElementById('tourError').classList.add('hidden');
+        } else {
+            document.getElementById('tourSummaryCard').classList.add('hidden');
+        }
+        updateTotalPrice();
+    }
+
+    function handleDateChange() {
+        updateTotalPrice();
+        document.getElementById('dateError').style.display = currentTour && document.getElementById('startDate').value ? 'none' : 'block';
+    }
+
+    function handleWalkerChange() {
+        const numWalkers = parseInt(document.getElementById('numWalkers').value);
+        travellers = travellers.slice(0, numWalkers);
+        while (travellers.length < numWalkers) travellers.push({ firstName: '', lastName: '', room: 'double' });
+        renderTravellers();
+        updateTotalPrice();
+    }
+
+    function renderTravellers() {
+        const container = document.getElementById('travellersContainer');
+        container.innerHTML = '';
+        travellers.forEach((t, i) => {
+            const html = `
+                <div class="room-card mb-4">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-semibold text-slate-800">${i === 0 ? 'Hauptreisende(r)' : 'Reisende(r) ' + i}</h4>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3">
+                        <input type="text" placeholder="Vorname" value="${t.firstName || ''}" onchange="travellers[${i}].firstName=this.value" class="border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary focus:ring-primary">
+                        <input type="text" placeholder="Nachname" value="${t.lastName || ''}" onchange="travellers[${i}].lastName=this.value" class="border border-gray-300 rounded px-3 py-2 text-sm focus:border-primary focus:ring-primary">
+                    </div>
+                    <label class="text-sm font-medium text-slate-800">Zimmertyp</label>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
+                        ${['Einzelzimmer', 'Doppelzimmer', 'Dreibettzimmer', 'Familienzimmer'].map((rt, ri) => `
+                            <label class="flex items-center gap-2 cursor-pointer">
+                                <input type="radio" name="room${i}" value="${rt.toLowerCase()}" ${t.room === rt.toLowerCase() ? 'checked' : ''} onchange="travellers[${i}].room=this.value" class="w-4 h-4">
+                                <span class="text-xs font-medium">${rt}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+            container.innerHTML += html;
+        });
+        document.getElementById('travellerCount').textContent = travellers.length + ' Reisende';
+    }
+
+    function addTraveller() {
+        travellers.push({ firstName: '', lastName: '', room: 'double' });
+        document.getElementById('numWalkers').value = travellers.length;
+        renderTravellers();
+        updateTotalPrice();
+    }
+
+    function saveTravellerFields() {
+        document.querySelectorAll('[placeholder="Vorname"]').forEach((inp, i) => {
+            if (i < travellers.length) travellers[i].firstName = inp.value;
+        });
+        document.querySelectorAll('[placeholder="Nachname"]').forEach((inp, i) => {
+            if (i < travellers.length) travellers[i].lastName = inp.value;
+        });
+    }
+
+    function updateTotalPrice() {
         if (!currentTour) return;
-        const walkerCount = travellers.length;
-        const startDateVal = document.getElementById('startDate').value;
 
-        let datesDisplay = '-';
-        if (startDateVal) {
-            const start = new Date(startDateVal);
-            const end = new Date(start.getTime() + currentTour.days * 86400000);
-            const fmt = (d) => d.toLocaleDateString('en-IE', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
-            datesDisplay = `${fmt(start)} – ${fmt(end)}`;
-        }
-
+        const startDate = document.getElementById('startDate').value;
+        const numWalkers = travellers.length;
         const walkingDays = currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1);
+
+        const tourTotal = currentTour.price * numWalkers;
+
         let extrasTotal = 0;
-        if (document.getElementById('dailyLunch').checked) extrasTotal += 15 * walkerCount * walkingDays;
+        if (document.getElementById('dailyLunch').checked) {
+            const lunchCost = 15 * numWalkers * walkingDays;
+            extrasTotal += lunchCost;
+            document.getElementById('lunchPriceLabel').textContent = '€' + lunchCost;
+        } else {
+            document.getElementById('lunchPriceLabel').textContent = '€0';
+        }
         if (document.getElementById('polehire').checked) extrasTotal += 20;
 
-        const basePrice = currentTour.price * walkerCount;
-        const total = basePrice + extrasTotal;
+        const total = tourTotal + extrasTotal;
         const deposit = Math.round(total * 0.25 * 100) / 100;
 
         document.getElementById('reviewTour').textContent = currentTour.name;
-        document.getElementById('reviewDates').textContent = datesDisplay;
-        document.getElementById('reviewWalkers').textContent = walkerCount;
-        document.getElementById('reviewPpp').textContent = currentTour.price.toLocaleString();
-        document.getElementById('reviewSubtotal').textContent = basePrice.toLocaleString();
-        document.getElementById('reviewTotal').textContent = `€${total.toLocaleString()}`;
-        document.getElementById('reviewDeposit').textContent = `€${deposit.toLocaleString()}`;
+        if (startDate) {
+            const start = new Date(startDate);
+            const end = new Date(start.getTime() + currentTour.days * 86400000);
+            document.getElementById('reviewDates').textContent = start.toLocaleDateString('de-DE') + ' - ' + end.toLocaleDateString('de-DE');
+        }
+        document.getElementById('reviewWalkers').textContent = numWalkers;
+        document.getElementById('reviewPpp').textContent = currentTour.price;
+        document.getElementById('reviewSubtotal').textContent = tourTotal.toLocaleString();
+        document.getElementById('reviewExtrasAmt').textContent = '€' + extrasTotal.toLocaleString();
+        document.getElementById('reviewTotal').textContent = '€' + total.toLocaleString();
+        document.getElementById('reviewDeposit').textContent = '€' + deposit.toLocaleString();
+        document.getElementById('payBtnAmount').textContent = deposit.toLocaleString();
 
+        updateExtrasRow();
+
+        document.getElementById('mobileBannerTour').textContent = currentTour.name;
+        document.getElementById('mobileBannerDates').textContent = startDate ? new Date(startDate).toLocaleDateString('de-DE') : '-';
+        document.getElementById('mobileBannerTotal').textContent = '€' + total.toLocaleString();
+    }
+
+    function updateExtrasRow() {
+        const extrasTotal = (document.getElementById('dailyLunch').checked ? 15 * travellers.length * (currentTour?.walking_days || 7) : 0) + (document.getElementById('polehire').checked ? 20 : 0);
         if (extrasTotal > 0) {
             document.getElementById('reviewExtrasRow').classList.remove('hidden');
             document.getElementById('reviewExtrasAmt').textContent = `€${extrasTotal.toLocaleString()}`;
@@ -1057,7 +742,6 @@
         }
     }
 
-    // ─────────── Payment ───────────
     function selectPayment(method) {
         selectedPayment = method;
         document.getElementById('stripeMethod').classList.toggle('selected', method === 'stripe');
@@ -1078,7 +762,6 @@
         return true;
     }
 
-    // ─────────── Edge Function URL ───────────
     const EDGE_FN_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/process-booking';
 
     function getBookingPayload(paymentMethod) {
@@ -1124,22 +807,20 @@
             pay_full: false,
             payment_amount: deposit,
             source: 'website',
-            language: 'en',
+            language: 'de',
             site_origin: window.location.origin,
             mailing_list: document.getElementById('mailingList').checked,
         };
     }
 
-    // Legacy wrapper for backward compat
     function getBookingData() { return getBookingPayload(selectedPayment); }
 
     function showBookingError(msg) {
-        alert(msg || 'Something went wrong. Please try again or contact us at info@walkingholidayireland.com');
+        alert(msg || 'Etwas ist schief gelaufen. Bitte versuchen Sie es erneut oder kontaktieren Sie uns unter info@walkingholidayireland.com');
     }
 
     function showBookingSuccess(ref) {
         const el = document.getElementById('successMessage');
-        // Add booking reference to the success message
         const refSpan = el.querySelector('.booking-ref');
         if (refSpan) refSpan.textContent = ref;
         el.classList.remove('hidden');
@@ -1151,7 +832,7 @@
 
         const btn = document.getElementById('stripePayBtn');
         btn.disabled = true;
-        btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Processing...';
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Wird verarbeitet...';
 
         try {
             const payload = getBookingPayload('stripe');
@@ -1166,20 +847,18 @@
                 throw new Error(result.error || 'Booking failed');
             }
 
-            // If Stripe returned a checkout URL, redirect to it
             if (result.stripe_url) {
                 window.location.href = result.stripe_url;
                 return;
             }
 
-            // Fallback: show success inline (if Stripe keys not configured)
             showBookingSuccess(result.booking_reference);
             btn.style.display = 'none';
         } catch (err) {
             console.error('Stripe payment error:', err);
-            showBookingError('Payment processing failed: ' + err.message);
+            showBookingError('Zahlungsverarbeitung fehlgeschlagen: ' + err.message);
             btn.disabled = false;
-            btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">lock</span> Pay Deposit — €${document.getElementById('payBtnAmount').textContent}`;
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">lock</span> Anzahlung bezahlen — €${document.getElementById('payBtnAmount').textContent}`;
         }
     }
 
@@ -1202,7 +881,6 @@
                     try {
                         await actions.order.capture();
 
-                        // Now record the booking in Supabase
                         const payload = getBookingPayload('paypal');
                         const res = await fetch(EDGE_FN_URL, {
                             method: 'POST',
@@ -1218,39 +896,34 @@
                         showBookingSuccess(result.booking_reference);
                     } catch (err) {
                         console.error('PayPal booking error:', err);
-                        // Payment was captured but booking may have failed — show partial success
                         showBookingSuccess('');
                     }
                 },
                 onError: function(err) {
                     console.error('PayPal error:', err);
-                    alert('PayPal payment failed. Please try again or use card payment.');
+                    alert('PayPal-Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut oder verwenden Sie Kartenzahlung.');
                 }
             }).render('#paypal-button-container');
         } catch(e) { console.warn('PayPal init error:', e); }
     }
 
     function submitBookingData() {
-        // Legacy function — actual submission now happens in handleStripePayment/initPayPal
         console.log('submitBookingData called (no-op, handled by payment flow)');
     }
-    </script>
-    <script src="/js/whi-nav.js"></script>
-<!-- Language Switcher Helper -->
+
+    document.addEventListener('change', function(e) {
+        if (['dailyLunch', 'polehire'].includes(e.target.id)) {
+            updateTotalPrice();
+        }
+    });
+</script>
+<script src="/js/whi-nav.js"></script>
 <script>
 function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
-document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
-/* Top bar buttons */
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'de';
 var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
-/* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});
 </script>
 <script src="/js/subscribe.js" defer></script>
-<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
-document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
-/* Top bar buttons */
-var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
-/* Footer language links */
-var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 </body>
 </html>

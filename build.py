@@ -4566,7 +4566,7 @@ def build_static_pages(lang, translations):
         'northern-ireland',
         'ancient-east',
         'mountains-of-mourne',
-        'checkout',
+        # 'checkout' — manually maintained with full translations (de/buchung.html, nl/boeken.html)
         'privacy-policy',
         'terms-and-conditions',
         'best-hiking-trails-ireland',
