@@ -6263,6 +6263,15 @@ def main():
                 de_html = set_hreflang_tags(de_html, en_url=en_blog_url, de_url=de_blog_url, nl_url=de_hreflang_nl)
                 de_html = fix_og_tags(de_html, de_blog_url, lang='de',
                     title=post.get('title_de'), description=post.get('meta_description_de') or post.get('excerpt_de'))
+                # Translate tour/destination links to DE paths
+                de_tour_folder = TOUR_FOLDER.get('de', 'walking-tours')
+                de_html = de_html.replace('href="../walking-tours/', f'href="/{de_tour_folder}/')
+                de_html = de_html.replace('href="walking-tours/', f'href="/{de_tour_folder}/')
+                de_html = de_html.replace('href="../destinations"', f'href="/{translate_static_slug("destinations", "de")}"')
+                de_wa = WALKING_AREA_PREFIX.get('de', 'walking-area')
+                de_html = de_html.replace('href="../walking-area-', f'href="/{de_wa}-')
+                de_html = de_html.replace('href="walking-area-', f'href="/{de_wa}-')
+                de_html = translate_html_ui(de_html, 'de')
                 de_html = fix_relative_paths(de_html)
                 de_blog_dir = WEBSITE_DIR / 'de' / 'blog'
                 de_blog_dir.mkdir(parents=True, exist_ok=True)
@@ -6297,6 +6306,15 @@ def main():
                 nl_html = set_hreflang_tags(nl_html, en_url=en_blog_url, de_url=nl_hreflang_de, nl_url=nl_blog_url)
                 nl_html = fix_og_tags(nl_html, nl_blog_url, lang='nl',
                     title=post.get('title_nl'), description=post.get('meta_description_nl') or post.get('excerpt_nl'))
+                # Translate tour/destination links to NL paths
+                nl_tour_folder = TOUR_FOLDER.get('nl', 'walking-tours')
+                nl_html = nl_html.replace('href="../walking-tours/', f'href="/{nl_tour_folder}/')
+                nl_html = nl_html.replace('href="walking-tours/', f'href="/{nl_tour_folder}/')
+                nl_html = nl_html.replace('href="../destinations"', f'href="/{translate_static_slug("destinations", "nl")}"')
+                nl_wa = WALKING_AREA_PREFIX.get('nl', 'walking-area')
+                nl_html = nl_html.replace('href="../walking-area-', f'href="/{nl_wa}-')
+                nl_html = nl_html.replace('href="walking-area-', f'href="/{nl_wa}-')
+                nl_html = translate_html_ui(nl_html, 'nl')
                 nl_html = fix_relative_paths(nl_html)
                 nl_blog_dir = WEBSITE_DIR / 'nl' / 'blog'
                 nl_blog_dir.mkdir(parents=True, exist_ok=True)
