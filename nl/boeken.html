@@ -97,6 +97,7 @@
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Utility Bar -->
 <div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
@@ -369,7 +370,7 @@
                             </h3>
 
                             <div id="extrasContainer" class="space-y-3">
-                                <p class="text-sm text-gray-400 italic" id="extrasLoading">Selecteer hierboven een tour om beschikbare extra's te zien.</p>
+                                <p class="text-sm text-gray-400 italic" id="extrasLoading">Select a tour above to see available extras.</p>
                             </div>
                         </div>
 
@@ -683,7 +684,7 @@
     let currentTour = null;
     let travellers = [];
     let selectedPayment = 'stripe';
-    let currentExtras = [];
+    let currentExtras = []; // loaded dynamically per tour
 
     // ─────────── Supabase Extras ───────────
     const SB_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
@@ -692,38 +693,68 @@
 
     async function loadExtrasForTour(tourSlug) {
         try {
-            const tourRes = await fetch(`${SB_URL}/rest/v1/tours?slug=eq.${encodeURIComponent(tourSlug)}&select=id`, { headers: SB_HEADERS });
+            // 1. Get tour UUID from slug
+            const tourRes = await fetch(
+                `${SB_URL}/rest/v1/tours?slug=eq.${encodeURIComponent(tourSlug)}&select=id`,
+                { headers: SB_HEADERS }
+            );
             const tours = await tourRes.json();
             if (!tours.length) return [];
             const tourId = tours[0].id;
-            const extrasRes = await fetch(`${SB_URL}/rest/v1/tour_extras_tours?tour_id=eq.${tourId}&select=price_override_eur,tour_extras(id,name,name_de,name_nl,description,description_de,description_nl,price_eur,price_type,category,icon_name)`, { headers: SB_HEADERS });
+
+            // 2. Get extras assigned to this tour with price overrides
+            const extrasRes = await fetch(
+                `${SB_URL}/rest/v1/tour_extras_tours?tour_id=eq.${tourId}&select=price_override_eur,tour_extras(id,name,name_de,name_nl,description,description_de,description_nl,price_eur,price_type,category,icon_name)`,
+                { headers: SB_HEADERS }
+            );
             const assignments = await extrasRes.json();
-            return assignments.map(a => ({ ...a.tour_extras, effective_price: a.price_override_eur ?? a.tour_extras.price_eur }));
-        } catch (e) { console.warn('Failed to load extras:', e); return []; }
+
+            // 3. Merge: use price_override if set, otherwise default price
+            return assignments.map(a => ({
+                ...a.tour_extras,
+                effective_price: a.price_override_eur ?? a.tour_extras.price_eur
+            }));
+        } catch (e) {
+            console.warn('Failed to load extras:', e);
+            return [];
+        }
     }
 
     function renderExtras(extras, lang) {
-        lang = lang || 'nl';
+        lang = lang || 'en';
         const container = document.getElementById('extrasContainer');
         if (!extras.length) {
-            container.innerHTML = '<p class="text-sm text-gray-400 italic">Geen optionele extra\'s beschikbaar voor deze tour.</p>';
+            container.innerHTML = '<p class="text-sm text-gray-400 italic">No optional extras available for this tour.</p>';
             return;
         }
         container.innerHTML = extras.map(extra => {
-            const name = lang === 'de' ? (extra.name_de || extra.name) : lang === 'nl' ? (extra.name_nl || extra.name) : extra.name;
-            const desc = lang === 'de' ? (extra.description_de || extra.description || '') : lang === 'nl' ? (extra.description_nl || extra.description || '') : (extra.description || '');
+            const name = lang === 'de' ? (extra.name_de || extra.name)
+                       : lang === 'nl' ? (extra.name_nl || extra.name)
+                       : extra.name;
+            const desc = lang === 'de' ? (extra.description_de || extra.description || '')
+                       : lang === 'nl' ? (extra.description_nl || extra.description || '')
+                       : (extra.description || '');
+
             let priceLabel;
             if (extra.price_type === 'on_request' || extra.effective_price == null) {
-                priceLabel = 'Op aanvraag';
+                priceLabel = lang === 'de' ? 'Auf Anfrage' : lang === 'nl' ? 'Op aanvraag' : 'POA';
             } else {
                 const p = parseFloat(extra.effective_price);
-                const suffix = extra.price_type === 'per_person' ? '/pp' : extra.price_type === 'per_night' ? '/nacht' : extra.price_type === 'per_day' ? '/dag' : '';
+                const suffix = extra.price_type === 'per_person' ? '/pp'
+                             : extra.price_type === 'per_night' ? '/night'
+                             : extra.price_type === 'per_day' ? '/day'
+                             : '';
                 priceLabel = `€${p}${suffix}`;
             }
+
             return `
             <label class="flex items-start gap-3 p-4 bg-orange-50 rounded-xl cursor-pointer hover:bg-orange-100 transition group">
-                <input type="checkbox" class="tour-extra-checkbox mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
-                       data-extra-id="${extra.id}" data-price="${extra.effective_price || 0}" data-price-type="${extra.price_type || 'on_request'}" data-name="${name.replace(/"/g, '&quot;')}">
+                <input type="checkbox"
+                       class="tour-extra-checkbox mt-1 w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary"
+                       data-extra-id="${extra.id}"
+                       data-price="${extra.effective_price || 0}"
+                       data-price-type="${extra.price_type || 'on_request'}"
+                       data-name="${name.replace(/"/g, '&quot;')}">
                 <div class="flex-1">
                     <span class="font-medium text-slate-800 block">${name}</span>
                     ${desc ? `<span class="text-sm text-gray-500">${desc}</span>` : ''}
@@ -731,23 +762,44 @@
                 <span class="text-sm font-semibold text-primary">${priceLabel}</span>
             </label>`;
         }).join('');
-        container.querySelectorAll('.tour-extra-checkbox').forEach(cb => { cb.addEventListener('change', updatePricing); });
+
+        // Attach change listeners for pricing updates
+        container.querySelectorAll('.tour-extra-checkbox').forEach(cb => {
+            cb.addEventListener('change', updatePricing);
+        });
     }
 
     function calcExtras() {
-        let extrasTotal = 0; const extras = [];
+        let extrasTotal = 0;
+        const extras = [];
         const walkerCount = travellers.length || 1;
         const walkingDays = currentTour ? (currentTour.walking_days || (currentTour.days > 1 ? currentTour.days - 1 : 1)) : 1;
+
         document.querySelectorAll('.tour-extra-checkbox:checked').forEach(cb => {
-            const name = cb.dataset.name, price = parseFloat(cb.dataset.price) || 0, priceType = cb.dataset.priceType;
+            const name = cb.dataset.name;
+            const price = parseFloat(cb.dataset.price) || 0;
+            const priceType = cb.dataset.priceType;
             let cost = 0;
-            if (priceType === 'per_person') cost = price * walkerCount;
-            else if (priceType === 'per_night') cost = price * walkerCount * (currentTour ? currentTour.days - 1 : 1);
-            else if (priceType === 'per_day') cost = price * walkerCount * walkingDays;
-            else if (priceType === 'per_service' || priceType === 'flat') cost = price;
+
+            if (priceType === 'per_person') {
+                cost = price * walkerCount;
+            } else if (priceType === 'per_night') {
+                cost = price * walkerCount * (currentTour ? currentTour.days - 1 : 1);
+            } else if (priceType === 'per_day') {
+                cost = price * walkerCount * walkingDays;
+            } else if (priceType === 'per_service' || priceType === 'flat') {
+                cost = price;
+            }
+            // on_request items add €0
+
             extrasTotal += cost;
-            extras.push(cost > 0 ? `${name} (€${cost})` : `${name} (Op aanvraag)`);
+            if (cost > 0) {
+                extras.push(`${name} (€${cost})`);
+            } else {
+                extras.push(`${name} (POA)`);
+            }
         });
+
         return { extrasTotal, extras };
     }
 
@@ -787,20 +839,22 @@
                 document.getElementById('tourDays').textContent = currentTour.days;
                 document.getElementById('tourPrice').textContent = currentTour.price.toLocaleString();
                 document.getElementById('tourDifficulty').textContent = currentTour.difficulty;
+                // Update feature images
                 const imgPath = `images/routes/${currentTour.img}/card.jpg`;
                 document.getElementById('sidebarImage').src = imgPath;
                 document.getElementById('sidebarImage').style.display = 'block';
                 const mobImg = document.getElementById('mobileBannerImg');
                 mobImg.src = imgPath;
                 mobImg.classList.remove('hidden');
-                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Extra\'s worden geladen...</p>';
+                // Load dynamic extras for this tour
+                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Loading extras for this tour...</p>';
                 currentExtras = await loadExtrasForTour(currentTour.slug);
-                renderExtras(currentExtras, 'nl');
+                renderExtras(currentExtras, 'en');
             } else {
                 document.getElementById('tourInfo').classList.add('hidden');
                 document.getElementById('sidebarImage').style.display = 'none';
                 document.getElementById('mobileBannerImg').classList.add('hidden');
-                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Selecteer hierboven een tour om beschikbare extra\'s te zien.</p>';
+                document.getElementById('extrasContainer').innerHTML = '<p class="text-sm text-gray-400 italic">Select a tour above to see available extras.</p>';
                 currentExtras = [];
             }
             updatePricing();
@@ -1104,9 +1158,16 @@
         saveTravellerFields();
         const walkerCount = travellers.length;
         const { extrasTotal, extras } = calcExtras();
+
+        // Build structured extras payload with IDs for Supabase
         const extrasPayload = [];
         document.querySelectorAll('.tour-extra-checkbox:checked').forEach(cb => {
-            extrasPayload.push({ tour_extra_id: cb.dataset.extraId, name: cb.dataset.name, price: parseFloat(cb.dataset.price) || 0, price_type: cb.dataset.priceType });
+            extrasPayload.push({
+                tour_extra_id: cb.dataset.extraId,
+                name: cb.dataset.name,
+                price: parseFloat(cb.dataset.price) || 0,
+                price_type: cb.dataset.priceType
+            });
         });
 
         const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
@@ -1139,8 +1200,8 @@
             payment_method: paymentMethod,
             pay_full: false,
             payment_amount: deposit,
-            source: 'website-nl',
-            language: 'nl',
+            source: 'website',
+            language: 'en',
             site_origin: window.location.origin,
             mailing_list: document.getElementById('mailingList').checked,
         };
@@ -1262,6 +1323,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});
 </script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
