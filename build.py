@@ -5388,7 +5388,7 @@ def main():
         regions = fetch_supabase('regions', '&order=sort_order')
 
         log("Fetching tour extras from Supabase...")
-        tour_extras_list = fetch_supabase('tour_extras', '&is_active=eq.true&order=sort_order')
+        tour_extras_list = fetch_supabase('tour_extras', '&status=eq.active&order=sort_order')
 
         log("Fetching global settings from Supabase...")
         global_settings_list = fetch_supabase('global_settings', '')
