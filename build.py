@@ -6408,6 +6408,21 @@ def main():
                 </div>
             </a>'''
 
+        # Build dynamic category filter buttons from actual post categories
+        from collections import Counter as _Counter
+        cat_counter = _Counter()
+        for post in posts:
+            ps = post.get('slug', '')
+            if ps not in generated_blog_slugs:
+                continue
+            p_cat = post.get('category', '') or 'Walking Routes'
+            cat_counter[p_cat] += 1
+        sorted_cats = sorted(cat_counter.items(), key=lambda x: -x[1])
+        cat_buttons_html = '        <button class="blog-filter-btn active px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold transition-colors" data-category="all">All Posts</button>\n'
+        for cname, ccount in sorted_cats:
+            cslug = cat_slug(cname)
+            cat_buttons_html += f'        <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="{cslug}">{escape(cname)}</button>\n'
+
         # Read existing blog.html and replace content between markers
         # blog.html may be at root or in blog/ subdirectory
         blog_listing_path = WEBSITE_DIR / 'blog' / 'blog.html'
@@ -6425,6 +6440,11 @@ def main():
             pattern = r'<!-- Content Area -->.*?</div>\s*\n\s*\n\s*<!-- Pagination -->'
             replacement = new_grid_content + '\n\n    <!-- Pagination -->'
             blog_listing_new = _re.sub(pattern, replacement, blog_listing, flags=_re.DOTALL)
+
+            # Inject dynamic category filter buttons
+            cat_filter_pattern = r'(<div[^>]*id="blog-filters"[^>]*>\s*)\s*<button class="blog-filter-btn.*?(?=<div class="ml-auto)'
+            cat_filter_replacement = r'\g<1>\n' + cat_buttons_html
+            blog_listing_new = _re.sub(cat_filter_pattern, cat_filter_replacement, blog_listing_new, flags=_re.DOTALL)
 
             # Inject recommended tours
             rec_pattern = r'(<div[^>]*id="recommended-tours"[^>]*>)\s*<!-- Populated by build\.py -->\s*(</div>)'
@@ -6627,12 +6647,28 @@ def main():
                 bcfg['hero_subtitle'],
                 lang_blog, flags=_re.DOTALL)
 
-            # Replace filter button text
-            lang_blog = lang_blog.replace('>All Posts<', f'>{bcfg["all_posts"]}<')
+            # Build translated category filter buttons from lang post data
+            lang_cat_counter = _Counter()
+            for post in posts:
+                ps = post.get('slug', '')
+                if ps not in generated_blog_slugs:
+                    continue
+                lang_slug_val = (post.get(bcfg['slug_field'], '') or '').strip()
+                lang_content_val = (post.get(bcfg['content_field'], '') or '').strip()
+                if not lang_slug_val or not lang_content_val:
+                    continue
+                p_cat_en = post.get('category', '') or 'Walking Routes'
+                p_cat_translated = bcfg.get('categories', {}).get(p_cat_en, p_cat_en)
+                lang_cat_counter[p_cat_translated] += 1
+            lang_sorted_cats = sorted(lang_cat_counter.items(), key=lambda x: -x[1])
+            lang_cat_buttons = f'        <button class="blog-filter-btn active px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold transition-colors" data-category="all">{bcfg["all_posts"]}</button>\n'
+            for lcname, lccount in lang_sorted_cats:
+                lcslug = cat_slug(lcname)
+                lang_cat_buttons += f'        <button class="blog-filter-btn px-6 py-2 rounded-full bg-primary/10 text-slate-800 text-sm font-semibold hover:bg-primary/20 transition-colors" data-category="{lcslug}">{escape(lcname)}</button>\n'
+            # Inject translated category buttons
+            lang_cat_pattern = r'(<div[^>]*id="blog-filters"[^>]*>\s*)\s*<button class="blog-filter-btn.*?(?=<div class="ml-auto)'
+            lang_blog = _re.sub(lang_cat_pattern, r'\g<1>\n' + lang_cat_buttons, lang_blog, flags=_re.DOTALL)
             lang_blog = lang_blog.replace('Search stories...', bcfg['search_placeholder'])
-            # Translate category filter button labels
-            for en_cat, lang_cat in bcfg.get('categories', {}).items():
-                lang_blog = lang_blog.replace(f'>{en_cat}<', f'>{lang_cat}<')
 
             # Replace recommended tours section
             lang_blog = lang_blog.replace('>Recommended Tours<', f'>{bcfg["recommended_tours"]}<')
