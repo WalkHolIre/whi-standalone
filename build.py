@@ -6018,7 +6018,10 @@ def main():
             </a>'''
 
         # Read existing blog.html and replace content between markers
-        blog_listing_path = WEBSITE_DIR / 'blog.html'
+        # blog.html may be at root or in blog/ subdirectory
+        blog_listing_path = WEBSITE_DIR / 'blog' / 'blog.html'
+        if not blog_listing_path.exists():
+            blog_listing_path = WEBSITE_DIR / 'blog.html'
         if blog_listing_path.exists():
             with open(blog_listing_path, 'r') as f:
                 blog_listing = f.read()
@@ -6053,6 +6056,7 @@ def main():
                     f.write(blog_listing_new)
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
+            blog_listing_new = None
             log("blog.html not found, skipping listing page", 'warn')
 
         # ── Build DE & NL Blog Listing Pages ─────────────────────
@@ -6212,6 +6216,9 @@ def main():
             </a>'''
 
             # Start from the EN blog listing as a base
+            if not blog_listing_new:
+                log(f"  Skipping {blang.upper()} blog listing — EN blog listing not available", 'warn')
+                continue
             lang_blog = blog_listing_new
 
             # Replace HTML lang
