@@ -102,6 +102,7 @@
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 
 <!-- Top Utility Bar -->
 <div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
@@ -383,14 +384,14 @@
                             <button type="button" onclick="toggleVoucherPanel()" class="flex items-center justify-between w-full text-left">
                                 <span class="font-semibold text-slate-800 flex items-center gap-2">
                                     <span class="material-symbols-outlined text-primary">confirmation_number</span>
-                                    Have a voucher or discount code?
+                                    Heeft u een voucher of kortingscode?
                                 </span>
                                 <span class="material-symbols-outlined text-slate-400 transition" id="voucherChevron">expand_more</span>
                             </button>
                             <div id="voucherPanel" class="hidden mt-4">
                                 <div class="flex gap-3">
                                     <input type="text" id="voucherCodeInput"
-                                           placeholder="Enter code, e.g. GFT-AB3K-9QWR"
+                                           placeholder="Voer code in, bijv. GFT-AB3K-9QWR"
                                            class="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-sm font-mono uppercase focus:border-primary focus:ring-primary"
                                            maxlength="20">
                                     <button type="button" onclick="applyVoucherCode()" id="applyVoucherBtn"
@@ -404,7 +405,7 @@
                                         <span class="text-green-800 font-semibold text-sm" id="voucherAppliedText"></span>
                                         <span class="text-green-600 text-xs block font-mono" id="voucherAppliedCode"></span>
                                     </div>
-                                    <button type="button" onclick="removeVoucher()" class="text-green-600 hover:text-red-500 transition" title="Remove voucher">
+                                    <button type="button" onclick="removeVoucher()" class="text-green-600 hover:text-red-500 transition" title="Verwijderen">
                                         <span class="material-symbols-outlined text-sm">close</span>
                                     </button>
                                 </div>
@@ -437,7 +438,7 @@
                                 <div class="border-t border-gray-200 my-1"></div>
                                 <div class="flex justify-between py-1"><span class="text-gray-500">Subtotaal</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
                                 <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extra's</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
-                                <div id="reviewVoucherRow" class="hidden"><div class="flex justify-between py-1"><span class="text-green-600">Voucher discount</span><span class="font-medium text-green-600" id="reviewVoucherAmt">-€0</span></div></div>
+                                <div id="reviewVoucherRow" class="hidden"><div class="flex justify-between py-1"><span class="text-green-600">Voucherkorting</span><span class="font-medium text-green-600" id="reviewVoucherAmt">-€0</span></div></div>
                                 <div class="border-t-2 border-primary my-1"></div>
                                 <div class="flex justify-between py-2 text-lg font-bold"><span class="text-slate-800">Totaal</span><span class="text-primary" id="reviewTotal">€0</span></div>
                                 <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
@@ -605,7 +606,7 @@
                             </div>
                             <div id="sidebarVoucher" class="hidden">
                                 <div class="flex justify-between py-1.5 border-b border-gray-100">
-                                    <span class="text-green-600">Voucher discount</span>
+                                    <span class="text-green-600">Voucherkorting</span>
                                     <span class="font-medium text-green-600" id="sidebarVoucherPrice">-€0</span>
                                 </div>
                             </div>
@@ -864,7 +865,7 @@
 
         const btn = document.getElementById('applyVoucherBtn');
         btn.disabled = true;
-        btn.textContent = 'Checking...';
+        btn.textContent = 'Controleren...';
 
         try {
             // Get current tour UUID from slug
@@ -891,7 +892,7 @@
                     tour_id: tourId,
                     tour_slug: currentTour?.slug || null,
                     booking_total: bookingTotal,
-                    locale: 'en'
+                    locale: 'nl'
                 })
             });
 
@@ -903,15 +904,15 @@
                 updatePricing();
                 updateReviewPanel();
             } else {
-                showVoucherError(result.error || 'This code is not valid.');
+                showVoucherError(result.error || 'Deze code is niet geldig.');
             }
         } catch (err) {
             console.warn('Voucher validation error:', err);
-            showVoucherError('Could not validate voucher. Please try again.');
+            showVoucherError('Voucher kon niet worden gevalideerd. Probeer het opnieuw.');
         }
 
         btn.disabled = false;
-        btn.textContent = 'Apply';
+        btn.textContent = 'Toepassen';
     }
 
     function showAppliedVoucher(code, result) {
@@ -1360,8 +1361,8 @@
             payment_method: paymentMethod,
             pay_full: false,
             payment_amount: deposit,
-            source: 'website',
-            language: 'en',
+            source: 'website-nl',
+            language: 'nl',
             site_origin: window.location.origin,
             mailing_list: document.getElementById('mailingList').checked,
         };
@@ -1483,6 +1484,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});
 </script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
