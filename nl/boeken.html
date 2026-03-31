@@ -377,6 +377,39 @@
                             </div>
                         </div>
 
+                        <!-- Voucher / Kortingscode -->
+                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
+                            <button type="button" onclick="toggleVoucherPanel()" class="flex items-center justify-between w-full text-left">
+                                <span class="font-semibold text-slate-800 flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary">confirmation_number</span>
+                                    Heeft u een voucher of kortingscode?
+                                </span>
+                                <span class="material-symbols-outlined text-slate-400 transition" id="voucherChevron">expand_more</span>
+                            </button>
+                            <div id="voucherPanel" class="hidden mt-4">
+                                <div class="flex gap-3">
+                                    <input type="text" id="voucherCodeInput"
+                                           placeholder="Voer code in, bijv. GFT-AB3K-9QWR"
+                                           class="flex-1 border border-gray-300 rounded-lg px-4 py-3 text-sm font-mono uppercase focus:border-primary focus:ring-primary"
+                                           maxlength="20">
+                                    <button type="button" onclick="applyVoucherCode()" id="applyVoucherBtn"
+                                            class="bg-primary hover:bg-primary/80 text-white px-6 py-3 rounded-lg font-semibold transition text-sm whitespace-nowrap">
+                                        Toepassen
+                                    </button>
+                                </div>
+                                <div id="voucherResult" class="hidden mt-3"></div>
+                                <div id="voucherApplied" class="hidden mt-3 bg-green-50 border border-green-200 rounded-lg p-3 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-green-800 font-semibold text-sm" id="voucherAppliedText"></span>
+                                        <span class="text-green-600 text-xs block font-mono" id="voucherAppliedCode"></span>
+                                    </div>
+                                    <button type="button" onclick="removeVoucher()" class="text-green-600 hover:text-red-500 transition" title="Verwijderen">
+                                        <span class="material-symbols-outlined text-sm">close</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="flex justify-between">
                             <button type="button" onclick="goToStep(2)" class="border border-gray-300 text-gray-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-medium transition">
                                 <span class="material-symbols-outlined text-sm align-middle mr-1">arrow_back</span> Terug
@@ -403,6 +436,7 @@
                                 <div class="border-t border-gray-200 my-1"></div>
                                 <div class="flex justify-between py-1"><span class="text-gray-500">Subtotaal</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
                                 <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extra's</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
+                                <div id="reviewVoucherRow" class="hidden"><div class="flex justify-between py-1"><span class="text-green-600">Voucherkorting</span><span class="font-medium text-green-600" id="reviewVoucherAmt">-€0</span></div></div>
                                 <div class="border-t-2 border-primary my-1"></div>
                                 <div class="flex justify-between py-2 text-lg font-bold"><span class="text-slate-800">Totaal</span><span class="text-primary" id="reviewTotal">€0</span></div>
                                 <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
@@ -568,6 +602,12 @@
                                     <span class="font-medium text-gray-900" id="sidebarExtrasPrice">€0</span>
                                 </div>
                             </div>
+                            <div id="sidebarVoucher" class="hidden">
+                                <div class="flex justify-between py-1.5 border-b border-gray-100">
+                                    <span class="text-green-600">Voucherkorting</span>
+                                    <span class="font-medium text-green-600" id="sidebarVoucherPrice">-€0</span>
+                                </div>
+                            </div>
                             <div class="flex justify-between py-2 text-base font-bold border-t-2 border-primary mt-1">
                                 <span class="text-slate-800">Totaal</span>
                                 <span class="text-primary" id="sidebarTotal">€0</span>
@@ -688,6 +728,7 @@
     let travellers = [];
     let selectedPayment = 'stripe';
     let currentExtras = []; // loaded dynamically per tour
+    let appliedVoucher = null; // stores validated voucher data from edge function
 
     // ─────────── Supabase Extras ───────────
     const SB_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co';
@@ -804,6 +845,93 @@
         });
 
         return { extrasTotal, extras };
+    }
+
+    // ─────────── Voucher / Kortingscode ───────────
+    const VALIDATE_VOUCHER_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/validate-voucher';
+
+    function toggleVoucherPanel() {
+        const panel = document.getElementById('voucherPanel');
+        const chevron = document.getElementById('voucherChevron');
+        panel.classList.toggle('hidden');
+        chevron.style.transform = panel.classList.contains('hidden') ? '' : 'rotate(180deg)';
+    }
+
+    async function applyVoucherCode() {
+        const code = document.getElementById('voucherCodeInput').value.trim().toUpperCase();
+        if (!code) return;
+
+        const btn = document.getElementById('applyVoucherBtn');
+        btn.disabled = true;
+        btn.textContent = 'Controleren...';
+
+        try {
+            let tourId = null;
+            if (currentTour) {
+                const tourRes = await fetch(
+                    `${SB_URL}/rest/v1/tours?slug=eq.${encodeURIComponent(currentTour.slug)}&select=id`,
+                    { headers: SB_HEADERS }
+                );
+                const tours = await tourRes.json();
+                if (tours.length) tourId = tours[0].id;
+            }
+
+            const { extrasTotal } = calcExtras();
+            const walkerCount = travellers.length || 1;
+            const bookingTotal = (currentTour?.price || 0) * walkerCount + extrasTotal;
+
+            const res = await fetch(VALIDATE_VOUCHER_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    code,
+                    tour_id: tourId,
+                    tour_slug: currentTour?.slug || null,
+                    booking_total: bookingTotal,
+                    locale: 'nl'
+                })
+            });
+
+            const result = await res.json();
+
+            if (result.valid) {
+                appliedVoucher = result;
+                showAppliedVoucher(code, result);
+                updatePricing();
+                updateReviewPanel();
+            } else {
+                showVoucherError(result.error || 'Deze code is niet geldig.');
+            }
+        } catch (err) {
+            console.warn('Voucher validation error:', err);
+            showVoucherError('Voucher kon niet worden gevalideerd. Probeer het opnieuw.');
+        }
+
+        btn.disabled = false;
+        btn.textContent = 'Toepassen';
+    }
+
+    function showAppliedVoucher(code, result) {
+        document.getElementById('voucherResult').classList.add('hidden');
+        document.getElementById('voucherApplied').classList.remove('hidden');
+        document.getElementById('voucherAppliedText').textContent = result.discount_display;
+        document.getElementById('voucherAppliedCode').textContent = code;
+        document.getElementById('voucherCodeInput').disabled = true;
+    }
+
+    function showVoucherError(message) {
+        const el = document.getElementById('voucherResult');
+        el.classList.remove('hidden');
+        el.innerHTML = `<div class="bg-red-50 border border-red-200 rounded-lg p-3 text-red-800 text-sm flex items-center gap-2"><span class="material-symbols-outlined text-sm">error</span>${message}</div>`;
+    }
+
+    function removeVoucher() {
+        appliedVoucher = null;
+        document.getElementById('voucherApplied').classList.add('hidden');
+        document.getElementById('voucherCodeInput').disabled = false;
+        document.getElementById('voucherCodeInput').value = '';
+        updatePricing();
+        updateReviewPanel();
     }
 
     // ─────────── Stripe Init ───────────
@@ -1054,8 +1182,14 @@
         // Extras (dynamic from Supabase)
         const { extrasTotal, extras } = calcExtras();
 
+        // Voucher discount
+        let voucherDiscount = 0;
+        if (appliedVoucher) {
+            voucherDiscount = appliedVoucher.discount_amount || 0;
+        }
+
         const basePrice = currentTour.price * walkerCount;
-        const total = basePrice + extrasTotal;
+        const total = Math.max(0, basePrice + extrasTotal - voucherDiscount);
         const deposit = Math.round(total * 0.25 * 100) / 100;
         const balance = total - deposit;
 
@@ -1073,6 +1207,13 @@
             document.getElementById('sidebarExtrasPrice').textContent = `€${extrasTotal.toLocaleString()}`;
         } else {
             document.getElementById('sidebarExtras').classList.add('hidden');
+        }
+
+        if (voucherDiscount > 0) {
+            document.getElementById('sidebarVoucher').classList.remove('hidden');
+            document.getElementById('sidebarVoucherPrice').textContent = `-€${voucherDiscount.toLocaleString()}`;
+        } else {
+            document.getElementById('sidebarVoucher').classList.add('hidden');
         }
 
         // Mobile banner
@@ -1113,8 +1254,10 @@
 
         const { extrasTotal } = calcExtras();
 
+        let voucherDiscount = appliedVoucher ? (appliedVoucher.discount_amount || 0) : 0;
+
         const basePrice = currentTour.price * walkerCount;
-        const total = basePrice + extrasTotal;
+        const total = Math.max(0, basePrice + extrasTotal - voucherDiscount);
         const deposit = Math.round(total * 0.25 * 100) / 100;
 
         document.getElementById('reviewTour').textContent = currentTour.name;
@@ -1130,6 +1273,13 @@
             document.getElementById('reviewExtrasAmt').textContent = `€${extrasTotal.toLocaleString()}`;
         } else {
             document.getElementById('reviewExtrasRow').classList.add('hidden');
+        }
+
+        if (voucherDiscount > 0) {
+            document.getElementById('reviewVoucherRow').classList.remove('hidden');
+            document.getElementById('reviewVoucherAmt').textContent = `-€${voucherDiscount.toLocaleString()}`;
+        } else {
+            document.getElementById('reviewVoucherRow').classList.add('hidden');
         }
     }
 
@@ -1173,7 +1323,8 @@
             });
         });
 
-        const total = (currentTour?.price || 0) * walkerCount + extrasTotal;
+        const voucherDiscount = appliedVoucher ? (appliedVoucher.discount_amount || 0) : 0;
+        const total = Math.max(0, (currentTour?.price || 0) * walkerCount + extrasTotal - voucherDiscount);
         const deposit = Math.round(total * 0.25 * 100) / 100;
         const startDate = document.getElementById('startDate').value;
         const endDate = currentTour && startDate ? new Date(new Date(startDate).getTime() + currentTour.days * 86400000).toISOString().split('T')[0] : null;
@@ -1199,12 +1350,15 @@
             special_requirements: document.getElementById('specialRequirements').value || '',
             extras: extrasPayload,
             extras_display: extras,
+            voucher_code: appliedVoucher ? document.getElementById('voucherCodeInput').value.trim().toUpperCase() : null,
+            voucher_id: appliedVoucher?.voucher_id || null,
+            voucher_discount: voucherDiscount,
             pricing: { total, deposit, balance: total - deposit },
             payment_method: paymentMethod,
             pay_full: false,
             payment_amount: deposit,
-            source: 'website',
-            language: 'en',
+            source: 'website-nl',
+            language: 'nl',
             site_origin: window.location.origin,
             mailing_list: document.getElementById('mailingList').checked,
         };
