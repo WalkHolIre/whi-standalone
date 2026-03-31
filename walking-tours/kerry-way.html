@@ -38,27 +38,14 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": [
-                "TouristTrip",
-                "Product"
-        ],
+        "@type": "Product",
         "name": "The Kerry Way Hiking Tour \u2014 8 Days",
         "description": "Walk Ireland's most famous trail, the Kerry Way, over 8 days around the Iveragh Peninsula. Challenging hiking with stunning mountain and coastal views.",
         "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875737462-optimized-Gap_of_Dunloe__Killarney_National_Park__Co_Kerry_Web_Size.webp",
         "url": "https://walkingholidayireland.com/walking-tours/kerry-way",
-        "touristType": "Walker",
-        "duration": "P8D",
-        "provider": {
-                "@type": "TourOperator",
-                "name": "Walking Holiday Ireland",
-                "url": "https://walkingholidayireland.com",
-                "telephone": "+353429323396",
-                "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Dundalk",
-                        "addressRegion": "Co. Louth",
-                        "addressCountry": "IE"
-                }
+        "brand": {
+                "@type": "Brand",
+                "name": "Walking Holiday Ireland"
         },
         "offers": {
                 "@type": "Offer",
@@ -66,46 +53,15 @@
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
-                "url": "https://walkingholidayireland.com/walking-tours/kerry-way",
-                "shippingDetails": {
-                        "@type": "OfferShippingDetails",
-                        "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                }
-                        },
-                        "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "EUR"
-                        },
-                        "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "IE"
-                        }
-                },
-                "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "IE",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                        "merchantReturnDays": 0
-                }
-        },
-        "brand": {
-                "@type": "Brand",
-                "name": "Walking Holiday Ireland"
+                "priceValidUntil": "2026-12-31",
+                "url": "https://walkingholidayireland.com/walking-tours/kerry-way"
         },
         "additionalProperty": [
+                {
+                        "@type": "PropertyValue",
+                        "name": "Duration",
+                        "value": "8 days"
+                },
                 {
                         "@type": "PropertyValue",
                         "name": "Difficulty",
@@ -118,6 +74,76 @@
                 "bestRating": "5",
                 "worstRating": "1",
                 "reviewCount": "3"
+        }
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": "The Kerry Way Hiking Tour \u2014 8 Days",
+        "description": "Walk Ireland's most famous trail, the Kerry Way, over 8 days around the Iveragh Peninsula. Challenging hiking with stunning mountain and coastal views.",
+        "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875737462-optimized-Gap_of_Dunloe__Killarney_National_Park__Co_Kerry_Web_Size.webp",
+        "url": "https://walkingholidayireland.com/walking-tours/kerry-way",
+        "touristType": "Walker",
+        "provider": {
+                "@type": "TravelAgency",
+                "name": "Walking Holiday Ireland",
+                "url": "https://walkingholidayireland.com",
+                "telephone": "+353429323396",
+                "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Dundalk",
+                        "addressRegion": "Co. Louth",
+                        "addressCountry": "IE"
+                }
+        },
+        "duration": "P8D",
+        "itinerary": {
+                "@type": "ItemList",
+                "numberOfItems": 8,
+                "itemListElement": [
+                        {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Arrival in Killarney"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Glenbeigh to Cahersiveen \u2014 24km | 555m ascent, 643m descent | Peak elevation: 367m"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Cahersiveen to Waterville \u2014 18km | 653m ascent, 789m descent | Peak elevation: 396m"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 4,
+                                "name": "Waterville to Caherdaniel \u2014 14.5km | 336m ascent, 304m descent"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 5,
+                                "name": "Caherdaniel to Sneem \u2014 17.4km | 533m ascent, 547m descent"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 6,
+                                "name": "Sneem to Kenmare \u2014 27.3km | 733m ascent, 734m descent | Peak elevation: 733m"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 7,
+                                "name": "Kenmare to Killarney \u2014 25km | 853m ascent, 823m descent"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 8,
+                                "name": "Departure from Killarney"
+                        }
+                ]
         }
 }
     </script>
@@ -630,7 +656,8 @@
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
                 <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 20 days in advance</p>
+            <p id="sidebar-date-error" style="display:none;font-size:0.8rem;color:#ef4444;font-weight:500;margin-top:2px;"></p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Number of Walkers</label>
@@ -1340,12 +1367,38 @@
 <script src="../js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
-window.__WHI_TOUR = {"id": "b5a78481-51b4-470a-a6b1-50f1b7cf0278", "slug": "kerry-way", "name": "The Kerry Way Hiking Tour \u2014 8 Days", "price_per_person_eur": 935.0, "duration_days": 8, "walking_days": 7, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
+window.__WHI_TOUR = {"id": "b5a78481-51b4-470a-a6b1-50f1b7cf0278", "slug": "kerry-way", "name": "The Kerry Way Hiking Tour \u2014 8 Days", "price_per_person_eur": 935.0, "duration_days": 8, "walking_days": 7, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3, "best_months": ["May", "Jun", "Jul", "Aug", "Sep"]};
 window.__WHI_EXTRAS = [{"id": "7866a039-be31-4a77-b6f3-2ec913ed17ee", "name": "Airport Transfer (Dublin)", "description": "Private transfer from Dublin Airport to your first accommodation", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "1ae2d53e-9f54-40c7-846f-700d1419788a", "name": "Airport Transfer (Kerry/Shannon)", "description": "Private transfer from Kerry or Shannon Airport", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "926346ce-d782-4d84-ad94-69b653dbca30", "name": "Daily Packed Lunches", "description": "Freshly prepared packed lunch for each walking day", "price_eur": 15.0, "price_type": "per_person_per_day", "max_quantity": 1}, {"id": "0372967b-aa45-4fff-aa47-39fc6c88c5c5", "name": "Extra Rest Day", "description": "Add an extra non-walking day to explore at your leisure", "price_eur": 0.0, "price_type": "poa", "max_quantity": 3}, {"id": "0fd8e6b8-0c58-4b10-a209-83c1782f2027", "name": "Walking Pole Hire", "description": "Professional hiking poles for the duration of your trip", "price_eur": 20.0, "price_type": "per_person", "max_quantity": 1}];
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "en";
 </script>
 <script src="../js/booking-modal.js" defer></script>
+<script>
+// Set min date and season validation on sidebar date input
+(function() {
+  var sidebarDate = document.getElementById('sidebar-start-date');
+  if (!sidebarDate) return;
+  // Set min date = today + 20 days
+  var today = new Date();
+  var min = new Date(today);
+  min.setDate(min.getDate() + 20);
+  sidebarDate.setAttribute('min', min.toISOString().split('T')[0]);
+
+  // Validate on change using booking-modal's validateStartDate
+  sidebarDate.addEventListener('change', function() {
+    var val = sidebarDate.value;
+    var errEl = document.getElementById('sidebar-date-error');
+    if (!val || typeof validateStartDate !== 'function' || !window.__WHI_TOUR) return;
+    var check = validateStartDate(val, window.__WHI_TOUR);
+    if (!check.valid) {
+      if (errEl) { errEl.textContent = check.message; errEl.style.display = 'block'; }
+      sidebarDate.value = '';
+    } else {
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    }
+  });
+})();
+</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */

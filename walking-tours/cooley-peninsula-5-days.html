@@ -38,27 +38,14 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": [
-                "TouristTrip",
-                "Product"
-        ],
+        "@type": "Product",
         "name": "Cooley Peninsula Hiking Tour \u2014 5 Days",
         "description": "Discover the Cooley Peninsula on this 5-day walking holiday with stunning Mourne Mountains views and medieval Carlingford. Includes B&B, breakfast & luggage transfers.",
         "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/destinations/bee8ba8d-76c5-49a9-bfb5-731fd387940f/1774565208325-0h7g0t.jpg",
         "url": "https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days",
-        "touristType": "Walker",
-        "duration": "P5D",
-        "provider": {
-                "@type": "TourOperator",
-                "name": "Walking Holiday Ireland",
-                "url": "https://walkingholidayireland.com",
-                "telephone": "+353429323396",
-                "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Dundalk",
-                        "addressRegion": "Co. Louth",
-                        "addressCountry": "IE"
-                }
+        "brand": {
+                "@type": "Brand",
+                "name": "Walking Holiday Ireland"
         },
         "offers": {
                 "@type": "Offer",
@@ -66,46 +53,15 @@
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
-                "url": "https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days",
-                "shippingDetails": {
-                        "@type": "OfferShippingDetails",
-                        "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                }
-                        },
-                        "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "EUR"
-                        },
-                        "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "IE"
-                        }
-                },
-                "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "IE",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                        "merchantReturnDays": 0
-                }
-        },
-        "brand": {
-                "@type": "Brand",
-                "name": "Walking Holiday Ireland"
+                "priceValidUntil": "2026-12-31",
+                "url": "https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days"
         },
         "additionalProperty": [
+                {
+                        "@type": "PropertyValue",
+                        "name": "Duration",
+                        "value": "5 days"
+                },
                 {
                         "@type": "PropertyValue",
                         "name": "Difficulty",
@@ -118,6 +74,61 @@
                 "bestRating": "5",
                 "worstRating": "1",
                 "reviewCount": "37"
+        }
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": "Cooley Peninsula Hiking Tour \u2014 5 Days",
+        "description": "Discover the Cooley Peninsula on this 5-day walking holiday with stunning Mourne Mountains views and medieval Carlingford. Includes B&B, breakfast & luggage transfers.",
+        "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/destinations/bee8ba8d-76c5-49a9-bfb5-731fd387940f/1774565208325-0h7g0t.jpg",
+        "url": "https://walkingholidayireland.com/walking-tours/cooley-peninsula-5-days",
+        "touristType": "Walker",
+        "provider": {
+                "@type": "TravelAgency",
+                "name": "Walking Holiday Ireland",
+                "url": "https://walkingholidayireland.com",
+                "telephone": "+353429323396",
+                "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Dundalk",
+                        "addressRegion": "Co. Louth",
+                        "addressCountry": "IE"
+                }
+        },
+        "duration": "P5D",
+        "itinerary": {
+                "@type": "ItemList",
+                "numberOfItems": 5,
+                "itemListElement": [
+                        {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Arrival in Dundalk, County Louth"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Ravensdale to Lumpers (Cooley) \u2013 12 km, 4 hours"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Lumpers to Carlingford \u2013 16 km, 5 hours"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 4,
+                                "name": "Free Day in Carlingford"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 5,
+                                "name": "Departure from Carlingford"
+                        }
+                ]
         }
 }
     </script>
@@ -572,7 +583,8 @@
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
                 <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 20 days in advance</p>
+            <p id="sidebar-date-error" style="display:none;font-size:0.8rem;color:#ef4444;font-weight:500;margin-top:2px;"></p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Number of Walkers</label>
@@ -1855,12 +1867,38 @@
 <script src="../js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
-window.__WHI_TOUR = {"id": "9bd28f55-b2fd-4193-9d9b-814038187250", "slug": "cooley-peninsula-5-days", "name": "Cooley Peninsula Hiking Tour \u2014 5 Days", "price_per_person_eur": 645.0, "duration_days": 5, "walking_days": 4, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
+window.__WHI_TOUR = {"id": "9bd28f55-b2fd-4193-9d9b-814038187250", "slug": "cooley-peninsula-5-days", "name": "Cooley Peninsula Hiking Tour \u2014 5 Days", "price_per_person_eur": 645.0, "duration_days": 5, "walking_days": 4, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3, "best_months": ["May", "Jun", "Jul", "Aug", "Sep"]};
 window.__WHI_EXTRAS = [{"id": "d76b93ca-ad92-4333-b394-f28227afb4ba", "name": "Airport Transfer (Dublin)", "description": "Private transfer from Dublin Airport to your first accommodation", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "56a23fda-44b1-48a9-b303-d129133a8c74", "name": "Airport Transfer (Kerry/Shannon)", "description": "Private transfer from Kerry or Shannon Airport", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "16205ef2-e7d9-44a8-a635-7768ede4d66a", "name": "Daily Packed Lunches", "description": "Freshly prepared packed lunch for each walking day", "price_eur": 15.0, "price_type": "per_person_per_day", "max_quantity": 1}, {"id": "56565a40-c9b2-4915-98a3-9ead9c431493", "name": "Extra Rest Day", "description": "Add an extra non-walking day to explore at your leisure", "price_eur": 0.0, "price_type": "poa", "max_quantity": 3}, {"id": "610b9f35-832e-408d-a422-d911fdcf2b12", "name": "Walking Pole Hire", "description": "Professional hiking poles for the duration of your trip", "price_eur": 20.0, "price_type": "per_person", "max_quantity": 1}];
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "en";
 </script>
 <script src="../js/booking-modal.js" defer></script>
+<script>
+// Set min date and season validation on sidebar date input
+(function() {
+  var sidebarDate = document.getElementById('sidebar-start-date');
+  if (!sidebarDate) return;
+  // Set min date = today + 20 days
+  var today = new Date();
+  var min = new Date(today);
+  min.setDate(min.getDate() + 20);
+  sidebarDate.setAttribute('min', min.toISOString().split('T')[0]);
+
+  // Validate on change using booking-modal's validateStartDate
+  sidebarDate.addEventListener('change', function() {
+    var val = sidebarDate.value;
+    var errEl = document.getElementById('sidebar-date-error');
+    if (!val || typeof validateStartDate !== 'function' || !window.__WHI_TOUR) return;
+    var check = validateStartDate(val, window.__WHI_TOUR);
+    if (!check.valid) {
+      if (errEl) { errEl.textContent = check.message; errEl.style.display = 'block'; }
+      sidebarDate.value = '';
+    } else {
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    }
+  });
+})();
+</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */

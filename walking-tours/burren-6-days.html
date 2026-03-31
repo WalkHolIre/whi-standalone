@@ -38,18 +38,49 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": [
-                "TouristTrip",
-                "Product"
-        ],
+        "@type": "Product",
+        "name": "Burren Walking Holiday \u2014 6 Days",
+        "description": "Walk Cliffs of Moher, explore the Burren's unique landscape, then island-hop to Inishmore's Bronze Age fort. 6 days all-inclusive in County Clare. (158 chars)",
+        "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191682495-optimized-Cliffs_of_Moher_TI72JD7.webp",
+        "url": "https://walkingholidayireland.com/walking-tours/burren-6-days",
+        "brand": {
+                "@type": "Brand",
+                "name": "Walking Holiday Ireland"
+        },
+        "offers": {
+                "@type": "Offer",
+                "price": "685",
+                "priceCurrency": "EUR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": "2026-01-01",
+                "priceValidUntil": "2026-12-31",
+                "url": "https://walkingholidayireland.com/walking-tours/burren-6-days"
+        },
+        "additionalProperty": [
+                {
+                        "@type": "PropertyValue",
+                        "name": "Duration",
+                        "value": "6 days"
+                },
+                {
+                        "@type": "PropertyValue",
+                        "name": "Difficulty",
+                        "value": "Moderate"
+                }
+        ]
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
         "name": "Burren Walking Holiday \u2014 6 Days",
         "description": "Walk Cliffs of Moher, explore the Burren's unique landscape, then island-hop to Inishmore's Bronze Age fort. 6 days all-inclusive in County Clare. (158 chars)",
         "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191682495-optimized-Cliffs_of_Moher_TI72JD7.webp",
         "url": "https://walkingholidayireland.com/walking-tours/burren-6-days",
         "touristType": "Walker",
-        "duration": "P6D",
         "provider": {
-                "@type": "TourOperator",
+                "@type": "TravelAgency",
                 "name": "Walking Holiday Ireland",
                 "url": "https://walkingholidayireland.com",
                 "telephone": "+353429323396",
@@ -60,58 +91,43 @@
                         "addressCountry": "IE"
                 }
         },
-        "offers": {
-                "@type": "Offer",
-                "price": "685",
-                "priceCurrency": "EUR",
-                "availability": "https://schema.org/InStock",
-                "validFrom": "2026-01-01",
-                "url": "https://walkingholidayireland.com/walking-tours/burren-6-days",
-                "shippingDetails": {
-                        "@type": "OfferShippingDetails",
-                        "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                }
+        "duration": "P6D",
+        "itinerary": {
+                "@type": "ItemList",
+                "numberOfItems": 6,
+                "itemListElement": [
+                        {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Arrival in Liscannor"
                         },
-                        "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "EUR"
+                        {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Liscannor to Doolin via the Cliffs of Moher"
                         },
-                        "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "IE"
+                        {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Rest Day / Optional Aran Islands Day Trip"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 4,
+                                "name": "Doolin to Fanore"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 5,
+                                "name": "Fanore to Ballyvaughan"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 6,
+                                "name": "Departure from Ballyvaughan"
                         }
-                },
-                "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "IE",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                        "merchantReturnDays": 0
-                }
-        },
-        "brand": {
-                "@type": "Brand",
-                "name": "Walking Holiday Ireland"
-        },
-        "additionalProperty": [
-                {
-                        "@type": "PropertyValue",
-                        "name": "Difficulty",
-                        "value": "Moderate"
-                }
-        ]
+                ]
+        }
 }
     </script>
 
@@ -623,7 +639,8 @@ After breakfast, a coach collects you and transfers you to Galway Bus Station or
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
                 <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 20 days in advance</p>
+            <p id="sidebar-date-error" style="display:none;font-size:0.8rem;color:#ef4444;font-weight:500;margin-top:2px;"></p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Number of Walkers</label>
@@ -1301,12 +1318,38 @@ After breakfast, a coach collects you and transfers you to Galway Bus Station or
 <script src="../js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
-window.__WHI_TOUR = {"id": "b4bddd92-6f96-4398-830e-cbeb2f5be52c", "slug": "burren-6-days", "name": "Burren Walking Holiday \u2014 6 Days", "price_per_person_eur": 685.0, "duration_days": 6, "walking_days": 5, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
+window.__WHI_TOUR = {"id": "b4bddd92-6f96-4398-830e-cbeb2f5be52c", "slug": "burren-6-days", "name": "Burren Walking Holiday \u2014 6 Days", "price_per_person_eur": 685.0, "duration_days": 6, "walking_days": 5, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3, "best_months": ["May", "Jun", "Jul", "Aug", "Sep"]};
 window.__WHI_EXTRAS = [{"id": "c5aaf1c1-49bc-4037-b276-d98dad12dce2", "name": "Airport Transfer (Dublin)", "description": "Private transfer from Dublin Airport to your first accommodation", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "6cee8390-68dc-4388-9d0e-310e30043c2f", "name": "Airport Transfer (Kerry/Shannon)", "description": "Private transfer from Kerry or Shannon Airport", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "edc308d3-e17a-4260-b8da-a0da6cbbf971", "name": "Daily Packed Lunches", "description": "Freshly prepared packed lunch for each walking day", "price_eur": 15.0, "price_type": "per_person_per_day", "max_quantity": 1}, {"id": "317c38e4-c1db-4f56-a855-77afa16c6ae5", "name": "Extra Rest Day", "description": "Add an extra non-walking day to explore at your leisure", "price_eur": 0.0, "price_type": "poa", "max_quantity": 3}, {"id": "1c4e58a9-7167-4020-a649-137e001ababd", "name": "Walking Pole Hire", "description": "Professional hiking poles for the duration of your trip", "price_eur": 20.0, "price_type": "per_person", "max_quantity": 1}];
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "en";
 </script>
 <script src="../js/booking-modal.js" defer></script>
+<script>
+// Set min date and season validation on sidebar date input
+(function() {
+  var sidebarDate = document.getElementById('sidebar-start-date');
+  if (!sidebarDate) return;
+  // Set min date = today + 20 days
+  var today = new Date();
+  var min = new Date(today);
+  min.setDate(min.getDate() + 20);
+  sidebarDate.setAttribute('min', min.toISOString().split('T')[0]);
+
+  // Validate on change using booking-modal's validateStartDate
+  sidebarDate.addEventListener('change', function() {
+    var val = sidebarDate.value;
+    var errEl = document.getElementById('sidebar-date-error');
+    if (!val || typeof validateStartDate !== 'function' || !window.__WHI_TOUR) return;
+    var check = validateStartDate(val, window.__WHI_TOUR);
+    if (!check.valid) {
+      if (errEl) { errEl.textContent = check.message; errEl.style.display = 'block'; }
+      sidebarDate.value = '';
+    } else {
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    }
+  });
+})();
+</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */

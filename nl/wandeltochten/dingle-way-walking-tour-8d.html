@@ -38,27 +38,14 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": [
-                "TouristTrip",
-                "Product"
-        ],
+        "@type": "Product",
         "name": "De Dingle Way \u2014 8 Dagen",
         "description": "Zelfgeleide 8-daagse wandelvakantie op de Dingle Way. Kustdrama, bergmajesteit en authentieke Ierse cultuur op Kerry's schiereiland.",
         "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191714174-optimized-Dingle_Peninsula_TI72I9K.webp",
         "url": "https://wandelvakantieierland.nl/wandeltochten/dingle-way-walking-tour-8d",
-        "touristType": "Walker",
-        "duration": "P8D",
-        "provider": {
-                "@type": "TourOperator",
-                "name": "Walking Holiday Ireland",
-                "url": "https://wandelvakantieierland.nl",
-                "telephone": "+353429323396",
-                "address": {
-                        "@type": "PostalAddress",
-                        "addressLocality": "Dundalk",
-                        "addressRegion": "Co. Louth",
-                        "addressCountry": "IE"
-                }
+        "brand": {
+                "@type": "Brand",
+                "name": "Walking Holiday Ireland"
         },
         "offers": {
                 "@type": "Offer",
@@ -66,46 +53,15 @@
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2026-01-01",
-                "url": "https://wandelvakantieierland.nl/wandeltochten/dingle-way-walking-tour-8d",
-                "shippingDetails": {
-                        "@type": "OfferShippingDetails",
-                        "deliveryTime": {
-                                "@type": "ShippingDeliveryTime",
-                                "handlingTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                },
-                                "transitTime": {
-                                        "@type": "QuantitativeValue",
-                                        "minValue": 0,
-                                        "maxValue": 0,
-                                        "unitCode": "DAY"
-                                }
-                        },
-                        "shippingRate": {
-                                "@type": "MonetaryAmount",
-                                "value": "0",
-                                "currency": "EUR"
-                        },
-                        "shippingDestination": {
-                                "@type": "DefinedRegion",
-                                "addressCountry": "IE"
-                        }
-                },
-                "hasMerchantReturnPolicy": {
-                        "@type": "MerchantReturnPolicy",
-                        "applicableCountry": "IE",
-                        "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted",
-                        "merchantReturnDays": 0
-                }
-        },
-        "brand": {
-                "@type": "Brand",
-                "name": "Walking Holiday Ireland"
+                "priceValidUntil": "2026-12-31",
+                "url": "https://wandelvakantieierland.nl/wandeltochten/dingle-way-walking-tour-8d"
         },
         "additionalProperty": [
+                {
+                        "@type": "PropertyValue",
+                        "name": "Duration",
+                        "value": "8 days"
+                },
                 {
                         "@type": "PropertyValue",
                         "name": "Difficulty",
@@ -118,6 +74,76 @@
                 "bestRating": "5",
                 "worstRating": "1",
                 "reviewCount": "9"
+        }
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "TouristTrip",
+        "name": "De Dingle Way \u2014 8 Dagen",
+        "description": "Zelfgeleide 8-daagse wandelvakantie op de Dingle Way. Kustdrama, bergmajesteit en authentieke Ierse cultuur op Kerry's schiereiland.",
+        "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191714174-optimized-Dingle_Peninsula_TI72I9K.webp",
+        "url": "https://wandelvakantieierland.nl/wandeltochten/dingle-way-walking-tour-8d",
+        "touristType": "Walker",
+        "provider": {
+                "@type": "TravelAgency",
+                "name": "Walking Holiday Ireland",
+                "url": "https://wandelvakantieierland.nl",
+                "telephone": "+353429323396",
+                "address": {
+                        "@type": "PostalAddress",
+                        "addressLocality": "Dundalk",
+                        "addressRegion": "Co. Louth",
+                        "addressCountry": "IE"
+                }
+        },
+        "duration": "P8D",
+        "itinerary": {
+                "@type": "ItemList",
+                "numberOfItems": 8,
+                "itemListElement": [
+                        {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Aankomst in Tralee"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": "Tralee naar Camp"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 3,
+                                "name": "Camp naar Annascaul"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 4,
+                                "name": "Annascaul naar Dingle"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 5,
+                                "name": "Dingle naar Dunquin"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 6,
+                                "name": "Dunquin naar Cuas"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 7,
+                                "name": "Cuas naar Cloghane"
+                        },
+                        {
+                                "@type": "ListItem",
+                                "position": 8,
+                                "name": "Vertrek uit Cloghane"
+                        }
+                ]
         }
 }
     </script>
@@ -647,7 +673,8 @@
                 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none">calendar_month</span>
                 <input id="sidebar-start-date" class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 bg-background-light focus:ring-primary focus:border-primary font-medium" type="date"/>
             </div>
-            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Book at least 21 days in advance</p>
+            <p class="text-[11px] text-slate-500 uppercase tracking-tight">Boek minstens 20 dagen van tevoren</p>
+            <p id="sidebar-date-error" style="display:none;font-size:0.8rem;color:#ef4444;font-weight:500;margin-top:2px;"></p>
         </div>
         <div class="flex flex-col gap-2">
             <label class="text-sm font-bold">Aantal Wandelaars</label>
@@ -901,76 +928,76 @@
             </div>
         </div>
         <div class="space-y-3">
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="transport" data-question="where does the dingle way start and end?" data-answer="our 8-day dingle way tour starts in tralee and ends in annascaul. on the final day, you take the public bus from annascaul back to tralee. alternatively, tours can start in dingle town if preferred.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="transport" data-question="waar begint en eindigt de dingle way?" data-answer="onze 8-daagse dingle way tour begint in tralee en eindigt in annascaul. op de laatste dag neemt u de openbare bus van annascaul terug naar tralee. als alternatief kunnen tours ook beginnen in dingle town indien gewenst.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Where does the Dingle Way start and end?</span>
+                <span>Waar begint en eindigt de Dingle Way?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Our 8-day Dingle Way tour starts in Tralee and ends in Annascaul. On the final day, you take the public bus from Annascaul back to Tralee. Alternatively, tours can start in Dingle town if preferred.
+                Onze 8-daagse Dingle Way tour begint in Tralee en eindigt in Annascaul. Op de laatste dag neemt u de openbare bus van Annascaul terug naar Tralee. Als alternatief kunnen tours ook beginnen in Dingle Town indien gewenst.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is included in a self-guided walking holiday?" data-answer="our self-guided tours include: carefully selected family-run b&b accommodation, comfortable en-suite bedrooms (where available), a full irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. extra nights and local transport information can be arranged on request.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="wat is inbegrepen bij een zelfgeleide wandelvakantie?" data-answer="onze zelfgeleide tours omvatten: zorgvuldig geselecteerde familiale b&b-accommodatie, comfortabele kamers met eigen badkamer (waar beschikbaar), een volledig iers ontbijt elke ochtend, gratis bagagetransfers tussen accommodaties, gedetailleerde kaarten en routebeschrijvingen, lokaal advies over bezienswaardigheden en eetgelegenheden, volledige pre-vertrekinformatie, een waterdichte kaartentas en 24/7 lokale noodcontactondersteuning. extra nachten en lokale vervoersinformatie kunnen op aanvraag worden geregeld.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is included in a self-guided walking holiday?</span>
+                <span>Wat is inbegrepen bij een zelfgeleide wandelvakantie?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Our self-guided tours include: carefully selected family-run B&B accommodation, comfortable en-suite bedrooms (where available), a full Irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. Extra nights and local transport information can be arranged on request.
+                Onze zelfgeleide tours omvatten: zorgvuldig geselecteerde familiale B&B-accommodatie, comfortabele kamers met eigen badkamer (waar beschikbaar), een volledig Iers ontbijt elke ochtend, gratis bagagetransfers tussen accommodaties, gedetailleerde kaarten en routebeschrijvingen, lokaal advies over bezienswaardigheden en eetgelegenheden, volledige pre-vertrekinformatie, een waterdichte kaartentas en 24/7 lokale noodcontactondersteuning. Extra nachten en lokale vervoersinformatie kunnen op aanvraag worden geregeld.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is not included in the tour price?" data-answer="the tour price does not include flights, travel and baggage insurance, lunches, or evening meals.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="wat is niet inbegrepen in de tourprijs?" data-answer="de tourprijs omvat geen vluchten, reis- en bagageverzekering, lunches of avondmaaltijden.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is NOT included in the tour price?</span>
+                <span>Wat is NIET inbegrepen in de tourprijs?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                The tour price does not include flights, travel and baggage insurance, lunches, or evening meals.
+                De tourprijs omvat geen vluchten, reis- en bagageverzekering, lunches of avondmaaltijden.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is a gps app or digital navigation included?" data-answer="yes. our tours include a digital route guide with gps navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is een gps-app of digitale navigatie inbegrepen?" data-answer="ja. onze tours bevatten een digitale routegids met gps-navigatie, offline kaarten en lokale tips via onze mobiele app, zodat u vol vertrouwen kunt navigeren, zelfs zonder mobiel signaal.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Is a GPS app or digital navigation included?</span>
+                <span>Is een GPS-app of digitale navigatie inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Yes. Our tours include a digital route guide with GPS navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal.
+                Ja. Onze tours bevatten een digitale routegids met GPS-navigatie, offline kaarten en lokale tips via onze mobiele app, zodat u vol vertrouwen kunt navigeren, zelfs zonder mobiel signaal.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is 24/7 emergency support really available?" data-answer="yes. our team provides 24/7 local emergency contact support throughout your tour. if you encounter any difficulties on the trail or with your accommodation, you can reach us at any time.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="is er echt 24/7 noodondersteuning beschikbaar?" data-answer="ja. ons team biedt 24/7 lokale noodcontactondersteuning gedurende uw hele tour. als u problemen ondervindt op het pad of met uw accommodatie, kunt u ons op elk moment bereiken.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Is 24/7 emergency support really available?</span>
+                <span>Is er echt 24/7 noodondersteuning beschikbaar?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Yes. Our team provides 24/7 local emergency contact support throughout your tour. If you encounter any difficulties on the trail or with your accommodation, you can reach us at any time.
+                Ja. Ons team biedt 24/7 lokale noodcontactondersteuning gedurende uw hele tour. Als u problemen ondervindt op het pad of met uw accommodatie, kunt u ons op elk moment bereiken.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are evening meals included?" data-answer="evening meals are not included in the standard tour price. your b&b hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="zijn avondmaaltijden inbegrepen?" data-answer="avondmaaltijden zijn niet inbegrepen in de standaard tourprijs. uw b&b-gastheren kunnen meestal nabijgelegen restaurants aanbevelen en veel pensions kunnen op verzoek een avondmaaltijd regelen.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Are evening meals included?</span>
+                <span>Zijn avondmaaltijden inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Evening meals are not included in the standard tour price. Your B&B hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request.
+                Avondmaaltijden zijn niet inbegrepen in de standaard tourprijs. Uw B&B-gastheren kunnen meestal nabijgelegen restaurants aanbevelen en veel pensions kunnen op verzoek een avondmaaltijd regelen.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="are lunches included?" data-answer="lunches are not included. however, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="zijn lunches inbegrepen?" data-answer="lunches zijn niet inbegrepen. u heeft echter meestal de mogelijkheid om picknicklunches te kopen, en wij geven lokaal advies over waar u onderweg kunt eten.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>Are lunches included?</span>
+                <span>Zijn lunches inbegrepen?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                Lunches are not included. However, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route.
+                Lunches zijn niet inbegrepen. U heeft echter meestal de mogelijkheid om picknicklunches te kopen, en wij geven lokaal advies over waar u onderweg kunt eten.
             </div>
         </details>
-        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="what is the difference between a self-guided and a guided walking tour?" data-answer="on a self-guided tour, you walk independently using our detailed maps, route notes, and gps app, with your luggage transferred each day and 24/7 support available. a guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. guided tours also include built-in companionship with fellow walkers.">
+        <details class="group bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-md transition-shadow" data-section="tours" data-question="wat is het verschil tussen een zelfgeleide en een begeleide wandeltour?" data-answer="op een zelfgeleide tour wandelt u zelfstandig met behulp van onze gedetailleerde kaarten, routebeschrijvingen en gps-app, met dagelijkse bagagetransfer en 24/7 ondersteuning beschikbaar. een begeleide tour biedt een lokale deskundige gids die met u meewandelt, lokale kennis, verhalen en geschiedenis deelt, en ervoor zorgt dat u op het juiste pad blijft en veilig bent. begeleide tours bieden ook ingebouwde gezelligheid met medevandlaars.">
             <summary class="flex items-center justify-between px-6 py-4 font-semibold text-brand-purple cursor-pointer hover:text-primary transition-colors">
-                <span>What is the difference between a self-guided and a guided walking tour?</span>
+                <span>Wat is het verschil tussen een zelfgeleide en een begeleide wandeltour?</span>
                 <span class="chevron material-symbols-outlined group-open:rotate-180 transition-transform">expand_more</span>
             </summary>
             <div class="px-6 pb-4 pt-2 text-slate-600 leading-relaxed">
-                On a self-guided tour, you walk independently using our detailed maps, route notes, and GPS app, with your luggage transferred each day and 24/7 support available. A guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. Guided tours also include built-in companionship with fellow walkers.
+                Op een zelfgeleide tour wandelt u zelfstandig met behulp van onze gedetailleerde kaarten, routebeschrijvingen en GPS-app, met dagelijkse bagagetransfer en 24/7 ondersteuning beschikbaar. Een begeleide tour biedt een lokale deskundige gids die met u meewandelt, lokale kennis, verhalen en geschiedenis deelt, en ervoor zorgt dat u op het juiste pad blijft en veilig bent. Begeleide tours bieden ook ingebouwde gezelligheid met medevandlaars.
             </div>
         </details>
         </div>
@@ -987,66 +1014,66 @@
         "mainEntity": [
                 {
                         "@type": "Question",
-                        "name": "What is included in a self-guided walking holiday?",
+                        "name": "Wat is inbegrepen bij een zelfgeleide wandelvakantie?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Our self-guided tours include: carefully selected family-run B&B accommodation, comfortable en-suite bedrooms (where available), a full Irish breakfast each morning, complimentary luggage transfers between accommodations, detailed maps and route notes, local advice on places to visit and eat, full pre-departure information, a waterproof map case, and 24/7 local emergency contact support. Extra nights and local transport information can be arranged on request."
+                                "text": "Onze zelfgeleide tours omvatten: zorgvuldig geselecteerde familiale B&B-accommodatie, comfortabele kamers met eigen badkamer (waar beschikbaar), een volledig Iers ontbijt elke ochtend, gratis bagagetransfers tussen accommodaties, gedetailleerde kaarten en routebeschrijvingen, lokaal advies over bezienswaardigheden en eetgelegenheden, volledige pre-vertrekinformatie, een waterdichte kaartentas en 24/7 lokale noodcontactondersteuning. Extra nachten en lokale vervoersinformatie kunnen op aanvraag worden geregeld."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "What is NOT included in the tour price?",
+                        "name": "Wat is NIET inbegrepen in de tourprijs?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "The tour price does not include flights, travel and baggage insurance, lunches, or evening meals."
+                                "text": "De tourprijs omvat geen vluchten, reis- en bagageverzekering, lunches of avondmaaltijden."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "Is a GPS app or digital navigation included?",
+                        "name": "Is een GPS-app of digitale navigatie inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes. Our tours include a digital route guide with GPS navigation, offline maps, and local insights via our mobile app, so you can navigate confidently even without mobile signal."
+                                "text": "Ja. Onze tours bevatten een digitale routegids met GPS-navigatie, offline kaarten en lokale tips via onze mobiele app, zodat u vol vertrouwen kunt navigeren, zelfs zonder mobiel signaal."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "Is 24/7 emergency support really available?",
+                        "name": "Is er echt 24/7 noodondersteuning beschikbaar?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Yes. Our team provides 24/7 local emergency contact support throughout your tour. If you encounter any difficulties on the trail or with your accommodation, you can reach us at any time."
+                                "text": "Ja. Ons team biedt 24/7 lokale noodcontactondersteuning gedurende uw hele tour. Als u problemen ondervindt op het pad of met uw accommodatie, kunt u ons op elk moment bereiken."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "Are evening meals included?",
+                        "name": "Zijn avondmaaltijden inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Evening meals are not included in the standard tour price. Your B&B hosts can usually recommend nearby restaurants, and many guesthouses can arrange an evening meal on request."
+                                "text": "Avondmaaltijden zijn niet inbegrepen in de standaard tourprijs. Uw B&B-gastheren kunnen meestal nabijgelegen restaurants aanbevelen en veel pensions kunnen op verzoek een avondmaaltijd regelen."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "Are lunches included?",
+                        "name": "Zijn lunches inbegrepen?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Lunches are not included. However, you will typically have the opportunity to purchase picnic lunches, and we provide local advice on where to eat along the route."
+                                "text": "Lunches zijn niet inbegrepen. U heeft echter meestal de mogelijkheid om picknicklunches te kopen, en wij geven lokaal advies over waar u onderweg kunt eten."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "What is the difference between a self-guided and a guided walking tour?",
+                        "name": "Wat is het verschil tussen een zelfgeleide en een begeleide wandeltour?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "On a self-guided tour, you walk independently using our detailed maps, route notes, and GPS app, with your luggage transferred each day and 24/7 support available. A guided tour provides a local expert guide who walks with you, shares local knowledge, stories and history, and ensures you stay on track and safe. Guided tours also include built-in companionship with fellow walkers."
+                                "text": "Op een zelfgeleide tour wandelt u zelfstandig met behulp van onze gedetailleerde kaarten, routebeschrijvingen en GPS-app, met dagelijkse bagagetransfer en 24/7 ondersteuning beschikbaar. Een begeleide tour biedt een lokale deskundige gids die met u meewandelt, lokale kennis, verhalen en geschiedenis deelt, en ervoor zorgt dat u op het juiste pad blijft en veilig bent. Begeleide tours bieden ook ingebouwde gezelligheid met medevandlaars."
                         }
                 },
                 {
                         "@type": "Question",
-                        "name": "Where does the Dingle Way start and end?",
+                        "name": "Waar begint en eindigt de Dingle Way?",
                         "acceptedAnswer": {
                                 "@type": "Answer",
-                                "text": "Our 8-day Dingle Way tour starts in Tralee and ends in Annascaul. On the final day, you take the public bus from Annascaul back to Tralee. Alternatively, tours can start in Dingle town if preferred."
+                                "text": "Onze 8-daagse Dingle Way tour begint in Tralee en eindigt in Annascaul. Op de laatste dag neemt u de openbare bus van Annascaul terug naar Tralee. Als alternatief kunnen tours ook beginnen in Dingle Town indien gewenst."
                         }
                 }
         ]
@@ -1442,12 +1469,38 @@
 <script src="/js/whi-data.js" defer></script>
 <!-- Booking Modal Data (injected by build.py) -->
 <script>
-window.__WHI_TOUR = {"id": "d428a461-5a60-4ca7-bdc9-b3b8cca162be", "slug": "dingle-way-walking-tour-8d", "name": "De Dingle Way \u2014 8 Dagen", "price_per_person_eur": 965.0, "duration_days": 8, "walking_days": 6, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3};
+window.__WHI_TOUR = {"id": "d428a461-5a60-4ca7-bdc9-b3b8cca162be", "slug": "dingle-way-walking-tour-8d", "name": "De Dingle Way \u2014 8 Dagen", "price_per_person_eur": 965.0, "duration_days": 8, "walking_days": 6, "extra_day_price_eur": 0.0, "min_walkers": 1, "max_walkers": 20, "max_extra_days": 3, "best_months": ["May", "Jun", "Jul", "Aug", "Sep"]};
 window.__WHI_EXTRAS = [{"id": "a22748bf-13a0-491b-908e-4e31c5453fd8", "name": "Airport Transfer (Dublin)", "description": "Private transfer from Dublin Airport to your first accommodation", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "372b01e7-26f2-4772-a7e3-ebbc5eddfd1d", "name": "Airport Transfer (Kerry/Shannon)", "description": "Private transfer from Kerry or Shannon Airport", "price_eur": 0.0, "price_type": "poa", "max_quantity": 1}, {"id": "d906d7ee-a7e1-4253-9b3e-3050087d115c", "name": "Daily Packed Lunches", "description": "Freshly prepared packed lunch for each walking day", "price_eur": 15.0, "price_type": "per_person_per_day", "max_quantity": 1}, {"id": "2ba3e7d0-ce6a-4fb7-a6e5-de5f951d0cb6", "name": "Extra Rest Day", "description": "Add an extra non-walking day to explore at your leisure", "price_eur": 0.0, "price_type": "poa", "max_quantity": 3}, {"id": "feb265df-fcb6-413c-8998-6359d442382d", "name": "Walking Pole Hire", "description": "Professional hiking poles for the duration of your trip", "price_eur": 20.0, "price_type": "per_person", "max_quantity": 1}];
 window.__WHI_SETTINGS = {"deposit_percent": 25};
 window.__WHI_LANG = "nl";
 </script>
 <script src="/js/booking-modal.js" defer></script>
+<script>
+// Set min date and season validation on sidebar date input
+(function() {
+  var sidebarDate = document.getElementById('sidebar-start-date');
+  if (!sidebarDate) return;
+  // Set min date = today + 20 days
+  var today = new Date();
+  var min = new Date(today);
+  min.setDate(min.getDate() + 20);
+  sidebarDate.setAttribute('min', min.toISOString().split('T')[0]);
+
+  // Validate on change using booking-modal's validateStartDate
+  sidebarDate.addEventListener('change', function() {
+    var val = sidebarDate.value;
+    var errEl = document.getElementById('sidebar-date-error');
+    if (!val || typeof validateStartDate !== 'function' || !window.__WHI_TOUR) return;
+    var check = validateStartDate(val, window.__WHI_TOUR);
+    if (!check.valid) {
+      if (errEl) { errEl.textContent = check.message; errEl.style.display = 'block'; }
+      sidebarDate.value = '';
+    } else {
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    }
+  });
+})();
+</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */

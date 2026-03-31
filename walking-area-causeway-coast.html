@@ -55,14 +55,26 @@
         <script type="application/ld+json">
 {
         "@context": "https://schema.org",
-        "@type": [
-                "TouristDestination",
-                "LocalBusiness"
-        ],
+        "@type": "TouristDestination",
         "name": "The Causeway Coast",
         "description": "Walk the Causeway Coast Way \u2014 53km past the Giant's Causeway, Bushmills Distillery and Dunluce Castle. Self-guided with GPS app and daily luggage transfers.",
         "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190940999-optimized-Causeway_Cliffs_Co_Antrim_PaulL_210621LPD008.jpg_TI72MVG.webp",
         "url": "https://walkingholidayireland.com/walking-area-causeway-coast",
+        "containedInPlace": {
+                "@type": "Country",
+                "name": "Northern Ireland"
+        },
+        "touristType": "Walker"
+}
+    </script>
+    <script type="application/ld+json">
+{
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Walking Holiday Ireland",
+        "description": "Walk the Causeway Coast Way \u2014 53km past the Giant's Causeway, Bushmills Distillery and Dunluce Castle. Self-guided with GPS app and daily luggage transfers.",
+        "image": "https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190940999-optimized-Causeway_Cliffs_Co_Antrim_PaulL_210621LPD008.jpg_TI72MVG.webp",
+        "url": "https://walkingholidayireland.com",
         "telephone": "+353429323396",
         "address": {
                 "@type": "PostalAddress",
@@ -70,11 +82,6 @@
                 "addressRegion": "Co. Louth",
                 "addressCountry": "IE"
         },
-        "containedInPlace": {
-                "@type": "Country",
-                "name": "Northern Ireland"
-        },
-        "touristType": "Walker",
         "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.9",
@@ -256,11 +263,11 @@
                                     </div>
                                 <div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">wb_sunny</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Best Months</p><p class="text-sm font-bold" style="color:#210747;">May, June, September, October, April</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Season</p><p class="text-sm font-bold" style="color:#210747;">From April to October</p></div>
                                     </div>
                                 <div class="flex items-start gap-3">
                                         <div class="info-icon" style="background:rgba(181,141,182,0.25);"><span class="material-symbols-outlined" style="color:#3F0F87;">hotel</span></div>
-                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Accommodation</p><p class="text-sm font-bold" style="color:#210747;">We book quality guesthouses and B&amp;amp;Bs at each stop along the route. Ballycast...</p></div>
+                                        <div><p class="text-xs font-medium mb-1" style="color:#B58DB6;">Accommodation</p><p class="text-sm font-bold" style="color:#210747;">B&B & Guesthouses</p></div>
                                     </div>
                                 </div>
                                 <div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
@@ -270,14 +277,23 @@
                                     </div>
                                 </div>
                                 <div class="mt-5 pt-4" style="border-top:1px solid rgba(181,141,182,0.3);">
-                                    <p class="text-xs font-semibold mb-3" style="color:#B58DB6;">Included in Every Tour</p>
-                                    <ul class="space-y-2">
-                                        <li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Accommodation: Welcoming en-suite B&amp;B rooms</span></li>
-<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Breakfast: Full Irish breakfast every morning</span></li>
-<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Luggage Transfer: Daily transfer of your main bag between accommodations</span></li>
-<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Personalised Itinerary and route app for your smart phone that keeps you on the trail at all times.</span></li>
-<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Support: 24/7 emergency support throughout your holiday</span></li>
-<li class="flex items-start gap-2 text-xs" style="color:#210747;"><span class="material-symbols-outlined text-sm" style="color:#B58DB6;flex-shrink:0;margin-top:1px;">check_circle</span><span>Pre-Departure Pack: Information pack sent before you travel, so you know exactly what to expect</span></li>
+                                    <p class="text-sm font-bold mb-3" style="color:#3F0F87;">Included in Every Tour</p>
+                                    <ul class="space-y-2.5">
+                                        <li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Accommodation: Welcoming en-suite B&amp;B rooms</span></li>
+<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Breakfast: Full Irish breakfast every morning</span></li>
+<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Luggage Transfer: Daily transfer of your main bag between accommodations</span></li>
+<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Personalised itinerary and route app for your smartphone</span></li>
+<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Support: 24/7 emergency support throughout your holiday</span></li>
+<li class="flex items-start gap-2" style="color:#210747;"><span class="text-emerald-500 flex-shrink-0 mt-0.5 text-base font-bold">&#10003;</span><span class="text-sm font-medium">Pre-Departure Pack: Information pack sent before you travel</span></li>
+
+                                    </ul>
+                                </div>
+                                <div class="mt-4 pt-3" style="border-top:1px solid rgba(181,141,182,0.2);">
+                                    <p class="text-sm font-bold mb-3" style="color:#64748b;">Not Included</p>
+                                    <ul class="space-y-2.5">
+                                        <li class="flex items-start gap-2" style="color:#64748b;"><span class="text-red-400 flex-shrink-0 mt-0.5 text-base font-bold">&#10007;</span><span class="text-sm font-medium">Flights: Travel to Ireland is not included</span></li>
+<li class="flex items-start gap-2" style="color:#64748b;"><span class="text-red-400 flex-shrink-0 mt-0.5 text-base font-bold">&#10007;</span><span class="text-sm font-medium">Insurance: You&#x27;ll need travel and walking holiday insurance</span></li>
+<li class="flex items-start gap-2" style="color:#64748b;"><span class="text-red-400 flex-shrink-0 mt-0.5 text-base font-bold">&#10007;</span><span class="text-sm font-medium">Meals: Lunches and dinners are not included</span></li>
 
                                     </ul>
                                 </div>
