@@ -421,6 +421,9 @@ UI_STRINGS = {
         'meet_cliff_louise': 'Treffen Sie Cliff & Louise',
         'stay_updated': 'Bleiben Sie auf dem Laufenden',
         'subscribe': 'Abonnieren',
+        'never_miss_story': 'Verpassen Sie keine neue Geschichte',
+        'newsletter_desc': 'Schließen Sie sich über 5.000 Wanderbegeisterten an. Erhalten Sie die neuesten Routenführer und kulturellen Einblicke einmal im Monat.',
+        'your_email': 'Ihre E-Mail',
         'your_questions': 'Ihre Fragen zu Wandertouren in Irland — Beantwortet',
         # FAQ items on homepage
         'faq_lost': 'Was passiert, wenn ich mich verlaufe?',
@@ -649,6 +652,9 @@ UI_STRINGS = {
         'meet_cliff_louise': 'Maak Kennis met Cliff & Louise',
         'stay_updated': 'Blijf Op De Hoogte',
         'subscribe': 'Inschrijven',
+        'never_miss_story': 'Mis nooit een nieuw verhaal',
+        'newsletter_desc': 'Sluit je aan bij meer dan 5.000 wandelliefhebbers. Ontvang de nieuwste routegidsen en culturele inzichten één keer per maand.',
+        'your_email': 'Je e-mailadres',
         'your_questions': 'Uw Vragen over Wandeltochten in Ierland Beantwoord',
         # FAQ items on homepage
         'faq_lost': 'Wat als ik verdwaal?',
@@ -1109,6 +1115,8 @@ def translate_html_ui(html, lang):
         '>Meet Cliff &amp; Louise<': f'>{t("meet_cliff_louise", lang)}<',
         '>Stay Updated on Walking Ireland<': f'>{t("stay_updated", lang)}<',
         '>Subscribe<': f'>{t("subscribe", lang)}<',
+        '>Never miss a new story<': f'>{t("never_miss_story", lang)}<',
+        '>Join 5,000+ hiking enthusiasts. Get the latest trail guides and cultural insights delivered once a month.<': f'>{t("newsletter_desc", lang)}<',
         '>Your Irish Walking Tour Questions Answered<': f'>{t("your_questions", lang)}<',
 
         # Homepage FAQ items
@@ -1290,6 +1298,9 @@ def translate_html_ui(html, lang):
             html = html.replace(f'href="../{en_slug}"', f'href="../{translated_slug}"')
             # href="/english-slug" → href="/translated-slug" (absolute path links)
             html = html.replace(f'href="/{en_slug}"', f'href="/{translated_slug}"')
+
+    # Newsletter email placeholder
+    html = html.replace('placeholder="Your email"', f'placeholder="{t("your_email", lang)}"')
 
     return html
 
