@@ -14,6 +14,23 @@
  * appears in the browser URL bar on language domains.
  */
 
+/**
+ * Add no-cache headers to HTML responses so Cloudflare doesn't
+ * serve stale pages after builds.
+ */
+function withCacheHeaders(response) {
+  const ct = response.headers.get('content-type') || '';
+  if (ct.includes('text/html')) {
+    const newHeaders = new Headers(response.headers);
+    newHeaders.set('Cache-Control', 'public, max-age=0, must-revalidate');
+    return new Response(response.body, {
+      status: response.status,
+      headers: newHeaders,
+    });
+  }
+  return response;
+}
+
 const DOMAIN_LANG = {
   'walkingholidayireland.de':     '/de',
   'www.walkingholidayireland.de': '/de',
@@ -275,7 +292,7 @@ export default {
         } catch (e) { }
       }
 
-      return response;
+      return withCacheHeaders(response);
     }
 
     // ── Language domains (DE / NL) ────────────────────────────
@@ -413,6 +430,6 @@ export default {
       }
     }
 
-    return response;
+    return withCacheHeaders(response);
   },
 };
