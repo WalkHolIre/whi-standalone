@@ -11,8 +11,18 @@
 /js/*
   Cache-Control: public, max-age=604800
 
-# No cache for HTML (so updates show immediately)
+# No cache for HTML pages (so updates show immediately)
 /*.html
+  Cache-Control: no-cache
+/blog/*
+  Cache-Control: no-cache
+/de/*
+  Cache-Control: no-cache
+/nl/*
+  Cache-Control: no-cache
+/walking-tours/*
+  Cache-Control: no-cache
+/walking-area-*
   Cache-Control: no-cache
 
 # Block admin from public access header hint
