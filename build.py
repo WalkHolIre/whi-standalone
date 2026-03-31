@@ -6899,6 +6899,95 @@ def validate_seo_health(site_dir):
                 if re.search(rf'<loc>[^<]*/{re.escape(noindex_slug)}[^/]*</loc>', sitemap_content):
                     issues.append(f"NOINDEX IN SITEMAP: {sitemap_path.relative_to(site_dir)} contains /{noindex_slug}")
 
+    # 6. Validate internal links — check all href targets exist as files
+    log("  Checking internal links...")
+    # Build a set of all valid paths (extensionless and with .html)
+    valid_paths = set()
+    for html_file in site_dir.rglob('*.html'):
+        rel = str(html_file.relative_to(site_dir)).replace('\\', '/')
+        valid_paths.add(rel)                              # e.g. walking-tours/kerry-way.html
+        valid_paths.add(rel.replace('.html', ''))          # e.g. walking-tours/kerry-way
+
+    # Also count non-HTML assets (images, CSS, JS, PDFs, etc.)
+    for asset_file in site_dir.rglob('*'):
+        if asset_file.is_file() and not asset_file.suffix == '.html':
+            rel = str(asset_file.relative_to(site_dir)).replace('\\', '/')
+            valid_paths.add(rel)
+
+    # Known external/special prefixes to skip
+    skip_prefixes = ('http://', 'https://', 'mailto:', 'tel:', 'javascript:', '#', 'data:', '//')
+    # Paths handled by the worker or external systems
+    skip_path_prefixes = ('/cdn-cgi/', '/_', '/admin/')
+
+    broken_links = {}  # target → set of source pages
+    internal_link_pattern = re.compile(r'href="([^"#?]+)')
+
+    for html_file in site_dir.rglob('*.html'):
+        if 'node_modules' in str(html_file) or '_templates' in str(html_file):
+            continue
+        try:
+            content = html_file.read_text(errors='ignore')
+        except Exception:
+            continue
+
+        rel_path = str(html_file.relative_to(site_dir)).replace('\\', '/')
+        page_dir = '/'.join(rel_path.split('/')[:-1])  # directory of current page
+
+        for match in internal_link_pattern.finditer(content):
+            href = match.group(1).strip()
+
+            # Skip external, mailto, tel, javascript, anchor-only
+            if any(href.startswith(p) for p in skip_prefixes):
+                continue
+
+            # Skip absolute paths to special Cloudflare/admin areas
+            if any(href.startswith(p) for p in skip_path_prefixes):
+                continue
+
+            # Resolve relative paths
+            if href.startswith('/'):
+                target = href.lstrip('/')
+            elif href.startswith('../'):
+                # Go up one directory from page_dir
+                parts = page_dir.split('/') if page_dir else []
+                up_count = 0
+                remaining = href
+                while remaining.startswith('../'):
+                    up_count += 1
+                    remaining = remaining[3:]
+                base = '/'.join(parts[:-up_count]) if up_count <= len(parts) else ''
+                target = f"{base}/{remaining}" if base else remaining
+            else:
+                # Relative to current page's directory
+                target = f"{page_dir}/{href}" if page_dir else href
+
+            # Normalise: strip trailing slash, remove double slashes
+            target = target.strip('/').replace('//', '/')
+
+            # Skip empty targets
+            if not target:
+                continue
+
+            # Check if target exists (with or without .html)
+            if target not in valid_paths and f"{target}.html" not in valid_paths:
+                # Also check index.html in directory
+                if f"{target}/index.html" not in valid_paths:
+                    if target not in broken_links:
+                        broken_links[target] = set()
+                    broken_links[target].add(rel_path)
+
+    if broken_links:
+        # Sort by number of linking pages (most impactful first)
+        sorted_broken = sorted(broken_links.items(), key=lambda x: -len(x[1]))
+        total_links = sum(len(sources) for sources in broken_links.values())
+        log(f"\n  ⚠ BROKEN INTERNAL LINKS: {len(broken_links)} targets, {total_links} total links", 'warn')
+        for target, sources in sorted_broken[:15]:
+            log(f"    → {target} ({len(sources)} pages link here)", 'warn')
+        if len(sorted_broken) > 15:
+            log(f"    ... and {len(sorted_broken) - 15} more broken targets", 'warn')
+    else:
+        log(f"  ✓ All internal links valid")
+
     # Report results
     if issues:
         log(f"\n✗ SEO VALIDATION FAILED: {len(issues)} issues found", 'error')
