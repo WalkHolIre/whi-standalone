@@ -31,6 +31,53 @@ function withCacheHeaders(response) {
   return response;
 }
 
+/**
+ * Legacy WordPress URL redirects — old URLs that Google still indexes.
+ * These 301 to the correct new location to preserve SEO value and fix 404s.
+ * Paths should NOT include trailing slashes (we strip them before matching).
+ */
+const LEGACY_REDIRECTS = {
+  // ── English site (old WordPress blog posts at root → /blog/) ──
+  '': {
+    '/the-famine-roads-of-ireland': '/blog/the-famine-roads-of-ireland',
+    '/difference-between-hiking-and-walking': '/blog/difference-between-hiking-and-walking',
+    '/antrim-coast': '/blog/antrim-coast-walk',
+    '/irish-pilgrim-paths-of-ireland': '/blog/irish-pilgrim-paths-of-ireland',
+    '/our-top-five-connemara-hikes': '/blog/our-top-five-connemara-hikes',
+    '/differences-between-rambling-and-hiking': '/blog/differences-between-rambling-and-hiking',
+    '/celtic-music-and-the-tin-whistle': '/blog/celtic-music-and-the-tin-whistle',
+    '/st-kevin-of-glendalough': '/blog/st-kevin-of-glendalough',
+    '/solo-inn-to-inn-hiking-ireland': '/blog/solo-inn-to-inn-hiking-ireland',
+    '/visit-the-nine-glens-of-antrim': '/blog/glens-of-antrim-walking',
+    '/irish-national-anthem': '/blog/irish-national-anthem',
+    '/self-guided-hiking-tours': '/walking-tours',
+    '/self-guided-hiking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
+    '/self-guided-hiking-tours/barrow-way': '/walking-tours/barrow-way',
+    '/home/about-walking-holiday-ireland': '/about',
+  },
+  // ── Dutch site (old WordPress pages → new structure) ──
+  '/nl': {
+    '/stekker-voor-ierland': '/blog/stekker-voor-ierland',
+    '/wandelen-dublin': '/blog/wandelen-dublin',
+    '/individuele-wandelvakanties': '/blog/individuele-wandelvakanties',
+    '/individuele-wandelvakanties/wicklow-way': '/wandeltochten/wicklow-way',
+  },
+};
+
+/**
+ * Check if a path matches a legacy redirect and return the target, or null.
+ * Strips trailing slashes before matching.
+ */
+function getLegacyRedirect(cleanPath, langPrefix) {
+  const map = LEGACY_REDIRECTS[langPrefix || ''];
+  if (!map) return null;
+  // Strip trailing slash for matching (WordPress URLs had trailing slashes)
+  const normalized = cleanPath.endsWith('/') && cleanPath !== '/'
+    ? cleanPath.slice(0, -1)
+    : cleanPath;
+  return map[normalized] || null;
+}
+
 const DOMAIN_LANG = {
   'walkingholidayireland.de':     '/de',
   'www.walkingholidayireland.de': '/de',
@@ -254,6 +301,15 @@ export default {
         });
       }
 
+      // Redirect legacy WordPress URLs to new locations (301)
+      const enLegacyRedirect = getLegacyRedirect(url.pathname, '');
+      if (enLegacyRedirect) {
+        return new Response(null, {
+          status: 301,
+          headers: { 'Location': enLegacyRedirect + url.search + url.hash },
+        });
+      }
+
       // Redirect deprecated short-slug walking areas (EN domain)
       // e.g. /walking-area-wicklow → /walking-area-wicklow-way
       const enDeprecatedRedirect = getDeprecatedSlugRedirect(url.pathname, '');
@@ -320,6 +376,15 @@ export default {
       return new Response(null, {
         status: 301,
         headers: { 'Location': cleanRedirect },
+      });
+    }
+
+    // Redirect legacy WordPress URLs to new locations (301)
+    const langLegacyRedirect = getLegacyRedirect(cleanPath, langPrefix);
+    if (langLegacyRedirect) {
+      return new Response(null, {
+        status: 301,
+        headers: { 'Location': langLegacyRedirect + url.search + url.hash },
       });
     }
 
