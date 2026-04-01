@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Cadeaubonnen | Walking Holiday Ireland</title>
+    <meta name="description" content="Geef een wandelvakantie in Ierland cadeau. Cadeaubonnen vanaf €50 — direct per e-mail bezorgd."/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header { top:0; }
+        @media(min-width:768px){ header.site-header{ top:44px; } }
+
+        .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
+
+        /* Step indicator */
+        .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
+        .step-dot.active { background-color: #F17E00; color: white; }
+        .step-dot.completed { background-color: #16a34a; color: white; }
+        .step-dot.inactive { background-color: #e5e7eb; color: #9ca3af; }
+        .step-connector { height: 2px; flex: 1; transition: background-color 0.3s; }
+        .step-connector.active { background-color: #F17E00; }
+        .step-connector.inactive { background-color: #e5e7eb; }
+
+        .step-panel { display: none; }
+        .step-panel.active { display: block; }
+
+        /* Amount cards */
+        .amount-card { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 12px; padding: 20px; transition: all 0.2s; text-align: center; }
+        .amount-card:hover { border-color: #F17E00; background-color: #fff7ed; }
+        .amount-card.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
+
+        /* Stripe element */
+        #card-element { border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; background: white; }
+        #card-element.StripeElement--focus { border-color: #F17E00; box-shadow: 0 0 0 3px rgba(241,126,0,0.1); }
+        #card-element.StripeElement--invalid { border-color: #ef4444; }
+
+        /* Success animation */
+        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+        .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
+    </style>
+    <link rel="canonical" href="https://wandelvakantieierland.nl/cadeaubonnen"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="Cadeaubonnen — Walking Holiday Ireland"/>
+    <meta property="og:url" content="https://wandelvakantieierland.nl/cadeaubonnen"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Cadeaubonnen — Walking Holiday Ireland"/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/gift-vouchers" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/geschenkgutscheine" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/cadeaubonnen" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/gift-vouchers" />
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
+
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland//" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+    <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+        <a href="/" class="flex items-center gap-3">
+            <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" style="width:130px;height:auto;"/>
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <div class="relative group">
+                <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="wandelbestemmingen">Wandelvakanties <span class="material-symbols-outlined text-base">expand_more</span></a>
+                <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="/wandelgebied-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-schiereiland</a>
+                    <a href="/wandelgebied-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                    <a href="/wandelgebied-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
+                    <a href="/wandelgebied-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
+                    <a href="/wandelgebied-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                    <a href="/wandelgebied-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
+                    <a href="/wandelgebied-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
+                    <div class="border-t border-slate-100 mt-2 pt-2">
+                        <a href="op-maat" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Op Maat Gemaakte Tours</a>
+                    </div>
+                </div>
+            </div>
+            <div class="relative group">
+                <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="hoe-het-werkt">Hoe werkt het? <span class="material-symbols-outlined text-base">expand_more</span></a>
+                <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                    <a href="hoe-het-werkt" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overzicht</a>
+                    <a href="moeilijkheidsgraad" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Moeilijkheidsgraad</a>
+                    <a href="wandelvakantie-ierland-op-eigen-houtje" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Wandelvakantie op Eigen Houtje</a>
+                </div>
+            </div>
+            <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="over-ons">Over Ons</a>
+            <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="blog">Blog</a>
+            <a href="cadeaubonnen" class="font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-base">redeem</span> Cadeaubonnen</a>
+            <a href="boeken" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                Book Now
+            </a>
+        </nav>
+        <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+            <span class="material-symbols-outlined text-3xl">menu</span>
+        </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+        <a href="wandelbestemmingen" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wandelvakanties</a>
+        <a href="hoe-het-werkt" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Hoe werkt het?</a>
+        <a href="over-ons" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Over Ons</a>
+        <a href="blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+        <a href="cadeaubonnen" class="block py-3 font-semibold text-primary border-b border-slate-100">Cadeaubonnen</a>
+        <a href="boeken" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Nu Boeken</a>
+    </div>
+</header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full">
+    <!-- Hero Section -->
+    <div class="hero-band text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-3xl md:text-4xl font-bold mb-2">Cadeaubonnen</h1>
+            <p class="text-base md:text-lg opacity-90">Geef het cadeau van avontuur — een wandelvakantie door de mooiste landschappen van Ierland.</p>
+        </div>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-4 w-full">
+        <div class="flex items-center justify-center gap-0 max-w-md mx-auto">
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot active" data-step="1">1</div>
+                <span class="text-xs font-medium text-slate-800">Bedrag</span>
+            </div>
+            <div class="step-connector active flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="2">2</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel2">Uw gegevens</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="3">3</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel3">Ontvanger</span>
+            </div>
+            <div class="step-connector inactive flex-1 mx-2 mt-[-18px]"></div>
+            <div class="flex flex-col items-center gap-1">
+                <div class="step-dot inactive" data-step="4">4</div>
+                <span class="text-xs font-medium text-gray-400" id="stepLabel4">Betaling</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
+
+        <!-- ───── Step 1: Choose Amount ───── -->
+        <div class="step-panel active" id="step1">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Kies het bedrag</h2>
+                <p class="text-gray-500 text-sm mb-6">Selecteer een standaardbedrag of voer uw eigen bedrag in. Geldig voor elke wandeltocht.</p>
+
+                <div class="grid grid-cols-3 sm:grid-cols-6 gap-3 mb-6">
+                    <div class="amount-card" onclick="selectAmount(50)" data-amount="50">
+                        <span class="text-xl font-bold text-slate-800">€50</span>
+                    </div>
+                    <div class="amount-card" onclick="selectAmount(100)" data-amount="100">
+                        <span class="text-xl font-bold text-slate-800">€100</span>
+                    </div>
+                    <div class="amount-card" onclick="selectAmount(150)" data-amount="150">
+                        <span class="text-xl font-bold text-slate-800">€150</span>
+                    </div>
+                    <div class="amount-card" onclick="selectAmount(200)" data-amount="200">
+                        <span class="text-xl font-bold text-slate-800">€200</span>
+                    </div>
+                    <div class="amount-card" onclick="selectAmount(250)" data-amount="250">
+                        <span class="text-xl font-bold text-slate-800">€250</span>
+                    </div>
+                    <div class="amount-card" onclick="selectAmount(500)" data-amount="500">
+                        <span class="text-xl font-bold text-slate-800">€500</span>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-100 pt-5">
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Of voer een eigen bedrag in (€25 – €5.000)</label>
+                    <div class="flex items-center gap-3">
+                        <div class="relative flex-1 max-w-[200px]">
+                            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 font-semibold">€</span>
+                            <input type="number" id="customAmount" min="25" max="5000" step="1" placeholder="0" class="w-full border border-gray-300 rounded-lg pl-8 pr-4 py-3 text-lg font-semibold focus:border-primary focus:ring-primary" oninput="selectCustomAmount()">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div id="amountSummary" class="hidden mt-6 bg-primary/5 rounded-xl p-4 flex items-center justify-between">
+                    <div>
+                        <span class="text-sm text-gray-500">Waarde cadeaubon</span>
+                        <p class="text-2xl font-bold text-primary" id="summaryAmount">€0</p>
+                    </div>
+                    <span class="material-symbols-outlined text-primary text-3xl">redeem</span>
+                </div>
+
+                <div class="flex justify-end mt-6">
+                    <button type="button" onclick="goToStep(2)" id="step1Next" disabled class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed">
+                        Continue <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Trust badges -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+                <div class="bg-white rounded-xl border border-gray-100 p-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-2xl">schedule</span>
+                    <div><p class="font-semibold text-sm text-slate-800">3 jaar geldig</p><p class="text-xs text-gray-500">Genoeg tijd om te plannen</p></div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-2xl">email</span>
+                    <div><p class="font-semibold text-sm text-slate-800">Direct bezorgd</p><p class="text-xs text-gray-500">Direct per e-mail bezorgd</p></div>
+                </div>
+                <div class="bg-white rounded-xl border border-gray-100 p-4 flex items-center gap-3">
+                    <span class="material-symbols-outlined text-primary text-2xl">hiking</span>
+                    <div><p class="font-semibold text-sm text-slate-800">Elke tocht, elke datum</p><p class="text-xs text-gray-500">Volledige keuzevrijheid</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ───── Step 2: Uw gegevens ───── -->
+        <div class="step-panel" id="step2">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Uw gegevens</h2>
+                <p class="text-gray-500 text-sm mb-6">We hebben uw gegevens nodig voor de aankoopbevestiging en bon.</p>
+
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Voornaam <span class="text-red-500">*</span></label>
+                            <input type="text" id="buyerFirst" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="Uw voornaam">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Achternaam <span class="text-red-500">*</span></label>
+                            <input type="text" id="buyerLast" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="Uw achternaam">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Email <span class="text-red-500">*</span></label>
+                        <input type="email" id="buyerEmail" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="u@voorbeeld.nl">
+                        <p class="text-xs text-gray-400 mt-1">Uw bon en een kopie van de cadeaubon worden hierheen gestuurd.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Phone <span class="text-gray-400 text-xs">(optioneel)</span></label>
+                        <input type="tel" id="buyerPhone" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="+353 ...">
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(1)" class="text-slate-600 hover:text-slate-800 font-semibold transition flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Terug
+                    </button>
+                    <button type="button" onclick="goToStep(3)" id="step2Next" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Continue <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ───── Step 3: Gegevens ontvanger ───── -->
+        <div class="step-panel" id="step3">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Gegevens ontvanger</h2>
+                <p class="text-gray-500 text-sm mb-6">Voor wie is deze cadeaubon? We sturen de bon direct per e-mail.</p>
+
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Recipient Voornaam <span class="text-red-500">*</span></label>
+                            <input type="text" id="recipientFirst" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="Voornaam van de ontvanger">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Recipient Achternaam <span class="text-red-500">*</span></label>
+                            <input type="text" id="recipientLast" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="Achternaam van de ontvanger">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">E-mail ontvanger <span class="text-red-500">*</span></label>
+                        <input type="email" id="recipientEmail" required class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary" placeholder="ontvanger@voorbeeld.nl">
+                        <p class="text-xs text-gray-400 mt-1">De cadeaubon wordt direct naar dit adres gestuurd.</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Persoonlijk bericht <span class="text-gray-400 text-xs">(optioneel, max 300 tekens)</span></label>
+                        <textarea id="personalMessage" maxlength="300" rows="3" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary resize-none" placeholder="bijv. Gefeliciteerd! Geniet van je avontuur in Ierland..."></textarea>
+                        <p class="text-xs text-gray-400 mt-1 text-right"><span id="msgCount">0</span>/300</p>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-1">Bezorgdatum <span class="text-gray-400 text-xs">(optioneel — standaard is nu)</span></label>
+                        <input type="date" id="deliveryDate" class="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:border-primary focus:ring-primary">
+                        <p class="text-xs text-gray-400 mt-1">Plan de bezorging voor een verjaardag of speciale gelegenheid. Laat leeg om direct te versturen.</p>
+                    </div>
+                </div>
+
+                <div class="flex justify-between mt-8">
+                    <button type="button" onclick="goToStep(2)" class="text-slate-600 hover:text-slate-800 font-semibold transition flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Terug
+                    </button>
+                    <button type="button" onclick="goToStep(4)" id="step3Next" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Continue to Betaling <span class="material-symbols-outlined text-sm align-middle ml-1">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ───── Step 4: Review & Betaling ───── -->
+        <div class="step-panel" id="step4">
+            <!-- Review Summary -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8 mb-5">
+                <h2 class="text-xl font-bold text-slate-800 mb-4">Controleer uw cadeaubon</h2>
+                <div class="space-y-3">
+                    <div class="flex justify-between py-2 border-b border-gray-100">
+                        <span class="text-gray-500">Bedrag cadeaubon</span>
+                        <span class="font-bold text-primary text-lg" id="reviewAmount">€0</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-gray-100">
+                        <span class="text-gray-500">Gekocht door</span>
+                        <span class="font-medium text-slate-800" id="reviewBuyer">—</span>
+                    </div>
+                    <div class="flex justify-between py-2 border-b border-gray-100">
+                        <span class="text-gray-500">Ontvanger</span>
+                        <span class="font-medium text-slate-800" id="reviewRecipient">—</span>
+                    </div>
+                    <div id="reviewMessageRow" class="hidden py-2 border-b border-gray-100">
+                        <span class="text-gray-500 block mb-1">Persoonlijk bericht</span>
+                        <p class="text-sm text-slate-700 italic" id="reviewMessage"></p>
+                    </div>
+                    <div id="reviewDateRow" class="hidden flex justify-between py-2 border-b border-gray-100">
+                        <span class="text-gray-500">Bezorgdatum</span>
+                        <span class="font-medium text-slate-800" id="reviewDate">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Betaling -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Betaling</h2>
+                <p class="text-gray-500 text-sm mb-6">Uw betaling wordt veilig verwerkt door Stripe. We slaan uw kaartgegevens niet op.</p>
+
+                <div id="card-element" class="mb-4"></div>
+                <div id="card-errors" role="alert" class="text-red-500 text-sm mb-4 hidden"></div>
+
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-6">
+                    <span class="material-symbols-outlined text-sm">lock</span>
+                    <span>Beveiligd door Stripe — 256-bits encryptie</span>
+                </div>
+
+                <div class="flex justify-between items-center">
+                    <button type="button" onclick="goToStep(3)" class="text-slate-600 hover:text-slate-800 font-semibold transition flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">arrow_back</span> Terug
+                    </button>
+                    <button type="button" onclick="submitBetaling()" id="payBtn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">lock</span>
+                        Pay <span id="payBtnAmount">€0</span>
+                    </button>
+                </div>
+
+                <div id="paymentProcessing" class="hidden mt-6 text-center">
+                    <div class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-3"></div>
+                    <p class="text-sm text-gray-600">Uw betaling wordt verwerkt...</p>
+                </div>
+                <div id="paymentError" class="hidden mt-4 bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm"></div>
+            </div>
+        </div>
+
+        <!-- ───── Success Screen ───── -->
+        <div class="step-panel" id="stepSuccess">
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 md:p-12 text-center fade-in-up">
+                <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <span class="material-symbols-outlined text-green-600 text-4xl">check_circle</span>
+                </div>
+                <h2 class="text-2xl md:text-3xl font-bold text-slate-800 mb-3">Cadeaubon gekocht!</h2>
+                <p class="text-gray-500 mb-6">Uw cadeaubon is aangemaakt en wordt per e-mail naar de ontvanger gestuurd.</p>
+
+                <div class="bg-slate-50 rounded-xl p-6 mb-6 max-w-md mx-auto">
+                    <p class="text-sm text-gray-500 mb-1">Code cadeaubon</p>
+                    <p class="text-2xl md:text-3xl font-mono font-bold text-primary tracking-wider" id="successCode">—</p>
+                    <p class="text-sm text-gray-500 mt-2">Waarde: <span class="font-semibold" id="successAmount">€0</span></p>
+                </div>
+
+                <p class="text-sm text-gray-500 mb-6">Een bevestigingsmail met de gegevens van de cadeaubon is naar u en de ontvanger gestuurd.</p>
+
+                <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                    <a href="wandelbestemmingen" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-lg font-bold transition-all">
+                        Wandelvakanties bekijken
+                    </a>
+                    <a href="cadeaubonnen" class="border border-gray-300 text-slate-700 hover:bg-gray-50 px-6 py-3 rounded-lg font-bold transition-all">
+                        Nog een bon kopen
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="bg-brand-purple text-white pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Zelfstandige wandelvakanties door de meest adembenemende landschappen van Ierland sinds 2012. Familiebedrijf van Cliff &amp; Louise.</p>
+                <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Wandelvakanties</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="/wandeltochten/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="/wandeltochten/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="/wandeltochten/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="/wandeltochten/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="/wandeltochten/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="/wandeltochten/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast Way</a></li>
+                    <li><a href="/wandeltochten/cooley-mournes" class="hover:text-primary transition-colors">Cooley & Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Snelkoppelingen</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="over-ons" class="hover:text-primary transition-colors">Over Ons</a></li>
+                    <li><a href="hoe-het-werkt" class="hover:text-primary transition-colors">Hoe werkt het?</a></li>
+                    <li><a href="moeilijkheidsgraad" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="op-maat" class="hover:text-primary transition-colors">Op Maat Gemaakte Tours</a></li>
+                    <li><a href="cadeaubonnen" class="hover:text-primary transition-colors">Cadeaubonnen</a></li>
+                    <li><a href="blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="/contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="boeken" class="hover:text-primary transition-colors font-bold">Nu Boeken</a></li>
+                    <li><a href="privacybeleid" class="hover:text-primary transition-colors">Privacybeleid</a></li>
+                    <li><a href="algemene-voorwaarden" class="hover:text-primary transition-colors">Algemene Voorwaarden</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Nu boeken</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 42 932 3396</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="de">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors" data-lang="nl">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                    <a href="https://senderismoenirlanda.es" onclick="event.preventDefault();window.location.href='https://senderismoenirlanda.es'+window.location.pathname" class="flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5 hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">ES</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// ─────────── Config ───────────
+const EDGE_FN_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/purchase-gift-voucher';
+const STRIPE_PK   = 'pk_test_F8HhLlFCLRhK8P8vpR0m3Ey1';
+
+// ─────────── State ───────────
+let currentStep = 1;
+let selectedAmount = 0;
+let stripe, cardElement;
+
+// ─────────── Stripe Init ───────────
+document.addEventListener('DOMContentLoaded', function() {
+    stripe = Stripe(STRIPE_PK);
+    const elements = stripe.elements({ locale: 'nl' });
+    cardElement = elements.create('card', {
+        style: {
+            base: { fontSize: '16px', color: '#1e293b', fontFamily: "'Inter', sans-serif", '::placeholder': { color: '#94a3b8' } },
+            invalid: { color: '#ef4444', iconColor: '#ef4444' }
+        }
+    });
+    cardElement.mount('#card-element');
+    cardElement.on('change', function(event) {
+        var el = document.getElementById('card-errors');
+        if (event.error) { el.textContent = event.error.message; el.classList.remove('hidden'); }
+        else { el.textContent = ''; el.classList.add('hidden'); }
+    });
+
+    // Message counter
+    var msgInput = document.getElementById('personalMessage');
+    if (msgInput) {
+        msgInput.addEventListener('input', function() {
+            document.getElementById('msgCount').textContent = this.value.length;
+        });
+    }
+
+    // Set min delivery date to today
+    var dateInput = document.getElementById('deliveryDate');
+    if (dateInput) {
+        var today = new Date().toISOString().split('T')[0];
+        dateInput.setAttribute('min', today);
+    }
+});
+
+// ─────────── Amount Selection ───────────
+function selectAmount(amt) {
+    selectedAmount = amt;
+    document.getElementById('customAmount').value = '';
+    document.querySelectorAll('.amount-card').forEach(function(c) {
+        c.classList.toggle('selected', parseInt(c.getAttribute('data-amount')) === amt);
+    });
+    updateAmountUI();
+}
+
+function selectCustomAmount() {
+    var val = parseInt(document.getElementById('customAmount').value);
+    document.querySelectorAll('.amount-card').forEach(function(c) { c.classList.remove('selected'); });
+    if (val >= 25 && val <= 5000) {
+        selectedAmount = val;
+    } else {
+        selectedAmount = 0;
+    }
+    updateAmountUI();
+}
+
+function updateAmountUI() {
+    var summary = document.getElementById('amountSummary');
+    var btn = document.getElementById('step1Next');
+    if (selectedAmount >= 25) {
+        summary.classList.remove('hidden');
+        document.getElementById('summaryAmount').textContent = '€' + selectedAmount;
+        btn.disabled = false;
+    } else {
+        summary.classList.add('hidden');
+        btn.disabled = true;
+    }
+}
+
+// ─────────── Step Navigation ───────────
+function goToStep(step) {
+    // Validate before advancing
+    if (step > currentStep) {
+        if (currentStep === 1 && selectedAmount < 25) return;
+        if (currentStep === 2 && !validateStep2()) return;
+        if (currentStep === 3 && !validateStep3()) return;
+    }
+
+    // Update review panel when entering step 4
+    if (step === 4) updateReviewPanel();
+
+    currentStep = step;
+    // Show/hide panels
+    document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('step' + step).classList.add('active');
+
+    // Update step dots
+    document.querySelectorAll('.step-dot').forEach(function(dot) {
+        var s = parseInt(dot.getAttribute('data-step'));
+        dot.classList.remove('active', 'completed', 'inactive');
+        if (s < step) dot.classList.add('completed');
+        else if (s === step) dot.classList.add('active');
+        else dot.classList.add('inactive');
+        // Update label colour
+        var label = dot.parentElement.querySelector('span:last-child');
+        if (label) {
+            label.classList.toggle('text-slate-800', s <= step);
+            label.classList.toggle('text-gray-400', s > step);
+        }
+    });
+
+    // Update connectors
+    document.querySelectorAll('.step-connector').forEach(function(c, i) {
+        c.classList.toggle('active', i < step - 1);
+        c.classList.toggle('inactive', i >= step - 1);
+    });
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showSuccess(code, amount) {
+    document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('stepSuccess').classList.add('active');
+    document.getElementById('successCode').textContent = code;
+    document.getElementById('successAmount').textContent = '€' + amount;
+    // Mark all steps as completed
+    document.querySelectorAll('.step-dot').forEach(function(d) { d.classList.remove('active','inactive'); d.classList.add('completed'); });
+    document.querySelectorAll('.step-connector').forEach(function(c) { c.classList.remove('inactive'); c.classList.add('active'); });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ─────────── Validation ───────────
+function validateStep2() {
+    var first = document.getElementById('buyerFirst').value.trim();
+    var last = document.getElementById('buyerLast').value.trim();
+    var email = document.getElementById('buyerEmail').value.trim();
+    if (!first || !last || !email) {
+        highlightEmpty(['buyerFirst','buyerLast','buyerEmail']);
+        return false;
+    }
+    if (!isValidEmail(email)) {
+        document.getElementById('buyerEmail').style.borderColor = '#ef4444';
+        return false;
+    }
+    return true;
+}
+
+function validateStep3() {
+    var first = document.getElementById('recipientFirst').value.trim();
+    var last = document.getElementById('recipientLast').value.trim();
+    var email = document.getElementById('recipientEmail').value.trim();
+    if (!first || !last || !email) {
+        highlightEmpty(['recipientFirst','recipientLast','recipientEmail']);
+        return false;
+    }
+    if (!isValidEmail(email)) {
+        document.getElementById('recipientEmail').style.borderColor = '#ef4444';
+        return false;
+    }
+    return true;
+}
+
+function highlightEmpty(ids) {
+    ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el.value.trim()) {
+            el.style.borderColor = '#ef4444';
+            el.addEventListener('input', function handler() { el.style.borderColor = ''; el.removeEventListener('input', handler); }, { once: true });
+        }
+    });
+}
+
+function isValidEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+// ─────────── Review Panel ───────────
+function updateReviewPanel() {
+    document.getElementById('reviewAmount').textContent = '€' + selectedAmount;
+    document.getElementById('payBtnAmount').textContent = '€' + selectedAmount;
+    document.getElementById('reviewBuyer').textContent = document.getElementById('buyerFirst').value.trim() + ' ' + document.getElementById('buyerLast').value.trim();
+    document.getElementById('reviewRecipient').textContent = document.getElementById('recipientFirst').value.trim() + ' ' + document.getElementById('recipientLast').value.trim();
+
+    var msg = document.getElementById('personalMessage').value.trim();
+    var msgRow = document.getElementById('reviewMessageRow');
+    if (msg) { msgRow.classList.remove('hidden'); document.getElementById('reviewMessage').textContent = msg; }
+    else { msgRow.classList.add('hidden'); }
+
+    var dateVal = document.getElementById('deliveryDate').value;
+    var dateRow = document.getElementById('reviewDateRow');
+    if (dateVal) {
+        dateRow.classList.remove('hidden');
+        document.getElementById('reviewDate').textContent = new Date(dateVal + 'T00:00:00').toLocaleDateString('en-IE', { day: 'numeric', month: 'long', year: 'numeric' });
+    } else {
+        dateRow.classList.add('hidden');
+    }
+}
+
+// ─────────── Betaling ───────────
+async function submitBetaling() {
+    var btn = document.getElementById('payBtn');
+    var processing = document.getElementById('paymentProcessing');
+    var errorDiv = document.getElementById('paymentError');
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
+    processing.classList.remove('hidden');
+    errorDiv.classList.add('hidden');
+
+    try {
+        // Step 1: Create payment intent via edge function
+        var payload = {
+            action: 'create-payment',
+            amount_eur: selectedAmount,
+            buyer_first_name: document.getElementById('buyerFirst').value.trim(),
+            buyer_last_name: document.getElementById('buyerLast').value.trim(),
+            buyer_email: document.getElementById('buyerEmail').value.trim(),
+            buyer_phone: document.getElementById('buyerPhone').value.trim() || null,
+            recipient_first_name: document.getElementById('recipientFirst').value.trim(),
+            recipient_last_name: document.getElementById('recipientLast').value.trim(),
+            recipient_email: document.getElementById('recipientEmail').value.trim(),
+            personal_message: document.getElementById('personalMessage').value.trim() || null,
+            delivery_date: document.getElementById('deliveryDate').value || null,
+            locale: 'nl',
+            source: 'website-nl',
+            language: 'nl'
+        };
+
+        var res = await fetch(EDGE_FN_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        var data = await res.json();
+        if (!res.ok || !data.client_secret) {
+            throw new Error(data.error || 'Betaling kon niet worden aangemaakt. Probeer het opnieuw.');
+        }
+
+        // Step 2: Confirm card payment with Stripe
+        var result = await stripe.confirmCardBetaling(data.client_secret, {
+            payment_method: { card: cardElement }
+        });
+
+        if (result.error) {
+            throw new Error(result.error.message);
+        }
+
+        // Step 3: Confirm payment with edge function
+        var confirmRes = await fetch(EDGE_FN_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'confirm-payment',
+                payment_intent_id: result.paymentIntent.id,
+                voucher_id: data.voucher_id
+            })
+        });
+        var confirmData = await confirmRes.json();
+
+        if (!confirmRes.ok) {
+            throw new Error(confirmData.error || 'Betaling confirmed but could not activate voucher. Please contact us.');
+        }
+
+        // Success!
+        processing.classList.add('hidden');
+        showSuccess(confirmData.voucher_code || data.voucher_code || '—', selectedAmount);
+
+    } catch (err) {
+        processing.classList.add('hidden');
+        errorDiv.textContent = err.message;
+        errorDiv.classList.remove('hidden');
+        btn.disabled = false;
+        btn.style.opacity = '1';
+    }
+}
+</script>
+
+<!-- Language switcher -->
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>
