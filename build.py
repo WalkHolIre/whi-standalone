@@ -2386,8 +2386,8 @@ def render_review_schema(reviews_list, entity_name, entity_description='', schem
             },
             "reviewRating": {
                 "@type": "Rating",
-                "ratingValue": str(review.get('rating', 5)),
-                "bestRating": "5"
+                "ratingValue": review.get('rating', 5),
+                "bestRating": 5
             },
             "reviewBody": strip_html_tags(review.get('review_text_en') or review.get('content', ''))[:500]
         }
@@ -2401,10 +2401,10 @@ def render_review_schema(reviews_list, entity_name, entity_description='', schem
         "name": entity_name,
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": str(stats['avg']),
-            "bestRating": "5",
-            "worstRating": "1",
-            "reviewCount": str(stats['total'])
+            "ratingValue": round(stats['avg'], 1),
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": stats['total']
         },
         "review": review_items
     }
@@ -4502,11 +4502,28 @@ def render_tour_page_schema(tour, reviews_list, lang='en', destination=None):
     if stats['total'] > 0:
         product_schema["aggregateRating"] = {
             "@type": "AggregateRating",
-            "ratingValue": str(stats['avg']),
-            "bestRating": "5",
-            "worstRating": "1",
-            "reviewCount": str(stats['total'])
+            "ratingValue": round(stats['avg'], 1),
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": stats['total']
         }
+        # Google requires at least one Review when using aggregateRating on Product
+        sorted_reviews = sorted(reviews_list, key=lambda r: (
+            not r.get('featured', False), -(r.get('rating', 0))
+        ))[:5]
+        review_items = []
+        for rev in sorted_reviews:
+            item = {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": rev.get('reviewer_name', 'Guest')},
+                "reviewRating": {"@type": "Rating", "ratingValue": rev.get('rating', 5), "bestRating": 5},
+                "reviewBody": strip_html_tags(rev.get('review_text_en') or rev.get('content', ''))[:500]
+            }
+            if rev.get('review_date'):
+                item["datePublished"] = str(rev['review_date'])
+            review_items.append(item)
+        if review_items:
+            product_schema["review"] = review_items
 
     # --- Block 2: TouristTrip schema (for general structured data) ---
     trip_schema = {
@@ -4626,10 +4643,11 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
         "@context": "https://schema.org",
         "@type": "LocalBusiness",
         "name": "Walking Holiday Ireland",
-        "description": dest_desc,
+        "description": "Self-guided walking holidays through Ireland's most beautiful landscapes. Family-run by Cliff and Louise, offering luggage transfers, handpicked B&Bs, and GPS app support.",
         "image": dest_image,
         "url": site_url,
         "telephone": "+353429323396",
+        "priceRange": "€€",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Dundalk",
@@ -4641,10 +4659,10 @@ def render_destination_page_schema(destination, tours_for_dest, reviews_list, la
     if stats['total'] > 0:
         biz_schema["aggregateRating"] = {
             "@type": "AggregateRating",
-            "ratingValue": str(stats['avg']),
-            "bestRating": "5",
-            "worstRating": "1",
-            "reviewCount": str(stats['total'])
+            "ratingValue": round(stats['avg'], 1),
+            "bestRating": 5,
+            "worstRating": 1,
+            "reviewCount": stats['total']
         }
 
     output = f'    <script type="application/ld+json">\n{json.dumps(place_schema, indent=8)}\n    </script>\n'
