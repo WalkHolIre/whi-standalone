@@ -950,6 +950,15 @@
     <meta property="og:site_name" content="Walking Holiday Ireland"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+
+
+
+<meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.com/blog"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog" />
@@ -962,6 +971,7 @@
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
 </head>
 <body class="flex flex-col min-h-screen bg-background-light text-slate-900">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
@@ -1145,6 +1155,7 @@
         <a href="/gift-vouchers" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/gift-vouchers" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/gift-vouchers" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
+        <a href="/gift-vouchers" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/checkout" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">
                         Book Now
                     </a>
@@ -1171,6 +1182,7 @@
 
     <!-- Category Filter Tabs + Search -->
     <div class="flex flex-wrap items-center gap-3 mb-12 border-b border-primary/10 pb-6" id="blog-filters">
+        
         
         
         
@@ -4185,12 +4197,12 @@
             </a>
             <a href="walking-tours/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="images/routes/wicklow-way-5-days/card.jpg" srcset="images/routes/wicklow-way-5-days/card-400w.jpg 400w, images/routes/wicklow-way-5-days/card-800w.jpg 800w, images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way Walking Holiday — 5 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <img src="images/routes/wicklow-way-5-days/card.jpg" srcset="images/routes/wicklow-way-5-days/card-400w.jpg 400w, images/routes/wicklow-way-5-days/card-800w.jpg 800w, images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
                 </div>
                 <div class="p-4">
-                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way Walking Holiday — 5 Days</h4>
-                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s mountain trail, perfec...</p>
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way 5 Day Walking Holiday</h4>
+                    <p class="text-xs text-slate-500 mb-3">Three mountain days. The highlights t...</p>
                     <div class="flex justify-between items-center">
                         <span class="font-bold text-primary">&euro;655</span>
                         <span class="text-xs font-bold underline underline-offset-4">Details</span>
@@ -4565,6 +4577,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
