@@ -75,6 +75,7 @@ STATIC_SLUG_MAP = {
     'best-hiking-trails-ireland': {'de': 'beste-wanderwege-irland', 'nl': 'beste-wandelpaden-ierland'},
     'hiking-ireland':   {'de': 'wandern-irland',       'nl': 'wandelen-ierland'},
     'checkout':         {'de': 'buchung',              'nl': 'boeken'},
+    'gift-vouchers':    {'de': 'geschenkgutscheine',   'nl': 'cadeaubonnen'},
 }
 
 # Short-slug destinations that have a longer canonical equivalent (e.g. "barrow" → "barrow-way").
@@ -1616,6 +1617,205 @@ def translate_checkout_form(html, lang):
     }
 
     replacements = CHECKOUT_TRANSLATIONS.get(lang, {})
+    for find_text, replace_text in replacements.items():
+        if find_text != replace_text:
+            html = html.replace(find_text, replace_text)
+    return html
+
+
+def translate_gift_voucher_form(html, lang):
+    """Translate gift voucher purchase page form labels, buttons, JS strings for DE/NL."""
+    if lang == 'en':
+        return html
+
+    GV_TRANSLATIONS = {
+        'de': {
+            # Hero
+            'Gift Vouchers': 'Geschenkgutscheine',
+            "Give the gift of adventure — a walking holiday through Ireland's most stunning landscapes.":
+                'Verschenken Sie ein Abenteuer — einen Wanderurlaub durch Irlands atemberaubendste Landschaften.',
+            # Step labels
+            '>Amount<': '>Betrag<',
+            'id="stepLabel2">Your Details<': 'id="stepLabel2">Ihre Daten<',
+            'id="stepLabel3">Recipient<': 'id="stepLabel3">Empfänger<',
+            'id="stepLabel4">Payment<': 'id="stepLabel4">Zahlung<',
+            # Step 1: Amount
+            'Choose Voucher Amount': 'Gutscheinbetrag wählen',
+            'Select a preset amount or enter your own. Valid for any walking tour.':
+                'Wählen Sie einen Standardbetrag oder geben Sie Ihren eigenen ein. Gültig für jede Wandertour.',
+            'Or enter a custom amount (€25 – €5,000)': 'Oder geben Sie einen eigenen Betrag ein (€25 – €5.000)',
+            'Voucher value': 'Gutscheinwert',
+            # Trust badges
+            'Valid for 3 Years': '3 Jahre gültig',
+            'Plenty of time to plan': 'Genug Zeit zum Planen',
+            'Instant Delivery': 'Sofortige Zustellung',
+            'Sent by email immediately': 'Sofort per E-Mail zugestellt',
+            'Any Tour, Any Date': 'Jede Tour, jedes Datum',
+            'Full flexibility to choose': 'Volle Flexibilität bei der Wahl',
+            # Step 2: Your Details
+            'Your Details': 'Ihre Daten',
+            "We need your details for the purchase confirmation and receipt.":
+                'Wir benötigen Ihre Daten für die Kaufbestätigung und Quittung.',
+            'First Name': 'Vorname',
+            'Last Name': 'Nachname',
+            'placeholder="Your first name"': 'placeholder="Ihr Vorname"',
+            'placeholder="Your last name"': 'placeholder="Ihr Nachname"',
+            '>Email<': '>E-Mail<',
+            'placeholder="you@example.com"': 'placeholder="sie@beispiel.de"',
+            'Your receipt and a copy of the voucher will be sent here.':
+                'Ihre Quittung und eine Kopie des Gutscheins werden hierhin gesendet.',
+            '>Phone<': '>Telefon<',
+            '(optional)': '(optional)',
+            # Step 3: Recipient
+            'Recipient Details': 'Empfänger-Details',
+            "Who is this gift voucher for? We'll email them the voucher directly.":
+                'Für wen ist dieser Geschenkgutschein? Wir senden den Gutschein direkt per E-Mail.',
+            'Recipient First Name': 'Vorname des Empfängers',
+            'Recipient Last Name': 'Nachname des Empfängers',
+            "placeholder=\"Recipient's first name\"": 'placeholder="Vorname des Empfängers"',
+            "placeholder=\"Recipient's last name\"": 'placeholder="Nachname des Empfängers"',
+            'Recipient Email': 'E-Mail des Empfängers',
+            'placeholder="recipient@example.com"': 'placeholder="empfaenger@beispiel.de"',
+            'The voucher will be emailed directly to this address.':
+                'Der Gutschein wird direkt an diese Adresse gesendet.',
+            'Personal Message': 'Persönliche Nachricht',
+            '(optional, max 300 chars)': '(optional, max. 300 Zeichen)',
+            'placeholder="e.g. Happy Birthday! Enjoy your adventure in Ireland..."':
+                'placeholder="z.B. Alles Gute zum Geburtstag! Genieße dein Abenteuer in Irland..."',
+            'Delivery Date': 'Zustellungsdatum',
+            '(optional — defaults to now)': '(optional — Standard ist sofort)',
+            'Schedule for a birthday or special occasion. Leave blank to send immediately.':
+                'Planen Sie die Zustellung für einen Geburtstag oder besonderen Anlass. Leer lassen für sofortige Zustellung.',
+            # Step 4: Review & Payment
+            'Review Your Gift Voucher': 'Überprüfen Sie Ihren Geschenkgutschein',
+            'Voucher Amount': 'Gutscheinbetrag',
+            'Purchased By': 'Gekauft von',
+            '>Recipient<': '>Empfänger<',
+            'Payment': 'Zahlung',
+            'Your payment is securely processed by Stripe. We never store your card details.':
+                'Ihre Zahlung wird sicher über Stripe abgewickelt. Wir speichern Ihre Kartendaten nicht.',
+            'Secured by Stripe': 'Gesichert durch Stripe',
+            '256-bit encryption': '256-Bit-Verschlüsselung',
+            '>Pay <': '>Zahlen <',
+            'Processing your payment...': 'Ihre Zahlung wird verarbeitet...',
+            # Success
+            'Voucher Purchased!': 'Gutschein gekauft!',
+            'Your gift voucher has been created and will be emailed to the recipient.':
+                'Ihr Geschenkgutschein wurde erstellt und wird dem Empfänger per E-Mail zugesendet.',
+            'Voucher Code': 'Gutscheincode',
+            'Value:': 'Wert:',
+            'A confirmation email with the voucher details has been sent to both you and the recipient.':
+                'Eine Bestätigungs-E-Mail mit den Gutscheindetails wurde an Sie und den Empfänger gesendet.',
+            'Browse Walking Holidays': 'Wanderurlaube durchsuchen',
+            'Buy Another Voucher': 'Weiteren Gutschein kaufen',
+            # Navigation buttons
+            '>Continue<': '>Weiter<',
+            'Continue to Payment': 'Weiter zur Zahlung',
+            '>Back<': '>Zurück<',
+            '> Back': '> Zurück',
+            # JS strings
+            "locale: 'en'": "locale: 'de'",
+            "source: 'website'": "source: 'website-de'",
+            "language: 'en'": "language: 'de'",
+            "Could not create payment. Please try again.": "Zahlung konnte nicht erstellt werden. Bitte versuchen Sie es erneut.",
+            "Payment confirmed but could not activate voucher. Please contact us.":
+                "Zahlung bestätigt, aber der Gutschein konnte nicht aktiviert werden. Bitte kontaktieren Sie uns.",
+        },
+        'nl': {
+            # Hero
+            'Gift Vouchers': 'Cadeaubonnen',
+            "Give the gift of adventure — a walking holiday through Ireland's most stunning landscapes.":
+                'Geef het cadeau van avontuur — een wandelvakantie door de mooiste landschappen van Ierland.',
+            # Step labels
+            '>Amount<': '>Bedrag<',
+            'id="stepLabel2">Your Details<': 'id="stepLabel2">Uw gegevens<',
+            'id="stepLabel3">Recipient<': 'id="stepLabel3">Ontvanger<',
+            'id="stepLabel4">Payment<': 'id="stepLabel4">Betaling<',
+            # Step 1: Amount
+            'Choose Voucher Amount': 'Kies het bedrag',
+            'Select a preset amount or enter your own. Valid for any walking tour.':
+                'Selecteer een standaardbedrag of voer uw eigen bedrag in. Geldig voor elke wandeltocht.',
+            'Or enter a custom amount (€25 – €5,000)': 'Of voer een eigen bedrag in (€25 – €5.000)',
+            'Voucher value': 'Waarde cadeaubon',
+            # Trust badges
+            'Valid for 3 Years': '3 jaar geldig',
+            'Plenty of time to plan': 'Genoeg tijd om te plannen',
+            'Instant Delivery': 'Direct bezorgd',
+            'Sent by email immediately': 'Direct per e-mail bezorgd',
+            'Any Tour, Any Date': 'Elke tocht, elke datum',
+            'Full flexibility to choose': 'Volledige keuzevrijheid',
+            # Step 2: Your Details
+            'Your Details': 'Uw gegevens',
+            "We need your details for the purchase confirmation and receipt.":
+                'We hebben uw gegevens nodig voor de aankoopbevestiging en bon.',
+            'First Name': 'Voornaam',
+            'Last Name': 'Achternaam',
+            'placeholder="Your first name"': 'placeholder="Uw voornaam"',
+            'placeholder="Your last name"': 'placeholder="Uw achternaam"',
+            '>Email<': '>E-mail<',
+            'placeholder="you@example.com"': 'placeholder="u@voorbeeld.nl"',
+            'Your receipt and a copy of the voucher will be sent here.':
+                'Uw bon en een kopie van de cadeaubon worden hierheen gestuurd.',
+            '>Phone<': '>Telefoon<',
+            '(optional)': '(optioneel)',
+            # Step 3: Recipient
+            'Recipient Details': 'Gegevens ontvanger',
+            "Who is this gift voucher for? We'll email them the voucher directly.":
+                'Voor wie is deze cadeaubon? We sturen de bon direct per e-mail.',
+            'Recipient First Name': 'Voornaam ontvanger',
+            'Recipient Last Name': 'Achternaam ontvanger',
+            "placeholder=\"Recipient's first name\"": 'placeholder="Voornaam van de ontvanger"',
+            "placeholder=\"Recipient's last name\"": 'placeholder="Achternaam van de ontvanger"',
+            'Recipient Email': 'E-mail ontvanger',
+            'placeholder="recipient@example.com"': 'placeholder="ontvanger@voorbeeld.nl"',
+            'The voucher will be emailed directly to this address.':
+                'De cadeaubon wordt direct naar dit adres gestuurd.',
+            'Personal Message': 'Persoonlijk bericht',
+            '(optional, max 300 chars)': '(optioneel, max 300 tekens)',
+            'placeholder="e.g. Happy Birthday! Enjoy your adventure in Ireland..."':
+                'placeholder="bijv. Gefeliciteerd! Geniet van je avontuur in Ierland..."',
+            'Delivery Date': 'Bezorgdatum',
+            '(optional — defaults to now)': '(optioneel — standaard is nu)',
+            'Schedule for a birthday or special occasion. Leave blank to send immediately.':
+                'Plan de bezorging voor een verjaardag of speciale gelegenheid. Laat leeg om direct te versturen.',
+            # Step 4: Review & Payment
+            'Review Your Gift Voucher': 'Controleer uw cadeaubon',
+            'Voucher Amount': 'Bedrag cadeaubon',
+            'Purchased By': 'Gekocht door',
+            '>Recipient<': '>Ontvanger<',
+            'Payment': 'Betaling',
+            'Your payment is securely processed by Stripe. We never store your card details.':
+                'Uw betaling wordt veilig verwerkt door Stripe. We slaan uw kaartgegevens niet op.',
+            'Secured by Stripe': 'Beveiligd door Stripe',
+            '256-bit encryption': '256-bits encryptie',
+            '>Pay <': '>Betaal <',
+            'Processing your payment...': 'Uw betaling wordt verwerkt...',
+            # Success
+            'Voucher Purchased!': 'Cadeaubon gekocht!',
+            'Your gift voucher has been created and will be emailed to the recipient.':
+                'Uw cadeaubon is aangemaakt en wordt per e-mail naar de ontvanger gestuurd.',
+            'Voucher Code': 'Code cadeaubon',
+            'Value:': 'Waarde:',
+            'A confirmation email with the voucher details has been sent to both you and the recipient.':
+                'Een bevestigingsmail met de gegevens van de cadeaubon is naar u en de ontvanger gestuurd.',
+            'Browse Walking Holidays': 'Wandelvakanties bekijken',
+            'Buy Another Voucher': 'Nog een bon kopen',
+            # Navigation buttons
+            '>Continue<': '>Doorgaan<',
+            'Continue to Payment': 'Doorgaan naar betaling',
+            '>Back<': '>Terug<',
+            '> Back': '> Terug',
+            # JS strings
+            "locale: 'en'": "locale: 'nl'",
+            "source: 'website'": "source: 'website-nl'",
+            "language: 'en'": "language: 'nl'",
+            "Could not create payment. Please try again.": "Betaling kon niet worden aangemaakt. Probeer het opnieuw.",
+            "Payment confirmed but could not activate voucher. Please contact us.":
+                "Betaling bevestigd, maar de cadeaubon kon niet worden geactiveerd. Neem contact met ons op.",
+        }
+    }
+
+    replacements = GV_TRANSLATIONS.get(lang, {})
     for find_text, replace_text in replacements.items():
         if find_text != replace_text:
             html = html.replace(find_text, replace_text)
@@ -4736,6 +4936,34 @@ def post_process_html(html):
             html
         )
 
+    # 10b. Add "Gift Vouchers" link to footer Quick Links and desktop nav
+    gv_labels = {'en': 'Gift Vouchers', 'de': 'Geschenkgutscheine', 'nl': 'Cadeaubonnen'}
+    gv_slugs = {'en': '/gift-vouchers', 'de': '/geschenkgutscheine', 'nl': '/cadeaubonnen'}
+    gv_label = gv_labels.get(page_lang, 'Gift Vouchers')
+    gv_slug = gv_slugs.get(page_lang, '/gift-vouchers')
+    gv_footer_li = f'<li><a href="{gv_slug}" class="hover:text-primary transition-colors">{gv_label}</a></li>'
+    # Footer: insert after Blog link (first occurrence in footer Quick Links)
+    if gv_slug not in html or f'>{gv_label}<' not in html:
+        blog_footer_patterns = [
+            'transition-colors">Blog</a></li>',
+        ]
+        for bfp in blog_footer_patterns:
+            if bfp in html:
+                html = html.replace(bfp, f'{bfp}\n                    {gv_footer_li}', 1)
+                break
+    # Desktop nav: add Gift Vouchers icon-link before Book Now CTA button
+    gv_nav_link = f'<a href="{gv_slug}" class="font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-base">redeem</span> {gv_label}</a>'
+    if 'redeem' not in html:
+        cta_pattern = f'<a href="{book_now_slug}" class="bg-primary'
+        if cta_pattern in html:
+            html = html.replace(cta_pattern, f'{gv_nav_link}\n            {cta_pattern}', 1)
+    # Mobile menu: add Gift Vouchers link before the Book Now button
+    gv_mobile_link = f'<a href="{gv_slug}" class="block py-3 font-semibold text-primary border-b border-slate-100">{gv_label}</a>'
+    mobile_cta = f'<a href="{book_now_slug}" class="block mt-4 bg-primary'
+    if gv_slug not in html.split('mobileMenu')[1] if 'mobileMenu' in html else '':
+        if mobile_cta in html:
+            html = html.replace(mobile_cta, f'{gv_mobile_link}\n        {mobile_cta}', 1)
+
     # Strip .html extensions from all internal links (clean URLs)
     html = strip_html_extensions(html)
 
@@ -4965,6 +5193,7 @@ def build_static_pages(lang, translations):
         'ancient-east',
         'mountains-of-mourne',
         'checkout',
+        'gift-vouchers',
         'privacy-policy',
         'terms-and-conditions',
         'best-hiking-trails-ireland',
@@ -5032,6 +5261,8 @@ def build_static_pages(lang, translations):
         # Apply checkout-specific form translations (labels, JS, room types, alerts)
         if page_slug == 'checkout':
             html = translate_checkout_form(html, lang)
+        if page_slug == 'gift-vouchers':
+            html = translate_gift_voucher_form(html, lang)
 
         # Update page title if provided
         page_title = pt.get('page_title')
@@ -5058,7 +5289,7 @@ def build_static_pages(lang, translations):
                 translated_ps = translate_static_slug(ps, lang)
                 html = html.replace(f'href="{ps}"', f'href="/{translated_ps}"')
         # Ensure critical links are always translated even without page_translations
-        for fallback_slug in ['contact', 'about', 'how-it-works', 'tour-grading', 'tailor-made', 'faq', 'self-guided-walking-holidays-ireland']:
+        for fallback_slug in ['contact', 'about', 'how-it-works', 'tour-grading', 'tailor-made', 'faq', 'self-guided-walking-holidays-ireland', 'gift-vouchers']:
             translated_fb = translate_static_slug(fallback_slug, lang)
             if translated_fb != fallback_slug:
                 html = html.replace(f'href="{fallback_slug}"', f'href="/{translated_fb}"')

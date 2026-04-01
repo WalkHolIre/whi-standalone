@@ -94,6 +94,7 @@ const SLUG_MAP = {
     '/best-hiking-trails-ireland': '/beste-wanderwege-irland',
     '/hiking-ireland': '/wandern-irland',
     '/checkout': '/buchung',
+    '/gift-vouchers': '/geschenkgutscheine',
   },
   '/nl': {
     '/about': '/over-ons',
@@ -115,6 +116,7 @@ const SLUG_MAP = {
     '/best-hiking-trails-ireland': '/beste-wandelpaden-ierland',
     '/hiking-ireland': '/wandelen-ierland',
     '/checkout': '/boeken',
+    '/gift-vouchers': '/cadeaubonnen',
   },
 };
 
