@@ -85,6 +85,16 @@ const DOMAIN_LANG = {
   'www.wandelvakantieierland.nl': '/nl',
 };
 
+/**
+ * Canonical (non-www) hostname for each domain.
+ * www → non-www redirects prevent duplicate content across all 3 sites.
+ */
+const WWW_CANONICAL = {
+  'www.walkingholidayireland.com': 'walkingholidayireland.com',
+  'www.walkingholidayireland.de':  'walkingholidayireland.de',
+  'www.wandelvakantieierland.nl':  'wandelvakantieierland.nl',
+};
+
 // Paths that are shared across all languages (served from root)
 const SHARED_PREFIXES = [
   '/css/', '/js/', '/images/', '/admin/', '/fonts/',
@@ -288,6 +298,18 @@ function translateSlug(cleanPath, langPrefix) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+
+    // ── www → non-www redirect (301) ─────────────────────────
+    // Prevents duplicate content across all 3 domains
+    const canonical = WWW_CANONICAL[url.hostname];
+    if (canonical) {
+      const target = `${url.protocol}//${canonical}${url.pathname}${url.search}${url.hash}`;
+      return new Response(null, {
+        status: 301,
+        headers: { 'Location': target },
+      });
+    }
+
     const langPrefix = DOMAIN_LANG[url.hostname] || '';
 
     // ── English domain or no mapping ──────────────────────────
