@@ -15,8 +15,6 @@
         header.site-header { top:0; }
         @media(min-width:768px){ header.site-header{ top:37px; } }
 
-        .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
-
         /* Step indicator */
         .step-dot { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 14px; transition: all 0.3s; }
         .step-dot.active { background-color: #F17E00; color: white; }
@@ -28,12 +26,6 @@
 
         .step-panel { display: none; }
         .step-panel.active { display: block; }
-
-        /* Room type cards */
-        .room-option { cursor: pointer; border: 2px solid #e5e7eb; border-radius: 8px; padding: 10px 14px; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
-        .room-option:hover { border-color: #F17E00; background-color: #fff7ed; }
-        .room-option.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
-        .room-option .bed-icons { font-size: 20px; line-height: 1; }
 
         /* Sidebar feature image */
         .sidebar-feature-img { width: 100%; height: 180px; object-fit: cover; border-radius: 8px; }
@@ -163,12 +155,10 @@
 </header>
 
 <main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
-    <!-- Hero Section -->
-    <div class="hero-band text-white py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 class="text-3xl md:text-4xl font-bold mb-2">Book Your Walking Holiday</h1>
-            <p class="text-base md:text-lg opacity-90">Sichern Sie sich Ihre Termine mit einer Anzahlung von 25%. Restzahlung 42 Tage vor Abreise.</p>
-        </div>
+    <!-- Page Heading -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2">
+        <h1 class="text-2xl md:text-3xl font-bold text-slate-900">Book Your Walking Holiday</h1>
+        <p class="text-sm md:text-base text-gray-500 mt-1">Sichern Sie sich Ihre Termine mit einer Anzahlung von 25%. Restzahlung 42 Tage vor Abreise.</p>
     </div>
 
     <!-- Mobile Summary Banner (sticky on mobile) -->
@@ -412,31 +402,6 @@
 
                     <!-- ==================== STEP 4: Payment ==================== -->
                     <div class="step-panel" id="step4">
-                        <!-- Order Review -->
-                        <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
-                            <h3 class="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
-                                <span class="material-symbols-outlined text-primary">receipt_long</span>
-                                Bestellübersicht
-                            </h3>
-                            <div class="space-y-2 text-sm">
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Tour</span><span class="font-medium text-gray-900" id="reviewTour">-</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Reisedaten</span><span class="font-medium text-gray-900" id="reviewDates">-</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Reisende</span><span class="font-medium text-gray-900" id="reviewWalkers">2</span></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Preis pro Person</span><span class="font-medium text-gray-900">€<span id="reviewPpp">0</span></span></div>
-                                <div class="border-t border-gray-200 my-1"></div>
-                                <div class="flex justify-between py-1"><span class="text-gray-500">Zwischensumme</span><span class="font-medium">€<span id="reviewSubtotal">0</span></span></div>
-                                <div id="reviewExtrasRow" class="hidden"><div class="flex justify-between py-1"><span class="text-gray-500">Extras</span><span class="font-medium text-gray-900" id="reviewExtrasAmt">€0</span></div></div>
-                                <div id="reviewVoucherRow" class="hidden"><div class="flex justify-between py-1"><span class="text-green-600">Gutschein-Rabatt</span><span class="font-medium text-green-600" id="reviewVoucherAmt">-€0</span></div></div>
-                                <div class="border-t-2 border-primary my-1"></div>
-                                <div class="flex justify-between py-2 text-lg font-bold"><span class="text-slate-800">Gesamt</span><span class="text-primary" id="reviewTotal">€0</span></div>
-                                <div class="bg-orange-50 border border-orange-200 rounded-lg p-3 flex justify-between items-center">
-                                    <span class="font-semibold text-orange-900">Anzahlung (25%)</span>
-                                    <span class="font-bold text-orange-700 text-lg" id="reviewDeposit">€0</span>
-                                </div>
-                                <p class="text-xs text-gray-500 mt-2" id="paymentText">Restzahlung 42 Tage vor Abreise.</p>
-                            </div>
-                        </div>
-
                         <!-- T&Cs and Mailing List -->
                         <div class="bg-white border border-gray-200 rounded-xl p-6 mb-5 shadow-sm">
                             <div class="space-y-4">
@@ -459,32 +424,34 @@
                                 Zahlungsmethode
                             </h3>
 
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-                                <!-- Stripe / Card Payment (Default) -->
-                                <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')">
-                                    <div class="flex items-center gap-3 mb-2">
-                                        <!-- Stripe logo -->
-                                        <svg viewBox="0 0 60 25" class="h-7 flex-shrink-0" xmlns="http://www.w3.org/2000/svg"><path fill="#635BFF" d="M5 10.2c0-.7.6-1 1.5-1 1.4 0 3.1.4 4.5 1.2V6.7C9.5 6.1 8 5.8 6.5 5.8 2.6 5.8 0 7.8 0 11c0 5 6.8 4.2 6.8 6.3 0 .8-.7 1.1-1.7 1.1-1.5 0-3.4-.6-4.9-1.4v3.7c1.7.7 3.3 1 4.9 1 4 0 6.8-2 6.8-5.2C12 11 5 11.9 5 10.2zM16 3.3l-4.5 1V7l4.5-1V3.3zm0 3.4h-4.5v14h4.5v-14zm5.3 1.3l-.3-1.3H17v14h4.5v-9.5c1.1-1.4 2.9-1.1 3.4-1v-4.1c-.6-.2-2.7-.6-3.6 1.9zm7.5-1.9c-1.8 0-2.9.8-3.5 1.4l-.2-1.1h-4v18.7l4.5-1v-4.5c.7.5 1.6 1.2 3.2 1.2 3.2 0 6.2-2.6 6.2-8.3 0-5.2-3-8.4-6.2-8.4zm-1.1 12.8c-1.1 0-1.7-.4-2.1-.9v-7.2c.5-.5 1.1-1 2.2-1 1.7 0 2.8 1.9 2.8 4.5 0 2.7-1.1 4.6-2.9 4.6zm14.7-12.6c-4.5 0-7.3 3.4-7.3 8.3 0 5.5 3.3 8.2 7.9 8.2 2.3 0 4-.5 5.3-1.2v-3.4c-1.3.7-2.8 1.1-4.7 1.1-1.9 0-3.5-.7-3.7-2.9h9.3c0-.2 0-1.3 0-1.7 0-5-2.4-8.4-6.8-8.4zm-2.7 6.6c0-2.2 1.3-3.1 2.5-3.1 1.2 0 2.4.9 2.4 3.1h-4.9z"/></svg>
-                                        <span class="bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded">STANDARD</span>
+                            <div class="grid grid-cols-3 gap-3 mb-6">
+                                <!-- Card Payment -->
+                                <div class="payment-method selected" id="stripeMethod" onclick="selectPayment('stripe')" style="text-align:center;padding:16px 8px;">
+                                    <div style="margin-bottom:8px;">
+                                        <span class="material-symbols-outlined" style="font-size:28px;color:#210747;">credit_card</span>
                                     </div>
                                     <p class="font-semibold text-slate-800 text-sm">Kartenzahlung</p>
-                                    <div class="flex items-center gap-1.5 mt-1.5">
-                                        <!-- Visa -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><path d="M19.5 21h-2.7l1.7-10.5h2.7L19.5 21zm11.2-10.2c-.5-.2-1.4-.4-2.4-.4-2.7 0-4.5 1.4-4.6 3.5 0 1.5 1.4 2.3 2.4 2.8 1 .5 1.4.9 1.4 1.3 0 .7-.8 1-1.6 1-1.1 0-1.6-.2-2.5-.5l-.3-.2-.4 2.2c.6.3 1.8.5 3 .5 2.8 0 4.7-1.4 4.7-3.6 0-1.2-.7-2.1-2.3-2.9-.9-.5-1.5-.8-1.5-1.3 0-.4.5-.9 1.5-.9.9 0 1.5.2 2 .4l.2.1.4-2zm6.8-.3h-2.1c-.6 0-1.1.2-1.4.8l-4 9.7h2.8l.6-1.5h3.5l.3 1.5h2.5l-2.2-10.5zm-3.4 6.8l1.1-3c0-.1.2-.6.4-1l.2.9.6 3.1h-2.3zM16 10.5l-2.5 7.2-.3-1.3c-.5-1.6-2-3.4-3.7-4.3l2.4 9h2.8l4.2-10.5H16z" fill="#1A1F71"/><path d="M11 10.5H6.8l-.1.3c3.4.9 5.6 2.9 6.5 5.4l-.9-4.7c-.2-.6-.7-.9-1.3-1z" fill="#F9A533"/></svg>
-                                        <!-- Mastercard -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#fff" stroke="#e5e7eb"/><circle cx="19" cy="16" r="8" fill="#EB001B"/><circle cx="29" cy="16" r="8" fill="#F79E1B"/><path d="M24 10.3a8 8 0 0 1 0 11.4 8 8 0 0 1 0-11.4z" fill="#FF5F00"/></svg>
-                                        <!-- Amex -->
-                                        <svg viewBox="0 0 48 32" class="h-5 rounded" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="32" rx="4" fill="#016FD0"/><text x="24" y="18" text-anchor="middle" fill="white" font-size="7" font-weight="bold" font-family="sans-serif">AMEX</text></svg>
+                                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:3px;margin-top:8px;">
+                                        <span style="background:#1A1F71;color:white;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;">VISA</span>
+                                        <span style="background:#EB001B;color:white;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;">MC</span>
+                                        <span style="background:#016FD0;color:white;border-radius:3px;padding:1px 6px;font-size:9px;font-weight:700;">AMEX</span>
                                     </div>
                                 </div>
                                 <!-- PayPal -->
-                                <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')">
-                                    <div class="mb-2">
-                                        <!-- PayPal logo -->
-                                        <svg viewBox="0 0 100 26" class="h-7" xmlns="http://www.w3.org/2000/svg"><path d="M12.5 3.4h-7c-.5 0-.9.3-1 .8L1.7 22c-.1.4.2.7.6.7h3.3c.5 0 .9-.3 1-.8l.9-5.5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.4-1.9zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#003087"/><path d="M35.4 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8l1.8-11.1c.1-.3-.3-.6-.7-.6zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#003087"/><path d="M55.4 10h-3.4c-.3 0-.6.2-.8.4l-4.4 6.5-1.9-6.3c-.1-.4-.5-.6-.9-.6h-3.3c-.4 0-.7.4-.6.8l3.5 10.3-3.3 4.7c-.3.4 0 1 .5 1h3.4c.3 0 .6-.2.8-.4l10.7-15.5c.3-.4 0-.9-.3-.9z" fill="#003087"/><path d="M67 3.4h-7c-.5 0-.9.3-1 .8l-2.8 17.8c-.1.4.2.7.6.7h3.6c.3 0 .6-.3.7-.6l.8-5c0-.5.5-.8 1-.8h2.2c4.6 0 7.3-2.2 8-6.7.3-2 0-3.5-.8-4.6-1-1.2-2.7-1.9-5.3-1.6zm.8 6.6c-.4 2.5-2.2 2.5-4 2.5h-1l.7-4.5c0-.3.3-.5.6-.5h.5c1.2 0 2.4 0 3 .7.3.4.4 1.1.2 1.8z" fill="#0070BA"/><path d="M89.9 10h-3.4c-.3 0-.5.2-.6.5l-.1.9-.2-.3c-.7-1-2.3-1.4-3.8-1.4-3.6 0-6.6 2.7-7.2 6.5-.3 1.9.1 3.7 1.2 5 1 1.1 2.4 1.6 4.1 1.6 2.9 0 4.5-1.9 4.5-1.9l-.2.9c-.1.4.2.7.6.7h3c.5 0 .9-.3 1-.8L90.6 11c0-.5-.3-.8-.7-1zm-4.5 6.3c-.3 1.9-1.8 3.1-3.7 3.1-1 0-1.7-.3-2.2-.9-.5-.6-.7-1.4-.5-2.3.3-1.8 1.8-3.1 3.6-3.1 1 0 1.7.3 2.2.9.5.6.7 1.5.6 2.3z" fill="#0070BA"/><path d="M92.6 3.9l-2.9 18c-.1.4.2.7.6.7h2.9c.5 0 .9-.3 1-.8l2.8-17.8c.1-.4-.2-.7-.6-.7h-3.2c-.3 0-.5.2-.6.6z" fill="#0070BA"/></svg>
+                                <div class="payment-method" id="paypalMethod" onclick="selectPayment('paypal')" style="text-align:center;padding:16px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                    <div style="margin-bottom:8px;">
+                                        <span style="font-size:24px;font-weight:800;font-style:italic;letter-spacing:-0.5px;"><span style="color:#253B80;">Pay</span><span style="color:#179BD7;">Pal</span></span>
                                     </div>
                                     <p class="font-semibold text-slate-800 text-sm">PayPal</p>
-                                    <p class="text-xs text-gray-500 mt-0.5">Bezahlen Sie mit Ihrem PayPal-Konto</p>
+                                    <p style="font-size:10px;color:#6b7280;margin-top:4px;">Pay with your account</p>
+                                </div>
+                                <!-- Bank Transfer -->
+                                <div class="payment-method" id="bankMethod" onclick="selectPayment('bank_transfer')" style="text-align:center;padding:16px 8px;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+                                    <div style="margin-bottom:8px;">
+                                        <span class="material-symbols-outlined" style="font-size:28px;color:#210747;">account_balance</span>
+                                    </div>
+                                    <p class="font-semibold text-slate-800 text-sm">Bank Transfer</p>
+                                    <p style="font-size:10px;color:#6b7280;margin-top:4px;">Pay by bank transfer</p>
                                 </div>
                             </div>
 
@@ -505,6 +472,19 @@
                             <div id="paypalPanel" class="hidden">
                                 <div id="paypal-button-container" class="mb-3"></div>
                                 <p class="text-xs text-center text-gray-500">Sie werden zu PayPal weitergeleitet, um die Zahlung abzuschließen.</p>
+                            </div>
+
+                            <!-- Bank Transfer Panel -->
+                            <div id="bankPanel" class="hidden">
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-3">
+                                    <p class="text-sm text-blue-900 font-semibold mb-2">Bank Transfer Details</p>
+                                    <p class="text-sm text-blue-800 mb-1">We'll email you our bank details and booking reference after you submit. Transfer the deposit within 48 hours to confirm your booking.</p>
+                                    <p class="text-xs text-blue-600 mt-2">IBAN and BIC details will be included in the confirmation email.</p>
+                                </div>
+                                <button type="button" id="bankPayBtn" onclick="handleBankTransfer()" class="w-full bg-primary hover:bg-primary/80 text-white py-3.5 rounded-lg font-semibold text-lg transition hover:shadow-lg">
+                                    <span class="material-symbols-outlined text-sm align-middle mr-1">account_balance</span>
+                                    Request Bank Transfer — €<span id="bankBtnAmount">0</span>
+                                </button>
                             </div>
 
                             <!-- Payment Info -->
@@ -629,7 +609,7 @@
                 <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
                 <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
                     <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                    <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.instagram.com/walkingholidayireland//" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
                     <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 </div>
             </div>
@@ -713,10 +693,10 @@
     ];
 
     const ROOM_TYPES = [
-        { id: 'single', label: 'Einzelzimmer', icon: '🛏️', desc: 'Einzelbett' },
-        { id: 'double', label: 'Doppelzimmer', icon: '🛏️🛏️', desc: 'Doppel-/Zweibettzimmer' },
-        { id: 'triple', label: 'Dreibettzimmer', icon: '🛏️+🛏️', desc: '2 Einzelbetten' },
-        { id: 'family', label: 'Familienzimmer', icon: '🛏️🛏️+🛏️', desc: 'Doppel + Einzelbett' },
+        { id: 'single', label: 'Single Room', desc: '1x Single bed' },
+        { id: 'double', label: 'Double Bedroom', desc: '1x Double bed' },
+        { id: 'twin', label: 'Twin Bedroom', desc: '2x Single beds' },
+        { id: 'family', label: 'Family Room', desc: '1x Double bed + 1x Single bed' },
     ];
 
     // ─────────── State ───────────
@@ -1086,18 +1066,13 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-xs font-medium text-gray-500 mb-2">Room type</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                    <label class="block text-xs font-medium text-gray-500 mb-1">Select room</label>
+                    <select id="travRoom_${i}" onchange="selectRoom(${i}, this.value)"
+                        class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:border-primary focus:ring-primary">
                         ${ROOM_TYPES.map(r => `
-                            <div class="room-option ${t.room === r.id ? 'selected' : ''}" onclick="selectRoom(${i}, '${r.id}')">
-                                <span class="bed-icons">${r.icon}</span>
-                                <div>
-                                    <div class="text-xs font-semibold text-slate-800">${r.label}</div>
-                                    <div class="text-[10px] text-gray-400">${r.desc}</div>
-                                </div>
-                            </div>
+                            <option value="${r.id}" ${t.room === r.id ? 'selected' : ''}>${r.label} — ${r.desc}</option>
                         `).join('')}
-                    </div>
+                    </select>
                 </div>
             </div>
         `).join('');
@@ -1222,7 +1197,7 @@
 
         // Pay button
         document.getElementById('payBtnAmount').textContent = deposit.toLocaleString();
-        document.getElementById('paymentText').textContent = `You'll be charged €${deposit.toLocaleString()} (25% deposit). Balance of €${balance.toLocaleString()} due 42 days before departure.`;
+        const ptEl = document.getElementById('paymentText'); if (ptEl) ptEl.textContent = `You'll be charged €${deposit.toLocaleString()} (25% deposit). Balance of €${balance.toLocaleString()} due 42 days before departure.`;
     }
 
     function resetPricing() {
@@ -1259,27 +1234,15 @@
         const total = Math.max(0, basePrice + extrasTotal - voucherDiscount);
         const deposit = Math.round(total * 0.25 * 100) / 100;
 
-        document.getElementById('reviewTour').textContent = currentTour.name;
-        document.getElementById('reviewDates').textContent = datesDisplay;
-        document.getElementById('reviewWalkers').textContent = walkerCount;
-        document.getElementById('reviewPpp').textContent = currentTour.price.toLocaleString();
-        document.getElementById('reviewSubtotal').textContent = basePrice.toLocaleString();
-        document.getElementById('reviewTotal').textContent = `€${total.toLocaleString()}`;
-        document.getElementById('reviewDeposit').textContent = `€${deposit.toLocaleString()}`;
-
-        if (extrasTotal > 0) {
-            document.getElementById('reviewExtrasRow').classList.remove('hidden');
-            document.getElementById('reviewExtrasAmt').textContent = `€${extrasTotal.toLocaleString()}`;
-        } else {
-            document.getElementById('reviewExtrasRow').classList.add('hidden');
-        }
-
-        if (voucherDiscount > 0) {
-            document.getElementById('reviewVoucherRow').classList.remove('hidden');
-            document.getElementById('reviewVoucherAmt').textContent = `-€${voucherDiscount.toLocaleString()}`;
-        } else {
-            document.getElementById('reviewVoucherRow').classList.add('hidden');
-        }
+        // Review panel removed (sidebar has this info) — kept IDs safe
+        const _s = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+        _s('reviewTour', currentTour.name);
+        _s('reviewDates', datesDisplay);
+        _s('reviewWalkers', walkerCount);
+        _s('reviewPpp', currentTour.price.toLocaleString());
+        _s('reviewSubtotal', basePrice.toLocaleString());
+        _s('reviewTotal', `€${total.toLocaleString()}`);
+        _s('reviewDeposit', `€${deposit.toLocaleString()}`);
     }
 
     // ─────────── Payment ───────────
@@ -1287,8 +1250,13 @@
         selectedPayment = method;
         document.getElementById('stripeMethod').classList.toggle('selected', method === 'stripe');
         document.getElementById('paypalMethod').classList.toggle('selected', method === 'paypal');
+        document.getElementById('bankMethod').classList.toggle('selected', method === 'bank_transfer');
         document.getElementById('stripePanel').classList.toggle('hidden', method !== 'stripe');
         document.getElementById('paypalPanel').classList.toggle('hidden', method !== 'paypal');
+        document.getElementById('bankPanel').classList.toggle('hidden', method !== 'bank_transfer');
+        // Update bank transfer amount
+        const bankAmt = document.getElementById('bankBtnAmount');
+        if (bankAmt) bankAmt.textContent = document.getElementById('payBtnAmount').textContent;
     }
 
     function validateBeforePayment() {
@@ -1416,6 +1384,36 @@
         }
     }
 
+    async function handleBankTransfer() {
+        if (!validateBeforePayment()) return;
+
+        const btn = document.getElementById('bankPayBtn');
+        btn.disabled = true;
+        btn.innerHTML = '<span class="material-symbols-outlined text-sm align-middle mr-1 animate-spin">progress_activity</span> Processing...';
+
+        try {
+            const payload = getBookingPayload('bank_transfer');
+            const res = await fetch(EDGE_FN_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const result = await res.json();
+
+            if (!res.ok || !result.success) {
+                throw new Error(result.error || 'Booking request failed');
+            }
+
+            showBookingSuccess(result.booking_reference);
+            btn.style.display = 'none';
+        } catch (err) {
+            console.error('Bank transfer request error:', err);
+            showBookingError('Booking request failed: ' + err.message);
+            btn.disabled = false;
+            btn.innerHTML = `<span class="material-symbols-outlined text-sm align-middle mr-1">account_balance</span> Request Bank Transfer — €${document.getElementById('bankBtnAmount').textContent}`;
+        }
+    }
+
     function initPayPal() {
         if (typeof paypal === 'undefined') {
             setTimeout(initPayPal, 1000);
@@ -1479,6 +1477,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});
 </script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
