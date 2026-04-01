@@ -23,7 +23,6 @@ const I18N = {
     startDate: 'Start date',
     numberOfWalkers: 'Number of walkers',
     singleRoomSupplement: 'Single room supplement',
-    extraRestDays: 'Extra rest days',
     firstName: 'First name',
     lastName: 'Last name',
     email: 'Email',
@@ -58,7 +57,7 @@ const I18N = {
     subtotal: 'Subtotal',
     singleTravellerSurcharge: 'Single traveller supplement',
     singleOccupancySurcharge: 'Single room supplement',
-    extraDays: 'Extra days',
+    // extraDays removed — rest days now handled as tour extras
     extras: 'Extras',
     total: 'Total',
     deposit: 'Deposit',
@@ -157,7 +156,6 @@ const I18N = {
     startDate: 'Startdatum',
     numberOfWalkers: 'Anzahl der Wanderer',
     singleRoomSupplement: 'Einzelzimmerzuschlag',
-    extraRestDays: 'Zusätzliche Ruhetage',
     firstName: 'Vorname',
     lastName: 'Nachname',
     email: 'E-Mail',
@@ -192,7 +190,6 @@ const I18N = {
     subtotal: 'Zwischensumme',
     singleTravellerSurcharge: 'Einzelreisenden-Zuschlag',
     singleOccupancySurcharge: 'Einzelzimmerzuschlag',
-    extraDays: 'Zusätzliche Tage',
     extras: 'Extras',
     total: 'Gesamt',
     deposit: 'Anzahlung',
@@ -291,7 +288,6 @@ const I18N = {
     startDate: 'Startdatum',
     numberOfWalkers: 'Aantal wandelaars',
     singleRoomSupplement: 'Eenpersoonskamertoeslag',
-    extraRestDays: 'Extra rustdagen',
     firstName: 'Voornaam',
     lastName: 'Achternaam',
     email: 'E-mail',
@@ -326,7 +322,6 @@ const I18N = {
     subtotal: 'Subtotaal',
     singleTravellerSurcharge: 'Toeslag alleenreiziger',
     singleOccupancySurcharge: 'Eenpersoonskamertoeslag',
-    extraDays: 'Extra dagen',
     extras: 'Extra\'s',
     total: 'Totaal',
     deposit: 'Aanbetaling',
@@ -431,7 +426,6 @@ let bookingState = {
   startDate: null,
   walkers: 1,
   singleRoom: false,
-  extraDays: 0,
   selectedExtras: [],
 
   // Step 2
@@ -590,10 +584,10 @@ function validateStartDate(dateStr, tour) {
   return { valid: true };
 }
 
-function calculateEndDate(startDateStr, extraDaysCount) {
+function calculateEndDate(startDateStr) {
   const start = new Date(startDateStr + 'T00:00:00');
   const end = new Date(start);
-  end.setDate(end.getDate() + bookingState.tour.duration_days - 1 + extraDaysCount);
+  end.setDate(end.getDate() + bookingState.tour.duration_days - 1);
   return end.toISOString().split('T')[0];
 }
 
@@ -624,7 +618,6 @@ function calcPricing() {
   const tour = bookingState.tour;
   const walkers = bookingState.walkers;
   const singleRoom = bookingState.singleRoom;
-  const extraDaysCount = bookingState.extraDays;
   const selectedExtras = bookingState.selectedExtras;
 
   // Base price
@@ -640,12 +633,6 @@ function calcPricing() {
   let singleOccupancySurcharge = 0;
   if (singleRoom && walkers >= 2 && tour.single_occupancy_surcharge) {
     singleOccupancySurcharge = tour.single_occupancy_surcharge;
-  }
-
-  // Extra days
-  let extraDaysCost = 0;
-  if (extraDaysCount > 0 && tour.extra_day_price_eur) {
-    extraDaysCost = tour.extra_day_price_eur * extraDaysCount * walkers;
   }
 
   // Extras
@@ -665,7 +652,7 @@ function calcPricing() {
     // poa: skip, price is 0
   });
 
-  const subtotal = base + singleTravellerSurcharge + singleOccupancySurcharge + extraDaysCost + extrasTotal;
+  const subtotal = base + singleTravellerSurcharge + singleOccupancySurcharge + extrasTotal;
   const depositPercent = bookingState.settings?.deposit_percent || 25;
   const depositAmount = Math.round((subtotal * (depositPercent / 100)) * 100) / 100;
   const balanceDue = subtotal - depositAmount;
@@ -674,7 +661,6 @@ function calcPricing() {
     base,
     singleTravellerSurcharge,
     singleOccupancySurcharge,
-    extraDaysCost,
     extrasTotal,
     subtotal,
     depositAmount,
@@ -1035,7 +1021,7 @@ function renderStep2() {
         <div class="bm-form-group">
           <label class="bm-label" for="bm-lead-email">${t('email')} <span style="color: #ef4444;">*</span></label>
           <input type="email" id="bm-lead-email" class="bm-input"
-                 placeholder="johndoe@email.com"
+                 placeholder=""
                  value="${escapeHtml(bookingState.leadTraveller.email)}"
                  onchange="window.setLeadTraveller('email', this.value)">
         </div>
@@ -1178,29 +1164,27 @@ function renderStep3() {
   } else {
     paymentButtonsHtml = `
       <div class="bm-form-group" style="margin-top: 24px;">
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="width: 100%; padding: 16px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); color: white; cursor: pointer; text-align: center;">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <svg viewBox="0 0 24 24" style="width:20px;height:20px;" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-            <span style="font-size: 16px; font-weight: 600;">${t('payByCard')}</span>
-          </div>
-          <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-top: 8px; flex-wrap: wrap;">
-            <span style="display:inline-block;background:#1A1F71;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">VISA</span>
-            <span style="display:inline-block;background:#EB001B;color:white;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">MC</span>
-            <span style="display:inline-block;background:#fff;color:#cc2277;border:1px solid #ddd;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">iDEAL</span>
-            <span style="display:inline-block;background:#fff;color:#005B99;border:1px solid #ddd;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">Bancontact</span>
-            <span style="display:inline-block;background:#FFB3C7;color:#17120F;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;">Klarna</span>
-          </div>
-        </button>
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="width: 100%; padding: 12px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: #FFC439; color: #253B80; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-weight: 700;">
-          <span style="font-size:14px;font-weight:700;color:#253B80;">Pay</span><span style="font-size:14px;font-weight:700;color:#179BD7;">Pal</span>
-        </button>
-        <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('bank_transfer')" style="width: 100%; padding: 14px 20px; margin-bottom: 12px; border: 2px solid ${bookingState.paymentMethod === 'bank_transfer' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer; text-align: center;">
-          <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
-            <svg viewBox="0 0 24 24" style="width:20px;height:20px;" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
-            <span style="font-size: 15px; font-weight: 600;">${t('bankTransfer')}</span>
-          </div>
-          <p style="margin:4px 0 0;font-size:12px;color:#6b7280;">${t('bankTransferHint')}</p>
-        </button>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+          <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('stripe')" style="padding: 14px 8px; border: 2px solid ${bookingState.paymentMethod === 'stripe' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); color: white; cursor: pointer; text-align: center;">
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px;margin:0 auto 6px;" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <div style="font-size: 13px; font-weight: 600;">${t('payByCard')}</div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:3px;margin-top:6px;">
+              <span style="background:#1A1F71;color:white;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700;">VISA</span>
+              <span style="background:#EB001B;color:white;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700;">MC</span>
+              <span style="background:#fff;color:#cc2277;border:1px solid #ddd;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700;">iDEAL</span>
+              <span style="background:#FFB3C7;color:#17120F;border-radius:3px;padding:1px 5px;font-size:9px;font-weight:700;">Klarna</span>
+            </div>
+          </button>
+          <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('paypal')" style="padding: 14px 8px; border: 2px solid ${bookingState.paymentMethod === 'paypal' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: #FFC439; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px;margin-bottom:6px;" fill="none" stroke="#253B80" stroke-width="2"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944 2.79a.77.77 0 01.757-.646h6.427c2.134 0 3.727.535 4.728 1.59.47.494.784 1.064.938 1.695.163.668.176 1.463.038 2.432-.01.063-.02.126-.032.19-.363 2.078-1.424 3.503-2.864 4.344-1.39.81-3.09 1.152-4.86 1.152H8.677a.95.95 0 00-.939.803l-.87 5.506-.247 1.565a.497.497 0 01-.49.416z"/></svg>
+            <div style="font-size:13px;font-weight:700;"><span style="color:#253B80;">Pay</span><span style="color:#179BD7;">Pal</span></div>
+          </button>
+          <button class="bm-btn" onclick="window.setPaymentMethodAndSubmit('bank_transfer')" style="padding: 14px 8px; border: 2px solid ${bookingState.paymentMethod === 'bank_transfer' ? '#F17E00' : '#e5e7eb'}; border-radius: 10px; background: white; color: #1f2937; cursor: pointer; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <svg viewBox="0 0 24 24" style="width:22px;height:22px;margin-bottom:6px;" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg>
+            <div style="font-size: 13px; font-weight: 600;">${t('bankTransfer')}</div>
+            <div style="font-size:10px;color:#6b7280;margin-top:2px;">${t('bankTransferHint')}</div>
+          </button>
+        </div>
       </div>
     `;
   }
@@ -1211,7 +1195,7 @@ function renderStep3() {
         <h4 class="bm-summary-title">${t('stepTourExtras')}</h4>
         <p class="bm-summary-text"><strong>${escapeHtml(tour.name)}</strong></p>
         <p class="bm-summary-text">
-          ${formatDate(bookingState.startDate)} – ${formatDate(calculateEndDate(bookingState.startDate, bookingState.extraDays))}
+          ${formatDate(bookingState.startDate)} – ${formatDate(calculateEndDate(bookingState.startDate))}
         </p>
       </div>
 
@@ -1265,7 +1249,7 @@ function renderConfirmation(bookingRef, paymentMethod) {
       <h2 class="bm-confirmation-title">
         ${t('bookingConfirmed')}
       </h2>
-      <div class="bm-confirmation-ref" style="font-size:18px;padding:8px 16px;">${escapeHtml(bookingRef)}</div>
+      <div class="bm-confirmation-ref" style="font-size:28px;font-weight:700;letter-spacing:1px;padding:12px 20px;">${escapeHtml(bookingRef)}</div>
       <p class="bm-confirmation-message">
         ${isEnquiry ? t('weReceivedRequest') : t('paymentProcessing')}
       </p>
@@ -1339,15 +1323,6 @@ function renderPricingSummary(pricing) {
       <div class="bm-price-row">
         <span>${t('singleOccupancySurcharge')}</span>
         <span class="bm-price-amount">${formatCurrency(pricing.singleOccupancySurcharge)}</span>
-      </div>
-    `;
-  }
-
-  if (pricing.extraDaysCost > 0) {
-    html += `
-      <div class="bm-price-row">
-        <span>${t('extraDays')} (${bookingState.extraDays})</span>
-        <span class="bm-price-amount">${formatCurrency(pricing.extraDaysCost)}</span>
       </div>
     `;
   }
@@ -1496,19 +1471,6 @@ window.decrementWalkers = function () {
   }
 };
 
-window.incrementExtraDays = function () {
-  if (bookingState.extraDays < bookingState.tour.max_extra_days) {
-    bookingState.extraDays++;
-    renderStep1();
-  }
-};
-
-window.decrementExtraDays = function () {
-  if (bookingState.extraDays > 0) {
-    bookingState.extraDays--;
-    renderStep1();
-  }
-};
 
 window.toggleSingleRoom = function () {
   bookingState.singleRoom = !bookingState.singleRoom;
@@ -1654,7 +1616,7 @@ window.submitBooking = async function () {
   const canPayDeposit = daysUntilStart >= BALANCE_DUE_DAYS;
   const payFull = !canPayDeposit || bookingState.payFull;
 
-  const endDate = calculateEndDate(bookingState.startDate, bookingState.extraDays);
+  const endDate = calculateEndDate(bookingState.startDate);
 
   const payload = {
     tour_id: tour.id,
@@ -1663,7 +1625,6 @@ window.submitBooking = async function () {
     start_date: bookingState.startDate,
     end_date: endDate,
     number_of_walkers: bookingState.walkers,
-    extra_days: bookingState.extraDays,
     single_occupancy: bookingState.singleRoom,
     lead_traveller: {
       firstName: bookingState.leadTraveller.firstName,
@@ -1750,7 +1711,6 @@ window.openBookingModal = function () {
   bookingState.startDate = null;
   bookingState.walkers = 2;
   bookingState.singleRoom = false;
-  bookingState.extraDays = 0;
   bookingState.selectedExtras = [];
   bookingState.leadTraveller = {
     firstName: '',

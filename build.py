@@ -1358,7 +1358,6 @@ def translate_checkout_form(html, lang):
             '>Price on application<': '>Preis auf Anfrage<',
             '>Daily lunch packs<': '>Tägliche Lunchpakete<',
             '€15 per person per walking day': '€15 pro Person pro Wandertag',
-            '>Extra rest day<': '>Zusätzlicher Ruhetag<',
             '>Walking pole hire<': '>Wanderstöcke leihen<',
             '€20 per pair': '€20 pro Paar',
             '>Single supplement<': '>Einzelzimmerzuschlag<',
@@ -1509,7 +1508,6 @@ def translate_checkout_form(html, lang):
             '>Price on application<': '>Prijs op aanvraag<',
             '>Daily lunch packs<': '>Dagelijkse lunchpakketten<',
             '€15 per person per walking day': '€15 per persoon per wandeldag',
-            '>Extra rest day<': '>Extra rustdag<',
             '>Walking pole hire<': '>Wandelstokken huren<',
             '€20 per pair': '€20 per paar',
             '>Single supplement<': '>Eenpersoonskamertoeslag<',
@@ -2837,10 +2835,8 @@ def generate_booking_data_script(tour, tour_extras_by_tour, payment_settings, la
         'price_per_person_eur': float(tour.get('price_per_person_eur', 0) or 0),
         'duration_days': duration,
         'walking_days': int(walking) if walking else max(0, duration - 1),
-        'extra_day_price_eur': float(tour.get('extra_day_price_eur', 0) or 0),
         'min_walkers': int(tour.get('min_walkers', 1) or 1),
         'max_walkers': int(tour.get('max_walkers', 10) or 10),
-        'max_extra_days': int(tour.get('max_extra_days', 3) or 3),
         'best_months': tour.get('best_months') or [],
     }
 
@@ -4954,7 +4950,7 @@ def post_process_html(html):
             html
         )
 
-    # 10b. Add "Gift Vouchers" link to footer Quick Links and desktop nav
+    # 10b. Add "Gift Vouchers" link to footer Quick Links, top bar, and mobile menu
     gv_labels = {'en': 'Gift Vouchers', 'de': 'Geschenkgutscheine', 'nl': 'Cadeaubonnen'}
     gv_slugs = {'en': '/gift-vouchers', 'de': '/geschenkgutscheine', 'nl': '/cadeaubonnen'}
     gv_label = gv_labels.get(page_lang, 'Gift Vouchers')
@@ -4969,18 +4965,34 @@ def post_process_html(html):
             if bfp in html:
                 html = html.replace(bfp, f'{bfp}\n                    {gv_footer_li}', 1)
                 break
-    # Desktop nav: add Gift Vouchers icon-link before Book Now CTA button
-    gv_nav_link = f'<a href="{gv_slug}" class="font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-base">redeem</span> {gv_label}</a>'
-    if 'redeem' not in html:
-        cta_pattern = f'<a href="{book_now_slug}" class="bg-primary'
-        if cta_pattern in html:
-            html = html.replace(cta_pattern, f'{gv_nav_link}\n            {cta_pattern}', 1)
+    # Top bar: translate Gift Vouchers link text and href for DE/NL pages
+    if 'topbar-gift-voucher' in html and page_lang != 'en':
+        html = html.replace(
+            'href="/gift-vouchers" class="topbar-gift-voucher"',
+            f'href="{gv_slug}" class="topbar-gift-voucher"')
+        html = html.replace(
+            'class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Gift Vouchers</a>',
+            f'class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> {gv_label}</a>')
     # Mobile menu: add Gift Vouchers link before the Book Now button
     gv_mobile_link = f'<a href="{gv_slug}" class="block py-3 font-semibold text-primary border-b border-slate-100">{gv_label}</a>'
     mobile_cta = f'<a href="{book_now_slug}" class="block mt-4 bg-primary'
     if gv_slug not in html.split('mobileMenu')[1] if 'mobileMenu' in html else '':
         if mobile_cta in html:
             html = html.replace(mobile_cta, f'{gv_mobile_link}\n        {mobile_cta}', 1)
+
+    # 10c. Inject social media icons into footer first column (after Stripe logo)
+    social_icons_footer = """
+                <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+                    <a href="https://www.facebook.com/walkingholidayireland" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.instagram.com/walkingholidayireland" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.youtube.com/@walkingholidayireland" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>"""
+    if 'aria-label="Facebook"' not in html.split('<footer')[1] if '<footer' in html else '':
+        stripe_img_pattern = 'alt="Secure payments powered by Stripe"'
+        if stripe_img_pattern in html:
+            # Insert after the Stripe logo img tag
+            stripe_img_end = html.find('/>', html.find(stripe_img_pattern)) + 2
+            html = html[:stripe_img_end] + social_icons_footer + html[stripe_img_end:]
 
     # Strip .html extensions from all internal links (clean URLs)
     html = strip_html_extensions(html)
