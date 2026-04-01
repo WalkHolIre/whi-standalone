@@ -98,11 +98,12 @@ const I18N = {
     bedroomAssignment: 'Bedroom Assignment',
     bedroomAssignmentHint: 'Please tell us your preferred room configuration',
     bedroomPlaceholder: 'e.g. 1 double room, or 2 single rooms, or 1 twin room...',
-    roomType: 'Room Type',
-    roomSingle: 'Single',
-    roomDouble: 'Double',
-    roomTwin: 'Twin (2 single beds)',
-    roomFamily: 'Double + Single',
+    selectRoom: 'Select room',
+    roomType: 'Room',
+    roomSingle: 'Single Room — 1x Single bed',
+    roomDouble: 'Double Bedroom — 1x Double bed',
+    roomTwin: 'Twin Bedroom — 2x Single beds',
+    roomFamily: 'Family Room — 1x Double + 1x Single bed',
 
     // T&Cs and mailing
     termsAccept: 'I accept the',
@@ -230,11 +231,12 @@ const I18N = {
     bedroomAssignment: 'Zimmerzuweisung',
     bedroomAssignmentHint: 'Bitte teilen Sie uns Ihre bevorzugte Zimmerkonfiguration mit',
     bedroomPlaceholder: 'z.B. 1 Doppelzimmer, oder 2 Einzelzimmer, oder 1 Zweibettzimmer...',
-    roomType: 'Zimmertyp',
-    roomSingle: 'Einzel',
-    roomDouble: 'Doppel',
-    roomTwin: 'Twin (2 Einzelbetten)',
-    roomFamily: 'Doppel + Einzel',
+    selectRoom: 'Zimmer wählen',
+    roomType: 'Zimmer',
+    roomSingle: 'Einzelzimmer — 1x Einzelbett',
+    roomDouble: 'Doppelzimmer — 1x Doppelbett',
+    roomTwin: 'Zweibettzimmer — 2x Einzelbetten',
+    roomFamily: 'Familienzimmer — 1x Doppel + 1x Einzelbett',
 
     // T&Cs and mailing
     termsAccept: 'Ich akzeptiere die',
@@ -362,11 +364,12 @@ const I18N = {
     bedroomAssignment: 'Kamertoewijzing',
     bedroomAssignmentHint: 'Geef uw voorkeurskamerconfiguratie aan',
     bedroomPlaceholder: 'bijv. 1 tweepersoonskamer, of 2 eenpersoonskamers, of 1 tweepersoonskamer...',
-    roomType: 'Kamertype',
-    roomSingle: 'Enkel',
-    roomDouble: 'Dubbel',
-    roomTwin: 'Twin (2 eenpersoonsbedden)',
-    roomFamily: 'Dubbel + Enkel',
+    selectRoom: 'Kamer kiezen',
+    roomType: 'Kamer',
+    roomSingle: 'Eenpersoonskamer — 1x Eenpersoonsbed',
+    roomDouble: 'Tweepersoonskamer — 1x Tweepersoonsbed',
+    roomTwin: 'Twin kamer — 2x Eenpersoonsbedden',
+    roomFamily: 'Familiekamer — 1x Dubbel + 1x Eenpersoonsbed',
 
     // T&Cs and mailing
     termsAccept: 'Ik accepteer de',
@@ -937,22 +940,21 @@ function renderStep2() {
   const bedSvgFamily = '<svg viewBox="0 0 58 36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:42px;height:28px;"><rect x="2" y="6" width="32" height="24" rx="3"/><path d="M5 16h26v8H5z"/><rect x="8" y="10" width="9" height="6" rx="2"/><rect x="20" y="10" width="9" height="6" rx="2"/><line x1="2" y1="30" x2="2" y2="34"/><line x1="34" y1="30" x2="34" y2="34"/><rect x="39" y="10" width="16" height="20" rx="3"/><path d="M42 16h10v8H42z"/><rect x="43" y="12" width="8" height="4" rx="1.5"/><line x1="39" y1="30" x2="39" y2="34"/><line x1="55" y1="30" x2="55" y2="34"/></svg>';
 
   const roomTypes = [
-    { id: 'single', icon: bedSvgSingle, label: t('roomSingle') },
-    { id: 'double', icon: bedSvgDouble, label: t('roomDouble') },
-    { id: 'twin', icon: bedSvgTwin, label: t('roomTwin') },
-    { id: 'family', icon: bedSvgFamily, label: t('roomFamily') },
+    { id: 'single', label: t('roomSingle') },
+    { id: 'double', label: t('roomDouble') },
+    { id: 'twin', label: t('roomTwin') },
+    { id: 'family', label: t('roomFamily') },
   ];
+  // Short labels for summary display
+  const roomShort = { single: 'Single', double: 'Double', twin: 'Twin', family: 'Family' };
 
   function roomSelector(currentRoom, onchangeFn) {
     return `<div class="bm-form-group">
-      <label class="bm-label">${t('roomType')}</label>
-      <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-        ${roomTypes.map(r => `<button type="button" onclick="${onchangeFn}('${r.id}')"
-          style="flex: 1; min-width: 70px; padding: 10px 4px; border: 2px solid ${currentRoom === r.id ? '#F17E00' : '#e5e7eb'}; border-radius: 8px; background: ${currentRoom === r.id ? '#fff7ed' : 'white'}; cursor: pointer; text-align: center; transition: all 0.2s; color: ${currentRoom === r.id ? '#F17E00' : '#9ca3af'};">
-          <div style="display:flex;justify-content:center;">${r.icon}</div>
-          <div style="font-size: 11px; font-weight: ${currentRoom === r.id ? '700' : '500'}; color: ${currentRoom === r.id ? '#F17E00' : '#6b7280'}; margin-top: 4px;">${r.label}</div>
-        </button>`).join('')}
-      </div>
+      <label class="bm-label">${t('selectRoom')}</label>
+      <select onchange="${onchangeFn}(this.value)"
+        style="width:100%;padding:10px 14px;border:2px solid #e5e7eb;border-radius:8px;font-size:14px;font-family:inherit;color:#1f2937;background:white;cursor:pointer;appearance:auto;">
+        ${roomTypes.map(r => `<option value="${r.id}" ${currentRoom === r.id ? 'selected' : ''}>${r.label}</option>`).join('')}
+      </select>
     </div>`;
   }
 
@@ -1204,12 +1206,12 @@ function renderStep3() {
         <div style="font-size:14px;color:#374151;">
           <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #f3f4f6;">
             <span><strong>1.</strong> ${escapeHtml(bookingState.leadTraveller.firstName)} ${escapeHtml(bookingState.leadTraveller.lastName)} <span style="color:#6b7280;font-size:12px;">(${t('leadTraveller')})</span></span>
-            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${(() => { const r = bookingState.leadTraveller.room || 'double'; return r === 'single' ? t('roomSingle') : r === 'double' ? t('roomDouble') : r === 'twin' ? t('roomTwin') : t('roomFamily'); })()}</span>
+            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${roomShort[bookingState.leadTraveller.room || 'double'] || 'Double'}</span>
           </div>
           ${bookingState.additionalTravellers.map((tr, i) => `
           <div style="display:flex;justify-content:space-between;padding:4px 0;${i < bookingState.additionalTravellers.length - 1 ? 'border-bottom:1px solid #f3f4f6;' : ''}">
             <span><strong>${i + 2}.</strong> ${escapeHtml(tr.firstName || '—')} ${escapeHtml(tr.lastName || '—')}</span>
-            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${(() => { const r = tr.room || 'double'; return r === 'single' ? t('roomSingle') : r === 'double' ? t('roomDouble') : r === 'twin' ? t('roomTwin') : t('roomFamily'); })()}</span>
+            <span style="color:#6b7280;font-size:13px;">${t('roomType')}: ${roomShort[tr.room || 'double'] || 'Double'}</span>
           </div>`).join('')}
         </div>
       </div>
