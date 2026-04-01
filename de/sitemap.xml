@@ -271,6 +271,18 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.de/blog/alleine-wandern-irland-solo-wanderer</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/alleinreisende-frauen-wandern-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.de/blog/antrim-coast</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -283,7 +295,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.de/blog/ballycroy-nationalpark-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.de/blog/beste-wanderungen-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/beste-wanderungen-nordirland</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -427,6 +451,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.de/blog/sicherheitstipps-wandern-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.de/blog/slieve-league-wanderung-donegal</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -523,7 +553,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.de/blog/wandercheckliste-tageswanderung-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.de/blog/wandern-im-regen-irland-schlechtwetter-tipps</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/wandern-nahe-dublin-oeffentliche-verkehrsmittel</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -542,6 +584,12 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.de/blog/wanderurlaub-fuer-senioren-irland</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.de/blog/wanderurlaub-irland-perfektes-wanderziel</loc>
     <lastmod>2026-04-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
