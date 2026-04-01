@@ -152,11 +152,6 @@
         .hero {
             min-height: 100vh;
             background: url('images/hero/homepage-hero-800w.jpg') center/cover no-repeat;
-        }
-        @media (min-width: 1025px) {
-            .hero {
-                background-image: url('images/hero/homepage-hero.jpg');
-            }
             position: relative;
             display: flex;
             align-items: center;
@@ -164,6 +159,11 @@
             text-align: center;
             margin-top: 0;
             padding-bottom: 40px;
+        }
+        @media (min-width: 1025px) {
+            .hero {
+                background-image: url('images/hero/homepage-hero.jpg');
+            }
         }
 
         .hero::before {
@@ -850,7 +850,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Walk Ireland. <span style="color:#F17E00;">Your Way.</span></h1>
-            <p><a href="/self-guided-walking-tours" class="text-primary hover:underline font-semibold">Self-guided walking holidays</a> through Ireland's most stunning landscapes. Everything arranged. You just walk.</p>
+            <p><a href="/walking-tours" class="text-primary hover:underline font-semibold">Self-guided walking holidays</a> through Ireland's most stunning landscapes. Everything arranged. You just walk.</p>
 
             <!-- Scroll Indicator -->
             <div class="scroll-indicator mt-8 text-white">
