@@ -37,8 +37,9 @@ function withCacheHeaders(response) {
  * Paths should NOT include trailing slashes (we strip them before matching).
  */
 const LEGACY_REDIRECTS = {
-  // ── English site (old WordPress blog posts at root → /blog/) ──
+  // ── English site ──
   '': {
+    // Old WordPress blog posts at root → /blog/
     '/the-famine-roads-of-ireland': '/blog/the-famine-roads-of-ireland',
     '/difference-between-hiking-and-walking': '/blog/difference-between-hiking-and-walking',
     '/antrim-coast': '/blog/antrim-coast-walk',
@@ -50,10 +51,30 @@ const LEGACY_REDIRECTS = {
     '/solo-inn-to-inn-hiking-ireland': '/blog/solo-inn-to-inn-hiking-ireland',
     '/visit-the-nine-glens-of-antrim': '/blog/glens-of-antrim-walking',
     '/irish-national-anthem': '/blog/irish-national-anthem',
+    '/the-best-time-to-visit-ireland': '/blog/best-time-visit-ireland-hiking',
+    '/hiking-the-kerry-way': '/walking-tours/kerry-way',
+    '/tips-for-hiking-in-ireland': '/blog/tips-for-hiking-in-ireland',
+    '/the-wicklow-way-map': '/walking-area-wicklow-way',
+    // Old WordPress /self-guided-hiking-tours/ prefix
     '/self-guided-hiking-tours': '/walking-tours',
     '/self-guided-hiking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
     '/self-guided-hiking-tours/barrow-way': '/walking-tours/barrow-way',
+    '/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours': '/walking-tours/causeway-coast',
+    // Old WordPress /Walking-Tour/ prefix (case-sensitive, handled below)
+    '/Walking-Tour/cooley-and-mournes-hiking-tour': '/walking-tours/cooley-mournes',
+    '/Walking-Tour/wicklow-way-8-days': '/walking-tours/wicklow-way',
+    '/Walking-Tour/kerry-way-8-days': '/walking-tours/kerry-way',
+    '/Walking-Tour/the-dingle-way-8-days': '/walking-tours/dingle-way-walking-tour-8d',
+    '/Walking-Tour/barrow-way-8-day-hiking-tour': '/walking-tours/full-barrow-way-walking',
+    '/Walking-Tour/wicklow-way-10-days': '/walking-tours/wicklow-way-10-days',
+    // Old WordPress /walking-holiday/ prefix
+    '/walking-holiday/wicklow-way-hiking-tour': '/walking-tours/wicklow-way',
+    // Old WordPress /Hiking-location/ prefix
+    '/Hiking-location/irelands-ancient-east': '/ancient-east',
+    '/Hiking-location/wicklow-way': '/walking-area-wicklow-way',
+    // Old WordPress misc pages
     '/home/about-walking-holiday-ireland': '/about',
+    '/author/whi': '/about',
   },
   // ── Dutch site (old WordPress pages → new structure) ──
   '/nl': {
@@ -61,6 +82,8 @@ const LEGACY_REDIRECTS = {
     '/wandelen-dublin': '/blog/wandelen-dublin',
     '/individuele-wandelvakanties': '/blog/individuele-wandelvakanties',
     '/individuele-wandelvakanties/wicklow-way': '/wandeltochten/wicklow-way',
+    '/uw-reis': '/hoe-het-werkt',
+    '/travel-to-ireland': '/blog/travel-to-ireland',
   },
 };
 
@@ -75,7 +98,14 @@ function getLegacyRedirect(cleanPath, langPrefix) {
   const normalized = cleanPath.endsWith('/') && cleanPath !== '/'
     ? cleanPath.slice(0, -1)
     : cleanPath;
-  return map[normalized] || null;
+  // Exact match first (handles case-sensitive paths like /Walking-Tour/)
+  if (map[normalized]) return map[normalized];
+  // Case-insensitive fallback (old WordPress URLs had mixed case)
+  const lower = normalized.toLowerCase();
+  for (const [key, val] of Object.entries(map)) {
+    if (key.toLowerCase() === lower) return val;
+  }
+  return null;
 }
 
 const DOMAIN_LANG = {
