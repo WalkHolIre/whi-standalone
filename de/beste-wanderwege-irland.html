@@ -28,7 +28,7 @@
     <style>
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
-        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:44px;}}
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:37px;}}
         .trail-card { transition: opacity 0.3s ease, transform 0.3s ease; }
         .trail-card:hover { transform: translateY(-4px); }
         .difficulty-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
@@ -143,16 +143,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet"/>
     </noscript>
-
-
-
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/best-hiking-trails-ireland" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/beste-wanderwege-irland" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/beste-wandelpaden-ierland" />
     <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/best-hiking-trails-ireland" />
 </head>
 <body class="bg-background-light">
-<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
@@ -274,7 +270,6 @@
         <a href="so-funktioniert-es" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wie funktioniert es?</a>
         <a href="ueber-uns" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Über Uns</a>
         <a href="blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
-        <a href="/geschenkgutscheine" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/geschenkgutscheine" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/geschenkgutscheine" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
         <a href="/geschenkgutscheine" class="block py-3 font-semibold text-primary border-b border-slate-100">Geschenkgutscheine</a>
@@ -733,12 +728,6 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script src="/js/subscribe.js" defer></script>
-<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
-document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
-/* Top bar buttons */
-var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
-/* Footer language links */
-var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */

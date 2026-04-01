@@ -12,7 +12,7 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
         header.site-header { top:0; }
-        @media(min-width:768px){ header.site-header{ top:44px; } }
+        @media(min-width:768px){ header.site-header{ top:37px; } }
 
         .hero-band { background: linear-gradient(135deg, #F17E00 0%, #210747 100%); }
 
@@ -33,6 +33,11 @@
         .amount-card:hover { border-color: #F17E00; background-color: #fff7ed; }
         .amount-card.selected { border-color: #F17E00; background-color: #fff7ed; box-shadow: 0 0 0 3px rgba(241,126,0,0.15); }
 
+        /* Stripe element */
+        #card-element { border: 1px solid #d1d5db; border-radius: 6px; padding: 12px; background: white; }
+        #card-element.StripeElement--focus { border-color: #F17E00; box-shadow: 0 0 0 3px rgba(241,126,0,0.1); }
+        #card-element.StripeElement--invalid { border-color: #ef4444; }
+
         /* Success animation */
         @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
         .fade-in-up { animation: fadeInUp 0.5s ease-out forwards; }
@@ -49,7 +54,8 @@
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.jpg"/>
 
     <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
-    <!-- Zahlung processed via Stripe Checkout / PayPal redirect -->
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -73,7 +79,10 @@
             <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
         </div>
         <div style="display:flex;align-items:center;gap:12px;">
-            <a href="/geschenkgutscheine" class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Geschenkgutscheine</a>
+            <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.instagram.com/walkingholidayireland//" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+            <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="mailto:info@walkingholidayireland.com" aria-label="Email" style="display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:rgba(33,7,71,0.12);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg></a>
         </div>
         <div style="display:flex;align-items:center;gap:6px;">
             <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
@@ -114,6 +123,7 @@
             </div>
             <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="ueber-uns">Über Uns</a>
             <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="blog">Blog</a>
+            <a href="geschenkgutscheine" class="font-semibold text-primary hover:text-primary/80 transition-colors flex items-center gap-1"><span class="material-symbols-outlined text-base">redeem</span> Geschenkgutscheine</a>
             <a href="buchung" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
                 Book Now
             </a>
@@ -352,45 +362,32 @@
                 </div>
             </div>
 
-            <!-- Zahlung Method Selection -->
+            <!-- Zahlung -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-8">
-                <h2 class="text-xl font-bold text-slate-800 mb-2">Choose Zahlung Method</h2>
-                <p class="text-gray-500 text-sm mb-6">Select how you'd like to pay. You'll be redirected to complete payment securely.</p>
+                <h2 class="text-xl font-bold text-slate-800 mb-2">Zahlung</h2>
+                <p class="text-gray-500 text-sm mb-6">Ihre Zahlung wird sicher über Stripe abgewickelt. Wir speichern Ihre Kartendaten nicht.</p>
 
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
-                    <button type="button" onclick="submitZahlung('stripe')" id="payBtnStripe" style="padding: 20px 12px; border: 2px solid #e5e7eb; border-radius: 12px; background: linear-gradient(135deg, #210747 0%, #3F0F87 100%); color: white; cursor: pointer; text-align: center; transition: all 0.2s;">
-                        <svg viewBox="0 0 24 24" style="width:28px;height:28px;margin:0 auto 8px;" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-                        <div style="font-size: 15px; font-weight: 700;">Pay by Card</div>
-                        <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:8px;">
-                            <span style="background:#1A1F71;color:white;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">VISA</span>
-                            <span style="background:#EB001B;color:white;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">MC</span>
-                            <span style="background:#fff;color:#cc2277;border:1px solid #ddd;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">iDEAL</span>
-                            <span style="background:#FFB3C7;color:#17120F;border-radius:3px;padding:1px 6px;font-size:10px;font-weight:700;">Klarna</span>
-                        </div>
-                        <div style="font-size: 11px; opacity: 0.7; margin-top: 6px;">Powered by Stripe</div>
-                    </button>
-                    <button type="button" onclick="submitZahlung('paypal')" id="payBtnPaypal" style="padding: 20px 12px; border: 2px solid #e5e7eb; border-radius: 12px; background: #FFC439; cursor: pointer; text-align: center; transition: all 0.2s; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                        <svg viewBox="0 0 24 24" style="width:28px;height:28px;margin-bottom:8px;" fill="none" stroke="#253B80" stroke-width="1.5"><path d="M7.076 21.337H2.47a.641.641 0 01-.633-.74L4.944 2.79a.77.77 0 01.757-.646h6.427c2.134 0 3.727.535 4.728 1.59.47.494.784 1.064.938 1.695.163.668.176 1.463.038 2.432-.01.063-.02.126-.032.19-.363 2.078-1.424 3.503-2.864 4.344-1.39.81-3.09 1.152-4.86 1.152H8.677a.95.95 0 00-.939.803l-.87 5.506-.247 1.565a.497.497 0 01-.49.416z"/></svg>
-                        <div style="font-size:16px;font-weight:700;"><span style="color:#253B80;">Pay</span><span style="color:#179BD7;">Pal</span></div>
-                        <div style="font-size: 11px; color: #6b7280; margin-top: 6px;">Pay securely with PayPal</div>
-                    </button>
-                </div>
+                <div id="card-element" class="mb-4"></div>
+                <div id="card-errors" role="alert" class="text-red-500 text-sm mb-4 hidden"></div>
 
-                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-6">
                     <span class="material-symbols-outlined text-sm">lock</span>
-                    <span>256-Bit-Verschlüsselung — your card details are never stored on our servers</span>
+                    <span>Gesichert durch Stripe — 256-Bit-Verschlüsselung</span>
                 </div>
 
                 <div class="flex justify-between items-center">
                     <button type="button" onclick="goToStep(3)" class="text-slate-600 hover:text-slate-800 font-semibold transition flex items-center gap-1">
                         <span class="material-symbols-outlined text-sm">arrow_back</span> Zurück
                     </button>
-                    <div class="text-lg font-bold text-primary">Total: <span id="payBtnAmount">€0</span></div>
+                    <button type="button" onclick="submitZahlung()" id="payBtn" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-lg">lock</span>
+                        Pay <span id="payBtnAmount">€0</span>
+                    </button>
                 </div>
 
                 <div id="paymentProcessing" class="hidden mt-6 text-center">
                     <div class="animate-spin inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-3"></div>
-                    <p class="text-sm text-gray-600">Redirecting to payment...</p>
+                    <p class="text-sm text-gray-600">Ihre Zahlung wird verarbeitet...</p>
                 </div>
                 <div id="paymentError" class="hidden mt-4 bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm"></div>
             </div>
@@ -434,11 +431,6 @@
                 <img src="/images/logo/whi_fc.png" alt="Walking Holiday Ireland" class="mb-4" style="height:40px;width:auto;" loading="lazy"/>
                 <p class="text-slate-300 text-base italic leading-relaxed">Individuelle Wanderurlaube durch Irlands schönste Landschaften seit 2012. Familiengeführt von Cliff & Louise.</p>
                 <img src="/images/logo/stripe-secure-payments.png" alt="Secure payments powered by Stripe" class="mt-4" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy"/>
-                <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
-                    <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
-                    <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
-                    <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-                </div>
             </div>
             <div>
                 <h4 class="font-bold mb-4 text-primary">Wanderurlaub</h4>
@@ -500,13 +492,30 @@
 <script>
 // ─────────── Config ───────────
 const EDGE_FN_URL = 'https://dfguqecbcbbgrttfkwfr.supabase.co/functions/v1/purchase-gift-voucher';
+const STRIPE_PK   = 'pk_test_F8HhLlFCLRhK8P8vpR0m3Ey1';
 
 // ─────────── State ───────────
 let currentStep = 1;
 let selectedAmount = 0;
+let stripe, cardElement;
 
-// ─────────── Init ───────────
+// ─────────── Stripe Init ───────────
 document.addEventListener('DOMContentLoaded', function() {
+    stripe = Stripe(STRIPE_PK);
+    const elements = stripe.elements({ locale: 'de' });
+    cardElement = elements.create('card', {
+        style: {
+            base: { fontSize: '16px', color: '#1e293b', fontFamily: "'Inter', sans-serif", '::placeholder': { color: '#94a3b8' } },
+            invalid: { color: '#ef4444', iconColor: '#ef4444' }
+        }
+    });
+    cardElement.mount('#card-element');
+    cardElement.on('change', function(event) {
+        var el = document.getElementById('card-errors');
+        if (event.error) { el.textContent = event.error.message; el.classList.remove('hidden'); }
+        else { el.textContent = ''; el.classList.add('hidden'); }
+    });
+
     // Message counter
     var msgInput = document.getElementById('personalMessage');
     if (msgInput) {
@@ -676,34 +685,32 @@ function updateReviewPanel() {
 }
 
 // ─────────── Zahlung ───────────
-async function submitZahlung(method) {
-    var btnStripe = document.getElementById('payBtnStripe');
-    var btnPaypal = document.getElementById('payBtnPaypal');
+async function submitZahlung() {
+    var btn = document.getElementById('payBtn');
     var processing = document.getElementById('paymentProcessing');
     var errorDiv = document.getElementById('paymentError');
-    btnStripe.disabled = true;
-    btnPaypal.disabled = true;
-    btnStripe.style.opacity = '0.5';
-    btnPaypal.style.opacity = '0.5';
+    btn.disabled = true;
+    btn.style.opacity = '0.5';
     processing.classList.remove('hidden');
     errorDiv.classList.add('hidden');
 
     try {
-        var buyerFirst = document.getElementById('buyerFirst').value.trim();
-        var buyerLast = document.getElementById('buyerLast').value.trim();
-        var recipFirst = document.getElementById('recipientFirst').value.trim();
-        var recipLast = document.getElementById('recipientLast').value.trim();
-
+        // Step 1: Create payment intent via edge function
         var payload = {
             action: 'create-payment',
-            amount: selectedAmount,
-            purchaser_name: buyerFirst + ' ' + buyerLast,
-            purchaser_email: document.getElementById('buyerEmail').value.trim(),
-            recipient_name: recipFirst + ' ' + recipLast,
+            amount_eur: selectedAmount,
+            buyer_first_name: document.getElementById('buyerFirst').value.trim(),
+            buyer_last_name: document.getElementById('buyerLast').value.trim(),
+            buyer_email: document.getElementById('buyerEmail').value.trim(),
+            buyer_phone: document.getElementById('buyerPhone').value.trim() || null,
+            recipient_first_name: document.getElementById('recipientFirst').value.trim(),
+            recipient_last_name: document.getElementById('recipientLast').value.trim(),
             recipient_email: document.getElementById('recipientEmail').value.trim(),
             personal_message: document.getElementById('personalMessage').value.trim() || null,
-            locale: document.documentElement.lang || 'en',
-            payment_method: method
+            delivery_date: document.getElementById('deliveryDate').value || null,
+            locale: 'de',
+            source: 'website-de',
+            language: 'de'
         };
 
         var res = await fetch(EDGE_FN_URL, {
@@ -712,31 +719,45 @@ async function submitZahlung(method) {
             body: JSON.stringify(payload)
         });
         var data = await res.json();
-
-        if (!res.ok || data.error) {
+        if (!res.ok || !data.client_secret) {
             throw new Error(data.error || 'Zahlung konnte nicht erstellt werden. Bitte versuchen Sie es erneut.');
         }
 
-        // Redirect to payment provider
-        if (method === 'stripe' && data.stripe_url) {
-            window.location.href = data.stripe_url;
-            return;
-        }
-        if (method === 'paypal' && data.paypal_approve_url) {
-            window.location.href = data.paypal_approve_url;
-            return;
+        // Step 2: Confirm card payment with Stripe
+        var result = await stripe.confirmCardZahlung(data.client_secret, {
+            payment_method: { card: cardElement }
+        });
+
+        if (result.error) {
+            throw new Error(result.error.message);
         }
 
-        throw new Error('Zahlung redirect URL not received. Please try again or contact us.');
+        // Step 3: Confirm payment with edge function
+        var confirmRes = await fetch(EDGE_FN_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                action: 'confirm-payment',
+                payment_intent_id: result.paymentIntent.id,
+                voucher_id: data.voucher_id
+            })
+        });
+        var confirmData = await confirmRes.json();
+
+        if (!confirmRes.ok) {
+            throw new Error(confirmData.error || 'Zahlung confirmed but could not activate voucher. Please contact us.');
+        }
+
+        // Success!
+        processing.classList.add('hidden');
+        showSuccess(confirmData.voucher_code || data.voucher_code || '—', selectedAmount);
 
     } catch (err) {
         processing.classList.add('hidden');
         errorDiv.textContent = err.message;
         errorDiv.classList.remove('hidden');
-        btnStripe.disabled = false;
-        btnPaypal.disabled = false;
-        btnStripe.style.opacity = '1';
-        btnPaypal.style.opacity = '1';
+        btn.disabled = false;
+        btn.style.opacity = '1';
     }
 }
 </script>
