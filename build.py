@@ -5731,6 +5731,7 @@ def main():
 
         log("Fetching tour extras from Supabase...")
         tour_extras_list = fetch_supabase('tour_extras', '&status=eq.active&order=sort_order')
+        tour_extras_junctions = fetch_supabase('tour_extras_tours', '&select=tour_id,extra_id,price_override_eur')
 
         log("Fetching global settings from Supabase...")
         global_settings_list = fetch_supabase('global_settings', '')
@@ -5768,11 +5769,18 @@ def main():
     regions_by_id = {r['id']: r for r in regions}
     routes_by_id = {r['id']: r for r in routes}
 
-    # Build tour extras lookup (by tour_id)
+    # Build tour extras lookup (by tour_id) via junction table
+    extras_by_id = {ex['id']: ex for ex in (tour_extras_list or [])}
     tour_extras_by_tour = {}
-    for ex in (tour_extras_list or []):
-        tid = ex.get('tour_id')
-        if tid:
+    for jn in (tour_extras_junctions or []):
+        tid = jn.get('tour_id')
+        eid = jn.get('extra_id')
+        if tid and eid and eid in extras_by_id:
+            ex = dict(extras_by_id[eid])  # copy so we don't mutate the original
+            # Apply price override from junction table if set
+            override = jn.get('price_override_eur')
+            if override is not None:
+                ex['price_eur'] = override
             tour_extras_by_tour.setdefault(tid, []).append(ex)
     log(f"Tour extras: {sum(len(v) for v in tour_extras_by_tour.values())} extras across {len(tour_extras_by_tour)} tours")
 
