@@ -4767,6 +4767,48 @@ def post_process_html(html):
         r'<script type="application/ld\+json">\s*\{[^<]*?"@type":\s*"TouristDestination"[^<]*?</script>',
         _inject_geo_into_tourist_dest, html, flags=re.DOTALL)
 
+    # 10b. Performance: Responsive hero image preload + CSS background
+    hero_preload_pattern = r'<link rel="preload" as="image" href="([^"]*?)/([\w-]+)-hero\.jpg"[^/]*/>'
+    hero_match = re.search(hero_preload_pattern, html)
+    if hero_match:
+        img_path = hero_match.group(1)
+        hero_name = hero_match.group(2)
+        responsive_preload = (
+            f'<link rel="preload" as="image" href="{img_path}/{hero_name}-hero-400w.jpg" media="(max-width: 640px)" fetchpriority="high"/>\n'
+            f'    <link rel="preload" as="image" href="{img_path}/{hero_name}-hero-800w.jpg" media="(max-width: 1024px)" fetchpriority="high"/>\n'
+            f'    <link rel="preload" as="image" href="{img_path}/{hero_name}-hero.jpg" media="(min-width: 1025px)" fetchpriority="high"/>'
+        )
+        html = re.sub(hero_preload_pattern, responsive_preload, html)
+        old_bg = f"background: url('{img_path}/{hero_name}-hero.jpg') center/cover no-repeat;"
+        new_bg = (
+            f"background: url('{img_path}/{hero_name}-hero-800w.jpg') center/cover no-repeat;\n"
+            f"        }}\n"
+            f"        @media (min-width: 1025px) {{\n"
+            f"            .hero {{\n"
+            f"                background-image: url('{img_path}/{hero_name}-hero.jpg');\n"
+            f"            }}"
+        )
+        if old_bg in html:
+            html = html.replace(old_bg, new_bg)
+
+    # 10c. Noscript font fallback (accessibility for users with JS disabled)
+    if "media=\"print\" onload=" in html and '<noscript>' not in html.split('</head>')[0]:
+        noscript_fonts = (
+            '\n    <noscript>'
+            '\n    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>'
+            '\n    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet"/>'
+            '\n    </noscript>'
+        )
+        html = html.replace('</head>', f'{noscript_fonts}\n</head>')
+
+    # 10d. Font optimization (catch-all for any pages not using optimized templates)
+    html = html.replace(
+        'family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"',
+        "family=Inter:wght@400;500;600;700&display=swap\" rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\"")
+    html = html.replace(
+        'family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"',
+        "family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap\" rel=\"stylesheet\" media=\"print\" onload=\"this.media='all'\"")
+
     return html
 
 
