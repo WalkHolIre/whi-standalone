@@ -60,6 +60,11 @@ const LEGACY_REDIRECTS = {
     '/self-guided-hiking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
     '/self-guided-hiking-tours/barrow-way': '/walking-tours/barrow-way',
     '/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours': '/walking-tours/causeway-coast',
+    // Same paths but with "walking" instead of "hiking" (both URL patterns existed)
+    '/self-guided-walking-tours': '/walking-tours',
+    '/self-guided-walking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
+    '/self-guided-walking-tours/barrow-way': '/walking-tours/barrow-way',
+    '/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours': '/walking-tours/causeway-coast',
     // Old WordPress /Walking-Tour/ prefix (case-sensitive, handled below)
     '/Walking-Tour/cooley-and-mournes-hiking-tour': '/walking-tours/cooley-mournes',
     '/Walking-Tour/wicklow-way-8-days': '/walking-tours/wicklow-way',
