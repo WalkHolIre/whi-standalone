@@ -217,6 +217,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://walkingholidayireland.com/blog</loc>
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://walkingholidayireland.com/hiking-ireland</loc>
     <lastmod>2026-04-03</lastmod>
     <changefreq>monthly</changefreq>
