@@ -88,6 +88,15 @@
     <meta property="og:site_name" content="Walking Holiday Ireland"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+
+
+
+<meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.com/privacy-policy"/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
     <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/privacy-policy" />
     <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/datenschutz" />
     <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/privacybeleid" />
@@ -100,6 +109,7 @@
     <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
 </head>
 <body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
 <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[9999] focus:bg-white focus:px-4 focus:py-2 focus:text-primary focus:rounded focus:shadow-lg focus:text-sm focus:font-bold">Skip to content</a>
@@ -585,6 +595,12 @@ var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');bt
 /* Footer language links */
 var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script src="/js/subscribe.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
 <script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
 document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
 /* Top bar buttons */
