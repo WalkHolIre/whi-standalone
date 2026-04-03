@@ -1985,12 +1985,12 @@ def render_gallery(gallery_data):
         url = escape(url)
         if i == 0:
             html += f"""        <div class="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
-            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+            <img src="{url}" alt="Walking holiday Ireland — gallery image {i+1}" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
         </div>
 """
         else:
             html += f"""        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
-            <img src="{url}" alt="Tour gallery image" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy"/>
+            <img src="{url}" alt="Walking holiday Ireland — gallery image {i+1}" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
         </div>
 """
     return html
@@ -4742,13 +4742,11 @@ var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=
 def fix_og_tags(html, canonical_url, lang='en', title=None, description=None, image=None):
     """Fix Open Graph and Twitter Card meta tags for the given language/URL.
 
-    - Strips ALL existing OG/Twitter blocks first to prevent duplication
-    - Adds a single clean set of OG + Twitter Card tags
+    - Updates og:url to match the canonical URL (correct domain + clean URL)
+    - Optionally updates og:title, og:description, og:image and twitter: equivalents
+    - Adds OG/Twitter tags if missing entirely
     """
     from html import escape as html_escape
-
-    # Strip ALL existing OG and Twitter Card meta tags to prevent duplication
-    html = re.sub(r'\s*<meta\s+(?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*/?>\s*', '', html)
 
     # Fix og:url to match canonical
     if re.search(r'<meta\s+property="og:url"', html):
@@ -4781,11 +4779,18 @@ def fix_og_tags(html, canonical_url, lang='en', title=None, description=None, im
         html = re.sub(r'<meta\s+name="twitter:description"\s+content="[^"]*"',
                        f'<meta name="twitter:description" content="{safe_desc}"', html)
 
+    # Update og:image and twitter:image if image URL provided (e.g. Supabase CDN hero image)
+    if image and image.startswith('http'):
+        html = re.sub(r'<meta\s+property="og:image"\s+content="[^"]*"',
+                       f'<meta property="og:image" content="{image}"', html)
+        html = re.sub(r'<meta\s+name="twitter:image"\s+content="[^"]*"',
+                       f'<meta name="twitter:image" content="{image}"', html)
+
     # If no OG tags at all, add a basic set
     if 'og:title' not in html:
         og_title = html_escape(title or '', quote=True) if title else ''
         og_desc = html_escape(description or '', quote=True) if description else ''
-        og_image = image or 'https://walkingholidayireland.com/images/hero/kerry-hero.jpg'
+        og_image = image or 'https://walkingholidayireland.com/images/hero/kerry-hero.webp'
         og_block = f'''    <meta property="og:type" content="website"/>
     <meta property="og:url" content="{canonical_url}"/>'''
         if og_title:
@@ -5004,6 +5009,95 @@ def post_process_html(html):
     html = re.sub(r'(href="[^"]*?)/{2,}(")', r'\1/\2', html)
     html = re.sub(r"(href='[^']*?)/{2,}(')", r"\1/\2", html)
 
+    # Fix redirect-chain internal links: old URL patterns → final canonical URLs
+    # These may appear in Supabase content fields and would otherwise survive rebuilds.
+    _REDIRECT_CHAIN_MAP = {
+        # Blog posts — old root slugs → /blog/slug
+        '"/backpacking-checklist/"':           '"/blog/backpacking-checklist"',
+        '"/backpacking-checklist"':            '"/blog/backpacking-checklist"',
+        '"/grading-of-hiking-tours/"':         '"/blog/hiking-tour-grading-ireland"',
+        '"/grading-of-hiking-tours"':          '"/blog/hiking-tour-grading-ireland"',
+        '"/hiking-tour-grading/"':             '"/blog/hiking-tour-grading-ireland"',
+        '"/hiking-tour-grading"':              '"/blog/hiking-tour-grading-ireland"',
+        '"/the-best-time-visit-ireland/"':     '"/blog/the-best-time-visit-ireland"',
+        '"/the-best-time-visit-ireland"':      '"/blog/the-best-time-visit-ireland"',
+        '"/the-best-time-to-visit-ireland/"':  '"/blog/the-best-time-visit-ireland"',
+        '"/the-best-time-to-visit-ireland"':   '"/blog/the-best-time-visit-ireland"',
+        '"/choose-right-pair-hiking-boots/"':  '"/blog/choose-right-pair-hiking-boots"',
+        '"/choose-right-pair-hiking-boots"':   '"/blog/choose-right-pair-hiking-boots"',
+        '"/the-irish-weather/"':               '"/blog/the-irish-weather"',
+        '"/the-irish-weather"':                '"/blog/the-irish-weather"',
+        '"/wild-atlantic-way-road-trip/"':     '"/blog/wild-atlantic-way-road-trip"',
+        '"/wild-atlantic-way-road-trip"':      '"/blog/wild-atlantic-way-road-trip"',
+        '"/wicklow-national-park/"':           '"/blog/ireland-national-parks-walking"',
+        '"/wicklow-national-park"':            '"/blog/ireland-national-parks-walking"',
+        '"/the-giants-causeway/"':             '"/blog/the-giants-causeway"',
+        '"/the-giants-causeway"':              '"/blog/the-giants-causeway"',
+        '"/connemara-national-park/"':         '"/blog/connemara-national-park"',
+        '"/connemara-national-park"':          '"/blog/connemara-national-park"',
+        '"/ireland-national-parks/"':          '"/blog/ireland-national-parks-walking"',
+        '"/ireland-national-parks"':           '"/blog/ireland-national-parks-walking"',
+        '"/tips-for-hiking-in-ireland/"':      '"/blog/tips-for-hiking-in-ireland"',
+        '"/tips-for-hiking-in-ireland"':       '"/blog/tips-for-hiking-in-ireland"',
+        '"/antrim-coast/"':                    '"/blog/antrim-coast-walk"',
+        '"/antrim-coast"':                     '"/blog/antrim-coast-walk"',
+        '"/irish-pilgrim-paths-of-ireland/"':  '"/blog/irish-pilgrim-paths-of-ireland"',
+        '"/irish-pilgrim-paths-of-ireland"':   '"/blog/irish-pilgrim-paths-of-ireland"',
+        '"/st-kevin-of-glendalough/"':         '"/blog/st-kevin-of-glendalough"',
+        '"/st-kevin-of-glendalough"':          '"/blog/st-kevin-of-glendalough"',
+        '"/visit-the-nine-glens-of-antrim/"':  '"/blog/glens-of-antrim-walking"',
+        '"/visit-the-nine-glens-of-antrim"':   '"/blog/glens-of-antrim-walking"',
+        # Tour listing pages
+        '"/self-guided-hiking-tours/"':        '"/walking-tours"',
+        '"/self-guided-hiking-tours"':         '"/walking-tours"',
+        '"/self-guided-walking-tours/"':       '"/self-guided-walking-holidays-ireland"',
+        '"/self-guided-walking-tours"':        '"/self-guided-walking-holidays-ireland"',
+        # Old /Walking-Tour/ patterns
+        '"/Walking-Tour/kerry-way-8-days/"':             '"/walking-tours/kerry-way"',
+        '"/Walking-Tour/kerry-way-8-days"':              '"/walking-tours/kerry-way"',
+        '"/Walking-Tour/wicklow-way-8-days/"':           '"/walking-tours/wicklow-way"',
+        '"/Walking-Tour/wicklow-way-8-days"':            '"/walking-tours/wicklow-way"',
+        '"/Walking-Tour/the-dingle-way-8-days/"':        '"/walking-tours/dingle-way-walking-tour-8d"',
+        '"/Walking-Tour/the-dingle-way-8-days"':         '"/walking-tours/dingle-way-walking-tour-8d"',
+        '"/Walking-Tour/barrow-way-8-day-hiking-tour/"': '"/walking-tours/full-barrow-way-walking"',
+        '"/Walking-Tour/barrow-way-8-day-hiking-tour"':  '"/walking-tours/full-barrow-way-walking"',
+        '"/Walking-Tour/5-day-hiking-tour-wicklow/"':    '"/walking-tours/wicklow-way-5-days"',
+        '"/Walking-Tour/5-day-hiking-tour-wicklow"':     '"/walking-tours/wicklow-way-5-days"',
+        '"/Walking-Tour/cooley-and-mournes-hiking-tour/"':'"/walking-tours/cooley-mournes"',
+        '"/Walking-Tour/cooley-and-mournes-hiking-tour"':'"/walking-tours/cooley-mournes"',
+        # Old /self-guided-hiking-tours/[tour] patterns
+        '"/self-guided-hiking-tours/the-kerry-way/"':            '"/walking-tours/kerry-way"',
+        '"/self-guided-hiking-tours/the-wicklow-way/"':          '"/walking-tours/wicklow-way"',
+        '"/self-guided-hiking-tours/wicklow-way-walking-tour/"': '"/walking-tours/wicklow-way"',
+        '"/self-guided-hiking-tours/the-dingle-way/"':           '"/walking-tours/dingle-way-walking-tour-8d"',
+        '"/self-guided-hiking-tours/barrow-way/"':               '"/walking-tours/barrow-way"',
+        '"/self-guided-hiking-tours/the-burren-way/"':           '"/walking-tours/burren-way"',
+        '"/self-guided-hiking-tours/cooley-and-mourne-mountains/"':'"/walking-tours/cooley-mournes"',
+        '"/self-guided-hiking-tours/cooley-peninsula/"':         '"/walking-tours/cooley-peninsula-5-days"',
+        '"/self-guided-hiking-tours/beara-way/"':                '"/walking-tours/beara-way"',
+        '"/self-guided-hiking-tours/causeway-coast/"':           '"/walking-tours/causeway-coast"',
+        # Old /self-guided-walking-tours/[tour] patterns
+        '"/self-guided-walking-tours/giant-causeway-glens-of-antrim/"': '"/walking-tours/causeway-coast"',
+        '"/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours/"': '"/walking-tours/causeway-coast"',
+        '"/self-guided-walking-tours/cooley-mourne-mountains/"': '"/walking-tours/cooley-mournes"',
+        '"/self-guided-walking-tours/cooley-and-mourne-mountains/"': '"/walking-tours/cooley-mournes"',
+        '"/self-guided-walking-tours/the-wicklow-way/"':         '"/walking-tours/wicklow-way"',
+        # Static page with .html extension
+        '"/tour-grading.html"':                '"/tour-grading"',
+        # Full domain variants (external absolute links to own domain)
+        '"https://walkingholidayireland.com/backpacking-checklist/"':         '"/blog/backpacking-checklist"',
+        '"https://walkingholidayireland.com/grading-of-hiking-tours/"':       '"/blog/hiking-tour-grading-ireland"',
+        '"https://walkingholidayireland.com/the-best-time-visit-ireland/"':   '"/blog/the-best-time-visit-ireland"',
+        '"https://walkingholidayireland.com/choose-right-pair-hiking-boots/"':'"/blog/choose-right-pair-hiking-boots"',
+        '"https://walkingholidayireland.com/the-irish-weather/"':             '"/blog/the-irish-weather"',
+        '"https://walkingholidayireland.com/wild-atlantic-way-road-trip/"':   '"/blog/wild-atlantic-way-road-trip"',
+        '"https://walkingholidayireland.com/self-guided-hiking-tours/"':      '"/walking-tours"',
+        '"https://walkingholidayireland.com/self-guided-walking-tours/"':     '"/self-guided-walking-holidays-ireland"',
+    }
+    for old_href, new_href in _REDIRECT_CHAIN_MAP.items():
+        if old_href in html:
+            html = html.replace(f'href={old_href}', f'href={new_href}')
+
     # 11. Fix schema.org TouristDestination missing "geo" property
     # Ahrefs flags TouristDestination without geo as a validation error.
     # Inject Ireland-level GeoCoordinates into any TouristDestination that lacks "geo".
@@ -5027,25 +5121,27 @@ def post_process_html(html):
         r'<script type="application/ld\+json">\s*\{[^<]*?"@type":\s*"TouristDestination"[^<]*?</script>',
         _inject_geo_into_tourist_dest, html, flags=re.DOTALL)
 
-    # 10b. Performance: Responsive hero image preload + CSS background
-    hero_preload_pattern = r'<link rel="preload" as="image" href="([^"]*?)/([\w-]+)-hero\.jpg"[^/]*/>'
+    # 10b. Performance: Responsive hero image preload + CSS background (supports .jpg and .webp)
+    hero_preload_pattern = r'<link rel="preload" as="image" href="([^"]*?)/([\w-]+)-hero\.(jpg|webp)"[^/]*/>'
     hero_match = re.search(hero_preload_pattern, html)
     if hero_match:
         img_path = hero_match.group(1)
         hero_name = hero_match.group(2)
+        ext = hero_match.group(3)  # 'jpg' or 'webp'
+        img_type = 'image/webp' if ext == 'webp' else 'image/jpeg'
         responsive_preload = (
-            f'<link rel="preload" as="image" href="{img_path}/{hero_name}-hero-400w.jpg" media="(max-width: 640px)" fetchpriority="high"/>\n'
-            f'    <link rel="preload" as="image" href="{img_path}/{hero_name}-hero-800w.jpg" media="(max-width: 1024px)" fetchpriority="high"/>\n'
-            f'    <link rel="preload" as="image" href="{img_path}/{hero_name}-hero.jpg" media="(min-width: 1025px)" fetchpriority="high"/>'
+            f'<link rel="preload" as="image" type="{img_type}" href="{img_path}/{hero_name}-hero-400w.{ext}" media="(max-width: 640px)" fetchpriority="high"/>\n'
+            f'    <link rel="preload" as="image" type="{img_type}" href="{img_path}/{hero_name}-hero-800w.{ext}" media="(max-width: 1024px)" fetchpriority="high"/>\n'
+            f'    <link rel="preload" as="image" type="{img_type}" href="{img_path}/{hero_name}-hero.{ext}" media="(min-width: 1025px)" fetchpriority="high"/>'
         )
         html = re.sub(hero_preload_pattern, responsive_preload, html)
-        old_bg = f"background: url('{img_path}/{hero_name}-hero.jpg') center/cover no-repeat;"
+        old_bg = f"background: url('{img_path}/{hero_name}-hero.{ext}') center/cover no-repeat;"
         new_bg = (
-            f"background: url('{img_path}/{hero_name}-hero-800w.jpg') center/cover no-repeat;\n"
+            f"background: url('{img_path}/{hero_name}-hero-800w.{ext}') center/cover no-repeat;\n"
             f"        }}\n"
             f"        @media (min-width: 1025px) {{\n"
             f"            .hero {{\n"
-            f"                background-image: url('{img_path}/{hero_name}-hero.jpg');\n"
+            f"                background-image: url('{img_path}/{hero_name}-hero.{ext}');\n"
             f"            }}"
         )
         if old_bg in html:
@@ -5639,11 +5735,13 @@ def build_language_site(lang, tours, destinations, reviews, faqs, regions, posts
             if 'rel="canonical"' not in html:
                 html = html.replace('</head>', f'    <link rel="canonical" href="{canonical_dest_url}"/>\n</head>')
 
-            # Fix OG tags to use correct language domain and clean URL
+            # Fix OG tags to use correct language domain, clean URL, and actual Supabase hero image
             dest_trans = dest_translations.get(dest_id, {}) if lang != 'en' else {}
+            dest_hero = destination.get('hero_image') or ''
             html = fix_og_tags(html, canonical_dest_url, lang=lang,
                 title=dest_trans.get('name') or dest_trans.get('meta_title'),
-                description=dest_trans.get('seo_description') or dest_trans.get('short_description'))
+                description=dest_trans.get('seo_description') or dest_trans.get('short_description'),
+                image=dest_hero if dest_hero.startswith('http') else None)
 
             # Set hreflang tags — include language only if translated page exists
             _d_has_de = dest_id in dest_has_translation.get('de', set())
@@ -5894,6 +5992,13 @@ def main():
                 en_url=lang_url('en', f'walking-tours/{slug}'),
                 de_url=lang_url('de', f'{TOUR_FOLDER["de"]}/{slug}') if tour_id in tours_with_de else None,
                 nl_url=lang_url('nl', f'{TOUR_FOLDER["nl"]}/{slug}') if tour_id in tours_with_nl else None)
+
+            # Fix OG tags: set og:url to canonical, og:image to actual Supabase CDN hero image
+            hero_img = tour.get('hero_image') or ''
+            html = fix_og_tags(html, canonical_url, lang='en',
+                title=tour.get('meta_title') or tour.get('name'),
+                description=tour.get('seo_description') or tour.get('subtitle'),
+                image=hero_img if hero_img.startswith('http') else None)
 
             # BreadcrumbList schema: Home > Walking Tours > Tour Name
             tour_name = tour.get('name', slug)
@@ -6366,6 +6471,40 @@ def main():
     blog_dir.mkdir(exist_ok=True)
     generated_blog_slugs = []
 
+    # Category translation maps — used for individual blog posts AND listing pages
+    BLOG_CATEGORY_TRANSLATIONS = {
+        'de': {
+            'Walking Routes': 'Wanderrouten',
+            'Travel Tips': 'Reisetipps',
+            'Local Culture': 'Lokale Kultur',
+            'Hiking Gear': 'Wanderausrüstung',
+            'Planning Your Trip': 'Reiseplanung',
+            'Walking Holidays': 'Wanderurlaub',
+            'Trail Guides': 'Wegführer',
+            'Gear & Equipment': 'Ausrüstung & Zubehör',
+            'Health & Wellness': 'Gesundheit & Wohlbefinden',
+            'Irish Culture & Heritage': 'Irische Kultur & Geschichte',
+            'National Parks & Wildlife': 'Nationalparks & Tierwelt',
+            'Safety & Weather': 'Sicherheit & Wetter',
+            'Travel Info': 'Reiseinfos',
+        },
+        'nl': {
+            'Walking Routes': 'Wandelroutes',
+            'Travel Tips': 'Reistips',
+            'Local Culture': 'Lokale Cultuur',
+            'Hiking Gear': 'Wandeluitrusting',
+            'Planning Your Trip': 'Reis Plannen',
+            'Walking Holidays': 'Wandelvakanties',
+            'Trail Guides': 'Routegidsen',
+            'Gear & Equipment': 'Uitrusting & Accessoires',
+            'Health & Wellness': 'Gezondheid & Welzijn',
+            'Irish Culture & Heritage': 'Ierse Cultuur & Erfgoed',
+            'National Parks & Wildlife': 'Nationale Parken & Natuur',
+            'Safety & Weather': 'Veiligheid & Weer',
+            'Travel Info': 'Reisinformatie',
+        },
+    }
+
     if blog_template_path.exists() and posts:
         with open(blog_template_path, 'r') as f:
             blog_template = f.read()
@@ -6433,6 +6572,21 @@ def main():
         for cat_name, cat_count in cat_counter.most_common():
             cat_s = (cat_name or 'blog').lower().replace(' ', '-').replace("'", '')
             sidebar_categories_html += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category={escape(cat_s)}"><span>{escape(cat_name)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
+
+        # Build translated sidebar categories for DE and NL
+        sidebar_categories_html_de = ''
+        sidebar_categories_html_de += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>Alle Beiträge</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{len(posts)}</span></a></li>\n'
+        for cat_name, cat_count in cat_counter.most_common():
+            cat_s = (cat_name or 'blog').lower().replace(' ', '-').replace("'", '')
+            de_cat = BLOG_CATEGORY_TRANSLATIONS['de'].get(cat_name, cat_name)
+            sidebar_categories_html_de += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category={escape(cat_s)}"><span>{escape(de_cat)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
+
+        sidebar_categories_html_nl = ''
+        sidebar_categories_html_nl += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>Alle Berichten</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{len(posts)}</span></a></li>\n'
+        for cat_name, cat_count in cat_counter.most_common():
+            cat_s = (cat_name or 'blog').lower().replace(' ', '-').replace("'", '')
+            nl_cat = BLOG_CATEGORY_TRANSLATIONS['nl'].get(cat_name, cat_name)
+            sidebar_categories_html_nl += f'<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category={escape(cat_s)}"><span>{escape(nl_cat)}</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">{cat_count}</span></a></li>\n'
 
         # Build sidebar recent posts (5 most recent by published_date)
         # Helper to generate sidebar recent posts HTML for a given language
@@ -6598,7 +6752,19 @@ def main():
                 de_replacements['{meta_title}'] = escape(post.get('meta_title_de') or post.get('title_de') or title)
                 de_replacements['{meta_description}'] = escape(post.get('meta_description_de') or post.get('excerpt_de') or excerpt)
                 de_replacements['{slug}'] = slug_de
+                de_replacements['{category}'] = escape(BLOG_CATEGORY_TRANSLATIONS['de'].get(category, category))
+                # Translate tags for DE
+                de_tags = tags if isinstance(tags, list) else []
+                de_tags_html = ''
+                if de_tags:
+                    for tg in de_tags:
+                        de_tags_html += f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(BLOG_CATEGORY_TRANSLATIONS["de"].get(str(tg), str(tg)))}</span>\n'
+                else:
+                    de_cat_tag = BLOG_CATEGORY_TRANSLATIONS['de'].get(category, category).replace(' ', '')
+                    de_tags_html = f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(de_cat_tag)}</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Wanderurlaub</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Irland</span>'
+                de_replacements['{tags_html}'] = de_tags_html
                 de_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_de
+                de_replacements['{sidebar_categories_html}'] = sidebar_categories_html_de
                 # Build DE-specific related posts (only posts with DE translations)
                 de_related = [p for p in posts if p.get('slug_de') and p.get('content_de') and p.get('slug') != slug][:3]
                 de_related_html = ''
@@ -6641,7 +6807,19 @@ def main():
                 nl_replacements['{meta_title}'] = escape(post.get('meta_title_nl') or post.get('title_nl') or title)
                 nl_replacements['{meta_description}'] = escape(post.get('meta_description_nl') or post.get('excerpt_nl') or excerpt)
                 nl_replacements['{slug}'] = slug_nl
+                nl_replacements['{category}'] = escape(BLOG_CATEGORY_TRANSLATIONS['nl'].get(category, category))
+                # Translate tags for NL
+                nl_tags = tags if isinstance(tags, list) else []
+                nl_tags_html = ''
+                if nl_tags:
+                    for tg in nl_tags:
+                        nl_tags_html += f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(BLOG_CATEGORY_TRANSLATIONS["nl"].get(str(tg), str(tg)))}</span>\n'
+                else:
+                    nl_cat_tag = BLOG_CATEGORY_TRANSLATIONS['nl'].get(category, category).replace(' ', '')
+                    nl_tags_html = f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(nl_cat_tag)}</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Wandelvakantie</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ierland</span>'
+                nl_replacements['{tags_html}'] = nl_tags_html
                 nl_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_nl
+                nl_replacements['{sidebar_categories_html}'] = sidebar_categories_html_nl
                 # Build NL-specific related posts (only posts with NL translations)
                 nl_related = [p for p in posts if p.get('slug_nl') and p.get('content_nl') and p.get('slug') != slug][:3]
                 nl_related_html = ''
@@ -6714,7 +6892,7 @@ def main():
         <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
             <a href="blog/{escape(ps)}" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="{escape(p_img) if p_img and 'wp-content' not in p_img else 'images/hero/kerry-hero-400w.jpg'}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.src='images/hero/kerry-hero-400w.jpg';this.onerror=null"/>
+                    <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">{escape(p_cat)}</span>
@@ -6872,10 +7050,6 @@ def main():
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
                     f.write(blog_listing_new)
-                # Also write to root blog.html for Cloudflare Pages URL resolution
-                root_blog = WEBSITE_DIR / 'blog.html'
-                with open(root_blog, 'w') as f:
-                    f.write(blog_listing_new)
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
             blog_listing_new = None
@@ -6901,20 +7075,7 @@ def main():
                 'excerpt_field': 'excerpt_de',
                 'content_field': 'content_de',
                 'tour_folder': 'wandertouren',
-                'categories': {
-                    'Walking Routes': 'Wanderrouten',
-                    'Travel Tips': 'Reisetipps',
-                    'Local Culture': 'Lokale Kultur',
-                    'Hiking Gear': 'Wanderausrüstung',
-                    'Planning Your Trip': 'Reiseplanung',
-                    'Walking Holidays': 'Wanderurlaub',
-                    'Trail Guides': 'Wegführer',
-                    'Gear & Equipment': 'Ausrüstung & Zubehör',
-                    'Health & Wellness': 'Gesundheit & Wohlbefinden',
-                    'Irish Culture & Heritage': 'Irische Kultur & Geschichte',
-                    'National Parks & Wildlife': 'Nationalparks & Tierwelt',
-                    'Safety & Weather': 'Sicherheit & Wetter',
-                },
+                'categories': BLOG_CATEGORY_TRANSLATIONS['de'],
             },
             'nl': {
                 'title': 'Wandelen in Ierland Blog | Wandelgidsen, Tips & Verhalen',
@@ -6934,20 +7095,7 @@ def main():
                 'excerpt_field': 'excerpt_nl',
                 'content_field': 'content_nl',
                 'tour_folder': 'wandeltochten',
-                'categories': {
-                    'Walking Routes': 'Wandelroutes',
-                    'Travel Tips': 'Reistips',
-                    'Local Culture': 'Lokale Cultuur',
-                    'Hiking Gear': 'Wandeluitrusting',
-                    'Planning Your Trip': 'Reis Plannen',
-                    'Walking Holidays': 'Wandelvakanties',
-                    'Trail Guides': 'Routegidsen',
-                    'Gear & Equipment': 'Uitrusting & Accessoires',
-                    'Health & Wellness': 'Gezondheid & Welzijn',
-                    'Irish Culture & Heritage': 'Ierse Cultuur & Erfgoed',
-                    'National Parks & Wildlife': 'Nationale Parken & Natuur',
-                    'Safety & Weather': 'Veiligheid & Weer',
-                },
+                'categories': BLOG_CATEGORY_TRANSLATIONS['nl'],
             },
         }
 
@@ -7576,10 +7724,12 @@ def main():
         log("Post-processing: Ahrefs analytics + internal redirect fixes...")
         log("=" * 60)
 
-        AHREFS_SCRIPT = (
-            '    <script src="https://analytics.ahrefs.com/analytics.js" '
-            'data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>\n'
-        )
+        # Language-specific Ahrefs Web Analytics keys
+        AHREFS_SCRIPTS = {
+            'en': '    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>\n',
+            'de': '    <script src="https://analytics.ahrefs.com/analytics.js" data-key="M+iwBc1R63GUECQqxp8yaQ" async></script>\n',
+            'nl': '    <script src="https://analytics.ahrefs.com/analytics.js" data-key="2ecEVyyxGucywquPN+/X4g" async></script>\n',
+        }
 
         # Internal link redirect fixes (old URL → correct URL)
         LINK_FIXES = [
@@ -7626,10 +7776,27 @@ def main():
                 continue
             original = content
 
-            # Inject Ahrefs script if not already present
+            # Determine correct Ahrefs analytics key for this language
+            rel_path_check = str(html_file.relative_to(WEBSITE_DIR))
+            if rel_path_check.startswith('de/') or rel_path_check.startswith('de\\'):
+                ahrefs_lang = 'de'
+            elif rel_path_check.startswith('nl/') or rel_path_check.startswith('nl\\'):
+                ahrefs_lang = 'nl'
+            else:
+                ahrefs_lang = 'en'
+            ahrefs_script = AHREFS_SCRIPTS[ahrefs_lang]
+
+            # Inject Ahrefs script if not present, or fix wrong key if present
             if 'analytics.ahrefs.com' not in content and '</head>' in content:
-                content = content.replace('</head>', AHREFS_SCRIPT + '</head>')
+                content = content.replace('</head>', ahrefs_script + '</head>')
                 ahrefs_count += 1
+            elif 'analytics.ahrefs.com' in content:
+                # Replace any wrong key with the correct language-specific key
+                for lang_key, script in AHREFS_SCRIPTS.items():
+                    if lang_key != ahrefs_lang and script in content:
+                        content = content.replace(script, ahrefs_script)
+                        ahrefs_count += 1
+                        break
 
             # Fix internal redirects
             for old, new in LINK_FIXES:
