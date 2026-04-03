@@ -5866,9 +5866,9 @@ def main():
         reviews = fetch_supabase('reviews', '&status=in.(published,approved)&order=featured.desc,rating.desc,review_date.desc')
 
         log("Fetching FAQs from Supabase...")
-        faqs = fetch_supabase('faqs', '&status=eq.published&language=eq.en&order=section,sort_order')
-        faqs_de = fetch_supabase('faqs', '&status=eq.published&language=eq.de&order=section,sort_order')
-        faqs_nl = fetch_supabase('faqs', '&status=eq.published&language=eq.nl&order=section,sort_order')
+        faqs = fetch_supabase('faqs', '&status=in.(published,active)&language=eq.en&order=section,sort_order')
+        faqs_de = fetch_supabase('faqs', '&status=in.(published,active)&language=eq.de&order=section,sort_order')
+        faqs_nl = fetch_supabase('faqs', '&status=in.(published,active)&language=eq.nl&order=section,sort_order')
         faqs_by_lang = {'en': faqs, 'de': faqs_de, 'nl': faqs_nl}
 
         log("Fetching regions from Supabase...")
