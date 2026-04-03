@@ -2704,6 +2704,51 @@ def render_faq_schema(faqs, max_items=10):
     return html
 
 
+def render_blog_faq_section(post_id, faq_ids, faqs_by_id, lang='en'):
+    """Render FAQ accordion + FAQPage JSON-LD schema for blog posts."""
+    if not faq_ids:
+        return "", ""
+
+    # Resolve FAQ objects for this language
+    post_faqs = []
+    for fid in faq_ids:
+        fq = faqs_by_id.get((fid, lang))
+        if fq and fq.get('question') and fq.get('answer'):
+            post_faqs.append(fq)
+
+    if not post_faqs:
+        return "", ""
+
+    # Heading per language
+    headings = {'en': 'Frequently Asked Questions', 'de': 'Häufig gestellte Fragen', 'nl': 'Veelgestelde vragen'}
+    heading = headings.get(lang, headings['en'])
+
+    # Render accordion HTML
+    html = f'\n<!-- FAQ Section -->\n'
+    html += f'<section class="mt-16 mb-8 border-t border-slate-200 pt-12" id="faq">\n'
+    html += f'  <h2 class="text-2xl font-bold text-slate-900 mb-8">{heading}</h2>\n'
+    html += f'  <div class="space-y-4">\n'
+    for fq in post_faqs:
+        q = escape(strip_html_tags(fq.get('question', '')))
+        a = fq.get('answer', '')
+        html += f'    <details class="group border border-slate-200 rounded-lg">\n'
+        html += f'      <summary class="flex items-center justify-between cursor-pointer p-5 font-semibold text-slate-900 hover:text-primary transition-colors">\n'
+        html += f'        <span>{q}</span>\n'
+        html += f'        <svg class="w-5 h-5 shrink-0 ml-4 text-slate-400 group-open:rotate-180 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>\n'
+        html += f'      </summary>\n'
+        html += f'      <div class="px-5 pb-5 text-slate-600 leading-relaxed prose prose-sm max-w-none">\n'
+        html += f'        {a}\n'
+        html += f'      </div>\n'
+        html += f'    </details>\n'
+    html += f'  </div>\n'
+    html += f'</section>\n'
+
+    # Render FAQPage JSON-LD schema
+    schema = render_faq_schema(post_faqs, max_items=len(post_faqs))
+
+    return html, schema
+
+
 def render_tour_faq_section(tour_id, faqs, tour_name):
     """Render FAQ section for tour pages with curation logic."""
     if not tour_id or not faqs:
@@ -5839,6 +5884,21 @@ def main():
         log("Fetching routes from Supabase...")
         routes = fetch_supabase('routes', '&order=name') or []
 
+        log("Fetching FAQ-post mappings from Supabase...")
+        faq_post_map = fetch_supabase('faq_post_map', '&order=sort_order') or []
+        # Build lookup: post_id → list of faq_ids (sorted)
+        faq_map_by_post = {}
+        for fpm in faq_post_map:
+            pid = fpm.get('post_id')
+            fid = fpm.get('faq_id')
+            if pid and fid:
+                faq_map_by_post.setdefault(pid, []).append(fid)
+        # Build FAQ lookup by id for each language
+        faqs_by_id = {}
+        for lang_key, lang_faqs in faqs_by_lang.items():
+            for fq in (lang_faqs or []):
+                faqs_by_id[(fq.get('id'), lang_key)] = fq
+
         log("Fetching blog posts from Supabase...")
         posts_lower = fetch_supabase('posts', '&status=eq.published&language=eq.en&order=published_date.desc')
         posts_upper = fetch_supabase('posts', '&status=eq.Published&language=eq.en&order=published_date.desc')
@@ -6689,6 +6749,11 @@ def main():
                 rp_title = rp.get('title', '')
                 sidebar_related_html += f'<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="{escape(rp_slug)}">{escape(rp_title)}</a></li>\n'
 
+            # FAQ section for this blog post
+            post_id = post.get('id')
+            faq_ids = faq_map_by_post.get(post_id, [])
+            faq_html_en, faq_schema_en = render_blog_faq_section(post_id, faq_ids, faqs_by_id, 'en') if faq_ids else ('', '')
+
             replacements = {
                 '{meta_title}': escape(meta_title),
                 '{meta_description}': escape(meta_desc),
@@ -6706,6 +6771,8 @@ def main():
                 '{sidebar_tours_html}': sidebar_tours_html,
                 '{sidebar_related_html}': sidebar_related_html,
                 '{recommended_tours_html}': recommended_tours_html,
+                '{faq_section_html}': faq_html_en,
+                '{faq_schema}': faq_schema_en,
             }
 
             html = blog_template
@@ -6763,6 +6830,9 @@ def main():
                     de_cat_tag = BLOG_CATEGORY_TRANSLATIONS['de'].get(category, category).replace(' ', '')
                     de_tags_html = f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(de_cat_tag)}</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Wanderurlaub</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Irland</span>'
                 de_replacements['{tags_html}'] = de_tags_html
+                faq_html_de, faq_schema_de = render_blog_faq_section(post_id, faq_ids, faqs_by_id, 'de') if faq_ids else ('', '')
+                de_replacements['{faq_section_html}'] = faq_html_de
+                de_replacements['{faq_schema}'] = faq_schema_de
                 de_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_de
                 de_replacements['{sidebar_categories_html}'] = sidebar_categories_html_de
                 # Build DE-specific related posts (only posts with DE translations)
@@ -6818,6 +6888,9 @@ def main():
                     nl_cat_tag = BLOG_CATEGORY_TRANSLATIONS['nl'].get(category, category).replace(' ', '')
                     nl_tags_html = f'<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#{escape(nl_cat_tag)}</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Wandelvakantie</span>\n<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Ierland</span>'
                 nl_replacements['{tags_html}'] = nl_tags_html
+                faq_html_nl, faq_schema_nl = render_blog_faq_section(post_id, faq_ids, faqs_by_id, 'nl') if faq_ids else ('', '')
+                nl_replacements['{faq_section_html}'] = faq_html_nl
+                nl_replacements['{faq_schema}'] = faq_schema_nl
                 nl_replacements['{sidebar_recent_posts_html}'] = sidebar_recent_posts_html_nl
                 nl_replacements['{sidebar_categories_html}'] = sidebar_categories_html_nl
                 # Build NL-specific related posts (only posts with NL translations)
