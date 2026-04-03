@@ -6872,6 +6872,10 @@ def main():
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
                     f.write(blog_listing_new)
+                # Also write to root blog.html for Cloudflare Pages URL resolution
+                root_blog = WEBSITE_DIR / 'blog.html'
+                with open(root_blog, 'w') as f:
+                    f.write(blog_listing_new)
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
             blog_listing_new = None
