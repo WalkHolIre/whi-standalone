@@ -4742,11 +4742,13 @@ var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=
 def fix_og_tags(html, canonical_url, lang='en', title=None, description=None, image=None):
     """Fix Open Graph and Twitter Card meta tags for the given language/URL.
 
-    - Updates og:url to match the canonical URL (correct domain + clean URL)
-    - Optionally updates og:title, og:description, og:image and twitter: equivalents
-    - Adds OG/Twitter tags if missing entirely
+    - Strips ALL existing OG/Twitter blocks first to prevent duplication
+    - Adds a single clean set of OG + Twitter Card tags
     """
     from html import escape as html_escape
+
+    # Strip ALL existing OG and Twitter Card meta tags to prevent duplication
+    html = re.sub(r'\s*<meta\s+(?:property="og:[^"]*"|name="twitter:[^"]*")[^>]*/?>\s*', '', html)
 
     # Fix og:url to match canonical
     if re.search(r'<meta\s+property="og:url"', html):
@@ -6712,7 +6714,7 @@ def main():
         <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
             <a href="blog/{escape(ps)}" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
-                    <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
+                    <img src="{escape(p_img) if p_img and 'wp-content' not in p_img else 'images/hero/kerry-hero-400w.jpg'}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.src='images/hero/kerry-hero-400w.jpg';this.onerror=null"/>
                 </div>
                 <div class="flex items-center gap-3 mb-3">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2 py-1 rounded">{escape(p_cat)}</span>
