@@ -918,6 +918,29 @@
     "translation_group_id": "70ea53cf-14c5-4ffc-a858-b1999e389846"
   },
   {
+    "id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f",
+    "question": "Can I use the same adapter in Northern Ireland?",
+    "answer": "<p>Yes! Northern Ireland (UK) uses the same Type G outlets and 230V electricity. Your Irish adapter works perfectly in Northern Ireland.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:55:44.603585+00:00",
+    "updated_at": "2026-03-31T15:55:44.603585+00:00",
+    "section": "equipment",
+    "tags": [
+      "Northern Ireland",
+      "UK",
+      "Type G",
+      "electricity"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f"
+  },
+  {
     "id": "272d6297-ea02-4863-9061-48b3d632ade2",
     "question": "What's the best power adapter to buy?",
     "answer": "<p><strong>Look for:</strong></p><ul><li><p>Type G socket (Ireland/UK compatible)</p></li><li><p>CE certification</p></li><li><p>Multiple USB ports</p></li><li><p>Surge protection</p></li><li><p>Quality brand (reputable electronics manufacturers)</p></li></ul><p><strong>Recommended brands:</strong> Belkin, Anker, Samsonite, or similar quality manufacturers</p>",
@@ -940,6 +963,27 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "272d6297-ea02-4863-9061-48b3d632ade2"
+  },
+  {
+    "id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692",
+    "question": "Can I charge my device in my Irish accommodation?",
+    "answer": "<p>Yes, all guesthouses, hotels, and B&amp;Bs provide electrical outlets. Outlets are typically near desks, nightstands, or bathroom mirrors. Please ask the staff for assistance if you are unable to locate an outlet.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:58:25.473352+00:00",
+    "updated_at": "2026-03-31T15:58:25.473352+00:00",
+    "section": "equipment",
+    "tags": [
+      "electrical",
+      "charge my device"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692"
   },
   {
     "id": "77a98866-05fd-4595-a8e6-d0adac13af9a",
@@ -984,50 +1028,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e"
-  },
-  {
-    "id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f",
-    "question": "Can I use the same adapter in Northern Ireland?",
-    "answer": "<p>Yes! Northern Ireland (UK) uses the same Type G outlets and 230V electricity. Your Irish adapter works perfectly in Northern Ireland.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:55:44.603585+00:00",
-    "updated_at": "2026-03-31T15:55:44.603585+00:00",
-    "section": "equipment",
-    "tags": [
-      "Northern Ireland",
-      "UK",
-      "Type G",
-      "electricity"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f"
-  },
-  {
-    "id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692",
-    "question": "Can I charge my device in my Irish accommodation?",
-    "answer": "<p>Yes, all guesthouses, hotels, and B&amp;Bs provide electrical outlets. Outlets are typically near desks, nightstands, or bathroom mirrors. Please ask the staff for assistance if you are unable to locate an outlet.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:58:25.473352+00:00",
-    "updated_at": "2026-03-31T15:58:25.473352+00:00",
-    "section": "equipment",
-    "tags": [
-      "electrical",
-      "charge my device"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692"
   },
   {
     "id": "b9c4abbb-bd17-426c-84d2-807ff922ef65",
@@ -1262,6 +1262,143 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "e3a2d134-22c2-4a45-b467-474e60f1cb17"
+  },
+  {
+    "id": "12241c5b-3723-41c1-9ab0-69e59892a7e6",
+    "question": "Are Ireland's national parks free to visit?",
+    "answer": "Yes, all six national parks in Ireland are free to enter. There is no admission charge for walking the trails. Some visitor centres and specific attractions within or near the parks (like Muckross House in Killarney or Glenveagh Castle) may charge a separate entry fee.",
+    "category": "Destinations",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "free entry",
+      "Muckross House",
+      "Glenveagh Castle",
+      "admission"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000003"
+  },
+  {
+    "id": "a61b1e34-c6db-43df-9b45-d9fd22bb507a",
+    "question": "What is the best time of year to visit Ireland's national parks?",
+    "answer": "April to October is the best time for walking in Ireland's national parks. Days are longest from May to August, giving you more daylight on the trails. Spring brings wildflowers to the Burren; summer has the warmest weather; and autumn colours are stunning in Killarney. Winter visits offer solitude but shorter days and wetter conditions.",
+    "category": "Planning",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "best time to visit",
+      "spring",
+      "summer",
+      "autumn",
+      "seasons"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000004"
+  },
+  {
+    "id": "d35f12ca-fdb2-4ddb-b20e-aa2b0c5e698f",
+    "question": "How many national parks are there in Ireland?",
+    "answer": "Ireland has six national parks: Killarney National Park (Kerry), Wicklow Mountains National Park (Wicklow), Connemara National Park (Galway), Burren National Park (Clare), Glenveagh National Park (Donegal), and Ballycroy National Park (Mayo). All six are free to visit and open year-round.",
+    "category": "Destinations",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "Ireland national parks",
+      "Killarney",
+      "Wicklow",
+      "Connemara",
+      "Burren",
+      "Glenveagh",
+      "Ballycroy"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000001"
+  },
+  {
+    "id": "0efdf6a3-b1aa-475e-8782-1ef0c34fe2c0",
+    "question": "Can beginners walk in Ireland's national parks?",
+    "answer": "Absolutely. Every national park has trails suitable for beginners. Killarney has flat lakeside walks around Muckross Lake. Wicklow has the lower Glendalough Valley trails. Connemara has the lower Diamond Hill loop. The Burren has gentle limestone paths. To get started, all you need are good walking shoes, waterproof layers, and a daypack.",
+    "category": "Walking",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "beginners",
+      "easy walks",
+      "Muckross Lake",
+      "Glendalough",
+      "Diamond Hill",
+      "Burren"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000005"
+  },
+  {
+    "id": "c40706e9-1cdd-4cce-a1aa-c62a4c8ecada",
+    "question": "Which Ireland national park is best for walking?",
+    "answer": "Killarney National Park offers the widest range of walks, from flat lakeside paths to mountain climbs. For long-distance trails, Wicklow Mountains National Park has the Wicklow Way. For dramatic coastal scenery, Connemara National Park and the Diamond Hill loop are difficult to beat. The best choice depends on your fitness level and what kind of landscape you enjoy.",
+    "category": "Destinations",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "best national park walking",
+      "Killarney",
+      "Wicklow Way",
+      "Diamond Hill",
+      "Connemara"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000002"
   },
   {
     "id": "0c01b17f-2d30-4d1c-bdb6-76b918a9d33c",
@@ -2042,27 +2179,6 @@
     "translation_group_id": "05c494ef-7a85-4ad9-9ef9-abdd57e4463f"
   },
   {
-    "id": "baf97381-a2cd-4a56-89c8-229daf247ab6",
-    "question": "Is tap water safe to drink?",
-    "answer": "<p>Yes. Irish tap water is among the safest in Europe. There's no need for bottled water.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:28:46.341158+00:00",
-    "updated_at": "2026-03-31T15:28:46.341158+00:00",
-    "section": "safety",
-    "tags": [
-      "tap water",
-      "bottled water"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "baf97381-a2cd-4a56-89c8-229daf247ab6"
-  },
-  {
     "id": "b43d2ab1-9a15-4b33-954a-6c4c0cf15125",
     "question": "Are insects a problem while multi-day hiking in Ireland?",
     "answer": "<p>Not really. Ireland's Atlantic climate keeps most biting insects at bay. <strong>Midges</strong> exist but are far less aggressive than in Scotland \u2014 coastal routes like the Dingle Way and Kerry Way rarely have issues thanks to the sea breeze. <strong>Ticks</strong> are present in long grass and heather, so a quick check after boggy sections is sensible. A small tube of <strong>insect repellent</strong> is worth packing for summer trips, but insects won't define your experience. Ireland's weather is a far bigger consideration than its wildlife.</p>",
@@ -2083,6 +2199,27 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "b43d2ab1-9a15-4b33-954a-6c4c0cf15125"
+  },
+  {
+    "id": "baf97381-a2cd-4a56-89c8-229daf247ab6",
+    "question": "Is tap water safe to drink?",
+    "answer": "<p>Yes. Irish tap water is among the safest in Europe. There's no need for bottled water.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:28:46.341158+00:00",
+    "updated_at": "2026-03-31T15:28:46.341158+00:00",
+    "section": "safety",
+    "tags": [
+      "tap water",
+      "bottled water"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "baf97381-a2cd-4a56-89c8-229daf247ab6"
   },
   {
     "id": "608bb882-244b-48cd-aa66-4fb44e0d385f",
@@ -2895,6 +3032,32 @@
     "translation_group_id": "f719415f-a8e4-4b58-99ab-ec617657bd08"
   },
   {
+    "id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227",
+    "question": "Do I need a visa to travel to Ireland? ",
+    "answer": "<p>Citizens of EU/EEA countries, the USA, Canada, Australia, and New Zealand don't need a visa for the Republic of Ireland. Check <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer\" href=\"http://inis.gov.ie\">inis.gov.ie</a> for your specific nationality. Northern Ireland (UK) has separate entry requirements \u2014 see our <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://walkingholidayireland.com/blog/northern-ireland-uk-eta-guide\">Northern Ireland ETA guide</a>.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:28:07.83213+00:00",
+    "updated_at": "2026-03-31T15:28:07.83213+00:00",
+    "section": "transport",
+    "tags": [
+      "Citizens",
+      "EU/EEA",
+      "USA",
+      "Canada",
+      "Australia",
+      "New Zealand",
+      "visa"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227"
+  },
+  {
     "id": "9629a81d-341a-454b-a7d2-c45057198025",
     "question": "Can I use my UK or EU driving licence in Ireland? ",
     "answer": "<p>Yes. UK and EU driving licences are fully valid in Ireland. Non-EU licence holders should carry an International Driving Permit.</p>",
@@ -2940,32 +3103,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "f3e7d319-3b91-4a74-8a32-a1aa3f256204"
-  },
-  {
-    "id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227",
-    "question": "Do I need a visa to travel to Ireland? ",
-    "answer": "<p>Citizens of EU/EEA countries, the USA, Canada, Australia, and New Zealand don't need a visa for the Republic of Ireland. Check <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer\" href=\"http://inis.gov.ie\">inis.gov.ie</a> for your specific nationality. Northern Ireland (UK) has separate entry requirements \u2014 see our <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://walkingholidayireland.com/blog/northern-ireland-uk-eta-guide\">Northern Ireland ETA guide</a>.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:28:07.83213+00:00",
-    "updated_at": "2026-03-31T15:28:07.83213+00:00",
-    "section": "transport",
-    "tags": [
-      "Citizens",
-      "EU/EEA",
-      "USA",
-      "Canada",
-      "Australia",
-      "New Zealand",
-      "visa"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227"
   },
   {
     "id": "6b1419b1-70de-400a-b9b2-0f6c7482a571",
