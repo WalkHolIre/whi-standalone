@@ -918,6 +918,29 @@
     "translation_group_id": "70ea53cf-14c5-4ffc-a858-b1999e389846"
   },
   {
+    "id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e",
+    "question": "Are there any specific gear or clothing recommendations for multi-day hiking in Ireland?",
+    "answer": "<p>It is important to have <strong>waterproof</strong> and <strong>breathable</strong> clothing, sturdy hiking boots with excellent traction, a 20L-30L backpack with proper support, and <strong>layers of clothing</strong> to adapt to changing weather conditions on the trail.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-23T11:47:35.992749+00:00",
+    "updated_at": "2026-03-23T11:47:35.992749+00:00",
+    "section": "equipment",
+    "tags": [
+      "Waterproof clothing",
+      "breathable clothing",
+      "Hiking boots",
+      "layers of clothing"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e"
+  },
+  {
     "id": "77a98866-05fd-4595-a8e6-d0adac13af9a",
     "question": "Will my power bank work?",
     "answer": "<p>All modern power banks auto-convert voltage. Just bring a Type G adapter to charge the power bank in your accommodation. Once charged, the power bank works anywhere globally.</p>",
@@ -1005,29 +1028,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692"
-  },
-  {
-    "id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e",
-    "question": "Are there any specific gear or clothing recommendations for multi-day hiking in Ireland?",
-    "answer": "<p>It is important to have <strong>waterproof</strong> and <strong>breathable</strong> clothing, sturdy hiking boots with excellent traction, a 20L-30L backpack with proper support, and <strong>layers of clothing</strong> to adapt to changing weather conditions on the trail.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-23T11:47:35.992749+00:00",
-    "updated_at": "2026-03-23T11:47:35.992749+00:00",
-    "section": "equipment",
-    "tags": [
-      "Waterproof clothing",
-      "breathable clothing",
-      "Hiking boots",
-      "layers of clothing"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e"
   },
   {
     "id": "b9c4abbb-bd17-426c-84d2-807ff922ef65",
@@ -1240,6 +1240,33 @@
     "translation_group_id": "f3e51952-c8d8-4035-ad65-93311311b70b"
   },
   {
+    "id": "a61b1e34-c6db-43df-9b45-d9fd22bb507a",
+    "question": "What is the best time of year to visit Ireland's national parks?",
+    "answer": "April to October is the best time for walking in Ireland's national parks. Days are longest from May to August, giving you more daylight on the trails. Spring brings wildflowers to the Burren; summer has the warmest weather; and autumn colours are stunning in Killarney. Winter visits offer solitude but shorter days and wetter conditions.",
+    "category": "Planning",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "best time to visit",
+      "spring",
+      "summer",
+      "autumn",
+      "seasons"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000004"
+  },
+  {
     "id": "c40706e9-1cdd-4cce-a1aa-c62a4c8ecada",
     "question": "Which Ireland national park is best for walking?",
     "answer": "Killarney National Park offers the widest range of walks, from flat lakeside paths to mountain climbs. For long-distance trails, Wicklow Mountains National Park has the Wicklow Way. For dramatic coastal scenery, Connemara National Park and the Diamond Hill loop are difficult to beat. The best choice depends on your fitness level and what kind of landscape you enjoy.",
@@ -1267,10 +1294,10 @@
     "translation_group_id": "a0f1e001-0001-4000-8000-000000000002"
   },
   {
-    "id": "a61b1e34-c6db-43df-9b45-d9fd22bb507a",
-    "question": "What is the best time of year to visit Ireland's national parks?",
-    "answer": "April to October is the best time for walking in Ireland's national parks. Days are longest from May to August, giving you more daylight on the trails. Spring brings wildflowers to the Burren; summer has the warmest weather; and autumn colours are stunning in Killarney. Winter visits offer solitude but shorter days and wetter conditions.",
-    "category": "Planning",
+    "id": "12241c5b-3723-41c1-9ab0-69e59892a7e6",
+    "question": "Are Ireland's national parks free to visit?",
+    "answer": "Yes, all six national parks in Ireland are free to enter. There is no admission charge for walking the trails. Some visitor centres and specific attractions within or near the parks (like Muckross House in Killarney or Glenveagh Castle) may charge a separate entry fee.",
+    "category": "Destinations",
     "sort_order": 0,
     "status": "published",
     "created_at": "2026-04-03T12:23:55.42441+00:00",
@@ -1278,11 +1305,10 @@
     "section": "general",
     "tags": [
       "national parks",
-      "best time to visit",
-      "spring",
-      "summer",
-      "autumn",
-      "seasons"
+      "free entry",
+      "Muckross House",
+      "Glenveagh Castle",
+      "admission"
     ],
     "destination_ids": [
       "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
@@ -1291,7 +1317,31 @@
     "page_ids": [],
     "language": "en",
     "source_url": null,
-    "translation_group_id": "a0f1e001-0001-4000-8000-000000000004"
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000003"
+  },
+  {
+    "id": "e3a2d134-22c2-4a45-b467-474e60f1cb17",
+    "question": "Can I hike all year round in Ireland?",
+    "answer": "<p>Yes. Ireland's mild climate means trails are open and walkable in every month. </p><p><strong>Summer</strong> (June\u2013August) brings the longest days and best visibility, but also the most crowds. </p><p><strong>Spring and autumn</strong> are ideal \u2014 quieter trails, softer light, and temperatures that suit long days on your feet. </p><p><strong>Winter</strong> hiking is absolutely possible on lower-level routes, but shorter daylight hours and wetter conditions require more planning. </p><p>Whatever the season, layers and waterproofs are essential. Irish weather can change quickly, and that's as true in July as it is in January.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-23T11:54:15.07242+00:00",
+    "updated_at": "2026-03-23T11:54:15.07242+00:00",
+    "section": "general",
+    "tags": [
+      "hiking season",
+      "hiking in spring",
+      "hiking in summer",
+      "hiking in autumn",
+      "hiking in winter"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "e3a2d134-22c2-4a45-b467-474e60f1cb17"
   },
   {
     "id": "d35f12ca-fdb2-4ddb-b20e-aa2b0c5e698f",
@@ -1321,56 +1371,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "a0f1e001-0001-4000-8000-000000000001"
-  },
-  {
-    "id": "e3a2d134-22c2-4a45-b467-474e60f1cb17",
-    "question": "Can I hike all year round in Ireland?",
-    "answer": "<p>Yes. Ireland's mild climate means trails are open and walkable in every month. </p><p><strong>Summer</strong> (June\u2013August) brings the longest days and best visibility, but also the most crowds. </p><p><strong>Spring and autumn</strong> are ideal \u2014 quieter trails, softer light, and temperatures that suit long days on your feet. </p><p><strong>Winter</strong> hiking is absolutely possible on lower-level routes, but shorter daylight hours and wetter conditions require more planning. </p><p>Whatever the season, layers and waterproofs are essential. Irish weather can change quickly, and that's as true in July as it is in January.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-23T11:54:15.07242+00:00",
-    "updated_at": "2026-03-23T11:54:15.07242+00:00",
-    "section": "general",
-    "tags": [
-      "hiking season",
-      "hiking in spring",
-      "hiking in summer",
-      "hiking in autumn",
-      "hiking in winter"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "e3a2d134-22c2-4a45-b467-474e60f1cb17"
-  },
-  {
-    "id": "12241c5b-3723-41c1-9ab0-69e59892a7e6",
-    "question": "Are Ireland's national parks free to visit?",
-    "answer": "Yes, all six national parks in Ireland are free to enter. There is no admission charge for walking the trails. Some visitor centres and specific attractions within or near the parks (like Muckross House in Killarney or Glenveagh Castle) may charge a separate entry fee.",
-    "category": "Destinations",
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-04-03T12:23:55.42441+00:00",
-    "updated_at": "2026-04-03T12:23:55.42441+00:00",
-    "section": "general",
-    "tags": [
-      "national parks",
-      "free entry",
-      "Muckross House",
-      "Glenveagh Castle",
-      "admission"
-    ],
-    "destination_ids": [
-      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
-    ],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "a0f1e001-0001-4000-8000-000000000003"
   },
   {
     "id": "0efdf6a3-b1aa-475e-8782-1ef0c34fe2c0",
@@ -2205,6 +2205,121 @@
     "language": "en",
     "source_url": "https://walkingholidayireland.com/terms-and-conditions/",
     "translation_group_id": "9f8afa95-e74c-4714-ab9a-61cc036670cc"
+  },
+  {
+    "id": "b0f1e001-0002-4000-8000-000000000201",
+    "question": "Is a dedicated GPS or smartphone app better for hiking?",
+    "answer": "For day hikes on marked trails, a smartphone app like Gaia GPS or AllTrails is excellent. For multi-day walks, winter mountaineering, or remote backcountry, a dedicated hiking GPS gives you better battery life, durability, and satellite accuracy. Many experienced walkers carry both.",
+    "category": "Gear & Equipment",
+    "sort_order": 1,
+    "status": "published",
+    "created_at": "2026-04-03T14:46:35.979471+00:00",
+    "updated_at": "2026-04-03T14:46:35.979471+00:00",
+    "section": "GPS Navigation",
+    "tags": [
+      "gps",
+      "hiking",
+      "navigation",
+      "smartphone"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b0f1e001-0002-4000-8000-000000000200"
+  },
+  {
+    "id": "b0f1e001-0002-4000-8000-000000000211",
+    "question": "Will GPS work reliably in Irish mountains?",
+    "answer": "Yes, in most conditions. Multi-band GNSS devices (like the Garmin GPSMAP 67) perform well even in valleys and heavy cloud. Occasional signal drops in deep corries are normal \u2014 a barometric altimeter helps confirm your elevation when satellite fix is weak.",
+    "category": "Gear & Equipment",
+    "sort_order": 2,
+    "status": "published",
+    "created_at": "2026-04-03T14:46:35.979471+00:00",
+    "updated_at": "2026-04-03T14:46:35.979471+00:00",
+    "section": "GPS Navigation",
+    "tags": [
+      "gps",
+      "ireland",
+      "mountains",
+      "signal"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b0f1e001-0002-4000-8000-000000000210"
+  },
+  {
+    "id": "b0f1e001-0002-4000-8000-000000000221",
+    "question": "How long does a hiking GPS battery last?",
+    "answer": "Dedicated devices range from 180 hours (GPSMAP 67) to 168 hours in expedition mode (eTrex SE with AA batteries). Smartphones last 5\u20138 hours in active GPS mode. Carrying spare batteries or a power bank is always wise for any walk longer than a day.",
+    "category": "Gear & Equipment",
+    "sort_order": 3,
+    "status": "published",
+    "created_at": "2026-04-03T14:46:35.979471+00:00",
+    "updated_at": "2026-04-03T14:46:35.979471+00:00",
+    "section": "GPS Navigation",
+    "tags": [
+      "gps",
+      "battery",
+      "hiking",
+      "power"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b0f1e001-0002-4000-8000-000000000220"
+  },
+  {
+    "id": "b0f1e001-0002-4000-8000-000000000231",
+    "question": "Do I need a satellite communicator for hiking in Ireland?",
+    "answer": "For well-travelled trails with mobile coverage, no. For remote areas like inland Donegal, the Beara Peninsula interior, or winter mountain routes, a satellite communicator like the Garmin inReach Mini 2 provides an emergency lifeline when your phone has no signal.",
+    "category": "Gear & Equipment",
+    "sort_order": 4,
+    "status": "published",
+    "created_at": "2026-04-03T14:46:35.979471+00:00",
+    "updated_at": "2026-04-03T14:46:35.979471+00:00",
+    "section": "GPS Navigation",
+    "tags": [
+      "satellite",
+      "communicator",
+      "safety",
+      "ireland"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b0f1e001-0002-4000-8000-000000000230"
+  },
+  {
+    "id": "b0f1e001-0002-4000-8000-000000000241",
+    "question": "Can I use free maps on a hiking GPS?",
+    "answer": "Yes. OpenStreetMap provides free topographic maps that can be loaded onto most Garmin devices. The quality is surprisingly good for Ireland, though the official OSI maps offer finer detail for mountain navigation.",
+    "category": "Gear & Equipment",
+    "sort_order": 5,
+    "status": "published",
+    "created_at": "2026-04-03T14:46:35.979471+00:00",
+    "updated_at": "2026-04-03T14:46:35.979471+00:00",
+    "section": "GPS Navigation",
+    "tags": [
+      "maps",
+      "openstreetmap",
+      "gps",
+      "free"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "b0f1e001-0002-4000-8000-000000000240"
   },
   {
     "id": "9ef0232c-c505-4ed7-a28b-0fc05547b005",
