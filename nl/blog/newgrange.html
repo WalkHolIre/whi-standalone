@@ -15,6 +15,9 @@
         .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         body { font-family: 'Inter', sans-serif; }
         header.site-header{top:0;} @media(min-width:768px){header.site-header{top:37px;}}
+        /* Scroll offset for fixed header - TOC anchor links clear both utility bar and nav */
+        .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 100px; }
+        @media(min-width:768px){ .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 140px; } }
         /* Article prose styling — matched to site-wide design system */
 
         /* Headings — h2 gets orange bar accent like all site sections */
@@ -391,7 +394,7 @@
             <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
             <ul class="space-y-2">
                 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>Alle Berichten</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">184</span></a></li>
-<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Routegidsen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">66</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Routegidsen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">65</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Reis Plannen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">34</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Ierse Cultuur &amp; Erfgoed</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">20</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Veiligheid &amp; Weer</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
@@ -400,7 +403,7 @@
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Wandelvakanties</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Gezondheid &amp; Welzijn</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-&amp;-tips"><span>Planning &amp; Tips</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">3</span></a></li>
-<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-routes"><span>Wandelroutes</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">2</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-routes"><span>Wandelroutes</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">3</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-areas"><span>Walking Areas</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
 <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Reisinformatie</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
 
