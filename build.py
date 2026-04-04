@@ -5153,6 +5153,27 @@ def post_process_html(html):
         '"/self-guided-walking-tours/cooley-mourne-mountains/"': '"/walking-tours/cooley-mournes"',
         '"/self-guided-walking-tours/cooley-and-mourne-mountains/"': '"/walking-tours/cooley-mournes"',
         '"/self-guided-walking-tours/the-wicklow-way/"':         '"/walking-tours/wicklow-way"',
+        # Blog posts — old root slugs (no /blog/ prefix) → canonical /blog/slug
+        '"/hiking-the-kerry-way/"':            '"/blog/kerry-way-walking-guide"',
+        '"/hiking-the-kerry-way"':             '"/blog/kerry-way-walking-guide"',
+        '"/newgrange/"':                       '"/blog/newgrange"',
+        '"/newgrange"':                        '"/blog/newgrange"',
+        '"/the-monasterboice-monastic-site/"': '"/blog/the-monasterboice-monastic-site"',
+        '"/the-monasterboice-monastic-site"':  '"/blog/the-monasterboice-monastic-site"',
+        '"/a-guide-to-irelands-6-national-parks/"': '"/blog/ireland-national-parks"',
+        '"/a-guide-to-irelands-6-national-parks"':  '"/blog/ireland-national-parks"',
+        '"/best-trails-in-ireland-for-solo-hikers/"': '"/blog/best-trails-in-ireland-for-solo-hikers"',
+        '"/best-trails-in-ireland-for-solo-hikers"':  '"/blog/best-trails-in-ireland-for-solo-hikers"',
+        '"/layering-for-hiking/"':             '"/blog/layering-for-hiking"',
+        '"/layering-for-hiking"':              '"/blog/layering-for-hiking"',
+        # Walking area redirects
+        '"/walking-area-wicklow/"':            '"/walking-area-wicklow-way"',
+        '"/walking-area-wicklow"':             '"/walking-area-wicklow-way"',
+        # Static pages — old short paths → canonical
+        '"/privacy/"':                         '"/privacy-policy"',
+        '"/privacy"':                          '"/privacy-policy"',
+        '"/terms/"':                           '"/terms-and-conditions"',
+        '"/terms"':                            '"/terms-and-conditions"',
         # Static page with .html extension
         '"/tour-grading.html"':                '"/tour-grading"',
         # Full domain variants (external absolute links to own domain)
@@ -6993,7 +7014,7 @@ def main():
 
             grid_cards += f'''
         <article class="blog-card flex flex-col group cursor-pointer" data-category="{cat_slug(p_cat)}">
-            <a href="blog/{escape(ps)}" class="flex flex-col h-full">
+            <a href="/blog/{escape(ps)}" class="flex flex-col h-full">
                 <div class="overflow-hidden rounded-xl aspect-[16/10] mb-5 bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{escape(p_img)}" alt="{escape(p_title)}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" onerror="this.style.display='none'"/>
                 </div>
@@ -7026,7 +7047,7 @@ def main():
                 t_price_display = ''
 
             recommended_html += f'''
-            <a href="walking-tours/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="/walking-tours/{escape(t_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="images/routes/{escape(t_slug)}/card.jpg" srcset="images/routes/{escape(t_slug)}/card-400w.jpg 400w, images/routes/{escape(t_slug)}/card-800w.jpg 800w, images/routes/{escape(t_slug)}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{t_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                     <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">{t_days} Days</span>
@@ -7059,7 +7080,7 @@ def main():
                 d_hero = f'images/routes/{d_slug}/card.jpg'
 
             recommended_areas_html += f'''
-            <a href="walking-area-{escape(d_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+            <a href="/walking-area-{escape(d_slug)}" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
                 <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{d_hero}" alt="{d_name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
                 </div>
@@ -7152,6 +7173,10 @@ def main():
 
             if not DRY_RUN:
                 with open(blog_listing_path, 'w') as f:
+                    f.write(blog_listing_new)
+                # Also write as index.html so Cloudflare Pages serves /blog correctly
+                blog_index_path = WEBSITE_DIR / 'blog' / 'index.html'
+                with open(blog_index_path, 'w') as f:
                     f.write(blog_listing_new)
                 log(f"Generated blog listing page with {len(generated_blog_slugs)} posts")
         else:
@@ -8065,27 +8090,51 @@ def validate_seo_health(site_dir):
                 if re.search(rf'<loc>[^<]*/{re.escape(noindex_slug)}[^/]*</loc>', sitemap_content):
                     issues.append(f"NOINDEX IN SITEMAP: {sitemap_path.relative_to(site_dir)} contains /{noindex_slug}")
 
-    # 6. Validate internal links — check all href targets exist as files
+    # 6. Validate internal links — check all href targets exist AND don't go via a redirect.
+    #    Internal links must ALWAYS point to the canonical URL directly.
+    #    Redirects exist for external sites you can't control — never rely on them internally.
     log("  Checking internal links...")
-    # Build a set of all valid paths (extensionless and with .html)
+
+    # 6a. Build set of all valid paths (extensionless and with .html)
     valid_paths = set()
     for html_file in site_dir.rglob('*.html'):
         rel = str(html_file.relative_to(site_dir)).replace('\\', '/')
         valid_paths.add(rel)                              # e.g. walking-tours/kerry-way.html
         valid_paths.add(rel.replace('.html', ''))          # e.g. walking-tours/kerry-way
 
-    # Also count non-HTML assets (images, CSS, JS, PDFs, etc.)
+    # Also include non-HTML assets (images, CSS, JS, PDFs, etc.)
     for asset_file in site_dir.rglob('*'):
         if asset_file.is_file() and not asset_file.suffix == '.html':
             rel = str(asset_file.relative_to(site_dir)).replace('\\', '/')
             valid_paths.add(rel)
+
+    # 6b. Parse _redirects to build a map of redirect sources → canonical targets.
+    #     Any internal link pointing at a redirect source is a bug — fix at source, not via redirect.
+    redirect_sources = {}  # normalised_path → canonical_destination
+    redirects_path = site_dir / '_redirects'
+    if redirects_path.exists():
+        for line in redirects_path.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            parts = line.split()
+            if len(parts) < 2:
+                continue
+            src = parts[0].lstrip('/').rstrip('/')
+            dst = parts[1]
+            # Skip wildcard patterns (can't match exactly) and .html variants
+            # (those are just compatibility aliases, not meaningful navigation targets)
+            if '*' in src or src.endswith('.html'):
+                continue
+            redirect_sources[src] = dst
 
     # Known external/special prefixes to skip
     skip_prefixes = ('http://', 'https://', 'mailto:', 'tel:', 'javascript:', '#', 'data:', '//')
     # Paths handled by the worker or external systems
     skip_path_prefixes = ('/cdn-cgi/', '/_', '/admin/')
 
-    broken_links = {}  # target → set of source pages
+    broken_links = {}       # target → set of source pages  (404 — file doesn't exist)
+    redirect_links = {}     # target → (canonical, set of source pages)  (via redirect — fix at source)
     internal_link_pattern = re.compile(r'href="([^"#?]+)')
 
     for html_file in site_dir.rglob('*.html'):
@@ -8110,11 +8159,10 @@ def validate_seo_health(site_dir):
             if any(href.startswith(p) for p in skip_path_prefixes):
                 continue
 
-            # Resolve relative paths
+            # Resolve relative paths to a normalised site-root-relative path
             if href.startswith('/'):
                 target = href.lstrip('/')
             elif href.startswith('../'):
-                # Go up one directory from page_dir
                 parts = page_dir.split('/') if page_dir else []
                 up_count = 0
                 remaining = href
@@ -8124,35 +8172,64 @@ def validate_seo_health(site_dir):
                 base = '/'.join(parts[:-up_count]) if up_count <= len(parts) else ''
                 target = f"{base}/{remaining}" if base else remaining
             else:
-                # Relative to current page's directory
                 target = f"{page_dir}/{href}" if page_dir else href
 
             # Normalise: strip trailing slash, remove double slashes
             target = target.strip('/').replace('//', '/')
 
-            # Skip empty targets
             if not target:
                 continue
 
-            # Check if target exists (with or without .html)
-            if target not in valid_paths and f"{target}.html" not in valid_paths:
-                # Also check index.html in directory
-                if f"{target}/index.html" not in valid_paths:
-                    if target not in broken_links:
-                        broken_links[target] = set()
-                    broken_links[target].add(rel_path)
+            # Check 1: does the target file exist as a built page?
+            #   If yes, the link is valid regardless of any redirect rules.
+            #   (Trailing-slash redirects like /contact/ → /contact are noise — contact.html exists.)
+            target_exists = (
+                target in valid_paths
+                or f"{target}.html" in valid_paths
+                or f"{target}/index.html" in valid_paths
+            )
+            if target_exists:
+                continue
 
+            # Check 2: does the target go through a redirect?
+            #   File doesn't exist AND there's a redirect rule → the link is pointing at an old/wrong
+            #   URL and relying on a redirect to reach the real page. That is always a bug.
+            #   Fix the link at source; redirects are for external sites you can't control.
+            if target in redirect_sources:
+                canonical = redirect_sources[target]
+                if target not in redirect_links:
+                    redirect_links[target] = (canonical, set())
+                redirect_links[target][1].add(rel_path)
+                issues.append(f"INTERNAL LINK VIA REDIRECT: '{target}' → should be '{canonical}' (fix at source)")
+                continue
+
+            # Check 3: file doesn't exist and no redirect either → broken link
+            if target not in broken_links:
+                broken_links[target] = set()
+            broken_links[target].add(rel_path)
+
+    # Report redirect-via links (build errors — must fix at source)
+    if redirect_links:
+        sorted_redirect = sorted(redirect_links.items(), key=lambda x: -len(x[1][1]))
+        total_redirect = sum(len(v[1]) for v in redirect_links.values())
+        log(f"\n  ✗ INTERNAL LINKS VIA REDIRECT: {len(redirect_links)} targets, {total_redirect} total occurrences", 'error')
+        log(f"    Fix these at source — redirects are for external sites, not internal navigation.", 'error')
+        for target, (canonical, sources) in sorted_redirect:
+            log(f"    ✗ '{target}' → use '{canonical}' instead  ({len(sources)} pages)", 'error')
+
+    # Report broken links (target file doesn't exist at all)
     if broken_links:
-        # Sort by number of linking pages (most impactful first)
         sorted_broken = sorted(broken_links.items(), key=lambda x: -len(x[1]))
-        total_links = sum(len(sources) for sources in broken_links.values())
-        log(f"\n  ⚠ BROKEN INTERNAL LINKS: {len(broken_links)} targets, {total_links} total links", 'warn')
+        total_broken = sum(len(sources) for sources in broken_links.values())
+        log(f"\n  ✗ BROKEN INTERNAL LINKS: {len(broken_links)} targets, {total_broken} total links", 'error')
         for target, sources in sorted_broken[:15]:
-            log(f"    → {target} ({len(sources)} pages link here)", 'warn')
+            log(f"    ✗ {target} ({len(sources)} pages link here)", 'error')
+            issues.append(f"BROKEN INTERNAL LINK: '{target}' ({len(sources)} pages)")
         if len(sorted_broken) > 15:
-            log(f"    ... and {len(sorted_broken) - 15} more broken targets", 'warn')
-    else:
-        log(f"  ✓ All internal links valid")
+            log(f"    ... and {len(sorted_broken) - 15} more broken targets", 'error')
+
+    if not redirect_links and not broken_links:
+        log(f"  ✓ All internal links valid — no broken links, no redirect-via links")
 
     # Report results
     if issues:
