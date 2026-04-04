@@ -18,17 +18,27 @@
  * Add no-cache headers to HTML responses so Cloudflare doesn't
  * serve stale pages after builds.
  */
-function withCacheHeaders(response) {
+function withCacheHeaders(response, pathname) {
   const ct = response.headers.get('content-type') || '';
+  const newHeaders = new Headers(response.headers);
+
   if (ct.includes('text/html')) {
-    const newHeaders = new Headers(response.headers);
+    // HTML: no cache so deploys are instant
     newHeaders.set('Cache-Control', 'public, max-age=0, must-revalidate');
-    return new Response(response.body, {
-      status: response.status,
-      headers: newHeaders,
-    });
+  } else if (/\.(webp|jpg|jpeg|png|svg|avif|gif|ico)$/i.test(pathname || '')) {
+    // Images: 30-day cache (they rarely change; filenames change when updated)
+    newHeaders.set('Cache-Control', 'public, max-age=2592000, immutable');
+  } else if (/\.(css|js|woff2?)$/i.test(pathname || '')) {
+    // CSS/JS/Fonts: 30-day cache
+    newHeaders.set('Cache-Control', 'public, max-age=2592000, immutable');
+  } else {
+    return response;
   }
-  return response;
+
+  return new Response(response.body, {
+    status: response.status,
+    headers: newHeaders,
+  });
 }
 
 /**
@@ -58,12 +68,12 @@ const LEGACY_REDIRECTS = {
     // Old WordPress /self-guided-hiking-tours/ prefix
     '/self-guided-hiking-tours': '/walking-tours',
     '/self-guided-hiking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
-    '/self-guided-hiking-tours/barrow-way': '/walking-tours/barrow-way',
+    '/self-guided-hiking-tours/barrow-way': '/walking-tours/full-barrow-way-walking',
     '/self-guided-hiking-tours/antrim-glens-causeway-coast-walking-tours': '/walking-tours/causeway-coast',
     // Same paths but with "walking" instead of "hiking" (both URL patterns existed)
     '/self-guided-walking-tours': '/walking-tours',
     '/self-guided-walking-tours/the-wicklow-way': '/walking-tours/wicklow-way',
-    '/self-guided-walking-tours/barrow-way': '/walking-tours/barrow-way',
+    '/self-guided-walking-tours/barrow-way': '/walking-tours/full-barrow-way-walking',
     '/self-guided-walking-tours/antrim-glens-causeway-coast-walking-tours': '/walking-tours/causeway-coast',
     // Old WordPress /Walking-Tour/ prefix (case-sensitive, handled below)
     '/Walking-Tour/cooley-and-mournes-hiking-tour': '/walking-tours/cooley-mournes',
@@ -80,6 +90,24 @@ const LEGACY_REDIRECTS = {
     // Old WordPress misc pages
     '/home/about-walking-holiday-ireland': '/about',
     '/author/whi': '/about',
+    // ── Internal broken link fixes (2026-04-04 audit) ──
+    // Blog posts linked at root instead of /blog/
+    '/kerry-way-complete-guide': '/blog/kerry-way-walking-guide',
+    '/wicklow-way-complete-guide': '/blog/wicklow-way-complete-guide',
+    '/dingle-way-walking-guide': '/blog/dingle-way-walking-guide',
+    '/burren-way-walking-guide': '/blog/burren-way-walking-guide',
+    '/beara-way-complete-guide': '/blog/beara-way-hiking-guide',
+    '/the-irish-hiking-weather': '/blog/the-irish-weather',
+    '/best-hillwalking-locations-ireland': '/blog/best-hillwalking-locations-in-ireland',
+    '/hiking-in-donegal': '/blog/hiking-in-donegal',
+    // Old/removed tour pages
+    '/walking-tours/wicklow-way-8-days-easy': '/walking-tours/wicklow-way',
+    '/walking-tours/full-barrow-way-walking-5-days-easy': '/walking-tours/full-barrow-way-walking',
+    // Old WP slugs with no direct match
+    '/st-kevins-glendalough-wicklow': '/blog/st-kevin-of-glendalough',
+    '/guided-walking-holidays-in-ireland': '/walking-tours',
+    '/visit-9-antrim-glens': '/blog/glens-of-antrim-walking',
+    '/price-promise': '/about',
   },
   // ── Dutch site (old WordPress pages → new structure) ──
   '/nl': {
@@ -407,7 +435,7 @@ export default {
         } catch (e) { }
       }
 
-      return withCacheHeaders(response);
+      return withCacheHeaders(response, url.pathname);
     }
 
     // ── Language domains (DE / NL) ────────────────────────────
@@ -554,6 +582,6 @@ export default {
       }
     }
 
-    return withCacheHeaders(response);
+    return withCacheHeaders(response, url.pathname);
   },
 };
