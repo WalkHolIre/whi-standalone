@@ -6754,6 +6754,9 @@ def main():
             faq_ids = faq_map_by_post.get(post_id, [])
             faq_html_en, faq_schema_en = render_blog_faq_section(post_id, faq_ids, faqs_by_id, 'en') if faq_ids else ('', '')
 
+            # Gallery for this blog post
+            gallery_html = render_gallery(post.get('gallery'))
+
             replacements = {
                 '{meta_title}': escape(meta_title),
                 '{meta_description}': escape(meta_desc),
@@ -6773,6 +6776,7 @@ def main():
                 '{recommended_tours_html}': recommended_tours_html,
                 '{faq_section_html}': faq_html_en,
                 '{faq_schema}': faq_schema_en,
+                '{gallery_html}': gallery_html,
             }
 
             html = blog_template
