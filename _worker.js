@@ -109,6 +109,14 @@ const LEGACY_REDIRECTS = {
     '/visit-9-antrim-glens': '/blog/glens-of-antrim-walking',
     '/price-promise': '/about',
   },
+  // ── German site ──
+  '/de': {
+    // Old tour slugs → canonical Supabase tour slugs
+    '/wandertouren/barrow-way': '/wandertouren/full-barrow-way-walking',
+    '/wandertouren/barrow-way-5-days': '/wandertouren/barrow-way-5-days-easy',
+    '/wandertouren/burren-way': '/wandertouren/burren-7-days',
+    '/wandertouren/dingle-way': '/wandertouren/dingle-way-walking-tour-8d',
+  },
   // ── Dutch site (old WordPress pages → new structure) ──
   '/nl': {
     '/stekker-voor-ierland': '/blog/stekker-voor-ierland',
@@ -117,6 +125,11 @@ const LEGACY_REDIRECTS = {
     '/individuele-wandelvakanties/wicklow-way': '/wandeltochten/wicklow-way',
     '/uw-reis': '/hoe-het-werkt',
     '/travel-to-ireland': '/blog/travel-to-ireland',
+    // Old tour slugs → canonical Supabase tour slugs
+    '/wandeltochten/barrow-way': '/wandeltochten/full-barrow-way-walking',
+    '/wandeltochten/barrow-way-5-days': '/wandeltochten/barrow-way-5-days-easy',
+    '/wandeltochten/burren-way': '/wandeltochten/burren-7-days',
+    '/wandeltochten/dingle-way': '/wandeltochten/dingle-way-walking-tour-8d',
   },
 };
 
