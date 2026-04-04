@@ -1996,6 +1996,32 @@ def render_gallery(gallery_data):
     return html
 
 
+def render_blog_gallery(gallery_data):
+    """Render a uniform image gallery for blog posts (no masonry span)."""
+    if not gallery_data:
+        return ""
+
+    urls = []
+    if isinstance(gallery_data, list):
+        urls = gallery_data
+    elif isinstance(gallery_data, str):
+        cleaned = gallery_data.strip('{}')
+        if cleaned:
+            urls = [u.strip('"').strip() for u in cleaned.split(',') if u.strip()]
+
+    if not urls:
+        return ""
+
+    html = ""
+    for i, url in enumerate(urls):
+        url = escape(url)
+        html += f"""        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox({i})">
+            <img src="{url}" alt="Walking holiday Ireland — gallery image {i+1}" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+"""
+    return html
+
+
 def render_included_excluded(whats_included, whats_not_included):
     """Render what's included and not included as two side-by-side lists."""
     def parse_items(text):
@@ -6755,7 +6781,7 @@ def main():
             faq_html_en, faq_schema_en = render_blog_faq_section(post_id, faq_ids, faqs_by_id, 'en') if faq_ids else ('', '')
 
             # Gallery for this blog post
-            gallery_html = render_gallery(post.get('gallery'))
+            gallery_html = render_blog_gallery(post.get('gallery'))
 
             replacements = {
                 '{meta_title}': escape(meta_title),
