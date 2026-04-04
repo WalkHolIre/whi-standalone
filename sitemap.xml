@@ -703,12 +703,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://walkingholidayireland.com/blog/travel-to-ireland</loc>
-    <lastmod>2026-04-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://walkingholidayireland.com/blog/irish-pilgrim-paths-walking</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
@@ -716,6 +710,12 @@
   </url>
   <url>
     <loc>https://walkingholidayireland.com/blog/louth-business-awards-2017</loc>
+    <lastmod>2026-04-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://walkingholidayireland.com/blog/travel-to-ireland</loc>
     <lastmod>2026-04-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

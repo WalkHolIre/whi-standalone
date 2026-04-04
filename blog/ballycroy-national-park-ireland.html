@@ -305,6 +305,38 @@
 <p>The <a href="/blog/the-irish-weather" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Irish weather</a> is at its most dramatic in Mayo. Rain is frequent, wind is a constant companion, and the sky changes colour every hour. Bring good <a href="/blog/choose-right-pair-hiking-boots" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">hiking boots</a> and a waterproof jacket, and pack using our <a href="/blog/backpacking-checklist" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">checklist</a>. The weather is part of the experience — it's what keeps this corner of Ireland wild.</p>
         </div>
 
+        <!-- Image Gallery -->
+        <section id="gallery-section" class="hidden mt-16 mb-8 border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Photo Gallery</h2>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
+                        <div class="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875898165-optimized-E3A9B4B2F51A2535C2F134D9900C6238.webp" alt="Walking holiday Ireland — gallery image 1" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(1)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875673570-optimized-medium-Mount-Errigal-Co-Donegal-.webp" alt="Walking holiday Ireland — gallery image 2" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(2)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774895276504-ChatGPT%20Image%20Jun%2012%202025%2004%2053%2009%20PM%20-%20Walking%20Holiday%20Ireland.webp" alt="Walking holiday Ireland — gallery image 3" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(3)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875712955-optimized-Glenveagh-National-Park-Co-Donegal_Web-Size-1536x1024.webp" alt="Walking holiday Ireland — gallery image 4" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(4)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875903358-optimized-Glendalough-Monastic-Site-768x512.webp" alt="Walking holiday Ireland — gallery image 5" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(5)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875896161-optimized-Glendalough_Monastic_City__Co_Wicklow_Web_Size_1.webp" alt="Walking holiday Ireland — gallery image 6" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(6)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875985061-optimized-2805844576_f19249a19b_h.webp" alt="Walking holiday Ireland — gallery image 7" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(7)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190391685-optimized-St_Mullins__Co_Carlow_Web_Size.webp" alt="Walking holiday Ireland — gallery image 8" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+
+            </div>
+        </section>
+
         
 
         <!-- Tags -->
@@ -566,6 +598,39 @@
         </div>
     </div>
 </footer>
+
+    <!-- Gallery: show section only if images exist, lightbox -->
+    <script>
+    (function(){
+      var grid = document.getElementById('gallery-grid');
+      var section = document.getElementById('gallery-section');
+      if (grid && section && grid.children.length > 0) {
+        section.classList.remove('hidden');
+      }
+      var overlay = null;
+      var imgs = grid ? Array.from(grid.querySelectorAll('img')).map(function(i){return i.src;}) : [];
+      var idx = 0;
+      window.openLightbox = function(i){
+        idx = i;
+        if(!overlay){
+          overlay = document.createElement('div');
+          overlay.id='lb-overlay';
+          overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML='<button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button><button id="lb-prev" style="position:absolute;left:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&lsaquo;</button><img id="lb-img" style="max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;"/><button id="lb-next" style="position:absolute;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&rsaquo;</button>';
+          document.body.appendChild(overlay);
+          document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
+          document.getElementById('lb-next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
+          overlay.onclick=function(e){if(e.target===overlay)closeLightbox();};
+        }
+        overlay.style.display='flex';
+        document.body.style.overflow='hidden';
+        show();
+      };
+      function show(){document.getElementById('lb-img').src=imgs[idx];}
+      window.closeLightbox = function(){if(overlay){overlay.style.display='none';document.body.style.overflow='';}};
+      document.addEventListener('keydown',function(e){if(!overlay||overlay.style.display==='none')return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){idx=(idx-1+imgs.length)%imgs.length;show();}if(e.key==='ArrowRight'){idx=(idx+1)%imgs.length;show();}});
+    })();
+    </script>
 
     <!-- WHI Ground Control Integration -->
     <script src="../js/whi-config.js" defer></script>

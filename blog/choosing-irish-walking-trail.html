@@ -296,6 +296,38 @@
 <p>Happy trails!</p>
         </div>
 
+        <!-- Image Gallery -->
+        <section id="gallery-section" class="hidden mt-16 mb-8 border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Photo Gallery</h2>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-4 gap-3 auto-rows-[200px]">
+                        <div class="md:col-span-2 md:row-span-2 aspect-[4/3] md:aspect-auto rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875933764-optimized-A_view_of_Mont_Blanc_from_the_Tour_du_Mont_Blanc__2007.webp" alt="Walking holiday Ireland — gallery image 1" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(1)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191715296-optimized-Dunquin_Harbour___Sheep_Dingle__Co_Kerry_PJL_TI72KH4.webp" alt="Walking holiday Ireland — gallery image 2" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(2)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875776762-optimized-aerialmapireland.webp" alt="Walking holiday Ireland — gallery image 3" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(3)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875953034-optimized-iStock-470863112.webp" alt="Walking holiday Ireland — gallery image 4" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(4)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191716956-optimized-Mount_Brandon__Trail___Dingle_Peninsula__Co._Kerry_TI716R7.webp" alt="Walking holiday Ireland — gallery image 5" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(5)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774191711495-optimized-Cosa_n_Na_Naomh__Trail__Mount_Brandon__Dingle__Co_Kerry_TI71AZ6.webp" alt="Walking holiday Ireland — gallery image 6" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(6)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774195246523-optimized-Hill_Walking__Inishbofin__Co_Galway_TI7O4N.webp" alt="Walking holiday Ireland — gallery image 7" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(7)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774895186261-Poulanass%20Waterfall%20-%20Walking%20Holiday%20Ireland.webp" alt="Walking holiday Ireland — gallery image 8" width="400" height="300" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+
+            </div>
+        </section>
+
         
 
         <!-- Tags -->
@@ -552,6 +584,39 @@
         </div>
     </div>
 </footer>
+
+    <!-- Gallery: show section only if images exist, lightbox -->
+    <script>
+    (function(){
+      var grid = document.getElementById('gallery-grid');
+      var section = document.getElementById('gallery-section');
+      if (grid && section && grid.children.length > 0) {
+        section.classList.remove('hidden');
+      }
+      var overlay = null;
+      var imgs = grid ? Array.from(grid.querySelectorAll('img')).map(function(i){return i.src;}) : [];
+      var idx = 0;
+      window.openLightbox = function(i){
+        idx = i;
+        if(!overlay){
+          overlay = document.createElement('div');
+          overlay.id='lb-overlay';
+          overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML='<button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button><button id="lb-prev" style="position:absolute;left:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&lsaquo;</button><img id="lb-img" style="max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;"/><button id="lb-next" style="position:absolute;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&rsaquo;</button>';
+          document.body.appendChild(overlay);
+          document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
+          document.getElementById('lb-next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
+          overlay.onclick=function(e){if(e.target===overlay)closeLightbox();};
+        }
+        overlay.style.display='flex';
+        document.body.style.overflow='hidden';
+        show();
+      };
+      function show(){document.getElementById('lb-img').src=imgs[idx];}
+      window.closeLightbox = function(){if(overlay){overlay.style.display='none';document.body.style.overflow='';}};
+      document.addEventListener('keydown',function(e){if(!overlay||overlay.style.display==='none')return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){idx=(idx-1+imgs.length)%imgs.length;show();}if(e.key==='ArrowRight'){idx=(idx+1)%imgs.length;show();}});
+    })();
+    </script>
 
     <!-- WHI Ground Control Integration -->
     <script src="../js/whi-config.js" defer></script>

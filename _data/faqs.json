@@ -918,48 +918,25 @@
     "translation_group_id": "70ea53cf-14c5-4ffc-a858-b1999e389846"
   },
   {
-    "id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e",
-    "question": "Are there any specific gear or clothing recommendations for multi-day hiking in Ireland?",
-    "answer": "<p>It is important to have <strong>waterproof</strong> and <strong>breathable</strong> clothing, sturdy hiking boots with excellent traction, a 20L-30L backpack with proper support, and <strong>layers of clothing</strong> to adapt to changing weather conditions on the trail.</p>",
+    "id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692",
+    "question": "Can I charge my device in my Irish accommodation?",
+    "answer": "<p>Yes, all guesthouses, hotels, and B&amp;Bs provide electrical outlets. Outlets are typically near desks, nightstands, or bathroom mirrors. Please ask the staff for assistance if you are unable to locate an outlet.</p>",
     "category": null,
     "sort_order": 0,
     "status": "published",
-    "created_at": "2026-03-23T11:47:35.992749+00:00",
-    "updated_at": "2026-03-23T11:47:35.992749+00:00",
+    "created_at": "2026-03-31T15:58:25.473352+00:00",
+    "updated_at": "2026-03-31T15:58:25.473352+00:00",
     "section": "equipment",
     "tags": [
-      "Waterproof clothing",
-      "breathable clothing",
-      "Hiking boots",
-      "layers of clothing"
+      "electrical",
+      "charge my device"
     ],
     "destination_ids": [],
     "tour_ids": [],
     "page_ids": [],
     "language": "en",
     "source_url": null,
-    "translation_group_id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e"
-  },
-  {
-    "id": "77a98866-05fd-4595-a8e6-d0adac13af9a",
-    "question": "Will my power bank work?",
-    "answer": "<p>All modern power banks auto-convert voltage. Just bring a Type G adapter to charge the power bank in your accommodation. Once charged, the power bank works anywhere globally.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:59:22.66522+00:00",
-    "updated_at": "2026-03-31T15:59:22.66522+00:00",
-    "section": "equipment",
-    "tags": [
-      "power banks",
-      "voltage"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "77a98866-05fd-4595-a8e6-d0adac13af9a"
+    "translation_group_id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692"
   },
   {
     "id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f",
@@ -985,6 +962,50 @@
     "translation_group_id": "b18312dd-b8b4-4d02-90ec-7b7790c0066f"
   },
   {
+    "id": "77a98866-05fd-4595-a8e6-d0adac13af9a",
+    "question": "Will my power bank work?",
+    "answer": "<p>All modern power banks auto-convert voltage. Just bring a Type G adapter to charge the power bank in your accommodation. Once charged, the power bank works anywhere globally.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:59:22.66522+00:00",
+    "updated_at": "2026-03-31T15:59:22.66522+00:00",
+    "section": "equipment",
+    "tags": [
+      "power banks",
+      "voltage"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "77a98866-05fd-4595-a8e6-d0adac13af9a"
+  },
+  {
+    "id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e",
+    "question": "Are there any specific gear or clothing recommendations for multi-day hiking in Ireland?",
+    "answer": "<p>It is important to have <strong>waterproof</strong> and <strong>breathable</strong> clothing, sturdy hiking boots with excellent traction, a 20L-30L backpack with proper support, and <strong>layers of clothing</strong> to adapt to changing weather conditions on the trail.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-23T11:47:35.992749+00:00",
+    "updated_at": "2026-03-23T11:47:35.992749+00:00",
+    "section": "equipment",
+    "tags": [
+      "Waterproof clothing",
+      "breathable clothing",
+      "Hiking boots",
+      "layers of clothing"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "84c2d7b2-7e8e-4088-b09e-4481ded8561e"
+  },
+  {
     "id": "272d6297-ea02-4863-9061-48b3d632ade2",
     "question": "What's the best power adapter to buy?",
     "answer": "<p><strong>Look for:</strong></p><ul><li><p>Type G socket (Ireland/UK compatible)</p></li><li><p>CE certification</p></li><li><p>Multiple USB ports</p></li><li><p>Surge protection</p></li><li><p>Quality brand (reputable electronics manufacturers)</p></li></ul><p><strong>Recommended brands:</strong> Belkin, Anker, Samsonite, or similar quality manufacturers</p>",
@@ -1007,27 +1028,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "272d6297-ea02-4863-9061-48b3d632ade2"
-  },
-  {
-    "id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692",
-    "question": "Can I charge my device in my Irish accommodation?",
-    "answer": "<p>Yes, all guesthouses, hotels, and B&amp;Bs provide electrical outlets. Outlets are typically near desks, nightstands, or bathroom mirrors. Please ask the staff for assistance if you are unable to locate an outlet.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:58:25.473352+00:00",
-    "updated_at": "2026-03-31T15:58:25.473352+00:00",
-    "section": "equipment",
-    "tags": [
-      "electrical",
-      "charge my device"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "71e7cd85-4ff9-4f9b-bbf9-96db9975d692"
   },
   {
     "id": "b9c4abbb-bd17-426c-84d2-807ff922ef65",
@@ -1240,108 +1240,22 @@
     "translation_group_id": "f3e51952-c8d8-4035-ad65-93311311b70b"
   },
   {
-    "id": "a61b1e34-c6db-43df-9b45-d9fd22bb507a",
-    "question": "What is the best time of year to visit Ireland's national parks?",
-    "answer": "April to October is the best time for walking in Ireland's national parks. Days are longest from May to August, giving you more daylight on the trails. Spring brings wildflowers to the Burren; summer has the warmest weather; and autumn colours are stunning in Killarney. Winter visits offer solitude but shorter days and wetter conditions.",
-    "category": "Planning",
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-04-03T12:23:55.42441+00:00",
-    "updated_at": "2026-04-03T12:23:55.42441+00:00",
-    "section": "general",
-    "tags": [
-      "national parks",
-      "best time to visit",
-      "spring",
-      "summer",
-      "autumn",
-      "seasons"
-    ],
-    "destination_ids": [
-      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
-    ],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "a0f1e001-0001-4000-8000-000000000004"
-  },
-  {
-    "id": "c40706e9-1cdd-4cce-a1aa-c62a4c8ecada",
-    "question": "Which Ireland national park is best for walking?",
-    "answer": "Killarney National Park offers the widest range of walks, from flat lakeside paths to mountain climbs. For long-distance trails, Wicklow Mountains National Park has the Wicklow Way. For dramatic coastal scenery, Connemara National Park and the Diamond Hill loop are difficult to beat. The best choice depends on your fitness level and what kind of landscape you enjoy.",
-    "category": "Destinations",
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-04-03T12:23:55.42441+00:00",
-    "updated_at": "2026-04-03T12:23:55.42441+00:00",
-    "section": "general",
-    "tags": [
-      "national parks",
-      "best national park walking",
-      "Killarney",
-      "Wicklow Way",
-      "Diamond Hill",
-      "Connemara"
-    ],
-    "destination_ids": [
-      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
-    ],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "a0f1e001-0001-4000-8000-000000000002"
-  },
-  {
-    "id": "12241c5b-3723-41c1-9ab0-69e59892a7e6",
-    "question": "Are Ireland's national parks free to visit?",
-    "answer": "Yes, all six national parks in Ireland are free to enter. There is no admission charge for walking the trails. Some visitor centres and specific attractions within or near the parks (like Muckross House in Killarney or Glenveagh Castle) may charge a separate entry fee.",
-    "category": "Destinations",
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-04-03T12:23:55.42441+00:00",
-    "updated_at": "2026-04-03T12:23:55.42441+00:00",
-    "section": "general",
-    "tags": [
-      "national parks",
-      "free entry",
-      "Muckross House",
-      "Glenveagh Castle",
-      "admission"
-    ],
-    "destination_ids": [
-      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
-    ],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "a0f1e001-0001-4000-8000-000000000003"
-  },
-  {
-    "id": "e3a2d134-22c2-4a45-b467-474e60f1cb17",
-    "question": "Can I hike all year round in Ireland?",
-    "answer": "<p>Yes. Ireland's mild climate means trails are open and walkable in every month. </p><p><strong>Summer</strong> (June\u2013August) brings the longest days and best visibility, but also the most crowds. </p><p><strong>Spring and autumn</strong> are ideal \u2014 quieter trails, softer light, and temperatures that suit long days on your feet. </p><p><strong>Winter</strong> hiking is absolutely possible on lower-level routes, but shorter daylight hours and wetter conditions require more planning. </p><p>Whatever the season, layers and waterproofs are essential. Irish weather can change quickly, and that's as true in July as it is in January.</p>",
+    "id": "c1a10001-0001-4000-8000-000000000605",
+    "question": "Can I combine two hiking trails into one trip in Ireland?",
+    "answer": "<p>Yes, and it is a great way to see more of Ireland. Popular combinations include the <strong>Kerry Way + Dingle Way</strong> (both in County Kerry), the <strong>Wicklow Way + a few days in Dublin</strong>, or the <strong>Causeway Coast + Cooley &amp; Mournes</strong> for a cross-border adventure. We can arrange transfers between trails and tailor the itinerary to your available time. Just get in touch and we will help you plan it.</p>",
     "category": null,
     "sort_order": 0,
     "status": "published",
-    "created_at": "2026-03-23T11:54:15.07242+00:00",
-    "updated_at": "2026-03-23T11:54:15.07242+00:00",
+    "created_at": "2026-04-04T08:34:36.007421+00:00",
+    "updated_at": "2026-04-04T08:34:36.007421+00:00",
     "section": "general",
-    "tags": [
-      "hiking season",
-      "hiking in spring",
-      "hiking in summer",
-      "hiking in autumn",
-      "hiking in winter"
-    ],
+    "tags": [],
     "destination_ids": [],
     "tour_ids": [],
     "page_ids": [],
     "language": "en",
     "source_url": null,
-    "translation_group_id": "e3a2d134-22c2-4a45-b467-474e60f1cb17"
+    "translation_group_id": "c1a10001-0001-4000-8000-000000000605"
   },
   {
     "id": "d35f12ca-fdb2-4ddb-b20e-aa2b0c5e698f",
@@ -1373,6 +1287,129 @@
     "translation_group_id": "a0f1e001-0001-4000-8000-000000000001"
   },
   {
+    "id": "c1a10001-0001-4000-8000-000000000603",
+    "question": "Which Irish hiking trail has the most dramatic scenery?",
+    "answer": "<p>It depends on what you find dramatic. The <strong>Kerry Way</strong> offers the most variety \u2014 mountains, coast, and green valleys over 214 km. The <strong>Dingle Way</strong> has the wildest Atlantic coastline. The <strong>Causeway Coast Way</strong> packs volcanic sea cliffs and the Giant's Causeway into a shorter route. And the <strong>Burren Way</strong> passes the Cliffs of Moher and a limestone karst landscape unlike anywhere else in Europe. Each trail has a character of its own.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-04T08:34:36.007421+00:00",
+    "updated_at": "2026-04-04T08:34:36.007421+00:00",
+    "section": "general",
+    "tags": [],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "c1a10001-0001-4000-8000-000000000603"
+  },
+  {
+    "id": "c1a10001-0001-4000-8000-000000000602",
+    "question": "How fit do I need to be for a multi-day hike in Ireland?",
+    "answer": "<p>You do not need to be a mountain athlete. Most Irish long-distance trails are <strong>moderate</strong>, with daily distances of 15\u201325 km on varied terrain including country lanes, bog roads, and mountain paths. A few months of regular walking \u2014 including some hills \u2014 is the best preparation. Trails like the <strong>Barrow Way</strong> and <strong>Burren Way</strong> suit beginners, while the <strong>Kerry Way</strong> and <strong>Cooley &amp; Mournes</strong> suit walkers with more experience.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-04T08:34:36.007421+00:00",
+    "updated_at": "2026-04-04T08:34:36.007421+00:00",
+    "section": "general",
+    "tags": [],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "c1a10001-0001-4000-8000-000000000602"
+  },
+  {
+    "id": "e3a2d134-22c2-4a45-b467-474e60f1cb17",
+    "question": "Can I hike all year round in Ireland?",
+    "answer": "<p>Yes. Ireland's mild climate means trails are open and walkable in every month. </p><p><strong>Summer</strong> (June\u2013August) brings the longest days and best visibility, but also the most crowds. </p><p><strong>Spring and autumn</strong> are ideal \u2014 quieter trails, softer light, and temperatures that suit long days on your feet. </p><p><strong>Winter</strong> hiking is absolutely possible on lower-level routes, but shorter daylight hours and wetter conditions require more planning. </p><p>Whatever the season, layers and waterproofs are essential. Irish weather can change quickly, and that's as true in July as it is in January.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-23T11:54:15.07242+00:00",
+    "updated_at": "2026-03-23T11:54:15.07242+00:00",
+    "section": "general",
+    "tags": [
+      "hiking season",
+      "hiking in spring",
+      "hiking in summer",
+      "hiking in autumn",
+      "hiking in winter"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "e3a2d134-22c2-4a45-b467-474e60f1cb17"
+  },
+  {
+    "id": "c1a10001-0001-4000-8000-000000000604",
+    "question": "Do I need to carry my luggage on these hiking trails?",
+    "answer": "<p>No \u2014 on a self-guided walking holiday with Walking Holiday Ireland, your <strong>luggage is transferred</strong> between accommodations each day. You only carry a daypack with water, snacks, a rain jacket, and anything you need on the trail. Your bags will be waiting for you when you arrive at your next B&amp;B. This applies to all six trails featured in this guide.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-04T08:34:36.007421+00:00",
+    "updated_at": "2026-04-04T08:34:36.007421+00:00",
+    "section": "general",
+    "tags": [],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "c1a10001-0001-4000-8000-000000000604"
+  },
+  {
+    "id": "c40706e9-1cdd-4cce-a1aa-c62a4c8ecada",
+    "question": "Which Ireland national park is best for walking?",
+    "answer": "Killarney National Park offers the widest range of walks, from flat lakeside paths to mountain climbs. For long-distance trails, Wicklow Mountains National Park has the Wicklow Way. For dramatic coastal scenery, Connemara National Park and the Diamond Hill loop are difficult to beat. The best choice depends on your fitness level and what kind of landscape you enjoy.",
+    "category": "Destinations",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "best national park walking",
+      "Killarney",
+      "Wicklow Way",
+      "Diamond Hill",
+      "Connemara"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000002"
+  },
+  {
+    "id": "c1a10001-0001-4000-8000-000000000601",
+    "question": "What is the best time of year to hike in Ireland?",
+    "answer": "<p>The best months for hiking in Ireland are <strong>May through September</strong>, with June and July offering up to 17 hours of daylight. May and September are quieter on the trails and often surprisingly dry. Shoulder months like April and October can be beautiful but bring shorter days and more unpredictable weather. Winter hiking is only recommended for experienced walkers comfortable with wet, cold conditions and limited daylight.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-04T08:34:36.007421+00:00",
+    "updated_at": "2026-04-04T08:34:36.007421+00:00",
+    "section": "general",
+    "tags": [],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "c1a10001-0001-4000-8000-000000000601"
+  },
+  {
     "id": "0efdf6a3-b1aa-475e-8782-1ef0c34fe2c0",
     "question": "Can beginners walk in Ireland's national parks?",
     "answer": "Absolutely. Every national park has trails suitable for beginners. Killarney has flat lakeside walks around Muckross Lake. Wicklow has the lower Glendalough Valley trails. Connemara has the lower Diamond Hill loop. The Burren has gentle limestone paths. To get started, all you need are good walking shoes, waterproof layers, and a daypack.",
@@ -1399,6 +1436,59 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "a0f1e001-0001-4000-8000-000000000005"
+  },
+  {
+    "id": "a61b1e34-c6db-43df-9b45-d9fd22bb507a",
+    "question": "What is the best time of year to visit Ireland's national parks?",
+    "answer": "April to October is the best time for walking in Ireland's national parks. Days are longest from May to August, giving you more daylight on the trails. Spring brings wildflowers to the Burren; summer has the warmest weather; and autumn colours are stunning in Killarney. Winter visits offer solitude but shorter days and wetter conditions.",
+    "category": "Planning",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "best time to visit",
+      "spring",
+      "summer",
+      "autumn",
+      "seasons"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000004"
+  },
+  {
+    "id": "12241c5b-3723-41c1-9ab0-69e59892a7e6",
+    "question": "Are Ireland's national parks free to visit?",
+    "answer": "Yes, all six national parks in Ireland are free to enter. There is no admission charge for walking the trails. Some visitor centres and specific attractions within or near the parks (like Muckross House in Killarney or Glenveagh Castle) may charge a separate entry fee.",
+    "category": "Destinations",
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-04-03T12:23:55.42441+00:00",
+    "updated_at": "2026-04-03T12:23:55.42441+00:00",
+    "section": "general",
+    "tags": [
+      "national parks",
+      "free entry",
+      "Muckross House",
+      "Glenveagh Castle",
+      "admission"
+    ],
+    "destination_ids": [
+      "12f5a8b8-c58a-4a81-9822-5eafa651cd01"
+    ],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "a0f1e001-0001-4000-8000-000000000003"
   },
   {
     "id": "4af4b04f-3b44-443b-b157-90802345bc70",
@@ -3323,6 +3413,32 @@
     "translation_group_id": "f719415f-a8e4-4b58-99ab-ec617657bd08"
   },
   {
+    "id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227",
+    "question": "Do I need a visa to travel to Ireland? ",
+    "answer": "<p>Citizens of EU/EEA countries, the USA, Canada, Australia, and New Zealand don't need a visa for the Republic of Ireland. Check <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer\" href=\"http://inis.gov.ie\">inis.gov.ie</a> for your specific nationality. Northern Ireland (UK) has separate entry requirements \u2014 see our <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://walkingholidayireland.com/blog/northern-ireland-uk-eta-guide\">Northern Ireland ETA guide</a>.</p>",
+    "category": null,
+    "sort_order": 0,
+    "status": "published",
+    "created_at": "2026-03-31T15:28:07.83213+00:00",
+    "updated_at": "2026-03-31T15:28:07.83213+00:00",
+    "section": "transport",
+    "tags": [
+      "Citizens",
+      "EU/EEA",
+      "USA",
+      "Canada",
+      "Australia",
+      "New Zealand",
+      "visa"
+    ],
+    "destination_ids": [],
+    "tour_ids": [],
+    "page_ids": [],
+    "language": "en",
+    "source_url": null,
+    "translation_group_id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227"
+  },
+  {
     "id": "9629a81d-341a-454b-a7d2-c45057198025",
     "question": "Can I use my UK or EU driving licence in Ireland? ",
     "answer": "<p>Yes. UK and EU driving licences are fully valid in Ireland. Non-EU licence holders should carry an International Driving Permit.</p>",
@@ -3368,32 +3484,6 @@
     "language": "en",
     "source_url": null,
     "translation_group_id": "f3e7d319-3b91-4a74-8a32-a1aa3f256204"
-  },
-  {
-    "id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227",
-    "question": "Do I need a visa to travel to Ireland? ",
-    "answer": "<p>Citizens of EU/EEA countries, the USA, Canada, Australia, and New Zealand don't need a visa for the Republic of Ireland. Check <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer\" href=\"http://inis.gov.ie\">inis.gov.ie</a> for your specific nationality. Northern Ireland (UK) has separate entry requirements \u2014 see our <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" class=\"text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current\" href=\"https://walkingholidayireland.com/blog/northern-ireland-uk-eta-guide\">Northern Ireland ETA guide</a>.</p>",
-    "category": null,
-    "sort_order": 0,
-    "status": "published",
-    "created_at": "2026-03-31T15:28:07.83213+00:00",
-    "updated_at": "2026-03-31T15:28:07.83213+00:00",
-    "section": "transport",
-    "tags": [
-      "Citizens",
-      "EU/EEA",
-      "USA",
-      "Canada",
-      "Australia",
-      "New Zealand",
-      "visa"
-    ],
-    "destination_ids": [],
-    "tour_ids": [],
-    "page_ids": [],
-    "language": "en",
-    "source_url": null,
-    "translation_group_id": "3b20cd1c-c3ea-4b5a-8674-2eff800d9227"
   },
   {
     "id": "6b1419b1-70de-400a-b9b2-0f6c7482a571",
