@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Glens of Antrim Wandelgids: Negen Valleien &amp; Beste Routes | Walking Holiday Ireland | Walking Holiday Ireland</title>
+    <meta name="description" content="Bewandel de Glens of Antrim — Glenariff watervallen, Cushendall, Cushendun grotten en de wilde noordelijke glens. Je gids door Noord-Ierlands valleien."/>
+    <link rel="canonical" href="https://wandelvakantieierland.nl/blog/glens-of-antrim-wandelgids"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:37px;}}
+        /* Scroll offset for fixed header - TOC anchor links clear both utility bar and nav */
+        .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 100px; }
+        @media(min-width:768px){ .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 150px; } }
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+        .prose img[data-align="left"] { float: left; margin-right: 1.5rem; margin-bottom: 1rem; }
+        .prose img[data-align="center"] { display: block; margin-left: auto; margin-right: auto; }
+        .prose img[data-align="right"] { float: right; margin-left: 1.5rem; margin-bottom: 1rem; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Glens of Antrim Wandelgids: Negen Valleien &amp; Beste Routes | Walking Holiday Ireland",
+        "description": "Bewandel de Glens of Antrim — Glenariff watervallen, Cushendall, Cushendun grotten en de wilde noordelijke glens. Je gids door Noord-Ierlands valleien.",
+        "datePublished": "2026-03-28",
+        "dateModified": "2026-03-28",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/glens-of-antrim-wandelgids.html"
+        }
+    }
+    </script>
+    
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="2ecEVyyxGucywquPN+/X4g" async></script>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/visit-the-nine-glens-of-antrim" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog/glens-of-antrim-wanderfuehrer" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog/glens-of-antrim-wandelgids" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/visit-the-nine-glens-of-antrim" />
+
+    <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet"/>
+    </noscript>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://wandelvakantieierland.nl/blog/glens-of-antrim-wandelgids"/>
+    <meta property="og:title" content="Glens of Antrim: Wandelgids door de negen valleien van Noord-Ierland"/>
+    <meta property="og:description" content="Bewandel de Glens of Antrim — Glenariff watervallen, Cushendall, Cushendun grotten en de wilde noordelijke glens. Je gids door Noord-Ierlands valleien."/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Glens of Antrim: Wandelgids door de negen valleien van Noord-Ierland"/>
+    <meta name="twitter:description" content="Bewandel de Glens of Antrim — Glenariff watervallen, Cushendall, Cushendun grotten en de wilde noordelijke glens. Je gids door Noord-Ierlands valleien."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+
+<a href="#main-content" class="sr-only skip-to-content" tabindex="0">Skip to main content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="/cadeaubonnen" class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Cadeaubonnen</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="/images/logo/whi_fc.webp" alt="Walking Holiday Ireland" width="130" height="69" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="/wandelbestemmingen">Wandelvakanties <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="/wandelgebied-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-schiereiland</a>
+                            <a href="/wandelgebied-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="/wandelgebied-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
+                            <a href="/wandelgebied-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
+                            <a href="/wandelgebied-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="/wandelgebied-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
+                            <a href="/wandelgebied-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../op-maat" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Op Maat Gemaakte Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../hoe-het-werkt">Hoe werkt het? <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../hoe-het-werkt" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overzicht</a>
+                            <a href="../moeilijkheidsgraad" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Moeilijkheidsgraad</a>
+                            <a href="../wandelvakantie-ierland-op-eigen-houtje" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Wandelvakantie op Eigen Houtje</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../over-ons">Over Ons</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="../boeken" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Nu boeken
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="/wandelbestemmingen" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wandelvakanties</a>
+                <a href="../hoe-het-werkt" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Hoe werkt het?</a>
+                <a href="../over-ons" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Over Ons</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Nu boeken</a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-10">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Glens of Antrim: Wandelgids door de negen valleien van Noord-Ierland</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Routegidsen</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">March 28, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">7 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            Glens of Antrim: Wandelgids door de negen valleien van Noord-Ierland
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190955622-optimized-Glenariff_Forest_Park_-_Ess-na-Crub_Waterfall_TI72JV3.webp');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800" id="inhoudsopgave">Inhoudsopgave</h3>
+                <ol class="space-y-2 text-sm">
+                    <li><a href="#wat-maakt-de-glens-bijzonder" class="text-primary hover:text-primary/80 hover:underline transition-colors">Wat maakt de Glens bijzonder</a></li><li><a href="#glenariff-forest-park-de-koningin-van-de-glens" class="text-primary hover:text-primary/80 hover:underline transition-colors">Glenariff Forest Park — De Koningin van de Glens</a></li><li><a href="#cushendall-en-cushendun" class="text-primary hover:text-primary/80 hover:underline transition-colors">Cushendall en Cushendun</a></li><li><a href="#glenarm-en-carnlough-de-zuidelijke-glens" class="text-primary hover:text-primary/80 hover:underline transition-colors">Glenarm en Carnlough — De zuidelijke glens</a></li><li><a href="#de-noordelijke-glens" class="text-primary hover:text-primary/80 hover:underline transition-colors">De noordelijke glens</a></li><li><a href="#je-bezoek-plannen" class="text-primary hover:text-primary/80 hover:underline transition-colors">Je bezoek plannen</a></li><li><a href="#veelgestelde-vragen-glens-of-antrim" class="text-primary hover:text-primary/80 hover:underline transition-colors">Veelgestelde vragen — Glens of Antrim</a></li><li><a href="#wandel-in-de-rust" class="text-primary hover:text-primary/80 hover:underline transition-colors">Wandel in de rust</a></li>
+                </ol>
+            </nav><h3 id="inhoudsopgave-glens-of-antrim-wandelgids">Inhoudsopgave: <a href="/wandelgebied-causeway-glens">Glens of Antrim</a> Wandelgids</h3></div>
+
+<h1>Glens of Antrim: Wandelgids door de negen valleien van Noord-Ierland</h1>
+
+<p>Mijn naam is Cliff, en ik bestuur Walking Holiday Ireland. De Glens of Antrim zijn een van mijn favoriete plekken om in Noord-Ierland te wandelen. Negen diepe valleien snijden door het basaltplateau van County Antrim, elk met zijn eigen karakter — watervallen, bossen, stille dorpjes, en uitzichten die zich naar de zee openen. Dit is groen, rustig wandelen door een landschap dat zich ver van alles lijkt te bevinden.</p>
+
+<p>De negen glens of antrim lopen van Glenarm in het zuiden naar Glentaisie in het noorden, en ontmoeten de kust tussen Larne en Ballycastle. Sommige zijn bebost en beschut, sommige zijn wijd en open, en één — Glenariff — is de Koningin van de Glens genoemd vanwege de zuivere schoonheid van haar watervallen en bos. Als je naar wandelingen in de glens or antrim zoekt die scenerie, geschiedenis en echte rust combineren, behandelt deze gids het beste ervan.</p>
+
+<h2 id="wat-maakt-de-glens-bijzonder">Wat maakt de Glens bijzonder</h2>
+
+<p>De Glens of Antrim werden uitgeslepen door gletsjers tijdens het laatste ijstijdperk. De rivieren die volgden groeven dieper in de valleien, waardoor steile glens met watervallen ontstonden die door bosland tuimelen. Het basaltsteen van het Antrim-plateau geeft plaats aan zachter krijt en zandstenen in de dalenbodems, waardoor een mix van landschappen in een klein gebied ontstaat.</p>
+
+<p>Het eerste wat je opvalt is de stilte. De glens zijn landbouwegebieden waar schapen de hellingen afgrazen en het levenstempo niet veel is veranderd in generaties. De dorpjes — Cushendall, Cushendun, Glenarm, Carnlough — zijn klein, aantrekkelijk en vol karakter. Traditionele muziekzittingen vinden plaats in de pubs, en de lokale gastvrijheid is warm en echt.</p>
+
+<p>De Antrim-kustwegen verbinden de glens langs de zeewaarts rand, en het is een van de geweldige panorama-routes in Ierland. Maar de echte beloningen komen wanneer je de auto achter je laat en in de valleien zelf wandelt. Dat is waar je de watervallen, het oude bos en de stilte vindt.</p>
+
+<h2 id="glenariff-forest-park-de-koningin-van-de-glens">Glenariff Forest Park — De Koningin van de Glens</h2>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190955622-optimized-Glenariff_Forest_Park_-_Ess-na-Crub_Waterfall_TI72JV3.webp" alt="Ess-na-Crub waterval in Glenariff Forest Park — een van de meest dramatische watervallen in Noord-Ierland, omgeven door oud inheems bos" loading="lazy" />
+  <figcaption>Glenariff Forest Park biedt spectaculaire watervallen en wandelpaden</figcaption>
+</figure>
+
+<p>Glenariff is de grootste en meest bezochte van de negen glens, en terecht. Glenariff forest park ligt in het hart van de vallei en biedt een van de beste wandelingen in Noord-Ierland.</p>
+
+<p>De Waterfall Walk is het kenmerkende pad van het park. Deze 3 km-lus volgt de Glenariff River door inheems bos voorbij drie watervallen — Ess-na-Crub en Ess-na-Larach zijn het meest dramatisch. Promenades en trappen nemen je mee langs de kloof, met het geluid van vallend water constant. Het is een gemakkelijke tot gematigde wandeling die ongeveer een uur duurt en geschikt is voor gezinnen met oudere kinderen.</p>
+
+<p>Voor een langere dag klimt het Scenic Trail naar de rand van de glen, wat je uitzichten geeft over de vallei en naar de kust. Deze 9 km-lus duurt ongeveer 3 uur en beloont de inspanning met enkele van de fijnste panorama's in de antrim glens.</p>
+
+<p>Het park is rijk aan vogelleven. In het bos zoeken naar boomkruipers, gaai, en staartmezen. Wataspreeuwen dobber op rotsen in de rivier, en in het voorjaar vullen zich het bosbodem met blauwe klokjes en wilde knoflook. De combinatie van watervallen, oude bomen en vogelgezang maakt glenariff forest park een van de meest lonende wandelingen in Noord-Ierland.</p>
+
+<p>Glenariff forest park heeft ook picknickareas, een café en een bezoekerscentrum. Entree is per parkeerplaatsgebeur. Het park ligt ongeveer 45 minuten van Larne en ongeveer een uur van Belfast, waardoor het een gemakkelijke dagtrip is. Als je alleen tijd hebt voor één wandeling in de glens or antrim, maak het dan Glenariff.</p>
+
+<h2 id="cushendall-en-cushendun">Cushendall en Cushendun</h2>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190945159-optimized-Cushendall_Villages_310824CH110.jpg_TI72UXC.webp" alt="Cushendall dorpje waar drie valleien de zee ontmoeten — kleurrijke huizen en karaktervol havemontje aan de Antrim-kust" loading="lazy" />
+  <figcaption>Cushendall is een charmant dorp aan de kust waar je je kunt base voor glenwandelingen</figcaption>
+</figure>
+
+<p>Cushendall ligt waar drie van de negen glens de zee ontmoeten — Glenaan, Glenballyeamon en Glencorp convergeren hier, waardoor het de natuurlijke hub van de Glens of Antrim wordt. Het dorp heeft goede pubs, een paar winkels en een karakteristieke rode zandstenen Curfew Tower in het centrum.</p>
+
+<p>Wandelend van Cushendall kun je elk van de drie glens te voet verkennen. Glenballyeamon is het meest toegankelijk — een stille dal-road volgt de rivier landinwaarts door landbouwgebied en bosland. Voor iets dramatischers, wandel je langs de kustpad naar het zuiden in de richting van Waterfoot en Glenariff, met uitzichten over Red Bay.</p>
+
+<p>Cushendun, een paar kilometer naar het noorden, is een charmant dorpje van Cornwall-stijl huisjes en een mooi havemontje. De Cushendun-grotten — zeegrotten uitgeslepen uit rode zandstenen — zijn een korte wandeling langs de kust en werden gebruikt als filmlocatie voor Game of Thrones. De wandeling van Cushendall naar Cushendun langs de kust is ongeveer 5 km en duurt een uur of zo.</p>
+
+<p>Beide dorpjes zijn goede bases voor het verkennen van de glens or antrim. De accommodatie is comfortabel, het eten is goed, en het levensstempo is precies wat je nodig hebt na een dag wandelen.</p>
+
+<h2 id="glenarm-en-carnlough-de-zuidelijke-glens">Glenarm en Carnlough — De zuidelijke glens</h2>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190936426-optimized-Carnlough_Hill_walk_Ramble__Carnlough__Co._Antrim_TI77LJ.webp" alt="Carnlough Hill wandeling met uitzichten over Carnlough havemontje en de Antrim kustkustlijn" loading="lazy" />
+  <figcaption>Carnlough Hill biedt prachtige uitzichten over de kust en het havemontje van Carnlough</figcaption>
+</figure>
+
+<p>Glenarm is de meest zuidelijke van de negen glens en de dichtstbij Belfast. Het dorp ligt aan de mond van de glen, met Glenarm Castle en zijn ommuerde tuin als middelpunt. De Glenarm River Walk volgt de rivierover stroomopwaarts door bosland — een rustige wandeling van ongeveer 3 km die een uur duurt.</p>
+
+<p>Voor een meer substantiële wandeling klimt de Carnlough Hill-wandeling boven het naburige dorp Carnlough uit, wat uitzichten geeft over de kust en de haven. Carnlough is een mooi klein stadje met een kalksteenhaven gebouwd door de Marquess of Londonderry in de jaren 1850. De wandeling duurt 2 tot 3 uur en is gematigde moeilijkheid.</p>
+
+<p>De zuidelijke glens zijn stiller dan Glenariff en worden vaak voorbijgegaan door bezoekers die naar het noorden gaan naar de <a href="/wandelgebied-causeway-coast">Causeway Coast</a>. Dat is onderdeel van hun aantrekkingskracht. Je kunt hier op een zomerweekend wandelen en het pad voor jezelf hebben.</p>
+
+<h2 id="de-noordelijke-glens">De noordelijke glens</h2>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774874993118-optimized-Carnlough_harbour_-_geograph.org.uk_-_1932045.webp" alt="Carnlough havemontje met klassieke kalksteenbogen en kleurrijke boten — een van de mooiste havemontjes aan de Antrim-kust" loading="lazy" />
+  <figcaption>Carnlough havemontje is een architectonisch juweel en goed bewaarplaats voor de kust</figcaption>
+</figure>
+
+<p>De glens ten noorden van Cushendun — Glendun, Glenshesk en Glentaisie — zijn de wildste en minst bezochte. Ze hebben niet de gemarkeerde paden van Glenariff, maar bieden een gevoel van afgelatenheid dat de populairdere glens niet kunnen bieden.</p>
+
+<p>Glendun is de diepste en meest dramatische, met een smalle vallei die landinwaarts loopt vanaf de kust dicht bij Cushendun. De rivier is goed voor zalm, en de weg die deze volgt klimt door open moerasland voordat het de plateau erboven bereikt. Wandelen hier voelt als het terugkeren in de tijd.</p>
+
+<p>Glentaisie en Glenshesk convergeren dicht bij Ballycastle, waar de <a href="https://wandelvakantieierland.nl/antrim-coast/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Antrim-kust</a> de causeway coast ontmoet. Van Ballycastle kun je wandelen naar Fair Head — een van de meest dramatische klifwandelingen in Ierland — of de veerboot nemen naar Rathlin Island.</p>
+
+<p>Deze noordelijke glens worden het beste verkend met een kaart en een bereidheid om stille farmroads en sporen te volgen. Ze zijn niet gemarkeerd zoals Glenariff, maar dat is precies het punt. Als je aan alles wilt ontsnappen, is dit waar je moet komen.</p>
+
+<h2 id="je-bezoek-plannen">Je bezoek plannen</h2>
+
+<figure>
+  <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190948901-optimized-Fair_Head_from_Ballycastle_TI72H3T.webp" alt="Fair Head klif vanaf Ballycastle — een van de meest dramatische zeekliffwandelingen in Ierland met steilte rotsformaties" loading="lazy" />
+  <figcaption>Fair Head biedt spectaculaire klifwandelingen met uitgestrekte zeeuitzichten</figcaption>
+</figure>
+
+<p>De glens or antrim liggen ongeveer een uur van Belfast, waardoor ze toegankelijk zijn voor dagtrips of als onderdeel van een langere tour van de <a href="https://wandelvakantieierland.nl/antrim-coast/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Antrim-kust</a>. De A2-kustwegen verbindt alle negen glens van Larne naar Ballycastle.</p>
+
+<p>Cushendall en Glenariff maken de beste bases voor wandelen. Beide hebben accommodatie en liggen centraal ten opzichte van de meest populaire paden. Ballycastle in het noorden is een ander goed alternatief, vooral als je glenwandelingen wilt combineren met de <a href="https://wandelvakantieierland.nl/the-giants-causeway/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Giant's Causeway</a> en de Causeway Coast.</p>
+
+<p>Het <a href="https://wandelvakantieierland.nl/the-best-time-visit-ireland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">beste moment om Ierland te bezoeken</a> voor wandelingen in de glens is april tot oktober. Het voorjaar brengt watervallen op hun vooltste en blauwe klokjes in het bosland. De zomer is het warmst maar kan midges in de beschutte valleien brengen. De herfstkleuren in Glenariff zijn spectaculair.</p>
+
+<p>Pack <a href="https://wandelvakantieierland.nl/choose-right-pair-hiking-boots/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">goede wandelaarslaarzen</a> en regenkleding — de glens zijn beschut maar het <a href="https://wandelvakantieierland.nl/the-irish-weather/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">Ierse weer</a> kan snel veranderen. Onze <a href="https://wandelvakantieierland.nl/backpacking-checklist/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">pakkinglijst</a> behandelt alles wat je nodig hebt.</p>
+
+<p>We bieden <a href="https://wandelvakantieierland.nl/self-guided-walking-holidays-ireland/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">zelf begeleide wandelvakanties</a> aan die de Glens of Antrim en de Causeway Coast inhouden. We boeken je accommodatie, verplaatsen je tassen en geven gedetailleerde routenotities. Voor wandelaars die lokale kennis en gezelschap aanvol, combineren onze <a href="https://wandelvakantieierland.nl/guided-vs-self-guided-walking-holidays/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">geleide wandelvakanties</a> je met gidsen die elk pad in de glens kennen. Controleer onze <a href="https://wandelvakantieierland.nl/grading-of-hiking-tours/" class="text-blue-600 underline cursor-pointer underline-offset-2 decoration-1 decoration-current/40 hover:decoration-current focus:decoration-current">tourbegrading</a> om het juiste niveau voor je te vinden.</p>
+
+<h2 id="veelgestelde-vragen-glens-of-antrim">Veelgestelde vragen — Glens of Antrim</h2>
+
+<div itemscope itemtype="https://schema.org/FAQPage">
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name" id="hoeveel-valleien-zijn-er-in-de-glens-of-antrim">Hoeveel valleien zijn er in de Glens of Antrim?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">De Glens of Antrim bestaan uit negen valleien die zich uitstrekken van Glenarm in het zuiden tot Glentaisie in het noorden. Ze lopen langs de Antrim-kust en elk heeft zijn eigen unieke karakter, landschap en wandelmogelijkheden.</p>
+  </div>
+
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name" id="welke-glen-is-het-beste-om-te-bezoeken">Welke glen is het beste om te bezoeken?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Glenariff Forest Park is de meest populaire en geldt als de "Koningin van de Glens" vanwege zijn spectaculaire watervallen, gemarkeerde paden en faciliteiten. De 3 km Waterfall Walk is ideaal voor gezinnen, terwijl het Scenic Trail geavanceerde uitzichten biedt. Cushendall is echter een goed alternatief voor wie voorkeur geeft aan een rustigere ervaring met drie valleien die naar de zee lopen.</p>
+  </div>
+
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name" id="is-glenariff-forest-park-gratis">Is Glenariff Forest Park gratis?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Glenariff Forest Park vereist een parkeerplaatsgebeur voor toegang. De kosten zijn bescheiden en geven je toegang tot alle wandelpaden, het bezoekerscentrum, café en picknickareas. Het is een goed geïnvesteerde dagtrip.</p>
+  </div>
+
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name" id="hoe-kom-ik-van-belfast-naar-de-glens-of-antrim">Hoe kom ik van Belfast naar de Glens of Antrim?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">De Glens liggen ongeveer 45-60 minuten van Belfast per auto. Je neemt de A2 kustwegen noorden naar Carrickfergus, dan verder langs de kust. Dit is een prachtige scenic route langs de Antrim-kust. Je kunt ook openbaar vervoer nemen, hoewel een auto meer flexibiliteit biedt voor het verkennen van de verschillende glens.</p>
+  </div>
+
+  <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
+    <h3 itemprop="name" id="kan-je-van-glen-naar-glen-wandelen">Kan je van glen naar glen wandelen?</h3>
+    <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer"><p itemprop="text">Ja, er zijn verschillende mogelijkheden. De kustpad verbindt Cushendall en Cushendun (ongeveer 5 km). De A2-kustwegen biedt ook toegang tot alle glens, en veel wandelaars combineren kustpaden met dal-routes. De noordelijke glens (Glendun, Glenshesk, Glentaisie) vereisen meer voorbereiding en kaartoriëntatie, maar bieden meer afgelaten wandelpaden tussen valleien.</p>
+  </div>
+</div>
+
+<h2 id="wandel-in-de-rust">Wandel in de rust</h2>
+
+<p>De Glens of Antrim geven je iets zeldzaams — echte rust in een mooi landschap dat gemakkelijk bereikbaar is. Glenariff's watervallen, Cushendall's drie valleien, Cushendun's zeegrotten, en de wilde noordelijke glens bieden elk iets anders. Samen maken zij dit tot een van de mooiste wandelgebieden in Ierland.</p>
+
+<p>Breng een paar dagen hier door en je begrijpt waarom mensen die Noord-Ierland goed kennen de glens boven bijna overal anders waarderen. Het wandelen is gevarieerd, de dorpjes zijn gastvrij, en het gevoel van rust blijft bij je nadat je vertrekt. Neem contact op met Walking Holiday Ireland en we helpen je een reis door de Glens of Antrim in te plannen.</p>
+        </div>
+
+        <!-- Image Gallery -->
+        <section id="gallery-section" class="hidden mt-16 mb-8 border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Photo Gallery</h2>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(0)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190955622-optimized-Glenariff_Forest_Park_-_Ess-na-Crub_Waterfall_TI72JV3.webp" alt="Walking holiday Ireland — gallery image 1" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(1)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190936426-optimized-Carnlough_Hill_walk_Ramble__Carnlough__Co._Antrim_TI77LJ.webp" alt="Walking holiday Ireland — gallery image 2" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(2)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190945159-optimized-Cushendall_Villages_310824CH110.jpg_TI72UXC.webp" alt="Walking holiday Ireland — gallery image 3" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(3)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774874993118-optimized-Carnlough_harbour_-_geograph.org.uk_-_1932045.webp" alt="Walking holiday Ireland — gallery image 4" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(4)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190948901-optimized-Fair_Head_from_Ballycastle_TI72H3T.webp" alt="Walking holiday Ireland — gallery image 5" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(5)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190956186-optimized-Glenariff_Forest_Park_-_Ess-na-Larach_Waterfall_TI72G58.webp" alt="Walking holiday Ireland — gallery image 6" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(6)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774874994565-optimized-Cushendun_Harbour_-_geograph.org.uk_-_1898833__1_.webp" alt="Walking holiday Ireland — gallery image 7" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden cursor-pointer group" onclick="openLightbox(7)">
+            <img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875001055-optimized-1024px-Waterfoot_Beach_-_HDR__8467543244_.webp" alt="Walking holiday Ireland — gallery image 8" width="800" height="600" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" decoding="async"/>
+        </div>
+
+            </div>
+        </section>
+
+        
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#antrim</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#northern ireland</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#glenariff</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#cushendall</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#cushendun</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#glenarm</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#carnlough</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#waterfalls</span>
+
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>Alle Berichten</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">182</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Routegidsen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">61</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Reis Plannen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">32</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Ierse Cultuur &amp; Erfgoed</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">19</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>Nationale Parken &amp; Natuur</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Veiligheid &amp; Weer</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Uitrusting &amp; Accessoires</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">11</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Wandelvakanties</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-routes"><span>Wandelroutes</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">7</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Gezondheid &amp; Welzijn</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-&amp;-tips"><span>Planning &amp; Tips</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-areas"><span>Walking Areas</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Reisinformatie</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="giants-causeway-wandeling">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Giant&#x27;s Causeway Wandeling: Complete Bezoeker en Wandelgids</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="het-verschil-tussen-hiking-en-walking">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Het verschil tussen hiking en walking: uitleg + tips</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="kustplaatsen-aan-de-antrim-coast">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Antrim Coast: Wandelen langs Noord-Ierlands Spectaculaire Kust</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="beste-wandelingen-in-connemara">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Beste Wandelingen in Connemara: 5 Routes die je Moet Lopen</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="wandelchecklist-dagwandeling-ierland">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Hiking Checklist: Wat meenemen op een dagwandeling in Ierland</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="border-2 border-brand-purple p-8 rounded-xl shadow-xl" style="background-color:rgba(33,7,71,0.8)">
+            <h3 class="text-xl font-bold mb-4 text-white">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-brand-purple font-bold py-3 rounded-lg hover:bg-white/90 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="/wandeltochten/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="/wandeltochten/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="/wandeltochten/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way 5 Day Walking Holiday</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="/wandelbestemmingen" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="iers-volkslied-geschiedenis">Het Ierse volkslied: Geschiedenis, tekst en betekenis</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="wilde-dieren-in-ierland">Dieren in Ierland: Zoogdieren, Vogels en Natuur die je Ziet Tijdens het Wandelen</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="nordic-walking-leren">Nordic Walking: Een complete gids over techniek, voordelen en beginnen</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="/wandelbestemmingen" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="/wandeltochten/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/wandeltochten/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/wandeltochten/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Dagen</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way 5 Day Walking Holiday</h4>
+                    <p class="text-xs text-slate-500 mb-3">Three mountain days. The highlights t...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.webp" alt="Walking Holiday Ireland" class="h-10 mb-4" loading="lazy" width="130" height="69"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Zelfstandige wandelvakanties door de meest adembenemende landschappen van Ierland sinds 2012. Familiebedrijf van Cliff &amp; Louise.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Wandelvakanties</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="/wandeltochten/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="/wandeltochten/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="/wandeltochten/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="/wandeltochten/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="/wandeltochten/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="/wandeltochten/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="/wandeltochten/cooley-mournes" class="hover:text-primary transition-colors">Cooley & Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Snelkoppelingen</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../over-ons" class="hover:text-primary transition-colors">Over Ons</a></li>
+                    <li><a href="../hoe-het-werkt" class="hover:text-primary transition-colors">Hoe werkt het?</a></li>
+                    <li><a href="../moeilijkheidsgraad" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../op-maat" class="hover:text-primary transition-colors">Op Maat Gemaakte Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="/cadeaubonnen" class="hover:text-primary transition-colors">Cadeaubonnen</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="/boeken" class="hover:text-primary transition-colors font-bold">Nu boeken</a></li>
+                    <li><a href="../privacybeleid" class="hover:text-primary transition-colors">Privacybeleid</a></li>
+                    <li><a href="../algemene-voorwaarden" class="hover:text-primary transition-colors">Algemene Voorwaarden</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Nu boeken</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+            <div style="margin-top:12px;"><img src="/images/logo/stripe-secure-payments.webp" alt="Secure payments powered by Stripe" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy" />
+                <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+                    <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div></div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Gallery: show section only if images exist, lightbox -->
+    <script>
+    (function(){
+      var grid = document.getElementById('gallery-grid');
+      var section = document.getElementById('gallery-section');
+      if (grid && section && grid.children.length > 0) {
+        section.classList.remove('hidden');
+      }
+      var overlay = null;
+      var imgs = grid ? Array.from(grid.querySelectorAll('img')).map(function(i){return i.src;}) : [];
+      var idx = 0;
+      window.openLightbox = function(i){
+        idx = i;
+        if(!overlay){
+          overlay = document.createElement('div');
+          overlay.id='lb-overlay';
+          overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML='<button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button><button id="lb-prev" style="position:absolute;left:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&lsaquo;</button><img id="lb-img" style="max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;"/><button id="lb-next" style="position:absolute;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&rsaquo;</button>';
+          document.body.appendChild(overlay);
+          document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
+          document.getElementById('lb-next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
+          overlay.onclick=function(e){if(e.target===overlay)closeLightbox();};
+        }
+        overlay.style.display='flex';
+        document.body.style.overflow='hidden';
+        show();
+      };
+      function show(){document.getElementById('lb-img').src=imgs[idx];}
+      window.closeLightbox = function(){if(overlay){overlay.style.display='none';document.body.style.overflow='';}};
+      document.addEventListener('keydown',function(e){if(!overlay||overlay.style.display==='none')return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){idx=(idx-1+imgs.length)%imgs.length;show();}if(e.key==='ArrowRight'){idx=(idx+1)%imgs.length;show();}});
+    })();
+    </script>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>
