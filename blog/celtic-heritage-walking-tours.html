@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Celtic Heritage Walking Tours: Ancient Irish Trails Guide | Walking Holiday Ireland</title>
+    <meta name="description" content="Discover Celtic heritage walking tours Ireland through Iron Age sites, sacred symbols &amp; ancient landscapes. Expert-guided trails where history comes alive."/>
+    <link rel="canonical" href="https://walkingholidayireland.com/blog/celtic-heritage-walking-tours"/>
+    <link rel="icon" type="image/png" href="../images/logo/favicon.png"/>
+    <link rel="stylesheet" href="../css/styles.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:37px;}}
+        /* Scroll offset for fixed header - TOC anchor links clear both utility bar and nav */
+        .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 100px; }
+        @media(min-width:768px){ .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 150px; } }
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+        .prose img[data-align="left"] { float: left; margin-right: 1.5rem; margin-bottom: 1rem; }
+        .prose img[data-align="center"] { display: block; margin-left: auto; margin-right: auto; }
+        .prose img[data-align="right"] { float: right; margin-left: 1.5rem; margin-bottom: 1rem; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Celtic Heritage Walking Tours: Ancient Irish Trails Guide",
+        "description": "Discover Celtic heritage walking tours Ireland through Iron Age sites, sacred symbols &amp; ancient landscapes. Expert-guided trails where history comes alive.",
+        "datePublished": "2026-04-04",
+        "dateModified": "2026-04-04",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/celtic-heritage-walking-tours.html"
+        }
+    }
+    </script>
+    
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="X/W+eXjCqr5y+AcigAyCOw" async></script>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://walkingholidayireland.com/blog/celtic-heritage-walking-tours"/>
+    <meta property="og:title" content="Celtic Heritage Walking Tours: Ancient Irish Trails Guide"/>
+    <meta property="og:description" content="Discover Celtic heritage walking tours Ireland through Iron Age sites, sacred symbols &amp; ancient landscapes. Expert-guided trails where history comes alive."/>
+    <meta property="og:image" content="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190394032-optimized-Borris_House__Borris__Co_Carlow_Web_Size.webp"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Celtic Heritage Walking Tours: Ancient Irish Trails Guide"/>
+    <meta name="twitter:description" content="Discover Celtic heritage walking tours Ireland through Iron Age sites, sacred symbols &amp; ancient landscapes. Expert-guided trails where history comes alive."/>
+    <meta name="twitter:image" content="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190394032-optimized-Borris_House__Borris__Co_Carlow_Web_Size.webp"/>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/celtic-heritage-walking-tours" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/celtic-heritage-walking-tours" />
+
+    <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet"/>
+    </noscript>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+
+<a href="#main-content" class="sr-only skip-to-content" tabindex="0">Skip to main content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="/gift-vouchers" class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Gift Vouchers</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="../images/logo/whi_fc.webp" alt="Walking Holiday Ireland" width="130" height="69" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../destinations">Walking Holidays <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../walking-area-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle Peninsula</a>
+                            <a href="../walking-area-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="../walking-area-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin &amp; Wicklow</a>
+                            <a href="../walking-area-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Burren &amp; Clare</a>
+                            <a href="../walking-area-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="../walking-area-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley &amp; Mournes</a>
+                            <a href="../walking-area-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">The Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../tailor-made" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tailor-Made Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../how-it-works">How It Works <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../how-it-works" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overview</a>
+                            <a href="../tour-grading" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Tour Grading &amp; Difficulty</a>
+                            <a href="../self-guided-walking-holidays-ireland" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Self-Guided Holidays</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../about">About Us</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="/checkout" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Book Now
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="../destinations" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Walking Holidays</a>
+                <a href="../how-it-works" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">How It Works</a>
+                <a href="../about" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">About Us</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="/gift-vouchers" class="block py-3 font-semibold text-primary border-b border-slate-100">Gift Vouchers</a>
+        <a href="/checkout" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">
+                        Book Now
+                    </a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-10">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Celtic Heritage Walking Tours: Ancient Irish Trails Guide</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Walking Routes</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">April 04, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">15 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            Celtic Heritage Walking Tours: Ancient Irish Trails Guide
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774190394032-optimized-Borris_House__Borris__Co_Carlow_Web_Size.webp');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <p>Celtic Heritage Walking Tours Ireland: Ancient Trails Guide</p><p>Ever wondered what it feels like to walk paths that Celtic warriors climbed 2,000 years ago? That's what our Celtic heritage walking tours offer. You're not just hiking. You're stepping through layers of history that bring ancient Ireland to life. Every stone wall, holy well, and mountain peak tells a story.</p><p>I've <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/how-to-plan-your-hiking-trip-in-ireland">guided</a> walkers through these landscapes for decades. I can tell you one thing: knowing the culture changes everything. That weathered stone circle isn't just old rocks. It's where Druids gathered at Samhain. That valley isn't just pretty. It's where legendary battles happened. Cú Chulainn protected Ulster there.</p><h2>Why Celtic Heritage Walking Tours Are Unique</h2><p>Ireland kept Celtic culture alive in special ways. Mainland Europe lost it. When Roman armies conquered Gaul, Germania, and Britannia, Ireland stayed free. It became a living museum of old ways.</p><p>So when you explore ancient Celtic sites Ireland hiking routes today, you walk through unchanged landscapes. The mountain you're climbing meant the same thing 2,500 years ago. The well you pass still draws pilgrims. Druids performed rituals there long ago.</p><p>What makes these tours stand out:</p><ul><li><p>Ancient sites spanning 3,000+ years of Celtic life</p></li><li><p>Living traditions – festivals, pilgrimages, customs with direct Celtic roots</p></li><li><p>Landscapes that haven't changed much or become modern</p></li><li><p>Local guides who share stories passed down through generations</p></li><li><p>Mix of myths, history, and nature in every walk</p></li></ul><h2>Understanding the Celts on Celtic History Walking Holidays</h2><p>The Celts weren't one nation. They were many tribal groups. They shared languages, art styles, and spiritual beliefs. This spread across Europe from around 1200 BCE.</p><p>By the Iron Age, Celtic influence reached from Ireland to Turkey. From Scotland to Spain. But Celts didn't build empires. They organised through kinship and tribal alliances. Each region shaped Celtic culture to fit local land and life.</p><h3>Key Timeline for Celtic Ireland</h3><ul><li><p>800 BCE: Hallstatt Culture starts in Central Europe – the first clear Celtic society</p></li><li><p>500 BCE: Celtic peoples arrive in Ireland, bringing iron-working and new ideas</p></li><li><p>3rd century BCE: Celtic culture reaches its peak across Europe</p></li><li><p>1st century CE: Roman conquest ends Celtic power on the mainland, but Ireland stays free</p></li><li><p>5th century CE: Christianity arrives, blending with Celtic traditions</p></li></ul><p>On Iron Age heritage trails Ireland, you'll see hill forts, ring forts, and earthworks built then. These weren't just for war. They were centres for trade, crafts, and community life.</p><h2>Celtic Symbols Hiking Ireland: Sacred Art on Ancient Trails</h2><p>Walk into any old monastic site on Celtic culture Irish trails, and you'll spot the art right away. Intricate spirals. Endless knots. Geometric patterns that seem to flow without start or end.</p><p>I've stood with hundreds of walkers at Newgrange. We trace the triple spirals carved 5,000 years ago. These weren't just pretty pictures. They showed deep spiritual ideas. Life cycles. Rebirth. The link between physical and spiritual worlds.</p><h3>Decoding Celtic Symbols You'll See on Trails</h3><table style="min-width: 75px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1"><p><strong>Symbol</strong></p></th><th colspan="1" rowspan="1"><p><strong>Spiritual Meaning</strong></p></th><th colspan="1" rowspan="1"><p><strong>Where You'll Find It</strong></p></th></tr><tr><td colspan="1" rowspan="1"><p>Triple Spiral (Triskele)</p></td><td colspan="1" rowspan="1"><p>Life-death-rebirth, past-present-future, earth-sea-sky</p></td><td colspan="1" rowspan="1"><p>Newgrange and Knowth – ancient tombs</p></td></tr><tr><td colspan="1" rowspan="1"><p>Celtic Knot</p></td><td colspan="1" rowspan="1"><p>Eternal connection, no start or end, unity of all things</p></td><td colspan="1" rowspan="1"><p>High crosses, monastic carvings, old manuscripts</p></td></tr><tr><td colspan="1" rowspan="1"><p>Brigid's Cross</p></td><td colspan="1" rowspan="1"><p>Protection, blessing, fire and hearth – the female divine</p></td><td colspan="1" rowspan="1"><p>Holy wells, cottage doors, pilgrimage sites</p></td></tr><tr><td colspan="1" rowspan="1"><p>Celtic Wheel</p></td><td colspan="1" rowspan="1"><p>Sun worship, seasonal cycles, wholeness and completion</p></td><td colspan="1" rowspan="1"><p>Stone carvings, old sites, place names</p></td></tr><tr><td colspan="1" rowspan="1"><p>Animal Symbols</p></td><td colspan="1" rowspan="1"><p>Horse (power), raven (prophecy), stag (change)</p></td><td colspan="1" rowspan="1"><p>Carved stones, myth locations, trail markers</p></td></tr></tbody></table><p>When you visit [INTERNAL LINK: Glendalough → /blog/glendalough-walks-guide/] on Celtic symbols hiking Ireland routes, you'll see these patterns in round towers and carved stones. The monks there mixed Celtic art with Christian beliefs. They created something uniquely Irish.</p><h2>Celtic Social Structure: The Brehon Laws</h2><p>One thing Irish trails can't show you is the complex legal system that ran society. The Brehon Laws were one of Europe's most advanced old legal codes.</p><p>Roman and Germanic law focused on punishment. Death. Brehon law was different. It focused on paying back the harm. If you hurt someone or damaged property, you paid a fine. The fine matched the harm and your social rank. This showed Celtic values of balance and connection.</p><h3>Celtic Social Ranks</h3><ol><li><p><strong>Kings (Rí)</strong>: Regional rulers, often chosen rather than born into power</p></li><li><p><strong>Druids and Bards</strong>: Spiritual leaders, judges, storytellers – huge cultural power</p></li><li><p><strong>Warriors (Fianna)</strong>: Professional fighters, often young men without land</p></li><li><p><strong>Skilled Craftspeople:</strong> Metalworkers, builders, weavers – honored for their talents</p></li><li><p><strong>Farmers and Herders</strong>: The economic base, with rights and protections</p></li><li><p><strong>Unfree People</strong>: Slaves and captives, though with more rights than in some societies</p></li></ol><p>The cool thing: this system allowed people to move up. A talented blacksmith or poet could rise in status through skill and hard work. On Celtic Ireland walking experiences, you'll visit ring forts and settlements of these different groups.</p><h2>Celtic Myths: Gods, Heroes, and Sacred Lands</h2><p>The myths that lived on in Irish stories rival Greek and Norse sagas. They weren't just entertainment. They were how Celts understood their world, their values, and how they connected to the divine.</p><h3>The Ulster Cycle and Cú Chulainn</h3><p>The Ulster Cycle tells of hero Cú Chulainn. He single-handedly defended Ulster against Queen Medb's armies from Connacht. His super-human feats and magical training show Celtic warrior values you'll learn on these walks. Individual courage. Honour. Martial skill. Belief that gods joined human battles.</p><p>When you hike the [INTERNAL LINK: Cooley Peninsula → /walking-area-cooley-mournes/], you walk where these epic battles happened. Local place names still reference characters from the Táin Bó Cúailnge (The Cattle Raid of Cooley).</p><h3>The Morrigan: Goddess of War and Power</h3><p>The Morrigan was a shape-shifting goddess. Sometimes a beautiful woman. Sometimes a raven. Sometimes a phantom warrior on the battlefield. She embodied war's magical side. She appeared to warriors before death. She shaped battle outcomes through magic.</p><p>Celtic spirit life didn't split light from darkness like later Christianity did. The Morrigan stood for necessary death. The cycle that allowed new life. Fierce protection of land and tribe.</p><h3>Brigid: From Goddess to Saint</h3><p>Brigid is perhaps the most interesting Celtic deity. She was the goddess of smithcraft, poetry, healing, and childbirth. When Christianity came, she didn't disappear. She became Saint Brigid, one of Ireland's three patron saints.</p><p>This shows how Irish Christianity took in rather than wiped out Celtic tradition. When you walk [INTERNAL LINK: Saint Brigid's pilgrimage routes → /saint-brigids-impact-on-irish-culture/], you follow paths honouring both goddess and saint. A perfect example of how culture carried on for thousands of years.</p><h2>The Celtic Year: Seasonal Festivals on Ancient Ireland Walking Tours</h2><p>Celtic culture revolved around farming and pastoral cycles. Four major fire festivals marked the year's turning points. These celebrations still happen in new forms today.</p><h3>Samhain (1 November): The Celtic New Year</h3><p>As harvest ended and herds came back from summer pastures, Samhain began the year. But more than that, this was when the line between physical and spiritual worlds grew thin. Ancestors could return. Goddesses walked among people. Spirits roamed freely.</p><p>Modern Halloween comes straight from Samhain. The bonfires were lit for the dead and to keep bad spirits away. The belief that spirits walk the earth. The focus is on crossing between worlds – all Celtic roots.</p><h3>Imbolc (1 February): First Signs of Spring</h3><p>As sheep started producing milk and the first green shoots appeared, Imbolc celebrated life's return after winter. Brigid was connected to this festival. It stressed cleansing, renewal, and the promise of fertility returning to the land.</p><p>I've been at Imbolc celebrations at holy wells across Ireland. The traditions – lighting candles, offering prayers for healing, walking clockwise around the well – connect straight to old Celtic practices.</p><h3>Beltane (1 May): Summer Arrives</h3><p>Beltane celebrated summer's full arrival and pastoral bounty. Cattle walked between bonfires for blessing and safety. Young couples jumped through the flames for fertility blessings. The whole community performed rituals to ensure the land and people thrived.</p><h3>Lughnasadh (1 August): The First Harvest</h3><p>Named after god Lugh, Lughnasadh marked the first grain harvest. Communities gathered for competitions, matchmaking, feasting, and trading. This is when tribes came together. They celebrated bounty and built stronger social bonds.</p><h3>Experiencing Celtic Festivals on Your Tour</h3><ul><li><p>Many communities still mark these days with bonfires, gatherings, and old ceremonies</p></li><li><p>Old sites often allow special access or guided tours during festival dates</p></li><li><p>Local guides explain how modern celebrations keep ancient Celtic practices alive</p></li><li><p>Time your walk for these dates to add cultural meaning to your hike</p></li></ul><h2>Sacred Lands: Where Celtic Spirituality Meets Geography</h2><p>Celts didn't build temples like Romans or Greeks. Instead, they knew certain landscapes were inherently sacred. Places where gods lived. Portals between worlds. Sources of magical power.</p><h3>Holy Wells: Places of Healing and Blessing</h3><p>Throughout Ireland, thousands of holy wells mark Celtic sacred spots. Most were first linked to Celtic deities, then later "Christianised" by connecting them to saints. But their old power is still felt.</p><p>I've visited wells where offerings – coins, ribbons, and personal items – pile up year after year. People still come seeking healing for specific problems, just as they did 2,000 years ago. Walking to these wells copies pilgrimage practices spanning centuries.</p><h3>Sacred Mountains: Places of Divine Connection</h3><p>Mountains held deep meaning in Celtic beliefs. [INTERNAL LINK: Croagh Patrick → /blog/croagh-patrick-hike/], Slieve Gullion, and other peaks were linked to specific gods or myth events.</p><p>Climbing these mountains wasn't just physical exercise. It was a spiritual journey toward divine connection. The continued practice of pilgrimage climbing – where thousands still go up Croagh Patrick yearly – keeps Celtic traditions alive today.</p><h3>Sacred Landscape Features You'll See</h3><ul><li><p><strong>Passage tombs</strong>: Newgrange, Knowth, Loughcrew – aligned with solstices and equinoxes</p></li><li><p><strong>Stone circles</strong>: Star-watching spots and ritual gathering places</p></li><li><p><strong>Hill forts</strong>: Defensive positions with spiritual meaning, often at landscape edges</p></li><li><p><strong>Old trees</strong>: Oak, ash, and hawthorn had sacred status; many "fairy trees" survive</p></li><li><p><strong>Rivers and lakes</strong>: Boundaries between worlds, where ritual offerings were left</p></li></ul><h2>How Christianity Mixed with Celtic Culture</h2><p>When Saint Patrick and other missionaries arrived in the 5th century CE, they didn't try to erase Celtic culture completely. Instead, Irish Christianity took it in and transformed it. Something uniquely Irish emerged.</p><p>Goddess Brigid became Saint Brigid. Samhain became All Saints' Day. Holy wells linked to Celtic gods were re-linked to Christian saints. Celtic art styles shaped the designs in manuscripts and stone carvings at monastic sites.</p><p>This cultural carry-over makes Celtic history walking holidays quite powerful. You're not seeing dead old ruins. You're living traditions that evolved over thousands of years.</p><p>The round towers at Glendalough, the beehive huts on Skellig Michael, the high crosses throughout the countryside – all show Celtic art and building methods applied to Christian purposes. These are essential stops on any Irish heritage walk.</p><h2>Planning Your Celtic Heritage Walking Tours Ireland Experience</h2><p>After three decades organising these walks, I've learned what makes Celtic heritage walking tours truly memorable. It's not just visiting sites on ancient Ireland walking tours routes. It's knowing the context. Timing your visit well. Having guides who connect landscape to Celtic culture.</p><h3>Best Routes for Celtic Heritage</h3><p><strong>The Cooley Peninsula</strong>: Walk through mythic landscapes from the Ulster Cycle. Visit ring forts and passage tombs. Hear stories of Cú Chulainn's legendary battles.</p><p><strong>Glendalough and Wicklow</strong>: Explore monastic settlements showing how Christianity took in Celtic traditions. Round towers, carved stones, and holy wells in stunning mountain settings.</p><p><strong>Croagh Patrick Pilgrimage</strong>: Follow Ireland's most important pilgrimage route. Climb the mountain Saint Patrick supposedly fasted on, which was sacred to Celtic god Crom Dubh long before Christianity.</p><p><strong>Boyne Valley Heritage Trail</strong>: Visit [INTERNAL LINK: Newgrange → /newgrange/] and surrounding passage tombs older than Egyptian pyramids. Then explore Iron Age heritage trails Ireland sites and old monastic monuments along these ancient paths.</p><p><strong>Kerry Mountains</strong>: Walk old pathways through landscapes rich in Celtic folklore, stone circles, and ogham stones (the Celtic writing system carved on standing stones).</p><h3>What Walking Holiday Ireland Provides</h3><p>I founded Walking Holiday Ireland to offer cultural depth alongside physical challenge. Every tour mixes history with hiking.</p><p>Our Celtic heritage tours include:</p><ul><li><p><strong>Expert guidance</strong>: Guides explain old sites, myths, and cultural meaning as you walk</p></li><li><p><strong>Lodging near sacred sites</strong>: Stay in villages connected to Celtic and early Christian heritage</p></li><li><p><strong>Luggage transfer</strong>: Your bags move ahead while you focus on the landscape and culture</p></li><li><p><strong>Route notes</strong>: <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/top-rated-scenic-walks-ireland">Self-guided</a> walkers get thorough info about every site, symbol, and story</p></li><li><p><strong>Flexible pacing</strong>: Routes designed for various fitness levels, from gentle valley walks to tough mountain ascents</p></li><li><p><strong>Local connections</strong>: Access to folklore, traditional music sessions, and community events</p></li></ul><h3>When to Walk Celtic Heritage Trails</h3><table style="min-width: 75px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1"><p><strong>Season</strong></p></th><th colspan="1" rowspan="1"><p><strong>Advantages</strong></p></th><th colspan="1" rowspan="1"><p><strong>Considerations</strong></p></th></tr><tr><td colspan="1" rowspan="1"><p>Spring (Mar–May)</p></td><td colspan="1" rowspan="1"><p>Imbolc and Beltane festivals; wildflowers; longer days; fewer crowds</p></td><td colspan="1" rowspan="1"><p>Variable weather; some high routes snow-covered early</p></td></tr><tr><td colspan="1" rowspan="1"><p>Summer (Jun–Aug)</p></td><td colspan="1" rowspan="1"><p>Lughnasadh celebrations; longest days; best weather</p></td><td colspan="1" rowspan="1"><p>Most crowded, book lodging early, higher prices</p></td></tr><tr><td colspan="1" rowspan="1"><p>Autumn (Sep–Nov)</p></td><td colspan="1" rowspan="1"><p>Samhain traditions, stunning fall colours, comfortable temps</p></td><td colspan="1" rowspan="1"><p>Shorter days; more rain, and some services reduce hours</p></td></tr><tr><td colspan="1" rowspan="1"><p>Winter (Dec–Feb)</p></td><td colspan="1" rowspan="1"><p>Solstice at Newgrange; dramatic landscapes; authentic local experience</p></td><td colspan="1" rowspan="1"><p>Short days; cold and wet; some routes blocked; limited services</p></td></tr></tbody></table><h2>Practical Tips for Celtic Heritage Walkers</h2><p>After guiding countless walkers through old Celtic landscapes, I've gathered essential advice. Here's how to get the most from your experience.</p><h3>Before You Arrive</h3><ul><li><p>Read at least one Irish myths collection – it transforms how you see the landscape</p></li><li><p>Learn basic Irish greetings and place-name meanings (most connect to Celtic roots)</p></li><li><p>Research old sites along your route and their specific histories</p></li><li><p>Check if Celtic festival celebrations happen during your visit</p></li><li><p>Think about hiring a local guide for at least one day – the stories matter</p></li></ul><h3>What to Pack</h3><ul><li><p>Waterproof gear (Ireland's weather shifts fast, even in summer)</p></li><li><p>Layered clothing (temps change from valley to mountaintop)</p></li><li><p>Sturdy <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/best-walks-in-northern-ireland">hiking boots</a> (many old sites have uneven ground)</p></li><li><p>Small notebook (write down stories, place names, personal thoughts)</p></li><li><p>Camera with good low-light capability (many sites are in forests or dark interiors)</p></li></ul><h3>On the Trail</h3><ul><li><p>Take time to sit quietly at sacred sites – the atmosphere reveals itself in stillness</p></li><li><p>Respect ongoing spiritual practices (people still leave offerings at wells and perform rituals)</p></li><li><p>Ask locals about folklore – most Irish people know stories about nearby sites</p></li><li><p>Walk clockwise around holy wells and sacred sites, following old practice</p></li><li><p>Notice place names – they often hide ancient Celtic meanings and myths</p></li></ul><h2>Beyond Walking: Deepening Your Celtic Understanding</h2><p>The walking itself connects you to Celtic heritage. But other experiences enrich that connection further.</p><p><strong>Visit local heritage centres:</strong> Many areas have excellent centres explaining old Celtic ruins with artefacts, models, and expert talks.</p><p><strong>Attend traditional music sessions</strong>: Irish traditional music keeps melodic structures and rhythms with Celtic roots. The instruments – bodhrán, tin whistle, and uilleann pipes – connect to old traditions.</p><p><strong>Explore Ogham stones</strong>: Standing stones carved with Ireland's ancient Celtic alphabet appear throughout the countryside. Learning basic ogham shows how Celts recorded names, boundaries, and memorials.</p><p><strong>Participate in festivals</strong>: If timing works, attend Samhain bonfires, Imbolc well blessings, or Lughnasadh gatherings. These living traditions connect straight to old Celtic practices.</p><p><strong>Visit the National Museum</strong>: Dublin's old ruins section has stunning Celtic artefacts – gold torcs, bronze weapons, ritual objects – that bring abstract history to life.</p><h2>Why Now Is the Perfect Time for Celtic Heritage Walking</h2><p>Interest in Celtic heritage walking tours has never been stronger. DNA testing shows Celtic ancestry for millions worldwide. New research keeps uncovering Celtic achievements. New finds happen all the time, adding to what we know.</p><p>Meanwhile, climate concerns make walking holidays more and more appealing. They're low-carbon, health-promoting, and culturally immersive. You're not just reducing your carbon footprint. You're living landscapes the way humans have for ages: on foot, at a human pace, fully present.</p><p>Ireland's walking trail network has improved a lot. Better trail marking, upgraded lodging, reliable luggage transfer services, and expert guiding all make Celtic heritage walking tours more accessible than ever.</p><h2>Celtic Heritage Walking Tours Ireland Summary</h2><ul><li><p>Ireland kept Celtic culture alive due to island isolation from Roman conquest</p></li><li><p>Old Celtic sites accessible via hiking include passage tombs, ring forts, stone circles, and holy wells</p></li><li><p>Celtic symbols (spirals, knots, crosses) appear throughout the landscape with deep spiritual meanings</p></li><li><p>Four seasonal festivals (Samhain, Imbolc, Beltane, Lughnasadh) influenced modern Irish celebrations</p></li><li><p>Christianity took in rather than replaced Celtic traditions, creating unique Irish spiritual character</p></li><li><p>Best walking routes for Celtic heritage: Cooley Peninsula, Glendalough, Croagh Patrick, Boyne Valley, Kerry Mountains</p></li><li><p>Walking Holiday Ireland offers guided and self-guided tours mixing cultural insight with physical hiking</p></li></ul><h2>Start Your Celtic Heritage Walking Journey</h2><p>For over 30 years, I've helped walkers discover the Celtic heritage woven into every Irish landscape. Whether you're drawn to myths, old ruins, or spirit life – or simply want to understand the culture behind the stunning scenery – these Celtic history walking holidays can change you.</p><p>You'll return home with more than photos. You'll carry stories of heroes and goddesses. Understanding of old symbols. Connections to landscapes that held spiritual meaning for thousands of years. Appreciation for how the past shapes the present on Celtic heritage walking tours.</p><p>Walking Holiday Ireland specialises in Celtic heritage walking tours that balance physical challenge with cultural depth. We offer both guided Celtic heritage walking tours with expert insight and self-guided tours with thorough route notes and historical context.</p><p>Ready to walk through 3,000 years of Celtic history? Contact me today to discuss which Celtic heritage route suits your interests and fitness level. I'll design an experience connecting you deeply to Ireland's ancient Celtic soul.</p>
+        </div>
+
+        <!-- Image Gallery -->
+        <section id="gallery-section" class="hidden mt-16 mb-8 border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Photo Gallery</h2>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                
+            </div>
+        </section>
+
+        
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic heritage</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Iron Age Ireland</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic culture</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#ancient Ireland</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic symbols</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic art</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#historical trails</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#archaeological sites</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Newgrange</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic spirituality</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#heritage walking</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#cultural history</span>
+
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>All Posts</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">182</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Trail Guides</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">61</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Planning Your Trip</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">32</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Irish Culture &amp; Heritage</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">18</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>National Parks &amp; Wildlife</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Safety &amp; Weather</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Gear &amp; Equipment</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">11</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Walking Holidays</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-routes"><span>Walking Routes</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">8</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Health &amp; Wellness</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-&amp;-tips"><span>Planning &amp; Tips</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-areas"><span>Walking Areas</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Travel Info</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="irish-mythology-walking-routes">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Mythological Hiking Ireland: Where Ancient Legends Meet Trails</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="checklist-for-solo-hiking">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Hiking Checklist: What to Pack for a Day Hike in Ireland</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="celtic-heritage-walking-tours">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Celtic Heritage Walking Tours: Ancient Irish Trails Guide</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="antrim-coast">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Antrim Coast: A Walking Guide to Northern Ireland&#x27;s Dramatic Coastline</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="hiking-vs-walking-vs-trekking">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Hiking vs Walking vs Trekking vs Rambling: What&#x27;s the Difference?</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="border-2 border-brand-purple p-8 rounded-xl shadow-xl" style="background-color:rgba(33,7,71,0.8)">
+            <h3 class="text-xl font-bold mb-4 text-white">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-brand-purple font-bold py-3 rounded-lg hover:bg-white/90 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="../walking-tours/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="../images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/kerry-way/card.jpg" srcset="../images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="../walking-tours/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="../images/routes/wicklow-way-5-days/card.jpg" srcset="../images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way 5 Day Walking Holiday</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="../destinations" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="diamond-hill-walk">Diamond Hill Walk, Connemara: A Perfect Introduction to Mountain Hiking</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="cosan-na-naomh-walking-footsteps-saints-mountains">Cosán na Naomh: Walking in the Footsteps of Saints and Mountains</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="ancient-traditions-irish-heritage-pilgrimage-ireland">Ancient Traditions and Irish Heritage Pilgrimage in Ireland</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="../destinations" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="../walking-tours/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="../images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/kerry-way/card.jpg" srcset="../images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="../walking-tours/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="../images/routes/wicklow-way-5-days/card.jpg" srcset="../images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way 5 Day Walking Holiday</h4>
+                    <p class="text-xs text-slate-500 mb-3">Three mountain days. The highlights t...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="../images/logo/whi_fc.webp" alt="Walking Holiday Ireland" class="h-10 mb-4" loading="lazy" width="130" height="69"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Self-guided walking holidays through Ireland's most stunning landscapes since 2012. Family-run by Cliff &amp; Louise.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Walking Holidays</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../walking-tours/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="../walking-tours/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="../walking-tours/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="../walking-tours/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="../walking-tours/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="../walking-tours/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="../walking-tours/cooley-mournes" class="hover:text-primary transition-colors">Cooley &amp; Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Quick Links</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../about" class="hover:text-primary transition-colors">About Us</a></li>
+                    <li><a href="../how-it-works" class="hover:text-primary transition-colors">How It Works</a></li>
+                    <li><a href="../tour-grading" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../tailor-made" class="hover:text-primary transition-colors">Tailor-Made Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="/gift-vouchers" class="hover:text-primary transition-colors">Gift Vouchers</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="/checkout" class="hover:text-primary transition-colors font-bold">Book Now</a></li>
+                    <li><a href="../privacy-policy" class="hover:text-primary transition-colors">Privacy Policy</a></li>
+                    <li><a href="../terms-and-conditions" class="hover:text-primary transition-colors">Terms &amp; Conditions</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Get in Touch</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+            <div style="margin-top:12px;"><img src="../images/logo/stripe-secure-payments.webp" alt="Secure payments powered by Stripe" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy" />
+                <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+                    <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div></div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Gallery: show section only if images exist, lightbox -->
+    <script>
+    (function(){
+      var grid = document.getElementById('gallery-grid');
+      var section = document.getElementById('gallery-section');
+      if (grid && section && grid.children.length > 0) {
+        section.classList.remove('hidden');
+      }
+      var overlay = null;
+      var imgs = grid ? Array.from(grid.querySelectorAll('img')).map(function(i){return i.src;}) : [];
+      var idx = 0;
+      window.openLightbox = function(i){
+        idx = i;
+        if(!overlay){
+          overlay = document.createElement('div');
+          overlay.id='lb-overlay';
+          overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML='<button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button><button id="lb-prev" style="position:absolute;left:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&lsaquo;</button><img id="lb-img" style="max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;"/><button id="lb-next" style="position:absolute;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&rsaquo;</button>';
+          document.body.appendChild(overlay);
+          document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
+          document.getElementById('lb-next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
+          overlay.onclick=function(e){if(e.target===overlay)closeLightbox();};
+        }
+        overlay.style.display='flex';
+        document.body.style.overflow='hidden';
+        show();
+      };
+      function show(){document.getElementById('lb-img').src=imgs[idx];}
+      window.closeLightbox = function(){if(overlay){overlay.style.display='none';document.body.style.overflow='';}};
+      document.addEventListener('keydown',function(e){if(!overlay||overlay.style.display==='none')return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){idx=(idx-1+imgs.length)%imgs.length;show();}if(e.key==='ArrowRight'){idx=(idx+1)%imgs.length;show();}});
+    })();
+    </script>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="../js/whi-config.js" defer></script>
+    <script src="../js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>

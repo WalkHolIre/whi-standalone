@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Mythologische Wandelroutes Ierland: Legendenpaden | Walking Holiday Ireland</title>
+    <meta name="description" content="Ontdek mythologische wandelroutes waar Ierse legenden leven. Wandel Cú Chulainns slagvelden en Fionns paden. Boek uw legende-avontuur."/>
+    <link rel="canonical" href="https://wandelvakantieierland.nl/blog/mythologische-wandelroutes-ierland-legendarische-paden"/>
+    <link rel="icon" type="image/png" href="/images/logo/favicon.png"/>
+    <link rel="stylesheet" href="/css/styles.min.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
+    <style>
+        .material-symbols-outlined { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        body { font-family: 'Inter', sans-serif; }
+        header.site-header{top:0;} @media(min-width:768px){header.site-header{top:37px;}}
+        /* Scroll offset for fixed header - TOC anchor links clear both utility bar and nav */
+        .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 100px; }
+        @media(min-width:768px){ .prose h2, .prose h3, .prose h4, .prose h5, [id] { scroll-margin-top: 150px; } }
+        /* Article prose styling — matched to site-wide design system */
+
+        /* Headings — h2 gets orange bar accent like all site sections */
+        .prose h2 { font-size: 1.75rem; font-weight: 800; margin-top: 2.5rem; margin-bottom: 1rem; color: #1e293b; line-height: 1.3; display: flex; align-items: center; gap: 0.75rem; }
+        .prose h2::before { content: ''; width: 0.375rem; align-self: stretch; background: #F17E00; border-radius: 9999px; flex-shrink: 0; }
+        .prose h3 { font-size: 1.35rem; font-weight: 700; margin-top: 2rem; margin-bottom: 0.75rem; color: #1e293b; line-height: 1.4; }
+        .prose h4 { font-size: 1.1rem; font-weight: 700; margin-top: 1.5rem; margin-bottom: 0.5rem; color: #334155; }
+        .prose h5 { font-size: 1rem; font-weight: 700; margin-top: 1.25rem; margin-bottom: 0.5rem; color: #334155; }
+
+        /* Body text */
+        .prose p { margin-bottom: 1.25rem; line-height: 1.8; font-size: 1.125rem; color: #475569; }
+        .prose strong { color: #1e293b; font-weight: 700; }
+        .prose em { font-style: italic; }
+
+        /* Links — purple to match brand */
+        .prose a { color: #3F0F87; text-decoration: underline; text-underline-offset: 2px; }
+        .prose a:hover { color: #210747; }
+
+        /* Lists */
+        .prose ul, .prose ol { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        .prose ul { list-style-type: disc; }
+        .prose ol { list-style-type: decimal; }
+        .prose li { font-size: 1.125rem; line-height: 1.8; color: #475569; margin-bottom: 0.5rem; }
+
+        /* Blockquotes */
+        .prose blockquote { border-left: 4px solid #F17E00; padding: 1rem 1.5rem; margin: 1.5rem 0; background: #f8f7f5; border-radius: 0 0.5rem 0.5rem 0; }
+        .prose blockquote p { color: #334155; font-style: italic; margin-bottom: 0; }
+
+        /* Horizontal rules */
+        .prose hr { border: none; border-top: 1px solid #e2e8f0; margin: 2rem 0; }
+
+        /* Images */
+        .prose img { border-radius: 0.75rem; margin: 1.5rem 0; max-width: 100%; height: auto; }
+        .prose img[data-align="left"] { float: left; margin-right: 1.5rem; margin-bottom: 1rem; }
+        .prose img[data-align="center"] { display: block; margin-left: auto; margin-right: auto; }
+        .prose img[data-align="right"] { float: right; margin-left: 1.5rem; margin-bottom: 1rem; }
+
+        /* Tables — branded style with orange header */
+        .prose table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; border: 1px solid #e2e8f0; font-size: 0.95rem; }
+        .prose thead { background: #210747; color: #ffffff; }
+        .prose thead th { padding: 0.875rem 1rem; text-align: left; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 3px solid #F17E00; }
+        .prose tbody tr { border-bottom: 1px solid #e2e8f0; transition: background 0.15s; }
+        .prose tbody tr:nth-child(even) { background: #f8f7f5; }
+        .prose tbody tr:hover { background: rgba(241,126,0,0.06); }
+        .prose tbody td { padding: 0.75rem 1rem; color: #475569; line-height: 1.6; }
+        .prose tbody td:first-child { font-weight: 600; color: #1e293b; }
+        .prose tfoot { background: #f8f7f5; border-top: 2px solid #e2e8f0; }
+        .prose tfoot td { padding: 0.75rem 1rem; font-weight: 600; color: #1e293b; }
+        .prose caption { caption-side: bottom; padding: 0.75rem 0; font-size: 0.85rem; color: #94a3b8; font-style: italic; }
+
+        /* Code (inline and blocks) */
+        .prose code { background: #f1f5f9; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #3F0F87; }
+        .prose pre { background: #1e293b; color: #e2e8f0; padding: 1.25rem; border-radius: 0.75rem; overflow-x: auto; margin: 1.5rem 0; }
+        .prose pre code { background: none; padding: 0; color: inherit; }
+
+        /* Figures and captions */
+        .prose figure { margin: 1.5rem 0; }
+        .prose figcaption { font-size: 0.85rem; color: #94a3b8; text-align: center; margin-top: 0.5rem; font-style: italic; }
+
+        /* YouTube video embeds — responsive 16:9 */
+        .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; margin: 1.5rem 0; border-radius: 0.75rem; overflow: hidden; background: #1e293b; }
+        .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Mythologische Wandelroutes Ierland: Legendenpaden",
+        "description": "Ontdek mythologische wandelroutes waar Ierse legenden leven. Wandel Cú Chulainns slagvelden en Fionns paden. Boek uw legende-avontuur.",
+        "datePublished": "2026-04-04",
+        "dateModified": "2026-04-04",
+        "author": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Walking Holiday Ireland",
+            "url": "https://walkingholidayireland.com"
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https://walkingholidayireland.com/blog/mythologische-wandelroutes-ierland-legendarische-paden.html"
+        }
+    }
+    </script>
+    
+    <script src="https://analytics.ahrefs.com/analytics.js" data-key="2ecEVyyxGucywquPN+/X4g" async></script>
+    <link rel="alternate" hreflang="en" href="https://walkingholidayireland.com/blog/irish-mythology-walking-routes" />
+    <link rel="alternate" hreflang="de" href="https://walkingholidayireland.de/blog/mythologische-wanderwege-irland-legendaere-routen" />
+    <link rel="alternate" hreflang="nl" href="https://wandelvakantieierland.nl/blog/mythologische-wandelroutes-ierland-legendarische-paden" />
+    <link rel="alternate" hreflang="x-default" href="https://walkingholidayireland.com/blog/irish-mythology-walking-routes" />
+
+    <noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,1&display=swap" rel="stylesheet"/>
+    </noscript>
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="https://wandelvakantieierland.nl/blog/mythologische-wandelroutes-ierland-legendarische-paden"/>
+    <meta property="og:title" content="Ierse mythologie wandelroutes: Wandel waar ooit helden liepen"/>
+    <meta property="og:description" content="Ontdek mythologische wandelroutes waar Ierse legenden leven. Wandel Cú Chulainns slagvelden en Fionns paden. Boek uw legende-avontuur."/>
+    <meta property="og:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+    <meta property="og:site_name" content="Walking Holiday Ireland"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Ierse mythologie wandelroutes: Wandel waar ooit helden liepen"/>
+    <meta name="twitter:description" content="Ontdek mythologische wandelroutes waar Ierse legenden leven. Wandel Cú Chulainns slagvelden en Fionns paden. Boek uw legende-avontuur."/>
+    <meta name="twitter:image" content="https://walkingholidayireland.com/images/hero/kerry-hero.webp"/>
+</head>
+<body class="bg-background-light text-slate-900 antialiased overflow-x-hidden">
+
+<a href="#main-content" class="sr-only skip-to-content" tabindex="0">Skip to main content</a>
+
+<!-- Top Navigation -->
+<!-- Top Utility Bar -->
+<div style="background-color:#ffffff;color:#210747;font-size:13px;padding:8px 40px;position:fixed;top:0;left:0;right:0;z-index:51;" class="hidden md:block">
+    <div style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <a href="mailto:info@walkingholidayireland.com" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">mail</span> info@walkingholidayireland.com</a>
+            <a href="tel:+353429323396" style="color:#210747;text-decoration:none;"><span class="material-symbols-outlined" style="font-size:16px;vertical-align:middle;margin-right:4px;">phone</span> +353 42 932 3396</a>
+            <a href="https://wa.me/353879573856" target="_blank" rel="noopener" style="color:#210747;text-decoration:none;"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#210747;vertical-align:middle;margin-right:4px;display:inline-block;"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <a href="/cadeaubonnen" class="topbar-gift-voucher" style="color:#210747;text-decoration:none;font-weight:600;display:inline-flex;align-items:center;gap:5px;"><span class="material-symbols-outlined" style="font-size:16px;">redeem</span> Cadeaubonnen</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px;">
+            <button onclick="switchLang('en')" class="lang-btn" style="background:rgba(255,255,255,0.3);border:1px solid #210747;color:#210747;padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">EN</button>
+            <button onclick="switchLang('de')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">DE</button>
+            <button onclick="switchLang('nl')" class="lang-btn" style="background:transparent;border:1px solid rgba(33,7,71,0.3);color:rgba(33,7,71,0.7);padding:2px 10px;border-radius:3px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;">NL</button>
+        </div>
+    </div>
+</div>
+
+<header class="site-header fixed left-0 right-0 z-50 backdrop-blur-md border-b border-slate-200/60" style="background-color:#ffffff;">
+            <div class="max-w-7xl mx-auto px-6 flex items-center justify-between" style="padding-top:20px;padding-bottom:20px;">
+                <a href="../" class="flex items-center gap-3">
+                    <img src="/images/logo/whi_fc.webp" alt="Walking Holiday Ireland" width="130" height="69" style="width:130px;height:auto;"/>
+                </a>
+                <nav class="hidden md:flex items-center gap-8">
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="/wandelbestemmingen">Wandelvakanties <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="/wandelgebied-dingle-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dingle-schiereiland</a>
+                            <a href="/wandelgebied-kerry-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">County Kerry</a>
+                            <a href="/wandelgebied-wicklow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Dublin & Wicklow</a>
+                            <a href="/wandelgebied-burren-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Burren & Clare</a>
+                            <a href="/wandelgebied-causeway-coast" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Causeway Coast</a>
+                            <a href="/wandelgebied-cooley-mournes" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Cooley & Mournes</a>
+                            <a href="/wandelgebied-barrow-way" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Barrow Valley</a>
+                            <div class="border-t border-slate-100 mt-2 pt-2">
+                                <a href="../op-maat" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Op Maat Gemaakte Tours</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="relative group">
+                        <a class="font-semibold text-slate-700 hover:text-primary transition-colors flex items-center gap-1" href="../hoe-het-werkt">Hoe werkt het? <span class="material-symbols-outlined text-base">expand_more</span></a>
+                        <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-2xl border border-slate-100 py-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                            <a href="../hoe-het-werkt" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Overzicht</a>
+                            <a href="../moeilijkheidsgraad" class="block px-5 py-2.5 text-sm font-bold text-primary hover:bg-primary/5 transition-colors">Moeilijkheidsgraad</a>
+                            <a href="../wandelvakantie-ierland-op-eigen-houtje" class="block px-5 py-2.5 text-sm font-medium hover:bg-primary/5 hover:text-primary transition-colors">Wandelvakantie op Eigen Houtje</a>
+                        </div>
+                    </div>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../over-ons">Over Ons</a>
+                    <a class="font-semibold text-slate-700 hover:text-primary transition-colors" href="../blog">Blog</a>
+                    <a href="../boeken" class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-lg shadow-primary/20 transition-all active:scale-95">
+                        Nu boeken
+                    </a>
+                </nav>
+                <button class="md:hidden text-slate-900" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <span class="material-symbols-outlined text-3xl">menu</span>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-6 py-4">
+                <a href="/wandelbestemmingen" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Wandelvakanties</a>
+                <a href="../hoe-het-werkt" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Hoe werkt het?</a>
+                <a href="../over-ons" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Over Ons</a>
+                <a href="../blog" class="block py-3 font-semibold text-slate-700 border-b border-slate-100">Blog</a>
+                <a href="../contact" class="block mt-4 bg-primary text-white text-center px-6 py-3 rounded-lg font-bold">Nu boeken</a>
+            </div>
+        </header>
+
+<main id="main-content" class="flex-grow flex flex-col items-center w-full pt-20 md:pt-32">
+
+<!-- Breadcrumbs -->
+<div class="max-w-6xl mx-auto w-full px-6 py-10">
+    <div class="flex items-center gap-2 text-sm font-medium text-slate-500">
+        <a class="hover:text-primary transition-colors" href="../">Home</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <a class="hover:text-primary transition-colors" href="../blog">Blog</a>
+        <span class="material-symbols-outlined text-xs">chevron_right</span>
+        <span class="text-slate-900">Ierse mythologie wandelroutes: Wandel waar ooit helden liepen</span>
+    </div>
+</div>
+
+<!-- Two-Column Layout -->
+<div class="max-w-6xl mx-auto w-full px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16">
+
+    <!-- Article Content (8 cols) -->
+    <article class="lg:col-span-8">
+
+        <!-- Article Meta -->
+        <div class="flex flex-wrap items-center gap-3 mb-6">
+            <span class="bg-primary/10 text-primary text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-lg">Wandelroutes</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">April 04, 2026</span>
+            <span class="text-slate-400">|</span>
+            <span class="text-sm text-slate-500">12 min read</span>
+        </div>
+
+        <!-- Article Title -->
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight mb-8">
+            Ierse mythologie wandelroutes: Wandel waar ooit helden liepen
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="rounded-xl overflow-hidden mb-12 shadow-2xl">
+            <div class="aspect-[16/9] bg-cover bg-center" style="background-image: url('https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1774875800948-optimized-Giant_of_the_Sperrins_Sculpture_Trail__Darach_The_Guardian__Mullaghcarn__Gortin_Glen_Forest_Park__Co._Tyrone_TI7I53.webp');"></div>
+            <div class="bg-slate-900 text-slate-300 text-xs italic px-4 py-2">Photo: Walking Holiday Ireland</div>
+        </div>
+
+        <!-- Article Body with Prose Styling -->
+        <div class="prose max-w-none">
+            <h2 id="ierse-mythologie-wandelroutes-wandel-waar-ooit-helden-liepen">Ierse mythologie wandelroutes: Wandel waar ooit helden liepen</h2><p>Welke verhalen schuilen er onder je wandelschoenen terwijl je door de wilde Ierse landschappen trekt? Al twintig jaar begeleid ik wandelaars over dit eiland, en één ding kan ik met zekerheid zeggen: Ierse mythologie wandelroutes bieden iets buitengewoons — paden waar folklore en landschap zo volledig verweven zijn dat elke stap een reis door de tijd wordt. De heuvels herinneren zich <strong>Cú Chulainns</strong> laatste gevecht. In de valleien weerklinken nog steeds de verhalen van Fionn MacCumhaill en zijn krijgers. De oeroude grafheuvels fluisteren over de Tuatha Dé Danann, die zich in de aarde zelf terugtrokken.</p><nav class="toc-block bg-slate-50 border border-slate-200 rounded-xl p-6 my-8">
+                <h3 class="text-lg font-bold mb-4 text-slate-800" id="inhoudsopgave">Inhoudsopgave</h3>
+                <ol class="space-y-2 text-sm">
+                    <li><a href="#ierse-mythologie-wandelroutes-wandel-waar-ooit-helden-liepen" class="text-primary hover:text-primary/80 hover:underline transition-colors">Ierse mythologie wandelroutes: Wandel waar ooit helden liepen</a></li><li><a href="#waarom-ierlands-landschap-en-mythen-onlosmakelijk-verbonden-zijn" class="text-primary hover:text-primary/80 hover:underline transition-colors">Waarom Ierlands landschap en mythen onlosmakelijk verbonden zijn</a></li><li><a href="#de-beste-ierse-mythologie-wandelroutes-voor-folkloreliefhebbers" class="text-primary hover:text-primary/80 hover:underline transition-colors">De beste Ierse mythologie wandelroutes voor folkloreliefhebbers</a></li><li><a href="#legendarische-figuren-die-je-tegenkomt-op-keltische-sagenwandelingen-in-ierland" class="text-primary hover:text-primary/80 hover:underline transition-colors">Legendarische figuren die je tegenkomt op Keltische sagenwandelingen in Ierland</a></li><li><a href="#zo-verdiep-je-je-beleving-op-mythische-wandelingen-in-ierland" class="text-primary hover:text-primary/80 hover:underline transition-colors">Zo verdiep je je beleving op mythische wandelingen in Ierland</a></li><li><a href="#je-mythologisch-wandelavontuur-in-ierland-plannen" class="text-primary hover:text-primary/80 hover:underline transition-colors">Je mythologisch wandelavontuur in Ierland plannen</a></li><li><a href="#kennis-verdiepen-voorbij-het-wandelpad" class="text-primary hover:text-primary/80 hover:underline transition-colors">Kennis verdiepen — voorbij het wandelpad</a></li><li><a href="#jouw-reis-naar-het-mythologische-hart-van-ierland" class="text-primary hover:text-primary/80 hover:underline transition-colors">Jouw reis naar het mythologische hart van Ierland</a></li>
+                </ol>
+            </nav><p>Ik heb de zonsopgang boven het<strong> </strong><a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/walking-area-cooley-mournes"><strong>Cooley-schiereiland</strong></a><strong> </strong>gezien, waar Ulsters grootste held zijn laatste adem uitblies — rechtop vastgebonden aan een staande steen. Ik heb in de dalen van Wicklow gestaan waar de Fianna ooit jaagden. Dit zijn geen museumstukken achter glas — het zijn levende landschappen waar Ierse mythologie wandelroutes je legenden laten beleven op exact de plek waar ze ontstonden.</p><p>Deze gids onthult de krachtigste verbindingen tussen mythologie en wandelpad, met praktische Ierse mythologie wandelroutes en de tijdloze verhalen die een gewone wandeling in een onvergetelijk avontuur veranderen.</p><h2 id="waarom-ierlands-landschap-en-mythen-onlosmakelijk-verbonden-zijn">Waarom Ierlands landschap en mythen onlosmakelijk verbonden zijn</h2><p>De Ierse mythologie liet zich niet simpelweg inspireren door het landschap — het land <strong>vormde elk verhaal</strong>. De oude Kelten zagen goddelijkheid in natuurlijke formaties: bergen werden slapende reuzen, meren herbergden betoverde zwanen, en kustformaties markeerden veldslagen tussen bovennatuurlijke wezens.</p><p>Anders dan artefacten achter vitrines plaatsen Keltische sagenwandelingen in Ierland je midden in het verhaal. Je leest niet over de <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="https://www.wikiwand.com/en/T%C3%A1in_B%C3%B3_C%C3%BAailnge"><em>Táin Bó Cúailnge</em></a> — je wandelt over het schiereiland waar koningin Medbs legers marcheerden en Cú Chulainn hen eigenhandig tegenhield.</p><h3 id="hoe-de-mondelinge-overlevering-ierlands-folklorewandelroutes-vormde">Hoe de mondelinge overlevering Ierlands folklorewandelroutes vormde</h3><p>Eeuwenlang overleefden Ierse mythen door <strong>verhalen vertellen rond het haardvuur</strong> en op bijeenkomsten. Rondtrekkende barden en seanchaí droegen de verhalen van dorp tot dorp, vaak langs routes die hedendaagse wandelaars nog steeds volgen.</p><p>De paden werden geheugensteuntjes. Een opvallende rots riep het verhaal van Diarmuid en Gráinnes vlucht op. Een bergpas herinnerde aan Fionns jachtavonturen. Wie deze mythologische wandelroutes in Ierland bewandelt, volgt letterlijk de voetstappen van de verhalenvertellers.</p><h3 id="de-vier-mythologische-cycli-langs-ierse-wandelpaden">De vier mythologische cycli langs Ierse wandelpaden</h3><p>De Ierse mythologie is onderverdeeld in vier cycli, elk vertegenwoordigd op verschillende wandelbestemmingen in Ierland.</p><ul><li><p><strong>De Mythologische Cyclus:</strong> Verhalen van de Tuatha Dé Danann en oude goden, geconcentreerd in het <a target="_blank" rel="noopener" class="text-blue-600 underline cursor-pointer" href="https://www.ireland.com/en-gb/destinations/county/meath/boyne-valley/">Boyne Valley</a> en bij Tara</p></li><li><p><strong>De Ulster-Cyclus:</strong> Cú Chulainn en de Ridders van de Rode Tak, gecentreerd rond het <a target="_blank" rel="noopener" class="text-blue-600 underline cursor-pointer" href="https://en.wikipedia.org/wiki/Cooley_Peninsula">Cooley-schiereiland</a></p></li><li><p><strong>De Fenian-Cyclus:</strong> Fionn MacCumhaill en de Fianna, verweven door Wicklow en daarbuiten</p></li><li><p><strong>De Historische Cyclus:</strong> Halfmythische koningen en koninginnen rond oude koninklijke zetels</p></li></ul><h2 id="de-beste-ierse-mythologie-wandelroutes-voor-folkloreliefhebbers">De beste Ierse mythologie wandelroutes voor folkloreliefhebbers</h2><p>Ik heb routes geselecteerd waar mythologie en landschap het krachtigst samensmelten. Elk pad biedt uitstekend wandelplezier én diepe verbindingen met het folklore-erfgoed van Ierland.</p><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330498103-optimized-Gemini_Generated_Image_co3ew7co3ew7co3e__1_.webp" alt="Gemini Generated Image Co3ew7co3ew7co3e 1 scenery on self-guided walking holiday in Ireland"><h3 id="cooley-schiereiland-c-chulainns-laatste-slagveld">Cooley-schiereiland: Cú Chulainns laatste slagveld</h3><p>Het Cooley-schiereiland in County Louth is heilige grond voor iedereen die <strong>Cú Chulainn wandelpaden</strong> verkent en de oude Ierse sagenlandschappen wil ontdekken. Dit dramatische landschap vormt het decor van Ierlands grootste epos, de Táin.</p><p><strong>De Táin Way</strong> (40 km) volgt koningin Medbs invasieroute in haar zoektocht om de Bruine Stier van Ulster te roven. Het emotionele hart van de route is de staande steen, waar Cú Chulainn zichzelf stervend rechtop vastbond — hij weigerde voor zijn vijanden te vallen, zelfs niet in de dood.</p><p>Bij elke groep die ik leid, sta ik hier stil. Dit monument van verzet ontroert bezoekers nog steeds, eeuwen later.</p><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330513242-optimized-Gemini_Generated_Image_r2rl92r2rl92r2rl.webp" alt="Gemini Generated Image R2rl92r2rl92r2rl scenery on self-guided walking holiday in Ireland"><p><strong>Hoogtepunten langs het pad:</strong></p><ul><li><p>Spectaculair uitzicht over <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/hiking-cooley-peninsula-tain-way-carlingford">Carlingford Lough</a> naar de Mourne Mountains</p></li><li><p>De Windy Gap, waar Cú Chulainn zijn pleegbroer Ferdia in een tweegevecht versloeg</p></li><li><p>Slieve Foy (589 m) met een wijd panorama vanaf de top</p></li><li><p>Bronstijd-ganggraven en ringforten langs de hele route</p></li></ul><p>Onze begeleide groepen stoppen bij belangrijke plekken voor vertelrondes, waarbij de Ulster-sagen tot leven komen tegen de achtergrond van precies die heuvels waar ze zich ooit afspeelden.</p><h3 id="wicklow-way-in-de-voetsporen-van-fionn-maccumhaill-en-de-fianna">Wicklow Way: In de voetsporen van Fionn MacCumhaill en de Fianna</h3><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330487935-optimized-Gemini_Generated_Image_smbpuysmbpuysmbp.webp" alt="Gemini Generated Image Smbpuysmbpuysmbp scenery on self-guided walking holiday in Ireland"><p>Ierlands oudste langeafstandspad, de <strong>Wicklow Way</strong> (127 km), slingert door landschappen doordrenkt van Fenian-overlevering en biedt enkele van de mooiste Fionn-MacCumhaill-wandelpaden. Aangelegd door de legendarische bergwandelaar J.B. Malone, kronkelt de in 1981 geopende route van Marlay Park in Dublin door de <a target="_blank" rel="noopener" class="text-blue-600 underline cursor-pointer" href="https://www.nationalparks.ie/wicklow/">Wicklow Mountains</a> naar Clonegal in Carlow.</p><p>Deze bergen duiken op in talloze verhalen over <strong>Fionn MacCumhaill</strong>. De Fionn-MacCumhaill-wandelpaden volgen hier de plekken waar hij bovennatuurlijke wijsheid verwierf — nadat hij per ongeluk de Zalm van de Kennis had geproefd, die hij eigenlijk klaarmaakte voor de dichter Finn Eces.</p><p><strong>Mythologische hoogtepunten:</strong></p><ol><li><p>De kloosternederzetting van <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/discover-dublin-walking-trails">Glendalough</a>, naar verluidt onder bescherming van de feeën</p></li><li><p>De Military Road, die door valleien loopt waar de Fianna ooit jaagden</p></li><li><p>Lugnaquilla (925 m), het hoogste punt van Leinster, vernoemd naar de god Lugh</p></li><li><p>Ringforten en staande stenen die overal langs het pad heilige plekken markeren</p></li></ol><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330509206-optimized-Gemini_Generated_Image_3ytxp23ytxp23ytx.webp" alt="Gemini Generated Image 3ytxp23ytxp23ytx scenery on self-guided walking holiday in Ireland"><p>Ik raad doorgaans zeven tot acht dagen aan om de volledige route af te leggen. Dat geeft genoeg tijd om zowel het indrukwekkende berglandschap als de mythologische sfeer op te nemen die dit pad tot een van de beste folklorewandelroutes van Ierland maakt.</p><p>Ons team regelt accommodatie en bagagevervoer en levert gedetailleerde routebeschrijvingen, verrijkt met folklore en Ierse sagenverhalen.</p><h3 id="boyne-valley-waar-mythe-steen-wordt">Boyne Valley: Waar mythe steen wordt</h3><p>Het <a target="_blank" rel="noopener" class="text-blue-600 underline cursor-pointer" href="https://www.ireland.com/en-gb/destinations/county/meath/boyne-valley/">Boyne Valley</a> bezit de dichtste concentratie prehistorische monumenten van Ierland en is onmisbaar voor wie Tuatha-Dé-Danann-locaties wil verkennen. De <strong>Boyne Greenway</strong> en omliggende paden bieden toegankelijke routes door dit UNESCO-Werelderfgoedlandschap.</p><p>Newgrange, Knowth en Dowth — de imposante ganggraven van Brú na Bóinne — zijn ouder dan de piramides van Egypte. Volgens de Ierse mythologie waren het niet zomaar graven, maar <strong>sídhe</strong> (feeënheuvels), ingangen naar de Andere Wereld waar de Tuatha Dé Danann zich na hun nederlaag terugtrokken.</p><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330492408-optimized-Gemini_Generated_Image_pyccpepyccpepycc.webp" alt="river near Gemini Generated Image Pyccpepyccpepycc on self-guided walking holiday in Ireland"><p>De godin Boann, die de River Boyne zijn naam gaf, speelt een centrale rol. Haar verboden nadering van de Bron van Segais ontketende de rivier zelf en sleurde haar mee de dood in — een waarschuwend verhaal over het respecteren van goddelijke grenzen.</p><p><strong>Belangrijke punten langs de Boyne Valley-routes:</strong></p><ul><li><p>Newgrange, exact uitgelijnd op de zonsopgang bij de winterzonnewende</p></li><li><p>De Hill of Tara, ceremoniële zetel van de Ierse Hoge Koningen</p></li><li><p>Knowth, met fijne megalithische kunst die millennia overspant</p></li><li><p>Het slagveld aan de Boyne, waar mythe en gedocumenteerde geschiedenis samenkomen</p></li></ul><p>Informatieborden langs de route helpen om landschap en mythologie te verbinden — al kan ik uit ervaring zeggen dat begeleide wandelingen veel rijkere verhalen en context bieden.</p><h3 id="slieve-bloom-ierlands-stille-fee-nrijk">Slieve Bloom: Ierlands stille feeënrijk</h3><p>Onverwacht oprijzend uit de centrale vlakte van Ierland, voelen de Slieve Bloom Mountains (527 m bij Arderin) als losgerukt uit de tijd. De <strong>Slieve Bloom Way</strong> (77 km) cirkelt rond het gebergte door dekenvenen, eikenbossen en heidevelden.</p><p>Dit is <strong>feeënland</strong> in zijn meest oorspronkelijke vorm. Plaatselijke folklore waarschuwt tegen het verstoren van eenzame meidoornbomen of het bouwen op bepaalde heuvels. Ik heb talloze verhalen verzameld — sommige verrassend recent — over onverklaarbare verschijnselen die aan het Goede Volk worden toegeschreven.</p><p>De bergen danken hun naam aan Bladhma, een krijger uit de Fenian-Cyclus. De afgelegen ligging van het gebied heeft traditionele geloofsovertuigingen langer bewaard dan meer toegankelijke streken, waardoor dit een van de meest sfeervolle mythische wandelingen in Ierland is.</p><p><strong>Wat Slieve Bloom bijzonder maakt:</strong></p><ul><li><p>Opmerkelijk rustige paden, zelfs in het hoogseizoen</p></li><li><p>Rijke biodiversiteit, waaronder <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/visit-killarney-national-park-in-ireland">edelherten</a> en slechtvalken</p></li><li><p>Glendine East, waar eeuwenoude eiken een betoverende sfeer scheppen</p></li><li><p>De Ridge of Capard, met 360-graden uitzicht over vijf graafschappen</p></li></ul><h2 id="legendarische-figuren-die-je-tegenkomt-op-keltische-sagenwandelingen-in-ierland">Legendarische figuren die je tegenkomt op Keltische sagenwandelingen in Ierland</h2><p>Inzicht in de belangrijkste personages verrijkt elke wandeling langs <strong>mythologische wandelbestemmingen in Ierland</strong>. Hier zijn de helden en wezens die je het vaakst zult tegenkomen.</p><h3 id="c-chulainn-ulsters-tragische-held">Cú Chulainn: Ulsters tragische held</h3><p><strong>Cú Chulainn</strong> blijft Ierlands grootste krijger — een figuur van bovenmenselijke kracht en tragisch lot. Geboren als Sétanta verdiende hij zijn naam nadat hij de hond van smid Culann doodde en aanbood zelf als bewaker te dienen.</p><p>Het Cooley-schiereiland bewaart zijn nagedachtenis het levendigst. De staande steen belichaamt de krijgerscode die de Ulster-Cyclus kenmerkte, en markeert de plek waar hij zich dodelijk gewond rechtop vastbond — hij weigerde liggend te sterven.</p><p>Wie de Táin Way wandelt, doorschrijdt zijn zwaarste beproeving: de eigenhandige verdediging van Ulster terwijl de overige krijgers onder Machas vloek terneerlagen. Maandenlang vocht hij alleen tegen koningin Medbs troepen.</p><h3 id="fionn-maccumhaill-krijger-dichter-ziener">Fionn MacCumhaill: Krijger, dichter, ziener</h3><p><strong>Fionn MacCumhaill</strong> (verengelst als Finn McCool) leidt de Fianna, een elite krijgersgroep gebonden aan strenge erecodes. Anders dan de puur krijgshaftige Cú Chulainn combineert Fionn fysieke kracht met wijsheid, verworven door het proeven van de Zalm van de Kennis.</p><p>Zijn aanwezigheid doordrenkt <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/walking-area-wicklow-way">de Wicklow Mountains</a>, waar de Fianna jaagden en trainden. De <a target="_blank" rel="noopener" class="text-blue-600 underline cursor-pointer" href="https://www.nationaltrust.org.uk/visit/northern-ireland/giants-causeway">Giant's Causeway</a> in County Antrim draagt eveneens zijn stempel — volgens de legende bouwde hij deze om Schotland te bereiken en de reus Benandonner uit te dagen.</p><p>[INTERNAL LINK: Walk the Causeway Coast → Causeway Coast walking tour]</p><p>Verhalen rond Fionn verkennen thema's als leiderschap, het verstrijken van de tijd en de bitterszoete aard van roem. Zijn zoon Oisín vertelde vele Fenian-verhalen na zijn terugkeer uit Tír na nÓg — weer een extra vertellaag binnen de mythologie.</p><h3 id="de-kinderen-van-lir-een-verhaal-van-gedaanteverwisseling">De Kinderen van Lir: Een verhaal van gedaanteverwisseling</h3><img src="https://dfguqecbcbbgrttfkwfr.supabase.co/storage/v1/object/public/images/1775330692882-optimized-Gemini_Generated_Image_peu741peu741peu7.webp" alt="Gemini Generated Image Peu741peu741peu7 scenery on self-guided walking holiday in Ireland"><p>Een van de meest ontroerende Ierse mythen gaat over vier koninklijke kinderen die door hun jaloerse stiefmoeder in zwanen werden veranderd. Negenhonderd jaar brachten ze in zwanengedaante door op drie plekken: Lough Derravaragh, de Sea of Moyle en de Atlantische kust bij Mayo.</p><p><strong>Lough Derravaragh</strong> in County Westmeath biedt rustige oeverwandelingen waar je bijna de zwanen kunt horen zingen — die droevige liederen die, zo wil de legende, iedereen die ze hoorde tot tranen roerden.</p><p>De mythe behandelt gedaanteverwisseling, uithoudingsvermogen en de kerstening van Ierland — de vloek brak pas toen de kinderen kerkklokken hoorden, waarna ze onmiddellijk verouderden en stierven. Ze werden pas op het allerlaatste moment gedoopt.</p><h3 id="de-tuatha-d-danann-ierlands-goddelijk-volk">De Tuatha Dé Danann: Ierlands goddelijk volk</h3><p>De <strong>Tuatha Dé Danann</strong> (het Volk van de Godin Danu) vertegenwoordigen Ierlands voorchristelijke goden. Na hun nederlaag tegen de Milesiërs trokken zij zich terug in de sídhe-heuvels en werden het feeënvolk van latere overlevering — hun aanwezigheid definieert vele Tuatha-Dé-Danann-locaties die Ierland tot op heden bewaart.</p><p>In het Boyne Valley is hun aanwezigheid het sterkst voelbaar. Newgrange diende als woonplaats van de Dagda en zijn zoon Aonghus Óg, de god van de liefde. Wandelen nabij deze monumenten bij zonsopgang of schemering schept een bijna tastbare verbinding met dit goddelijke verleden.</p><h2 id="zo-verdiep-je-je-beleving-op-mythische-wandelingen-in-ierland">Zo verdiep je je beleving op mythische wandelingen in Ierland</h2><p>Het loutere bewandelen van deze paden heeft al waarde — maar met deze aanpak wordt de ervaring aanzienlijk intenser.</p><h3 id="begeleide-mythologische-wandelingen">Begeleide mythologische wandelingen</h3><p>Onze <strong>mythologische themawandelingen in Ierland</strong> combineren expertkennis van de routes met vertelkunst die ik in ruim twintig jaar heb verfijnd. Bij markante plekken staan we stil om de bijbehorende mythen te delen — zo ontstaan momenten waarin landschap en legende versmelten.</p><p>Een ervaren gids biedt context die geen informatiebord kan geven — hij legt uit hoe mythen zich ontwikkelden, welk Keltisch wereldbeeld ze weerspiegelen, en hoe christelijke monniken de verhalen later optekenden (en soms aanpasten). We zorgen er ook voor dat je niets mist: een eenzame feeëndoorn, een verscholen heilige bron, nauwelijks zichtbare steengravures.</p><h3 id="op-eigen-gelegenheid-wandelen-met-informatieborden">Op eigen gelegenheid wandelen met informatieborden</h3><p>Veel folklorewandelroutes in Ierland beschikken inmiddels over informatiepanelen die mythologische verbanden toelichten. De Boyne Greenway blinkt hierin uit, met borden die 5.000 jaar cultureel erfgoed ontsluiten.</p><p>Onze klanten ontvangen gedetailleerde routebeschrijvingen die naast navigatie en praktische informatie ook de belangrijkste mythen van elke wandeldag bevatten. Zo kun je op je eigen tempo stilstaan en nadenken.</p><h3 id="het-juiste-moment-kiezen-voor-sfeer">Het juiste moment kiezen voor sfeer</h3><p>De Keltische mythologie benadrukt <strong>liminale momenten</strong> — dageraad, schemering, nevel — wanneer de grens tussen onze wereld en de Andere Wereld dun wordt. Onder zulke omstandigheden wandelen (veilig en met goede voorbereiding) voegt een bijzondere sfeerlaag toe.</p><p>Samhain (31 oktober), Imbolc (1 februari), Bealtaine (1 mei) en Lughnasadh (1 augustus) — de vier Keltische kwartaaldagen — hebben speciale betekenis. Op sommige routes vinden op deze data vertelsessies of begeleide wandelingen plaats.</p><h3 id="respectvol-omgaan-met-heilige-plekken">Respectvol omgaan met heilige plekken</h3><p>Veel locaties langs <strong>mythologische wandelbestemmingen</strong> zijn voor de lokale bevolking tot op heden heilig. Of je nu een heilige bron, ringfort of feeëndoorn bezoekt — nader met respect:</p><ul><li><p>Verwijder geen stenen, munten of offergaven die anderen hebben achtergelaten</p></li><li><p>Vermijd het beschadigen van of klimmen op archeologische monumenten</p></li><li><p>Houd je stem gedempt bij heilige plekken</p></li><li><p>Volg de Leave No Trace-principes nauwgezet</p></li></ul><p>Dit is geen kwestie van beleefdheid alleen — het erkent de levende band tussen het Ierse volk en zijn mythologisch erfgoed.</p><h2 id="je-mythologisch-wandelavontuur-in-ierland-plannen">Je mythologisch wandelavontuur in Ierland plannen</h2><p>Klaar om te wandelen waar legenden geboren werden? Zo raad ik je aan je voor te bereiden.</p><h3 id="de-beste-seizoenen-voor-ierse-mythologie-wandelroutes">De beste seizoenen voor Ierse mythologie wandelroutes</h3><p><strong>Lente (april–mei)</strong> en <strong>herfst (september–oktober)</strong> bieden de beste balans tussen aangenaam weer, minder drukte en sfeervolle omstandigheden. Het landschap transformeert met seizoenskleuren, en de nevel verleent mythologische plekken vaak een etherische schoonheid.</p><p>De zomer (juni–augustus) biedt langere dagen en doorgaans droger weer, al zijn de paden — met name de Wicklow Way — dan het drukst. Winterwandelingen (november–maart) vragen meer voorbereiding, maar belonen je met eenzaamheid en dramatisch weer dat de mythen tot leven brengt.</p><h3 id="essenti-le-uitrusting-voor-ierse-omstandigheden">Essentiële uitrusting voor Ierse omstandigheden</h3><p>Het <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/best-walks-in-northern-ireland">Ierse weer</a> slaat snel om. Zelfs op lagergelegen <strong>Ierse sagenwandelroutes</strong> moet je voorbereid zijn op het volgende:</p><table style="min-width: 75px;"><colgroup><col style="min-width: 25px;"><col style="min-width: 25px;"><col style="min-width: 25px;"></colgroup><tbody><tr><th colspan="1" rowspan="1"><p>Uitrusting</p></th><th colspan="1" rowspan="1"><p>Specificatie</p></th><th colspan="1" rowspan="1"><p>Waarom onmisbaar</p></th></tr><tr><td colspan="1" rowspan="1"><p>Waterdichte jas</p></td><td colspan="1" rowspan="1"><p>Ademend, met getapete naden</p></td><td colspan="1" rowspan="1"><p>Regen kan binnen enkele minuten opzetten</p></td></tr><tr><td colspan="1" rowspan="1"><p>Regenbroek</p></td><td colspan="1" rowspan="1"><p>Doorlopende zijrits bij voorkeur</p></td><td colspan="1" rowspan="1"><p>Makkelijk aan en uit te trekken onderweg</p></td></tr><tr><td colspan="1" rowspan="1"><p>Basislagen</p></td><td colspan="1" rowspan="1"><p>Merinowol of synthetisch</p></td><td colspan="1" rowspan="1"><p>Temperatuurregulatie, sneldrogend</p></td></tr><tr><td colspan="1" rowspan="1"><p>Wandelschoenen</p></td><td colspan="1" rowspan="1"><p>Enkelondersteuning, waterdicht</p></td><td colspan="1" rowspan="1"><p>Moerassig en ongelijk terrein</p></td></tr><tr><td colspan="1" rowspan="1"><p>Navigatiemiddelen</p></td><td colspan="1" rowspan="1"><p>Kaart, kompas, GPS/smartphone</p></td><td colspan="1" rowspan="1"><p>Nevel kan oriëntatiepunten snel verhullen</p></td></tr></tbody></table><p>We stellen uitgebreide paklijsten samen, afgestemd op jouw route en seizoen, zodra je boekt bij <a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer" href="/blog/how-to-plan-your-hiking-trip-in-ireland">Walking Holiday Ireland</a>.</p><h3 id="accommodatie-en-bagagelogistiek">Accommodatie en bagagelogistiek</h3><p>De meeste <strong>legendarische wandelroutes in Ierland</strong> voeren door of langs dorpen met uitstekende B&amp;B's, pensions en kleine hotels. Ik boek de accommodatie langs je route vooraf en regel het dagelijkse bagagevervoer, zodat je alleen met een dagtas hoeft te wandelen.</p><p>Deze ondersteunde aanpak laat je volledig focussen op de beleving — de verhalen, het landschap, de verbinding met het oeroude Ierland — in plaats van op logistiek.</p><p>[INTERNAL LINK: See our supported walking holidays → self-guided walking tour packages]</p><h3 id="fitnesseisen-per-route">Fitnesseisen per route</h3><p>De moeilijkheidsgraad varieert aanzienlijk tussen deze mythische wandelingen in Ierland:</p><ul><li><p><strong>Boyne Valley-routes:</strong> Vlak en toegankelijk, geschikt voor de meeste fitnessniveaus</p></li><li><p><strong>Wicklow Way:</strong> Matig tot uitdagend; vereist goede basisconditie en bergwandelervaring</p></li><li><p><strong>Cooley-schiereiland:</strong> Matig; enkele steile stukken, maar haalbaar met een redelijke conditie</p></li><li><p><strong>Slieve Bloom Way:</strong> Matig; zachter dan Wicklow, maar met aanhoudende klimmen</p></li></ul><p>Regelmatig wandelen (drie tot vier uur, twee tot drie keer per week) gedurende zes weken voor je reis biedt voldoende voorbereiding voor de meeste routes.</p><h2 id="kennis-verdiepen-voorbij-het-wandelpad">Kennis verdiepen — voorbij het wandelpad</h2><p>Je verdieping in mythologische wandelingen in Ierland hoeft niet te eindigen wanneer het pad stopt.</p><h3 id="aanbevolen-lectuur-ter-voorbereiding">Aanbevolen lectuur ter voorbereiding</h3><p>Deze boeken verrijken je begrip van de Ierse mythologie:</p><ul><li><p><strong>Early Irish Myths and Sagas</strong> (vertaald door Jeffrey Gantz): Toegankelijke vertalingen van de kernteksten</p></li><li><p><strong>Irish Folk Tales</strong> (samengesteld door Henry Glassie): Traditionele verhalen uit heel Ierland</p></li><li><p><strong>The Táin</strong> (vertaald door Thomas Kinsella): Het gezaghebbende epos van de Ulster-Cyclus</p></li><li><p><strong>The Penguin Book of Irish Fiction</strong>: Hoe mythologie de moderne Ierse literatuur beïnvloedt</p></li></ul><h3 id="bezienswaardig-culturele-centra">Bezienswaardig culturele centra</h3><p>Vul je wandelervaring aan met een bezoek aan:</p><ul><li><p><strong>Brú na Bóinne Visitor Centre</strong> (County Meath): Uitstekende duiding van de oeroude monumenten in het Boyne Valley</p></li><li><p><strong>National Museum of Ireland – Archaeology</strong> (Dublin): Artefacten uit de brons- en ijzertijd, de tijdperken van de mythologie</p></li><li><p><strong>The Epic Museum</strong> (Dublin): Interactieve tentoonstellingen over Ierse emigratie en mythologie</p></li></ul><h2 id="jouw-reis-naar-het-mythologische-hart-van-ierland">Jouw reis naar het mythologische hart van Ierland</h2><p><strong>Ierse mythologie wandelroutes</strong> bieden meer dan mooi uitzicht of fysieke uitdaging — ze schenken je een verbinding met een erfgoed dat de westerse literatuur, kunst en verbeelding al millennia lang vormgeeft. Wanneer je over het Cooley-schiereiland wandelt, betreed je de grond waar Cú Chulainn zijn laatste gevecht uitvocht. In de Wicklow Mountains voelt de aanwezigheid van Fionn MacCumhaill bijna tastbaar.</p><p>Deze paden bewijzen dat Ierlands grootste verhalen niet opgesloten zitten in musea of boeken — ze leven in het landschap en wachten tot jij ze stap voor stap, kilometer na kilometer ontdekt.</p><p>Bij Walking Holiday Ireland heb ik deze reizen jarenlang verfijnd en combineer ik gedegen routekennis met diepe waardering voor de mythologie die Ierlands wandelingen zo bijzonder maakt. Wij regelen elk detail — accommodatie, bagagevervoer en routebeschrijvingen vol folklore — zodat jij je volledig kunt overgeven aan de beleving.</p><p>Of je nu aangetrokken wordt door de tragische heldenmoed van de Ulster-Cyclus, de avontuurlijke geest van de Fianna of de bovennatuurlijke mysteries van de Tuatha Dé Danann — er is een pad dat jouw naam roept.</p><h3 id="wandel-waar-legenden-geboren-werden">Wandel waar legenden geboren werden</h3><p>Laat me jouw perfecte mythologisch wandelavontuur in Ierland samenstellen. Van het winderige Cooley-schiereiland tot de mystieke Wicklow Mountains — ik zorg voor elk detail terwijl jij je onderdompelt in Ierlands grootste verhalen.</p><p><a target="_blank" rel="noopener noreferrer nofollow" class="text-blue-600 underline cursor-pointer wp-block-button__link has-white-color has-vivid-green-cyan-background-color" href="/walking-tours/wicklow-way-5-days">Ontdek onze mythologische wandelpakketten</a></p><h3 id="tl-dr-korte-samenvatting">TL;DR – Korte samenvatting</h3><p><strong>Mythologisch wandelen in Ierland</strong> combineert indrukwekkende landschappen met oeroude folklore. De belangrijkste routes zijn het Cooley-schiereiland (Cú Chulainns slagveld), de Wicklow Way (jachtgronden van Fionn MacCumhaill), het Boyne Valley (Tuatha-Dé-Danann-locaties) en Slieve Bloom (feeënland). Lente en herfst bieden de beste omstandigheden. Begeleide wandelingen geven diepere verhalen; op eigen gelegenheid biedt flexibiliteit. Walking Holiday Ireland regelt alle logistiek — accommodatie, bagagevervoer en mythologierijke routebeschrijvingen — zodat jij je kunt richten op het beleven van Ierlands legendarische wandelpaden.</p>
+        </div>
+
+        <!-- Image Gallery -->
+        <section id="gallery-section" class="hidden mt-16 mb-8 border-t border-slate-200 pt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-8">Photo Gallery</h2>
+            <div id="gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                
+            </div>
+        </section>
+
+        
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-2 mt-12 pb-12 border-b border-slate-200">
+            <span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Irish mythology</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Celtic legends</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Cú Chulainn</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Fionn MacCumhaill</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Tuatha Dé Danann</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#folklore trails</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Cooley Peninsula</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Wicklow</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Boyne Valley</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#ancient Ireland</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#Irish folklore</span>
+<span class="bg-slate-100 px-3 py-1 rounded text-sm font-medium">#legendary trails</span>
+
+        </div>
+
+    </article>
+
+    <!-- Sidebar (4 cols) -->
+    <aside class="lg:col-span-4 space-y-10">
+
+        <!-- Blog Categories -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Categories</h3>
+            <ul class="space-y-2">
+                <li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog"><span>Alle Berichten</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">182</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=trail-guides"><span>Routegidsen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">61</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-your-trip"><span>Reis Plannen</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">32</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=irish-culture-&amp;-heritage"><span>Ierse Cultuur &amp; Erfgoed</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">18</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=national-parks-&amp;-wildlife"><span>Nationale Parken &amp; Natuur</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=safety-&amp;-weather"><span>Veiligheid &amp; Weer</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">16</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=gear-&amp;-equipment"><span>Uitrusting &amp; Accessoires</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">11</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-holidays"><span>Wandelvakanties</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">10</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-routes"><span>Wandelroutes</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">8</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=health-&amp;-wellness"><span>Gezondheid &amp; Welzijn</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=planning-&amp;-tips"><span>Planning &amp; Tips</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">4</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=walking-areas"><span>Walking Areas</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+<li><a class="flex justify-between items-center text-slate-700 hover:text-primary font-medium transition-colors" href="../blog?category=travel-info"><span>Reisinformatie</span><span class="text-xs bg-slate-100 px-2 py-0.5 rounded-full text-slate-500">1</span></a></li>
+
+            </ul>
+        </div>
+
+        <!-- Most Recent Posts -->
+        <div class="bg-white rounded-xl p-6 border border-slate-200/60 shadow-sm">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Recent Posts</h3>
+            <ul class="space-y-4">
+                <li><a class="group block" href="mythologische-wandelroutes-ierland-legendarische-paden">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Ierse mythologie wandelroutes: Wandel waar ooit helden liepen</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="wandelchecklist-dagwandeling-ierland">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Hiking Checklist: Wat meenemen op een dagwandeling in Ierland</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="kustplaatsen-aan-de-antrim-coast">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Antrim Coast: Wandelen langs Noord-Ierlands Spectaculaire Kust</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="het-verschil-tussen-hiking-en-walking">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Het verschil tussen hiking en walking: uitleg + tips</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+<li><a class="group block" href="beste-wandelingen-in-connemara">
+                    <p class="text-slate-700 group-hover:text-primary font-medium transition-colors line-clamp-2">Beste Wandelingen in Connemara: 5 Routes die je Moet Lopen</p>
+                    <p class="text-xs text-slate-400 mt-1">Apr 04, 2026</p>
+                </a></li>
+
+            </ul>
+        </div>
+
+        <!-- Plan Your Adventure CTA -->
+        <div class="border-2 border-brand-purple p-8 rounded-xl shadow-xl" style="background-color:rgba(33,7,71,0.8)">
+            <h3 class="text-xl font-bold mb-4 text-white">Plan Your Adventure</h3>
+            <p class="text-white/80 text-sm mb-6">Join our monthly newsletter for secret trails and early-bird tour discounts.</p>
+            <div class="space-y-3 subscribe-cta">
+                <input class="w-full bg-white/10 border border-white/20 rounded-lg px-4 py-3 placeholder:text-white/60 focus:ring-white text-white" placeholder="Email Address" type="email"/>
+                <button class="w-full bg-white text-brand-purple font-bold py-3 rounded-lg hover:bg-white/90 transition-colors">Subscribe Now</button>
+            </div>
+        </div>
+
+        <!-- Explore Our Tours Widget -->
+        <div>
+            <h3 class="text-xl font-bold mb-6 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">explore</span> Explore Our Tours
+            </h3>
+            <div class="space-y-6">
+                <a class="group flex gap-4 items-start" href="/wandeltochten/dingle-way-walking-tour-8d">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Dingle Way 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;965 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="/wandeltochten/kerry-way">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">The Kerry Way Hiking Tour — 8 Days</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;935 &bull; 8 Days</p>
+                    </div>
+                </a>
+<a class="group flex gap-4 items-start" href="/wandeltochten/wicklow-way-5-days">
+                    <div class="w-20 h-20 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                        <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover transition-transform group-hover:scale-110" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    </div>
+                    <div>
+                        <h4 class="font-bold group-hover:text-primary transition-colors line-clamp-2">Wicklow Way 5 Day Walking Holiday</h4>
+                        <p class="text-sm text-slate-500 mt-1">From &euro;655 &bull; 5 Days</p>
+                    </div>
+                </a>
+
+            </div>
+            <a href="/wandelbestemmingen" class="mt-8 text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                View All Walking Tours <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="bg-slate-100 rounded-xl p-6">
+            <h3 class="font-bold mb-4 uppercase text-xs tracking-widest text-slate-400">Related Articles</h3>
+            <ul class="space-y-4">
+                <li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="wandelingen-galway-ierland">Wandelingen in Galway: De beste routes van stad tot kust</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="backpack-checklist">Backpack Checklist: Alles wat je nodig hebt voor een wandelvakantie</a></li>
+<li><a class="text-slate-700 hover:text-primary font-medium transition-colors" href="dingle-way-vs-kerry-way-ierland">Dingle Way versus Kerry Way: Welke Ierse wandelroute past het beste bij jou?</a></li>
+
+            </ul>
+        </div>
+
+    </aside>
+
+</div>
+
+<!-- Recommended Tours Full-Width Section -->
+<section class="bg-white py-20 mt-4 w-full">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+            <div>
+                <h2 class="text-3xl font-bold mb-2">Recommended for You</h2>
+                <p class="text-slate-500 max-w-lg">Hand-picked walking holidays that complement this article with breathtaking vistas and rich history.</p>
+            </div>
+            <a href="/wandelbestemmingen" class="bg-primary/10 text-primary px-6 py-2 rounded-lg font-bold hover:bg-primary/20 transition-colors">See All Tours</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <a href="/wandeltochten/dingle-way-walking-tour-8d" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/dingle-way-walking-tour-8d/card.jpg" srcset="/images/routes/dingle-way-walking-tour-8d/card-400w.jpg 400w, ../images/routes/dingle-way-walking-tour-8d/card-800w.jpg 800w, ../images/routes/dingle-way-walking-tour-8d/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Dingle Way 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Dingle Way 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s most spectacular weste...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;965</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/wandeltochten/kerry-way" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/kerry-way/card.jpg" srcset="/images/routes/kerry-way/card-400w.jpg 400w, ../images/routes/kerry-way/card-800w.jpg 800w, ../images/routes/kerry-way/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="The Kerry Way Hiking Tour — 8 Days" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">8 Days</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">The Kerry Way Hiking Tour — 8 Days</h4>
+                    <p class="text-xs text-slate-500 mb-3">Ireland&#x27;s longest and most famou...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;935</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+            <a href="/wandeltochten/wicklow-way-5-days" class="bg-background-light rounded-xl overflow-hidden shadow-sm border border-primary/10 group hover:shadow-lg transition-all">
+                <div class="h-40 overflow-hidden relative bg-gradient-to-br from-primary/20 to-brand-purple/20">
+                    <img src="/images/routes/wicklow-way-5-days/card.jpg" srcset="/images/routes/wicklow-way-5-days/card-400w.jpg 400w, ../images/routes/wicklow-way-5-days/card-800w.jpg 800w, ../images/routes/wicklow-way-5-days/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="Wicklow Way 5 Day Walking Holiday" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display='none'"/>
+                    <span class="absolute top-3 right-3 bg-white/90 text-primary text-[10px] font-bold px-2 py-1 rounded">5 Dagen</span>
+                </div>
+                <div class="p-4">
+                    <h4 class="font-bold text-base mb-1 group-hover:text-primary transition-colors">Wicklow Way 5 Day Walking Holiday</h4>
+                    <p class="text-xs text-slate-500 mb-3">Three mountain days. The highlights t...</p>
+                    <div class="flex justify-between items-center">
+                        <span class="font-bold text-primary">&euro;655</span>
+                        <span class="text-xs font-bold underline underline-offset-4">Details</span>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-brand-purple text-white pt-16 pb-8 w-full">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+            <div>
+                <img src="/images/logo/whi_fc.webp" alt="Walking Holiday Ireland" class="h-10 mb-4" loading="lazy" width="130" height="69"/>
+                <p class="text-slate-300 text-base italic leading-relaxed">Zelfstandige wandelvakanties door de meest adembenemende landschappen van Ierland sinds 2012. Familiebedrijf van Cliff &amp; Louise.</p>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Wandelvakanties</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="/wandeltochten/dingle-way-walking-tour-8d" class="hover:text-primary transition-colors">Dingle Way</a></li>
+                    <li><a href="/wandeltochten/kerry-way" class="hover:text-primary transition-colors">Kerry Way</a></li>
+                    <li><a href="/wandeltochten/wicklow-way" class="hover:text-primary transition-colors">Wicklow Way</a></li>
+                    <li><a href="/wandeltochten/barrow-way" class="hover:text-primary transition-colors">Barrow Way</a></li>
+                    <li><a href="/wandeltochten/burren-way" class="hover:text-primary transition-colors">Burren Way</a></li>
+                    <li><a href="/wandeltochten/causeway-coast" class="hover:text-primary transition-colors">Causeway Coast</a></li>
+                    <li><a href="/wandeltochten/cooley-mournes" class="hover:text-primary transition-colors">Cooley & Mournes</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Snelkoppelingen</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                    <li><a href="../over-ons" class="hover:text-primary transition-colors">Over Ons</a></li>
+                    <li><a href="../hoe-het-werkt" class="hover:text-primary transition-colors">Hoe werkt het?</a></li>
+                    <li><a href="../moeilijkheidsgraad" class="hover:text-primary transition-colors">Tour Grading</a></li>
+                    <li><a href="../faq" class="hover:text-primary transition-colors">FAQ</a></li>
+                    <li><a href="../op-maat" class="hover:text-primary transition-colors">Op Maat Gemaakte Tours</a></li>
+                    <li><a href="../blog" class="hover:text-primary transition-colors">Blog</a></li>
+                    <li><a href="/cadeaubonnen" class="hover:text-primary transition-colors">Cadeaubonnen</a></li>
+                    <li><a href="../contact" class="hover:text-primary transition-colors">Contact</a></li>
+                    <li><a href="/boeken" class="hover:text-primary transition-colors font-bold">Nu boeken</a></li>
+                    <li><a href="../privacybeleid" class="hover:text-primary transition-colors">Privacybeleid</a></li>
+                    <li><a href="../algemene-voorwaarden" class="hover:text-primary transition-colors">Algemene Voorwaarden</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold mb-4 text-primary">Nu boeken</h4>
+                <ul class="space-y-3 text-sm text-slate-300">
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">mail</span> info@walkingholidayireland.com</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">phone</span> +353 87 957 3856</li>
+                    <li class="flex items-center gap-2"><span class="material-symbols-outlined text-primary text-lg">location_on</span> Dundalk, Co. Louth, Ireland</li>
+                </ul>
+                <div class="flex gap-3 mt-6">
+                    <div class="footer-lang flex items-center gap-1 bg-white/10 rounded-lg px-3 py-1.5" data-lang="en">
+                        <span class="text-xs font-bold text-primary">EN</span>
+                    </div>
+                    <a href="https://walkingholidayireland.de" onclick="event.preventDefault();switchLang('de')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="de hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">DE</span>
+                    </a>
+                    <a href="https://wandelvakantieierland.nl" onclick="event.preventDefault();switchLang('nl')" class="footer-lang flex items-center gap-1 bg-white/5 rounded-lg px-3 py-1.5" data-lang="nl hover:bg-white/10 transition-colors">
+                        <span class="text-xs font-bold text-slate-400">NL</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-white/10 pt-8 text-center text-sm text-slate-400">
+            <p>&copy; 2026 Walking Holiday Ireland. All rights reserved.</p>
+            <div style="margin-top:12px;"><img src="/images/logo/stripe-secure-payments.webp" alt="Secure payments powered by Stripe" style="width:80%;max-width:400px;height:auto;opacity:0.6;" loading="lazy" />
+                <div style="display:flex;align-items:center;gap:10px;margin-top:16px;">
+                    <a href="https://www.facebook.com/WalkingHolidayIreland/" target="_blank" rel="noopener" aria-label="Facebook" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                    <a href="https://www.instagram.com/walkingholidayireland/" target="_blank" rel="noopener" aria-label="Instagram" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                    <a href="https://www.youtube.com/channel/UCTxG7kAa84_LzgiGCDx4v4g/" target="_blank" rel="noopener" aria-label="YouTube" style="display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.15);"><svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:#fff;"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div></div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Gallery: show section only if images exist, lightbox -->
+    <script>
+    (function(){
+      var grid = document.getElementById('gallery-grid');
+      var section = document.getElementById('gallery-section');
+      if (grid && section && grid.children.length > 0) {
+        section.classList.remove('hidden');
+      }
+      var overlay = null;
+      var imgs = grid ? Array.from(grid.querySelectorAll('img')).map(function(i){return i.src;}) : [];
+      var idx = 0;
+      window.openLightbox = function(i){
+        idx = i;
+        if(!overlay){
+          overlay = document.createElement('div');
+          overlay.id='lb-overlay';
+          overlay.style.cssText='position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.9);display:flex;align-items:center;justify-content:center;cursor:pointer;';
+          overlay.innerHTML='<button onclick="closeLightbox()" style="position:absolute;top:16px;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&times;</button><button id="lb-prev" style="position:absolute;left:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&lsaquo;</button><img id="lb-img" style="max-width:90vw;max-height:85vh;border-radius:12px;object-fit:contain;"/><button id="lb-next" style="position:absolute;right:16px;color:#fff;font-size:2rem;background:none;border:none;cursor:pointer;">&rsaquo;</button>';
+          document.body.appendChild(overlay);
+          document.getElementById('lb-prev').onclick=function(e){e.stopPropagation();idx=(idx-1+imgs.length)%imgs.length;show();};
+          document.getElementById('lb-next').onclick=function(e){e.stopPropagation();idx=(idx+1)%imgs.length;show();};
+          overlay.onclick=function(e){if(e.target===overlay)closeLightbox();};
+        }
+        overlay.style.display='flex';
+        document.body.style.overflow='hidden';
+        show();
+      };
+      function show(){document.getElementById('lb-img').src=imgs[idx];}
+      window.closeLightbox = function(){if(overlay){overlay.style.display='none';document.body.style.overflow='';}};
+      document.addEventListener('keydown',function(e){if(!overlay||overlay.style.display==='none')return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowLeft'){idx=(idx-1+imgs.length)%imgs.length;show();}if(e.key==='ArrowRight'){idx=(idx+1)%imgs.length;show();}});
+    })();
+    </script>
+
+    <!-- WHI Ground Control Integration -->
+    <script src="/js/whi-config.js" defer></script>
+    <script src="/js/whi-data.js" defer></script>
+<script>function switchLang(lang){var el=document.querySelector('link[hreflang="'+lang+'"]');if(el)window.location.href=el.getAttribute('href');}
+document.addEventListener('DOMContentLoaded',function(){var lang=document.documentElement.lang||'en';
+/* Top bar buttons */
+var btns=document.querySelectorAll('.lang-btn,button[onclick*="switchLang"]');btns.forEach(function(b){var t=b.textContent.trim().toLowerCase();b.classList.remove('active');if(t===lang){b.classList.add('active');b.style.background='rgba(255,255,255,0.3)';b.style.borderColor='#210747';b.style.color='#210747';b.style.fontWeight='600';}else{b.style.background='transparent';b.style.borderColor='rgba(33,7,71,0.3)';b.style.color='rgba(33,7,71,0.7)';b.style.fontWeight='normal';}});
+/* Footer language links */
+var fl=document.querySelectorAll('.footer-lang');fl.forEach(function(el){var dl=el.getAttribute('data-lang');var sp=el.querySelector('span');if(dl===lang){el.style.background='rgba(196,181,253,0.25)';if(sp){sp.style.color='#C4B5FD';sp.style.fontWeight='700';}}else{el.style.background='rgba(255,255,255,0.05)';if(sp){sp.style.color='#94a3b8';sp.style.fontWeight='700';}}});});</script>
+<script src="/js/subscribe.js" defer></script>
+</body>
+</html>
