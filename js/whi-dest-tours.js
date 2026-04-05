@@ -95,7 +95,7 @@
 
     /* SVG icons for stats bar */
     var iconDays = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
-    var iconDistance = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
+    var iconDistance = '<span class="material-symbols-outlined" style="font-size:24px;color:#F17E00;margin-bottom:4px;display:inline-block;">hiking</span>';
     var iconAscent = '<svg style="width:24px;height:24px;color:#F17E00;margin-bottom:4px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M17 7h4v4" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>';
 
     grid.innerHTML = tours.map(function(tour) {
