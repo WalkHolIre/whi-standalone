@@ -189,15 +189,12 @@
                         '<span style="display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;line-height:1;margin-bottom:2px;">From</span>' +
                         priceHtml +
                     '</div>' +
-                    /* Location marker above title */
-                    '<div style="position:absolute;bottom:56px;left:24px;right:24px;">' +
+                    /* Location + title stacked at bottom of image */
+                    '<div style="position:absolute;bottom:16px;left:24px;right:24px;display:flex;flex-direction:column;gap:4px;">' +
                         '<div style="display:flex;align-items:center;gap:5px;' + regionCursor + '"' + regionOnclick + '>' +
                             '<svg style="width:14px;height:14px;color:#fff;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>' +
                             '<span style="color:rgba(255,255,255,0.9);font-size:13px;font-weight:600;text-shadow:0 1px 4px rgba(0,0,0,0.4);">' + areaName + ' / ' + regionLabel + '</span>' +
                         '</div>' +
-                    '</div>' +
-                    /* Tour title at bottom of image */
-                    '<div style="position:absolute;bottom:20px;left:24px;right:24px;">' +
                         '<h3 style="color:#fff;font-size:24px;font-weight:800;line-height:1.2;margin:0;text-shadow:0 2px 8px rgba(0,0,0,0.3);">' + tour.name + '</h3>' +
                     '</div>' +
                 '</div>' +

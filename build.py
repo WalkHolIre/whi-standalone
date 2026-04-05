@@ -757,13 +757,16 @@ def fetch_supabase(table, filters=None):
 
 
 def get_safe_text(obj, key, default=''):
-    """Safely get text from object, converting paragraph breaks to HTML <p> tags."""
+    """Safely get text from object, converting paragraph breaks to HTML <p> tags and markdown bold to <strong>."""
     text = obj.get(key) or default
     if not text:
         return default
     # If text already contains <p> tags, return as-is
     if '<p>' in str(text) or '<p ' in str(text):
         return text
+    # Convert markdown bold **text** to <strong>text</strong>
+    import re
+    text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', str(text))
     # Convert double newlines to paragraph breaks
     paragraphs = [p.strip() for p in str(text).split('\n\n') if p.strip()]
     if len(paragraphs) <= 1:
@@ -2119,7 +2122,7 @@ def render_itinerary(itinerary_data, routes_by_id=None):
             if day_start and day_end:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">pin_drop</span> {escape(day_start)} → {escape(day_end)}</span>'
             if day_distance:
-                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]" style="transform:rotate(90deg)">favorite_route</span> {day_distance:.1f} km</span>'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">favorite_route</span> {day_distance:.1f} km</span>'
             if day_ascent:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">landscape</span> ↑{int(day_ascent)}m</span>'
             if day_descent:
@@ -3708,7 +3711,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         stats = []
         stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
         if km_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;transform:rotate(90deg)">favorite_route</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">favorite_route</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px">landscape</span><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if descent_per_day:
@@ -3719,8 +3722,11 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         html += f'''<a href="{prefix}{slug}" class="group bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all flex flex-col h-full tour-card" data-region="{escape(region_name)}" data-difficulty="{escape(difficulty)}" data-days="{days}">
                 <div class="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-brand-purple/20">
                     <img src="{img_prefix}images/routes/{slug}/card.jpg" srcset="{img_prefix}images/routes/{slug}/card-400w.jpg 400w, {img_prefix}images/routes/{slug}/card-800w.jpg 800w, {img_prefix}images/routes/{slug}/card.jpg 1200w" sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" alt="{name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" width="1200" height="800" onerror="this.style.display=\'none\'"/>
-                    <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:40%;background:linear-gradient(to top,rgba(33,7,71,0.55) 0%,rgba(33,7,71,0) 100%);"></div>
-                    <h3 class="absolute bottom-3 left-3 right-3 text-white text-lg font-bold leading-snug drop-shadow-lg z-10" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
+                    <div class="absolute inset-x-0 bottom-0 pointer-events-none" style="height:50%;background:linear-gradient(to top,rgba(33,7,71,0.65) 0%,rgba(33,7,71,0) 100%);"></div>
+                    <div class="absolute bottom-3 left-3 right-3 z-10 flex flex-col gap-1">
+                        <span class="inline-flex items-center gap-1 text-xs font-semibold" style="color:rgba(255,255,255,0.9);text-shadow:0 1px 4px rgba(0,0,0,0.4);"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>{escape(region_label)}</span>
+                        <h3 class="text-white text-lg font-bold leading-snug drop-shadow-lg" style="text-shadow:0 1px 4px rgba(0,0,0,0.5);">{name}</h3>
+                    </div>
                     <div class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg px-4 py-2.5 text-center z-20">
                         <span class="block text-xs text-slate-500 font-medium leading-none mb-1">From</span>
                         <span class="block text-2xl font-extrabold leading-tight" style="color:#210747;">&euro;{price_display}</span>

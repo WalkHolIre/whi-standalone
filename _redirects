@@ -460,3 +460,22 @@
 /walking-tours/dingle-way.html  /walking-tours/dingle-way-walking-tour-8d  301
 /de/wandertouren/dingle-way.html  /de/wandertouren/dingle-way-walking-tour-8d  301
 /nl/wandeltochten/dingle-way.html  /nl/wandeltochten/dingle-way-walking-tour-8d  301
+
+# ── Broken tour slug fixes (2026-04-04) ──
+# Old short slugs that never existed as pages → correct published tours
+/walking-tours/burren-way  /walking-tours/burren-7-days  301
+/walking-tours/burren-way.html  /walking-tours/burren-7-days  301
+/nl/wandeltochten/burren-way  /nl/wandeltochten/burren-7-days  301
+/nl/wandeltochten/burren-way.html  /nl/wandeltochten/burren-7-days  301
+/de/wandertouren/burren-way  /de/wandertouren/burren-7-days  301
+/de/wandertouren/burren-way.html  /de/wandertouren/burren-7-days  301
+/walking-tours/barrow-way  /walking-tours/full-barrow-way-walking  301
+/walking-tours/barrow-way.html  /walking-tours/full-barrow-way-walking  301
+/nl/wandeltochten/barrow-way  /nl/wandeltochten/full-barrow-way-walking  301
+/nl/wandeltochten/barrow-way.html  /nl/wandeltochten/full-barrow-way-walking  301
+/de/wandertouren/barrow-way  /de/wandertouren/full-barrow-way-walking  301
+/de/wandertouren/barrow-way.html  /de/wandertouren/full-barrow-way-walking  301
+
+# Dutch backlink recovery — Ahrefs 2026-04-04
+/carlingford-and-the-cooley-peninsula/  /wandelgebied-cooley-mournes  301
+/carlingford-and-the-cooley-peninsula  /wandelgebied-cooley-mournes  301
