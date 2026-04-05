@@ -2122,7 +2122,7 @@ def render_itinerary(itinerary_data, routes_by_id=None):
             if day_start and day_end:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">pin_drop</span> {escape(day_start)} → {escape(day_end)}</span>'
             if day_distance:
-                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">favorite_route</span> {day_distance:.1f} km</span>'
+                badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-slate-600 bg-slate-100 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">hiking</span> {day_distance:.1f} km</span>'
             if day_ascent:
                 badges_html += f'<span class="flex items-center gap-1.5 text-sm font-medium text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-md"><span class="material-symbols-outlined text-[18px]">landscape</span> ↑{int(day_ascent)}m</span>'
             if day_descent:
@@ -3711,7 +3711,7 @@ def render_dest_tour_cards_v3(tours, prefix='walking-tours/', reviews_by_tour=No
         stats = []
         stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span class="text-xs font-bold text-slate-700 mt-1">{days} Days</span></div>')
         if km_per_day:
-            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">favorite_route</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
+            stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px;">hiking</span><span class="text-xs font-bold text-slate-700 mt-1">{km_per_day} km</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if ascent_per_day:
             stats.append(f'<div class="flex flex-col items-center" style="min-width:60px;"><span class="material-symbols-outlined text-slate-500" style="font-size:20px">landscape</span><span class="text-xs font-bold text-slate-700 mt-1">&uarr;{ascent_per_day}m</span><span class="text-[9px] text-slate-400">/Day</span></div>')
         if descent_per_day:
